@@ -27,7 +27,12 @@ int main(int argc, char** argv) {
   folly::init(&argc, &argv);
 
   if (argc < 3){
-    printf("Not enough args\n");
+    printf("Not enough args, %d\n",argc);
+    int i = 0;
+    while(i<argc){
+       printf("arg[%d] is %s\n",i,argv[i]);
+       i+=1;
+    }
     exit(1);
   }
 
