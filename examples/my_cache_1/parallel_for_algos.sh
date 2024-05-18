@@ -6,12 +6,17 @@ CACHE_SIZE="1GB"
 plot_size_script="plot_hr_size.py"
 
 # List of data paths
-data_paths=(
-    "/disk/CacheLib/examples/my_cache_1/data/w90.oracleGeneral.bin.zst"
-    "/disk/CacheLib/examples/my_cache_1/data/w91.oracleGeneral.bin.zst"
-    "/disk/CacheLib/examples/my_cache_1/data/w92.oracleGeneral.bin.zst" 
-    # Add more paths as needed
-)
+
+prefix="/disk/CacheLib/examples/my_cache_1/data/w"
+suffix=".oracleGeneral.bin.zst"
+trace_paths=()
+names=()
+
+for i in {80..106}; do
+	trace_path="$prefix$i$suffix"
+	trace_paths+=("$trace_path")
+	names+=("w$i")
+done
 
 # Export variables so they can be used by GNU Parallel
 export MAX_REQS
@@ -24,8 +29,9 @@ run_my_cache() {
 }
 
 run_plot_hr_size(){
-    local data_path="$1"
-    python3 "$plot_size_script" --tracepath="$data_path" 
+    local trace_path="$1"
+    local name="$2"
+    python3 plot_hr_size.py --tracepath="$trace_path" --name="$name" 
 }
 
 print_data_path(){
@@ -40,7 +46,9 @@ export -f run_plot_hr_size
 
 # Use GNU Parallel to run the program with each data path
 #parallel -j0 --eta run_my_cache ::: "${data_paths[@]}"
-#parallel print_data_path ::: "${data_paths[@]}"
-parallel -j0 --eta run_plot_hr_size ::: "${data_paths[@]}"
+#parallel print_data_path ::: "${trace_paths[@]}"
+parallel -j0 --eta --link run_plot_hr_size ::: "${trace_paths[@]}" ::: "${names[@]}"
 
+#printf '%s\n' "${trace_paths[@]}"
+#printf '%s\n' "${names[@]}"
 
