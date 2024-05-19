@@ -63,7 +63,7 @@ def plot_mr_size(cache_sizes,hr_lists,labels,name=""):
     for i in range(num_lines): 
         hr_list = hr_lists[i] 
         mr_list = [1-float(i) for i in hr_list] 
-        plt.plot(cache_sizes_bytes,mr_list,
+        plt.plot(cache_sizes,mr_list,
                 color=COLORS[i],
                 label=labels[i],
                 marker=MARKERS[i],
@@ -82,7 +82,7 @@ def plot_mr_size(cache_sizes,hr_lists,labels,name=""):
 
     pp.close()
 
-    print("linear and log plots are saved to mrp-size-{}.pdf".format(name))
+    print("log plot saved to mrp-size-{}.pdf".format(name))
 
 
 def parse_for_size(file):
@@ -101,7 +101,6 @@ def parse_for_size(file):
     
     final_hr = m.group("hit_ratio")
 
-
     print("miss ratio:",1-float(final_hr))
     return final_hr
 
@@ -109,7 +108,7 @@ def parse_for_size(file):
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--tracepath",type=str,required=True)
+    #p.add_argument("--tracepath",type=str,required=True)
     p.add_argument("--cache_sizes",type=str,default="")
 
     p.add_argument("--algo",type=str,default="Lru")
@@ -126,7 +125,7 @@ if __name__ == "__main__":
     hr_lists_for_algos = [[] for _ in range(len(ALGOS))]
     for (i,algo) in enumerate(ALGOS):
         for cache_size in cache_sizes: 
-            output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
+            output_file = OUTPUTDIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
             
             print("parsing for",output_file) 
 
