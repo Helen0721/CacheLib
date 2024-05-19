@@ -84,6 +84,32 @@ def plot_mr_size(cache_sizes,hr_lists,labels,name=""):
 
     print("log plot saved to mrp-size-{}.pdf".format(name))
 
+def parse_for_time(file):
+    stdout_str = []
+
+    with open(file,"r") as f:
+        stdout_str = f.read().split("\n")
+    
+    ts_list,hr_list = [],[]
+    
+    for (i,line) in enumerate(stdout_str):
+        if i == len(stdout_str) - 2: break 
+        
+        m = re.search(REGEX,line) 
+
+        if not m: continue
+
+        ts_list.append(m.group("time")) 
+        hr_list.append(m.group("hit_ratio"))
+    
+    print(ts_list) 
+    print(hr_list)
+
+    return ts_list, hr_list
+
+
+
+
 
 def parse_for_size(file):
     
