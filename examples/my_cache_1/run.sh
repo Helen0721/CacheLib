@@ -1,20 +1,26 @@
 #!/bin/bash
 
-# Define the path to the cachesim executable
-# should be in the libCacheSim/_build directory
-CACHE_SIM_EXEC="./build/my_cache_1"
+prefix="/disk/CacheLib/examples/my_cache_1/data/w"
+suffix=".oracleGeneral.bin.zst"
+trace_paths=()
+names=()
 
-# Define the data path where the downloaded trace files are located
-DATA_PATH="data/"
+for i in {81..106}; do
+	trace_path="$prefix$i$suffix"
+	trace_paths+=("$trace_path")
+	names+=("w$i")
+done
 
-OUTPUT_FILE="data/w82_to_w106_log.txt"
 
 # Loop through the range of $ from 80 to 106
-for i in {82..106}; do
+for i in {0..25}; do
     # Define the trace file name
-    TRACE_FILE="w${i}.oracleGeneral.bin.zst"
+    TRACE_FILE=${trace_paths[i]}
+    NAME=${names[i]}
 
-    # Run cachesim with the trace file and "1gb" as arguments
-    echo "Running cachesim on ${TRACE_FILE}..."
-    $CACHE_SIM_EXEC "${DATA_PATH}${TRACE_FILE}" "0" >> "${OUTPUT_FILE}"
+    echo "$TRACE_FILE"
+    echo "$NAME"
+
+    python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME"
+
 done

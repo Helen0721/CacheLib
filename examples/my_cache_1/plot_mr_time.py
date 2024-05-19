@@ -2,6 +2,7 @@ import os
 import sys
 import itertools
 from collections import defaultdict
+from matplotlib.backends.backend_pdf import PdfPages
 import re
 import numpy as np
 import random
@@ -19,39 +20,73 @@ TinyLFU_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_TinyLFU"
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
-COLORS = [
-    "mediumturquoise","burlywood","royalblue","orange","midnightblue","firebrick",
-    "darkkhaki","deepskyblue","indigo","limegreen","seagreen","rosybrown","tomato","sienna",
-    "sandybrown","darkorange","darkgoldenrod","yellow","darkolivegreen","darkslategrey","slategrey",
-    "darkslateblue","violet","hotpink","crimson"]
-random.shuffle(COLORS)
-COLORS =itertools.cycle(COLORS) 
-LINESTYLES = itertools.cycle(["--","-", "--", "-.", ":"])
+COLORS=['tab:green', 'tab:red', 'tab:blue']
+MARKERS=["o","x","d","s"]
+LINESTYLES =["-","-.", "-.", ":"]
+
 PLOTDIR = "/disk/CacheLib/examples/my_cache_1/plots";
 
 
 def plot_hr_time(ts_lists,hr_lists,labels,name=""): 
-    num_plots = len(ts_lists) 
-    if num_plots==0: 
+    num_lines = len(ts_lists) 
+    if num_lines==0: 
         print("no plot to plot.")  
         return
-    for i in range(num_plots): 
+    
+
+    pp = PdfPages("{}/mrp-time-{}.pdf".format(PLOTDIR,name))
+
+    #linear scale
+
+    plt.figure()
+    for i in range(num_lines): 
         ts_list,hr_list = ts_lists[i],hr_lists[i] 
         ts_list = [float(i) for i in ts_list] 
-        hr_list = [float(i) for i in hr_list]
-        plt.plot(ts_list,hr_list,color=next(COLORS),linestyle=next(LINESTYLES),label=labels[i])
+        mr_list = [1-float(i) for i in hr_list]
+        
+        plt.plot(ts_list, mr_list,
+                color=COLORS[i],
+                label=labels[i],
+                marker=MARKERS[i],
+                linestyle=LINESTYLES[i])
 
-    legend = plt.legend(ncol=5, loc="upper right", frameon=False) 
+    plt.title("linear scale")
+    legend = plt.legend(ncol=num_lines, loc="upper right", frameon=False) 
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
     frame.set_edgecolor("0.9")
     plt.grid(axis="y", linestyle="--") 
     plt.xlabel("Time") 
-    plt.ylabel("Hit Ratio") 
-    plt.savefig("{}/hrp-time-{}.pdf".format(PLOTDIR,name), bbox_inches="tight")
-    plt.show() 
-    plt.clf() 
+    plt.ylabel("Miss Ratio") 
+    pp.savefig()
+    plt.close()
+
+    #log plot
+    plt.figure()
+    for i in range(num_lines): 
+        hr_list = hr_lists[i] 
+        mr_list = [1-float(i) for i in hr_list]
+        plt.plot(ts_list,mr_list,
+                color=COLORS[i],
+                label=labels[i],
+                marker=MARKERS[i],
+                linestyle=LINESTYLES[i])        
+        plt.xscale("log")
+
+    plt.title("log scale")
+    legend = plt.legend(ncol=num_lines, loc="upper right", frameon=False) 
+    frame = legend.get_frame() 
+    frame.set_facecolor("0.9") 
+    frame.set_edgecolor("0.9")
+    plt.grid(axis="y", linestyle="--") 
+    plt.xlabel("Time") 
+    plt.ylabel("Miss Ratio") 
+    pp.savefig()
+
+    pp.close()
     print("plot is saved to hrp-time-{}.pdf".format(name))
+
+
 
 def run(tracepath,max_reqs,algo = "LRU",cache_size = "1GB"):
     if algo=="Lru": run_path = Lru_path;

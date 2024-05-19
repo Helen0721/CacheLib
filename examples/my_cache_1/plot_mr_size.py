@@ -31,7 +31,7 @@ REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)"
 #        ("#bae4bc","#7bccc4","#2b8cbe"),
 #]
 
-COLORS=["#bae4bc","#7bccc4","#2b8cbe"]
+COLORS=['tab:green', 'tab:red', 'tab:blue']
 #random.shuffle(COLORS)
 #COLORS =itertools.cycle(COLORS)
 
@@ -43,10 +43,13 @@ LINESTYLES =["-","-.", "-.", ":"]
 #random.shuffle(LINESTYLES)
 #LINESTYLES = itertools.cycle(LINESTYLES)
 
-PLOTDIR = "/disk/CacheLib/examples/my_cache_1/plots";
+PLOTDIR = "/disk/CacheLib/examples/my_cache_1/plots"
+
+
+OUTPUTDIR = "/disk/CacheLib/examples/my_cache_1/output/"
 
 # hr_lists: 3 * len(cache_sizes). 
-def plot_mr_size(cache_sizes,cache_sizes_bytes,hr_lists,labels,name=""): 
+def plot_mr_size(cache_sizes,hr_lists,labels,name=""): 
     num_lines = len(hr_lists) 
     if num_lines==0: 
         print("no plot to plot.")  
@@ -54,41 +57,17 @@ def plot_mr_size(cache_sizes,cache_sizes_bytes,hr_lists,labels,name=""):
 
     pp = PdfPages("{}/mrp-size-{}.pdf".format(PLOTDIR,name))
 
-    #linear plot
+    #log plot
     plt.figure()
     
     for i in range(num_lines): 
         hr_list = hr_lists[i] 
         mr_list = [1-float(i) for i in hr_list] 
-        plt.plot(cache_sizes,mr_list,
-                color=colors[i],
-                label=labels[i],
-                market=MARKERS[i],
-                linestyle=LINESTYLES[i])
-
-    plt.title("linear scale")
-    legend = plt.legend(ncol=num_lines, loc="upper right", frameon=False) 
-    frame = legend.get_frame() 
-    frame.set_facecolor("0.9") 
-    frame.set_edgecolor("0.9")
-    plt.grid(axis="y", linestyle="--") 
-    plt.xlabel("Size") 
-    plt.ylabel("Miss Ratio") 
-    pp.savefig()
-    plt.close()
-
-    #log plot
-
-    plt.figure()
-    for i in range(num_lines): 
-        hr_list = hr_lists[i] 
-        mr_list = [1-float(i) for i in hr_list]
         plt.plot(cache_sizes_bytes,mr_list,
-                color=colors[i],
+                color=COLORS[i],
                 label=labels[i],
-                market=MARKERS[i],
-                linestyle=LINESTYLES[i])        
-        plt.xscale("log")
+                marker=MARKERS[i],
+                linestyle=LINESTYLES[i])
 
     plt.title("log scale")
     legend = plt.legend(ncol=num_lines, loc="upper right", frameon=False) 
@@ -99,46 +78,29 @@ def plot_mr_size(cache_sizes,cache_sizes_bytes,hr_lists,labels,name=""):
     plt.xlabel("Size") 
     plt.ylabel("Miss Ratio") 
     pp.savefig()
+    plt.close()
 
     pp.close()
 
     print("linear and log plots are saved to mrp-size-{}.pdf".format(name))
 
 
-def run(tracepath,max_reqs,algo = "LRU",cache_size = "1GB"):
-    if algo=="Lru": run_path = Lru_path;
-    elif algo=="Lru2Q": run_path = Lru2Q_path;
-    elif algo=="TinyLFU": run_path = TinyLFU_path;
-    else: 
-        print("unsupported algorithm ", algo);
-
-
-    run_args = [run_path, tracepath,str(max_reqs),cache_size]
-
-    p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-    if p.returncode != 0: 
-        logger.warning("cachesim may have crashed with segfault")
-
-    stderr_str = p.stderr.decode("utf-8") 
-    if stderr_str != "":
-        logger.warning(stderr_str)
-
-    stdout_str = p.stdout.decode("utf-8").split("\n");
+def parse_for_size(file):
     
-    if len(stdout_str) < 3: 
-        print(std_str)
-        return
+    stdout_str = []
+    with open(file,"r") as f:
+        stdout_str = f.read().split("\n")
+    
     line = stdout_str[-3]
     m = re.search(REGEX,line)
 
     if not m:
+        print("incorrect output file format")
         print(line)
-        return
+        return -1
     
-    print(stdout_str[-2])
-
     final_hr = m.group("hit_ratio")
+
 
     print("miss ratio:",1-float(final_hr))
     return final_hr
@@ -158,18 +120,17 @@ if __name__ == "__main__":
     
     if (ap.cache_sizes==""):
         cache_sizes = CACHE_SIZES
-        cache_sizes_bytes = CACHE_SIZES_BYTES
     else:
         cache_sizes = ap.cache_sizes.split(",")
-        cache_sizes_bytes = [CACHE_SIZES_BYTES[CACHE_SIZES.index(s)] for s in cache_sizes] 
-
-    # to allow parallelization. 
 
     hr_lists_for_algos = [[] for _ in range(len(ALGOS))]
     for (i,algo) in enumerate(ALGOS):
-        for cache_size in cache_sizes:
-            print("running",ap.tracepath,"with", algo,"and cache_size",cache_size) 
-            final_hr = run(ap.tracepath,ap.max_reqs,algo=algo,cache_size = cache_size)
+        for cache_size in cache_sizes: 
+            output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
+            
+            print("parsing for",output_file) 
+
+            final_hr = parse_for_size(output_file)
             hr_lists_for_algos[i].append(final_hr)
 
-    plot_mr_size(cache_sizes,cache_sizes_bytes,hr_lists_for_algos,ALGOS,name=ap.name)
+    plot_mr_size(cache_sizes,hr_lists_for_algos,ALGOS,name=ap.name)

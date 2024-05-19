@@ -37,7 +37,6 @@ unsigned long convertCacheSize(char *cache_size){
   unsigned long number = (unsigned long)atoi(numb_s);
 
   if (std::strcmp(cache_size + s_len - 2, "GB") == 0){
-    std::cout << "number: " << number <<std::endl;
     return base_size * 1024 * number;
   }
   else if (std::strcmp(cache_size + s_len - 2, "MB") == 0){
@@ -64,10 +63,11 @@ void initializeCache(char* cache_size) {
       .validate(); // will throw if bad config
   
   
-  std::cout<< "Cache Size: "<< size << std::endl;
   gCache_ = std::make_unique<Cache>(config);
   defaultPool_=
       gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
+  
+  std::cout<< "Cache Initialized. size: "<< cache_size << std::endl;
 }
 
 void destroyCache() { gCache_.reset(); }
