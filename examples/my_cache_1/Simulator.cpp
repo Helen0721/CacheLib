@@ -147,6 +147,8 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 	char* value_all = (char *) malloc(1024 * 1024 * 8);
 	char *record;
 
+	std::cout<<"time,id,size"<<std::endl;
+
 	//auto start = std::chrono::high_resolution_clock::now();
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
@@ -166,6 +168,9 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 		
 		std::string key = std::to_string(req->obj_id);
 		
+
+		print_one_zstd_request(req);
+
 		auto handle = get(key);
 		if (handle) num_hits += 1;
 		else {
