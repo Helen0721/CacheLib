@@ -91,7 +91,7 @@ CacheReadHandle get(CacheKey key) { return gCache_->find(key); }
 bool put_ChainedItem(CacheKey key, const std::string& value){
   size_t chunkSize = 1024 * 1024;
   // For simplicity, we'll split the user data into 1MB chunks
-  size_t numChunks = userDataSize / chunkSize;
+  size_t numChunks = value.size() / chunkSize;
 
   struct CustomParentItem {
     size_t numChunks;
@@ -104,7 +104,7 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   assert(parentItemSize < chunkSize);
 
   auto parentItemHandle =
-	gCache_->allocate(defaultPool, key, parentItemSize);
+	gCache_->allocate(defaultPool_, key, parentItemSize);
 
   CustomParentItem* parentItem =
 	  reinterpret_cast<CustomParentItem*>(parentItemHandle->getMemory());
@@ -113,14 +113,13 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   for (size_t i = 0; i < numChunks; ++i) {
 	  
 	 auto chainedItemHandle =
-		  gCache->allocateChainedItem(parentItemHandle, chunkSize);
+		  gCache_->allocateChainedItem(parentItemHandle, chunkSize);
 
   	// For simplicity, assume we always have enough memory
   	if (!chainedItemHandle) return false;
 
   	// Compute user data offset and copy data over
-  	uint8_t* dataOffset =
-      		reinterpret_cast<uint8_t*>(value.data()) + chunkSize * i;
+  	uint8_t* dataOffset = (uint8_t*) (void *)value.data() + chunkSize * i;
   	std::memcpy(chainedItemHandle->getMemory(), dataOffset, chunkSize);
 
   	// Add this chained item to the parent item
@@ -128,7 +127,8 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   }
 
   // Now, make parent item visible to others
-  cache.insert(parentItemHandle);
+  gCache_->insert(parentItemHandle);
+  return true;
 }
 
 /*CacheKey should be of the type folly::StringPiece */
