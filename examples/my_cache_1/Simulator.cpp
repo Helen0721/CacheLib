@@ -1,4 +1,8 @@
 #include "cachelib/allocator/CacheAllocator.h"
+#include "cachelib/allocator/LruTailAgeStrategy.h"
+#include "cachelib/allocator/MarginalHitsStrategy.h"
+#include "cachelib/allocator/FreeMemStrategy.h"
+#include "cachelib/allocator/HitsPerSlabStrategy.h"
 #include "folly/init/Init.h"
 #include <cstdlib>
 #include <string.h>
@@ -66,7 +70,17 @@ void initializeCache(char* cache_size) {
   gCache_ = std::make_unique<Cache>(config);
   defaultPool_=
       gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
-  
+
+  auto ratio = 0.1;
+  auto kLruTailAgeStrategyMinSlabs = 10;
+  cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
+  cfg.slabProjectionLength = 0; // dont project or estimate tail age
+  cfg.numSlabsFreeMem = 10;     // ok to have ~40 MB free memory in unused allocations
+  auto rebalanceStrategy = std::make_shared<cachelib::LruTailAgeStrategy>(cfg);
+
+  // every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
+  config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(5));
+
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl;
 }
 
@@ -169,7 +183,7 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 		std::string key = std::to_string(req->obj_id);
 		
 
-		print_one_zstd_request(req);
+		//print_one_zstd_request(req);
 
 		auto handle = get(key);
 		if (handle) num_hits += 1;
