@@ -71,6 +71,8 @@ void initializeCache(char* cache_size) {
   defaultPool_=
       gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
 
+  config.configureChainedItems();
+
   auto ratio = 0.1;
   auto kLruTailAgeStrategyMinSlabs = 10;
   cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
@@ -89,16 +91,20 @@ void destroyCache() { gCache_.reset(); }
 CacheReadHandle get(CacheKey key) { return gCache_->find(key); }
 
 bool put_ChainedItem(CacheKey key, const std::string& value){
+  std::cout << "put_ChainedItem.. for value size:"<<value.size() <<std::endl;
   size_t chunkSize = 1024 * 1024;
   // For simplicity, we'll split the user data into 1MB chunks
   size_t numChunks = value.size() / chunkSize;
+  std::cout << "numChunks:" << numChunks <<std::endl;
 
-  struct CustomParentItem {
-    size_t numChunks;
-    void* dataPtr[];  // an array of pointers to the chunks
-  };
+  //struct CustomParentItem {
+  //  size_t numChunks;
+    //void* dataPtr[];  // an array of pointers to the chunks
+  //};
 
-  size_t parentItemSize = sizeof(CustomParentItem) + numChunks * sizeof(void*);
+  size_t parentItemSize = sizeof(size_t); 	//sizeof(CustomParentItem) + numChunks * sizeof(void*);
+
+  std::cout << "parentItemSize:" << parentItemSize <<std::endl;
 
   // for simplicity, assume this fits into 1MB
   assert(parentItemSize < chunkSize);
@@ -106,8 +112,12 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   auto parentItemHandle =
 	gCache_->allocate(defaultPool_, key, parentItemSize);
 
-  CustomParentItem* parentItem =
-	  reinterpret_cast<CustomParentItem*>(parentItemHandle->getMemory());
+  if (!parentItemHandle) return false;
+
+  // CustomParentItem* parentItem = malloc(sizeof(CustomParentItem));
+  //parentItem->numChunks = numChunks;
+
+  std::memcpy(parentItemHandle->getMemory(), &numChunks, parentItemSize);
 
   // Now split user data into chunks and cache them
   for (size_t i = 0; i < numChunks; ++i) {
@@ -127,12 +137,14 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   }
 
   // Now, make parent item visible to others
-  gCache_->insert(parentItemHandle);
+  gCache_->insertOrReplace(parentItemHandle);
   return true;
 }
 
 /*CacheKey should be of the type folly::StringPiece */
 bool put(CacheKey key, const std::string& value) {
+  if(value.size() >= 4000000) return put_ChainedItem(key, value);
+	
   auto handle = gCache_->allocate(defaultPool_, key, value.size());
   if (!handle) {
     return false; // cache may fail to evict due to too many pending writes
@@ -203,10 +215,23 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 
 	char* value_all = (char *) malloc(1024 * 1024 * 8);
 	char *record;
+	
+	std::string prefix(value_all,1024 * 1024 * 4);
+
+	/*
+	 test for Chained Item implementation.
+	zstd_reader_read_bytes(reader, 24, &record);
+	
+	std::string key = std::to_string(req->obj_id);
+
+	auto chained_res = put(key,prefix);
+	if (!chained_res) {std::cout<< "chained item alloc failed" << std::endl; return;}
+	auto chained_handle = get(key);
+	if (!chained_handle) {std::cout<< "chained item find failed" << std::endl; return;}	
+	*/
 
 	std::cout<<"time,id,size"<<std::endl;
 
-	//auto start = std::chrono::high_resolution_clock::now();
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
 
@@ -254,7 +279,7 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 	free(req);
 	free(value_all);
 	free(reader);
- 	destroyCache();
+ 	//destroyCache();		somehow doesn't work with ChainedItem reset.
 
 }
 
