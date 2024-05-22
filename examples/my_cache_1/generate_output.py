@@ -13,6 +13,7 @@ CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB",
         "8GB","16GB","32GB","64GB"]
 OUTPUT_DIR = "output/"
 
+logger = logging.getLogger("generate_token")
 
 def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB"):
     if algo=="Lru": run_path = Lru_path;

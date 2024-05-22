@@ -94,8 +94,8 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   std::cout << "put_ChainedItem.. for value size:"<<value.size() <<std::endl;
   size_t chunkSize = 1024 * 1024;
   // For simplicity, we'll split the user data into 1MB chunks
-  size_t numChunks = value.size() / chunkSize;
-  std::cout << "numChunks:" << numChunks <<std::endl;
+  size_t numChunks = value.size() / chunkSize + 1;
+  std::cout << "numChunks:" << numChunks;
 
   //struct CustomParentItem {
   //  size_t numChunks;
@@ -104,7 +104,7 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
 
   size_t parentItemSize = sizeof(size_t); 	//sizeof(CustomParentItem) + numChunks * sizeof(void*);
 
-  std::cout << "parentItemSize:" << parentItemSize <<std::endl;
+  std::cout << ". parentItemSize:" << parentItemSize; 
 
   // for simplicity, assume this fits into 1MB
   assert(parentItemSize < chunkSize);
@@ -119,21 +119,28 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
 
   std::memcpy(parentItemHandle->getMemory(), &numChunks, parentItemSize);
 
+  std::cout << " .parentItem copied. " <<std::endl;
+
   // Now split user data into chunks and cache them
   for (size_t i = 0; i < numChunks; ++i) {
-	  
+	 std::cout << "allocating..";
 	 auto chainedItemHandle =
 		  gCache_->allocateChainedItem(parentItemHandle, chunkSize);
 
   	// For simplicity, assume we always have enough memory
   	if (!chainedItemHandle) return false;
 
+	std::cout << "chained item allocated. ";
+
   	// Compute user data offset and copy data over
   	uint8_t* dataOffset = (uint8_t*) (void *)value.data() + chunkSize * i;
   	std::memcpy(chainedItemHandle->getMemory(), dataOffset, chunkSize);
+	
+	std::cout << "data copied. ";
 
   	// Add this chained item to the parent item
   	gCache_->addChainedItem(parentItemHandle, std::move(chainedItemHandle));
+	std::cout << "chained item added. " << std::endl;
   }
 
   // Now, make parent item visible to others
@@ -269,7 +276,7 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 		}
 	}
 	
-	double throughput = (start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
+	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 	
 	std::cout<<"hit ratio:"<< hit_ratio <<",time:"<< (req->clock_time-start_time) <<std::endl;
