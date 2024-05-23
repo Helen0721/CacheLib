@@ -15,11 +15,11 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::LruAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
-
+char* value_all = (char *) malloc(1024 * 1024 * 1024);
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
@@ -190,7 +190,7 @@ void simulate_binary(char *cache_size, bin_reader_t *reader,int max_reqs){
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
 	uint32_t start_time = -1;
         		
-	char* value_all = (char *) malloc(1024 * 1024 * 8);
+	//char* value_all = (char *) malloc(1024 * 1024 * 8);
 
 	while(reader->offset < reader->total_num_requests){
 		read_one_binary_request(reader, req);
@@ -235,12 +235,13 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 
 	uint32_t start_time = -1;	
 
-	char* value_all = (char *) malloc(1024 * 1024 * 8);
-	char *record;
+	//char* value_all = (char *) malloc(1024 * 1024 * 16);
+	char *record = (char *)malloc(1024 * 1024 * 16);
 	
-	std::cout<<"time,id,size"<<std::endl;
+	//std::cout<<"time,id,size"<<std::endl;
 
 	while(true){
+		//std::cout << "reading bytes..." << std::flush;
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
 
 		if (reader->status == MY_EOF) {std::cout<<"EOF"<<std::endl; break;}
@@ -248,21 +249,28 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 		if (n==0) continue;
 		
 		req->clock_time = *(uint32_t *)record;
-		req->obj_id = *(uint64_t *)(record + 4);
-		req->obj_size = *(uint32_t *)(record + 12);
-		req->next_access_vtime = *(int64_t *)(record + 16);
+		req->obj_id = *(uint64_t *)(record + sizeof(uint32_t));
+		req->obj_size = *(uint32_t *)(record + sizeof(uint32_t) + sizeof(uint64_t));
+		req->next_access_vtime = *(int64_t *)(record + sizeof(uint32_t) + sizeof(uint64_t) + sizeof(uint32_t));
+
 
 		if (req->obj_size == 0) continue;
 
 		if (start_time == -1) start_time = req->clock_time;
 		
-		std::string key = std::to_string(req->obj_id);
-		
-
+		//std::cout << "got one request. " << std::flush;
 		//print_one_zstd_request(req);
 
+		char id_buf[50];
+		memset(id_buf, 0, 50);
+		sprintf(id_buf,"%lu",req->obj_id);
+		std::string str(id_buf);
+		std::string key = str; 				//std::cout << "finding " << key << " in cache..." << std::flush;
+
 		auto handle = get(key);
-		if (handle) num_hits += 1;
+		if (handle){
+			num_hits += 1;
+		}
 		else {
 			std::string prefix(value_all,req->obj_size);
 			if (!put(key,prefix)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
