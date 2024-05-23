@@ -26,7 +26,7 @@ for (( i=0; i<num_traces; i++ )); do
     TRACE_FILE=${trace_paths[i]}
     NAME=${names[i]}
 
-    echo "running $TRACE_FILE with name $name.."
+    echo "running $TRACE_FILE with name $NAME.."
     
     python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME"
 

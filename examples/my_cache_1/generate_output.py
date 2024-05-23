@@ -4,10 +4,11 @@ import logging
 import os
 
 Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru"
+#Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru_test"
 Lru2Q_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru2Q"
 TinyLFU_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_TinyLFU"
 
-ALGOS = ["Lru","Lru2Q","TinyLFU"]
+ALGOS = ["Lru2Q","TinyLFU"]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB",
         "8GB","16GB","32GB","64GB"]

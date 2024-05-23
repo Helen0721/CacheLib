@@ -1010,6 +1010,7 @@ CMakeFiles/my_cache_Lru2Q.dir/Simulator.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MarginalHitsState.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/FreeMemStrategy.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/HitsPerSlabStrategy.h \
+ /disk/CacheLib/opt/cachelib/include/cachelib/common/TestUtils.h \
  /disk/CacheLib/opt/cachelib/include/folly/init/Init.h \
  /usr/include/c++/11/bitset \
  /disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.h \
