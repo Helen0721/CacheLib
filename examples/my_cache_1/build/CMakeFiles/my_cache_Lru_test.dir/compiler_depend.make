@@ -1555,6 +1555,7 @@ CMakeFiles/my_cache_Lru_test.dir/Simulator.cpp.o: ../Simulator.cpp \
   /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MarginalHitsState.h \
   /disk/CacheLib/opt/cachelib/include/cachelib/allocator/FreeMemStrategy.h \
   /disk/CacheLib/opt/cachelib/include/cachelib/allocator/HitsPerSlabStrategy.h \
+  /disk/CacheLib/opt/cachelib/include/cachelib/common/TestUtils.h \
   /disk/CacheLib/opt/cachelib/include/folly/init/Init.h \
   /usr/include/c++/11/bitset \
   ../Reader/BinaryReader.h \
@@ -4421,6 +4422,8 @@ CMakeFiles/my_cache_Lru_test.dir/main.cpp.o: ../main.cpp \
 /disk/CacheLib/opt/cachelib/include/folly/logging/RateLimiter.h:
 
 /disk/CacheLib/opt/cachelib/include/gtest/gtest.h:
+
+/disk/CacheLib/opt/cachelib/include/cachelib/common/TestUtils.h:
 
 /usr/include/c++/11/bits/stl_set.h:
 

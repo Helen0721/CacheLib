@@ -3,6 +3,7 @@
 #include "cachelib/allocator/MarginalHitsStrategy.h"
 #include "cachelib/allocator/FreeMemStrategy.h"
 #include "cachelib/allocator/HitsPerSlabStrategy.h"
+#include "cachelib/common/TestUtils.h"
 #include "folly/init/Init.h"
 #include <cstdlib>
 #include <string.h>
@@ -64,6 +65,7 @@ void initializeCache(char* cache_size) {
       .setAccessConfig(
           {25 /* bucket power */, 10 /* lock power */}) // assuming caching 20
                                                         // million items
+      .configureChainedItems()
       .validate(); // will throw if bad config
   
   
@@ -71,8 +73,9 @@ void initializeCache(char* cache_size) {
   defaultPool_=
       gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
 
-  config.configureChainedItems();
+  //config.configureChainedItems();
 
+  /*
   auto ratio = 0.1;
   auto kLruTailAgeStrategyMinSlabs = 10;
   cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
@@ -82,20 +85,58 @@ void initializeCache(char* cache_size) {
 
   // every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
   config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(5));
-
+  */
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl;
+  
 }
 
 void destroyCache() { gCache_.reset(); }
 
+uint32_t getRandomAllocSize() {
+  // Reserve some space for the intrusive list's hook
+  constexpr uint32_t kReservedSize = 8;
+  assert(cachelib::Slab::kSize >= kReservedSize);
+  return folly::Random::rand32() % (facebook::cachelib::Slab::kSize - kReservedSize + 1) +
+         kReservedSize;
+}
+
+std::vector<uint32_t> getValidAllocSizes(size_t nSizes, CacheKey key) {
+  uint64_t sum = 0;
+  std::vector<uint32_t> sizes;
+  while (sum < nSizes) {
+    const auto size = getRandomAllocSize();
+    // try to ensure that making allocations with fixed key len and our chosen
+    // size is a valid allocation size. If not, try again.
+    try {
+	    cachelib::util::allocateAccessible(*gCache_,defaultPool_, key, size);
+    } catch (const std::invalid_argument&) {
+      continue;
+    }
+    sizes.push_back(size);
+    sum += (uint64_t) size;
+  }
+  std::sort(sizes.begin(), sizes.end());
+  //assert(sizes.back() + keyLen + sizeof(typename AllocatorT::Item) <=
+  //       facebook::cachelib::Slab::kSize);
+  return sizes;
+}
+
 CacheReadHandle get(CacheKey key) { return gCache_->find(key); }
 
 bool put_ChainedItem(CacheKey key, const std::string& value){
-  std::cout << "put_ChainedItem.. for value size:"<<value.size() <<std::endl;
+  //std::cout << "put_ChainedItem.. for value size:"<<value.size();
+
+  //std::vector<uint32_t> validChunkSizes = getValidAllocSizes(value.size(),key);
+  //for (const uint32_t& num : validChunkSizes) {
+   //     std::cout << num << " ";
+   //}
+  //std::cout << "\n";
+
   size_t chunkSize = 1024 * 1024;
   // For simplicity, we'll split the user data into 1MB chunks
   size_t numChunks = value.size() / chunkSize + 1;
-  std::cout << "numChunks:" << numChunks;
+  //size_t numChunks = validChunkSizes.size();
+  //std::cout << ". numChunks:" << numChunks << std::endl;
 
   //struct CustomParentItem {
   //  size_t numChunks;
@@ -103,8 +144,6 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
   //};
 
   size_t parentItemSize = sizeof(size_t); 	//sizeof(CustomParentItem) + numChunks * sizeof(void*);
-
-  std::cout << ". parentItemSize:" << parentItemSize; 
 
   // for simplicity, assume this fits into 1MB
   assert(parentItemSize < chunkSize);
@@ -119,32 +158,44 @@ bool put_ChainedItem(CacheKey key, const std::string& value){
 
   std::memcpy(parentItemHandle->getMemory(), &numChunks, parentItemSize);
 
-  std::cout << " .parentItem copied. " <<std::endl;
+  //std::cout << " .parentItem copied. " <<std::endl;
+ 
+  // Now, make parent item visible to others
+  gCache_->insertOrReplace(parentItemHandle);
+
+  char *start = (char *) value.data();
+  char *dataOffset = (char *)value.data();
 
   // Now split user data into chunks and cache them
   for (size_t i = 0; i < numChunks; ++i) {
-	 std::cout << "allocating..";
+	 //int32_t chunkSize = validChunkSizes[i];
+	 //std::cout << "allocating " << chunkSize << "...";
 	 auto chainedItemHandle =
 		  gCache_->allocateChainedItem(parentItemHandle, chunkSize);
 
   	// For simplicity, assume we always have enough memory
   	if (!chainedItemHandle) return false;
 
-	std::cout << "chained item allocated. ";
+	//std::cout << "chained item allocated. ";
 
   	// Compute user data offset and copy data over
-  	uint8_t* dataOffset = (uint8_t*) (void *)value.data() + chunkSize * i;
-  	std::memcpy(chainedItemHandle->getMemory(), dataOffset, chunkSize);
+  	//uint8_t* dataOffset = (uint8_t*) (void *)value.data() + chunkSize * i;
+        
+	//std::cout << "dataOffset "<< (size_t)dataOffset;
+
+	size_t copy_size = std::min(((size_t)start + value.size()) -  (size_t) dataOffset, (size_t) chunkSize); 
+
+  	std::memcpy(chainedItemHandle->getMemory(), dataOffset, copy_size);
+	dataOffset += copy_size;
 	
-	std::cout << "data copied. ";
+	//std::cout << ". data copied. ";
 
   	// Add this chained item to the parent item
   	gCache_->addChainedItem(parentItemHandle, std::move(chainedItemHandle));
-	std::cout << "chained item added. " << std::endl;
+	//std::cout << "chained item added. " << std::endl;
   }
 
   // Now, make parent item visible to others
-  gCache_->insertOrReplace(parentItemHandle);
   return true;
 }
 
