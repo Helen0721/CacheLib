@@ -17,7 +17,7 @@ for (( i=0; i<num_traces; i++ )); do
     NAME=${names[i]}
     echo "$NAME"
 
-    #python3 plot_mr_size.py --name="$NAME"
+    python3 plot_mr_size.py --name="$NAME"
     python3 plot_mr_time.py --name="$NAME" --cache_size="all"
 
 done
