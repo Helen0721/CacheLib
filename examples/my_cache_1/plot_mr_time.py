@@ -65,7 +65,7 @@ def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name=""):
 
     pp.close()
 
-    print("linear plot saved to mrp-time-{}-{}.pdf".format(cache_size,name))
+    print("linear plot saved to mrp-time-{}-{}.pdf".format(name,cache_size))
 
 
 
@@ -102,8 +102,8 @@ def run(tracepath,max_reqs,algo = "LRU",cache_size = "1GB"):
         ts_list.append(m.group("time")) 
         hr_list.append(m.group("hit_ratio"))
     
-    print(ts_list) 
-    print(hr_list)
+    #print(ts_list) 
+    #print(hr_list)
 
     return ts_list, hr_list
 
@@ -126,8 +126,8 @@ def parse_for_time(file):
         ts_list.append(m.group("time")) 
         hr_list.append(m.group("hit_ratio"))
     
-    print(ts_list) 
-    print(hr_list)
+    #print(ts_list) 
+    #print(hr_list)
 
     return ts_list, hr_list
 

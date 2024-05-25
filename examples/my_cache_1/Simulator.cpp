@@ -15,11 +15,12 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
-char* value_all = (char *) malloc(1024 * 1024 * 1024);
+size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
+char* value_all = (char *) malloc(value_all_size);
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
@@ -272,6 +273,10 @@ void simulate_zstd(char* cache_size, zstd_reader *reader,int max_reqs){
 			num_hits += 1;
 		}
 		else {
+			if (req->obj_size >= value_all_size) {
+				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
+				continue;
+			}
 			std::string prefix(value_all,req->obj_size);
 			if (!put(key,prefix)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}

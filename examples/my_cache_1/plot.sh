@@ -2,13 +2,18 @@
 
 names=()
 
-for i in {80..106}; do
-	names+=("w$i")
-done
+if ["$1"=="w"]; then
+	for i in {80..106}; do
+		names+=("w$i")
+	done
+else 
+	names+=("$1")
+fi
 
+num_traces=${#names[@]}
 
 # Loop through the range of $ from 80 to 106
-for i in {0..26}; do
+for (( i=0; i<num_traces; i++ )); do
     NAME=${names[i]}
     echo "$NAME"
 

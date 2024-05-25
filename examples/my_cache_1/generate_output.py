@@ -3,10 +3,10 @@ import subprocess
 import logging
 import os
 
-Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru_large"
+Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru_large_Akm"
 #Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru_test"
-Lru2Q_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru2Q_large"
-TinyLFU_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_TinyLFU_large"
+Lru2Q_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru2Q_large_Akm"
+TinyLFU_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_TinyLFU_large_Akm"
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
