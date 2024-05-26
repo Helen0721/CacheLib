@@ -3,10 +3,9 @@ import subprocess
 import logging
 import os
 
-Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru_large_Akm"
-#Lru_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru_test"
-Lru2Q_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_Lru2Q_large_Akm"
-TinyLFU_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_TinyLFU_large_Akm"
+Lru_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru"
+Lru2Q_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru2Q"
+TinyLFU_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_TinyLFU"
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
@@ -16,10 +15,12 @@ OUTPUT_DIR = "output/"
 
 logger = logging.getLogger("generate_token")
 
-def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB"):
-    if algo=="Lru": run_path = Lru_path;
-    elif algo=="Lru2Q": run_path = Lru2Q_path;
-    elif algo=="TinyLFU": run_path = TinyLFU_path;
+def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
+    if suffix!="": suffix = "_" + suffix
+
+    if algo=="Lru": run_path = Lru_path+suffix;
+    elif algo=="Lru2Q": run_path = Lru2Q_path+suffix;
+    elif algo=="TinyLFU": run_path = TinyLFU_path+suffix;
     else: 
         print("unsupported algorithm ", algo);
 
@@ -44,6 +45,7 @@ if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--tracepath",type=str,required=True)
+    p.add_argument("--suffix",type=str,default="")
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--max_reqs",type=int,default=0)
 
@@ -51,6 +53,9 @@ if __name__=="__main__":
     
     for algo in ALGOS: 
         for cache_size in CACHE_SIZES:
-            output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
+            if ap.suffix=="":
+                output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
+            else:
+               output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + "_" + ap.suffix + ".txt" 
             print("running",ap.tracepath,"with", algo,"and cache_size",cache_size) 
-            run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size)
+            run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size,suffix=ap.suffix)

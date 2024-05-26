@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/examples/my_cache_1
+CMAKE_SOURCE_DIR = /disk/CacheLib-M24/examples/my_cache_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/examples/my_cache_1/build
+CMAKE_BINARY_DIR = /disk/CacheLib-M24/examples/my_cache_1/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/build/CMakeFiles /disk/CacheLib/examples/my_cache_1/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles /disk/CacheLib-M24/examples/my_cache_1/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named my_cache_Lru2Q_large_Akm
+# Target rules for targets named my_cache_TinyLFU_LruTailAge
 
 # Build rule for target.
-my_cache_Lru2Q_large_Akm: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_cache_Lru2Q_large_Akm
-.PHONY : my_cache_Lru2Q_large_Akm
+my_cache_TinyLFU_LruTailAge: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_cache_TinyLFU_LruTailAge
+.PHONY : my_cache_TinyLFU_LruTailAge
 
 # fast build rule for target.
-my_cache_Lru2Q_large_Akm/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build
-.PHONY : my_cache_Lru2Q_large_Akm/fast
+my_cache_TinyLFU_LruTailAge/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build
+.PHONY : my_cache_TinyLFU_LruTailAge/fast
 
 Reader/BinaryReader.o: Reader/BinaryReader.cpp.o
 .PHONY : Reader/BinaryReader.o
 
 # target to build an object file
 Reader/BinaryReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Reader/BinaryReader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Reader/BinaryReader.cpp.o
 .PHONY : Reader/BinaryReader.cpp.o
 
 Reader/BinaryReader.i: Reader/BinaryReader.cpp.i
@@ -142,7 +142,7 @@ Reader/BinaryReader.i: Reader/BinaryReader.cpp.i
 
 # target to preprocess a source file
 Reader/BinaryReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Reader/BinaryReader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Reader/BinaryReader.cpp.i
 .PHONY : Reader/BinaryReader.cpp.i
 
 Reader/BinaryReader.s: Reader/BinaryReader.cpp.s
@@ -150,7 +150,7 @@ Reader/BinaryReader.s: Reader/BinaryReader.cpp.s
 
 # target to generate assembly for a file
 Reader/BinaryReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Reader/BinaryReader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Reader/BinaryReader.cpp.s
 .PHONY : Reader/BinaryReader.cpp.s
 
 Reader/ZstdReader.o: Reader/ZstdReader.cpp.o
@@ -158,7 +158,7 @@ Reader/ZstdReader.o: Reader/ZstdReader.cpp.o
 
 # target to build an object file
 Reader/ZstdReader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Reader/ZstdReader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Reader/ZstdReader.cpp.o
 .PHONY : Reader/ZstdReader.cpp.o
 
 Reader/ZstdReader.i: Reader/ZstdReader.cpp.i
@@ -166,7 +166,7 @@ Reader/ZstdReader.i: Reader/ZstdReader.cpp.i
 
 # target to preprocess a source file
 Reader/ZstdReader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Reader/ZstdReader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Reader/ZstdReader.cpp.i
 .PHONY : Reader/ZstdReader.cpp.i
 
 Reader/ZstdReader.s: Reader/ZstdReader.cpp.s
@@ -174,7 +174,7 @@ Reader/ZstdReader.s: Reader/ZstdReader.cpp.s
 
 # target to generate assembly for a file
 Reader/ZstdReader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Reader/ZstdReader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Reader/ZstdReader.cpp.s
 .PHONY : Reader/ZstdReader.cpp.s
 
 Simulator.o: Simulator.cpp.o
@@ -182,7 +182,7 @@ Simulator.o: Simulator.cpp.o
 
 # target to build an object file
 Simulator.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Simulator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Simulator.cpp.o
 .PHONY : Simulator.cpp.o
 
 Simulator.i: Simulator.cpp.i
@@ -190,7 +190,7 @@ Simulator.i: Simulator.cpp.i
 
 # target to preprocess a source file
 Simulator.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Simulator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Simulator.cpp.i
 .PHONY : Simulator.cpp.i
 
 Simulator.s: Simulator.cpp.s
@@ -198,7 +198,7 @@ Simulator.s: Simulator.cpp.s
 
 # target to generate assembly for a file
 Simulator.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/Simulator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/Simulator.cpp.s
 .PHONY : Simulator.cpp.s
 
 main.o: main.cpp.o
@@ -206,7 +206,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -214,7 +214,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -222,7 +222,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -233,7 +233,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... my_cache_Lru2Q_large_Akm"
+	@echo "... my_cache_TinyLFU_LruTailAge"
 	@echo "... Reader/BinaryReader.o"
 	@echo "... Reader/BinaryReader.i"
 	@echo "... Reader/BinaryReader.s"

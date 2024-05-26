@@ -54,16 +54,16 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/examples/my_cache_1
+CMAKE_SOURCE_DIR = /disk/CacheLib-M24/examples/my_cache_1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/examples/my_cache_1/build
+CMAKE_BINARY_DIR = /disk/CacheLib-M24/examples/my_cache_1/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_cache_Lru2Q_large_Akm.dir/all
+all: CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_cache_Lru2Q_large_Akm.dir/clean
+clean: CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_cache_Lru2Q_large_Akm.dir
+# Target rules for target CMakeFiles/my_cache_TinyLFU_LruTailAge.dir
 
 # All Build rule for target.
-CMakeFiles/my_cache_Lru2Q_large_Akm.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib/examples/my_cache_1/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target my_cache_Lru2Q_large_Akm"
-.PHONY : CMakeFiles/my_cache_Lru2Q_large_Akm.dir/all
+CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target my_cache_TinyLFU_LruTailAge"
+.PHONY : CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/my_cache_Lru2Q_large_Akm.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_cache_Lru2Q_large_Akm.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_cache_Lru2Q_large_Akm.dir/rule
+CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles 0
+.PHONY : CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/rule
 
 # Convenience name for target.
-my_cache_Lru2Q_large_Akm: CMakeFiles/my_cache_Lru2Q_large_Akm.dir/rule
-.PHONY : my_cache_Lru2Q_large_Akm
+my_cache_TinyLFU_LruTailAge: CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/rule
+.PHONY : my_cache_TinyLFU_LruTailAge
 
 # clean rule for target.
-CMakeFiles/my_cache_Lru2Q_large_Akm.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru2Q_large_Akm.dir/build.make CMakeFiles/my_cache_Lru2Q_large_Akm.dir/clean
-.PHONY : CMakeFiles/my_cache_Lru2Q_large_Akm.dir/clean
+CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/build.make CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/clean
+.PHONY : CMakeFiles/my_cache_TinyLFU_LruTailAge.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

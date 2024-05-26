@@ -3,10 +3,9 @@
 trace_paths=()
 names=()
 
-DATADIR="data/"
 
-if [ "$1" == "${DATADIR}w_.oracleGeneral.bin.zst" ]; then	
-	prefix="/disk/CacheLib/examples/my_cache_1/data/w"
+if [ "$1" == "Ws" ]; then
+	prefix="/disk/CacheLib-M24/examples/my_cache_1/data/w"
 	suffix=".oracleGeneral.bin.zst"
 	for i in {80..106}; do
 		trace_path="$prefix$i$suffix"
@@ -26,8 +25,8 @@ for (( i=0; i<num_traces; i++ )); do
     TRACE_FILE=${trace_paths[i]}
     NAME=${names[i]}
 
-    echo "running $TRACE_FILE with name $NAME.."
+    echo "running $TRACE_FILE with name $NAME and rebalancing strategy $3"
     
-    python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME"
+    python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$3"
 
 done

@@ -15,7 +15,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -74,19 +74,21 @@ void initializeCache(char* cache_size) {
   defaultPool_=
       gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
 
-  //config.configureChainedItems();
+  
+  std::string rebalanceStrategy_str = "LruTailAge";
 
-  /*
-  auto ratio = 0.1;
-  auto kLruTailAgeStrategyMinSlabs = 10;
-  cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
-  cfg.slabProjectionLength = 0; // dont project or estimate tail age
-  cfg.numSlabsFreeMem = 10;     // ok to have ~40 MB free memory in unused allocations
-  auto rebalanceStrategy = std::make_shared<cachelib::LruTailAgeStrategy>(cfg);
 
-  // every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
-  config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(5));
-  */
+  if (rebalanceStrategy_str == "LruTailAge"){
+  	auto ratio = 0.1;
+  	auto kLruTailAgeStrategyMinSlabs = 10;
+  	cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
+  	cfg.slabProjectionLength = 0; // dont project or estimate tail age
+  	cfg.numSlabsFreeMem = 10;     // ok to have ~40 MB free memory in unused allocations
+  	auto rebalanceStrategy = std::make_shared<cachelib::LruTailAgeStrategy>(cfg);
+
+  	// every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
+  	config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(5));
+  }
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl;
   
 }
