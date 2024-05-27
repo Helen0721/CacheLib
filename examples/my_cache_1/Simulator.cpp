@@ -15,7 +15,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::LruAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -75,10 +75,11 @@ void initializeCache(char* cache_size) {
       gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
 
   
-  std::string rebalanceStrategy_str = "LruTailAge";
+  std::string rebalanceStrategy_str = "MarginalHits";
 
 
   if (rebalanceStrategy_str == "LruTailAge"){
+	printf("LruTailAge init. ");
   	auto ratio = 0.1;
   	auto kLruTailAgeStrategyMinSlabs = 10;
   	cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
@@ -88,6 +89,15 @@ void initializeCache(char* cache_size) {
 
   	// every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
   	config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(5));
+  }
+
+  else if(rebalanceStrategy_str == "MarginalHits"){
+	  printf("Marginal Hits init. ");
+	  cachelib::MarginalHitsStrategy::Config mhConfig;
+	  config.enableTailHitsTracking();
+	  config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
+          				std::chrono::seconds{5}
+					);
   }
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl;
   

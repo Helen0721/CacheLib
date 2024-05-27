@@ -23,6 +23,8 @@ def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
     elif algo=="TinyLFU": run_path = TinyLFU_path+suffix;
     else: 
         print("unsupported algorithm ", algo);
+    
+    print("run path:", run_path)
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size]
 
