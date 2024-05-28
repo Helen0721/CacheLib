@@ -50,11 +50,17 @@ if __name__=="__main__":
     p.add_argument("--suffix",type=str,default="")
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--max_reqs",type=int,default=0)
+    p.add_argument("--cache_sizes",type=str,default="")
 
     ap = p.parse_args()
-    
+
+    if (ap.cache_sizes==""):
+        cache_sizes = CACHE_SIZES
+    else:
+        cache_sizes = ap.cache_sizes.split(",")
+ 
     for algo in ALGOS: 
-        for cache_size in CACHE_SIZES:
+        for cache_size in cache_sizes:
             if ap.suffix=="":
                 output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
             else:

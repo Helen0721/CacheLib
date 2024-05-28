@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /disk/CacheLib-M24/examples/my_cache_1/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_cache_Lru_MarginalHits.dir/all
+all: CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_cache_Lru_MarginalHits.dir/clean
+clean: CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_cache_Lru_MarginalHits.dir
+# Target rules for target CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir
 
 # All Build rule for target.
-CMakeFiles/my_cache_Lru_MarginalHits.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru_MarginalHits.dir/build.make CMakeFiles/my_cache_Lru_MarginalHits.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru_MarginalHits.dir/build.make CMakeFiles/my_cache_Lru_MarginalHits.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target my_cache_Lru_MarginalHits"
-.PHONY : CMakeFiles/my_cache_Lru_MarginalHits.dir/all
+CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/build.make CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/build.make CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target my_cache_TinyLFU_HitsPerSlab"
+.PHONY : CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/my_cache_Lru_MarginalHits.dir/rule: cmake_check_build_system
+CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_cache_Lru_MarginalHits.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib-M24/examples/my_cache_1/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_cache_Lru_MarginalHits.dir/rule
+.PHONY : CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/rule
 
 # Convenience name for target.
-my_cache_Lru_MarginalHits: CMakeFiles/my_cache_Lru_MarginalHits.dir/rule
-.PHONY : my_cache_Lru_MarginalHits
+my_cache_TinyLFU_HitsPerSlab: CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/rule
+.PHONY : my_cache_TinyLFU_HitsPerSlab
 
 # clean rule for target.
-CMakeFiles/my_cache_Lru_MarginalHits.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru_MarginalHits.dir/build.make CMakeFiles/my_cache_Lru_MarginalHits.dir/clean
-.PHONY : CMakeFiles/my_cache_Lru_MarginalHits.dir/clean
+CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/build.make CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/clean
+.PHONY : CMakeFiles/my_cache_TinyLFU_HitsPerSlab.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

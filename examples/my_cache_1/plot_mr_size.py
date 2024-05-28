@@ -19,6 +19,7 @@ TinyLFU_path = "/disk/CacheLib/examples/my_cache_1/build/my_cache_TinyLFU"
 
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
+REBALANCEING_STRATEGIES = ["LruTailAge", "FreeMem", "MarginalHits", "HitsPerSlab"]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
 CACHE_SIZES_BYTES=[256000000,512000000,1000000000,2000000000,
@@ -134,12 +135,12 @@ def parse_for_size(file):
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
-    #p.add_argument("--tracepath",type=str,required=True)
+    p.add_argument("--name",type=str,required=True)
+    
     p.add_argument("--cache_sizes",type=str,default="")
-
+    p.add_argument("--rebalance_strategies",type=str,default="")
     p.add_argument("--algo",type=str,default="Lru")
     p.add_argument("--max_reqs",type=int,default=0)
-    p.add_argument("--name",type=str,default="")
 
     ap = p.parse_args()  
     
@@ -148,14 +149,22 @@ if __name__ == "__main__":
     else:
         cache_sizes = ap.cache_sizes.split(",")
 
+
+    if (ap.rebalance_strategies==""):
+        rebalance_strategies = REBALANCE_STRATEGIES
+    else:
+        rebalance_strategies = ap.rebalance_strategies.split(",")
+
+
     hr_lists_for_algos = [[] for _ in range(len(ALGOS))]
     for (i,algo) in enumerate(ALGOS):
         for cache_size in cache_sizes: 
-            output_file = OUTPUTDIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
-            
-            print("parsing for",output_file) 
+            for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+                output_file = OUTPUTDIR + ap.name + "_" + algo + "_" + cache_size + "_" + rebalance_strategy + ".txt"
+                
+                print("parsing for",output_file) 
 
-            final_hr = parse_for_size(output_file)
-            hr_lists_for_algos[i].append(final_hr)
+                final_hr = parse_for_size(output_file)
+                hr_lists_for_algos[i].append(final_hr)
 
     plot_mr_size(cache_sizes,hr_lists_for_algos,ALGOS,name=ap.name)
