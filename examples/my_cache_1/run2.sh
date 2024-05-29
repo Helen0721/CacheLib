@@ -2,7 +2,10 @@
 
 trace_paths=()
 names=()
-
+suffixes=("LruTailAge" 
+	"MarginalHits"
+	"HitsPerSlab"
+	"FreeMem")
 
 if [ "$1" == "Ws" ]; then
 	prefix="/disk/CacheLib-M24/examples/my_cache_1/data/w"
@@ -20,14 +23,16 @@ fi
 num_traces=${#trace_paths[@]}
 
 # Loop through the range of $ from 80 to 106
-for (( i=0; i<num_traces; i++ )); do
-    # Define the trace file name
-    TRACE_FILE=${trace_paths[i]}
-    NAME=${names[i]}
+for (( j=0; j < 4; j++)); do
+	SUFFIX=${suffixes[j]}
+	for (( i=0; i<num_traces; i++ )); do
+    	# Define the trace file name
+    	TRACE_FILE=${trace_paths[i]}
+    	NAME=${names[i]}
 
-    echo "running $TRACE_FILE with name $NAME and rebalancing strategy $3"
+    	echo "running $TRACE_FILE with name $NAME and rebalancing strategy $SUFFIX"
     
-    python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$3" --cache_size="$4"
-
+    	python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$SUFFIX" --cache_size="$4"
+	done
 done
 
