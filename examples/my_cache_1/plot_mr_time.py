@@ -22,15 +22,24 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             ]
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
-COLORS=['tab:green', 'tab:red', 'tab:blue']
+
+COLORS=['tab:green', 'tab:red', 'tab:blue','tab:brown',
+        'tab:pink','tab:olive','tab:cyan','tab:orange',
+        'tab:purple','tab:grey'
+        ]
+COLORS =itertools.cycle(COLORS)
+
 MARKERS=["o","x","d","s"]
+MARKERS=itertools.cycle(MARKERS)
+
 LINESTYLES =["-","-.", "-.", ":"]
+LINESTYLES = itertools.cycle(LINESTYLES)
 
 PLOTDIR = "plots"
 
 OUTPUTDIR = "output/"
 
-def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name=""): 
+def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name="",suffix="reb"): 
     num_lines = len(ts_lists) 
     if num_lines==0: 
         print("no plot to plot.")  
@@ -52,10 +61,11 @@ def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name=""):
         mr_list = [1-float(i) for i in hr_list]
         
         plt.plot(ts_list, mr_list,
-                color=COLORS[i],
+                color=next(COLORS),
                 label=labels[i],
-                marker=MARKERS[i],
-                linestyle=LINESTYLES[i])
+                marker=next(MARKERS),
+                linestyle=next(LINESTYLES)
+                )
 
     plt.title("linear scale")
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lies ), 
@@ -123,9 +133,6 @@ if __name__ == "__main__":
 
         for (i,algo) in enumerate(algos):
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
-                ts_lists_for_cs.append([])
-                hr_lists_for_cs.append([])
-                labels.append(rebalance_strategy + "-" + algo)
 
                 #for cache_size in cache_sizes: 
                 if (rebalance_strategy!=""):
@@ -139,9 +146,9 @@ if __name__ == "__main__":
 
                 ts_list,hr_list = parse_for_time(output_file)
    
-                ts_lists_for_algos.append(ts_list) 
-                hr_lists_for_algos.append(hr_list) 
-                labels.append(algo)
+                ts_lists_for_cs.append(ts_list) 
+                hr_lists_for_cs.append(hr_list) 
+                labels.append(rebalance_strategy + "-" + algo)
 
 
-        plot_hr_time(ts_lists_for_cs,hr_lists_for_cs,labels,cache_size=cache_size,name=ap.name)
+        plot_hr_time(ts_lists_for_cs,hr_lists_for_cs,labels,cache_size=cache_size,name=ap.name,suffix="reb")
