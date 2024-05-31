@@ -5,7 +5,7 @@ names=()
 suffixes=()
 
 if [ "$1" == "Ws" ]; then
-	prefix="/disk/CacheLib-M24/examples/my_cache_1/data/w"
+	prefix="data/w"
 	suffix=".oracleGeneral.bin.zst"
 	for i in {80..106}; do
 		trace_path="$prefix$i$suffix"
@@ -18,10 +18,11 @@ else
 fi
 
 if [ -z "$3" ]; then
+	suffixes+=("")
+	suffixes+=("FreeMem")
 	suffixes+=("LruTailAge")
 	suffixes+=("MarginalHits")
 	suffixes+=("HitsPerSlab")
-	suffixes+=("FreeMem")
 else
 	suffixes+=("$3")	
 fi	

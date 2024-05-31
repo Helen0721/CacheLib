@@ -3,9 +3,9 @@ import subprocess
 import logging
 import os
 
-Lru_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru"
-Lru2Q_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru2Q"
-TinyLFU_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_TinyLFU"
+Lru_path = "build/my_cache_Lru"
+Lru2Q_path = "build/my_cache_Lru2Q"
+TinyLFU_path = "build/my_cache_TinyLFU"
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
@@ -16,17 +16,15 @@ OUTPUT_DIR = "output/"
 logger = logging.getLogger("generate_token")
 
 def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
-    if suffix!="": suffix = "_" + suffix
-
-    if algo=="Lru": run_path = Lru_path+suffix;
-    elif algo=="Lru2Q": run_path = Lru2Q_path+suffix;
-    elif algo=="TinyLFU": run_path = TinyLFU_path+suffix;
+    if algo=="Lru": run_path = Lru_path;
+    elif algo=="Lru2Q": run_path = Lru2Q_path;
+    elif algo=="TinyLFU": run_path = TinyLFU_path;
     else: 
         print("unsupported algorithm ", algo);
     
     print("run path:", run_path)
 
-    run_args = [run_path, tracepath,str(max_reqs),cache_size]
+    run_args = [run_path, tracepath,str(max_reqs),cache_size,suffix]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
