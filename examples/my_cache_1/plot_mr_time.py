@@ -39,13 +39,18 @@ PLOTDIR = "plots"
 
 OUTPUTDIR = "output/"
 
-def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name="",suffix="reb"): 
+def plot_hr_time(ts_lists,
+                 hr_lists,
+                 labels,
+                 cache_size,
+                 name,
+                 suffix="reb"): 
     num_lines = len(ts_lists) 
     if num_lines==0: 
         print("no plot to plot.")  
         return
     
-    plot_fname = "{}/mrp-time-{}".format(PLOTDIR,name)
+    plot_fname = "{}/mrp-time-{}-{}".format(PLOTDIR,name,cache_size)
     
     plot_fname = (plot_fname + ".pdf") if (suffix=="") \
                 else (plot_fname+ "_" + suffix + ".pdf")
@@ -151,4 +156,9 @@ if __name__ == "__main__":
                 labels.append(rebalance_strategy + "-" + algo)
 
 
-        plot_hr_time(ts_lists_for_cs,hr_lists_for_cs,labels,cache_size=cache_size,name=ap.name,suffix="reb")
+        plot_hr_time(ts_lists_for_cs,
+                     hr_lists_for_cs,
+                     labels,
+                     cache_size,
+                     ap.name,
+                     suffix="reb")
