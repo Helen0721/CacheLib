@@ -17,7 +17,7 @@ else
 	names+=("$2")	
 fi
 
-if [ -z "$3" ]; then
+if [ "$3" == "all" ]; then
 	suffixes+=("")
 	suffixes+=("FreeMem")
 	suffixes+=("LruTailAge")
@@ -25,7 +25,13 @@ if [ -z "$3" ]; then
 	suffixes+=("HitsPerSlab")
 else
 	suffixes+=("$3")	
-fi	
+fi
+
+if [ -z "$4" ]; then 
+	echo "No output folder"
+	exit
+fi
+
 
 num_traces=${#trace_paths[@]}
 num_suffixes=${#suffixes[@]}
@@ -38,10 +44,8 @@ for (( i=0; i<num_suffixes; i++)); do
     	# Define the trace file name
     	TRACE_FILE=${trace_paths[j]}
     	NAME=${names[j]}
-
-    	echo "running $TRACE_FILE with name $NAME and rebalancing strategy $SUFFIX"
-    
-    	python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$SUFFIX" --cache_size="$4"
+ 
+    	python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$SUFFIX" --folder="$4" --cache_size="$5" 
 	done
 done
 

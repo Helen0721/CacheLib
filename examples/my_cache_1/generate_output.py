@@ -22,7 +22,7 @@ def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
     else: 
         print("unsupported algorithm ", algo);
     
-    print("run path:", run_path)
+    print("run path:", run_path, "output file:",output_file)
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size,suffix]
 
@@ -45,8 +45,9 @@ if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--tracepath",type=str,required=True)
-    p.add_argument("--suffix",type=str,default="")
+    p.add_argument("--suffix",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
+    p.add_argument("--folder",type=str,required=True)
     p.add_argument("--max_reqs",type=int,default=0)
     p.add_argument("--cache_sizes",type=str,default="")
 
@@ -59,9 +60,8 @@ if __name__=="__main__":
  
     for algo in ALGOS: 
         for cache_size in cache_sizes:
-            if ap.suffix=="":
-                output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + ".txt"
-            else:
-               output_file = OUTPUT_DIR + ap.name + "_" + algo + "_" + cache_size + "_" + ap.suffix + ".txt" 
-            print("running",ap.tracepath,"with", algo,"and cache_size",cache_size) 
+            output_file = OUTPUT_DIR + ap.folder + "/" +  ap.name + "_" + algo + "_" + cache_size
+            output_file = output_file + ".txt" if ap.suffix=="" else output_file + "_" + ap.suffix + ".txt" 
+            print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}.".format(
+                ap.tracepath,algo,cache_size,ap.suffix))
             run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size,suffix=ap.suffix)
