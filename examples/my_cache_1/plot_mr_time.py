@@ -13,10 +13,6 @@ from typing import List, Dict, Tuple, Union, Literal
 import subprocess 
 import logging
 
-Lru_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru"
-Lru2Q_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru2Q"
-TinyLFU_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_TinyLFU"
-
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
@@ -39,8 +35,13 @@ def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name=""):
     if num_lines==0: 
         print("no plot to plot.")  
         return
+    
+    plot_fname = "{}/mrp-time-{}".format(PLOTDIR,name)
+    
+    plot_fname = (plot_fname + ".pdf") if (suffix=="") \
+                else (plot_fname+ "_" + suffix + ".pdf")
 
-    pp = PdfPages("{}/mrp-time-{}-{}.pdf".format(PLOTDIR,name,cache_size))
+    pp = PdfPages(plot_fname)
 
     #linear scale
 
@@ -57,7 +58,8 @@ def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name=""):
                 linestyle=LINESTYLES[i])
 
     plt.title("linear scale")
-    legend = plt.legend(ncol=num_lines, loc="upper right", frameon=False) 
+    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lies ), 
+                        loc="upper right", fontsize="6", frameon=False) 
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
     frame.set_edgecolor("0.9")
@@ -69,7 +71,7 @@ def plot_hr_time(ts_lists,hr_lists,labels,cache_size="1GB",name=""):
 
     pp.close()
 
-    print("linear plot saved to mrp-time-{}-{}.pdf".format(name,cache_size))
+    print("log plot saved to {}".format(plot_fname))
 
 
 def parse_for_time(file):

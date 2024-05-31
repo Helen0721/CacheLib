@@ -13,11 +13,6 @@ from typing import List, Dict, Tuple, Union, Literal
 import subprocess 
 import logging
 
-Lru_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru"
-Lru2Q_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_Lru2Q"
-TinyLFU_path = "/disk/CacheLib-M24/examples/my_cache_1/build/my_cache_TinyLFU"
-
-
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
                             "", 
@@ -48,10 +43,10 @@ MARKERS=itertools.cycle(MARKERS)
 LINESTYLES =["-","-.", "-.", ":"]
 LINESTYLES = itertools.cycle(LINESTYLES)
 
-PLOTDIR = "/disk/CacheLib-M24/examples/my_cache_1/plots"
+PLOTDIR = "plots"
 
 
-OUTPUTDIR = "/disk/CacheLib-M24/examples/my_cache_1/output/"
+OUTPUTDIR = "output/"
 
 # hr_lists: 3 * len(cache_sizes). 
 def plot_mr_size(cache_sizes,hr_lists,labels,name="",suffix=""): 
