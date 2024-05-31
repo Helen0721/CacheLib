@@ -62,7 +62,8 @@ def plot_mr_size(cache_sizes,hr_lists,labels,name="",suffix=""):
 
     plot_fname = "{}/mrp-size-{}".format(PLOTDIR,name)
     
-    plot_fname = (plot_fname + ".pdf") if (suffix=="") else (plot_fname+ "_" + suffix + ".pdf")
+    plot_fname = (plot_fname + ".pdf") if (suffix=="") \
+                else (plot_fname+ "_" + suffix + ".pdf")
 
     pp = PdfPages(plot_fname)
 
@@ -95,32 +96,6 @@ def plot_mr_size(cache_sizes,hr_lists,labels,name="",suffix=""):
 
     print("log plot saved to {}".format(plot_fname))
 
-def parse_for_time(file):
-    stdout_str = []
-
-    with open(file,"r") as f:
-        stdout_str = f.read().split("\n")
-    
-    ts_list,hr_list = [],[]
-    
-    for (i,line) in enumerate(stdout_str):
-        if i == len(stdout_str) - 2: break 
-        
-        m = re.search(REGEX,line) 
-
-        if not m: continue
-
-        ts_list.append(m.group("time")) 
-        hr_list.append(m.group("hit_ratio"))
-    
-    print(ts_list) 
-    print(hr_list)
-
-    return ts_list, hr_list
-
-
-
-
 
 def parse_for_size(file):
     
@@ -145,10 +120,11 @@ def parse_for_size(file):
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
+    p.add_argument("--folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
     
     p.add_argument("--cache_sizes",type=str,default="")
-    p.add_argument("--rebalance_strategies",type=str,default="")
+    p.add_argument("--rebalance_strategies",type=str,default="all")
     p.add_argument("--algo",type=str,default="Lru")
 
     ap = p.parse_args()  
@@ -162,7 +138,7 @@ if __name__ == "__main__":
         cache_sizes = ap.cache_sizes.split(",")
 
 
-    if (ap.rebalance_strategies==""):
+    if (ap.rebalance_strategies=="all"):
         rebalance_strategies = REBALANCEING_STRATEGIES
     else:
         rebalance_strategies = ap.rebalance_strategies.split(",")
@@ -176,11 +152,11 @@ if __name__ == "__main__":
 
             for cache_size in cache_sizes:     
                 if (rebalance_strategy!=""):
-                    output_file = OUTPUTDIR + ap.name + "_" + algo + \
-                        "_" + cache_size + "_" + rebalance_strategy + ".txt"
+                    output_file = (OUTPUTDIR + ap.folder + "/"  + ap.name + "_" +  
+                            algo + "_" + cache_size + "_" + rebalance_strategy + ".txt")
                 else:
-                    output_file = OUTPUTDIR + ap.name + "_" + algo + \
-                            "_" + cache_size + ".txt"
+                    output_file = OUTPUTDIR + ap.folder + "/" + ap.name + "_" + \
+                            algo + "_" + cache_size + ".txt"
  
                 print("parsing for",output_file) 
 
