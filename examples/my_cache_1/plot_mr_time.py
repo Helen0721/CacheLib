@@ -16,9 +16,10 @@ import logging
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
-                            "", 
+                            "FreeMem", 
                             "MarginalHits", 
-                            "HitsPerSlab"
+                            "HitsPerSlab",
+                            ""
                             ]
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 

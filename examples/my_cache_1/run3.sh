@@ -18,8 +18,8 @@ else
 fi
 
 if [ "$3" == "all" ]; then
-	suffixes+=("")
 	suffixes+=("FreeMem")
+	suffixes+=("")
 	suffixes+=("LruTailAge")
 	suffixes+=("MarginalHits")
 	suffixes+=("HitsPerSlab")
@@ -41,11 +41,11 @@ for (( i=0; i<num_suffixes; i++)); do
 	SUFFIX=${suffixes[i]}
 
 	for (( j=0; j<num_traces; j++ )); do
-    	# Define the trace file name
-    	TRACE_FILE=${trace_paths[j]}
-    	NAME=${names[j]}
+    		# Define the trace file name
+    		TRACE_FILE=${trace_paths[j]}
+    		NAME=${names[j]}
  
-    	python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$SUFFIX" --folder="$4" --cache_size="$5" 
+    		python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$SUFFIX" --folder="$4" --cache_size="$5" 
 	done
 done
 

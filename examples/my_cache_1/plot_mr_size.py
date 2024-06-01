@@ -15,9 +15,10 @@ import logging
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
-                            "", 
+                            "FreeMem", 
                             "MarginalHits", 
-                            "HitsPerSlab"
+                            "HitsPerSlab",
+                            ""
                             ]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]

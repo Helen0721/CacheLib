@@ -15,7 +15,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -82,14 +82,14 @@ void initializeCache(char* cache_size, char* rebalanceStrategy) {
   if (rebalanceStrategy_str == "LruTailAge"){
 	printf("LruTailAge Rebalancing init. ");
   	auto ratio = 0.1;
-  	auto kLruTailAgeStrategyMinSlabs = 10;
+  	auto kLruTailAgeStrategyMinSlabs = 5;
   	cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
   	cfg.slabProjectionLength = 0; // dont project or estimate tail age
-  	cfg.numSlabsFreeMem = 10;     // ok to have ~40 MB free memory in unused allocations
+  	cfg.numSlabsFreeMem = 5;     // ok to have ~40 MB free memory in unused allocations
   	auto rebalanceStrategy = std::make_shared<cachelib::LruTailAgeStrategy>(cfg);
 
   	// every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
-  	config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(2));
+  	config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(1));
   }
 
   else if(rebalanceStrategy_str == "MarginalHits"){
@@ -97,7 +97,7 @@ void initializeCache(char* cache_size, char* rebalanceStrategy) {
 	  cachelib::MarginalHitsStrategy::Config mhConfig;
 	  config.enableTailHitsTracking();
 	  config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
-          				std::chrono::seconds{2}
+          				std::chrono::seconds{1}
 					);
   }else if (rebalanceStrategy_str == "HitsPerSlab"){
 	  printf("Hits Per Slab Rebalancing init. ");
@@ -105,7 +105,7 @@ void initializeCache(char* cache_size, char* rebalanceStrategy) {
 	  hpsConfig.minSlabs = 0;
 	  config.enablePoolRebalancing(
 			  std::make_shared<cachelib::HitsPerSlabStrategy>(hpsConfig),
-			  std::chrono::seconds{2}
+			  std::chrono::seconds{1}
 			  		);
   } else if (rebalanceStrategy_str == "FreeMem"){
 	  printf("FreeMem Rebalancing init. ");
@@ -113,7 +113,7 @@ void initializeCache(char* cache_size, char* rebalanceStrategy) {
 	  fmConfig.minSlabs = 0;
 	  config.enablePoolRebalancing(
 			  std::make_shared<cachelib::FreeMemStrategy>(fmConfig),
-                          std::chrono::seconds{2}
+                          std::chrono::seconds{1}
 			  		);
 
   }
