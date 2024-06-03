@@ -26,7 +26,60 @@ std::string prefix = "EmptyFiller";
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
 
+void parseParams_LruTailAge(char *LTAparams, double *ratio, int *kLTAMinSlabs, 
+			  int *slabProjectionLength, int *numSlabsFreeMem, int *interval){
+  std::string str(LTAparams);
+  std::string params = str;
 
+  if (params == "default") return;
+
+  char delimiter = ',';
+
+  std::stringstream ss(params);
+  std::string token;
+
+  int i = 0;
+  while (std::getline(ss, token, delimiter)) {
+	if (i == 0) *ratio = std::stod(token);
+	else if (i==1) *kLTAMinSlabs = std::stoi(token);
+	else if (i==2) *slabProjectionLength = std::stoi(token);
+	else if (i==3) *numSlabsFreeMem = std::stoi(token);
+	else if (i==4) *interval = std::stoi(token);
+	i += 1;	
+  }
+
+}
+
+void parseParams_MarginalHits(char *MHparams, int *interval){
+  
+  std::string str(MHparams);
+  std::string params = str;
+
+  if (params == "default") return;
+
+  *interval = std::stoi(params);
+}
+	
+void parseParams_HitsPerSlabAndFreeMem(char *rebParams,int *minSlabs,int *interval){
+  std::string str(rebParams);
+  std::string params = str;
+
+  if (params == "default") return;
+  
+  char delimiter = ',';
+
+  std::stringstream ss(params);
+  std::string token;
+
+  int i = 0;
+  while (std::getline(ss, token, delimiter)) {
+	if (i == 0) *minSlabs = std::stoi(token);
+	else if (i==1) *interval = std::stoi(token);
+	i += 1;
+  }
+}
+
+		
 unsigned long convertCacheSize(char *cache_size){
   unsigned long base_size = 1024 * 1024; 	// 1MB
 				
@@ -56,7 +109,7 @@ unsigned long convertCacheSize(char *cache_size){
 }
 
 
-void initializeCache(char* cache_size, char* rebalanceStrategy) {
+void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams) {
   unsigned long size = convertCacheSize(cache_size);
 
   if (size == 0) exit(1);	
@@ -79,41 +132,68 @@ void initializeCache(char* cache_size, char* rebalanceStrategy) {
   std::string str(rebalanceStrategy);
   std::string rebalanceStrategy_str = str;
 
+  int interval = 1;
+
   if (rebalanceStrategy_str == "LruTailAge"){
 	printf("LruTailAge Rebalancing init. ");
   	auto ratio = 0.1;
-  	auto kLruTailAgeStrategyMinSlabs = 5;
-  	cachelib::LruTailAgeStrategy::Config cfg(ratio, kLruTailAgeStrategyMinSlabs);
-  	cfg.slabProjectionLength = 0; // dont project or estimate tail age
-  	cfg.numSlabsFreeMem = 5;     // ok to have ~40 MB free memory in unused allocations
+  	auto kLTAMinSlabs = 5;
+	auto slabProjectionLength = 0;
+	auto numSlabsFreeMem = 5;
+	
+	parseParams_LruTailAge(rebParams,
+				&ratio, 
+				&kLTAMinSlabs,
+				&slabProjectionLength, 
+				&numSlabsFreeMem,
+				&interval);	
+
+	printf("reb. params. ratio: %f, kLTAMinSlabs: %d, slabProj.Len: %d, numSlabsFreeMem: %d, interval: %d. ",
+	 ratio, kLTAMinSlabs, slabProjectionLength, numSlabsFreeMem, interval  
+	);
+
+  	cachelib::LruTailAgeStrategy::Config cfg(ratio, kLTAMinSlabs);
+  	cfg.slabProjectionLength = slabProjectionLength; // dont project or estimate tail age
+  	cfg.numSlabsFreeMem = numSlabsFreeMem;     // ok to have ~40 MB free memory in unused allocations
   	auto rebalanceStrategy = std::make_shared<cachelib::LruTailAgeStrategy>(cfg);
 
   	// every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
-  	config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(1));
+  	config.enablePoolRebalancing(std::move(rebalanceStrategy), std::chrono::seconds(interval));
   }
 
   else if(rebalanceStrategy_str == "MarginalHits"){
 	  printf("Marginal Hits Rebalancing init. ");
+	  parseParams_MarginalHits(rebParams,&interval);
+	  printf("reb. params. interval: %d. ", interval);
 	  cachelib::MarginalHitsStrategy::Config mhConfig;
 	  config.enableTailHitsTracking();
 	  config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
-          				std::chrono::seconds{1}
+          				std::chrono::seconds{interval}
 					);
   }else if (rebalanceStrategy_str == "HitsPerSlab"){
 	  printf("Hits Per Slab Rebalancing init. ");
+	  int minSlabs = 0;
+	  parseParams_HitsPerSlabAndFreeMem(rebParams,&minSlabs,&interval);
+	  printf("reb. params. minSlabs: %d, interval: %d. ", minSlabs, interval);
+
 	  cachelib::HitsPerSlabStrategy::Config hpsConfig;
-	  hpsConfig.minSlabs = 0;
+	  hpsConfig.minSlabs = minSlabs;
 	  config.enablePoolRebalancing(
 			  std::make_shared<cachelib::HitsPerSlabStrategy>(hpsConfig),
-			  std::chrono::seconds{1}
+			  std::chrono::seconds{interval}
 			  		);
   } else if (rebalanceStrategy_str == "FreeMem"){
 	  printf("FreeMem Rebalancing init. ");
+	  
+	  int minSlabs = 0;
+	  parseParams_HitsPerSlabAndFreeMem(rebParams,&minSlabs,&interval);
+	  printf("reb. params. minSlabs: %d, interval: %d. ", minSlabs, interval);
+
 	  cachelib::FreeMemStrategy::Config fmConfig;
-	  fmConfig.minSlabs = 0;
+	  fmConfig.minSlabs = minSlabs;
 	  config.enablePoolRebalancing(
 			  std::make_shared<cachelib::FreeMemStrategy>(fmConfig),
-                          std::chrono::seconds{1}
+                          std::chrono::seconds{interval}
 			  		);
 
   }
@@ -184,11 +264,11 @@ bool put(CacheKey key, const std::string& value, size_t value_size) {
 } // namespace facebook
 
 
-void simulate_binary(char *cache_size,char *rebalanceStrategy, bin_reader_t *reader,int max_reqs){
+void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,int max_reqs){
 
 	using namespace facebook::cachelib_examples;
 	
-	initializeCache(cache_size, rebalanceStrategy);
+	initializeCache(cache_size, rebalanceStrategy, rebParams);
 	int num_hits = 0;
 	
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
@@ -228,10 +308,10 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, bin_reader_t *rea
  	// destroyCache();
 }
 
-void simulate_zstd(char* cache_size,char* rebalanceStrategy, zstd_reader *reader,int max_reqs){
+void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs){
 	using namespace facebook::cachelib_examples;
 	
-	initializeCache(cache_size, rebalanceStrategy);
+	initializeCache(cache_size, rebalanceStrategy, rebParams);
 	int num_hits = 0;
 	int num_reqs = 0;
 

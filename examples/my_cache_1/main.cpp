@@ -26,7 +26,7 @@
 int main(int argc, char** argv) {
   folly::init(&argc, &argv);
 
-  if (argc < 5){
+  if (argc < 6){
     printf("Not enough args, %d\n",argc);
     int i = 0;
     while(i<argc){
@@ -44,15 +44,16 @@ int main(int argc, char** argv) {
   int max_reqs = std::atoi(argv[2]);
   char *cache_size = argv[3];
   char *rebalanceStrategy = argv[4];
+  char *rebParams = argv[5];
 
 
   int path_len = std::strlen(data_path);
   if (path_len>=3 && std::strcmp(data_path + path_len - 3, "bin") == 0){
     bin_reader_t *reader = binary_reader_setup(data_path);
-    simulate_binary(cache_size,rebalanceStrategy,reader,max_reqs);
+    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs);
   }
   else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0) {
     zstd_reader *reader =create_zstd_reader(data_path);
-    simulate_zstd(cache_size,rebalanceStrategy,reader,max_reqs);
+    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs);
   }
 }

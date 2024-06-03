@@ -2,6 +2,7 @@ from typing import List, Dict, Tuple, Union, Literal
 import subprocess 
 import logging
 import os
+import random
 
 Lru_path = "build/my_cache_Lru"
 Lru2Q_path = "build/my_cache_Lru2Q"
@@ -11,9 +12,33 @@ ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB",
         "8GB","16GB","32GB","64GB"]
-OUTPUT_DIR = "output/"
 
+REB_PARAMS_DICT = {
+        "LruTailAge":[#ratio,kLTAMinSlabs,slabProjectionLength,numSlabsFreeMem,interval
+                      [0.02,0.05,0.1,0.15,0.2],
+                      [1,2,3,4,5,6,7,8,9,10],
+                      [0,1,2,3],
+                      [1,2,3,4,5,6,7,8,9,10],
+                      [1,2,3,4,5]
+                      ],              
+        "HitsPerSlab":[[1,2,3,4,5],[1,2,3,4,5]],              #minSlabs,interval
+        "MarginalHits":[[1,2,3,4,5]],                #interval
+        "FreeMem":[[1,2,3,4,5],[1,2,3,4,5]]                   #minSlabs,interval
+        }
+
+
+OUTPUT_DIR = "output/"
 logger = logging.getLogger("generate_token")
+
+
+def chooseRebParams(strategy,option):
+    if option == "default": return "default"
+    allChoices = REB_PARAMS_DICT.get(strategy,[])
+    if allChoices == []: 
+        return "default"
+    else: 
+        return (",".join([str(random.choice(paramList)) for paramList in allChoices]))
+
 
 def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
     if algo=="Lru": run_path = Lru_path;
@@ -22,9 +47,12 @@ def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
     else: 
         print("unsupported algorithm ", algo);
     
-    print("run path:", run_path, "output file:",output_file)
+    rebParams = chooseRebParams(suffix)
+    out_file = out_file[:-4] + "_" + rebParams + ".txt"
 
-    run_args = [run_path, tracepath,str(max_reqs),cache_size,suffix]
+    print("run path:", run_path,"reb params:", rebParams, "output file:",out_file)
+
+    run_args = [run_path, tracepath,str(max_reqs),cache_size,suffix,rebParams]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -37,17 +65,18 @@ def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
 
     stdout_str = p.stdout.decode("utf-8")
 
-
     with open(out_file,"w") as f:
         f.write(stdout_str) 
+
 
 if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--tracepath",type=str,required=True)
+    p.add_argument("--rebParams",type=str,required=True)
     p.add_argument("--suffix",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
-    p.add_argument("--folder",type=str,required=True)
+    p.add_argument("--outputdir",type=str,required=True)
     p.add_argument("--max_reqs",type=int,default=0)
     p.add_argument("--cache_sizes",type=str,default="")
 
@@ -57,10 +86,14 @@ if __name__=="__main__":
         cache_sizes = CACHE_SIZES
     else:
         cache_sizes = ap.cache_sizes.split(",")
- 
+
+    if not ap.outputdir.endswith("/"): ap.outputdir += "/"
+
     for algo in ALGOS: 
         for cache_size in cache_sizes:
-            output_file = OUTPUT_DIR + ap.folder + "/" +  ap.name + "_" + algo + "_" + cache_size
+            rebParams = chooseRebParams(ap.suffix,ap.rebParams)
+
+            output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + rebParams
             output_file = output_file + ".txt" if ap.suffix=="" else output_file + "_" + ap.suffix + ".txt" 
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}.".format(
                 ap.tracepath,algo,cache_size,ap.suffix))
