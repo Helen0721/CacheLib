@@ -21,6 +21,7 @@ else
 	names+=("$1")
 fi
 
+
 num_traces=${#names[@]}
 
 # Loop through the range of $ from 80 to 106

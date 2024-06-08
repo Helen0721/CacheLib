@@ -1,0 +1,10 @@
+
+plot_reb.py command:
+
+for reb in default LruTailAge HitsPerSlab FreeMem MarginalHits;do
+> python3 plot_reb.py --output_dirs=output/Cloud_Physics_Ws --names=w80,w81,w82 --algo=Lru --plot_dir=plots/Cloud_Physics --plot_name=w80tow82 --reb="$reb"
+> done
+
+
+plot_mr_size.py command:
+for algo in Lru Lru2Q TinyLFU; do python3 plot_mr_size.py --output_folder=output/Cloud_Physics_Ws --plot_folder=plots/Cloud_Physics --name=w82 --rebalance_strategies='all' --algo="$algo"; done

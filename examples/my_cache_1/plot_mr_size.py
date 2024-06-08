@@ -18,7 +18,7 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             "FreeMem", 
                             "MarginalHits", 
                             "HitsPerSlab",
-                            ""
+                            "default"
                             ]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
@@ -44,19 +44,14 @@ MARKERS=itertools.cycle(MARKERS)
 LINESTYLES =["-","-.", "-.", ":"]
 LINESTYLES = itertools.cycle(LINESTYLES)
 
-PLOTDIR = "plots"
-
-
-OUTPUTDIR = "output/"
-
 # hr_lists: 3 * len(cache_sizes). 
-def plot_mr_size(cache_sizes,hr_lists,labels,name="",suffix=""): 
+def plot_mr_size(cache_sizes,hr_lists,labels,plot_folder,name,title,suffix=""): 
     num_lines = len(hr_lists) 
     if num_lines==0: 
         print("no plot to plot.")  
         return
 
-    plot_fname = "{}/mrp-size-{}".format(PLOTDIR,name)
+    plot_fname = os.path.join(plot_folder,"mrp-size-{}".format(name))
     
     plot_fname = (plot_fname + ".pdf") if (suffix=="") \
                 else (plot_fname+ "_" + suffix + ".pdf")
@@ -76,7 +71,7 @@ def plot_mr_size(cache_sizes,hr_lists,labels,name="",suffix=""):
                 linestyle=next(LINESTYLES)
                 )
 
-    plt.title("log scale")
+    plt.title(title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lies ), 
                         loc="upper right", fontsize="6", frameon=False) 
     frame = legend.get_frame() 
@@ -116,7 +111,8 @@ def parse_for_size(file):
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--folder",type=str,required=True)
+    p.add_argument("--output_folder",type=str,required=True)
+    p.add_argument("--plot_folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
     
     p.add_argument("--cache_sizes",type=str,default="")
@@ -140,20 +136,21 @@ if __name__ == "__main__":
         rebalance_strategies = ap.rebalance_strategies.split(",")
 
 
+    if ap.algo=="all":
+        algos = ALGOS
+    else:
+        algos = [ap.algo]
+
+
     hr_lists,labels = [],[]
-    for (i,algo) in enumerate(ALGOS):
+    for (i,algo) in enumerate(algos):
         for (j,rebalance_strategy) in enumerate(rebalance_strategies):
             hr_lists.append([])
             labels.append(rebalance_strategy + "-" + algo)
 
             for cache_size in cache_sizes:     
-                if (rebalance_strategy!=""):
-                    output_file = (OUTPUTDIR + ap.folder + "/"  + ap.name + "_" +  
-                            algo + "_" + cache_size + "_" + rebalance_strategy + ".txt")
-                else:
-                    output_file = OUTPUTDIR + ap.folder + "/" + ap.name + "_" + \
-                            algo + "_" + cache_size + ".txt"
- 
+                output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size+"_"+rebalance_strategy+".txt")
+
                 print("parsing for",output_file) 
 
                 final_hr = parse_for_size(output_file)
@@ -162,4 +159,7 @@ if __name__ == "__main__":
 
     print(hr_lists)
 
-    plot_mr_size(cache_sizes,hr_lists,labels,name=ap.name,suffix="reb")
+    name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
+    title = ap.algo + "-" + ap.rebalance_strategies
+
+    plot_mr_size(cache_sizes,hr_lists,labels,ap.plot_folder,name,title)

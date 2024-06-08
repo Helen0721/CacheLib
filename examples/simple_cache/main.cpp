@@ -65,8 +65,6 @@ int main(int argc, char** argv) {
 
   initializeCache();
 
-  std::cout << "Type:" << typeid(gCache_).name() << std::endl;
-
   // Use cache
   {
     auto res = put("key", "value");

@@ -53,6 +53,7 @@ def plot(plot_dir,plot_name,plot_title,hr_lists,cache_sizes,labels):
     for i in range(num_lines): 
         hr_list = hr_lists[i] 
         mr_list = [1-float(i) for i in hr_list] 
+        print(mr_list)
         plt.plot(cache_sizes,mr_list,
                 color=next(COLORS),
                 label=labels[i],
@@ -121,26 +122,23 @@ if __name__ == "__main__":
 
     for (i,output_dir) in enumerate(output_dirs):
         for name in names[i]:
-            output_file_prefix = os.path.join(PWD,output_dir,name+"_"+ap.algo+"_")
-
-            output_files = glob.glob(f"{output_file_prefix}*")  
             
             hr_for_file = []
+            for cache_size in cache_sizes:
+                output_file_prefix = os.path.join(PWD,output_dir,name+"_"+ap.algo+"_"+cache_size)
 
-            for output_file in output_files:
-                if output_file[:-4].endswith(ap.reb):
-                    print(output_file)
-                    hr = parse_for_size(output_file)
-                    hr_for_file.append(hr)
-
-                else if ap.reb=="none" and 
+                output_files = glob.glob(f"{output_file_prefix}*")  
+            
+                for output_file in output_files:
+                    if output_file[:-4].endswith(ap.reb):
+                        print(output_file)
+                        hr = parse_for_size(output_file)
+                        hr_for_file.append(hr)
 
             hrs.append(hr_for_file)
             labels.append(name)
 
-    print(hrs)
-
-    plot_title = ap.reb
+    plot_title = ap.algo + "-" + ap.reb
     plot(ap.plot_dir,ap.plot_name,plot_title,hrs,cache_sizes,labels)
 
     
