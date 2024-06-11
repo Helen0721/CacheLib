@@ -47,10 +47,9 @@ def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
     else: 
         print("unsupported algorithm ", algo);
     
-    rebParams = chooseRebParams(suffix)
-    out_file = out_file[:-4] + "_" + rebParams + ".txt"
+    print("run path:", run_path,"output file:",out_file)
 
-    print("run path:", run_path,"reb params:", rebParams, "output file:",out_file)
+    rebParams = "default"
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size,suffix,rebParams]
 
@@ -91,10 +90,10 @@ if __name__=="__main__":
 
     for algo in ALGOS: 
         for cache_size in cache_sizes:
-            rebParams = chooseRebParams(ap.suffix,ap.rebParams)
+            #rebParams = chooseRebParams(ap.suffix,ap.rebParams)
 
-            output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + rebParams
-            output_file = output_file + ".txt" if ap.suffix=="" else output_file + "_" + ap.suffix + ".txt" 
+            output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + ap.suffix + ".txt"        
+            
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}.".format(
                 ap.tracepath,algo,cache_size,ap.suffix))
             run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size,suffix=ap.suffix)

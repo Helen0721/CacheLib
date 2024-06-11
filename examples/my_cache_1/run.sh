@@ -19,7 +19,7 @@ fi
 
 if [ "$3" == "all" ]; then
 	suffixes+=("FreeMem")
-	suffixes+=("")
+	suffixes+=("default")
 	suffixes+=("LruTailAge")
 	suffixes+=("MarginalHits")
 	suffixes+=("HitsPerSlab")
