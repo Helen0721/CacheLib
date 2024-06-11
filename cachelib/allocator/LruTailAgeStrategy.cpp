@@ -26,7 +26,9 @@
 namespace facebook::cachelib {
 
 LruTailAgeStrategy::LruTailAgeStrategy(Config config)
-    : RebalanceStrategy(LruTailAge), config_(std::move(config)) {}
+    : RebalanceStrategy(LruTailAge), config_(std::move(config)) {
+    std::cout << "LTAS::LTAS(Config config)" <<std::endl;
+    }
 
 uint64_t LruTailAgeStrategy::getOldestElementAge(
     const PoolEvictionAgeStats& poolEvictionAgeStats, ClassId cid) const {
@@ -157,6 +159,10 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   ctx.victimClassId = pickVictim(config, pid, poolStats, poolEvictionAgeStats);
   ctx.receiverClassId = pickReceiver(config, pid, poolStats, ctx.victimClassId,
                                      poolEvictionAgeStats);
+  
+  std::cout << "v:" << ctx.victimClassId << " r:" << ctx.receiverClassId <<std::endl;
+
+
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
