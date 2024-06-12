@@ -31,7 +31,9 @@ struct SimpleRebalanceStrategy : public RebalanceStrategy {
   // Figure out which allocation class has the highest number of allocations
   // and release
  public:
-  SimpleRebalanceStrategy() : RebalanceStrategy(PickNothingOrTest) {}
+
+ //SimpleRebalanceStrategy() : RebalanceStrategy(PickNothingOrTest) {}
+ SimpleRebalanceStrategy(): RebalanceStrategy(LruTailAge){}
 
  private:
   ClassId pickVictim(const CacheBase&, PoolId, const PoolStats& poolStats) {

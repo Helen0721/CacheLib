@@ -140,6 +140,9 @@ ClassId LruTailAgeStrategy::pickReceiver(
 
 RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
+
+  std::cout << "LTAS-pickVAndRImpl...";
+
   if (!cache.getPool(pid).allSlabsAllocated()) {
     XLOGF(DBG,
           "Pool Id: {}"
@@ -159,15 +162,15 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   ctx.victimClassId = pickVictim(config, pid, poolStats, poolEvictionAgeStats);
   ctx.receiverClassId = pickReceiver(config, pid, poolStats, ctx.victimClassId,
                                      poolEvictionAgeStats);
-  
-  std::cout << "v:" << ctx.victimClassId << " r:" << ctx.receiverClassId <<std::endl;
 
+  std::cout << "v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
 
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
-    return kNoOpContext;
-  }
+	std::cout << "invalid ctx 1. " << std::endl << std::flush;
+        return kNoOpContext;
+  } 
 
   if (!config.getWeight) {
     const auto victimProjectedTailAge =
@@ -184,6 +187,14 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
         improvement < config.minTailAgeDifference ||
         improvement < config.tailAgeDifferenceRatio *
                           static_cast<long double>(victimProjectedTailAge)) {
+
+      std::cout << "invalid ctx. ";
+      std::cout << "vPTA: " << victimProjectedTailAge << "rTA: " << receiverTailAge << " ."; 
+      if (victimProjectedTailAge < receiverTailAge) std::cout<< "vPTA < rTA. ";            
+      if (improvement < config.minTailAgeDifference) std::cout << "improv. < minTailAgeDifference. ";
+      if (improvement < config.tailAgeDifferenceRatio *
+                          static_cast<long double>(victimProjectedTailAge)) std::cout << "improv. < diffRatio * vPTA. ";
+      std::cout << std::endl << std::flush;
       return kNoOpContext;
     }
   }
@@ -191,6 +202,9 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   // start a hold off so that the receiver does not become a victim soon
   // enough.
   getPoolState(pid).at(ctx.receiverClassId).startHoldOff();
+ 
+  std::cout << "valid ctx v and r. hold off started." << std::endl << std::flush;
+
   return ctx;
 }
 

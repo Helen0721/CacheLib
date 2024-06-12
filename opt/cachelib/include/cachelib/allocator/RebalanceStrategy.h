@@ -15,7 +15,9 @@
  */
 
 #pragma once
-
+#include <cstdlib>
+#include <string.h>
+#include <iostream>
 #include "cachelib/allocator/Cache.h"
 #include "cachelib/allocator/RebalanceInfo.h"
 #include "cachelib/allocator/memory/Slab.h"
@@ -56,6 +58,7 @@ class RebalanceStrategy {
     NumTypes
   };
 
+
   struct BaseConfig {};
 
   RebalanceStrategy() = default;
@@ -87,6 +90,7 @@ class RebalanceStrategy {
   virtual RebalanceContext pickVictimAndReceiverImpl(const CacheBase&,
                                                      PoolId,
                                                      const PoolStats&) {
+    std::cout<<"RebStrtgy.h-pickVAndRImpl. sad...."<<std::endl; 
     return {};
   }
 

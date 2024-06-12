@@ -37,6 +37,9 @@ FreeMemStrategy::FreeMemStrategy(Config config)
 // 2. Pick the class we find with the most free memory past the threshold
 RebalanceContext FreeMemStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
+  
+  std::cout<< "FreeMem-pickVAndRImpl...";
+
   const auto& pool = cache.getPool(pid);
   if (pool.getUnAllocatedSlabMemory() >
       config_.maxUnAllocatedSlabs * Slab::kSize) {
@@ -49,18 +52,26 @@ RebalanceContext FreeMemStrategy::pickVictimAndReceiverImpl(
 
   if (victims.empty()) {
     XLOG(DBG, "Rebalancing: No victims available");
+    std::cout << "No victims available" <<std::endl;
     return kNoOpContext;
   }
 
   RebalanceContext ctx;
   ctx.victimClassId = pickVictimByFreeMem(
       victims, poolStats, config_.getFreeMemThreshold(), getPoolState(pid));
+  
+  std::cout << "ctx.v:" << static_cast<int>(ctx.victimClassId) << ". ";
 
   if (ctx.victimClassId == Slab::kInvalidClassId) {
+    std::cout << "invalid ctx" <<std::endl << std::flush ;
     return kNoOpContext;
   }
 
+  
   XLOGF(DBG, "Rebalancing: victimAC = {}", static_cast<int>(ctx.victimClassId));
+ 
+  std::cout << "picked." << std::endl << std::flush;
+
   return ctx;
 }
 } // namespace facebook::cachelib

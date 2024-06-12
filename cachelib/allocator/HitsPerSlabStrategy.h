@@ -54,7 +54,9 @@ class HitsPerSlabStrategy : public RebalanceStrategy {
       return numSlabsFreeMem * Slab::kSize;
     }
 
-    Config() noexcept {}
+    Config() noexcept {
+    	std::cout << "HPS.h-default config";
+    }
     Config(double ratio, unsigned int _minSlabs) noexcept
         : Config(ratio, _minSlabs, 0) {}
     Config(double ratio,

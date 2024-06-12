@@ -41,13 +41,17 @@ class FreeMemStrategy : public RebalanceStrategy {
       return numFreeSlabs * Slab::kSize;
     }
 
-    Config() noexcept {}
+    Config() noexcept {
+    	std::cout << "FreeMem.h-default Config" << std::endl;
+    }
     Config(unsigned int _minSlabs,
            unsigned int _numFreeSlabs,
            unsigned int _maxUnAllocatedSlabs) noexcept
         : minSlabs{_minSlabs},
           numFreeSlabs(_numFreeSlabs),
-          maxUnAllocatedSlabs(_maxUnAllocatedSlabs) {}
+          maxUnAllocatedSlabs(_maxUnAllocatedSlabs) {
+		  std::cout << "FreeMem.h-Config updated" << std::endl;
+	  }
   };
 
   explicit FreeMemStrategy(Config config = {});

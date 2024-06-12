@@ -1,5 +1,5 @@
 CMakeFiles/my_cache_Lru2Q_params.dir/Simulator.cpp.o: \
- /disk/CacheLib-M24/examples/my_cache_1/Simulator.cpp \
+ /disk/CacheLib/examples/my_cache_1/Simulator.cpp \
  /usr/include/stdc-predef.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/CacheAllocator.h \
  /disk/CacheLib/opt/cachelib/include/folly/CPortability.h \
@@ -1013,7 +1013,7 @@ CMakeFiles/my_cache_Lru2Q_params.dir/Simulator.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/cachelib/common/TestUtils.h \
  /disk/CacheLib/opt/cachelib/include/folly/init/Init.h \
  /usr/include/c++/11/bitset \
- /disk/CacheLib-M24/examples/my_cache_1/Reader/BinaryReader.h \
- /disk/CacheLib-M24/examples/my_cache_1/Reader/ZstdReader.h \
+ /disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.h \
+ /disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.h \
  /disk/CacheLib/opt/cachelib/include/zstd.h \
- /disk/CacheLib-M24/examples/my_cache_1/Simulator.h
+ /disk/CacheLib/examples/my_cache_1/Simulator.h

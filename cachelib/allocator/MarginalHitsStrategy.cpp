@@ -30,6 +30,8 @@ MarginalHitsStrategy::MarginalHitsStrategy(Config config)
 
 RebalanceContext MarginalHitsStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
+  
+  //std::cout << "MHS-pickVAndRImpl..." << std::flush;
   const auto config = getConfigCopy();
   if (!cache.getPool(pid).allSlabsAllocated()) {
     XLOGF(DBG,
@@ -86,12 +88,17 @@ RebalanceContext MarginalHitsStrategy::pickVictimAndReceiverFromRankings(
     PoolId pid,
     const std::unordered_map<ClassId, bool>& validVictim,
     const std::unordered_map<ClassId, bool>& validReceiver) {
+  //std::cout << "MHS-pickVAndRFRnk..."<< std::flush ;
   auto victimAndReceiver = classStates_[pid].pickVictimAndReceiverFromRankings(
       validVictim, validReceiver, Slab::kInvalidClassId);
   RebalanceContext ctx{victimAndReceiver.first, victimAndReceiver.second};
+  
+  //std::cout << "v:"<< static_cast<int>(ctx.victimClassId) << " r:" << static_cast<int>(ctx.receiverClassId);
+
   if (ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId ||
       ctx.victimClassId == ctx.receiverClassId) {
+    std::cout << "invalid ctx." << std::endl << std::flush ;
     return kNoOpContext;
   }
 
@@ -102,6 +109,7 @@ RebalanceContext MarginalHitsStrategy::pickVictimAndReceiverFromRankings(
         classStates_[pid].smoothedRanks[ctx.receiverClassId],
         static_cast<int>(ctx.victimClassId),
         classStates_[pid].smoothedRanks[ctx.victimClassId]);
+  //std::cout << "\n" << std::flush;
   return ctx;
 }
 } // namespace facebook::cachelib

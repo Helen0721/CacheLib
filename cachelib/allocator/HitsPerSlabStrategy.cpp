@@ -146,6 +146,9 @@ ClassId HitsPerSlabStrategy::pickReceiver(const Config& config,
 
 RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
+
+  std::cout << "HPS-pickVAndRImpl...";
+
   if (!cache.getPool(pid).allSlabsAllocated()) {
     XLOGF(DBG,
           "Pool Id: {}"
@@ -160,10 +163,13 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
   RebalanceContext ctx;
   ctx.victimClassId = pickVictim(config, cache, pid, poolStats);
   ctx.receiverClassId = pickReceiver(config, pid, poolStats, ctx.victimClassId);
+  
+  std::cout << "v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
 
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
+    std::cout << "invalid ctx." << std::endl << std::flush;
     return kNoOpContext;
   }
 
@@ -193,7 +199,8 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
       improvement < config.minDiff ||
       improvement < config.diffRatio * static_cast<long double>(
                                            victimProjectedDeltaHitsPerSlab)) {
-    XLOG(DBG, " Not enough to trigger slab rebalancing");
+    XLOG(DBG, " not enough to trigger slab rebalancing");
+    std::cout << " not enough to trigger slab rebalancing" << std::endl << std::flush;
     return kNoOpContext;
   }
 
@@ -206,6 +213,7 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
   for (const auto i : poolStats.getClassIds()) {
     poolState[i].updateHits(poolStats);
   }
+  std::cout << "hold off started." << std::endl << std::flush;
 
   return ctx;
 }

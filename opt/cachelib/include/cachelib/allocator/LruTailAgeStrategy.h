@@ -66,9 +66,13 @@ class LruTailAgeStrategy : public RebalanceStrategy {
       return numSlabsFreeMem * Slab::kSize;
     }
 
-    Config() noexcept {}
+    Config() noexcept {
+      std::cout << "LTAS.h-default config" << std::endl;
+    }
     Config(double ratio, unsigned int _minSlabs) noexcept
-        : tailAgeDifferenceRatio(ratio), minSlabs{_minSlabs} {}
+        : tailAgeDifferenceRatio(ratio), minSlabs{_minSlabs} {
+	std::cout << "LTAS.h-changed default" << std::endl;
+	}
     Config(double ratio,
            unsigned int _minSlabs,
            const WeightFn& _getWeight) noexcept
@@ -80,6 +84,7 @@ class LruTailAgeStrategy : public RebalanceStrategy {
   // Update the config. This will not affect the current rebalancing, but
   // will take effect in the next round
   void updateConfig(const BaseConfig& baseConfig) override {
+    std::cout << "LTAS updating config...";
     std::lock_guard<std::mutex> l(configLock_);
     config_ = static_cast<const Config&>(baseConfig);
   }

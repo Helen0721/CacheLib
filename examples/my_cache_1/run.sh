@@ -21,7 +21,7 @@ if [ "$3" == "all" ]; then
 	suffixes+=("FreeMem")
 	suffixes+=("default")
 	suffixes+=("LruTailAge")
-	suffixes+=("MarginalHits")
+	#suffixes+=("MarginalHits")
 	suffixes+=("HitsPerSlab")
 else
 	suffixes+=("$3")	
