@@ -19,7 +19,7 @@ fi
 
 if [ "$3" == "all" ]; then
 	suffixes+=("FreeMem")
-	suffixes+=("")
+	suffixes+=("default")
 	suffixes+=("LruTailAge")
 	suffixes+=("MarginalHits")
 	suffixes+=("HitsPerSlab")
@@ -32,6 +32,11 @@ if [ -z "$4" ]; then
 	exit
 fi
 
+
+if [ -z "$5" ]; then 
+	echo "No specified reb. params"
+	exit
+fi
 
 num_traces=${#trace_paths[@]}
 num_suffixes=${#suffixes[@]}
@@ -46,6 +51,6 @@ for (( i=0; i<num_suffixes; i++)); do
     		NAME=${names[j]}
  		
 		echo "$SUFFIX, $TRACE_FILE, $NAME"
-    		python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --suffix="$SUFFIX" --folder="$4" --cache_size="$5" 
+    		python3 generate_output.py --tracepath="$TRACE_FILE" --cache_size="$6" --rebParams="$5" --suffix="$SUFFIX" --name="$NAME" --outputdir="$4"
 	done
-done	
+done

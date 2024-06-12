@@ -166,10 +166,11 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 	  //parseParams_MarginalHits(rebParams,&interval);
 	  //printf("reb. params. interval: %d. ", interval);
 	  //std::cout << std::flush;
-	  cachelib::MarginalHitsStrategy::Config mhConfig;
-	   
-	  cache_config.enableTailHitsTracking();
+	  cachelib::MarginalHitsStrategy::Config mhConfig{};
 
+	  auto strategy = std::make_shared<MarginalHitsStrategy>(mhConfig);
+	  
+	  cache_config.enableTailHitsTracking(); 
 	  cache_config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
           				std::chrono::seconds{interval}
 	  				);
