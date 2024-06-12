@@ -18,11 +18,11 @@ else
 fi
 
 if [ "$3" == "all" ]; then
-	suffixes+=("FreeMem")
-	suffixes+=("default")
-	suffixes+=("LruTailAge")
+	#suffixes+=("FreeMem")
+	#suffixes+=("default")
+	#suffixes+=("LruTailAge")
 	suffixes+=("MarginalHits")
-	suffixes+=("HitsPerSlab")
+	#suffixes+=("HitsPerSlab")
 else
 	suffixes+=("$3")	
 fi
@@ -51,6 +51,6 @@ for (( i=0; i<num_suffixes; i++)); do
     		NAME=${names[j]}
  		
 		echo "$SUFFIX, $TRACE_FILE, $NAME"
-    		python3 generate_output.py --tracepath="$TRACE_FILE" --cache_size="$6" --rebParams="$5" --suffix="$SUFFIX" --name="$NAME" --outputdir="$4"
+    		python3 generate_output_MHS.py --tracepath="$TRACE_FILE" --algos="Lru2Q"  --cache_size="$6" --rebParams="$5" --suffix="$SUFFIX" --name="$NAME" --outputdir="$4"
 	done
 done

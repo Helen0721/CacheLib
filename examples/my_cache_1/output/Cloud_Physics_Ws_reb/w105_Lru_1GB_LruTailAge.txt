@@ -1,0 +1,62 @@
+Initializing Cache...LruTailAge Rebalancing init. LTAS.h-default config
+LTAS::LTAS(Config config)
+Cache Initialized. size: 1GB
+alloc failed. 1885799,79759024,321536,952941
+RebStrtgy-pickVAndR...alloc failed. 1885809,58641432,196608,528783
+RebStrtgy-pickVAndR...alloc failed. 1885811,46687944,184320,450509
+found class with alloc. failures. alloc failed. 1885811,79849696,319488,2484804
+alloc failed. 1885811,70732472,188416,528843
+alloc failed. 1885811,70739008,180224,1108585
+alloc failed. 1885811,56037048,167936,470915
+class total free memory smaller than threshold 12582912. hold off started w/o triggering strategy specific pickVandRImp. v:18 r:35
+RebStrtgy-pickVAndR...found class with alloc. failures. class total free memory smaller than threshold 12582912. hold off started w/o triggering strategy specific pickVandRImp. v:18 r:35
+hit ratio:0.42606,time:49863
+hit ratio:0.310485,time:55166
+hit ratio:0.211323,time:55738
+hit ratio:0.162505,time:56315
+hit ratio:0.227028,time:96903
+hit ratio:0.253172,time:140312
+RebStrtgy-pickVAndR...triggering pickVandRImp.
+LTAS-pickVAndRImpl...class total free memory smaller than threshold 12582912. v:18. r:21. invalid ctx. vPTA: 0rTA: 0 .improv. < minTailAgeDifference. 
+hit ratio:0.226587,time:141653
+hit ratio:0.200161,time:142244
+hit ratio:0.19326,time:144610
+alloc failed. 2050922,79759024,321536,2019115
+RebStrtgy-pickVAndR...found class with alloc. failures. alloc failed. 2050931,57409528,327680,2501205
+class total free memory smaller than threshold 12582912. hold off started w/o triggering strategy specific pickVandRImp. v:18 r:38
+RebStrtgy-pickVAndR...found class with alloc. failures. class total free memory smaller than threshold 12582912. hold off started w/o triggering strategy specific pickVandRImp. v:18 r:38
+hit ratio:0.202489,time:229015
+hit ratio:0.24024,time:246386
+hit ratio:0.281275,time:263555
+hit ratio:0.323184,time:284544
+hit ratio:0.350705,time:300927
+hit ratio:0.347775,time:307616
+hit ratio:0.327708,time:308037
+RebStrtgy-pickVAndR...triggering pickVandRImp.
+LTAS-pickVAndRImpl...class total free memory smaller than threshold 12582912. v:18. r:14. invalid ctx. vPTA: 0rTA: 0 .improv. < minTailAgeDifference. 
+hit ratio:0.309915,time:308485
+hit ratio:0.313634,time:332945
+hit ratio:0.297127,time:333112
+hit ratio:0.28878,time:346321
+hit ratio:0.286692,time:381715
+hit ratio:0.27729,time:384240
+RebStrtgy-pickVAndR...triggering pickVandRImp.
+LTAS-pickVAndRImpl...class total free memory smaller than threshold 12582912. v:35. r:17. invalid ctx. vPTA: 1rTA: 0 .improv. < minTailAgeDifference. 
+hit ratio:0.267,time:384811
+hit ratio:0.257294,time:385454
+hit ratio:0.2558,time:443319
+hit ratio:0.252018,time:468363
+hit ratio:0.245731,time:469648
+RebStrtgy-pickVAndR...triggering pickVandRImp.
+LTAS-pickVAndRImpl...class total free memory smaller than threshold 12582912. v:35. r:14. invalid ctx. vPTA: 1rTA: 0 .improv. < minTailAgeDifference. 
+hit ratio:0.237335,time:470116
+hit ratio:0.234476,time:471484
+hit ratio:0.236884,time:548899
+hit ratio:0.238857,time:554392
+hit ratio:0.235441,time:554990
+RebStrtgy-pickVAndR...triggering pickVandRImp.
+LTAS-pickVAndRImpl...class total free memory smaller than threshold 12582912. v:38. r:14. invalid ctx. vPTA: 2rTA: 0 .improv. < minTailAgeDifference. 
+hit ratio:0.229016,time:555555
+EOF
+hit ratio:0.232418,time:590211
+num_requests:3375344,throughput:5.71888reqs/sec,
