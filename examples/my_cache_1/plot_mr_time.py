@@ -19,40 +19,38 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             "FreeMem", 
                             "MarginalHits", 
                             "HitsPerSlab",
-                            ""
+                            "default"
                             ]
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
 
-COLORS=['tab:green', 'tab:red', 'tab:blue','tab:brown',
+colors =['tab:green', 'tab:red', 'tab:blue','tab:brown',
         'tab:pink','tab:olive','tab:cyan','tab:orange',
         'tab:purple','tab:grey'
         ]
-COLORS =itertools.cycle(COLORS)
 
-MARKERS=["o","x","d","s"]
-MARKERS=itertools.cycle(MARKERS)
+markers=["o","x","d","s"]
 
-LINESTYLES =["-","-.", "-.", ":"]
-LINESTYLES = itertools.cycle(LINESTYLES)
-
-PLOTDIR = "plots"
-
-OUTPUTDIR = "output/"
+linestyles = ["-","-.", "-.", ":"]
 
 def plot_hr_time(ts_lists,
                  hr_lists,
                  labels,
                  cache_size,
-                 name,
-                 suffix="reb"): 
+                 plot_folder,
+                 plot_name,
+                 suffix=""): 
+    COLORS =itertools.cycle(colors)
+    MARKERS=itertools.cycle(markers)
+    LINESTYLES = itertools.cycle(linestyles)
+
     num_lines = len(ts_lists) 
     if num_lines==0: 
         print("no plot to plot.")  
         return
     
-    plot_fname = "{}/mrp-time-{}-{}".format(PLOTDIR,name,cache_size)
-    
+    plot_fname = os.path.join(plot_folder,"mrp-time-{}-{}".format(plot_name,cache_size))
+ 
     plot_fname = (plot_fname + ".pdf") if (suffix=="") \
                 else (plot_fname+ "_" + suffix + ".pdf")
 
@@ -74,7 +72,7 @@ def plot_hr_time(ts_lists,
                 )
 
     plt.title("linear scale")
-    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lies ), 
+    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
                         loc="upper right", fontsize="6", frameon=False) 
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
@@ -117,9 +115,11 @@ def parse_for_time(file):
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--folder",type=str,required=True)
+    p.add_argument("--output_folder",type=str,required=True)
+    p.add_argument("--plot_folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--cache_size",type=str,required=True)
+    
     p.add_argument("--algo",type=str,default="all")
     p.add_argument("--rebalance_strategies",type=str,default="all")
 
@@ -132,21 +132,19 @@ if __name__ == "__main__":
 
     rebalance_strategies = ap.rebalance_strategies.split(",") if \
         (ap.rebalance_strategies!="all") else REBALANCEING_STRATEGIES
-
     
     for cache_size in cache_sizes:
         ts_lists_for_cs,hr_lists_for_cs,labels = [],[],[] 
 
         for (i,algo) in enumerate(algos):
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+ 
+                output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size)
 
-                #for cache_size in cache_sizes: 
                 if (rebalance_strategy!=""):
-                    output_file = (OUTPUTDIR + ap.folder + "/"  + ap.name + "_" + 
-                     algo + "_" + cache_size + "_" + rebalance_strategy + ".txt")
+                    output_file = output_file + "_" + rebalance_strategy +".txt"
                 else:
-                    output_file = OUTPUTDIR + ap.folder + "/" + ap.name + "_" + \
-                            algo + "_" + cache_size + ".txt"
+                    output_file = output_file + ".txt"
             
                 print("parsing for",output_file) 
 
@@ -156,10 +154,13 @@ if __name__ == "__main__":
                 hr_lists_for_cs.append(hr_list) 
                 labels.append(rebalance_strategy + "-" + algo)
 
+        
+        plot_name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
 
         plot_hr_time(ts_lists_for_cs,
                      hr_lists_for_cs,
                      labels,
                      cache_size,
-                     ap.name,
-                     suffix="reb")
+                     plot_folder=ap.plot_folder,
+                     plot_name=plot_name,
+                     )
