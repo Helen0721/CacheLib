@@ -1,14 +1,21 @@
 
+
+generate Cloud Physics tasks file for parallel:
+for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; echo "./run.sh $data_path w$i Lru2Q MarginalHits default output/Cloud_Physics_Ws_reb_sleep" >> tasks_Cloud_Physics ; done
+
+generate tasks for other traces for parallel (all strategy): 
+
+for reb in LruTailAge HitsPerSlab FreeMem default;do data_path="data/meta_kvcache_traces_1.oracleGeneral.bin.zst"; for algo in Lru Lru2Q TinyLFU; do output_dir="output/MetaKVT1_reb"; echo "./run.sh $data_path metakvt1 $algo $reb default $output_dir"; done; done > tasks_MetaKV
+
+
+plot_mr_size.py command:
+
+for i in {80..106};do name="w$i"; for algo in Lru Lru2Q TinyLFU all;do python3 plot_mr_size.py --output_folder=output/Cloud_Physics_Ws_reb_sleep --plot_folder=plots/Cloud_Physics --name="$name" --algo="$algo"; done; done
+
+
+
 plot_reb.py command:
 
 for reb in default LruTailAge HitsPerSlab FreeMem MarginalHits;do
 > python3 plot_reb.py --output_dirs=output/Cloud_Physics_Ws --names=w80,w81,w82 --algo=Lru --plot_dir=plots/Cloud_Physics --plot_name=w80tow82 --reb="$reb"
 > done
-
-
-plot_mr_size.py command:
-for algo in Lru Lru2Q TinyLFU; do python3 plot_mr_size.py --output_folder=output/Cloud_Physics_Ws --plot_folder=plots/Cloud_Physics --name=w82 --rebalance_strategies='all' --algo="$algo"; done
-
-
-generate tasks file for parallel:
-for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; echo "./run.sh $data_path w$i Lru2Q MarginalHits default output/Cloud_Physics_Ws_reb_sleep" >> tasks_Cloud_Physics ; done

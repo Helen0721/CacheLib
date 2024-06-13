@@ -20,7 +20,7 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             "FreeMem", 
                             "MarginalHits", 
                             "HitsPerSlab",
-                            ""
+                            "default"
                             ]
 PWD = os.getcwd()
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 

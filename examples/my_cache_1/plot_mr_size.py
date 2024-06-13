@@ -45,13 +45,13 @@ LINESTYLES =["-","-.", "-.", ":"]
 LINESTYLES = itertools.cycle(LINESTYLES)
 
 # hr_lists: 3 * len(cache_sizes). 
-def plot_mr_size(cache_sizes,hr_lists,labels,plot_folder,name,title,suffix=""): 
+def plot_mr_size(cache_sizes,hr_lists,labels,plot_folder,plot_name,plot_title,suffix=""): 
     num_lines = len(hr_lists) 
     if num_lines==0: 
         print("no plot to plot.")  
         return
 
-    plot_fname = os.path.join(plot_folder,"mrp-size-{}".format(name))
+    plot_fname = os.path.join(plot_folder,"mrp-size-{}".format(plot_name))
     
     plot_fname = (plot_fname + ".pdf") if (suffix=="") \
                 else (plot_fname+ "_" + suffix + ".pdf")
@@ -71,7 +71,7 @@ def plot_mr_size(cache_sizes,hr_lists,labels,plot_folder,name,title,suffix=""):
                 linestyle=next(LINESTYLES)
                 )
 
-    plt.title(title)
+    plt.title(plot_title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lies ), 
                         loc="upper right", fontsize="6", frameon=False) 
     frame = legend.get_frame() 
@@ -87,22 +87,24 @@ def plot_mr_size(cache_sizes,hr_lists,labels,plot_folder,name,title,suffix=""):
 
     print("log plot saved to {}".format(plot_fname))
 
-
 def parse_for_size(file):
     
     stdout_str = []
     with open(file,"r") as f:
         stdout_str = f.read().split("\n")
     
-    line = stdout_str[-3]
-    m = re.search(REGEX,line)
-
-    if not m:
-        print("incorrect output file format")
-        print(line)
-        return -1
+    hr_list = []
     
-    final_hr = m.group("hit_ratio")
+    for (i,line) in enumerate(stdout_str):
+        if i == len(stdout_str) - 2: break 
+        
+        m = re.search(REGEX,line) 
+
+        if not m: continue
+
+        hr_list.append(m.group("hit_ratio"))
+
+    final_hr = hr_list[-1]
 
     print("miss ratio:",1-float(final_hr))
     return final_hr
@@ -117,7 +119,7 @@ if __name__ == "__main__":
     
     p.add_argument("--cache_sizes",type=str,default="")
     p.add_argument("--rebalance_strategies",type=str,default="all")
-    p.add_argument("--algo",type=str,default="Lru")
+    p.add_argument("--algo",type=str,default="all")
 
     ap = p.parse_args()  
    
@@ -145,6 +147,9 @@ if __name__ == "__main__":
     hr_lists,labels = [],[]
     for (i,algo) in enumerate(algos):
         for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+            
+            if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+
             hr_lists.append([])
             labels.append(rebalance_strategy + "-" + algo)
 
@@ -162,4 +167,4 @@ if __name__ == "__main__":
     name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
     title = ap.algo + "-" + ap.rebalance_strategies
 
-    plot_mr_size(cache_sizes,hr_lists,labels,ap.plot_folder,name,title)
+    plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
