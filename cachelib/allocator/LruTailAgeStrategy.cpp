@@ -163,7 +163,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   ctx.receiverClassId = pickReceiver(config, pid, poolStats, ctx.victimClassId,
                                      poolEvictionAgeStats);
 
-  std::cout << "v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
+  std::cout << "LTAS-v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
 
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
@@ -188,7 +188,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
         improvement < config.tailAgeDifferenceRatio *
                           static_cast<long double>(victimProjectedTailAge)) {
 
-      std::cout << "invalid ctx. ";
+      std::cout << "LTAS-invalid ctx. ";
       std::cout << "vPTA: " << victimProjectedTailAge << "rTA: " << receiverTailAge << " ."; 
       if (victimProjectedTailAge < receiverTailAge) std::cout<< "vPTA < rTA. ";            
       if (improvement < config.minTailAgeDifference) std::cout << "improv. < minTailAgeDifference. ";
@@ -203,7 +203,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   // enough.
   getPoolState(pid).at(ctx.receiverClassId).startHoldOff();
  
-  std::cout << "valid ctx v and r. hold off started." << std::endl << std::flush;
+  std::cout << "LTAS-valid ctx v and r. hold off started." << std::endl << std::flush;
 
   return ctx;
 }

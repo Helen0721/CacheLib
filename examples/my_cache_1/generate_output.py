@@ -40,7 +40,7 @@ def chooseRebParams(strategy,option):
         return (",".join([str(random.choice(paramList)) for paramList in allChoices]))
 
 
-def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
+def run(out_file,tracepath,max_reqs,algo,cache_size,reb):
     if algo=="Lru": run_path = Lru_path;
     elif algo=="Lru2Q": run_path = Lru2Q_path;
     elif algo=="TinyLFU": run_path = TinyLFU_path;
@@ -51,7 +51,7 @@ def run(out_file,tracepath,max_reqs,algo = "LRU",cache_size = "1GB",suffix=""):
 
     rebParams = "default"
 
-    run_args = [run_path, tracepath,str(max_reqs),cache_size,suffix,rebParams]
+    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -73,9 +73,11 @@ if __name__=="__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--tracepath",type=str,required=True)
     p.add_argument("--rebParams",type=str,required=True)
-    p.add_argument("--suffix",type=str,required=True)
+    p.add_argument("--reb",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--outputdir",type=str,required=True)
+
+    p.add_argument("--algos",type=str,default="all")
     p.add_argument("--max_reqs",type=int,default=0)
     p.add_argument("--cache_sizes",type=str,default="")
 
@@ -86,14 +88,19 @@ if __name__=="__main__":
     else:
         cache_sizes = ap.cache_sizes.split(",")
 
+    if (ap.algos=="all"):
+        algos = ALGOS
+    else:
+        algos = ap.algos.split(",")
+
     if not ap.outputdir.endswith("/"): ap.outputdir += "/"
 
-    for algo in ALGOS: 
+    for algo in algos: 
         for cache_size in cache_sizes:
             #rebParams = chooseRebParams(ap.suffix,ap.rebParams)
 
-            output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + ap.suffix + ".txt"        
+            output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + ".txt"        
             
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}.".format(
-                ap.tracepath,algo,cache_size,ap.suffix))
-            run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size,suffix=ap.suffix)
+                ap.tracepath,algo,cache_size,ap.reb))
+            run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size,reb=ap.reb)

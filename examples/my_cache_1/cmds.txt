@@ -8,3 +8,7 @@ for reb in default LruTailAge HitsPerSlab FreeMem MarginalHits;do
 
 plot_mr_size.py command:
 for algo in Lru Lru2Q TinyLFU; do python3 plot_mr_size.py --output_folder=output/Cloud_Physics_Ws --plot_folder=plots/Cloud_Physics --name=w82 --rebalance_strategies='all' --algo="$algo"; done
+
+
+generate tasks file for parallel:
+for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; echo "./run.sh $data_path w$i Lru2Q MarginalHits default output/Cloud_Physics_Ws_reb_sleep" >> tasks_Cloud_Physics ; done

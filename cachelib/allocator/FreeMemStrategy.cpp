@@ -38,7 +38,7 @@ FreeMemStrategy::FreeMemStrategy(Config config)
 RebalanceContext FreeMemStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
   
-  std::cout<< "FreeMem-pickVAndRImpl...";
+  std::cout<< "FMS-pickVAndRImpl...";
 
   const auto& pool = cache.getPool(pid);
   if (pool.getUnAllocatedSlabMemory() >
@@ -52,7 +52,7 @@ RebalanceContext FreeMemStrategy::pickVictimAndReceiverImpl(
 
   if (victims.empty()) {
     XLOG(DBG, "Rebalancing: No victims available");
-    std::cout << "No victims available" <<std::endl;
+    std::cout << "FMS-No victims available" <<std::endl;
     return kNoOpContext;
   }
 
@@ -60,17 +60,17 @@ RebalanceContext FreeMemStrategy::pickVictimAndReceiverImpl(
   ctx.victimClassId = pickVictimByFreeMem(
       victims, poolStats, config_.getFreeMemThreshold(), getPoolState(pid));
   
-  std::cout << "ctx.v:" << static_cast<int>(ctx.victimClassId) << ". ";
+  std::cout << "FMS-ctx.v:" << static_cast<int>(ctx.victimClassId) << ". ";
 
   if (ctx.victimClassId == Slab::kInvalidClassId) {
-    std::cout << "invalid ctx" <<std::endl << std::flush ;
+    std::cout << "FMS-invalid ctx" <<std::endl << std::flush ;
     return kNoOpContext;
   }
 
   
   XLOGF(DBG, "Rebalancing: victimAC = {}", static_cast<int>(ctx.victimClassId));
  
-  std::cout << "picked." << std::endl << std::flush;
+  std::cout << "FMS-picked." << std::endl << std::flush;
 
   return ctx;
 }

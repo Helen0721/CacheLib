@@ -15,7 +15,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -167,9 +167,7 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 	  //printf("reb. params. interval: %d. ", interval);
 	  //std::cout << std::flush;
 	  cachelib::MarginalHitsStrategy::Config mhConfig{};
-
-	  auto strategy = std::make_shared<MarginalHitsStrategy>(mhConfig);
-	  
+ 
 	  cache_config.enableTailHitsTracking(); 
 	  cache_config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
           				std::chrono::seconds{interval}
@@ -277,7 +275,7 @@ bool put(CacheKey key, const std::string& value, size_t value_size) {
 } // namespace facebook
 
 
-void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,int max_reqs){
+void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,int max_reqs, int sleep_sec){
 
 	using namespace facebook::cachelib_examples;
 	
@@ -302,6 +300,10 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		if (start_time == -1) start_time = req->timestamp;
 
 		if (reader->offset % 1000 == 0 && (req->timestamp - start_time !=0)){
+			if (sleep_sec > 0) {
+				std::cout << "sleeping...";
+				sleep(sleep_sec);
+			}
 			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
 		}
@@ -321,7 +323,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
  	// destroyCache();
 }
 
-void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs){
+void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs, int sleep_sec){
 	using namespace facebook::cachelib_examples;
 	
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
@@ -376,6 +378,10 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 		
 		if (num_reqs % 100000 == 0 && (req->clock_time - start_time !=0) ){
+			if (sleep_sec > 0) {
+				std::cout << "sleeping...";
+				sleep(sleep_sec);
+			}
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
 		}

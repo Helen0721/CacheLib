@@ -16,12 +16,25 @@
 
 #include "folly/init/Init.h"
 #include <cstdlib>
-
 #include <iostream>
+#include <regex>
 
 #include "Reader/BinaryReader.h"
 #include "Reader/ZstdReader.h"
 #include "Simulator.h"
+
+
+bool matchesFormat(const char *input_) {
+    std::string str(input_);
+    const std::string input = str;
+
+    // Define the regex pattern
+   std::regex pattern(R"(data/w(8[0-9]|9[0-9]|10[0-6])\.oracleGeneral\.bin\.zst)");
+
+    // Check if the input matches the pattern
+    return std::regex_match(input, pattern);
+}
+
 
 int main(int argc, char** argv) {
   folly::init(&argc, &argv);
@@ -46,14 +59,20 @@ int main(int argc, char** argv) {
   char *rebalanceStrategy = argv[4];
   char *rebParams = argv[5];
 
+  int sleep_sec = 0;
+
+  if (matchesFormat(data_path)){
+    sleep_sec = 1;
+    std::cout << "A Cloud Physics trace. Will sleep " << sleep_sec <<  " sec every 100000 requests" << std::endl;
+  }	  
 
   int path_len = std::strlen(data_path);
   if (path_len>=3 && std::strcmp(data_path + path_len - 3, "bin") == 0){
     bin_reader_t *reader = binary_reader_setup(data_path);
-    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs);
+    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
   }
   else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0) {
     zstd_reader *reader =create_zstd_reader(data_path);
-    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs);
+    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
   }
 }
