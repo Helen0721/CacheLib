@@ -39,12 +39,18 @@ class MarginalHitsStrategy : public RebalanceStrategy {
     // class
     unsigned int maxFreeMemSlabs{1};
 
-    Config() noexcept {}
-    explicit Config(double param) noexcept : Config(param, 1, 1) {}
+    Config() noexcept {
+    	std::cout << "MHS-default config" << std::endl;
+    }
+    explicit Config(double param) noexcept : Config(param, 1, 1) {
+    	std::cout << "MHS-updated config" << std::endl;
+    }
     Config(double param, unsigned int minSlab, unsigned int maxFree) noexcept
         : movingAverageParam(param),
           minSlabs(minSlab),
-          maxFreeMemSlabs(maxFree) {}
+          maxFreeMemSlabs(maxFree) {
+		  std::cout << "MHS-updated config" << std::endl;
+	  }
   };
 
   // Update the config. This will not affect the current rebalancing, but

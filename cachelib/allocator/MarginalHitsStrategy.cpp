@@ -109,7 +109,7 @@ RebalanceContext MarginalHitsStrategy::pickVictimAndReceiverFromRankings(
         classStates_[pid].smoothedRanks[ctx.receiverClassId],
         static_cast<int>(ctx.victimClassId),
         classStates_[pid].smoothedRanks[ctx.victimClassId]);
-  std::cout << "\n" << std::flush;
+  std::cout << " picked. \n" << std::flush;
   return ctx;
 }
 } // namespace facebook::cachelib
