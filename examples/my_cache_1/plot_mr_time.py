@@ -39,6 +39,7 @@ def plot_hr_time(ts_lists,
                  cache_size,
                  plot_folder,
                  plot_name,
+                 plot_title,
                  suffix=""): 
     COLORS =itertools.cycle(colors)
     MARKERS=itertools.cycle(markers)
@@ -71,7 +72,7 @@ def plot_hr_time(ts_lists,
                 linestyle=next(LINESTYLES)
                 )
 
-    plt.title("linear scale")
+    plt.title(plot_title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
                         loc="upper right", fontsize="6", frameon=False) 
     frame = legend.get_frame() 
@@ -138,7 +139,9 @@ if __name__ == "__main__":
 
         for (i,algo) in enumerate(algos):
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
- 
+
+                if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+
                 output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size)
 
                 if (rebalance_strategy!=""):
@@ -156,6 +159,7 @@ if __name__ == "__main__":
 
         
         plot_name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
+        plot_title = ap.algo + "-" + ap.rebalance_strategies + "-" + cache_size
 
         plot_hr_time(ts_lists_for_cs,
                      hr_lists_for_cs,
@@ -163,4 +167,5 @@ if __name__ == "__main__":
                      cache_size,
                      plot_folder=ap.plot_folder,
                      plot_name=plot_name,
+                     plot_title=plot_title
                      )

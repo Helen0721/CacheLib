@@ -1,5 +1,3 @@
-
-
 generate Cloud Physics tasks file for parallel:
 for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; echo "./run.sh $data_path w$i Lru2Q MarginalHits default output/Cloud_Physics_Ws_reb_sleep" >> tasks_Cloud_Physics ; done
 
@@ -8,14 +6,34 @@ generate tasks for other traces for parallel (all strategy):
 for reb in LruTailAge HitsPerSlab FreeMem default;do data_path="data/meta_kvcache_traces_1.oracleGeneral.bin.zst"; for algo in Lru Lru2Q TinyLFU; do output_dir="output/MetaKVT1_reb"; echo "./run.sh $data_path metakvt1 $algo $reb default $output_dir"; done; done > tasks_MetaKV
 
 
-plot_mr_size.py command:
+plot_mr_size.py command for Cloud Physics Traces
 
 for i in {80..106};do name="w$i"; for algo in Lru Lru2Q TinyLFU all;do python3 plot_mr_size.py --output_folder=output/Cloud_Physics_Ws_reb_sleep --plot_folder=plots/Cloud_Physics --name="$name" --algo="$algo"; done; done
 
+plot_mr_size.py command for other traces: 
+for algo in all;do output_dir=output/Wiki2019t_reb; plot_dir=plots/Wiki2019t; python3 plot_mr_size.py --output_folder="$output_dir" --plot_folder="$plot_dir" --name="wiki2019t" --algo="$algo" --rebalance_strategies=default; done
 
 
-plot_reb.py command:
+plot_mr_time.py command for other traces: 
+python3 plot_mr_time.py --output_folder=output/AkamaiLax_reb --plot_folder=plots/AkmS10 --name=akms10 --cache_size=all --rebalance_strategies=default
 
-for reb in default LruTailAge HitsPerSlab FreeMem MarginalHits;do
-> python3 plot_reb.py --output_dirs=output/Cloud_Physics_Ws --names=w80,w81,w82 --algo=Lru --plot_dir=plots/Cloud_Physics --plot_name=w80tow82 --reb="$reb"
-> done
+
+cmds for plotting all other traces:
+
+for reb in all default; do 
+output_dirs=(output/AkamaiLax_reb output/Cluster52_reb output/MetaKVT1_reb output/TencentP2S10_reb output/Wiki2019t_reb output/Wiki2019ts10_reb);  
+plot_dirs=(plots/AkmS10 plots/Cluster52 plots/MetakvT1 plots/TncntP2S10 plots/Wiki2019t plots/Wiki2019tS10); 
+names=(akms10 clstr52 metakvt1 tncntp2s10 wiki2019t wiki2019ts10); 
+num_traces=${#output_dirs[@]}; 
+for ((i=0;i<num_traces;i++)); do
+output_folder=${output_dirs[$i]};plot_folder=${plot_dirs[$i]}; name=${names[$i]}; 
+if [ "$reb" == "all" ]; then 
+for algo in Lru Lru2Q TinyLFU;do 
+echo "python3 plot_mr_time.py --output_folder=$output_folder --plot_folder=$plot_folder --name=$name --cache_size=all --algo=$algo --rebalance_strategies=$reb"; 
+done; 
+else 
+echo "python3 plot_mr_time.py --output_folder=$output_folder --plot_folder=$plot_folder --name=$name --cache_size=all --algo=all --rebalance_strategies=$reb"; 
+fi; 
+done; 
+done > tasks_plot
+
