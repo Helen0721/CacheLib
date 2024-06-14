@@ -200,7 +200,14 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
       improvement < config.diffRatio * static_cast<long double>(
                                            victimProjectedDeltaHitsPerSlab)) {
     XLOG(DBG, " not enough to trigger slab rebalancing");
-    std::cout << "HPS-not enough to trigger slab rebalancing" << std::endl << std::flush;
+
+    std::cout<<"rDHpS: "<< receiverDeltaHitsPerSlab<<" ,vPDHpS: "<< victimProjectedDeltaHitsPerSlab <<"...";
+    if (receiverDeltaHitsPerSlab < victimProjectedDeltaHitsPerSlab){
+	std::cout<<"rDHpS < vPDHpS" << std::endl;
+    }
+    else if (improvement < config.minDiff) std::cout<<"improv.<minDiff "<< config.minDiff << std::endl;
+    else std::cout<<"improv.<diffRatio("<<config.diffRatio<<")*vPDHpS" << std::endl;
+
     return kNoOpContext;
   }
 

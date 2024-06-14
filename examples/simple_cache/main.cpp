@@ -31,7 +31,7 @@ cachelib::PoolId defaultPool_;
 void initializeCache() {
   CacheConfig config;
   config
-      .setCacheSize(1 * 1024 * 1024 * 1024) // 1GB
+      .setCacheSize(256 * 1024 * 1024 * 1024) // 1GB
       .setCacheName("My Use Case")
       .setAccessConfig(
           {25 /* bucket power */, 10 /* lock power */}) // assuming caching 20
