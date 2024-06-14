@@ -20,4 +20,4 @@ find_package(cachelib CONFIG REQUIRED)
 
 add_executable(my_cache_Lru_reb main.cpp Simulator.cpp Reader/BinaryReader.cpp Reader/ZstdReader.cpp)
 
-target_link_libraries(my_cache_Lru_reb cachelib)
+target_link_libraries(my_cache_Lru_test cachelib)

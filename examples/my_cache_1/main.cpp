@@ -46,6 +46,7 @@ int main(int argc, char** argv) {
        printf("arg[%d] is %s\n",i,argv[i]);
        i+=1;
     }
+    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams");
     exit(1);
   }
 
@@ -58,13 +59,11 @@ int main(int argc, char** argv) {
   char *cache_size = argv[3];
   char *rebalanceStrategy = argv[4];
   char *rebParams = argv[5];
-
   int sleep_sec = 0;
-
-  if (matchesFormat(data_path)){
-    sleep_sec = 1;
-    std::cout << "A Cloud Physics trace. Will sleep " << sleep_sec <<  " sec every 100000 requests" << std::endl;
-  }	  
+  if (argc >= 7) {
+    sleep_sec = std::atoi(argv[6]);
+    std::cout << "Will sleep " << sleep_sec <<  " sec every 100000 requests" << std::endl;
+  }
 
   int path_len = std::strlen(data_path);
   if (path_len>=3 && std::strcmp(data_path + path_len - 3, "bin") == 0){

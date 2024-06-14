@@ -3,7 +3,10 @@ for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; echo "./run.sh
 
 generate tasks for other traces for parallel (all strategy): 
 
-for reb in LruTailAge HitsPerSlab FreeMem default;do data_path="data/meta_kvcache_traces_1.oracleGeneral.bin.zst"; for algo in Lru Lru2Q TinyLFU; do output_dir="output/MetaKVT1_reb"; echo "./run.sh $data_path metakvt1 $algo $reb default $output_dir"; done; done > tasks_MetaKV
+for reb in LruTailAge HitsPerSlab FreeMem default;do 
+data_path=data/w06.oracleGeneral.bin.zst;output_dir=output/Cloud_Physics_Ws_reb_sleep/w06;name=w06; 
+for algo in Lru Lru2Q TinyLFU; do echo "./run.sh $data_path $name $algo $reb default $output_dir"; done; 
+done > tasks/CP_2
 
 
 plot_mr_size.py command for Cloud Physics Traces

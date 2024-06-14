@@ -379,7 +379,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 		
 		if (num_reqs % 100000 == 0 && (req->clock_time - start_time !=0) ){
 			if (sleep_sec > 0) {
-				std::cout << "sleeping...";
+				std::cout << "sleeping..." << std::endl;
 				sleep(sleep_sec);
 			}
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);

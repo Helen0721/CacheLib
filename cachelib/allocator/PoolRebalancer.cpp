@@ -102,16 +102,22 @@ RebalanceContext PoolRebalancer::pickVictimByFreeAlloc(PoolId pid) const {
 }
 
 bool PoolRebalancer::tryRebalancing(PoolId pid, RebalanceStrategy& strategy) {
+
+  std::cout<<"Trying Rebalancing.."<<std::endl;
+
   const auto begin = util::getCurrentTimeMs();
 
   if (freeAllocThreshold_ > 0) {
     auto ctx = pickVictimByFreeAlloc(pid);
     if (ctx.victimClassId != Slab::kInvalidClassId) {
+      std::cout<< static_cast<int>(ctx.victimClassId) << " has #free alocs above threshold " << freeAllocThreshold_;
+      std::cout<< "releasing..." << std::endl;
       releaseSlab(pid, ctx.victimClassId, Slab::kInvalidClassId);
     }
   }
 
   if (!cache_.getPool(pid).allSlabsAllocated()) {
+    std::cout << "Not all mem. in the pool is alloc. to some slab. Not starting." << std::endl;
     return false;
   }
 

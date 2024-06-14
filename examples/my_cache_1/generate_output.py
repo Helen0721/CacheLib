@@ -99,6 +99,8 @@ if __name__=="__main__":
         for cache_size in cache_sizes:
             #rebParams = chooseRebParams(ap.suffix,ap.rebParams)
 
+            if ap.reb == "MarginalHits" and ap.algo != "Lru2Q": continue
+
             output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + ".txt"        
             
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}.".format(
