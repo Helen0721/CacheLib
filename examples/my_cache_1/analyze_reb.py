@@ -27,18 +27,31 @@ CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
 START_REB_s = "Trying Rebalancing"
 
 FAIL_REASONS = {
-        "Universal": ["has #free alocs above threshold","Not all mem. in the pool is alloc. to some slab"],
-        "LruTailAge": ["vPTA < rTA", "improv. < minTailAgeDifference", "improv. < diffRatio * vPTA"],
-        "FreeMem" : [],
+        "Universal": ["has #free alocs above threshold",
+                      "Not all mem. in the pool is alloc. to some slab"],
+        "LruTailAge": ["vPTA < rTA", 
+                       "improv. < minTailAgeDifference", 
+                       "improv. < diffRatio * vPTA"],
+        "FreeMem" : ["all classes are evicting",
+                     "Total free mem. smaller than threshold",
+                     ] ,
+        "MarginalHits": ["invalid max or main ranks"],
+        "HitsPerSlab": ["invalid class id", 
+                        "rDHpS < vPDHpS", 
+                        "improv.< minDiff",
+                        "improv.< diffRatio * vPDHpS" ]
         }
+
+STRTGY_TRIGGERED_s = "-hold off started."
+FAILALLOC_TRIGGERED_s = "hold off started w/o triggering strategy specific pickVandRImp"
 
 ABBRV = {
     FAIL_REASONS["Universal"][0]: "FreeAllocAbvThrsld",
-    FAIL_REASONS["Universal"][1]: "FreeMemNotAlloc"
+    FAIL_REASONS["Universal"][1]: "FreeMemNotAlloc",
+    STRTGY_TRIGGERED_s: "StrtgyTriggered",
+    FAILALLOC_TRIGGERED_s: "TriggeredByFailAlloc",
     }
 
-
-SUC_s = "hold off started"
 
 def collect_cnts(file,reb):
 
@@ -47,7 +60,8 @@ def collect_cnts(file,reb):
 
 
     res = {"total_attempts": stdout_str.count(START_REB_s),
-            "suc_attempts": stdout_str.count(SUC_s)
+            ABBRV[STRTGY_TRIGGERED_s]: stdout_str.count(STRTGY_TRIGGERED_s),
+            ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
           }
     
     for i,r in enumerate(FAIL_REASONS["Universal"]):

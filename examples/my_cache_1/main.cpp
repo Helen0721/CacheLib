@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
        printf("arg[%d] is %s\n",i,argv[i]);
        i+=1;
     }
-    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams");
+    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams\n");
     exit(1);
   }
 

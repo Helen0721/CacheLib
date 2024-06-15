@@ -26,7 +26,12 @@
 namespace facebook::cachelib {
 
 FreeMemStrategy::FreeMemStrategy(Config config)
-    : RebalanceStrategy(FreeMem), config_(std::move(config)) {}
+    : RebalanceStrategy(FreeMem), config_(std::move(config)) {
+    
+    std::cout << "MFS::MFS(Config config): ";
+    printf("minSlabs:%u,numFreeSlabs:%u,maxUnAllocatedSlabs:%zu \n",
+	config.minSlabs,config.numFreeSlabs,config.maxUnAllocatedSlabs);
+}
 
 // The list of allocation classes to be rebalanced is determined by:
 //
@@ -60,10 +65,10 @@ RebalanceContext FreeMemStrategy::pickVictimAndReceiverImpl(
   ctx.victimClassId = pickVictimByFreeMem(
       victims, poolStats, config_.getFreeMemThreshold(), getPoolState(pid));
   
-  std::cout << "FMS-ctx.v:" << static_cast<int>(ctx.victimClassId) << ". ";
+  std::cout << "FMS-v: " << static_cast<int>(ctx.victimClassId) << ". ";
 
   if (ctx.victimClassId == Slab::kInvalidClassId) {
-    std::cout << "FMS-invalid ctx" <<std::endl << std::flush ;
+    std::cout <<std::endl << std::flush ;
     return kNoOpContext;
   }
 

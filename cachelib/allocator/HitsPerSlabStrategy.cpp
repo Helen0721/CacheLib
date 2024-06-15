@@ -26,7 +26,14 @@
 namespace facebook::cachelib {
 
 HitsPerSlabStrategy::HitsPerSlabStrategy(Config config)
-    : RebalanceStrategy(HitsPerSlab), config_(std::move(config)) {}
+    : RebalanceStrategy(HitsPerSlab), config_(std::move(config)) {
+   
+    std::cout << "HPS::HPS(Config config): ";
+    printf("minDiff:%d,diffRatio:%f,minSlabs:%u,numSlabsFreeMem:%u,minLruTailAge:%u,maxLruTailAge:%u \n",
+	config.minDiff,config.diffRatio,config.numSlabsFreeMem,
+	config.minLruTailAge,config.maxLruTailAge);
+}
+
 
 // The list of allocation classes to be rebalanced is determined by:
 //
@@ -45,11 +52,17 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
   victims =
       filterByNumEvictableSlabs(stats, std::move(victims), config.minSlabs);
 
+  if (victims.empty()) {
+    std::cout<<"all alloc classes have below minSlabs " << config.minSlabs <<". ";
+  }
+
   // ignore allocation classes that recently gained a slab. These will be
   // growing in their eviction age and we want to let the evicitons stabilize
   // before we consider  them again.
   victims = filterVictimsByHoldOff(pid, stats, std::move(victims));
-
+  
+  if (victims.empty()) std::cout<<"v candidates under hold-off. ";
+  
   // we are only concerned about the eviction age and not the projected age.
   const auto poolEvictionAgeStats =
       cache.getPoolEvictionAgeStats(pid, /* projectionLength */ 0);
@@ -57,6 +70,7 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
   if (config.minLruTailAge != 0) {
     victims =
         filterByMinTailAge(stats, std::move(victims), config.minLruTailAge);
+    if (victims.empty()) std::cout<<"v candidates below minLTA "<<config.minLruTailAge << ". ";
   }
 
   if (victims.empty()) {
@@ -78,11 +92,12 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
         [&](ClassId cid) {
           return stats.evictionAgeForClass(cid) < config.maxLruTailAge;
         },
-        folly::sformat(" candidates with less than {} seconds for tail age",
+        folly::sformat(" all candidates with less than {} seconds for tail age",
                        config.maxLruTailAge));
     if (!maxAgeVictims.empty()) {
       victims = std::move(maxAgeVictims);
     }
+    else std::cout<<"v candidates above maxLTA "<< config.maxLruTailAge << ". ";
   }
 
   return *std::min_element(
@@ -113,10 +128,14 @@ ClassId HitsPerSlabStrategy::pickReceiver(const Config& config,
   const auto& poolState = getPoolState(pid);
   // filter out alloc classes that are not evicting
   receivers = filterByNoEvictions(stats, std::move(receivers), poolState);
+  
+  if (receivers.empty()) std::cout<<"r candidates aren't evicting. ";
 
   // filter out receivers who currently dont have any slabs. Their delta hits
   // do not make much sense.
   receivers = filterByNumEvictableSlabs(stats, std::move(receivers), 0);
+  
+  if (receivers.empty()) std::cout<<"r candidates has no slabs. ";
 
   // filter out alloc classes with more than the maximum tail age
   if (config.maxLruTailAge != 0) {
@@ -130,6 +149,7 @@ ClassId HitsPerSlabStrategy::pickReceiver(const Config& config,
   }
 
   if (receivers.empty()) {
+    std::cout<<"r candidates above max LTA " << config.maxLruTailAge << ". ";
     return Slab::kInvalidClassId;
   }
 
@@ -169,7 +189,7 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
-    std::cout << "HPS-invalid ctx." << std::endl << std::flush;
+    std::cout << "HPS-invalid class id." << std::endl << std::flush;
     return kNoOpContext;
   }
 
@@ -203,11 +223,17 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
 
     std::cout<<"rDHpS: "<< receiverDeltaHitsPerSlab<<" ,vPDHpS: "<< victimProjectedDeltaHitsPerSlab <<"...";
     if (receiverDeltaHitsPerSlab < victimProjectedDeltaHitsPerSlab){
-	std::cout<<"rDHpS < vPDHpS" << std::endl;
+	std::cout<<"rDHpS < vPDHpS. ";
     }
-    else if (improvement < config.minDiff) std::cout<<"improv.<minDiff "<< config.minDiff << std::endl;
-    else std::cout<<"improv.<diffRatio("<<config.diffRatio<<")*vPDHpS" << std::endl;
-
+    else{
+    	if (improvement < config.minDiff) {
+		std::cout<<"improv.< minDiff " << config.minDiff << ". " ;}
+    	if (improvement < config.diffRatio * static_cast<long double>(
+        victimProjectedDeltaHitsPerSlab)) {
+		std::cout<<"improv.< diffRatio * vPDHpS " << config.diffRatio <<". ";
+	}
+   }
+    std::cout << std::endl << std::flush;
     return kNoOpContext;
   }
 

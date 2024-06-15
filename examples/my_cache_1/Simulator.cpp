@@ -3,6 +3,7 @@
 #include "cachelib/allocator/MarginalHitsStrategy.h"
 #include "cachelib/allocator/FreeMemStrategy.h"
 #include "cachelib/allocator/HitsPerSlabStrategy.h"
+#include "cachelib/allocator/PoolRebalancer.h"
 #include "cachelib/common/TestUtils.h"
 #include "folly/init/Init.h"
 #include <cstdlib>
@@ -11,11 +12,12 @@
 #include "Reader/BinaryReader.h"
 #include "Reader/ZstdReader.h"
 #include "Simulator.h"
+#include "parseRebParams.h"
 
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -25,59 +27,6 @@ std::string prefix = "EmptyFiller";
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
-
-void parseParams_LruTailAge(char *LTAparams, double *ratio, int *kLTAMinSlabs, 
-			  int *slabProjectionLength, int *numSlabsFreeMem, int *interval){
-  std::string str(LTAparams);
-  std::string params = str;
-
-  if (params == "default") return;
-
-  char delimiter = ',';
-
-  std::stringstream ss(params);
-  std::string token;
-
-  int i = 0;
-  while (std::getline(ss, token, delimiter)) {
-	if (i == 0) *ratio = std::stod(token);
-	else if (i==1) *kLTAMinSlabs = std::stoi(token);
-	else if (i==2) *slabProjectionLength = std::stoi(token);
-	else if (i==3) *numSlabsFreeMem = std::stoi(token);
-	else if (i==4) *interval = std::stoi(token);
-	i += 1;	
-  }
-
-}
-
-void parseParams_MarginalHits(char *MHparams, int *interval){
-  
-  std::string str(MHparams);
-  std::string params = str;
-
-  if (params == "default") return;
-
-  *interval = std::stoi(params);
-}
-	
-void parseParams_HitsPerSlabAndFreeMem(char *rebParams,int *minSlabs,int *interval){
-  std::string str(rebParams);
-  std::string params = str;
-
-  if (params == "default") return;
-  
-  char delimiter = ',';
-
-  std::stringstream ss(params);
-  std::string token;
-
-  int i = 0;
-  while (std::getline(ss, token, delimiter)) {
-	if (i == 0) *minSlabs = std::stoi(token);
-	else if (i==1) *interval = std::stoi(token);
-	i += 1;
-  }
-}
 
 		
 unsigned long convertCacheSize(char *cache_size){
@@ -132,41 +81,46 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 
   if (rebalanceStrategy_str == "LruTailAge"){
 	printf("LruTailAge Rebalancing init. ");
-	//auto ratio = 0.1;
-  	//auto kLTAMinSlabs = 5;
-	//auto slabProjectionLength = 0;
-	//auto numSlabsFreeMem = 5;
+	auto tailAgeDifferenceRatio = 0.1;
+	auto minTailAgeDifference = 100;
+  	unsigned int minSlabs = 1;
+	auto numSlabsFreeMem = 5;
+	auto slabProjectionLength = 1;
 	
-	//parseParams_LruTailAge(rebParams,
-	//			&ratio, 
-	//			&kLTAMinSlabs,
-	//			&slabProjectionLength, 
-	//			&numSlabsFreeMem,
-	//			&interval);	
+	parseParams_LruTailAge(rebParams,&interval,
+				&tailAgeDifferenceRatio,
+			        &minTailAgeDifference,	
+				&minSlabs,
+				&numSlabsFreeMem, 
+				&slabProjectionLength
+				);	
 
-	//printf("reb. params. ratio: %f, kLTAMinSlabs: %d, slabProj.Len: %d, numSlabsFreeMem: %d, interval: %d. ",
-	// ratio, kLTAMinSlabs, slabProjectionLength, numSlabsFreeMem, interval  
-	//);
+  	cachelib::LruTailAgeStrategy::Config cfg(tailAgeDifferenceRatio, minSlabs);
+	cfg.minTailAgeDifference = minTailAgeDifference;
+	cfg.minSlabs = minSlabs;
+	cfg.slabProjectionLength = slabProjectionLength; // dont project or estimate tail age
+  	cfg.numSlabsFreeMem = numSlabsFreeMem;     // ok to have ~40 MB free memory in unused allocations
 
-  	//cachelib::LruTailAgeStrategy::Config cfg(ratio, kLTAMinSlabs);
-	cachelib::LruTailAgeStrategy::Config cfg;
-	//cfg.slabProjectionLength = slabProjectionLength; // dont project or estimate tail age
-  	//cfg.numSlabsFreeMem = numSlabsFreeMem;     // ok to have ~40 MB free memory in unused allocations
-
-  	// every 5 seconds, re-evaluate the eviction ages and rebalance the cache.
 	cache_config.enablePoolRebalancing(
 			std::make_shared<cachelib::LruTailAgeStrategy>(cfg),
 			std::chrono::seconds(interval)
 	);
-
   }
 
   else if(rebalanceStrategy_str == "MarginalHits"){ 
 	  std::cout << "Marginal Hits Rebalancing init. " << std::flush;
-	  //parseParams_MarginalHits(rebParams,&interval);
-	  //printf("reb. params. interval: %d. ", interval);
-	  //std::cout << std::flush;
-	  cachelib::MarginalHitsStrategy::Config mhConfig{};
+	  
+	  double movingAverageParam = 0.3;
+	  unsigned int minSlabs = 1;
+	  unsigned int maxFreeMemSlabs = 1;
+
+	  parseParams_MarginalHits(rebParams,&interval,
+			  &movingAverageParam,
+			  &minSlabs,
+			  &maxFreeMemSlabs
+			  );
+	  
+	  cachelib::MarginalHitsStrategy::Config mhConfig(movingAverageParam,minSlabs,maxFreeMemSlabs);
  
 	  cache_config.enableTailHitsTracking(); 
 	  cache_config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
@@ -176,12 +130,25 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
           
   }else if (rebalanceStrategy_str == "HitsPerSlab"){
 	  printf("Hits Per Slab Rebalancing init. ");
-	  //int minSlabs = 0;
-	  //parseParams_HitsPerSlabAndFreeMem(rebParams,&minSlabs,&interval);
-	  //printf("reb. params. minSlabs: %d, interval: %d. ", minSlabs, interval);
+	  int minDiff = 100;
+	  unsigned int minSlabs = 1;
+	  double diffRatio = 0.1;
+	  int numSlabsFreeMem = 3;
+	  int minLruTailAge = 0;
+	  int maxLruTailAge = 0;
 
-	  cachelib::HitsPerSlabStrategy::Config hpsConfig;
-	  //hpsConfig.minSlabs = minSlabs;
+	  parseParams_HitsPerSlab(rebParams,&interval,
+			  &minDiff,
+			  &minSlabs,
+			  &diffRatio,
+			  &numSlabsFreeMem,
+			  &minLruTailAge,
+			  &maxLruTailAge
+			  ); 
+	  cachelib::HitsPerSlabStrategy::Config hpsConfig(diffRatio,minSlabs,minLruTailAge);
+	  hpsConfig.minDiff = minDiff;
+	  hpsConfig.numSlabsFreeMem = numSlabsFreeMem;
+	  hpsConfig.maxLruTailAge = maxLruTailAge;
 
 	  cache_config.enablePoolRebalancing(
 			  std::make_shared<cachelib::HitsPerSlabStrategy>(hpsConfig),
@@ -190,23 +157,25 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
   } else if (rebalanceStrategy_str == "FreeMem"){
 	  printf("FreeMem Rebalancing init. ");
 	  
-	  //int minSlabs = 0;
-	  //parseParams_HitsPerSlabAndFreeMem(rebParams,&minSlabs,&interval);
-	  //printf("reb. params. minSlabs: %d, interval: %d. ", minSlabs, interval);
+	  unsigned int minSlabs = 0;
+	  int numSlabsFreeMem = 3;
+	  size_t maxUnAllocatedSlabs = 1000;
+	  parseParams_FreeMem(rebParams,&interval,
+			  &minSlabs,
+			  &numSlabsFreeMem,
+			  &maxUnAllocatedSlabs
+			  );
 
-	  cachelib::FreeMemStrategy::Config fmConfig;
-	  //fmConfig.minSlabs = minSlabs;
-
+	  cachelib::FreeMemStrategy::Config fmConfig(minSlabs,numSlabsFreeMem,maxUnAllocatedSlabs);
 	  cache_config.enablePoolRebalancing(
 			  std::make_shared<cachelib::FreeMemStrategy>(fmConfig),
                           std::chrono::seconds{interval}
 			  		);
-
   }
 
   gCache_ = std::make_unique<Cache>(cache_config);
   defaultPool_=
-      gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize);
+      gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize); 
 
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl << std::flush;
   

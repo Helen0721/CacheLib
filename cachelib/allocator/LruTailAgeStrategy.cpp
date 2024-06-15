@@ -27,7 +27,11 @@ namespace facebook::cachelib {
 
 LruTailAgeStrategy::LruTailAgeStrategy(Config config)
     : RebalanceStrategy(LruTailAge), config_(std::move(config)) {
-    std::cout << "LTAS::LTAS(Config config)" <<std::endl;
+	    std::cout << "LTAS::LTAS(Config config): ";
+	    printf("tailAgeDifferenceRatio: %f,minTailAgeDifference:%d,minSlabs:%u,numSlabsFreeMem:%d,slabProjectionLength:%d \n",
+			   config.tailAgeDifferenceRatio,config.minTailAgeDifference,config.minSlabs,
+			   config.numSlabsFreeMem,config.slabProjectionLength
+			    );
     }
 
 uint64_t LruTailAgeStrategy::getOldestElementAge(
@@ -168,7 +172,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
-	std::cout << "invalid ctx 1. " << std::endl << std::flush;
+	std::cout << "invalid class id " << std::endl << std::flush;
         return kNoOpContext;
   } 
 
@@ -188,12 +192,15 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
         improvement < config.tailAgeDifferenceRatio *
                           static_cast<long double>(victimProjectedTailAge)) {
 
-      std::cout << "LTAS-invalid ctx. ";
-      std::cout << "vPTA: " << victimProjectedTailAge << "rTA: " << receiverTailAge << " ."; 
-      if (victimProjectedTailAge < receiverTailAge) std::cout<< "vPTA < rTA. ";            
-      if (improvement < config.minTailAgeDifference) std::cout << "improv. < minTailAgeDifference. ";
-      if (improvement < config.tailAgeDifferenceRatio *
-                          static_cast<long double>(victimProjectedTailAge)) std::cout << "improv. < diffRatio * vPTA. ";
+      std::cout << "vPTA: " << victimProjectedTailAge << ", rTA: " << receiverTailAge << " ."; 
+      if (victimProjectedTailAge < receiverTailAge) std::cout<< "vPTA < rTA. ";
+      else{
+	      if (improvement < config.minTailAgeDifference){
+		      std::cout << "improv. < minTailAgeDifference " << config.minTailAgeDifference << ". ";}
+	      if (improvement < config.tailAgeDifferenceRatio *
+                  static_cast<long double>(victimProjectedTailAge)) {
+		      std::cout << "improv. < diffRatio * vPTA " << config.tailAgeDifferenceRatio << ". ";}
+      }
       std::cout << std::endl << std::flush;
       return kNoOpContext;
     }

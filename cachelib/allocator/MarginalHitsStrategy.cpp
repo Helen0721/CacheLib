@@ -26,7 +26,11 @@
 namespace facebook::cachelib {
 
 MarginalHitsStrategy::MarginalHitsStrategy(Config config)
-    : RebalanceStrategy(MarginalHits), config_(std::move(config)) {}
+    : RebalanceStrategy(MarginalHits), config_(std::move(config)) {
+    std::cout << "MHS::MHS(Config config): ";
+    printf("movingAverageParam: %f,minSlabs:%u,maxFreeMemSlabs:%u \n",
+	config.movingAverageParam,config.minSlabs,config.maxFreeMemSlabs);
+    }
 
 RebalanceContext MarginalHitsStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
@@ -93,12 +97,12 @@ RebalanceContext MarginalHitsStrategy::pickVictimAndReceiverFromRankings(
       validVictim, validReceiver, Slab::kInvalidClassId);
   RebalanceContext ctx{victimAndReceiver.first, victimAndReceiver.second};
   
-  std::cout << "MHS-v:"<< static_cast<int>(ctx.victimClassId) << " r:" << static_cast<int>(ctx.receiverClassId);
+  std::cout << "MHS-v:"<< static_cast<int>(ctx.victimClassId) << " r:" << static_cast<int>(ctx.receiverClassId) << ". ";
 
   if (ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId ||
       ctx.victimClassId == ctx.receiverClassId) {
-    std::cout << "MHS-invalid ctx." << std::endl << std::flush ;
+    std::cout << "MHS-invalid max or main ranks." << std::endl << std::flush ;
     return kNoOpContext;
   }
 

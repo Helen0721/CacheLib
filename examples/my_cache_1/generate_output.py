@@ -4,9 +4,9 @@ import logging
 import os
 import random
 
-Lru_path = "build/my_cache_Lru_reb"
-Lru2Q_path = "build/my_cache_Lru2Q_reb"
-TinyLFU_path = "build/my_cache_TinyLFU_reb"
+Lru_path = "build/my_cache_Lru_rebParams"
+Lru2Q_path = "build/my_cache_Lru2Q_rebParams"
+TinyLFU_path = "build/my_cache_TinyLFU_rebParams"
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
@@ -14,16 +14,31 @@ CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB",
         "8GB","16GB","32GB","64GB"]
 
 REB_PARAMS_DICT = {
-        "LruTailAge":[#ratio,kLTAMinSlabs,slabProjectionLength,numSlabsFreeMem,interval
-                      [0.02,0.05,0.1,0.15,0.2],
-                      [1,2,3,4,5,6,7,8,9,10],
-                      [0,1,2,3],
-                      [1,2,3,4,5,6,7,8,9,10],
-                      [1,2,3,4,5]
-                      ],              
-        "HitsPerSlab":[[1,2,3,4,5],[1,2,3,4,5]],              #minSlabs,interval
-        "MarginalHits":[[1,2,3,4,5]],                #interval
-        "FreeMem":[[1,2,3,4,5],[1,2,3,4,5]]                   #minSlabs,interval
+        "LruTailAge":[  [1], #interval(1) 
+                        [0.15,0.2,0.25],#tailAgeDifferenceRatio(0.25)
+                        [15,50,100], #minTailAgeDifference(100)
+                        [1], #minSlabs(1)
+                        [1,2,3], #numSlabsFreeMem(3)
+                        [1] #slabProjectionLength(1)
+                      ],      
+      "MarginalHits":[  [1], #interval(1)
+                        [0.2,0.3,0.4],#movingAverageParam(0.3)
+                        [1], #minSlabs(1)
+                        [1], #maxFreeMemSlabs(1)
+                    ],             
+      "HitsPerSlab":[   [1], #interval(1)
+                        [20,50,100], #minDiffs(100)
+                        [1], #minSlabs(1)
+                        [0.05,0.1,0.2], #diffRatio(0.1)
+                        [1,2,3], #numSlabsFreeMem(3)
+                        [0],#minLruTailAge(0)
+                        [0] #maxLruTailAge(0)
+                    ],                
+        "FreeMem":[     [1], #interval(1)
+                        [1], #minSlabs(1)
+                        [1,2,3], #numSlabsFreeMem(3)
+                        [1000] #maxUnAllocatedSlabs(1000)
+                    ]                           
         }
 
 
@@ -32,15 +47,14 @@ logger = logging.getLogger("generate_token")
 
 
 def chooseRebParams(strategy,option):
-    if option == "default": return "default"
-    allChoices = REB_PARAMS_DICT.get(strategy,[])
-    if allChoices == []: 
-        return "default"
-    else: 
+    if option == "randomized":
+        allChoices = REB_PARAMS_DICT[strategy]
         return (",".join([str(random.choice(paramList)) for paramList in allChoices]))
+    else: 
+        return option
 
 
-def run(out_file,tracepath,max_reqs,algo,cache_size,reb):
+def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams):
     if algo=="Lru": run_path = Lru_path;
     elif algo=="Lru2Q": run_path = Lru2Q_path;
     elif algo=="TinyLFU": run_path = TinyLFU_path;
@@ -48,8 +62,6 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb):
         print("unsupported algorithm ", algo);
     
     print("run path:", run_path,"output file:",out_file)
-
-    rebParams = "default"
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
 
@@ -72,8 +84,8 @@ if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--tracepath",type=str,required=True)
-    p.add_argument("--rebParams",type=str,required=True)
     p.add_argument("--reb",type=str,required=True)
+    p.add_argument("--rebParams",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--outputdir",type=str,required=True)
 
@@ -93,16 +105,19 @@ if __name__=="__main__":
     else:
         algos = ap.algos.split(",")
 
-    if not ap.outputdir.endswith("/"): ap.outputdir += "/"
 
     for algo in algos: 
         for cache_size in cache_sizes:
-            #rebParams = chooseRebParams(ap.suffix,ap.rebParams)
 
-            if ap.reb == "MarginalHits" and ap.algo != "Lru2Q": continue
-
-            output_file = ap.outputdir  +  ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + ".txt"        
+            if ap.reb == "MarginalHits" and algo != "Lru2Q": continue
             
-            print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}.".format(
-                ap.tracepath,algo,cache_size,ap.reb))
-            run(output_file,ap.tracepath,ap.max_reqs,algo=algo,cache_size=cache_size,reb=ap.reb)
+            rebParams = chooseRebParams(ap.reb,ap.rebParams)
+
+            output_file = os.path.join(ap.outputdir,
+                    ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + "_" + rebParams)
+                        
+            print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}, rebParams: {}.".format(
+                ap.tracepath,algo,cache_size,ap.reb,rebParams))
+
+            run(output_file,ap.tracepath,ap.max_reqs,
+                    algo=algo,cache_size=cache_size,reb=ap.reb,rebParams=ap.rebParams)
