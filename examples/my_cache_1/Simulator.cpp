@@ -17,7 +17,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -84,7 +84,7 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 	auto tailAgeDifferenceRatio = 0.1;
 	auto minTailAgeDifference = 100;
   	unsigned int minSlabs = 1;
-	auto numSlabsFreeMem = 5;
+	auto numSlabsFreeMem = 3;
 	auto slabProjectionLength = 1;
 	
 	parseParams_LruTailAge(rebParams,&interval,
