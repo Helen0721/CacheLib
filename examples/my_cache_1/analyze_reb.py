@@ -33,7 +33,7 @@ FAIL_REASONS = {
                        "improv. < minTailAgeDifference", 
                        "improv. < diffRatio * vPTA"],
         "FreeMem" : ["all classes are evicting",
-                     "Total free mem. smaller than threshold",
+                     "Total free mem.", #smaller than threshold",
                      ] ,
         "MarginalHits": ["invalid max or main ranks"],
         "HitsPerSlab": ["invalid class id", 
@@ -48,11 +48,39 @@ FAILALLOC_TRIGGERED_s = "hold off started w/o triggering strategy specific pickV
 ABBRV = {
     FAIL_REASONS["Universal"][0]: "FreeAllocAbvThrsld",
     FAIL_REASONS["Universal"][1]: "FreeMemNotAlloc",
+    FAIL_REASONS["FreeMem"][1]: "Total free mem. smaller than thrshld",
     STRTGY_TRIGGERED_s: "StrtgyTriggered",
     FAILALLOC_TRIGGERED_s: "TriggeredByFailAlloc",
     }
 MISS_RATIO_s = "Final Miss Ratio"
 
+
+def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
+    
+    f = open(cnt_result_file,"r")
+    results = f.read().split("\n\n")
+    
+    results_for_cs = [r for r in results if cache_size in r]
+    
+    best_i,best_mr = -1,1.0
+    
+    for (i,r) in enumerate(results_for_cs):
+        mr_s = r.split(MISS_RATIO_s)[1][3:-1]
+        mr = float(mr_s)
+        if mr < best_mr:
+            best_i = i
+            best_mr = mr
+    
+    if best_mr == 1.0:
+        sys.stdout = sys.__stdout__
+        print("Error parsing file",cnt_result_file)
+        print(results)
+        exit()
+
+
+    print("Best result for cache size {} and reb. strategy {}...".format(cache_size,rebalance_strategy))
+    print(results_for_cs[best_i])
+    print()
 
 def collect_cnts(file,reb):
 
@@ -71,7 +99,10 @@ def collect_cnts(file,reb):
         res[ABBRV[r]] = stdout_str.count(r)
     
     for i,r in enumerate(FAIL_REASONS[reb]):
-        res[r] = stdout_str.count(r)
+        if reb=="FreeMem" and i == 1:
+            res[ABBRV[r]] = stdout_str.count(r)
+        else:
+            res[r] = stdout_str.count(r)
    
 
     hr_list = []
@@ -96,42 +127,57 @@ def collect_cnts(file,reb):
 if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--output_folder",type=str,required=True)
-    #p.add_argument("--plot_folder",type=str,required=True)
+    p.add_argument("--summarize_cnt",type=str,required=True)
+    p.add_argument("--output_folder",type=str,required=True) 
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--rebalance_strategies",type=str,required=True)
 
     p.add_argument("--cache_sizes",type=str,default="all")
     p.add_argument("--algo",type=str,default="all")
-
-    p.add_argument("--result_file",type=str,default="None")
+    p.add_argument("--stdout_file",type=str,default="default")
 
     ap = p.parse_args()  
-   
+ 
     # given a trace, x axis is the cache size. y axis is the miss ratio.  
-    # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy]
+    # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy] 
 
     if (ap.cache_sizes=="all"):
         cache_sizes = CACHE_SIZES
     else:
-        cache_sizes = ap.cache_sizes.split(",")
-
+        cache_sizes = ap.cache_sizes.split(",") 
 
     if (ap.rebalance_strategies=="all"):
         rebalance_strategies = REBALANCEING_STRATEGIES
     else:
         rebalance_strategies = ap.rebalance_strategies.split(",")
+    
+    
+    if ap.stdout_file != "default":
+        print("Redirecting stdout to",ap.stdout_file)
+        summary_best_file = open(ap.stdout_file,"w")
+        sys.stdout = summary_best_file
+    
+    if ap.summarize_cnt == "yes": 
+        sys.stdout = sys.__stdout__
+        print("Summarizing counts...")
+        if ap.stdout_file != "default": sys.stdout = summary_best_file
 
+
+        for reb in rebalance_strategies:
+            for cache_size in cache_sizes:
+                result_file = os.path.join(ap.output_folder,reb+".txt")
+                summarize_all_cnts(result_file,cache_size,reb)
+        
+        if ap.stdout_file != "default":
+            sys.stdout = sys.__stdout__
+            summary_best_file.close()
+        
+        exit()
 
     if ap.algo=="all":
         algos = ALGOS
     else:
         algos = [ap.algo]
-    
-    if ap.result_file != "None":
-        result_file = open(ap.result_file,"w")
-        sys.stdout = result_file
-
 
     for (j,rebalance_strategy) in enumerate(rebalance_strategies):
         all_files_for_reb = os.listdir(os.path.join(ap.output_folder,rebalance_strategy))
@@ -155,6 +201,6 @@ if __name__=="__main__":
                     print(cnt_res)
                     print()
 
-    if ap.result_file != "None":
+    if ap.stdout_file != "default":
         sys.stdout = sys.__stdout__
-        result_file.close()
+        summary_best_file.close()

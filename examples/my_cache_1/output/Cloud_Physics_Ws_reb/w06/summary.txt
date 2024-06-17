@@ -1,0 +1,39 @@
+FreeMem: 
+
+The FreeMem strategy is not getting triggered, even when we vary the reb parameters.
+The main source of failure comes from the total free memory of the class is smaller than pre-defined threshold. 
+-> The pre-defined threshold is the minimum number of slabs existed. 
+-> The total free memory of a class is usually 0.
+The rebalancing strategies are triggered sometimes when there is a alloc failure.
+
+Therefore the stats don't vary as much.
+
+
+HitsPerSlab:
+
+I varied the minDiff, diffRatio, minSlabs, and numSlabsFreeMem.
+
+At 256MB: 
+The best configuration is minDiff:100,diffRatio:0.200000,minSlabs:2,numSlabsFreeMem:0,minLruTailAge:0,maxLruTailAge:0
+where the miss ratio becomes 0.196.
+The worst configuration is minDiff:20,diffRatio:0.200000,minSlabs:3,numSlabsFreeMem:0,minLruTailAge:0,maxLruTailAge:0, with miss ratio 0.201571. 
+The strategy is triggered around half of the time. 1/5 a slab is released according to alloc failure.
+
+The main source of failure comes from:
+1. the Receiver class's projected delta hits per slab (rDHpS) is less than the victim's projected delta hits per slab (vPDHpS) 
+2. the difference between (vPDHpS - rDHpS)  is not greater than diff ratio * victim's projected delta hits per slab.
+
+
+At 512MB:
+The best configuration is Lru with 100,1,0.2,2,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge). The miss ratio is 0.11747
+The worst configuration is Lru2Q with 100,1,0.05,3,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge). The miss ratio is 0.1207. 
+
+The strategy is triggered over 95% of the time. 
+We see a little bit of the difference between (vPDHpS - rDHpS) not greater than the diff ratio. 
+
+
+At 1GB:
+The best miss ratio is 0.074114. Configuration is 20,1,0.1,2,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge)
+The worst miss ratio is 0.075513. Configuration is 100,1,0.1,1,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge)
+
+
