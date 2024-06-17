@@ -51,13 +51,16 @@ ABBRV = {
     STRTGY_TRIGGERED_s: "StrtgyTriggered",
     FAILALLOC_TRIGGERED_s: "TriggeredByFailAlloc",
     }
+MISS_RATIO_s = "Final Miss Ratio"
 
 
 def collect_cnts(file,reb):
 
     with open(file,"r") as f:
         stdout_str = f.read()
-
+        stdout_str_L = stdout_str.split("\n")
+    
+    print(stdout_str_L[:4])
 
     res = {"total_attempts": stdout_str.count(START_REB_s),
             ABBRV[STRTGY_TRIGGERED_s]: stdout_str.count(STRTGY_TRIGGERED_s),
@@ -69,6 +72,22 @@ def collect_cnts(file,reb):
     
     for i,r in enumerate(FAIL_REASONS[reb]):
         res[r] = stdout_str.count(r)
+   
+
+    hr_list = []
+    hr_regex=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
+    for (i,line) in enumerate(stdout_str_L):
+        if i == len(stdout_str_L) - 2: break 
+        
+        m = re.search(hr_regex,line) 
+
+        if not m: continue
+
+        hr_list.append(m.group("hit_ratio"))
+
+    final_hr = hr_list[-1]
+
+    res[MISS_RATIO_s] = 1-float(final_hr)
 
     return res
 
@@ -124,7 +143,8 @@ if __name__=="__main__":
                 
                 prefix = ap.name + "_" + algo + "_" +cache_size+"_"+rebalance_strategy
 
-                all_output_files = [f for f in all_files_for_reb if f.startswith(prefix)]
+                all_output_files = [f for f in all_files_for_reb if (
+                            f.startswith(prefix) and not f.endswith(".txt"))]
                 
                 for output_file in all_output_files:
                     output_file_ = os.path.join(ap.output_folder,rebalance_strategy,output_file)
@@ -133,6 +153,7 @@ if __name__=="__main__":
                     cnt_res = collect_cnts(output_file_,rebalance_strategy)
 
                     print(cnt_res)
+                    print()
 
     if ap.result_file != "None":
         sys.stdout = sys.__stdout__
