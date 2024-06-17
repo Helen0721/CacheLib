@@ -60,7 +60,7 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
     f = open(cnt_result_file,"r")
     results = f.read().split("\n\n")
     
-    results_for_cs = [r for r in results if cache_size in r]
+    results_for_cs = [r for r in results if cache_size+"_" in r]
     
     best_i,best_mr = -1,1.0
     
