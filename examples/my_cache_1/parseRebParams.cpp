@@ -65,6 +65,7 @@ void parseParams_HitsPerSlab(char *HPSParams,int *interval,int *minDiff,unsigned
 
   int i = 0;
   while (std::getline(ss, token, delimiter)) {
+	std::cout<<"token: " << token << ", ";
 	if (i == 0) *interval = std::stoi(token); 
 	else if (i == 1) *minDiff = std::stoi(token); 
 	else if (i == 2) *minSlabs = std::stoi(token); 
@@ -74,6 +75,9 @@ void parseParams_HitsPerSlab(char *HPSParams,int *interval,int *minDiff,unsigned
 	else if (i==6) *maxLruTailAge = std::stoi(token);
 	i += 1;	
   }
+  printf("HPS-parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
+		  *interval, *minDiff, *minSlabs, *diffRatio, *numSlabsFreeMem, *minLruTailAge, *maxLruTailAge);
+
 }
 
 
@@ -92,10 +96,13 @@ void parseParams_FreeMem(char *FMParams,int *interval,unsigned int *minSlabs,
 
   int i = 0;
   while (std::getline(ss, token, delimiter)) {
+	std::cout<<"token: " << token << ", ";
 	if (i == 0) *interval = std::stoi(token);
 	else if (i == 1) *minSlabs = std::stoi(token);
-	else if (i == 3) *numSlabsFreeMem = std::stoi(token);
-	else if (i == 4) *maxUnAllocatedSlabs = std::stoi(token);
+	else if (i == 2) *numSlabsFreeMem = std::stoi(token);
+	else if (i == 3) *maxUnAllocatedSlabs = (size_t)std::stoi(token);
 	i += 1;
   }
+  printf("FM-parsed params...interval: %d, minSlabs:%d,numSlabsFreeMem:%d,maxUnAllocSlabs:%lu...",
+		  *interval, *minSlabs, *numSlabsFreeMem, *maxUnAllocatedSlabs);
 }

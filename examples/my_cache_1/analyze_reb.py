@@ -80,17 +80,19 @@ if __name__=="__main__":
     p.add_argument("--output_folder",type=str,required=True)
     #p.add_argument("--plot_folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
-    
-    p.add_argument("--cache_sizes",type=str,default="")
-    p.add_argument("--rebalance_strategies",type=str,default="all")
+    p.add_argument("--rebalance_strategies",type=str,required=True)
+
+    p.add_argument("--cache_sizes",type=str,default="all")
     p.add_argument("--algo",type=str,default="all")
+
+    p.add_argument("--result_file",type=str,default="None")
 
     ap = p.parse_args()  
    
     # given a trace, x axis is the cache size. y axis is the miss ratio.  
     # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy]
 
-    if (ap.cache_sizes==""):
+    if (ap.cache_sizes=="all"):
         cache_sizes = CACHE_SIZES
     else:
         cache_sizes = ap.cache_sizes.split(",")
@@ -106,16 +108,32 @@ if __name__=="__main__":
         algos = ALGOS
     else:
         algos = [ap.algo]
+    
+    if ap.result_file != "None":
+        result_file = open(ap.result_file,"w")
+        sys.stdout = result_file
 
 
-    for (i,algo) in enumerate(algos):
-        for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+    for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+        all_files_for_reb = os.listdir(os.path.join(ap.output_folder,rebalance_strategy))
+
+        for (i,algo) in enumerate(algos):
             if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
 
-            for cache_size in cache_sizes:     
-                output_file =os.path.join(ap.output_folder,
-                        ap.name + "_" + algo + "_" +cache_size+"_"+rebalance_strategy+".txt")
+            for cache_size in cache_sizes: 
+                
+                prefix = ap.name + "_" + algo + "_" +cache_size+"_"+rebalance_strategy
 
-                cnt_res = collect_cnts(output_file,rebalance_strategy)
+                all_output_files = [f for f in all_files_for_reb if f.startswith(prefix)]
+                
+                for output_file in all_output_files:
+                    output_file_ = os.path.join(ap.output_folder,rebalance_strategy,output_file)
+                    print(output_file_)
 
-                print(cnt_res)
+                    cnt_res = collect_cnts(output_file_,rebalance_strategy)
+
+                    print(cnt_res)
+
+    if ap.result_file != "None":
+        sys.stdout = sys.__stdout__
+        result_file.close()

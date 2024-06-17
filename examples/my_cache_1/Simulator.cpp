@@ -144,12 +144,16 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 			  &numSlabsFreeMem,
 			  &minLruTailAge,
 			  &maxLruTailAge
-			  ); 
+			  );  
+
 	  cachelib::HitsPerSlabStrategy::Config hpsConfig(diffRatio,minSlabs,minLruTailAge);
 	  hpsConfig.minDiff = minDiff;
 	  hpsConfig.numSlabsFreeMem = numSlabsFreeMem;
 	  hpsConfig.maxLruTailAge = maxLruTailAge;
 
+	  printf("parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
+		  interval, hpsConfig.minDiff, hpsConfig.minSlabs, hpsConfig.diffRatio, hpsConfig.numSlabsFreeMem, hpsConfig.minLruTailAge, hpsConfig.maxLruTailAge);
+	  
 	  cache_config.enablePoolRebalancing(
 			  std::make_shared<cachelib::HitsPerSlabStrategy>(hpsConfig),
 			  std::chrono::seconds{interval}
