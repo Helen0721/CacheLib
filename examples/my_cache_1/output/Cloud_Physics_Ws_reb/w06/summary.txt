@@ -1,6 +1,6 @@
 FreeMem: 
 
-The FreeMem strategy is not getting triggered, even when we vary the reb parameters.
+The FreeMem strategy is never actually getting triggered, even when we vary the reb parameters.
 The main source of failure comes from the total free memory of the class is smaller than pre-defined threshold. 
 -> The pre-defined threshold is the minimum number of slabs existed. 
 -> The total free memory of a class is usually 0.
@@ -13,27 +13,54 @@ HitsPerSlab:
 
 I varied the minDiff, diffRatio, minSlabs, and numSlabsFreeMem.
 
-At 256MB: 
-The best configuration is minDiff:100,diffRatio:0.200000,minSlabs:2,numSlabsFreeMem:0,minLruTailAge:0,maxLruTailAge:0
-where the miss ratio becomes 0.196.
-The worst configuration is minDiff:20,diffRatio:0.200000,minSlabs:3,numSlabsFreeMem:0,minLruTailAge:0,maxLruTailAge:0, with miss ratio 0.201571. 
-The strategy is triggered around half of the time. 1/5 a slab is released according to alloc failure.
+The impact factor is cache size > eviction algorithm > HitsPerSlab parameters. 
+We actually don't want the HitsPerSlab strategy to be triggered too often. 
 
-The main source of failure comes from:
-1. the Receiver class's projected delta hits per slab (rDHpS) is less than the victim's projected delta hits per slab (vPDHpS) 
-2. the difference between (vPDHpS - rDHpS)  is not greater than diff ratio * victim's projected delta hits per slab.
+256MB: Varying the rebalance parameters usually cause the final miss ratio to vary for 0.04% - 0.07%. 
+512MB: 0.02% - 0.03%
+1GB: 0...
 
-
-At 512MB:
-The best configuration is Lru with 100,1,0.2,2,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge). The miss ratio is 0.11747
-The worst configuration is Lru2Q with 100,1,0.05,3,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge). The miss ratio is 0.1207. 
-
-The strategy is triggered over 95% of the time. 
-We see a little bit of the difference between (vPDHpS - rDHpS) not greater than the diff ratio. 
+The larger the cache size, the smaller the difference. Once we hit 32GB, no difference observed. 
 
 
-At 1GB:
-The best miss ratio is 0.074114. Configuration is 20,1,0.1,2,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge)
-The worst miss ratio is 0.075513. Configuration is 100,1,0.1,1,0,0 (minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge)
+LruTailAge:
+Triggering LruTailAge is better than not triggering for cache size from 2GB to 16GB, inclusive
+Lru2Q for some reasons never triggered LruTailAge. The difference between vPTA and rTA is too small. 
+
+256MB:
+Not triggerd. The main reason for not getting triggered is (vPTA - rTA) improv. < minTailAgeDifference.
+Their difference is usually like less than 5.
+Not really sure where the difference is coming from tho. 
+But we observe the for TinyLFU, the rebalance parameters seem to affect the number of attempts made. 
+512MB:
+Triggered for TinyLFU (like 1/83 and 4/92)
+minTailAgeDifference,numSlabsFreeMem makes the difference.
+1GB:
+Triggered for TinyLFU (like 5/81 and 6/87)
+minTailAgeDifference,numSlabsFreeMem makes the difference.
+
+2GB:
+Sometimes Triggered for Lru. 
+This one showed that rebalancing can be helpful.
+Best configuration parameters:"tailAgeDifferenceRatio: 0.200000,minTailAgeDifference:15,minSlabs:1,numSlabsFreeMem:1,slabProjectionLength:1"
+Stats: {'total_attempts': 70, 'StrtgyTriggered': 50, 'TriggeredByFailAlloc': 3, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 1, 'vPTA < rTA': 0, 'improv. < minTailAgeDifference': 15, 'improv. < diffRatio * vPTA': 0, 'Final Miss Ratio': 0.088758}
+Worst configuration parameters: "tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1"
+{'total_attempts': 74, 'StrtgyTriggered': 0, 'TriggeredByFailAlloc': 3, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 1, 'vPTA < rTA': 0, 'improv. < minTailAgeDifference': 69, 'improv. < diffRatio * vPTA': 0, 'Final Miss Ratio': 0.128143}
+Difference between best and worst in miss ratio: 0.039385
+
+Sometimes triggered for TinyLFU:
+Best configuration: "tailAgeDifferenceRatio: 0.150000,minTailAgeDifference:15,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1"
+stats: {'total_attempts': 76, 'StrtgyTriggered': 55, 'TriggeredByFailAlloc': 3, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 1, 'vPTA < rTA': 0, 'improv. < minTailAgeDifference': 16, 'improv. < diffRatio * vPTA': 0, 'Final Miss Ratio': 0.08418599999999998}
+
+Worst configuration: "tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1"
+stats: {'total_attempts': 81, 'StrtgyTriggered': 0, 'TriggeredByFailAlloc': 3, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 1, 'vPTA < rTA': 0, 'improv. < minTailAgeDifference': 76, 'improv. < diffRatio * vPTA': 0, 'Final Miss Ratio': 0.12134900000000004}
+
+Difference between best and worst in miss ratio: 0.03716300000000006
+
+.... 
 
 
+MarginalHits:
+I mainly varied the movingAverageParam [0.2,0.3,0.4]
+the difference for varying the parameters are usualy less than 0.1%. 
+For cache size from 1GB to 16GB inclusive, MarginalHits is triggered more than 80% of the time.

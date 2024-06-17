@@ -42,7 +42,8 @@ FAIL_REASONS = {
                         "improv.< diffRatio * vPDHpS" ]
         }
 
-STRTGY_TRIGGERED_s = "-hold off started."
+STRTGY_TRIGGERED_s = "hold off started."
+MarginalHits_triggered_s = " picked."
 FAILALLOC_TRIGGERED_s = "hold off started w/o triggering strategy specific pickVandRImp"
 
 ABBRV = {
@@ -50,22 +51,16 @@ ABBRV = {
     FAIL_REASONS["Universal"][1]: "FreeMemNotAlloc",
     FAIL_REASONS["FreeMem"][1]: "Total free mem. smaller than thrshld",
     STRTGY_TRIGGERED_s: "StrtgyTriggered",
+    MarginalHits_triggered_s: " StrtgyTriggered",
     FAILALLOC_TRIGGERED_s: "TriggeredByFailAlloc",
     }
 MISS_RATIO_s = "Final Miss Ratio"
 
-
-def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
-    
-    f = open(cnt_result_file,"r")
-    results = f.read().split("\n\n")
-    
-    results_for_cs = [r for r in results if "_"+cache_size+"_" in r]
-    
+def find_best_and_worst(results):
     best_i,best_mr = -1,1.0
     worst_i,worst_mr = -1,0.0
 
-    for (i,r) in enumerate(results_for_cs):
+    for (i,r) in enumerate(results):
         mr_s = r.split(MISS_RATIO_s)[1][3:-1]
         mr = float(mr_s)
 
@@ -76,11 +71,24 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
         if mr > worst_mr:
             worst_i = i
             worst_mr = mr
+
+    return (best_i, best_mr, worst_i, worst_mr)
+
+
+def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy,algos=None):
     
+    f = open(cnt_result_file,"r")
+    results = f.read().split("\n\n")
+    
+    results_for_cs = [r for r in results if "_"+cache_size+"_" in r]
+    
+    (best_i, best_mr, worst_i, worst_mr) = find_best_and_worst(results_for_cs)
+
+
     if best_mr == 1.0 or worst_mr == 0.0 :
         sys.stdout = sys.__stdout__
-        print("Error parsing file",cnt_result_file)
         print(results)
+        print("Error parsing file",cnt_result_file)
         exit()
 
 
@@ -89,8 +97,36 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
     print()
     print("Worst result for cache size {} and reb. strategy {}...".format(cache_size,rebalance_strategy))
     print(results_for_cs[worst_i])
+    print("\n\n")    
 
-    print("\n\n")
+    if algos!=None:
+        sys.stdout = sys.__stdout__
+        print("Comparison of rebalance strategies within eviction algorithm under fixed cache size...")
+        if ap.stdout_file != "default": sys.stdout = summary_best_file
+
+        for algo in algos:
+            if rebalance_strategy == "MarginalHits" and algo!="Lru2Q": continue
+
+            results_for_algo = [r for r in results_for_cs if "_"+algo+"_" in r]
+            (best_i, best_mr, worst_i, worst_mr) = find_best_and_worst(results_for_algo)
+
+            if best_mr == 1.0 or worst_mr == 0.0 :
+                sys.stdout = sys.__stdout__
+                print(results)
+                print("Error parsing file",cnt_result_file)
+                exit()
+
+            print("Best result for cache size {} and reb. strategy {} and algo {}...".format(cache_size,rebalance_strategy,algo))
+            print(results_for_algo[best_i])
+            print()
+            print("Worst result for cache size {} and reb. strategy {} and algo {} ...".format(cache_size,rebalance_strategy,algo))
+            print(results_for_algo[worst_i])
+            print()
+            print("Difference between best and worst in miss ratio: {}".format(worst_mr - best_mr))
+            print()
+
+    print("-"*100,"\n\n")
+
 
 
 def collect_cnts(file,reb):
@@ -101,8 +137,13 @@ def collect_cnts(file,reb):
     
     print(stdout_str_L[:4])
 
+    if reb == "MarginalHits":
+        strategy_triggered_s = MarginalHits_triggered_s
+    else:
+        strategy_triggered_s  = STRTGY_TRIGGERED_s
+
     res = {"total_attempts": stdout_str.count(START_REB_s),
-            ABBRV[STRTGY_TRIGGERED_s]: stdout_str.count(STRTGY_TRIGGERED_s),
+            ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
           }
     
@@ -161,7 +202,12 @@ if __name__=="__main__":
         rebalance_strategies = REBALANCEING_STRATEGIES
     else:
         rebalance_strategies = ap.rebalance_strategies.split(",")
-    
+
+
+    if ap.algo=="all":
+        algos = ALGOS
+    else:
+        algos = [ap.algo]
     
     if ap.stdout_file != "default":
         print("Redirecting stdout to",ap.stdout_file)
@@ -177,7 +223,7 @@ if __name__=="__main__":
         for reb in rebalance_strategies:
             for cache_size in cache_sizes:
                 result_file = os.path.join(ap.output_folder,reb+".txt")
-                summarize_all_cnts(result_file,cache_size,reb)
+                summarize_all_cnts(result_file,cache_size,reb,algos)
         
         if ap.stdout_file != "default":
             sys.stdout = sys.__stdout__
@@ -185,10 +231,6 @@ if __name__=="__main__":
         
         exit()
 
-    if ap.algo=="all":
-        algos = ALGOS
-    else:
-        algos = [ap.algo]
 
     for (j,rebalance_strategy) in enumerate(rebalance_strategies):
         all_files_for_reb = os.listdir(os.path.join(ap.output_folder,rebalance_strategy))
