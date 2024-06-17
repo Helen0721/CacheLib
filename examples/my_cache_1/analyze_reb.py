@@ -63,15 +63,21 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
     results_for_cs = [r for r in results if "_"+cache_size+"_" in r]
     
     best_i,best_mr = -1,1.0
-    
+    worst_i,worst_mr = -1,0.0
+
     for (i,r) in enumerate(results_for_cs):
         mr_s = r.split(MISS_RATIO_s)[1][3:-1]
         mr = float(mr_s)
+
         if mr < best_mr:
             best_i = i
             best_mr = mr
+
+        if mr > worst_mr:
+            worst_i = i
+            worst_mr = mr
     
-    if best_mr == 1.0:
+    if best_mr == 1.0 or worst_mr == 0.0 :
         sys.stdout = sys.__stdout__
         print("Error parsing file",cnt_result_file)
         print(results)
@@ -81,6 +87,11 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy):
     print("Best result for cache size {} and reb. strategy {}...".format(cache_size,rebalance_strategy))
     print(results_for_cs[best_i])
     print()
+    print("Worst result for cache size {} and reb. strategy {}...".format(cache_size,rebalance_strategy))
+    print(results_for_cs[worst_i])
+
+    print("\n\n")
+
 
 def collect_cnts(file,reb):
 
