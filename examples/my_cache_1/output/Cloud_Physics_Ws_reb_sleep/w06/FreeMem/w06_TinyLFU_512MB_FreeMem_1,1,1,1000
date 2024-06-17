@@ -1,5 +1,5 @@
-Initializing Cache...FreeMem Rebalancing init. FreeMem.h-Config updated
-MFS::MFS(Config config): minSlabs:1,numFreeSlabs:1000,maxUnAllocatedSlabs:1000 
+Initializing Cache...FreeMem Rebalancing init. token: 1, token: 1, token: 1, token: 1000, FM-parsed params...interval: 1, minSlabs:1,numSlabsFreeMem:1,maxUnAllocSlabs:1000...FreeMem.h-Config updated
+MFS::MFS(Config config): minSlabs:1,numFreeSlabs:1,maxUnAllocatedSlabs:1000 
 Cache Initialized. size: 512MB
 hit ratio:0.61658,time:3142
 hit ratio:0.704335,time:6315
@@ -8,650 +8,648 @@ hit ratio:0.77162,time:10959
 hit ratio:0.786674,time:13417
 hit ratio:0.798112,time:13626
 hit ratio:0.808401,time:14146
+hit ratio:0.808344,time:15444
 Trying Rebalancing..
-RebStrtgy-pickVAndR...hit ratio:0.808344,time:15444
-hit ratio:0.800153,time:16860
+RebStrtgy-pickVAndR...hit ratio:0.800153,time:16860
 hit ratio:0.764604,time:17599
 hit ratio:0.708966,time:17811
 hit ratio:0.668516,time:18104
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.625803,time:18298
 hit ratio:0.595621,time:18637
 alloc failed. 4388617,32398120,487424,9223372036854775807
 Trying Rebalancing..
 RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:30 r:39
-hit ratio:0.571353,time:19012
+hit ratio:0.571355,time:19012
 alloc failed. 4388794,28004480,610304,1624126
 Trying Rebalancing..
 RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:30 r:40
 alloc failed. 4389261,41891528,954368,7044757
 Trying Rebalancing..
 RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:30 r:42
-hit ratio:0.553574,time:19668
-hit ratio:0.530566,time:20093
-hit ratio:0.510992,time:20498
-hit ratio:0.500539,time:20900
+hit ratio:0.553584,time:19668
+hit ratio:0.53058,time:20093
+hit ratio:0.511007,time:20498
+hit ratio:0.500553,time:20900
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.483692,time:21275
-hit ratio:0.475254,time:21770
-hit ratio:0.463407,time:22114
-hit ratio:0.447995,time:22344
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.483707,time:21275
+hit ratio:0.475269,time:21770
+hit ratio:0.463418,time:22114
+hit ratio:0.448008,time:22344
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.434125,time:22628
-hit ratio:0.423716,time:23150
-hit ratio:0.441957,time:24908
-hit ratio:0.451471,time:25188
-hit ratio:0.464378,time:25300
-hit ratio:0.477299,time:25488
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.434136,time:22628
+hit ratio:0.423726,time:23150
+hit ratio:0.441966,time:24908
+hit ratio:0.451478,time:25188
+hit ratio:0.464384,time:25300
+hit ratio:0.477301,time:25488
 hit ratio:0.489492,time:25818
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
 hit ratio:0.501527,time:26351
-hit ratio:0.513268,time:26764
-hit ratio:0.523325,time:27358
-hit ratio:0.53409,time:27776
-hit ratio:0.543536,time:27946
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.513266,time:26764
+hit ratio:0.523328,time:27358
+hit ratio:0.534092,time:27776
+hit ratio:0.543535,time:27946
 hit ratio:0.552401,time:28327
-hit ratio:0.56133,time:29096
-hit ratio:0.568738,time:31791
-hit ratio:0.577088,time:34810
+hit ratio:0.561329,time:29096
+hit ratio:0.568736,time:31791
+hit ratio:0.577089,time:34810
+hit ratio:0.585344,time:36806
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.585343,time:36806
-hit ratio:0.5911,time:38555
-hit ratio:0.598527,time:41543
-hit ratio:0.604305,time:44101
-hit ratio:0.611426,time:46589
-hit ratio:0.614004,time:46755
-hit ratio:0.618536,time:46891
-hit ratio:0.624071,time:47233
-hit ratio:0.629315,time:47559
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.591102,time:38555
+hit ratio:0.598529,time:41543
+hit ratio:0.604309,time:44101
+hit ratio:0.611431,time:46589
+hit ratio:0.614009,time:46755
+hit ratio:0.618541,time:46891
+hit ratio:0.624076,time:47233
+hit ratio:0.629318,time:47559
+hit ratio:0.634646,time:48072
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.634643,time:48072
-hit ratio:0.638903,time:48705
-hit ratio:0.643438,time:49375
-hit ratio:0.648333,time:49560
-hit ratio:0.652542,time:49998
-hit ratio:0.656303,time:51848
-hit ratio:0.660573,time:54270
-hit ratio:0.664882,time:57254
-hit ratio:0.669371,time:59008
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.638906,time:48705
+hit ratio:0.64344,time:49375
+hit ratio:0.648335,time:49560
+hit ratio:0.652545,time:49998
+hit ratio:0.656307,time:51848
+hit ratio:0.660578,time:54270
+hit ratio:0.664886,time:57254
+hit ratio:0.669373,time:59008
+hit ratio:0.673009,time:61527
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.673006,time:61527
-hit ratio:0.675183,time:64243
-hit ratio:0.677671,time:66877
-hit ratio:0.681754,time:67739
-hit ratio:0.683744,time:68372
-hit ratio:0.684791,time:68595
-hit ratio:0.687513,time:68809
-hit ratio:0.6902,time:69074
-hit ratio:0.693206,time:69532
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.675185,time:64243
+hit ratio:0.677674,time:66877
+hit ratio:0.681758,time:67739
+hit ratio:0.683749,time:68372
+hit ratio:0.684795,time:68595
+hit ratio:0.687515,time:68809
+hit ratio:0.690201,time:69074
+hit ratio:0.693207,time:69532
+hit ratio:0.696269,time:69927
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.696268,time:69927
-hit ratio:0.698814,time:70488
-hit ratio:0.701395,time:71159
-hit ratio:0.701957,time:72863
-hit ratio:0.701192,time:74045
-hit ratio:0.702374,time:74138
-hit ratio:0.703406,time:74502
-hit ratio:0.705479,time:74975
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.698815,time:70488
+hit ratio:0.701397,time:71159
+hit ratio:0.701958,time:72863
+hit ratio:0.701193,time:74045
+hit ratio:0.702375,time:74138
+hit ratio:0.703407,time:74502
+hit ratio:0.70548,time:74975
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.705719,time:77639
-hit ratio:0.706406,time:80447
-hit ratio:0.707338,time:82451
-hit ratio:0.708939,time:82863
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.70572,time:77639
+hit ratio:0.706407,time:80447
+hit ratio:0.707339,time:82451
+hit ratio:0.70894,time:82863
 hit ratio:0.709755,time:84865
-hit ratio:0.710662,time:87786
+hit ratio:0.710661,time:87786
 hit ratio:0.712077,time:90737
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
 hit ratio:0.713217,time:93768
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.714659,time:95938
-hit ratio:0.716694,time:96341
-hit ratio:0.718663,time:96974
-hit ratio:0.719976,time:99826
-hit ratio:0.721256,time:102508
-hit ratio:0.722505,time:105477
+hit ratio:0.716698,time:96341
+hit ratio:0.718666,time:96974
+hit ratio:0.71998,time:99826
+hit ratio:0.721259,time:102508
+hit ratio:0.722506,time:105477
 hit ratio:0.724142,time:106893
 hit ratio:0.726246,time:107226
+hit ratio:0.728065,time:107507
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.728064,time:107507
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.729747,time:107807
 hit ratio:0.731227,time:108142
 hit ratio:0.731898,time:108446
-hit ratio:0.731125,time:108758
+hit ratio:0.731126,time:108758
 hit ratio:0.731755,time:109154
 hit ratio:0.733079,time:109546
 hit ratio:0.73408,time:110731
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
 hit ratio:0.734999,time:112354
-hit ratio:0.736198,time:113686
-hit ratio:0.737493,time:114877
-hit ratio:0.73905,time:115188
-hit ratio:0.740184,time:115882
-hit ratio:0.741144,time:116892
-hit ratio:0.742368,time:118656
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.736199,time:113686
+hit ratio:0.737494,time:114877
+hit ratio:0.739051,time:115188
+hit ratio:0.740186,time:115882
+hit ratio:0.741145,time:116892
+hit ratio:0.742369,time:118656
 hit ratio:0.743291,time:121430
-hit ratio:0.74426,time:121786
+hit ratio:0.744261,time:121786
+hit ratio:0.745256,time:122816
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.745255,time:122816
-hit ratio:0.746087,time:124668
-hit ratio:0.746751,time:127238
-hit ratio:0.747185,time:129995
-hit ratio:0.746995,time:132071
-hit ratio:0.7483,time:133039
-hit ratio:0.747692,time:133204
-hit ratio:0.748254,time:133322
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.746088,time:124668
+hit ratio:0.746752,time:127238
+hit ratio:0.747186,time:129995
+hit ratio:0.746997,time:132071
+hit ratio:0.748302,time:133039
+hit ratio:0.747694,time:133204
+hit ratio:0.748256,time:133322
+hit ratio:0.749321,time:133652
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.749319,time:133652
-hit ratio:0.750145,time:134026
-hit ratio:0.75119,time:134555
-hit ratio:0.751881,time:135137
-hit ratio:0.752494,time:135823
-hit ratio:0.753436,time:136012
-hit ratio:0.754437,time:136364
-hit ratio:0.755046,time:138593
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.750146,time:134026
+hit ratio:0.751192,time:134555
+hit ratio:0.751882,time:135137
+hit ratio:0.752495,time:135823
+hit ratio:0.753438,time:136012
+hit ratio:0.75444,time:136364
+hit ratio:0.755052,time:138593
+hit ratio:0.756012,time:139831
+hit ratio:0.756924,time:141681
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.756007,time:139831
-hit ratio:0.756918,time:141681
-hit ratio:0.757854,time:143544
-hit ratio:0.758912,time:146768
-hit ratio:0.75998,time:148735
-hit ratio:0.760202,time:150028
-hit ratio:0.761182,time:150521
-hit ratio:0.762189,time:150891
-hit ratio:0.763111,time:151211
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.75786,time:143544
+hit ratio:0.758918,time:146768
+hit ratio:0.759988,time:148735
+hit ratio:0.760211,time:150028
+hit ratio:0.761191,time:150521
+hit ratio:0.762196,time:150891
+hit ratio:0.763118,time:151211
+hit ratio:0.763907,time:151515
+hit ratio:0.763395,time:151870
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.7639,time:151515
-hit ratio:0.763388,time:151870
-hit ratio:0.762916,time:152131
-hit ratio:0.763541,time:152565
-hit ratio:0.763884,time:153357
-hit ratio:0.763988,time:154947
-hit ratio:0.764428,time:155832
-hit ratio:0.764998,time:156062
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.762923,time:152131
+hit ratio:0.763548,time:152565
+hit ratio:0.763891,time:153357
+hit ratio:0.763994,time:154947
+hit ratio:0.764433,time:155832
+hit ratio:0.765004,time:156062
+hit ratio:0.766076,time:156469
+hit ratio:0.76674,time:156949
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.76607,time:156469
-hit ratio:0.766733,time:156949
-hit ratio:0.766754,time:157963
-hit ratio:0.766676,time:160903
-hit ratio:0.767037,time:162582
-hit ratio:0.767983,time:163833
-hit ratio:0.768643,time:166666
-hit ratio:0.769277,time:168855
-hit ratio:0.770464,time:169028
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.766759,time:157963
+hit ratio:0.766683,time:160903
+hit ratio:0.767043,time:162582
+hit ratio:0.76799,time:163833
+hit ratio:0.76865,time:166666
+hit ratio:0.769286,time:168855
+hit ratio:0.770472,time:169028
+hit ratio:0.771215,time:171344
+hit ratio:0.772124,time:172003
+hit ratio:0.77308,time:172180
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.771206,time:171344
-hit ratio:0.772115,time:172003
-hit ratio:0.773071,time:172180
-hit ratio:0.773992,time:172491
-hit ratio:0.774753,time:172813
-hit ratio:0.77555,time:173161
-hit ratio:0.774905,time:173420
-hit ratio:0.775085,time:173835
-hit ratio:0.775612,time:174110
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.774002,time:172491
+hit ratio:0.774762,time:172813
+hit ratio:0.775558,time:173161
+hit ratio:0.774913,time:173420
+hit ratio:0.775092,time:173835
+hit ratio:0.775619,time:174110
+hit ratio:0.775907,time:174635
+hit ratio:0.775998,time:175521
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.7759,time:174635
-hit ratio:0.775991,time:175521
-hit ratio:0.776146,time:177124
-hit ratio:0.77652,time:179932
-hit ratio:0.776491,time:181985
-hit ratio:0.777519,time:182097
-hit ratio:0.778368,time:182448
-hit ratio:0.779106,time:183033
-hit ratio:0.779745,time:183657
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.776153,time:177124
+hit ratio:0.776528,time:179932
+hit ratio:0.776496,time:181985
+hit ratio:0.777526,time:182097
+hit ratio:0.778374,time:182448
+hit ratio:0.779111,time:183033
+hit ratio:0.779751,time:183657
+hit ratio:0.780007,time:184084
+hit ratio:0.780578,time:184604
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.780001,time:184084
-hit ratio:0.780573,time:184604
-hit ratio:0.780759,time:186670
-hit ratio:0.781105,time:189193
-hit ratio:0.781496,time:191769
-hit ratio:0.782072,time:194249
-hit ratio:0.782009,time:196182
-hit ratio:0.782911,time:197311
-hit ratio:0.783579,time:197753
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.780764,time:186670
+hit ratio:0.781111,time:189193
+hit ratio:0.781503,time:191769
+hit ratio:0.782078,time:194249
+hit ratio:0.782017,time:196182
+hit ratio:0.782919,time:197311
+hit ratio:0.783587,time:197753
+hit ratio:0.782794,time:198068
+hit ratio:0.782637,time:198227
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.782786,time:198068
-hit ratio:0.782628,time:198227
-hit ratio:0.78296,time:198412
-hit ratio:0.783244,time:198918
-hit ratio:0.783728,time:199319
-hit ratio:0.784016,time:199751
-hit ratio:0.784422,time:200233
-hit ratio:0.784752,time:200684
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.782969,time:198412
+hit ratio:0.783252,time:198918
+hit ratio:0.783736,time:199319
+hit ratio:0.784024,time:199751
+hit ratio:0.784429,time:200233
+hit ratio:0.784759,time:200684
+hit ratio:0.78521,time:201133
+hit ratio:0.785356,time:202768
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.785203,time:201133
-hit ratio:0.78535,time:202768
-hit ratio:0.785637,time:203014
-hit ratio:0.786402,time:203148
-hit ratio:0.78709,time:203708
-hit ratio:0.78744,time:204644
-hit ratio:0.787298,time:204961
-hit ratio:0.788166,time:205178
-hit ratio:0.788786,time:205437
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.785644,time:203014
+hit ratio:0.786409,time:203148
+hit ratio:0.787096,time:203708
+hit ratio:0.787445,time:204644
+hit ratio:0.787302,time:204961
+hit ratio:0.78817,time:205178
+hit ratio:0.78879,time:205437
+hit ratio:0.789166,time:207824
+hit ratio:0.789007,time:209729
+hit ratio:0.789704,time:211701
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.789162,time:207824
-hit ratio:0.789002,time:209729
-hit ratio:0.789701,time:211701
-hit ratio:0.790367,time:213685
-hit ratio:0.791026,time:216266
-hit ratio:0.791624,time:218702
-hit ratio:0.792352,time:220666
-hit ratio:0.793078,time:222745
-hit ratio:0.793925,time:222848
-hit ratio:0.794569,time:223771
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.79037,time:213685
+hit ratio:0.791028,time:216266
+hit ratio:0.791627,time:218702
+hit ratio:0.792355,time:220666
+hit ratio:0.793082,time:222745
+hit ratio:0.79393,time:222848
+hit ratio:0.794574,time:223771
+hit ratio:0.794934,time:226317
+hit ratio:0.795301,time:229004
+hit ratio:0.795783,time:231762
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.794929,time:226317
-hit ratio:0.795296,time:229004
-hit ratio:0.795778,time:231762
-hit ratio:0.796244,time:234500
-hit ratio:0.796964,time:235078
-hit ratio:0.797281,time:235692
-hit ratio:0.797784,time:236970
-hit ratio:0.797447,time:238845
-hit ratio:0.797969,time:240123
-hit ratio:0.798641,time:240280
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.79625,time:234500
+hit ratio:0.796968,time:235078
+hit ratio:0.797286,time:235692
+hit ratio:0.797789,time:236970
+hit ratio:0.797451,time:238845
+hit ratio:0.797974,time:240123
+hit ratio:0.798645,time:240280
+hit ratio:0.799017,time:240684
+hit ratio:0.79958,time:240970
+hit ratio:0.799233,time:241354
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.799012,time:240684
-hit ratio:0.799575,time:240970
-hit ratio:0.799227,time:241354
-hit ratio:0.798815,time:241656
-hit ratio:0.79894,time:241840
-hit ratio:0.799306,time:242367
-hit ratio:0.799576,time:242783
-hit ratio:0.799713,time:243424
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.79882,time:241656
+hit ratio:0.798945,time:241840
+hit ratio:0.799311,time:242367
+hit ratio:0.799582,time:242783
+hit ratio:0.799719,time:243424
+hit ratio:0.799914,time:243885
+hit ratio:0.79956,time:244396
+hit ratio:0.79901,time:247555
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.799908,time:243885
-hit ratio:0.799554,time:244396
-hit ratio:0.799005,time:247555
-hit ratio:0.799347,time:249483
-hit ratio:0.799694,time:250094
-hit ratio:0.800269,time:250212
-hit ratio:0.800831,time:250598
-hit ratio:0.80107,time:251749
-hit ratio:0.801065,time:253794
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.799353,time:249483
+hit ratio:0.799699,time:250094
+hit ratio:0.800274,time:250212
+hit ratio:0.800836,time:250598
+hit ratio:0.801075,time:251749
+hit ratio:0.80107,time:253794
+hit ratio:0.80138,time:255232
+hit ratio:0.801991,time:255333
+hit ratio:0.802571,time:255546
+hit ratio:0.802805,time:258173
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.801374,time:255232
-hit ratio:0.801985,time:255333
-hit ratio:0.802565,time:255546
-hit ratio:0.802798,time:258173
-hit ratio:0.803185,time:260700
-hit ratio:0.803578,time:263021
-hit ratio:0.804156,time:265500
-hit ratio:0.804715,time:267546
-hit ratio:0.805276,time:269772
-hit ratio:0.805741,time:271911
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.803191,time:260700
+hit ratio:0.803585,time:263021
+hit ratio:0.804162,time:265500
+hit ratio:0.804721,time:267546
+hit ratio:0.805282,time:269772
+hit ratio:0.805747,time:271911
+hit ratio:0.806296,time:273855
+hit ratio:0.806807,time:275867
+hit ratio:0.807407,time:277479
+hit ratio:0.808005,time:279403
+hit ratio:0.80867,time:279725
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.80629,time:273855
-hit ratio:0.806801,time:275867
-hit ratio:0.807401,time:277479
-hit ratio:0.807999,time:279403
-hit ratio:0.808665,time:279725
-hit ratio:0.80908,time:280004
-hit ratio:0.809545,time:280219
-hit ratio:0.81016,time:280335
-hit ratio:0.810604,time:280499
-hit ratio:0.810939,time:280724
-hit ratio:0.811167,time:280881
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.809085,time:280004
+hit ratio:0.80955,time:280219
+hit ratio:0.810166,time:280335
+hit ratio:0.81061,time:280499
+hit ratio:0.810945,time:280724
+hit ratio:0.811173,time:280881
+hit ratio:0.811598,time:281127
+hit ratio:0.811202,time:281352
+hit ratio:0.811387,time:281892
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.811593,time:281127
-hit ratio:0.811196,time:281352
-hit ratio:0.811381,time:281892
-hit ratio:0.811202,time:282050
-hit ratio:0.811582,time:282213
-hit ratio:0.811768,time:282525
-hit ratio:0.811917,time:282973
-hit ratio:0.811969,time:284085
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.811208,time:282050
+hit ratio:0.811587,time:282213
+hit ratio:0.811774,time:282525
+hit ratio:0.811922,time:282973
+hit ratio:0.811974,time:284085
+hit ratio:0.811872,time:285764
+hit ratio:0.812073,time:287244
+hit ratio:0.812318,time:289257
+hit ratio:0.812801,time:289459
+hit ratio:0.813365,time:289609
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.811867,time:285764
-hit ratio:0.812069,time:287244
-hit ratio:0.812313,time:289257
-hit ratio:0.812796,time:289459
-hit ratio:0.81336,time:289609
-hit ratio:0.813424,time:291777
-hit ratio:0.813716,time:292551
-hit ratio:0.813955,time:293558
-hit ratio:0.814124,time:295992
-hit ratio:0.814382,time:297677
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.813427,time:291777
+hit ratio:0.813718,time:292551
+hit ratio:0.813957,time:293558
+hit ratio:0.814127,time:295992
+hit ratio:0.814385,time:297677
+hit ratio:0.8149,time:297821
+hit ratio:0.814452,time:299320
+hit ratio:0.814664,time:301856
+hit ratio:0.814384,time:303738
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.814897,time:297821
-hit ratio:0.814449,time:299320
-hit ratio:0.814662,time:301856
-hit ratio:0.814381,time:303738
-hit ratio:0.814688,time:303852
-hit ratio:0.815112,time:304081
-hit ratio:0.815315,time:304847
-hit ratio:0.81536,time:305095
-hit ratio:0.815828,time:305405
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.814691,time:303852
+hit ratio:0.815114,time:304081
+hit ratio:0.815317,time:304847
+hit ratio:0.815362,time:305095
+hit ratio:0.815831,time:305405
+hit ratio:0.816193,time:305869
+hit ratio:0.816465,time:306563
+hit ratio:0.816738,time:306716
+hit ratio:0.817003,time:307229
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.81619,time:305869
-hit ratio:0.816462,time:306563
-hit ratio:0.816735,time:306716
-hit ratio:0.817,time:307229
-hit ratio:0.817361,time:307552
-hit ratio:0.817503,time:307890
-hit ratio:0.817638,time:308583
-hit ratio:0.817906,time:308701
-hit ratio:0.818097,time:308837
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.817364,time:307552
+hit ratio:0.817506,time:307890
+hit ratio:0.817641,time:308583
+hit ratio:0.817909,time:308701
+hit ratio:0.8181,time:308837
+hit ratio:0.818257,time:309131
+hit ratio:0.818364,time:309427
+hit ratio:0.818201,time:309939
+hit ratio:0.817923,time:310196
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.818254,time:309131
-hit ratio:0.818362,time:309427
-hit ratio:0.818198,time:309939
-hit ratio:0.81792,time:310196
-hit ratio:0.817951,time:310671
-hit ratio:0.818056,time:312050
-hit ratio:0.818329,time:312458
-hit ratio:0.818238,time:314650
-hit ratio:0.818335,time:316544
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.817954,time:310671
+hit ratio:0.818059,time:312050
+hit ratio:0.818331,time:312458
+hit ratio:0.81824,time:314650
+hit ratio:0.818337,time:316544
+hit ratio:0.818575,time:318637
+hit ratio:0.818753,time:320797
+hit ratio:0.818733,time:322339
+hit ratio:0.818942,time:323949
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.818573,time:318637
-hit ratio:0.818751,time:320797
-hit ratio:0.81873,time:322339
-hit ratio:0.81894,time:323949
-hit ratio:0.818611,time:325208
-hit ratio:0.818952,time:325621
-hit ratio:0.819445,time:325749
-hit ratio:0.819728,time:326345
-hit ratio:0.819916,time:326837
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.818614,time:325208
+hit ratio:0.818955,time:325621
+hit ratio:0.819447,time:325749
+hit ratio:0.819731,time:326345
+hit ratio:0.819919,time:326837
+hit ratio:0.820094,time:327194
+hit ratio:0.820428,time:327487
+hit ratio:0.820249,time:327990
+hit ratio:0.820204,time:328243
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.820091,time:327194
-hit ratio:0.820425,time:327487
-hit ratio:0.820247,time:327990
-hit ratio:0.820202,time:328243
-hit ratio:0.820249,time:328392
-hit ratio:0.820524,time:328608
-hit ratio:0.82076,time:329001
-hit ratio:0.820973,time:329386
-hit ratio:0.821164,time:329898
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.820252,time:328392
+hit ratio:0.820527,time:328608
+hit ratio:0.820763,time:329001
+hit ratio:0.820975,time:329386
+hit ratio:0.821167,time:329898
+hit ratio:0.821071,time:331703
+hit ratio:0.821197,time:333934
+hit ratio:0.821364,time:335181
+hit ratio:0.821602,time:335297
+hit ratio:0.821967,time:335456
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.821069,time:331703
-hit ratio:0.821195,time:333934
-hit ratio:0.821361,time:335181
-hit ratio:0.8216,time:335297
-hit ratio:0.821965,time:335456
-hit ratio:0.822137,time:335841
-hit ratio:0.822248,time:336386
-hit ratio:0.822237,time:338519
-hit ratio:0.822234,time:338863
-hit ratio:0.822615,time:338993
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.82214,time:335841
+hit ratio:0.82225,time:336386
+hit ratio:0.82224,time:338519
+hit ratio:0.822236,time:338863
+hit ratio:0.822617,time:338993
+hit ratio:0.823021,time:339250
+hit ratio:0.823249,time:340144
+hit ratio:0.823254,time:342525
+hit ratio:0.82342,time:344873
+hit ratio:0.823729,time:346637
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.823019,time:339250
-hit ratio:0.823247,time:340144
-hit ratio:0.823251,time:342525
-hit ratio:0.823417,time:344873
-hit ratio:0.823727,time:346637
-hit ratio:0.824096,time:348658
-hit ratio:0.824448,time:350503
-hit ratio:0.824795,time:352584
-hit ratio:0.825101,time:354407
-hit ratio:0.825478,time:356297
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.824098,time:348658
+hit ratio:0.82445,time:350503
+hit ratio:0.824796,time:352584
+hit ratio:0.825102,time:354407
+hit ratio:0.825479,time:356297
+hit ratio:0.825777,time:358057
+hit ratio:0.825641,time:359342
+hit ratio:0.826023,time:359968
+hit ratio:0.826226,time:360260
+hit ratio:0.826416,time:360402
+hit ratio:0.82664,time:360492
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.825776,time:358057
-hit ratio:0.825639,time:359342
-hit ratio:0.826021,time:359968
-hit ratio:0.826224,time:360260
-hit ratio:0.826414,time:360402
-hit ratio:0.826638,time:360492
-hit ratio:0.826834,time:360661
-hit ratio:0.826998,time:360860
-hit ratio:0.82715,time:361153
-hit ratio:0.827265,time:361456
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.826836,time:360661
+hit ratio:0.827,time:360860
+hit ratio:0.827152,time:361153
+hit ratio:0.827267,time:361456
+hit ratio:0.82678,time:361944
+hit ratio:0.82684,time:362325
+hit ratio:0.826963,time:362858
+hit ratio:0.826964,time:363745
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.826778,time:361944
-hit ratio:0.826838,time:362325
-hit ratio:0.826961,time:362858
-hit ratio:0.826962,time:363745
-hit ratio:0.827061,time:364787
-hit ratio:0.827092,time:366490
-hit ratio:0.827368,time:367296
-hit ratio:0.827627,time:368098
-hit ratio:0.827904,time:368946
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.827063,time:364787
+hit ratio:0.827094,time:366490
+hit ratio:0.827371,time:367296
+hit ratio:0.827629,time:368098
+hit ratio:0.827907,time:368946
+hit ratio:0.828081,time:370212
+hit ratio:0.828337,time:371358
+hit ratio:0.828654,time:372732
+hit ratio:0.828978,time:374200
+hit ratio:0.829295,time:375274
+hit ratio:0.829212,time:376290
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.828079,time:370212
-hit ratio:0.828335,time:371358
-hit ratio:0.828652,time:372732
-hit ratio:0.828976,time:374200
-hit ratio:0.829293,time:375274
-hit ratio:0.82921,time:376290
-hit ratio:0.829484,time:377608
-hit ratio:0.829817,time:378814
-hit ratio:0.830104,time:380077
-hit ratio:0.830475,time:381509
-hit ratio:0.830795,time:381710
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.829487,time:377608
+hit ratio:0.829819,time:378814
+hit ratio:0.830107,time:380077
+hit ratio:0.830477,time:381509
+hit ratio:0.830798,time:381710
+hit ratio:0.83103,time:381793
+hit ratio:0.83138,time:381875
+hit ratio:0.83168,time:382058
+hit ratio:0.831966,time:382357
+hit ratio:0.832233,time:382597
+hit ratio:0.832342,time:382859
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.831028,time:381793
-hit ratio:0.831378,time:381875
-hit ratio:0.831678,time:382058
-hit ratio:0.831965,time:382357
-hit ratio:0.832231,time:382597
-hit ratio:0.83234,time:382859
-hit ratio:0.83222,time:383097
-hit ratio:0.832259,time:383711
-hit ratio:0.832137,time:383901
-hit ratio:0.832263,time:384178
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.832222,time:383097
+hit ratio:0.832261,time:383711
+hit ratio:0.832138,time:383901
+hit ratio:0.832264,time:384178
+hit ratio:0.832392,time:384649
+hit ratio:0.832431,time:385036
+hit ratio:0.832307,time:385635
+hit ratio:0.83239,time:386257
+hit ratio:0.832509,time:387129
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.832391,time:384649
-hit ratio:0.83243,time:385036
-hit ratio:0.832306,time:385635
-hit ratio:0.832389,time:386257
-hit ratio:0.832508,time:387129
-hit ratio:0.832613,time:387729
-hit ratio:0.83274,time:388288
-hit ratio:0.832888,time:388860
-hit ratio:0.833065,time:389345
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.832615,time:387729
+hit ratio:0.832741,time:388288
+hit ratio:0.832889,time:388860
+hit ratio:0.833066,time:389345
+hit ratio:0.833226,time:389912
+hit ratio:0.833357,time:390481
+hit ratio:0.833468,time:391087
+hit ratio:0.833581,time:391796
+hit ratio:0.83368,time:392521
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.833224,time:389912
-hit ratio:0.833356,time:390481
-hit ratio:0.833467,time:391087
-hit ratio:0.83358,time:391796
-hit ratio:0.833679,time:392521
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.833874,time:393047
 hit ratio:0.834,time:393753
 hit ratio:0.834182,time:394288
-hit ratio:0.834324,time:394938
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+hit ratio:0.834325,time:394938
 hit ratio:0.834482,time:395615
 hit ratio:0.834637,time:396306
 hit ratio:0.834865,time:396911
-hit ratio:0.835048,time:397490
-hit ratio:0.835208,time:398210
-hit ratio:0.835355,time:398849
-hit ratio:0.835578,time:399532
-hit ratio:0.835737,time:400111
-hit ratio:0.835937,time:400955
-hit ratio:0.836156,time:401787
+hit ratio:0.835049,time:397490
+hit ratio:0.835209,time:398210
+hit ratio:0.835356,time:398849
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.836073,time:402471
-hit ratio:0.836196,time:403300
-hit ratio:0.836384,time:403934
-hit ratio:0.836591,time:404738
-hit ratio:0.836732,time:405368
-hit ratio:0.836886,time:406120
-hit ratio:0.837091,time:406730
-hit ratio:0.837274,time:407534
-hit ratio:0.837455,time:408243
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.835579,time:399532
+hit ratio:0.835739,time:400111
+hit ratio:0.835939,time:400955
+hit ratio:0.836157,time:401787
+hit ratio:0.836074,time:402471
+hit ratio:0.836198,time:403300
+hit ratio:0.836385,time:403934
+hit ratio:0.836592,time:404738
+hit ratio:0.836733,time:405368
+hit ratio:0.836887,time:406120
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.837605,time:408970
-hit ratio:0.837768,time:409673
-hit ratio:0.837842,time:410501
-hit ratio:0.838049,time:411271
-hit ratio:0.838243,time:412062
-hit ratio:0.838451,time:412629
-hit ratio:0.838657,time:413456
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.837092,time:406730
+hit ratio:0.837275,time:407534
+hit ratio:0.837457,time:408243
+hit ratio:0.837606,time:408970
+hit ratio:0.837769,time:409673
+hit ratio:0.837843,time:410501
+hit ratio:0.83805,time:411271
+hit ratio:0.838244,time:412062
+hit ratio:0.838452,time:412629
+hit ratio:0.838658,time:413456
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.838817,time:414077
-hit ratio:0.83899,time:414801
+hit ratio:0.838991,time:414801
 hit ratio:0.839145,time:415657
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.839333,time:416070
-hit ratio:0.839522,time:416621
-hit ratio:0.839739,time:417183
-hit ratio:0.839839,time:417786
+hit ratio:0.839334,time:416070
+hit ratio:0.839523,time:416621
+hit ratio:0.83974,time:417183
+hit ratio:0.83984,time:417786
 hit ratio:0.839918,time:418408
-hit ratio:0.840085,time:418665
+hit ratio:0.840086,time:418665
 hit ratio:0.840211,time:418973
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.840387,time:419207
 hit ratio:0.840558,time:419567
 hit ratio:0.84071,time:419890
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.840501,time:420310
-hit ratio:0.840548,time:420904
-hit ratio:0.84033,time:421176
+hit ratio:0.840502,time:420310
+hit ratio:0.840549,time:420904
+hit ratio:0.840331,time:421176
 hit ratio:0.840305,time:421584
-hit ratio:0.840398,time:422026
-hit ratio:0.840405,time:422652
-hit ratio:0.840412,time:423293
-hit ratio:0.840474,time:423833
-hit ratio:0.840516,time:424612
+hit ratio:0.840399,time:422026
+hit ratio:0.840406,time:422652
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.840558,time:425300
-hit ratio:0.840675,time:426052
-hit ratio:0.840686,time:426641
-hit ratio:0.840789,time:427245
-hit ratio:0.840859,time:427934
-hit ratio:0.840919,time:428688
-hit ratio:0.841012,time:429207
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.840413,time:423293
+hit ratio:0.840475,time:423833
+hit ratio:0.840517,time:424612
+hit ratio:0.840559,time:425300
+hit ratio:0.840677,time:426052
+hit ratio:0.840687,time:426641
+hit ratio:0.84079,time:427245
+hit ratio:0.84086,time:427934
+hit ratio:0.84092,time:428688
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.841013,time:429207
 hit ratio:0.841038,time:430109
-hit ratio:0.841128,time:430774
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+hit ratio:0.841129,time:430774
 hit ratio:0.841262,time:431594
-hit ratio:0.841326,time:432272
-hit ratio:0.841432,time:433126
-hit ratio:0.841515,time:434084
-hit ratio:0.841642,time:434808
-hit ratio:0.841764,time:435475
-hit ratio:0.841854,time:436145
-hit ratio:0.841998,time:437046
-hit ratio:0.842149,time:437620
-hit ratio:0.84229,time:438426
+hit ratio:0.841327,time:432272
+hit ratio:0.841433,time:433126
+hit ratio:0.841516,time:434084
+hit ratio:0.841643,time:434808
+hit ratio:0.841765,time:435475
+hit ratio:0.841855,time:436145
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.841999,time:437046
+hit ratio:0.84215,time:437620
+hit ratio:0.842291,time:438426
 hit ratio:0.842405,time:439039
-hit ratio:0.842482,time:439844
+hit ratio:0.842483,time:439844
 hit ratio:0.842583,time:440148
-hit ratio:0.842708,time:440361
-hit ratio:0.842834,time:440684
+hit ratio:0.842709,time:440361
+hit ratio:0.842835,time:440684
 hit ratio:0.842962,time:441054
-hit ratio:0.843064,time:441390
-hit ratio:0.842915,time:441743
-hit ratio:0.842806,time:442021
+hit ratio:0.843065,time:441390
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.842845,time:442534
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.842915,time:441743
+hit ratio:0.842807,time:442021
+hit ratio:0.842846,time:442534
 hit ratio:0.842919,time:443172
-hit ratio:0.842976,time:443892
-hit ratio:0.843011,time:444594
+hit ratio:0.842977,time:443892
+hit ratio:0.843012,time:444594
 hit ratio:0.8431,time:445599
 hit ratio:0.843235,time:446188
 hit ratio:0.843374,time:447066
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.843514,time:447598
 hit ratio:0.843672,time:448300
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
 hit ratio:0.84379,time:449019
-hit ratio:0.843914,time:449890
-hit ratio:0.844077,time:450587
-hit ratio:0.844204,time:451391
-hit ratio:0.844376,time:451931
+hit ratio:0.843915,time:449890
+hit ratio:0.844078,time:450587
+hit ratio:0.844205,time:451391
+hit ratio:0.844377,time:451931
 hit ratio:0.844541,time:452701
 hit ratio:0.8447,time:453359
 hit ratio:0.844869,time:454090
-hit ratio:0.845018,time:454836
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.845019,time:454836
 hit ratio:0.845174,time:455383
-hit ratio:0.845349,time:456019
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.84546,time:456757
+hit ratio:0.84535,time:456019
+hit ratio:0.845461,time:456757
 hit ratio:0.84563,time:457437
-hit ratio:0.845783,time:458158
+hit ratio:0.845782,time:458158
 hit ratio:0.845651,time:458730
-hit ratio:0.845599,time:459055
-hit ratio:0.845678,time:459546
-hit ratio:0.845808,time:460393
+hit ratio:0.845598,time:459055
+hit ratio:0.845677,time:459546
+hit ratio:0.845807,time:460393
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.845933,time:461147
-hit ratio:0.846083,time:461622
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.846229,time:461847
+hit ratio:0.846082,time:461622
+hit ratio:0.846228,time:461847
 hit ratio:0.846398,time:462154
-hit ratio:0.846504,time:462481
+hit ratio:0.846503,time:462481
 hit ratio:0.846612,time:462790
-hit ratio:0.846596,time:463134
+hit ratio:0.846595,time:463134
 hit ratio:0.846298,time:463322
-hit ratio:0.846314,time:463802
-hit ratio:0.846347,time:464373
-hit ratio:0.846416,time:464935
-hit ratio:0.84642,time:465607
+hit ratio:0.846313,time:463802
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.846431,time:466530
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.846346,time:464373
+hit ratio:0.846415,time:464935
+hit ratio:0.84642,time:465607
+hit ratio:0.84643,time:466530
 hit ratio:0.846501,time:467412
 hit ratio:0.846566,time:468131
 hit ratio:0.846604,time:468604
-hit ratio:0.846619,time:469257
-hit ratio:0.846634,time:469883
+hit ratio:0.846618,time:469257
+hit ratio:0.846633,time:469883
 hit ratio:0.846653,time:470465
-hit ratio:0.846727,time:471162
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.846726,time:471162
 hit ratio:0.846741,time:472113
-hit ratio:0.846809,time:472612
+hit ratio:0.846808,time:472612
 hit ratio:0.846915,time:473378
-hit ratio:0.84699,time:474479
+hit ratio:0.846989,time:474479
 hit ratio:0.847108,time:475328
 hit ratio:0.847215,time:475901
 hit ratio:0.847299,time:476748
 hit ratio:0.847391,time:477593
-hit ratio:0.847483,time:478295
-hit ratio:0.847575,time:478993
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.847483,time:478295
+hit ratio:0.847576,time:478993
 hit ratio:0.847652,time:479786
 hit ratio:0.847763,time:480359
 hit ratio:0.847869,time:481482
@@ -660,148 +658,148 @@ hit ratio:0.847894,time:482920
 hit ratio:0.847996,time:483456
 hit ratio:0.84807,time:484427
 hit ratio:0.84815,time:484963
-hit ratio:0.848269,time:485627
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.848351,time:486406
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.848269,time:485627
+hit ratio:0.84835,time:486406
 hit ratio:0.848464,time:487041
 hit ratio:0.848552,time:488159
 hit ratio:0.848661,time:488740
 hit ratio:0.848715,time:489674
-hit ratio:0.848782,time:490399
-hit ratio:0.848637,time:490776
+hit ratio:0.848781,time:490399
+hit ratio:0.848636,time:490776
 hit ratio:0.848709,time:491506
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.848793,time:492212
 hit ratio:0.848863,time:492895
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.849029,time:493371
+hit ratio:0.849028,time:493371
 hit ratio:0.849131,time:494037
 hit ratio:0.849255,time:494632
 hit ratio:0.849336,time:495330
-hit ratio:0.849428,time:495733
+hit ratio:0.849427,time:495733
 hit ratio:0.849538,time:496237
 hit ratio:0.849588,time:496856
 hit ratio:0.849716,time:497491
-hit ratio:0.849788,time:498055
-hit ratio:0.849871,time:498462
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.849788,time:498055
+hit ratio:0.84987,time:498462
 hit ratio:0.849963,time:498720
 hit ratio:0.850066,time:499037
 hit ratio:0.850169,time:499330
-hit ratio:0.850265,time:499572
+hit ratio:0.850264,time:499572
 hit ratio:0.850284,time:499891
 hit ratio:0.850032,time:500122
-hit ratio:0.850081,time:500618
-hit ratio:0.850113,time:501365
+hit ratio:0.85008,time:500618
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.850123,time:502251
-hit ratio:0.850185,time:503028
-hit ratio:0.850295,time:503499
-hit ratio:0.850364,time:504005
-hit ratio:0.850388,time:504809
-hit ratio:0.850447,time:505462
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.850112,time:501365
+hit ratio:0.850122,time:502251
+hit ratio:0.850184,time:503028
+hit ratio:0.850294,time:503499
+hit ratio:0.850363,time:504005
+hit ratio:0.850387,time:504809
+hit ratio:0.850446,time:505462
 hit ratio:0.850514,time:506101
-hit ratio:0.850574,time:506867
-hit ratio:0.85068,time:507315
-hit ratio:0.850719,time:508051
+hit ratio:0.850573,time:506867
+hit ratio:0.850679,time:507315
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.850833,time:508654
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.850718,time:508051
+hit ratio:0.850832,time:508654
 hit ratio:0.850906,time:509337
-hit ratio:0.851016,time:509897
-hit ratio:0.85114,time:510542
+hit ratio:0.851015,time:509897
+hit ratio:0.851139,time:510542
 hit ratio:0.851193,time:511545
 hit ratio:0.851322,time:512261
 hit ratio:0.851449,time:513014
 hit ratio:0.851587,time:513707
 hit ratio:0.851684,time:514607
-hit ratio:0.851805,time:515266
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.85192,time:516026
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.851805,time:515266
+hit ratio:0.851919,time:516026
 hit ratio:0.852016,time:516655
 hit ratio:0.852116,time:517520
 hit ratio:0.852217,time:518052
-hit ratio:0.852335,time:518750
-hit ratio:0.852387,time:519547
+hit ratio:0.852334,time:518750
+hit ratio:0.852386,time:519547
 hit ratio:0.852417,time:519782
 hit ratio:0.852495,time:520037
-hit ratio:0.852591,time:520401
-hit ratio:0.852694,time:520708
+hit ratio:0.85259,time:520401
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.852811,time:521055
-hit ratio:0.852882,time:521402
-hit ratio:0.852516,time:521782
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.852694,time:520708
+hit ratio:0.85281,time:521055
+hit ratio:0.852881,time:521402
+hit ratio:0.852515,time:521782
 hit ratio:0.852378,time:522120
 hit ratio:0.85241,time:522609
 hit ratio:0.852418,time:523467
 hit ratio:0.852445,time:524244
 hit ratio:0.852547,time:524979
-hit ratio:0.852619,time:525978
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.852619,time:525978
 hit ratio:0.852709,time:526757
 hit ratio:0.852728,time:527427
-hit ratio:0.85273,time:528127
+hit ratio:0.852729,time:528127
 hit ratio:0.852765,time:529076
 hit ratio:0.852791,time:529906
-hit ratio:0.852802,time:530831
+hit ratio:0.852803,time:530831
 hit ratio:0.852879,time:531523
 hit ratio:0.852984,time:532010
-hit ratio:0.85298,time:532563
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.852981,time:532563
 hit ratio:0.853013,time:533408
-hit ratio:0.853043,time:533926
+hit ratio:0.853044,time:533926
 hit ratio:0.853138,time:534742
-hit ratio:0.853178,time:535443
-hit ratio:0.853215,time:536095
+hit ratio:0.853179,time:535443
+hit ratio:0.853216,time:536095
 hit ratio:0.853274,time:536792
-hit ratio:0.853354,time:537525
-hit ratio:0.853392,time:538086
-hit ratio:0.853459,time:538842
+hit ratio:0.853355,time:537525
+hit ratio:0.853393,time:538086
+hit ratio:0.85346,time:538842
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.853267,time:539241
 hit ratio:0.853175,time:539599
 hit ratio:0.853171,time:540344
 hit ratio:0.853235,time:541042
-hit ratio:0.853262,time:541591
+hit ratio:0.853263,time:541591
 hit ratio:0.853271,time:541884
-hit ratio:0.853352,time:542203
-hit ratio:0.853408,time:542437
-hit ratio:0.853452,time:542783
+hit ratio:0.853353,time:542203
+hit ratio:0.853409,time:542437
+hit ratio:0.853453,time:542783
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.85322,time:543025
-hit ratio:0.853089,time:543336
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.853221,time:543025
+hit ratio:0.85309,time:543336
 hit ratio:0.853025,time:543879
-hit ratio:0.853023,time:544395
+hit ratio:0.853024,time:544395
 hit ratio:0.853008,time:544938
-hit ratio:0.852987,time:545539
+hit ratio:0.852988,time:545539
 hit ratio:0.852971,time:546389
-hit ratio:0.852989,time:546886
-hit ratio:0.853024,time:547644
+hit ratio:0.85299,time:546886
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.853024,time:547644
 hit ratio:0.853043,time:548305
 hit ratio:0.853106,time:549002
 hit ratio:0.853183,time:549659
 hit ratio:0.853275,time:550018
-hit ratio:0.853311,time:550652
+hit ratio:0.853312,time:550652
 hit ratio:0.853357,time:551456
-hit ratio:0.853397,time:552169
-hit ratio:0.853449,time:552785
-hit ratio:0.853489,time:553629
+hit ratio:0.853398,time:552169
+hit ratio:0.85345,time:552785
+hit ratio:0.85349,time:553629
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
-hit ratio:0.853564,time:554302
-hit ratio:0.853665,time:554939
-hit ratio:0.853737,time:555562
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
+hit ratio:0.853565,time:554302
+hit ratio:0.853666,time:554939
+hit ratio:0.853738,time:555562
 hit ratio:0.853803,time:556186
 hit ratio:0.853893,time:557076
 hit ratio:0.853998,time:557693
@@ -811,7 +809,7 @@ hit ratio:0.85429,time:559626
 hit ratio:0.854382,time:560446
 hit ratio:0.854495,time:561166
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.854433,time:561938
 hit ratio:0.854452,time:562631
 hit ratio:0.854477,time:563250
@@ -822,34 +820,34 @@ hit ratio:0.854587,time:565732
 hit ratio:0.854622,time:566688
 hit ratio:0.854656,time:567475
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.854695,time:568209
 hit ratio:0.854768,time:568863
 hit ratio:0.854805,time:569807
 hit ratio:0.854705,time:570093
 hit ratio:0.85468,time:570799
 hit ratio:0.854703,time:571474
-hit ratio:0.854729,time:572374
+hit ratio:0.854728,time:572374
 hit ratio:0.854787,time:573035
 hit ratio:0.854839,time:573784
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.854877,time:574583
-hit ratio:0.854937,time:575112
+hit ratio:0.854936,time:575112
 hit ratio:0.854982,time:575991
 hit ratio:0.85506,time:576849
-hit ratio:0.855113,time:577209
-hit ratio:0.85517,time:577551
+hit ratio:0.855114,time:577209
+hit ratio:0.855171,time:577551
 hit ratio:0.855218,time:577914
 hit ratio:0.855288,time:578233
 hit ratio:0.855367,time:578555
 hit ratio:0.855431,time:578945
 Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304. FMS-v: -1. 
 hit ratio:0.855204,time:579188
 hit ratio:0.855152,time:579581
 hit ratio:0.855199,time:580218
-hit ratio:0.855257,time:580931
+hit ratio:0.855256,time:580931
 hit ratio:0.855275,time:581610
 hit ratio:0.855305,time:582448
 hit ratio:0.855344,time:583085
@@ -857,5 +855,3 @@ hit ratio:0.855401,time:583964
 EOF
 hit ratio:0.855484,time:584461
 num_requests:69392150,throughput:118.728reqs/sec,
-Trying Rebalancing..
-RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...FMS-pickVAndRImpl...Total free mem. smaller than threshold 4194304000. FMS-v: -1. 
