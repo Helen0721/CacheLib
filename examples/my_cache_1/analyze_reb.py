@@ -119,12 +119,10 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy,algos=None)
 
             print("Best result for cache size {} and reb. strategy {} and algo {}...".format(cache_size,rebalance_strategy,algo))
             print(results_for_algo[best_i])
-            print()
             print("Worst result for cache size {} and reb. strategy {} and algo {} ...".format(cache_size,rebalance_strategy,algo))
             print(results_for_algo[worst_i])
-            print()
             print("Difference between best and worst in miss ratio: {}".format(worst_mr - best_mr))
-            print()
+            print("*"*100)
 
     print("-"*100,"\n\n")
 

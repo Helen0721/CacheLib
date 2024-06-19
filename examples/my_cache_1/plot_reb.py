@@ -110,7 +110,7 @@ def handle():
 
 def handle_best():
 
-    separator_s = "Comparison of rebalance strategies within eviction algorithm under fixed cache size..."
+    algo_sep_s = "Difference between best and worst in miss ratio"
     mr_s = "'Final Miss Ratio': "
 
     labels = []
@@ -120,19 +120,19 @@ def handle_best():
         best_summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"),"r")
         best_summary_L = best_summary_f.read().split("-"*100)
         
-        print(best_summary_L[0])
-        print(best_summary_L[1])
-
         assert len(best_summary_L) >= len(cache_sizes)
 
         labels_for_cs = []
         for (j, cache_size) in enumerate(cache_sizes):
-            best_summary_for_cs_s = best_summary_L[j].split(separator_s)[1]
-            best_summary_for_cs_L = best_summary_for_cs_s.split("\n\n")[0]
-            print(best_summary_for_cs_L)
+            best_summary_for_cs_s = best_summary_L[j].split("\n\n\n\n")[1]
+            best_summary_for_cs_L = best_summary_for_cs_s.split(algo_sep_s)
+            
+            for L in best_summary_for_cs_L: print(L)
+
+
             for (k,algo) in enumerate(algos):
-                best_summary_for_cs = best_summary_for_cs_L[k]
-                mr = float(best_summary_for_cs.split(mr_s)[:-1])
+                best_summary_for_cs = best_summary_for_cs_L[k].split("\n\n")[0].split(mr_s)
+                mr = float(best_summary_for_cs[-1][:-1])
                 print(mr)
 
 
