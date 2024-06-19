@@ -43,7 +43,7 @@ FAIL_REASONS = {
         }
 
 STRTGY_TRIGGERED_s = "hold off started."
-MarginalHits_triggered_s = " picked."
+MarginalHits_triggered_s = FreeMem_triggered_s = "picked."
 FAILALLOC_TRIGGERED_s = "hold off started w/o triggering strategy specific pickVandRImp"
 
 ABBRV = {
@@ -52,6 +52,7 @@ ABBRV = {
     FAIL_REASONS["FreeMem"][1]: "Total free mem. smaller than thrshld",
     STRTGY_TRIGGERED_s: "StrtgyTriggered",
     MarginalHits_triggered_s: " StrtgyTriggered",
+    FreeMem_triggered_s: " StrtgyTriggered",
     FAILALLOC_TRIGGERED_s: "TriggeredByFailAlloc",
     }
 MISS_RATIO_s = "Final Miss Ratio"
@@ -139,8 +140,12 @@ def collect_cnts(file,reb):
 
     if reb == "MarginalHits":
         strategy_triggered_s = MarginalHits_triggered_s
+    elif reb == "FreeMem":
+        strategy_triggered_s = FreeMem_triggered_s
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
+
+    print("strategy_triggere_s:",strategy_triggered_s)
 
     res = {"total_attempts": stdout_str.count(START_REB_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
