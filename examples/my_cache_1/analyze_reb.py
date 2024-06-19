@@ -93,10 +93,10 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy,algos=None)
         exit()
 
 
-    print("Best result for cache size {} and reb. strategy {}...".format(cache_size,rebalance_strategy))
+    print("Best result for cache size {} and reb. strategy {}: {}...".format(cache_size,rebalance_strategy,best_mr))
     print(results_for_cs[best_i])
     print()
-    print("Worst result for cache size {} and reb. strategy {}...".format(cache_size,rebalance_strategy))
+    print("Worst result for cache size {} and reb. strategy {}: {}...".format(cache_size,rebalance_strategy,worst_mr))
     print(results_for_cs[worst_i])
     print("\n\n")    
 
@@ -117,9 +117,9 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy,algos=None)
                 print("Error parsing file",cnt_result_file)
                 exit()
 
-            print("Best result for cache size {} and reb. strategy {} and algo {}...".format(cache_size,rebalance_strategy,algo))
+            print("Best result for cache size {} and reb. strategy {} and algo {}: {}...".format(cache_size,rebalance_strategy,algo,best_mr))
             print(results_for_algo[best_i])
-            print("Worst result for cache size {} and reb. strategy {} and algo {} ...".format(cache_size,rebalance_strategy,algo))
+            print("Worst result for cache size {} and reb. strategy {} and algo {}: {}...".format(cache_size,rebalance_strategy,algo,worst_mr))
             print(results_for_algo[worst_i])
             print("Difference between best and worst in miss ratio: {}".format(worst_mr - best_mr))
             print("*"*100)
@@ -144,7 +144,7 @@ def collect_cnts(file,reb):
         strategy_triggered_s  = STRTGY_TRIGGERED_s
 
     print("strategy_triggere_s:",strategy_triggered_s)
-
+    
     res = {"total_attempts": stdout_str.count(START_REB_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
