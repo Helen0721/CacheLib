@@ -47,5 +47,22 @@ At 8GB, the differences become insignificant.
 
 FreeMem
 
-256MB:
-Lru: not getting triggered due to "Total free mem. smaller than thrshld".
+256MB - 2GB (inclusive):
+
+Seem better to configure minSlabs and numFreeSlabs to be 0, which helps trigger the strategy. 
+Although the differences are really less than 0.1%.
+The strategies are rarely triggered, although the best configuration leads to trigerring 2-3 out of around 300 attemps. 
+The main reason is the free memory "0" available isn't greater than the threshold.
+
+4GB-8GB (inclusive)
+
+minSlabs = 0,numFreeSlabs = 3 works better, but this configuration leads to the strategy not being triggered. 
+The main reason is the free memory available isn't meeting the threshold.
+
+16GB - 64GB(inclusive)
+strategy not triggered due to existing free memory has not been allocated.
+
+
+HitsPerSlab:
+minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge
+

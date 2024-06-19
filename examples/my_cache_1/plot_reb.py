@@ -22,20 +22,18 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             "HitsPerSlab",
                             "default"
                             ]
+
 PWD = os.getcwd()
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
 
-COLORS=['tab:green', 'tab:red', 'tab:blue','tab:brown',
+
+colors=['tab:green', 'tab:red', 'tab:blue','tab:brown',
         'tab:pink','tab:olive','tab:cyan','tab:orange',
         'tab:purple','tab:grey'
         ]
-COLORS =itertools.cycle(COLORS)
 
-MARKERS=["o","x","d","s"]
-MARKERS=itertools.cycle(MARKERS)
-
-LINESTYLES =["-","-.", "-.", ":"]
-LINESTYLES = itertools.cycle(LINESTYLES)
+markers=["o","x","d","s"]
+linestyles =["-","-.", "-.", ":"]
 
 def plot(plot_dir,plot_name,plot_title,hr_lists,cache_sizes,labels):
     
@@ -97,49 +95,83 @@ def parse_for_size(file):
     return final_hr
 
 
+
+def handle():
+    hr_lists,labels = [],[]
+    for (i,algo) in enumerate(algos):
+        for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+            
+            if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+
+            hr_lists.append([])
+            labels.append(rebalance_strategy + "-" + algo)
+
+
+
+def handle_best():
+
+    separator_s = "Comparison of rebalance strategies within eviction algorithm under fixed cache size..."
+    mr_s = "'Final Miss Ratio': "
+
+    labels = []
+    
+    for (i,rebalance_strategy) in enumerate(rebalance_strategies):
+        print("parsing for",os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"))
+        best_summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"),"r")
+        best_summary_L = best_summary_f.read().split("-"*100)
+        
+        print(best_summary_L[0])
+        print(best_summary_L[1])
+
+        assert len(best_summary_L) >= len(cache_sizes)
+
+        labels_for_cs = []
+        for (j, cache_size) in enumerate(cache_sizes):
+            best_summary_for_cs_s = best_summary_L[j].split(separator_s)[1]
+            best_summary_for_cs_L = best_summary_for_cs_s.split("\n\n")[0]
+            print(best_summary_for_cs_L)
+            for (k,algo) in enumerate(algos):
+                best_summary_for_cs = best_summary_for_cs_L[k]
+                mr = float(best_summary_for_cs.split(mr_s)[:-1])
+                print(mr)
+
+
+
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--output_dirs",type=str,required=True)
-    p.add_argument("--names",type=str,required=True)
-    p.add_argument("--algo",type=str,required=True)
-    p.add_argument("--reb",type=str,required=True)
-    p.add_argument("--plot_dir",type=str,required=True)
-    p.add_argument("--plot_name",type=str,required=True)
-
-    p.add_argument("--cache_sizes",type=str,default="all")
+    p.add_argument("--output_folder",type=str,required=True)
+    p.add_argument("--plot_folder",type=str,required=True)
+    p.add_argument("--name",type=str,required=True)
+    p.add_argument("--plot_type",type=str,required=True)
+    
+    p.add_argument("--cache_sizes",type=str,default="")
+    p.add_argument("--rebalance_strategies",type=str,default="all")
+    p.add_argument("--algos",type=str,default="all")
 
     ap = p.parse_args()  
+   
+    # given a trace, x axis is the cache size. y axis is the miss ratio.  
+    # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy]
 
-    plot_dir = os.path.join(PWD,ap.plot_dir)
-    output_dirs = ap.output_dirs.split(";")
-    names = ap.names.split(";")
-    names = [names_.split(",") for names_ in names]
-    cache_sizes = CACHE_SIZES if (ap.cache_sizes=="all") else ap.cache_sizes.split(",") 
- 
-    hrs = []
-    labels = []
+    if (ap.cache_sizes==""):
+        cache_sizes = CACHE_SIZES
+    else:
+        cache_sizes = ap.cache_sizes.split(",")
 
-    for (i,output_dir) in enumerate(output_dirs):
-        for name in names[i]:
-            
-            hr_for_file = []
-            for cache_size in cache_sizes:
-                output_file_prefix = os.path.join(PWD,output_dir,name+"_"+ap.algo+"_"+cache_size)
 
-                output_files = glob.glob(f"{output_file_prefix}*")  
-            
-                for output_file in output_files:
-                    if output_file[:-4].endswith(ap.reb):
-                        print(output_file)
-                        hr = parse_for_size(output_file)
-                        hr_for_file.append(hr)
+    if (ap.rebalance_strategies=="all"):
+        rebalance_strategies = REBALANCEING_STRATEGIES
+    else:
+        rebalance_strategies = ap.rebalance_strategies.split(",")
 
-            hrs.append(hr_for_file)
-            labels.append(name)
 
-    plot_title = ap.algo + "-" + ap.reb
-    plot(ap.plot_dir,ap.plot_name,plot_title,hrs,cache_sizes,labels)
+    if ap.algos=="all":
+        algos = ALGOS
+    else:
+        algos = ap.algos.split(",")
 
+    if ap.plot_type == "bestReb":
+        handle_best()
     
 
