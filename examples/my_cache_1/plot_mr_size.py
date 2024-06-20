@@ -26,11 +26,7 @@ CACHE_SIZES_BYTES=[256000000,512000000,1000000000,2000000000,
                 4000000000,8000000000,16000000000,32000000000,64000000000]
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
-#COLORS=[
-#        ("#9ebcda","#8856a7","#238b45"),
-#        ("#b3cde3","#8c96c6","#88419d"),
-#        ("#bae4bc","#7bccc4","#2b8cbe"),
-#]
+
 
 COLORS=['tab:green', 'tab:red', 'tab:blue','tab:brown',
         'tab:pink','tab:olive','tab:cyan','tab:orange',

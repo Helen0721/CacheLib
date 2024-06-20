@@ -129,17 +129,38 @@ def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy,algos=None)
 
 
 def collect_cnts(file,reb):
-
     with open(file,"r") as f:
         stdout_str = f.read()
         stdout_str_L = stdout_str.split("\n")
-    
-    print(stdout_str_L[:4])
+
+    def get_final_hr():
+        hr_list = []
+        hr_regex=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
+        for (i,line) in enumerate(stdout_str_L):
+            if i == len(stdout_str_L) - 2: break 
+        
+            m = re.search(hr_regex,line) 
+
+            if not m: continue
+
+            hr_list.append(m.group("hit_ratio"))
+
+        final_hr = hr_list[-1]
+        return final_hr
+
+    print(stdout_str_L[:3])
 
     if reb == "MarginalHits":
         strategy_triggered_s = MarginalHits_triggered_s
     elif reb == "FreeMem":
         strategy_triggered_s = FreeMem_triggered_s
+    elif reb == "default":
+        res = {
+            "total_attempts": stdout_str.count(START_REB_s),
+            ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
+            MISS_RATIO_s: 1-float(get_final_hr())
+        }
+        return res
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
 
@@ -159,21 +180,8 @@ def collect_cnts(file,reb):
         else:
             res[r] = stdout_str.count(r)
    
-
-    hr_list = []
-    hr_regex=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
-    for (i,line) in enumerate(stdout_str_L):
-        if i == len(stdout_str_L) - 2: break 
-        
-        m = re.search(hr_regex,line) 
-
-        if not m: continue
-
-        hr_list.append(m.group("hit_ratio"))
-
-    final_hr = hr_list[-1]
-
-    res[MISS_RATIO_s] = 1-float(final_hr)
+ 
+    res[MISS_RATIO_s] = 1-float(get_final_hr())
 
     return res
 
