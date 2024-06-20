@@ -35,8 +35,8 @@ REB_PARAMS_DICT = {
                         [0] #maxLruTailAge(0)
                     ],                
         "FreeMem":[     [1], #interval(1)
-                        [1], #minSlabs(1)
-                        [1,2,3], #numSlabsFreeMem(3)
+                        [0,1], #minSlabs(1)
+                        [0,1,2,3], #numSlabsFreeMem(3)
                         [1000] #maxUnAllocatedSlabs(1000)
                     ]                           
         }

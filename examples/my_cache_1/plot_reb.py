@@ -227,9 +227,65 @@ def handle_best():
     plot_for_best(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_title)
 
 
-def plot_for_defaultVsbest(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_title):
-    return
+def plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,plot_title):
+    plot_fname = os.path.join(plot_folder,plot_name+".pdf")
+    pp = PdfPages(plot_fname)
 
+    n_categories = len(labels)
+    n_bars = len(dnb_mrs[0])
+    colors = plt.cm.tab20(np.linspace(0, 1, n_bars))  
+    
+    bar_width = 0.2  # Decrease width to give more space between bars
+    bar_spacing = 0.03
+    category_spacing = 0.5  # Decrease this value to reduce space between categories
+
+    indices = np.arange(n_categories) * category_spacing
+
+    print(indices)
+    
+    # plot for individual cache size
+    for (i,cache_size) in enumerate(cache_sizes):
+        print("plotting for cache size {}".format(cache_size))
+        plt.clf()
+        
+        fig, ax = plt.subplots(figsize=(12,12)) 
+        default_mrs = [mrs[0] for mrs in dnb_mrs[i]]
+        best_mrs = [mrs[1] for mrs in dnb_mrs[i]]
+        print(default_mrs)
+        print(best_mrs)
+        print(labels)
+
+        default_bar = ax.barh(indices,default_mrs,bar_width,
+                label = "default",color=colors[0])
+        best_bar = ax.barh(indices + bar_width, best_mrs, 
+                bar_width, label = "best",color = colors[1])
+        
+        ax.margins(y=0.01)
+        ax.set_xlim(left=min(min(min(default_mrs),min(best_mrs))-0.01,0.05))
+        ax.set_xlabel("Miss Ratio",fontsize=20)
+        ax.set_title(plot_title + "-" + cache_size)
+        ax.set_ylabel("Eviction Algorithm - Slab Rebalancing Algorithm",
+                        fontsize=20)
+        ax.set_yticks(indices + bar_width / 2)
+        ax.set_yticklabels(labels,fontsize=15)
+        ax.legend()
+     
+        legend = ax.legend( 
+            fontsize="15", frameon=False,borderaxespad=0.,
+            bbox_to_anchor=(1, 1), loc='upper right')
+
+
+        frame = legend.get_frame() 
+        frame.set_facecolor("0.9") 
+        frame.set_edgecolor("0.9")
+        plt.tight_layout(pad=1.0)
+        pp.savefig(fig)
+        plt.close(fig)
+
+    pp.close()
+    print("default vs best config plot saved to {}".format(plot_fname))
+
+    return
 
 
 
@@ -237,12 +293,29 @@ def handle_bestVsdefault():
     reb_sep_s = "-" * 100
     algo_sep_s = "*" * 100 + "\n"
     mr_s = "'Final Miss Ratio': "
+    config_s_dict = {
+                "LruTailAge": "'LTAS::LTAS(Config config): ",
+                "FreeMem": "'MFS::MFS(Config config): ",
+                "MarginalHits": "'MHS::MHS(Config config): ",
+                "HitsPerSlab": "HPS::HPS(Config config): "
+                }
+    config_end_s = "Cache Initialized."
 
+    default_config_dict = {
+            "LruTailAge": "tailAgeDifferenceRatio:0.25,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3;slabProjectionLength:1",
+            "HitsPerSlab": "minDiff:100,diffRatio:0.1,minSlabs:1,numSlabsFreeMem:3,min\maxLruTailAge:0",
+            "FreeMem": "minSlabs:1,numFreeSlabs:3,maxUnAllocatedSlabs:1000",
+            "MarginalHits": "movingAveParam:0.3,minSlabs:1,maxFreeMemSlabs:1"
+            }
+   
     def find_default_fmr(summary_f_L,cache_size,algo,reb):
+        
         default_fname = os.path.join(ap.output_folder,reb,
                         "{}_{}_{}_{}_default".format(
                             ap.name,algo,cache_size,rebalance_strategy))
-        print("find_default_fmr-find ",default_fname)
+        print("find_default_fmr-find with",default_fname)
+        
+        config_s = config_s_dict[reb]
 
         for (i,section) in enumerate(summary_f_L):
             if default_fname in section:
@@ -251,6 +324,7 @@ def handle_bestVsdefault():
                 while mr_s not in mr_line: 
                     j+=1
                     mr_line = lines[j]
+                    
                 mr = float(mr_line.split(mr_s)[-1][:-1])
                 return mr
         
@@ -284,6 +358,8 @@ def handle_bestVsdefault():
             summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+".txt"),"r")
             summary_f_L = summary_f.read().split("\n\n")
 
+            config_sep = config_s_dict[rebalance_strategy]
+
             for (k,algo) in enumerate(algos_):
                 default_mr = find_default_fmr(summary_f_L,cache_size,algo,rebalance_strategy)
                 print("parsed default miss ratio for {}: {}".format(algo, default_mr))
@@ -293,19 +369,27 @@ def handle_bestVsdefault():
                 best_mr = float(best_summary_for_cs.split(": ")[-1])
                 print("parsed best miss ratio for {}: {}".format(algo, best_mr))
 
+                s,config_line = 1,best_summary_for_cs_L[k].split("\n")[1]
+                while config_sep not in config_line:
+                    s,config_line = s+1,best_summary_for_cs_L[k]
+
+                best_config_s = config_line.split(config_sep)[1].split(config_end_s)[0]
+                print("parsed best config:",best_config_s)
+
                 dnb_mrs_for_cs.append([default_mr,best_mr])
                 labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
+
+                exit()
 
 
             dnb_mrs.append(dnb_mrs_for_cs)
             labels.append(labels_for_cs)
 
-    print(dnb_mrs)
-    print(labels[0])
 
     plot_folder = ap.plot_folder
     plot_name = "Reb-Default_vs_Best"
     plot_title = plot_name
+    labels = labels[0]
 
     plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,plot_title)
 

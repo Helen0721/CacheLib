@@ -142,6 +142,12 @@
 ./run.sh data/w06.oracleGeneral.bin.zst w06 TinyLFU FreeMem 1,1,1,1000 output/Cloud_Physics_Ws_reb_sleep/w06
 ./run.sh data/w06.oracleGeneral.bin.zst w06 TinyLFU FreeMem 1,1,2,1000 output/Cloud_Physics_Ws_reb_sleep/w06
 ./run.sh data/w06.oracleGeneral.bin.zst w06 TinyLFU FreeMem 1,1,3,1000 output/Cloud_Physics_Ws_reb_sleep/w06
+./run.sh data/w06.oracleGeneral.bin.zst w06 Lru FreeMem 1,1,0,1000 output/Cloud_Physics_Ws_reb_sleep/w06
+./run.sh data/w06.oracleGeneral.bin.zst w06 Lru FreeMem 1,0,0,1000 output/Cloud_Physics_Ws_reb_sleep/w06
+./run.sh data/w06.oracleGeneral.bin.zst w06 Lru2Q FreeMem 1,1,0,1000 output/Cloud_Physics_Ws_reb_sleep/w06
+./run.sh data/w06.oracleGeneral.bin.zst w06 Lru2Q FreeMem 1,0,0,1000 output/Cloud_Physics_Ws_reb_sleep/w06
+./run.sh data/w06.oracleGeneral.bin.zst w06 TinyLFU FreeMem 1,1,0,1000 output/Cloud_Physics_Ws_reb_sleep/w06
+./run.sh data/w06.oracleGeneral.bin.zst w06 TinyLFU FreeMem 1,0,0,1000 output/Cloud_Physics_Ws_reb_sleep/w06
 ./run.sh data/w06.oracleGeneral.bin.zst w06 Lru2Q MarginalHits 1,0.2,1,1 output/Cloud_Physics_Ws_reb_sleep/w06
 ./run.sh data/w06.oracleGeneral.bin.zst w06 Lru2Q MarginalHits 1,0.3,1,1 output/Cloud_Physics_Ws_reb_sleep/w06
 ./run.sh data/w06.oracleGeneral.bin.zst w06 Lru2Q MarginalHits 1,0.4,1,1 output/Cloud_Physics_Ws_reb_sleep/w06

@@ -17,7 +17,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
+using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, or TinyLFUAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -151,8 +151,8 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 	  hpsConfig.numSlabsFreeMem = numSlabsFreeMem;
 	  hpsConfig.maxLruTailAge = maxLruTailAge;
 
-	  printf("parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
-		  interval, hpsConfig.minDiff, hpsConfig.minSlabs, hpsConfig.diffRatio, hpsConfig.numSlabsFreeMem, hpsConfig.minLruTailAge, hpsConfig.maxLruTailAge);
+	  //printf("parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
+	 //	  interval, hpsConfig.minDiff, hpsConfig.minSlabs, hpsConfig.diffRatio, hpsConfig.numSlabsFreeMem, hpsConfig.minLruTailAge, hpsConfig.maxLruTailAge);
 	  
 	  cache_config.enablePoolRebalancing(
 			  std::make_shared<cachelib::HitsPerSlabStrategy>(hpsConfig),

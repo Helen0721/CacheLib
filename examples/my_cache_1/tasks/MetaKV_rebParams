@@ -145,3 +145,9 @@
 ./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru2Q MarginalHits 1,0.2,1,1 output/MetaKVT1_reb
 ./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru2Q MarginalHits 1,0.3,1,1 output/MetaKVT1_reb
 ./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru2Q MarginalHits 1,0.4,1,1 output/MetaKVT1_reb
+./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru FreeMem 1,1,0,1000 output/MetaKVT1_reb
+./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru FreeMem 1,0,0,1000 output/MetaKVT1_reb
+./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru2Q FreeMem 1,1,0,1000 output/MetaKVT1_reb
+./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 Lru2Q FreeMem 1,0,0,1000 output/MetaKVT1_reb
+./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 TinyLFU FreeMem 1,1,0,1000 output/MetaKVT1_reb
+./run.sh data/meta_kvcache_traces_1.oracleGeneral.bin.zst metakvt1 TinyLFU FreeMem 1,0,0,1000 output/MetaKVT1_reb
