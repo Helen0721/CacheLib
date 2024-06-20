@@ -214,6 +214,7 @@ def handle_best():
                 best_mrs_for_cs.append(best_mr)
                 labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
 
+            best_summary_f.close()
 
         best_mrs.append(best_mrs_for_cs)
         labels.append(labels_for_cs)
@@ -224,6 +225,89 @@ def handle_best():
     plot_title = plot_name
     labels = labels[0]
     plot_for_best(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_title)
+
+
+def plot_for_defaultVsbest(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_title):
+    return
+
+
+
+
+def handle_bestVsdefault():
+    reb_sep_s = "-" * 100
+    algo_sep_s = "*" * 100 + "\n"
+    mr_s = "'Final Miss Ratio': "
+
+    def find_default_fmr(summary_f_L,cache_size,algo,reb):
+        default_fname = os.path.join(ap.output_folder,reb,
+                        "{}_{}_{}_{}_default".format(
+                            ap.name,algo,cache_size,rebalance_strategy))
+        print("find_default_fmr-find ",default_fname)
+
+        for (i,section) in enumerate(summary_f_L):
+            if default_fname in section:
+                lines = section.split("\n")
+                mr_line,j = lines[0],0
+                while mr_s not in mr_line: 
+                    j+=1
+                    mr_line = lines[j]
+                mr = float(mr_line.split(mr_s)[-1][:-1])
+                return mr
+        
+                
+        print(summary_f_L)
+        print("incorrect parsing for") 
+        exit()
+
+        
+    dnb_mrs = []
+    labels = []
+
+
+    for (i, cache_size) in enumerate(cache_sizes):
+        labels_for_cs = []
+        dnb_mrs_for_cs = []
+
+        for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+            print("parsing for",os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"))
+            best_summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"),"r")
+            best_summary_L = best_summary_f.read().split(reb_sep_s)
+            assert len(best_summary_L) >= len(cache_sizes)
+
+            best_summary_for_cs_s = best_summary_L[i].split("\n\n\n\n")[1]
+            best_summary_for_cs_L = best_summary_for_cs_s.split(algo_sep_s)
+
+            if rebalance_strategy == "MarginalHits": algos_ = ["Lru2Q"]
+            else: algos_ = algos
+
+            print("parsing for",os.path.join(ap.output_folder,rebalance_strategy+".txt"))
+            summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+".txt"),"r")
+            summary_f_L = summary_f.read().split("\n\n")
+
+            for (k,algo) in enumerate(algos_):
+                default_mr = find_default_fmr(summary_f_L,cache_size,algo,rebalance_strategy)
+                print("parsed default miss ratio for {}: {}".format(algo, default_mr))
+
+                best_summary_for_cs = best_summary_for_cs_L[k].split("\n")[0]
+                print(best_summary_for_cs)
+                best_mr = float(best_summary_for_cs.split(": ")[-1])
+                print("parsed best miss ratio for {}: {}".format(algo, best_mr))
+
+                dnb_mrs_for_cs.append([default_mr,best_mr])
+                labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
+
+
+            dnb_mrs.append(dnb_mrs_for_cs)
+            labels.append(labels_for_cs)
+
+    print(dnb_mrs)
+    print(labels[0])
+
+    plot_folder = ap.plot_folder
+    plot_name = "Reb-Default_vs_Best"
+    plot_title = plot_name
+
+    plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,plot_title)
 
 
 
@@ -266,6 +350,5 @@ if __name__ == "__main__":
 
     if ap.plot_type == "bestReb":
         handle_best()
-
-    
-
+    elif ap.plot_type == "defaultVsbest":
+        handle_bestVsdefault()
