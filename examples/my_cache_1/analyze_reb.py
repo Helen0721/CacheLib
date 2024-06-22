@@ -13,6 +13,7 @@ from matplotlib.lines import Line2D
 from typing import List, Dict, Tuple, Union, Literal
 import subprocess 
 import logging
+import copy
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
@@ -96,56 +97,19 @@ def find_best_and_worst(results):
     return (best_i, best_mr, worst_i, worst_mr)
 
 
-def summarize_all_cnts(cnt_result_file,cache_size,rebalance_strategy,algos=None):
+def summarize_best_cnt(ALL_CNTS,cache_size,rebalance_strategy,algo):
+    res_for_files = ALL_CNTS[cache_size][rebalance_strategy][algo]
+
+    best_file,best_mr = "",1.0
+
+    for file,res_for_file in res_for_files.items():
+        mr = res_for_file[MISS_RATIO_s]
+        if mr < best_mr:
+            best_file = file
+            best_mr = mr
+
     
-    f = open(cnt_result_file,"r")
-    results = f.read().split("\n\n")
-    
-    results_for_cs = [r for r in results if "_"+cache_size+"_" in r]
-    
-    (best_i, best_mr, worst_i, worst_mr) = find_best_and_worst(results_for_cs)
-
-
-    if best_mr == 1.0 or worst_mr == 0.0 :
-        sys.stdout = sys.__stdout__
-        print(results)
-        print("Error parsing file",cnt_result_file)
-        exit()
-
-
-    print("Best result for cache size {} and reb. strategy {}: {}".format(cache_size,rebalance_strategy,best_mr))
-    print(results_for_cs[best_i])
-    print()
-    print("Worst result for cache size {} and reb. strategy {}: {}".format(cache_size,rebalance_strategy,worst_mr))
-    print(results_for_cs[worst_i])
-    print("\n\n")    
-
-    if algos!=None:
-        sys.stdout = sys.__stdout__
-        print("Comparison of rebalance strategies within eviction algorithm under fixed cache size...")
-        if ap.stdout_file != "default": sys.stdout = summary_best_file
-
-        for algo in algos:
-            if rebalance_strategy == "MarginalHits" and algo!="Lru2Q": continue
-
-            results_for_algo = [r for r in results_for_cs if "_"+algo+"_" in r]
-            (best_i, best_mr, worst_i, worst_mr) = find_best_and_worst(results_for_algo)
-
-            if best_mr == 1.0 or worst_mr == 0.0 :
-                sys.stdout = sys.__stdout__
-                print(results)
-                print("Error parsing file",cnt_result_file)
-                exit()
-
-            print("Best result for cache size {} and reb. strategy {} and algo {}: {}".format(cache_size,rebalance_strategy,algo,best_mr))
-            print(results_for_algo[best_i])
-            print("Worst result for cache size {} and reb. strategy {} and algo {}: {}".format(cache_size,rebalance_strategy,algo,worst_mr))
-            print(results_for_algo[worst_i])
-            print("Difference between best and worst in miss ratio: {}".format(worst_mr - best_mr))
-            print("*"*100)
-
-    print("-"*100,"\n\n")
-
+    res_for_file["best_result"] = {best_file: copy.deepcopy(res_for_files[best_file])}
 
 
 def collect_cnts(file,reb):
@@ -220,66 +184,12 @@ def collect_cnts(file,reb):
 
     if res["rebParams"] == None: exit()    
 
-    #cnt_res = {output_file: res}
-
     return res
 
 
-if __name__=="__main__":
-    import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument("--summarize_cnt",type=str,required=True)
-    p.add_argument("--output_folder",type=str,required=True) 
-    p.add_argument("--name",type=str,required=True)
-    p.add_argument("--rebalance_strategies",type=str,required=True)
-
-    p.add_argument("--cache_sizes",type=str,default="all")
-    p.add_argument("--algo",type=str,default="all")
-    p.add_argument("--stdout_file",type=str,default="default")
-
-    ap = p.parse_args()  
- 
-    # given a trace, x axis is the cache size. y axis is the miss ratio.  
-    # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy] 
-
-    if (ap.cache_sizes=="all"):
-        cache_sizes = CACHE_SIZES
-    else:
-        cache_sizes = ap.cache_sizes.split(",") 
-
-    if (ap.rebalance_strategies=="all"):
-        rebalance_strategies = REBALANCEING_STRATEGIES
-    else:
-        rebalance_strategies = ap.rebalance_strategies.split(",")
-
-
-    if ap.algo=="all":
-        algos = ALGOS
-    else:
-        algos = [ap.algo]
-     
-    if ap.summarize_cnt == "yes": 
-        sys.stdout = sys.__stdout__
-        print("Summarizing counts...")
-        if ap.stdout_file != "default": 
-            summary_best_file = open(ap.stdout_file,"w")
-            sys.stdout = summary_best_file
-
-
-        for reb in rebalance_strategies:
-            for cache_size in cache_sizes:
-                result_file = os.path.join(ap.output_folder,reb+".txt")
-                summarize_all_cnts(result_file,cache_size,reb,algos)
-        
-        if ap.stdout_file != "default":
-            sys.stdout = sys.__stdout__
-            summary_best_file.close()
-        
-        exit()
-
-    
+def collect_all_cnts():
     ALL_RES = {cs:{reb:{algo:{} for algo in algos if (not (reb=="MarginalHits" and algo!="Lru2Q"))} for reb in rebalance_strategies} for cs in cache_sizes}
-
+    
     for (j,rebalance_strategy) in enumerate(rebalance_strategies):
         all_files_for_reb = os.listdir(os.path.join(ap.output_folder,rebalance_strategy))
 
@@ -294,14 +204,53 @@ if __name__=="__main__":
                             f.startswith(prefix) and not f.endswith(".txt"))]
                 
                 for output_file in all_output_files:
-                    output_file_ = os.path.join(ap.output_folder,rebalance_strategy,output_file)
-                    #print(output_file_)
- 
+                    output_file_ = os.path.join(ap.output_folder,rebalance_strategy,output_file) 
+                    print("parsing for",output_file_)
                     cnt_res = collect_cnts(output_file_,rebalance_strategy)
                     ALL_RES[cache_size][rebalance_strategy][algo][output_file_] = cnt_res 
 
+    for cache_size in cache_sizes: 
+        for rebalance_strategy in rebalance_strategies:
+            for algo in algos:
+                summarize_best_cnt(ALL_RES,cache_size,rebalance_strategy,algo)
+
+
+    return ALL_RES
+
+
+if __name__=="__main__":
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--output_folder",type=str,required=True) 
+    p.add_argument("--name",type=str,required=True)
+
+    p.add_argument("--rebalance_strategies",type=str,default="all")
+    p.add_argument("--cache_sizes",type=str,default="all")
+    p.add_argument("--algo",type=str,default="all")
     
-   
-    with open(ap.stdout_file,"w") as json_file:
-        print("dumping to",ap.stdout_file)
-        json.dump(ALL_RES,json_file,indent=4)
+
+    ap = p.parse_args()  
+  
+    if (ap.cache_sizes=="all"):
+        cache_sizes = CACHE_SIZES
+    else:
+        cache_sizes = ap.cache_sizes.split(",") 
+
+    if (ap.rebalance_strategies=="all"):
+        rebalance_strategies = REBALANCEING_STRATEGIES
+        json_file_path = os.path.join(ap.output_folder,"all.json")
+    else:
+        rebalance_strategies = ap.rebalance_strategies.split(",")
+        json_file_path = os.path.join(ap.output_folder,"{}.json".format("_".join(rebalance_strategies)))
+
+    if ap.algo=="all":
+        algos = ALGOS
+    else:
+        algos = [ap.algo]
+
+
+    ALL_RES = collect_all_cnts()
+
+    with open(json_file_path,"w") as jf:
+            print("dumping to",json_file_path)
+            json.dump(ALL_RES,jf,indent=5)
