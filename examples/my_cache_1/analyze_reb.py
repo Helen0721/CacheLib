@@ -109,7 +109,7 @@ def summarize_best_cnt(ALL_CNTS,cache_size,rebalance_strategy,algo):
             best_mr = mr
 
     
-    res_for_file["best_result"] = {best_file: copy.deepcopy(res_for_files[best_file])}
+    ALL_CNTS[cache_size][rebalance_strategy][algo]["best_result"] = {best_file: copy.deepcopy(res_for_files[best_file])}
 
 
 def collect_cnts(file,reb):
