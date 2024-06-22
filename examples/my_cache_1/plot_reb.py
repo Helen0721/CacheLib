@@ -190,30 +190,14 @@ def handle_best():
         labels_for_cs = []
         best_mrs_for_cs = []
 
-        for (j,rebalance_strategy) in enumerate(rebalance_strategies):
-            print("parsing for",os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"))
-            best_summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"),"r")
-            best_summary_L = best_summary_f.read().split(reb_sep_s)
-        
-            assert len(best_summary_L) >= len(cache_sizes)
 
-            best_summary_for_cs_s = best_summary_L[i].split("\n\n\n\n")[1]
-            best_summary_for_cs_L = best_summary_for_cs_s.split(algo_sep_s)
-
+        for (j,rebalance_strategy) in enumerate(rebalance_strategies): 
             if rebalance_strategy == "MarginalHits": algos_ = ["Lru2Q"]
             else: algos_ = algos
 
             
             for (k,algo) in enumerate(algos_): 
-
-                best_summary_for_cs = best_summary_for_cs_L[k].split("\n")[0]
-                print(best_summary_for_cs)
-                best_mr = float(best_summary_for_cs.split(": ")[-1])
-                print("parsed best miss ratio for {}: {}".format(algo, best_mr))
-
-                best_mrs_for_cs.append(best_mr)
-                labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
-
+ 
             best_summary_f.close()
 
         best_mrs.append(best_mrs_for_cs)
@@ -416,6 +400,7 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--output_folder",type=str,required=True)
     p.add_argument("--plot_folder",type=str,required=True)
+    p.add_argument("--json_file",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--plot_type",type=str,required=True)
     
@@ -447,6 +432,9 @@ if __name__ == "__main__":
         algos = ALGOS
     else:
         algos = ap.algos.split(",")
+
+    with open(ap.json_file,"r") as jf:
+        ALL_RES = json.load(jf)
 
     if ap.plot_type == "bestReb":
         handle_best()

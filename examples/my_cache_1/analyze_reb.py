@@ -212,6 +212,8 @@ def collect_all_cnts():
     for cache_size in cache_sizes: 
         for rebalance_strategy in rebalance_strategies:
             for algo in algos:
+                if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+                
                 summarize_best_cnt(ALL_RES,cache_size,rebalance_strategy,algo)
 
 
