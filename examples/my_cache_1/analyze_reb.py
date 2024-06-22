@@ -3,6 +3,7 @@ import sys
 import itertools
 from collections import defaultdict
 import re
+import json
 import numpy as np
 import random
 import matplotlib.pyplot as plt
@@ -56,6 +57,25 @@ ABBRV = {
     FAILALLOC_TRIGGERED_s: "TriggeredByFailAlloc",
     }
 MISS_RATIO_s = "Final Miss Ratio"
+
+
+config_s_dict = {
+                "LruTailAge": "LTAS::LTAS(Config config): ",
+                "FreeMem": "MFS::MFS(Config config): ",
+                "MarginalHits": "MHS::MHS(Config config): ",
+                "HitsPerSlab": "HPS::HPS(Config config): "
+                }
+
+config_end_s = "Cache Initialized."
+
+default_config_dict = {
+            "LruTailAge": "tailAgeDifferenceRatio:0.25,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3;slabProjectionLength:1",
+            "HitsPerSlab": "minDiff:100,diffRatio:0.1,minSlabs:1,numSlabsFreeMem:3,min\maxLruTailAge:0",
+            "FreeMem": "minSlabs:1,numFreeSlabs:3,maxUnAllocatedSlabs:1000",
+            "MarginalHits": "movingAveParam:0.3,minSlabs:1,maxFreeMemSlabs:1"
+            }
+
+
 
 def find_best_and_worst(results):
     best_i,best_mr = -1,1.0
@@ -148,7 +168,22 @@ def collect_cnts(file,reb):
         final_hr = hr_list[-1]
         return final_hr
 
-    print(stdout_str_L[:3])
+    def get_config():
+        if (reb == "default"): return default_config_dict[reb]
+
+        config_s = config_s_dict[reb]
+
+        for line in stdout_str_L:
+            if config_s in line:
+                config = line.split(config_s)[-1]
+                config = config.split(config_end_s)[0]
+                return config
+        
+        print(stdout_str_L[:4])
+        print("error parsing config")
+        return None
+
+    #print(stdout_str_L[:3])
 
     if reb == "MarginalHits":
         strategy_triggered_s = MarginalHits_triggered_s
@@ -163,9 +198,7 @@ def collect_cnts(file,reb):
         return res
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
-
-    print("strategy_triggere_s:",strategy_triggered_s)
-    
+ 
     res = {"total_attempts": stdout_str.count(START_REB_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
@@ -179,12 +212,17 @@ def collect_cnts(file,reb):
             res[ABBRV[r]] = stdout_str.count(r)
         else:
             res[r] = stdout_str.count(r)
-   
- 
+  
     res[MISS_RATIO_s] = 1-float(get_final_hr())
 
-    return res
+    
+    res["rebParams"] = get_config()
 
+    if res["rebParams"] == None: exit()    
+
+    #cnt_res = {output_file: res}
+
+    return res
 
 
 if __name__=="__main__":
@@ -219,16 +257,13 @@ if __name__=="__main__":
         algos = ALGOS
     else:
         algos = [ap.algo]
-    
-    if ap.stdout_file != "default":
-        print("Redirecting stdout to",ap.stdout_file)
-        summary_best_file = open(ap.stdout_file,"w")
-        sys.stdout = summary_best_file
-    
+     
     if ap.summarize_cnt == "yes": 
         sys.stdout = sys.__stdout__
         print("Summarizing counts...")
-        if ap.stdout_file != "default": sys.stdout = summary_best_file
+        if ap.stdout_file != "default": 
+            summary_best_file = open(ap.stdout_file,"w")
+            sys.stdout = summary_best_file
 
 
         for reb in rebalance_strategies:
@@ -242,6 +277,8 @@ if __name__=="__main__":
         
         exit()
 
+    
+    ALL_RES = {cs:{reb:{algo:{} for algo in algos if (not (reb=="MarginalHits" and algo!="Lru2Q"))} for reb in rebalance_strategies} for cs in cache_sizes}
 
     for (j,rebalance_strategy) in enumerate(rebalance_strategies):
         all_files_for_reb = os.listdir(os.path.join(ap.output_folder,rebalance_strategy))
@@ -258,13 +295,13 @@ if __name__=="__main__":
                 
                 for output_file in all_output_files:
                     output_file_ = os.path.join(ap.output_folder,rebalance_strategy,output_file)
-                    print(output_file_)
-
+                    #print(output_file_)
+ 
                     cnt_res = collect_cnts(output_file_,rebalance_strategy)
+                    ALL_RES[cache_size][rebalance_strategy][algo][output_file_] = cnt_res 
 
-                    print(cnt_res)
-                    print()
-
-    if ap.stdout_file != "default":
-        sys.stdout = sys.__stdout__
-        summary_best_file.close()
+    
+   
+    with open(ap.stdout_file,"w") as json_file:
+        print("dumping to",ap.stdout_file)
+        json.dump(ALL_RES,json_file,indent=4)
