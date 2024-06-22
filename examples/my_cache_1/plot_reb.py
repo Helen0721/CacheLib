@@ -315,7 +315,7 @@ def handle_bestVsdefault():
                             ap.name,algo,cache_size,rebalance_strategy))
         print("find_default_fmr-find with",default_fname)
         
-        config_s = config_s_dict[reb]
+        #config_s = config_s_dict[reb]
 
         for (i,section) in enumerate(summary_f_L):
             if default_fname in section:
@@ -328,9 +328,26 @@ def handle_bestVsdefault():
                 mr = float(mr_line.split(mr_s)[-1][:-1])
                 return mr
         
+        print("not found")
+
+        if rebalance_strategy == "MarginalHits":
+            default_fname = os.path.join(ap.output_folder,reb,
+                        "{}_{}_{}_{}_1,0.3,1,1".format(
+                            ap.name,algo,cache_size,rebalance_strategy,))
+            print("find_default_fmr-find with",default_fname)
+
+            for (i,section) in enumerate(summary_f_L):
+                if default_fname in section:
+                    lines = section.split("\n")
+                    mr_line,j = lines[0],0
+                    while mr_s not in mr_line: 
+                        j+=1
+                        mr_line = lines[j]
+                    
+                    mr = float(mr_line.split(mr_s)[-1][:-1])
+                    return mr
                 
         print(summary_f_L)
-        print("incorrect parsing for") 
         exit()
 
         
@@ -358,7 +375,7 @@ def handle_bestVsdefault():
             summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+".txt"),"r")
             summary_f_L = summary_f.read().split("\n\n")
 
-            config_sep = config_s_dict[rebalance_strategy]
+            #config_sep = config_s_dict[rebalance_strategy]
 
             for (k,algo) in enumerate(algos_):
                 default_mr = find_default_fmr(summary_f_L,cache_size,algo,rebalance_strategy)
@@ -369,18 +386,17 @@ def handle_bestVsdefault():
                 best_mr = float(best_summary_for_cs.split(": ")[-1])
                 print("parsed best miss ratio for {}: {}".format(algo, best_mr))
 
-                s,config_line = 1,best_summary_for_cs_L[k].split("\n")[1]
-                while config_sep not in config_line:
-                    s,config_line = s+1,best_summary_for_cs_L[k]
+                #s,config_line = 1,best_summary_for_cs_L[k].split("\n")[1]
+                #while config_sep not in config_line:
+                #    s,config_line = s+1,best_summary_for_cs_L[k]
 
-                best_config_s = config_line.split(config_sep)[1].split(config_end_s)[0]
-                print("parsed best config:",best_config_s)
+                #best_config_s = config_line.split(config_sep)[1].split(config_end_s)[0]
+                #print("parsed best config:",best_config_s)
 
                 dnb_mrs_for_cs.append([default_mr,best_mr])
                 labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
 
-                exit()
-
+                #exit()
 
             dnb_mrs.append(dnb_mrs_for_cs)
             labels.append(labels_for_cs)
