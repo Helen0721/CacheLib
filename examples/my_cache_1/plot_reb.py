@@ -111,8 +111,7 @@ def handle():
 
 
 
-def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_name,plot_title):
-
+def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_name,plot_title): 
     plot_fname = os.path.join(plot_folder,plot_name+".pdf")
     pp = PdfPages(plot_fname)
     
@@ -127,7 +126,7 @@ def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_
     # plot for individual cache size
     for (i,cache_size) in enumerate(cache_sizes):
         print("plotting for cache size {}".format(cache_size))
-        fig = plt.figure(figsize=(10,6))
+        fig = plt.figure(figsize=(15,8))
         plt.clf()
 
         mrs_for_cs = best_mrs[i]
@@ -142,14 +141,14 @@ def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_
         
         for (j,bar) in enumerate(bars):
             width = bar.get_width()
-            plt.text(text_x_pos, bar.get_y() + bar.get_height()+0.2,rebParams_for_cs[j],fontsize=9,color='dimgrey') 
+            plt.text(text_x_pos, bar.get_y() + bar.get_height()+0.2,rebParams_for_cs[j],fontsize=13,color='dimgrey') 
 
 
-        plt.title(plot_title+"-"+cache_size)
-        plt.xlabel('miss ratios')
-        plt.ylabel("Eviction Algorithm-Slab Rebalancing Algorithm")
-        plt.xticks(fontsize=10)
-        plt.yticks(fontsize=7)
+        plt.title(plot_title+"-"+cache_size,fontsize=20)
+        plt.xlabel('Miss Ratios',fontsize=20)
+        plt.ylabel("Eviction Algorithm-Slab Rebalancing Algorithm",fontsize=20)
+        plt.xticks(fontsize=25)
+        plt.yticks(fontsize=25)
 
         pp.savefig(fig,bbox_inches='tight')
         plt.close()
@@ -162,7 +161,7 @@ def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_
 
     index = np.arange(n_categories) * category_spacing
     
-    fig, ax = plt.subplots(figsize=(13, 25))
+    fig, ax = plt.subplots(figsize=(16, 29))
     
     for i in range(n_bars):
         # Calculate the position for each bar within the group
@@ -171,13 +170,13 @@ def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_
         ax.barh(bar_pos, data, bar_width, label=labels[i], color=colors[i])
 
     ax.margins(y=0.01)
-    plt.title(plot_title+"-all")
-    plt.xlabel('miss ratios')
-    plt.ylabel('Cache Sizes')
+    plt.title(plot_title+"-all",fontsize=20)
+    plt.xlabel('miss ratios',fontsize=30)
+    plt.ylabel('Cache Sizes',fontsize=30)
     plt.yticks(index, cache_sizes, fontsize=20)
-    plt.xticks(fontsize=20)
+    plt.xticks(fontsize=30)
     legend = plt.legend( 
-            fontsize="15", frameon=False,borderaxespad=0.,
+            fontsize="30", frameon=False,borderaxespad=0.,
             bbox_to_anchor=(1, 1), loc='upper right')
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
@@ -205,6 +204,7 @@ def handle_best():
     labels = []
 
 
+
     for (i, cache_size) in enumerate(cache_sizes):
         labels_for_cs = []
         best_mrs_for_cs = []
@@ -214,13 +214,13 @@ def handle_best():
 
         for (j,rebalance_strategy) in enumerate(rebalance_strategies): 
 
-            RES_FOR_REB = RES_FOR_CS[rebalance_strategy]
+            RES_FOR_REB = RES_FOR_CS[rebalance_strategy] 
 
-            if rebalance_strategy == "MarginalHits" and algo!="Lru2Q": continue 
-            
             for (k,algo) in enumerate(algos): 
+                if rebalance_strategy == "MarginalHits" and algo!="Lru2Q": continue 
+            
                 best_res_dict = RES_FOR_REB[algo]["best_result"]
-
+ 
                 for (file_name, best_res) in best_res_dict.items():
                     try:
                         best_mr = best_res[mr_s]
@@ -234,7 +234,10 @@ def handle_best():
 
                 best_mrs_for_cs.append(best_mr)
                 best_rebParams_for_cs.append(best_params)
-                labels_for_cs.append(algo+"-"+rebalance_strategy)
+                if rebalance_strategy=="default":
+                    labels_for_cs.append(algo)
+                else:
+                    labels_for_cs.append(algo+"-"+rebalance_strategy)
  
         best_mrs.append(best_mrs_for_cs)
         labels.append(labels_for_cs)
@@ -253,63 +256,99 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder
 
     n_categories = len(labels)
     n_bars = len(dnb_mrs[0])
-    colors = plt.cm.tab20(np.linspace(0, 1, n_bars))  
+    colors = plt.cm.tab20(np.linspace(0, 1, n_bars+1))  
     
     bar_width = 0.07
-    bar_spacing = 0.05
-    category_spacing = 0.3 
+    bar_spacing = 0.1
+    category_spacing = 0.37 
     text_x_pos = 0.052
+   
+    indices = []
+    for i in range(n_categories):
+        if i >= n_categories - 3:
+            indices.append(i * category_spacing - (i - (n_categories-3)) * (bar_spacing + bar_width))
+        else:
+            indices.append(i * category_spacing)
+    indices = np.array(indices)
 
-    indices = np.arange(n_categories) * category_spacing
+
+    true_legend_labels = ["default","best","unspecified"]
  
     # plot for individual cache size
     for (i,cache_size) in enumerate(cache_sizes):
         print("plotting for cache size {}".format(cache_size))
         plt.clf()
         
-        fig, ax = plt.subplots(figsize=(15,14)) 
+        params_fontsize = 19
+        fig, ax = plt.subplots(figsize=(25,19))
+        #else:
+        #    params_fontsize = 13
+        #    fig, ax = plt.subplots(figsize=(18,15))
+
         default_mrs = [mrs[0] for mrs in dnb_mrs[i]]
         default_params = [params[0] for params in dnb_params[i]]
 
         best_mrs = [mrs[1] for mrs in dnb_mrs[i]]
         best_params = [params[1] for params in dnb_params[i]]
-
-        print(default_mrs)
-        print(best_mrs)
-        print(labels) 
-
-        default_bar = ax.barh(indices, default_mrs, bar_width,
-                label = "default",color=colors[0])
         
-        for (j,d_bar) in enumerate(default_bar):
-            if "-default" not in labels[j]:
-                ax.text(text_x_pos,d_bar.get_y() + d_bar.get_height()+0.01,"default:"+default_params[j],fontsize=12,color='dimgrey') 
+        # default bars
+        default_bars = []
+        for j in range(len(default_mrs)):
+            if j >= (n_categories-3):
+                color = colors[-1]
+                default_bar = ax.barh(indices[j], default_mrs[j], 
+                    bar_width, label = "unspecified",color=color)
+            else:
+                color = colors[0]                         
+                default_bar = ax.barh(indices[j], default_mrs[j], 
+                    bar_width, label = "default",color=color)
 
-        best_bar = ax.barh(indices + bar_width + bar_spacing, best_mrs, bar_width, label = "best",color = colors[1])
+            default_bars.append(default_bar)
+
+        for (j,d_bar) in enumerate(default_bars):
+            if "-" in labels[j]:
+                for rec in d_bar:
+                    ax.text(text_x_pos,rec.get_y() + rec.get_height()+0.01,
+                            "default:"+default_params[j],fontsize=params_fontsize,color='dimgrey') 
+               
+        # best bars
+        best_bars = []
+        for j in range(len(best_mrs)-3):
+            best_bar=ax.barh(indices[j] + bar_width + bar_spacing, best_mrs[j], 
+                    bar_width, label = "best", color = colors[1])
+            best_bars.append(best_bar)
         
-        for (j,b_bar) in enumerate(best_bar):
-            if "-default" not in labels[j]:
-                ax.text(text_x_pos,b_bar.get_y() + b_bar.get_height()+0.01,"best:"+ best_params[j],fontsize=12,color='dimgrey') 
+        for k in range(len(best_params)-3):
+            b_bar = best_bars[k]
+            for rec in b_bar:
+                ax.text(text_x_pos,rec.get_y() + rec.get_height()+0.01,
+                        "best:"+ best_params[k],fontsize=params_fontsize,color='dimgrey') 
 
-        ax.margins(y=0.01)
         ax.set_xlim(left=min(min(min(default_mrs),min(best_mrs))-0.01,0.05))
-        ax.set_xlabel("Miss Ratio",fontsize=20)
-        ax.set_title(plot_title + "-" + cache_size)
+        ax.set_xlabel("Miss Ratios",fontsize=25)  
         ax.set_ylabel("Eviction Algorithm - Slab Rebalancing Algorithm",
-                        fontsize=20)
+                        fontsize=25)
         ax.set_yticks(indices + bar_width / 2)
-        ax.set_yticklabels(labels,fontsize=15)
-        ax.legend()
-     
-        legend = ax.legend( 
-            fontsize="15", frameon=False,borderaxespad=0.,
+        ax.set_yticklabels(labels,fontsize=30)
+        ax.tick_params(axis='x', which='major', labelsize=35)
+        ax.tick_params(axis='y', which='major', labelsize=30) 
+        ax.margins(y=0.01)
+ 
+        lh,_ = ax.get_legend_handles_labels()
+        true_legend_handles = [] 
+        true_legend_handles.append(lh[9])
+        true_legend_handles.append(lh[-1]) 
+        true_legend_handles.append(lh[10])
+
+  
+        legend = ax.legend(true_legend_handles,true_legend_labels, 
+            fontsize="35", frameon=False,borderaxespad=0.,
             bbox_to_anchor=(1, 1), loc='upper right')
 
+        plt.tight_layout(pad=2.0)
 
-        frame = legend.get_frame() 
-        frame.set_facecolor("0.9") 
-        frame.set_edgecolor("0.9")
-        plt.tight_layout(pad=1.0)
+        ax.set_title(plot_title + "-" + cache_size,fontsize=18)
+
         pp.savefig(fig)
         plt.close(fig)
 
@@ -376,9 +415,6 @@ def handle_bestVsdefault():
                 
                 default_mr = default_res[mr_s]
 
-
-
-
                 best_res_= RES_FOR_ALGO["best_result"]
 
                 for (file_name, best_res) in best_res_.items():
@@ -394,7 +430,10 @@ def handle_bestVsdefault():
 
                 dnb_mrs_for_cs.append([default_mr,best_mr])
                 dnb_params_for_cs.append([default_params, best_params])
-                labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
+                if rebalance_strategy == "default":
+                    labels_for_cs.append(algo)
+                else:
+                    labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
 
             dnb_mrs.append(dnb_mrs_for_cs)
             dnb_params.append(dnb_params_for_cs)
@@ -433,6 +472,8 @@ if __name__ == "__main__":
         if ap.name == "metakvt1":
             cache_sizes.remove("64GB")
             cache_sizes.remove("32GB")
+        elif ap.name == "w06":
+            cache_sizes.remove("64GB")
     else:
         cache_sizes = ap.cache_sizes.split(",")
 
