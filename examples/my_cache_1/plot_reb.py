@@ -11,7 +11,7 @@ from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.colors as mcolors
 from matplotlib.lines import Line2D
 import logging
-
+import json
 
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
@@ -111,7 +111,7 @@ def handle():
 
 
 
-def plot_for_best(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_title):
+def plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_name,plot_title):
 
     plot_fname = os.path.join(plot_folder,plot_name+".pdf")
     pp = PdfPages(plot_fname)
@@ -119,16 +119,32 @@ def plot_for_best(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_titl
     n_categories = len(cache_sizes)
     n_bars = len(best_mrs[0])
     # Colors for each bar group
-    colors = plt.cm.tab20(np.linspace(0, 1, n_bars))[::-1]    
+    colors = plt.cm.tab20(np.linspace(0, 1, n_bars))[::-1]   
+
+    bar_width = 0.2
+    text_x_pos = 0.003
     
     # plot for individual cache size
     for (i,cache_size) in enumerate(cache_sizes):
         print("plotting for cache size {}".format(cache_size))
-        fig = plt.figure()
+        fig = plt.figure(figsize=(10,6))
         plt.clf()
 
         mrs_for_cs = best_mrs[i]
-        plt.barh(labels,mrs_for_cs,color=colors[-1])
+        rebParams_for_cs = best_rebParams[i]
+        bars = plt.barh(labels,mrs_for_cs,color=colors[-1],height = bar_width)
+
+        print(mrs_for_cs)
+        print(rebParams_for_cs)
+        print(bars)
+
+        text_x_pos -= 0.0003
+        
+        for (j,bar) in enumerate(bars):
+            width = bar.get_width()
+            plt.text(text_x_pos, bar.get_y() + bar.get_height()+0.2,rebParams_for_cs[j],fontsize=9,color='dimgrey') 
+
+
         plt.title(plot_title+"-"+cache_size)
         plt.xlabel('miss ratios')
         plt.ylabel("Eviction Algorithm-Slab Rebalancing Algorithm")
@@ -180,38 +196,58 @@ def handle_best():
 
     reb_sep_s = "-" * 100
     algo_sep_s = "*" * 100 + "\n"
-    mr_s = "'Final Miss Ratio': "
+    mr_s = "Final Miss Ratio"
+    rebParams_s = "rebParams"
+
 
     best_mrs = []
+    best_rebParams = []
     labels = []
 
 
     for (i, cache_size) in enumerate(cache_sizes):
         labels_for_cs = []
         best_mrs_for_cs = []
+        best_rebParams_for_cs = []
 
+        RES_FOR_CS = ALL_RES[cache_size]
 
         for (j,rebalance_strategy) in enumerate(rebalance_strategies): 
-            if rebalance_strategy == "MarginalHits": algos_ = ["Lru2Q"]
-            else: algos_ = algos
 
+            RES_FOR_REB = RES_FOR_CS[rebalance_strategy]
+
+            if rebalance_strategy == "MarginalHits" and algo!="Lru2Q": continue 
             
-            for (k,algo) in enumerate(algos_): 
- 
-            best_summary_f.close()
+            for (k,algo) in enumerate(algos): 
+                best_res_dict = RES_FOR_REB[algo]["best_result"]
 
+                for (file_name, best_res) in best_res_dict.items():
+                    try:
+                        best_mr = best_res[mr_s]
+                        if rebalance_strategy == "default": 
+                            best_params = "None"
+                        else:
+                            best_params = best_res[rebParams_s]
+                    except:
+                        print(best_res_dict)
+                        exit(1)
+
+                best_mrs_for_cs.append(best_mr)
+                best_rebParams_for_cs.append(best_params)
+                labels_for_cs.append(algo+"-"+rebalance_strategy)
+ 
         best_mrs.append(best_mrs_for_cs)
         labels.append(labels_for_cs)
-
+        best_rebParams.append(best_rebParams_for_cs)
 
     plot_folder = ap.plot_folder
     plot_name = "best-reb-config"
     plot_title = plot_name
     labels = labels[0]
-    plot_for_best(cache_sizes, best_mrs, labels, plot_folder,plot_name,plot_title)
+    plot_for_best(cache_sizes, best_mrs,best_rebParams,labels, plot_folder,plot_name,plot_title)
 
 
-def plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,plot_title):
+def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder,plot_name,plot_title):
     plot_fname = os.path.join(plot_folder,plot_name+".pdf")
     pp = PdfPages(plot_fname)
 
@@ -219,31 +255,42 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,p
     n_bars = len(dnb_mrs[0])
     colors = plt.cm.tab20(np.linspace(0, 1, n_bars))  
     
-    bar_width = 0.2  # Decrease width to give more space between bars
-    bar_spacing = 0.03
-    category_spacing = 0.5  # Decrease this value to reduce space between categories
+    bar_width = 0.07
+    bar_spacing = 0.05
+    category_spacing = 0.3 
+    text_x_pos = 0.052
 
     indices = np.arange(n_categories) * category_spacing
-
-    print(indices)
-    
+ 
     # plot for individual cache size
     for (i,cache_size) in enumerate(cache_sizes):
         print("plotting for cache size {}".format(cache_size))
         plt.clf()
         
-        fig, ax = plt.subplots(figsize=(12,12)) 
+        fig, ax = plt.subplots(figsize=(15,14)) 
         default_mrs = [mrs[0] for mrs in dnb_mrs[i]]
+        default_params = [params[0] for params in dnb_params[i]]
+
         best_mrs = [mrs[1] for mrs in dnb_mrs[i]]
+        best_params = [params[1] for params in dnb_params[i]]
+
         print(default_mrs)
         print(best_mrs)
-        print(labels)
+        print(labels) 
 
-        default_bar = ax.barh(indices,default_mrs,bar_width,
+        default_bar = ax.barh(indices, default_mrs, bar_width,
                 label = "default",color=colors[0])
-        best_bar = ax.barh(indices + bar_width, best_mrs, 
-                bar_width, label = "best",color = colors[1])
         
+        for (j,d_bar) in enumerate(default_bar):
+            if "-default" not in labels[j]:
+                ax.text(text_x_pos,d_bar.get_y() + d_bar.get_height()+0.01,"default:"+default_params[j],fontsize=12,color='dimgrey') 
+
+        best_bar = ax.barh(indices + bar_width + bar_spacing, best_mrs, bar_width, label = "best",color = colors[1])
+        
+        for (j,b_bar) in enumerate(best_bar):
+            if "-default" not in labels[j]:
+                ax.text(text_x_pos,b_bar.get_y() + b_bar.get_height()+0.01,"best:"+ best_params[j],fontsize=12,color='dimgrey') 
+
         ax.margins(y=0.01)
         ax.set_xlim(left=min(min(min(default_mrs),min(best_mrs))-0.01,0.05))
         ax.set_xlabel("Miss Ratio",fontsize=20)
@@ -274,16 +321,8 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,p
 
 
 def handle_bestVsdefault():
-    reb_sep_s = "-" * 100
-    algo_sep_s = "*" * 100 + "\n"
-    mr_s = "'Final Miss Ratio': "
-    config_s_dict = {
-                "LruTailAge": "'LTAS::LTAS(Config config): ",
-                "FreeMem": "'MFS::MFS(Config config): ",
-                "MarginalHits": "'MHS::MHS(Config config): ",
-                "HitsPerSlab": "HPS::HPS(Config config): "
-                }
-    config_end_s = "Cache Initialized."
+    mr_s = "Final Miss Ratio"
+    rebParams_s = "rebParams"
 
     default_config_dict = {
             "LruTailAge": "tailAgeDifferenceRatio:0.25,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3;slabProjectionLength:1",
@@ -291,98 +330,74 @@ def handle_bestVsdefault():
             "FreeMem": "minSlabs:1,numFreeSlabs:3,maxUnAllocatedSlabs:1000",
             "MarginalHits": "movingAveParam:0.3,minSlabs:1,maxFreeMemSlabs:1"
             }
-   
-    def find_default_fmr(summary_f_L,cache_size,algo,reb):
-        
-        default_fname = os.path.join(ap.output_folder,reb,
-                        "{}_{}_{}_{}_default".format(
-                            ap.name,algo,cache_size,rebalance_strategy))
-        print("find_default_fmr-find with",default_fname)
-        
-        #config_s = config_s_dict[reb]
-
-        for (i,section) in enumerate(summary_f_L):
-            if default_fname in section:
-                lines = section.split("\n")
-                mr_line,j = lines[0],0
-                while mr_s not in mr_line: 
-                    j+=1
-                    mr_line = lines[j]
-                    
-                mr = float(mr_line.split(mr_s)[-1][:-1])
-                return mr
-        
-        print("not found")
-
-        if rebalance_strategy == "MarginalHits":
-            default_fname = os.path.join(ap.output_folder,reb,
-                        "{}_{}_{}_{}_1,0.3,1,1".format(
-                            ap.name,algo,cache_size,rebalance_strategy,))
-            print("find_default_fmr-find with",default_fname)
-
-            for (i,section) in enumerate(summary_f_L):
-                if default_fname in section:
-                    lines = section.split("\n")
-                    mr_line,j = lines[0],0
-                    while mr_s not in mr_line: 
-                        j+=1
-                        mr_line = lines[j]
-                    
-                    mr = float(mr_line.split(mr_s)[-1][:-1])
-                    return mr
-                
-        print(summary_f_L)
-        exit()
-
-        
+    
+    default_config_compressed = {
+            "MarginalHits": "1,0.3,1,1"
+            }
+           
     dnb_mrs = []
     labels = []
+    dnb_params = []
 
 
     for (i, cache_size) in enumerate(cache_sizes):
+        RES_FOR_CS = ALL_RES[cache_size]
+
         labels_for_cs = []
         dnb_mrs_for_cs = []
+        dnb_params_for_cs = []
 
         for (j,rebalance_strategy) in enumerate(rebalance_strategies):
-            print("parsing for",os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"))
-            best_summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+"_best.txt"),"r")
-            best_summary_L = best_summary_f.read().split(reb_sep_s)
-            assert len(best_summary_L) >= len(cache_sizes)
+             
+            RES_FOR_REB = RES_FOR_CS[rebalance_strategy]
+            
+            for (k,algo) in enumerate(algos): 
+                if rebalance_strategy == "MarginalHits" and (algo!="Lru2Q" and algo!="default"): continue 
 
-            best_summary_for_cs_s = best_summary_L[i].split("\n\n\n\n")[1]
-            best_summary_for_cs_L = best_summary_for_cs_s.split(algo_sep_s)
+                RES_FOR_ALGO = RES_FOR_REB[algo]
 
-            if rebalance_strategy == "MarginalHits": algos_ = ["Lru2Q"]
-            else: algos_ = algos
+                default_f_name = os.path.join(ap.output_folder,rebalance_strategy,
+                        "{}_{}_{}_{}_default".format(
+                    ap.name,algo,cache_size,rebalance_strategy))
+                
+                if rebalance_strategy == "default": 
+                        default_params = "None"
+                else:
+                    default_params = default_config_dict[rebalance_strategy]
+                
 
-            print("parsing for",os.path.join(ap.output_folder,rebalance_strategy+".txt"))
-            summary_f = open(os.path.join(ap.output_folder,rebalance_strategy+".txt"),"r")
-            summary_f_L = summary_f.read().split("\n\n")
+                try:
+                    default_res = RES_FOR_ALGO[default_f_name] 
+                except:
+                    default_file = default_f_name = os.path.join(ap.output_folder,rebalance_strategy,
+                        "{}_{}_{}_{}_{}".format(
+                    ap.name,algo,cache_size,rebalance_strategy,default_config_compressed[rebalance_strategy]))
+                    default_res = RES_FOR_ALGO[default_f_name]
+                
+                default_mr = default_res[mr_s]
 
-            #config_sep = config_s_dict[rebalance_strategy]
 
-            for (k,algo) in enumerate(algos_):
-                default_mr = find_default_fmr(summary_f_L,cache_size,algo,rebalance_strategy)
-                print("parsed default miss ratio for {}: {}".format(algo, default_mr))
 
-                best_summary_for_cs = best_summary_for_cs_L[k].split("\n")[0]
-                print(best_summary_for_cs)
-                best_mr = float(best_summary_for_cs.split(": ")[-1])
-                print("parsed best miss ratio for {}: {}".format(algo, best_mr))
 
-                #s,config_line = 1,best_summary_for_cs_L[k].split("\n")[1]
-                #while config_sep not in config_line:
-                #    s,config_line = s+1,best_summary_for_cs_L[k]
+                best_res_= RES_FOR_ALGO["best_result"]
 
-                #best_config_s = config_line.split(config_sep)[1].split(config_end_s)[0]
-                #print("parsed best config:",best_config_s)
+                for (file_name, best_res) in best_res_.items():
+                    try:
+                        best_mr = best_res[mr_s]
+                        if rebalance_strategy == "default": 
+                            best_params = "None"
+                        else:
+                            best_params = best_res[rebParams_s]
+                    except:
+                        print(best_res_dict)
+                        exit(1)
 
                 dnb_mrs_for_cs.append([default_mr,best_mr])
+                dnb_params_for_cs.append([default_params, best_params])
                 labels_for_cs.append("{}-{}".format(algo,rebalance_strategy))
 
-                #exit()
-
             dnb_mrs.append(dnb_mrs_for_cs)
+            dnb_params.append(dnb_params_for_cs)
             labels.append(labels_for_cs)
 
 
@@ -391,7 +406,7 @@ def handle_bestVsdefault():
     plot_title = plot_name
     labels = labels[0]
 
-    plot_for_defaultVsbest(cache_sizes, dnb_mrs, labels, plot_folder,plot_name,plot_title)
+    plot_for_defaultVsbest(cache_sizes, dnb_mrs,dnb_params,labels, plot_folder,plot_name,plot_title)
 
 
 
