@@ -142,12 +142,12 @@ struct MMSieveConfig {
 }
 
 struct MMSieveObject {
-  1: required MMLruConfig config;
+  1: required MMSieveConfig config;
 
   // number of evictions for this MM object.
   5: i64 evictions = 0;
   
-  6: required DListObject lru;
+  6: required DListObject queue;
   7: required i64 compressedHand;
 }
 
