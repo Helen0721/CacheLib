@@ -314,7 +314,7 @@ struct VisitByFieldId<::facebook::cachelib::serialization::MMSieveObject> {
     case 5:
       return f(1, static_cast<T&&>(t).evictions_ref());
     case 6:
-      return f(2, static_cast<T&&>(t).lru_ref());
+      return f(2, static_cast<T&&>(t).queue_ref());
     case 7:
       return f(3, static_cast<T&&>(t).compressedHand_ref());
     default:

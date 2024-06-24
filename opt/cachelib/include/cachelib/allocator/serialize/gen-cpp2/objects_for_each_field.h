@@ -187,7 +187,7 @@ struct ForEachField<::facebook::cachelib::serialization::MMSieveObject> {
   void operator()([[maybe_unused]] F&& f, [[maybe_unused]] T&&... t) const {
     f(0, static_cast<T&&>(t).config_ref()...);
     f(1, static_cast<T&&>(t).evictions_ref()...);
-    f(2, static_cast<T&&>(t).lru_ref()...);
+    f(2, static_cast<T&&>(t).queue_ref()...);
     f(3, static_cast<T&&>(t).compressedHand_ref()...);
   }
 };

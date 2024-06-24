@@ -42,17 +42,17 @@ class MMSieve {
   // unique identifier per MMType
   static const int kId;
 
-  // forward declaration;serialize/gen-cpp2/objects_types.h"
+  // forward declaration;serialize/gen-cpp2/objects_types.h
   template <typename T>
   using Hook = DListHook<T>;
   using SerializationType = serialization::MMSieveObject;
   using SerializationConfigType = serialization::MMSieveConfig;
   using SerializationTypeContainer = serialization::MMSieveCollection;
 
-  // This is not applicable for MMLru, just for compile of cache allocator
+  // This is not applicable for MMSieve, just for compile of cache allocator
   enum LruType { NumTypes };
 
-  // Config class for MMLru
+  // Config class for MMSieve
   struct Config {
     // create from serialized config
     explicit Config(SerializationConfigType configState)
@@ -198,7 +198,7 @@ class MMSieve {
   template <typename T, Hook<T> T::*HookPtr>
   struct Container {
    private:
-    using LruList = DList<T, HookPtr>;
+    using SieveList = DList<T, HookPtr>;
     using Mutex = folly::DistributedMutex;
     using LockHolder = std::unique_lock<Mutex>;
     using PtrCompressor = typename T::PtrCompressor;
@@ -210,7 +210,7 @@ class MMSieve {
     Container() = default;
     Container(Config c, PtrCompressor compressor)
         : compressor_(std::move(compressor)),
-          lru_(compressor_),
+          queue_(compressor_),
           config_(std::move(c)) {
       lruRefreshTime_ = config_.lruRefreshTime;
       nextReconfigureTime_ =
@@ -224,7 +224,7 @@ class MMSieve {
     Container(const Container&) = delete;
     Container& operator=(const Container&) = delete;
 
-    using Iterator = typename LruList::Iterator;
+    using Iterator = typename SieveList::Iterator;
 
     // context for iterating the MM container. At any given point of time,
     // there can be only one iterator active since we need to lock the LRU for
@@ -346,7 +346,7 @@ class MMSieve {
 
     // returns the number of elements in the container
     size_t size() const noexcept {
-      return lruMutex_->lock_combine([this]() { return lru_.size(); });
+      return sieveMutex_->lock_combine([this]() { return queue_.size(); });
     }
 
     // Returns the eviction age stats. See CacheStats.h for details
@@ -378,17 +378,6 @@ class MMSieve {
     static void setUpdateTime(T& node, Time time) noexcept {
       (node.*HookPtr).setUpdateTime(time);
     }
-
-    // This function is invoked by remove or record access prior to
-    // removing the node (or moving the node to head) to ensure that
-    // the node being moved is not the insertion point and if it is
-    // adjust it accordingly.
-    // void ensureNotInsertionPoint(T& node) noexcept;
-
-    // update the lru insertion point after doing an insert or removal.
-    // We need to ensure the insertionPoint_ is set to the correct node
-    // to maintain the tailSize_, for the next insertion.
-    void updateLruInsertionPoint() noexcept;
 
     // remove node from lru and adjust insertion points
     // @param node          node to remove
@@ -426,12 +415,12 @@ class MMSieve {
     // protects all operations on the lru. We never really just read the state
     // of the LRU. Hence we dont really require a RW mutex at this point of
     // time.
-    mutable folly::cacheline_aligned<Mutex> lruMutex_;
+    mutable folly::cacheline_aligned<Mutex> sieveMutex_;
 
     const PtrCompressor compressor_{};
 
-    // the lru
-    LruList lru_{};
+    // Sieve FIFO queue
+    SieveList queue_{};
 
     // insertion point
     //T* insertionPoint_{nullptr};
@@ -448,8 +437,8 @@ class MMSieve {
     // How often to promote an item in the eviction queue.
     std::atomic<uint32_t> lruRefreshTime_{};
 
-    // Config for this lru.
-    // Write access to the MMLru Config is serialized.
+    // Config for this sieve.
+    // Write access to the MMSieve Config is serialized.
     // Reads may be racy.
     Config config_{};
 
@@ -461,19 +450,12 @@ class MMSieve {
   };
 };
 
-//namespace detail {
-//template <typename T>
-//bool areBytesSame(const T& one, const T& two) {
-//  return std::memcmp(&one, &two, sizeof(T)) == 0;
-//}
-//} // namespace detail
-
 /* Container Interface Implementation */
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
                                         PtrCompressor compressor)
     : compressor_(std::move(compressor)),
-      lru_(*object.lru(), compressor_),
+      queue_(*object.queue(), compressor_),
       //insertionPoint_(compressor_.unCompress(
       //    CompressedPtr{*object.compressedInsertionPoint()})),
       hand_(compressor_.unCompress(
@@ -506,8 +488,7 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
     }
 
     auto func = [this, &node, curr](){
-
-	//TODO: implement Sieve's version of recordAccess
+	    //TODO: implement Sieve's version of recordAccess
 
     };
 
@@ -519,7 +500,7 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
     // if the tryLockUpdate optimization is off, we always execute the
     // critical section and return true
     if (config_.tryLockUpdate) {
-      if (auto lck = LockHolder{*lruMutex_, std::try_to_lock}) {
+      if (auto lck = LockHolder{*sieveMutex_, std::try_to_lock}) {
         func();
         return true;
       }
@@ -527,7 +508,7 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
       return false;
     }
 
-    lruMutex_->lock_combine(func);
+    sieveMutex_->lock_combine(func);
     return true;
   }
   return false;
@@ -536,7 +517,7 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 cachelib::EvictionAgeStat MMSieve::Container<T, HookPtr>::getEvictionAgeStat(
     uint64_t projectedLength) const noexcept {
-  return lruMutex_->lock_combine([this, projectedLength]() {
+  return sieveMutex_->lock_combine([this, projectedLength]() {
     return getEvictionAgeStatLocked(projectedLength);
   });
 }
@@ -548,11 +529,11 @@ MMSieve::Container<T, HookPtr>::getEvictionAgeStatLocked(
   EvictionAgeStat stat{};
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
 
-  const T* node = lru_.getTail();
+  const T* node = queue_.getTail();
   stat.warmQueueStat.oldestElementAge =
       node ? currTime - getUpdateTime(*node) : 0;
   for (size_t numSeen = 0; numSeen < projectedLength && node != nullptr;
-       numSeen++, node = lru_.getPrev(*node)) {
+       numSeen++, node = queue_.getPrev(*node)) {
   }
   stat.warmQueueStat.projectedAge = node ? currTime - getUpdateTime(*node)
                                          : stat.warmQueueStat.oldestElementAge;
@@ -563,7 +544,7 @@ MMSieve::Container<T, HookPtr>::getEvictionAgeStatLocked(
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::setConfig(const Config& newConfig) {
-  lruMutex_->lock_combine([this, newConfig]() {
+    sieveMutex_->lock_combine([this, newConfig]() {
     config_ = newConfig;
     lruRefreshTime_.store(config_.lruRefreshTime, std::memory_order_relaxed);
     nextReconfigureTime_ = config_.mmReconfigureIntervalSecs.count() == 0
@@ -575,7 +556,7 @@ void MMSieve::Container<T, HookPtr>::setConfig(const Config& newConfig) {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
-  return lruMutex_->lock_combine([this]() { return config_; });
+  return sieveMutex_->lock_combine([this]() { return config_; });
 }
 
 
@@ -584,7 +565,7 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
   //TODO: add Sieve version of adding nodes.
 
-  return lruMutex_->lock_combine([this, &node, currTime]() {
+  return sieveMutex_->lock_combine([this, &node, currTime]() {
     if (node.isInMMContainer()) {
       return false;
     }
@@ -602,25 +583,25 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() const noexcept {
-  LockHolder l(*lruMutex_);
-  return LockedIterator{std::move(l), lru_.rbegin()};
+  LockHolder l(*sieveMutex_);
+  return LockedIterator{std::move(l), queue_.rbegin()};
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
   if (config_.useCombinedLockForIterators) {
-    lruMutex_->lock_combine([this, &fun]() { fun(Iterator{lru_.rbegin()}); });
+    sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.rbegin()}); });
   } else {
-    LockHolder lck{*lruMutex_};
-    fun(Iterator{lru_.rbegin()});
+    LockHolder lck{*sieveMutex_};
+    fun(Iterator{queue_.rbegin()});
   }
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withContainerLock(F&& fun) {
-  lruMutex_->lock_combine([&fun]() { fun(); });
+  sieveMutex_->lock_combine([&fun]() { fun(); });
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
@@ -629,7 +610,7 @@ void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
   //TODO: figure out what this function is supposed to do in Lru and 
   //		update to Sieve version.
   //ensureNotInsertionPoint(node);
-  lru_.remove(node);
+  queue_.remove(node);
   unmarkAccessed(node);
   if (isTail(node)) {
     unmarkTail(node);
@@ -642,7 +623,7 @@ void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
-  return lruMutex_->lock_combine([this, &node]() {
+  return sieveMutex_->lock_combine([this, &node]() {
     if (!node.isInMMContainer()) {
       return false;
     }
@@ -661,12 +642,12 @@ void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
-  return lruMutex_->lock_combine([this, &oldNode, &newNode]() {
+  return sieveMutex_->lock_combine([this, &oldNode, &newNode]() {
     if (!oldNode.isInMMContainer() || newNode.isInMMContainer()) {
       return false;
     }
     const auto updateTime = getUpdateTime(oldNode);
-    lru_.replace(oldNode, newNode);
+    queue_.replace(oldNode, newNode);
     oldNode.unmarkInMMContainer();
     newNode.markInMMContainer();
     setUpdateTime(newNode, updateTime);
@@ -682,9 +663,6 @@ bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
     } else {
       unmarkTail(newNode);
     }
-    //if (insertionPoint_ == &oldNode) {
-    //  insertionPoint_ = &newNode;
-    //}
     return true;
   });
 }
@@ -699,25 +677,20 @@ serialization::MMSieveObject MMSieve::Container<T, HookPtr>::saveState()
   *configObject.updateOnWrite() = config_.updateOnWrite;
   *configObject.updateOnRead() = config_.updateOnRead;
   *configObject.tryLockUpdate() = config_.tryLockUpdate;
-  //*configObject.lruInsertionPointSpec() = config_.lruInsertionPointSpec;
-
+  
   serialization::MMSieveObject object;
   *object.config() = configObject;
   *object.compressedHand() = 
       compressor_.compress(hand_).saveState();
-
-  //*object.compressedInsertionPoint() =
-  //    compressor_.compress(insertionPoint_).saveState();
-  //*object.tailSize() = tailSize_;
   
-  *object.lru() = lru_.saveState();
+  *object.queue() = queue_.saveState();
   return object;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 MMContainerStat MMSieve::Container<T, HookPtr>::getStats() const noexcept {
-  auto stat = lruMutex_->lock_combine([this]() {
-    auto* tail = lru_.getTail();
+  auto stat = sieveMutex_->lock_combine([this]() {
+    auto* tail = queue_.getTail();
 
     // we return by array here because DistributedMutex is fastest when the
     // output data fits within 48 bytes.  And the array is exactly 48 bytes, so
@@ -725,7 +698,7 @@ MMContainerStat MMSieve::Container<T, HookPtr>::getStats() const noexcept {
     //
     // the rest of the parameters are 0, so we don't need the critical section
     // to return them
-    return folly::make_array(lru_.size(),
+    return folly::make_array(queue_.size(),
                              tail == nullptr ? 0 : getUpdateTime(*tail),
                              lruRefreshTime_.load(std::memory_order_relaxed));
   });

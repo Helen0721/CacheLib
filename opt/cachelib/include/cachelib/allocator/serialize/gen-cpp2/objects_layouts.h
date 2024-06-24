@@ -340,30 +340,30 @@ FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveConfig,
     FROZEN_LOAD_FIELD(lruRefreshRatio, 5)));
 
 FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveObject,
-  FROZEN_FIELD_REQ(config, 1, ::facebook::cachelib::serialization::MMLruConfig)
+  FROZEN_FIELD_REQ(config, 1, ::facebook::cachelib::serialization::MMSieveConfig)
   FROZEN_FIELD(evictions, 5, ::std::int64_t)
-  FROZEN_FIELD_REQ(lru, 6, ::facebook::cachelib::serialization::DListObject)
+  FROZEN_FIELD_REQ(queue, 6, ::facebook::cachelib::serialization::DListObject)
   FROZEN_FIELD_REQ(compressedHand, 7, ::std::int64_t)
   FROZEN_VIEW(
-    FROZEN_VIEW_FIELD_REQ(config, ::facebook::cachelib::serialization::MMLruConfig)
+    FROZEN_VIEW_FIELD_REQ(config, ::facebook::cachelib::serialization::MMSieveConfig)
     FROZEN_VIEW_FIELD(evictions, ::std::int64_t)
-    FROZEN_VIEW_FIELD_REQ(lru, ::facebook::cachelib::serialization::DListObject)
+    FROZEN_VIEW_FIELD_REQ(queue, ::facebook::cachelib::serialization::DListObject)
     FROZEN_VIEW_FIELD_REQ(compressedHand, ::std::int64_t))
   FROZEN_SAVE_INLINE(
     FROZEN_SAVE_FIELD(config)
     FROZEN_SAVE_FIELD(evictions)
-    FROZEN_SAVE_FIELD(lru)
+    FROZEN_SAVE_FIELD(queue)
     FROZEN_SAVE_FIELD(compressedHand))
   FROZEN_LOAD_INLINE(
     FROZEN_LOAD_FIELD(config, 1)
     FROZEN_LOAD_FIELD(evictions, 5)
-    FROZEN_LOAD_FIELD(lru, 6)
+    FROZEN_LOAD_FIELD(queue, 6)
     FROZEN_LOAD_FIELD(compressedHand, 7)));
 
 FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveCollection,
-  FROZEN_FIELD_REQ(pools, 1, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>)
+  FROZEN_FIELD_REQ(pools, 1, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>)
   FROZEN_VIEW(
-    FROZEN_VIEW_FIELD_REQ(pools, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>))
+    FROZEN_VIEW_FIELD_REQ(pools, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>))
   FROZEN_SAVE_INLINE(
     FROZEN_SAVE_FIELD(pools))
   FROZEN_LOAD_INLINE(

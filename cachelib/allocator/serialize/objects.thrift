@@ -152,7 +152,7 @@ struct MMSieveObject {
 }
 
 struct MMSieveCollection {
-  1: required map<i32, map<i32, MMLruObject>> pools;
+  1: required map<i32, map<i32, MMSieveObject>> pools;
 }
 
 struct ChainedHashTableObject {

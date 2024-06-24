@@ -79,7 +79,7 @@ struct tryLockUpdate;
 struct lruRefreshRatio;
 struct config;
 struct evictions;
-struct lru;
+struct queue;
 struct compressedHand;
 struct pools;
 struct bucketsPower;
@@ -355,9 +355,9 @@ APACHE_THRIFT_DEFINE_ACCESSOR(config);
 #define APACHE_THRIFT_ACCESSOR_evictions
 APACHE_THRIFT_DEFINE_ACCESSOR(evictions);
 #endif
-#ifndef APACHE_THRIFT_ACCESSOR_lru
-#define APACHE_THRIFT_ACCESSOR_lru
-APACHE_THRIFT_DEFINE_ACCESSOR(lru);
+#ifndef APACHE_THRIFT_ACCESSOR_queue
+#define APACHE_THRIFT_ACCESSOR_queue
+APACHE_THRIFT_DEFINE_ACCESSOR(queue);
 #endif
 #ifndef APACHE_THRIFT_ACCESSOR_compressedHand
 #define APACHE_THRIFT_ACCESSOR_compressedHand
@@ -5306,13 +5306,13 @@ class MMSieveObject final  {
   using __fbthrift_reflection_ident_list = folly::tag_t<
     ::apache::thrift::ident::config,
     ::apache::thrift::ident::evictions,
-    ::apache::thrift::ident::lru,
+    ::apache::thrift::ident::queue,
     ::apache::thrift::ident::compressedHand
   >;
 
   static constexpr std::int16_t __fbthrift_reflection_field_id_list[] = {0,1,5,6,7};
   using __fbthrift_reflection_type_tags = folly::tag_t<
-    ::apache::thrift::type::struct_t<::facebook::cachelib::serialization::MMLruConfig>,
+    ::apache::thrift::type::struct_t<::facebook::cachelib::serialization::MMSieveConfig>,
     ::apache::thrift::type::i64_t,
     ::apache::thrift::type::struct_t<::facebook::cachelib::serialization::DListObject>,
     ::apache::thrift::type::i64_t
@@ -5354,7 +5354,7 @@ class MMSieveObject final  {
   }
   // FragileConstructor for use in initialization lists only.
   [[deprecated("This constructor is deprecated")]]
-  MMSieveObject(apache::thrift::FragileConstructor, ::facebook::cachelib::serialization::MMLruConfig config__arg, ::std::int64_t evictions__arg, ::facebook::cachelib::serialization::DListObject lru__arg, ::std::int64_t compressedHand__arg);
+  MMSieveObject(apache::thrift::FragileConstructor, ::facebook::cachelib::serialization::MMSieveConfig config__arg, ::std::int64_t evictions__arg, ::facebook::cachelib::serialization::DListObject queue__arg, ::std::int64_t compressedHand__arg);
 
   MMSieveObject(MMSieveObject&&) = default;
 
@@ -5365,11 +5365,11 @@ class MMSieveObject final  {
 
   MMSieveObject& operator=(const MMSieveObject&) = default;
  private:
-  ::facebook::cachelib::serialization::MMLruConfig __fbthrift_field_config;
+  ::facebook::cachelib::serialization::MMSieveConfig __fbthrift_field_config;
  private:
   ::std::int64_t __fbthrift_field_evictions;
  private:
-  ::facebook::cachelib::serialization::DListObject __fbthrift_field_lru;
+  ::facebook::cachelib::serialization::DListObject __fbthrift_field_queue;
  private:
   ::std::int64_t __fbthrift_field_compressedHand;
  private:
@@ -5380,42 +5380,42 @@ class MMSieveObject final  {
   bool operator==(const MMSieveObject&) const;
   bool operator<(const MMSieveObject&) const;
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> config_ref() const& {
     return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_config};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> config_ref() const&& {
     return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_config)};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&> config_ref() & {
     return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_config};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> config_ref() && {
     return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_config)};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> config() const& {
     return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_config};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> config() const&& {
     return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_config)};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&> config() & {
     return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_config};
   }
 
-  template <typename..., typename T = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename..., typename T = ::facebook::cachelib::serialization::MMSieveConfig>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> config() && {
     return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_config)};
   }
@@ -5461,43 +5461,43 @@ class MMSieveObject final  {
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> lru_ref() const& {
-    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_lru};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> queue_ref() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_queue};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> lru_ref() const&& {
-    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_lru)};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> queue_ref() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_queue)};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> lru_ref() & {
-    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_lru};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> queue_ref() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_queue};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> lru_ref() && {
-    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_lru)};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> queue_ref() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_queue)};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> lru() const& {
-    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_lru};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> queue() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_queue};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> lru() const&& {
-    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_lru)};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> queue() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_queue)};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> lru() & {
-    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_lru};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> queue() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_queue};
   }
 
   template <typename..., typename T = ::facebook::cachelib::serialization::DListObject>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> lru() && {
-    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_lru)};
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> queue() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_queue)};
   }
 
   template <typename..., typename T = ::std::int64_t>
@@ -5539,12 +5539,12 @@ class MMSieveObject final  {
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedHand() && {
     return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedHand)};
   }
-  const ::facebook::cachelib::serialization::MMLruConfig& get_config() const&;
-  ::facebook::cachelib::serialization::MMLruConfig get_config() &&;
+  const ::facebook::cachelib::serialization::MMSieveConfig& get_config() const&;
+  ::facebook::cachelib::serialization::MMSieveConfig get_config() &&;
 
-  template <typename T_MMSieveObject_config_struct_setter = ::facebook::cachelib::serialization::MMLruConfig>
+  template <typename T_MMSieveObject_config_struct_setter = ::facebook::cachelib::serialization::MMSieveConfig>
   [[deprecated("Use `FOO.config_ref() = BAR;` instead of `FOO.set_config(BAR);`")]]
-  ::facebook::cachelib::serialization::MMLruConfig& set_config(T_MMSieveObject_config_struct_setter&& config_) {
+  ::facebook::cachelib::serialization::MMSieveConfig& set_config(T_MMSieveObject_config_struct_setter&& config_) {
     config_ref() = std::forward<T_MMSieveObject_config_struct_setter>(config_);
     return __fbthrift_field_config;
   }
@@ -5558,14 +5558,14 @@ class MMSieveObject final  {
     evictions_ref() = evictions_;
     return __fbthrift_field_evictions;
   }
-  const ::facebook::cachelib::serialization::DListObject& get_lru() const&;
-  ::facebook::cachelib::serialization::DListObject get_lru() &&;
+  const ::facebook::cachelib::serialization::DListObject& get_queue() const&;
+  ::facebook::cachelib::serialization::DListObject get_queue() &&;
 
-  template <typename T_MMSieveObject_lru_struct_setter = ::facebook::cachelib::serialization::DListObject>
-  [[deprecated("Use `FOO.lru_ref() = BAR;` instead of `FOO.set_lru(BAR);`")]]
-  ::facebook::cachelib::serialization::DListObject& set_lru(T_MMSieveObject_lru_struct_setter&& lru_) {
-    lru_ref() = std::forward<T_MMSieveObject_lru_struct_setter>(lru_);
-    return __fbthrift_field_lru;
+  template <typename T_MMSieveObject_queue_struct_setter = ::facebook::cachelib::serialization::DListObject>
+  [[deprecated("Use `FOO.queue_ref() = BAR;` instead of `FOO.set_queue(BAR);`")]]
+  ::facebook::cachelib::serialization::DListObject& set_queue(T_MMSieveObject_queue_struct_setter&& queue_) {
+    queue_ref() = std::forward<T_MMSieveObject_queue_struct_setter>(queue_);
+    return __fbthrift_field_queue;
   }
 
   ::std::int64_t get_compressedHand() const {
@@ -5619,7 +5619,7 @@ class MMSieveCollection final  {
 
   static constexpr std::int16_t __fbthrift_reflection_field_id_list[] = {0,1};
   using __fbthrift_reflection_type_tags = folly::tag_t<
-    ::apache::thrift::type::map<::apache::thrift::type::i32_t, ::apache::thrift::type::map<::apache::thrift::type::i32_t, ::apache::thrift::type::struct_t<::facebook::cachelib::serialization::MMLruObject>>>
+    ::apache::thrift::type::map<::apache::thrift::type::i32_t, ::apache::thrift::type::map<::apache::thrift::type::i32_t, ::apache::thrift::type::struct_t<::facebook::cachelib::serialization::MMSieveObject>>>
   >;
 
   static constexpr std::size_t __fbthrift_field_size_v = 1;
@@ -5656,7 +5656,7 @@ class MMSieveCollection final  {
 
   // FragileConstructor for use in initialization lists only.
   [[deprecated("This constructor is deprecated")]]
-  MMSieveCollection(apache::thrift::FragileConstructor, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>> pools__arg);
+  MMSieveCollection(apache::thrift::FragileConstructor, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>> pools__arg);
 
   MMSieveCollection(MMSieveCollection&&) noexcept;
 
@@ -5669,58 +5669,58 @@ class MMSieveCollection final  {
   ~MMSieveCollection();
 
  private:
-  ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>> __fbthrift_field_pools;
+  ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>> __fbthrift_field_pools;
 
  public:
 
   bool operator==(const MMSieveCollection&) const;
   bool operator<(const MMSieveCollection&) const;
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> pools_ref() const& {
     return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_pools};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> pools_ref() const&& {
     return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_pools)};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&> pools_ref() & {
     return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_pools};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> pools_ref() && {
     return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_pools)};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> pools() const& {
     return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_pools};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> pools() const&& {
     return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_pools)};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&> pools() & {
     return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_pools};
   }
 
-  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename..., typename T = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> pools() && {
     return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_pools)};
   }
-  const ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>& get_pools() const&;
-  ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>> get_pools() &&;
+  const ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>& get_pools() const&;
+  ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>> get_pools() &&;
 
-  template <typename T_MMSieveCollection_pools_struct_setter = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>>
+  template <typename T_MMSieveCollection_pools_struct_setter = ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>>
   [[deprecated("Use `FOO.pools_ref() = BAR;` instead of `FOO.set_pools(BAR);`")]]
-  ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>& set_pools(T_MMSieveCollection_pools_struct_setter&& pools_) {
+  ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMSieveObject>>& set_pools(T_MMSieveCollection_pools_struct_setter&& pools_) {
     pools_ref() = std::forward<T_MMSieveCollection_pools_struct_setter>(pools_);
     return __fbthrift_field_pools;
   }
