@@ -314,6 +314,61 @@ FROZEN_TYPE(::facebook::cachelib::serialization::MMTinyLFUCollection,
   FROZEN_LOAD_INLINE(
     FROZEN_LOAD_FIELD(pools, 1)));
 
+FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveConfig,
+  FROZEN_FIELD_REQ(lruRefreshTime, 1, ::std::int32_t)
+  FROZEN_FIELD_REQ(updateOnWrite, 2, bool)
+  FROZEN_FIELD(updateOnRead, 3, bool)
+  FROZEN_FIELD(tryLockUpdate, 4, bool)
+  FROZEN_FIELD(lruRefreshRatio, 5, double)
+  FROZEN_VIEW(
+    FROZEN_VIEW_FIELD_REQ(lruRefreshTime, ::std::int32_t)
+    FROZEN_VIEW_FIELD_REQ(updateOnWrite, bool)
+    FROZEN_VIEW_FIELD(updateOnRead, bool)
+    FROZEN_VIEW_FIELD(tryLockUpdate, bool)
+    FROZEN_VIEW_FIELD(lruRefreshRatio, double))
+  FROZEN_SAVE_INLINE(
+    FROZEN_SAVE_FIELD(lruRefreshTime)
+    FROZEN_SAVE_FIELD(updateOnWrite)
+    FROZEN_SAVE_FIELD(updateOnRead)
+    FROZEN_SAVE_FIELD(tryLockUpdate)
+    FROZEN_SAVE_FIELD(lruRefreshRatio))
+  FROZEN_LOAD_INLINE(
+    FROZEN_LOAD_FIELD(lruRefreshTime, 1)
+    FROZEN_LOAD_FIELD(updateOnWrite, 2)
+    FROZEN_LOAD_FIELD(updateOnRead, 3)
+    FROZEN_LOAD_FIELD(tryLockUpdate, 4)
+    FROZEN_LOAD_FIELD(lruRefreshRatio, 5)));
+
+FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveObject,
+  FROZEN_FIELD_REQ(config, 1, ::facebook::cachelib::serialization::MMLruConfig)
+  FROZEN_FIELD(evictions, 5, ::std::int64_t)
+  FROZEN_FIELD_REQ(lru, 6, ::facebook::cachelib::serialization::DListObject)
+  FROZEN_FIELD_REQ(compressedHand, 7, ::std::int64_t)
+  FROZEN_VIEW(
+    FROZEN_VIEW_FIELD_REQ(config, ::facebook::cachelib::serialization::MMLruConfig)
+    FROZEN_VIEW_FIELD(evictions, ::std::int64_t)
+    FROZEN_VIEW_FIELD_REQ(lru, ::facebook::cachelib::serialization::DListObject)
+    FROZEN_VIEW_FIELD_REQ(compressedHand, ::std::int64_t))
+  FROZEN_SAVE_INLINE(
+    FROZEN_SAVE_FIELD(config)
+    FROZEN_SAVE_FIELD(evictions)
+    FROZEN_SAVE_FIELD(lru)
+    FROZEN_SAVE_FIELD(compressedHand))
+  FROZEN_LOAD_INLINE(
+    FROZEN_LOAD_FIELD(config, 1)
+    FROZEN_LOAD_FIELD(evictions, 5)
+    FROZEN_LOAD_FIELD(lru, 6)
+    FROZEN_LOAD_FIELD(compressedHand, 7)));
+
+FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveCollection,
+  FROZEN_FIELD_REQ(pools, 1, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>)
+  FROZEN_VIEW(
+    FROZEN_VIEW_FIELD_REQ(pools, ::std::map<::std::int32_t, ::std::map<::std::int32_t, ::facebook::cachelib::serialization::MMLruObject>>))
+  FROZEN_SAVE_INLINE(
+    FROZEN_SAVE_FIELD(pools))
+  FROZEN_LOAD_INLINE(
+    FROZEN_LOAD_FIELD(pools, 1)));
+
 FROZEN_TYPE(::facebook::cachelib::serialization::ChainedHashTableObject,
   FROZEN_FIELD_REQ(bucketsPower, 1, ::std::int32_t)
   FROZEN_FIELD_REQ(locksPower, 2, ::std::int32_t)

@@ -284,6 +284,59 @@ struct VisitByFieldId<::facebook::cachelib::serialization::MMTinyLFUCollection> 
 };
 
 template <>
+struct VisitByFieldId<::facebook::cachelib::serialization::MMSieveConfig> {
+  template <typename F, typename T>
+  void operator()([[maybe_unused]] F&& f, int32_t fieldId, [[maybe_unused]] T&& t) const {
+    switch (fieldId) {
+    case 1:
+      return f(0, static_cast<T&&>(t).lruRefreshTime_ref());
+    case 2:
+      return f(1, static_cast<T&&>(t).updateOnWrite_ref());
+    case 3:
+      return f(2, static_cast<T&&>(t).updateOnRead_ref());
+    case 4:
+      return f(3, static_cast<T&&>(t).tryLockUpdate_ref());
+    case 5:
+      return f(4, static_cast<T&&>(t).lruRefreshRatio_ref());
+    default:
+      throwInvalidThriftId(fieldId, "::facebook::cachelib::serialization::MMSieveConfig");
+    }
+  }
+};
+
+template <>
+struct VisitByFieldId<::facebook::cachelib::serialization::MMSieveObject> {
+  template <typename F, typename T>
+  void operator()([[maybe_unused]] F&& f, int32_t fieldId, [[maybe_unused]] T&& t) const {
+    switch (fieldId) {
+    case 1:
+      return f(0, static_cast<T&&>(t).config_ref());
+    case 5:
+      return f(1, static_cast<T&&>(t).evictions_ref());
+    case 6:
+      return f(2, static_cast<T&&>(t).lru_ref());
+    case 7:
+      return f(3, static_cast<T&&>(t).compressedHand_ref());
+    default:
+      throwInvalidThriftId(fieldId, "::facebook::cachelib::serialization::MMSieveObject");
+    }
+  }
+};
+
+template <>
+struct VisitByFieldId<::facebook::cachelib::serialization::MMSieveCollection> {
+  template <typename F, typename T>
+  void operator()([[maybe_unused]] F&& f, int32_t fieldId, [[maybe_unused]] T&& t) const {
+    switch (fieldId) {
+    case 1:
+      return f(0, static_cast<T&&>(t).pools_ref());
+    default:
+      throwInvalidThriftId(fieldId, "::facebook::cachelib::serialization::MMSieveCollection");
+    }
+  }
+};
+
+template <>
 struct VisitByFieldId<::facebook::cachelib::serialization::ChainedHashTableObject> {
   template <typename F, typename T>
   void operator()([[maybe_unused]] F&& f, int32_t fieldId, [[maybe_unused]] T&& t) const {

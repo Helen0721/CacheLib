@@ -89,6 +89,21 @@ class StructMetadata<::facebook::cachelib::serialization::MMTinyLFUCollection> {
   static const ::apache::thrift::metadata::ThriftStruct& gen(ThriftMetadata& metadata);
 };
 template <>
+class StructMetadata<::facebook::cachelib::serialization::MMSieveConfig> {
+ public:
+  static const ::apache::thrift::metadata::ThriftStruct& gen(ThriftMetadata& metadata);
+};
+template <>
+class StructMetadata<::facebook::cachelib::serialization::MMSieveObject> {
+ public:
+  static const ::apache::thrift::metadata::ThriftStruct& gen(ThriftMetadata& metadata);
+};
+template <>
+class StructMetadata<::facebook::cachelib::serialization::MMSieveCollection> {
+ public:
+  static const ::apache::thrift::metadata::ThriftStruct& gen(ThriftMetadata& metadata);
+};
+template <>
 class StructMetadata<::facebook::cachelib::serialization::ChainedHashTableObject> {
  public:
   static const ::apache::thrift::metadata::ThriftStruct& gen(ThriftMetadata& metadata);

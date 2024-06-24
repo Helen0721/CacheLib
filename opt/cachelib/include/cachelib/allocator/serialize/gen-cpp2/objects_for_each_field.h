@@ -170,6 +170,37 @@ struct ForEachField<::facebook::cachelib::serialization::MMTinyLFUCollection> {
 };
 
 template <>
+struct ForEachField<::facebook::cachelib::serialization::MMSieveConfig> {
+  template <typename F, typename... T>
+  void operator()([[maybe_unused]] F&& f, [[maybe_unused]] T&&... t) const {
+    f(0, static_cast<T&&>(t).lruRefreshTime_ref()...);
+    f(1, static_cast<T&&>(t).updateOnWrite_ref()...);
+    f(2, static_cast<T&&>(t).updateOnRead_ref()...);
+    f(3, static_cast<T&&>(t).tryLockUpdate_ref()...);
+    f(4, static_cast<T&&>(t).lruRefreshRatio_ref()...);
+  }
+};
+
+template <>
+struct ForEachField<::facebook::cachelib::serialization::MMSieveObject> {
+  template <typename F, typename... T>
+  void operator()([[maybe_unused]] F&& f, [[maybe_unused]] T&&... t) const {
+    f(0, static_cast<T&&>(t).config_ref()...);
+    f(1, static_cast<T&&>(t).evictions_ref()...);
+    f(2, static_cast<T&&>(t).lru_ref()...);
+    f(3, static_cast<T&&>(t).compressedHand_ref()...);
+  }
+};
+
+template <>
+struct ForEachField<::facebook::cachelib::serialization::MMSieveCollection> {
+  template <typename F, typename... T>
+  void operator()([[maybe_unused]] F&& f, [[maybe_unused]] T&&... t) const {
+    f(0, static_cast<T&&>(t).pools_ref()...);
+  }
+};
+
+template <>
 struct ForEachField<::facebook::cachelib::serialization::ChainedHashTableObject> {
   template <typename F, typename... T>
   void operator()([[maybe_unused]] F&& f, [[maybe_unused]] T&&... t) const {

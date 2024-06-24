@@ -90,7 +90,7 @@ ClassId RebalanceStrategy::pickVictimByFreeMem(const std::set<ClassId>& victims,
                        });
 
   if (mpStats.acStats.at(*it).getTotalFreeMemory() <= threshold) {
-    std::cout << "Total free mem. smaller than threshold " << threshold << ". " ;
+    std::cout << "Total free mem." << (mpStats.acStats.at(*it).getTotalFreeMemory() ) <<  " smaller than threshold " << threshold << ". " ;
     return Slab::kInvalidClassId;
   }
 

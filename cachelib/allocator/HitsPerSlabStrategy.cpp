@@ -29,8 +29,8 @@ HitsPerSlabStrategy::HitsPerSlabStrategy(Config config)
     : RebalanceStrategy(HitsPerSlab), config_(std::move(config)) {
    
     std::cout << "HPS::HPS(Config config): ";
-    printf("minDiff:%d,diffRatio:%f,minSlabs:%u,numSlabsFreeMem:%u,minLruTailAge:%u,maxLruTailAge:%u \n",
-	config.minDiff,config.diffRatio,config.numSlabsFreeMem,
+    printf("minDiff:%d,diffRatio:%f,minSlabs:%u,numSlabsFreeMem:%u,minLruTailAge:%d,maxLruTailAge:%d \n",
+	config.minDiff,config.diffRatio,config.minSlabs,config.numSlabsFreeMem,
 	config.minLruTailAge,config.maxLruTailAge);
 }
 
@@ -85,6 +85,7 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
     return victimClassId;
   }
 
+  std::cout << "maxLruTailAge: " << config.maxLruTailAge << " .";
   // prioritize victims with max LRU tail age
   if (config.maxLruTailAge != 0) {
     auto maxAgeVictims = filter(
