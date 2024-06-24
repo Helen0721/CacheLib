@@ -450,13 +450,6 @@ class MMSieve {
   };
 };
 
-//namespace detail {
-//template <typename T>
-//bool areBytesSame(const T& one, const T& two) {
-//  return std::memcmp(&one, &two, sizeof(T)) == 0;
-//}
-//} // namespace detail
-
 /* Container Interface Implementation */
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
