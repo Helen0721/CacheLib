@@ -192,7 +192,7 @@ def collect_all_cnts():
     
     for (j,rebalance_strategy) in enumerate(rebalance_strategies):
         all_files_for_reb = os.listdir(os.path.join(ap.output_folder,rebalance_strategy))
-
+ 
         for (i,algo) in enumerate(algos):
             if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
 
