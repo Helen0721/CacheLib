@@ -113,6 +113,7 @@ if __name__ == "__main__":
     p.add_argument("--output_folder",type=str,required=True)
     p.add_argument("--plot_folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
+    p.add_argument("--organized",type=str,required=True)
     
     p.add_argument("--cache_sizes",type=str,default="")
     p.add_argument("--rebalance_strategies",type=str,default="all")
@@ -150,8 +151,19 @@ if __name__ == "__main__":
             hr_lists.append([])
             labels.append(rebalance_strategy + "-" + algo)
 
-            for cache_size in cache_sizes:     
-                output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size+"_"+rebalance_strategy+".txt")
+            for cache_size in cache_sizes:
+                if ap.organized=="yes":
+                    if rebalance_strategy=="MarginalHits":
+                        rebParams = "1,0.3,1,1"
+                    else:
+                        rebParams = "default"
+                    output_file =os.path.join(ap.output_folder,rebalance_strategy,
+                        "{}_{}_{}_{}_{}".format(ap.name,algo,cache_size,rebalance_strategy,rebParams)
+                        )
+                else:
+                    output_file =os.path.join(ap.output_folder,
+                        "{}_{}_{}_{}.txt".format(ap.name,algo,cache_size,rebalance_strategy)
+                        )
 
                 print("parsing for",output_file) 
 
