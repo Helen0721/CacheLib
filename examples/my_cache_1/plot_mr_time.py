@@ -73,8 +73,8 @@ def plot_hr_time(ts_lists,
                 )
 
     plt.title(plot_title)
-    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="15", frameon=False) 
+    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else 1 ), 
+                        loc="upper right", fontsize="10", frameon=False) 
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
     frame.set_edgecolor("0.9")
