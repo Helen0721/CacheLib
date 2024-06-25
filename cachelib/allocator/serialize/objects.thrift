@@ -147,7 +147,7 @@ struct MMSieveObject {
   // number of evictions for this MM object.
   5: i64 evictions = 0;
   
-  6: required DListObject queue;
+  6: required SieveListObject queue;
   7: required i64 compressedHand;
 }
 

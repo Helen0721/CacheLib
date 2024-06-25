@@ -30,7 +30,7 @@
 #include "cachelib/allocator/Cache.h"
 #include "cachelib/allocator/CacheStats.h"
 #include "cachelib/allocator/Util.h"
-#include "cachelib/allocator/datastruct/DList.h"
+#include "cachelib/allocator/datastruct/SieveList.h"
 #include "cachelib/allocator/memory/serialize/gen-cpp2/objects_types.h"
 #include "cachelib/common/CompilerUtils.h"
 #include "cachelib/common/Mutex.h"
@@ -44,7 +44,7 @@ class MMSieve {
 
   // forward declaration;serialize/gen-cpp2/objects_types.h
   template <typename T>
-  using Hook = DListHook<T>;
+  using Hook = SieveListHook<T>;
   using SerializationType = serialization::MMSieveObject;
   using SerializationConfigType = serialization::MMSieveConfig;
   using SerializationTypeContainer = serialization::MMSieveCollection;
@@ -192,13 +192,13 @@ class MMSieve {
 
   // The container object which can be used to keep track of objects of type
   // T. T must have a public member of type Hook. This object is wrapper
-  // around DList, is thread safe and can be accessed from multiple threads.
-  // The current implementation models an LRU using the above DList
+  // around SieveList, is thread safe and can be accessed from multiple threads.
+  // The current implementation models an LRU using the above SieveList
   // implementation.
   template <typename T, Hook<T> T::*HookPtr>
   struct Container {
    private:
-    using SieveList = DList<T, HookPtr>;
+    using SIEVEList = SieveList<T, HookPtr>;
     using Mutex = folly::DistributedMutex;
     using LockHolder = std::unique_lock<Mutex>;
     using PtrCompressor = typename T::PtrCompressor;
@@ -224,7 +224,7 @@ class MMSieve {
     Container(const Container&) = delete;
     Container& operator=(const Container&) = delete;
 
-    using Iterator = typename SieveList::Iterator;
+    using Iterator = typename SIEVEList::Iterator;
 
     // context for iterating the MM container. At any given point of time,
     // there can be only one iterator active since we need to lock the LRU for
@@ -269,12 +269,8 @@ class MMSieve {
       LockHolder l_;
     };
 
-    // records the information that the node was accessed. This could bump up
-    // the node to the head of the lru depending on the time when the node was
-    // last updated in lru and the kLruRefreshTime. If the node was moved to
-    // the head in the lru, the node's updateTime will be updated
-    // accordingly.
-    //
+    // records the information that the node was accessed. 
+    // accessed node remains where they are, so no locking required.
     // @param node  node that we want to mark as relevant/accessed
     // @param mode  the mode for the access operation.
     //
@@ -420,7 +416,7 @@ class MMSieve {
     const PtrCompressor compressor_{};
 
     // Sieve FIFO queue
-    SieveList queue_{};
+    SIEVEList queue_{};
 
     // insertion point
     //T* insertionPoint_{nullptr};
@@ -486,32 +482,8 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
     if (!isAccessed(node)) {
       markAccessed(node);
     }
-
-    auto func = [this, &node, curr](){
-	    //TODO: implement Sieve's version of recordAccess
-
-    };
-
-   
-
-    // if the tryLockUpdate optimization is on, and we were able to grab the
-    // lock, execute the critical section and return true, else return false
-    //
-    // if the tryLockUpdate optimization is off, we always execute the
-    // critical section and return true
-    if (config_.tryLockUpdate) {
-      if (auto lck = LockHolder{*sieveMutex_, std::try_to_lock}) {
-        func();
-        return true;
-      }
-
-      return false;
-    }
-
-    sieveMutex_->lock_combine(func);
-    return true;
-  }
-  return false;
+   }
+  return true;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
@@ -563,18 +535,21 @@ typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
-  //TODO: add Sieve version of adding nodes.
-
+  // Lock and insert at head
+  // Set hand_ to queue's tail is hand_ is null.
   return sieveMutex_->lock_combine([this, &node, currTime]() {
     if (node.isInMMContainer()) {
       return false;
     }
-   
-    // TODO
-
+    queue_.linkAtHead(node);
     node.markInMMContainer();
     setUpdateTime(node, currTime);
     unmarkAccessed(node);
+
+
+    if (hand_ == nullptr){
+    	hand_ = queue_.getTail();
+    }
     
     return true;
   });
@@ -584,17 +559,17 @@ template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() const noexcept {
   LockHolder l(*sieveMutex_);
-  return LockedIterator{std::move(l), queue_.rbegin()};
+  return LockedIterator{std::move(l), queue_.iterBackFrom(hand_)};
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
   if (config_.useCombinedLockForIterators) {
-    sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.rbegin()}); });
+    sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFrom(hand_)}); });
   } else {
     LockHolder lck{*sieveMutex_};
-    fun(Iterator{queue_.rbegin()});
+    fun(Iterator{queue_.iterBackFrom(hand_)});
   }
 }
 

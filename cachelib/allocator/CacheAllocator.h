@@ -3637,6 +3637,8 @@ std::pair<typename CacheAllocator<CacheTrait>::Item*,
 CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                              ClassId cid,
                                              unsigned int& searchTries) {
+  //std::cout<< "CacheAllocator-getNextCandidate..";
+
   typename NvmCacheT::PutToken token;
   Item* toRecycle = nullptr;
   Item* candidate = nullptr;
