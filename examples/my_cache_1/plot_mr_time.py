@@ -12,6 +12,7 @@ from matplotlib.lines import Line2D
 from typing import List, Dict, Tuple, Union, Literal
 import subprocess 
 import logging
+import json
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
@@ -122,21 +123,21 @@ if __name__ == "__main__":
     p.add_argument("--output_folder",type=str,required=True)
     p.add_argument("--plot_folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
-    p.add_argument("--cache_size",type=str,required=True)
-    
-    p.add_argument("--algo",type=str,default="all")
-    p.add_argument("--rebalance_strategies",type=str,default="all")
+    p.add_argument("--cache_sizes",type=str,required=True)
 
+    p.add_argument("--algo",type=str,default="all")
+    p.add_argument("--organized",type=str,default="no")
+    p.add_argument("--rebalance_strategies",type=str,default="all")
 
     ap = p.parse_args()
 
     algos = ALGOS if (ap.algo=="all") else [ap.algo]
                  
-    cache_sizes = [ap.cache_size] if ap.cache_size!="all" else CACHE_SIZES
+    cache_sizes = ap.cache_sizes.split(",") if ap.cache_sizes!="all" else CACHE_SIZES
 
     rebalance_strategies = ap.rebalance_strategies.split(",") if \
-        (ap.rebalance_strategies!="all") else REBALANCEING_STRATEGIES
-    
+        (ap.rebalance_strategies!="all") else REBALANCEING_STRATEGIES 
+
     for cache_size in cache_sizes:
         ts_lists_for_cs,hr_lists_for_cs,labels = [],[],[] 
 
@@ -145,17 +146,22 @@ if __name__ == "__main__":
 
                 if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
 
-                output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size)
-
-                if (rebalance_strategy!=""):
-                    output_file = output_file + "_" + rebalance_strategy +".txt"
+                if ap.organized=="no": 
+                    output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size)
+                    if (rebalance_strategy!=""):
+                        output_file = output_file + "_" + rebalance_strategy +".txt"
+                    else:
+                        output_file = output_file + ".txt"
                 else:
-                    output_file = output_file + ".txt"
-            
+                    output_file = os.path.join(ap.output_folder,rebalance_strategy,
+                            "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
+                            )
+                            
                 print("parsing for",output_file) 
 
                 ts_list,hr_list = parse_for_time(output_file)
-   
+
+
                 ts_lists_for_cs.append(ts_list) 
                 hr_lists_for_cs.append(hr_list) 
                 labels.append(rebalance_strategy + "-" + algo)
