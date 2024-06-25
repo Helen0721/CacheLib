@@ -74,14 +74,14 @@ def plot_hr_time(ts_lists,
 
     plt.title(plot_title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="12", frameon=False) 
+                        loc="upper right", fontsize="10", frameon=False) 
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
     frame.set_edgecolor("0.9")
     plt.grid(axis="y", linestyle="--") 
     plt.xlabel("Time") 
     plt.ylabel("Miss Ratio")
-    plt.tight_layout()
+    plt.tight_layout(pad=1.0)
     pp.savefig()
     plt.close()
 
