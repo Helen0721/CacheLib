@@ -3790,7 +3790,7 @@ _readField_evictions:
 _readField_queue:
   {
     _readState.beforeSubobject(iprot);
-    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::DListObject>::readWithContext(*iprot, this->__fbthrift_field_queue, _readState);
+    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::SieveListObject>::readWithContext(*iprot, this->__fbthrift_field_queue, _readState);
     _readState.afterSubobject(iprot);
     
   }
@@ -3890,7 +3890,7 @@ uint32_t MMSieveObject::serializedSize(Protocol_ const* prot_) const {
   }
   {
     xfer += prot_->serializedFieldSize("queue", apache::thrift::protocol::T_STRUCT, 6);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::DListObject>::serializedSize<false>(*prot_, this->__fbthrift_field_queue);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::SieveListObject>::serializedSize<false>(*prot_, this->__fbthrift_field_queue);
   }
   {
     xfer += prot_->serializedFieldSize("compressedHand", apache::thrift::protocol::T_I64, 7);
@@ -3914,7 +3914,7 @@ uint32_t MMSieveObject::serializedSizeZC(Protocol_ const* prot_) const {
   }
   {
     xfer += prot_->serializedFieldSize("queue", apache::thrift::protocol::T_STRUCT, 6);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::DListObject>::serializedSize<true>(*prot_, this->__fbthrift_field_queue);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::SieveListObject>::serializedSize<true>(*prot_, this->__fbthrift_field_queue);
   }
   {
     xfer += prot_->serializedFieldSize("compressedHand", apache::thrift::protocol::T_I64, 7);
@@ -3947,7 +3947,7 @@ uint32_t MMSieveObject::write(Protocol_* prot_) const {
     constexpr int16_t kPrevFieldId = 5;
     xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_STRUCT, 6, kPrevFieldId>(*prot_, "queue", previousFieldHasValue);
     previousFieldHasValue = true;
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::DListObject>::write(*prot_, this->__fbthrift_field_queue);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::structure, ::facebook::cachelib::serialization::SieveListObject>::write(*prot_, this->__fbthrift_field_queue);
     xfer += prot_->writeFieldEnd();
   }
   {

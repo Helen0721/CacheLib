@@ -342,12 +342,12 @@ FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveConfig,
 FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveObject,
   FROZEN_FIELD_REQ(config, 1, ::facebook::cachelib::serialization::MMSieveConfig)
   FROZEN_FIELD(evictions, 5, ::std::int64_t)
-  FROZEN_FIELD_REQ(queue, 6, ::facebook::cachelib::serialization::DListObject)
+  FROZEN_FIELD_REQ(queue, 6, ::facebook::cachelib::serialization::SieveListObject)
   FROZEN_FIELD_REQ(compressedHand, 7, ::std::int64_t)
   FROZEN_VIEW(
     FROZEN_VIEW_FIELD_REQ(config, ::facebook::cachelib::serialization::MMSieveConfig)
     FROZEN_VIEW_FIELD(evictions, ::std::int64_t)
-    FROZEN_VIEW_FIELD_REQ(queue, ::facebook::cachelib::serialization::DListObject)
+    FROZEN_VIEW_FIELD_REQ(queue, ::facebook::cachelib::serialization::SieveListObject)
     FROZEN_VIEW_FIELD_REQ(compressedHand, ::std::int64_t))
   FROZEN_SAVE_INLINE(
     FROZEN_SAVE_FIELD(config)

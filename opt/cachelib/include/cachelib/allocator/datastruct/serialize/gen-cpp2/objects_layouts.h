@@ -54,4 +54,25 @@ FROZEN_TYPE(::facebook::cachelib::serialization::MultiDListObject,
   FROZEN_LOAD_INLINE(
     FROZEN_LOAD_FIELD(lists, 1)));
 
+FROZEN_TYPE(::facebook::cachelib::serialization::SieveListObject,
+  FROZEN_FIELD_REQ(compressedHead, 1, ::std::int64_t)
+  FROZEN_FIELD_REQ(compressedTail, 2, ::std::int64_t)
+  FROZEN_FIELD_REQ(compressedHand, 3, ::std::int64_t)
+  FROZEN_FIELD_REQ(size, 4, ::std::int64_t)
+  FROZEN_VIEW(
+    FROZEN_VIEW_FIELD_REQ(compressedHead, ::std::int64_t)
+    FROZEN_VIEW_FIELD_REQ(compressedTail, ::std::int64_t)
+    FROZEN_VIEW_FIELD_REQ(compressedHand, ::std::int64_t)
+    FROZEN_VIEW_FIELD_REQ(size, ::std::int64_t))
+  FROZEN_SAVE_INLINE(
+    FROZEN_SAVE_FIELD(compressedHead)
+    FROZEN_SAVE_FIELD(compressedTail)
+    FROZEN_SAVE_FIELD(compressedHand)
+    FROZEN_SAVE_FIELD(size))
+  FROZEN_LOAD_INLINE(
+    FROZEN_LOAD_FIELD(compressedHead, 1)
+    FROZEN_LOAD_FIELD(compressedTail, 2)
+    FROZEN_LOAD_FIELD(compressedHand, 3)
+    FROZEN_LOAD_FIELD(size, 4)));
+
 }}} // apache::thrift::frozen

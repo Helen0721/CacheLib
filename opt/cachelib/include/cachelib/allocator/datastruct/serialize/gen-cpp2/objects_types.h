@@ -20,6 +20,10 @@ struct compressedHead;
 struct compressedTail;
 struct size;
 struct lists;
+struct compressedHead;
+struct compressedTail;
+struct compressedHand;
+struct size;
 } // namespace ident
 namespace detail {
 #ifndef APACHE_THRIFT_ACCESSOR_size
@@ -50,6 +54,22 @@ APACHE_THRIFT_DEFINE_ACCESSOR(size);
 #define APACHE_THRIFT_ACCESSOR_lists
 APACHE_THRIFT_DEFINE_ACCESSOR(lists);
 #endif
+#ifndef APACHE_THRIFT_ACCESSOR_compressedHead
+#define APACHE_THRIFT_ACCESSOR_compressedHead
+APACHE_THRIFT_DEFINE_ACCESSOR(compressedHead);
+#endif
+#ifndef APACHE_THRIFT_ACCESSOR_compressedTail
+#define APACHE_THRIFT_ACCESSOR_compressedTail
+APACHE_THRIFT_DEFINE_ACCESSOR(compressedTail);
+#endif
+#ifndef APACHE_THRIFT_ACCESSOR_compressedHand
+#define APACHE_THRIFT_ACCESSOR_compressedHand
+APACHE_THRIFT_DEFINE_ACCESSOR(compressedHand);
+#endif
+#ifndef APACHE_THRIFT_ACCESSOR_size
+#define APACHE_THRIFT_ACCESSOR_size
+APACHE_THRIFT_DEFINE_ACCESSOR(size);
+#endif
 } // namespace detail
 } // namespace thrift
 } // namespace apache
@@ -62,6 +82,7 @@ namespace facebook::cachelib::serialization {
 class SListObject;
 class DListObject;
 class MultiDListObject;
+class SieveListObject;
 } // namespace facebook::cachelib::serialization
 // END forward_declare
 namespace apache::thrift::detail::annotation {
@@ -736,6 +757,318 @@ class MultiDListObject final  {
 
 template <class Protocol_>
 unsigned long MultiDListObject::read(Protocol_* iprot) {
+  auto _xferStart = iprot->getCursorPosition();
+  readNoXfer(iprot);
+  return iprot->getCursorPosition() - _xferStart;
+}
+
+
+class SieveListObject final  {
+ private:
+  friend struct ::apache::thrift::detail::st::struct_private_access;
+  template<class> friend struct ::apache::thrift::detail::invoke_reffer;
+
+  //  used by a static_assert in the corresponding source
+  static constexpr bool __fbthrift_cpp2_gen_json = false;
+  static constexpr bool __fbthrift_cpp2_is_runtime_annotation = false;
+  static std::string_view __fbthrift_get_field_name(::apache::thrift::FieldOrdinal ord);
+  static std::string_view __fbthrift_get_class_name();
+  using __fbthrift_reflection_ident_list = folly::tag_t<
+    ::apache::thrift::ident::compressedHead,
+    ::apache::thrift::ident::compressedTail,
+    ::apache::thrift::ident::compressedHand,
+    ::apache::thrift::ident::size
+  >;
+
+  static constexpr std::int16_t __fbthrift_reflection_field_id_list[] = {0,1,2,3,4};
+  using __fbthrift_reflection_type_tags = folly::tag_t<
+    ::apache::thrift::type::i64_t,
+    ::apache::thrift::type::i64_t,
+    ::apache::thrift::type::i64_t,
+    ::apache::thrift::type::i64_t
+  >;
+
+  static constexpr std::size_t __fbthrift_field_size_v = 4;
+
+  template<class T>
+  using __fbthrift_id = ::apache::thrift::type::field_id<__fbthrift_reflection_field_id_list[folly::to_underlying(T::value)]>;
+
+  template<class T>
+  using __fbthrift_type_tag = ::apache::thrift::detail::at<__fbthrift_reflection_type_tags, T::value>;
+
+  template<class T>
+  using __fbthrift_ident = ::apache::thrift::detail::at<__fbthrift_reflection_ident_list, T::value>;
+
+  template<class T> using __fbthrift_ordinal = ::apache::thrift::type::ordinal_tag<
+    ::apache::thrift::detail::getFieldOrdinal<T,
+                                              __fbthrift_reflection_ident_list,
+                                              __fbthrift_reflection_type_tags>(
+      __fbthrift_reflection_field_id_list
+    )
+  >;
+  void __fbthrift_clear();
+  void __fbthrift_clear_terse_fields();
+  bool __fbthrift_is_empty() const;
+
+ public:
+  using __fbthrift_cpp2_type = SieveListObject;
+  static constexpr bool __fbthrift_cpp2_is_union =
+    false;
+
+
+ public:
+
+  SieveListObject() :
+      __fbthrift_field_compressedHead(),
+      __fbthrift_field_compressedTail(),
+      __fbthrift_field_compressedHand(),
+      __fbthrift_field_size() {
+  }
+  // FragileConstructor for use in initialization lists only.
+  [[deprecated("This constructor is deprecated")]]
+  SieveListObject(apache::thrift::FragileConstructor, ::std::int64_t compressedHead__arg, ::std::int64_t compressedTail__arg, ::std::int64_t compressedHand__arg, ::std::int64_t size__arg);
+
+  SieveListObject(SieveListObject&&) = default;
+
+  SieveListObject(const SieveListObject&) = default;
+
+
+  SieveListObject& operator=(SieveListObject&&) = default;
+
+  SieveListObject& operator=(const SieveListObject&) = default;
+ private:
+  ::std::int64_t __fbthrift_field_compressedHead;
+ private:
+  ::std::int64_t __fbthrift_field_compressedTail;
+ private:
+  ::std::int64_t __fbthrift_field_compressedHand;
+ private:
+  ::std::int64_t __fbthrift_field_size;
+
+ public:
+
+  bool operator==(const SieveListObject&) const;
+  bool operator<(const SieveListObject&) const;
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> compressedHead_ref() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_compressedHead};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> compressedHead_ref() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_compressedHead)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> compressedHead_ref() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_compressedHead};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedHead_ref() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedHead)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> compressedHead() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_compressedHead};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> compressedHead() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_compressedHead)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> compressedHead() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_compressedHead};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedHead() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedHead)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> compressedTail_ref() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_compressedTail};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> compressedTail_ref() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_compressedTail)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> compressedTail_ref() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_compressedTail};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedTail_ref() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedTail)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> compressedTail() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_compressedTail};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> compressedTail() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_compressedTail)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> compressedTail() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_compressedTail};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedTail() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedTail)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> compressedHand_ref() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_compressedHand};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> compressedHand_ref() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_compressedHand)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> compressedHand_ref() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_compressedHand};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedHand_ref() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedHand)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> compressedHand() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_compressedHand};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> compressedHand() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_compressedHand)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> compressedHand() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_compressedHand};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> compressedHand() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_compressedHand)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> size_ref() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_size};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> size_ref() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_size)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> size_ref() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_size};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> size_ref() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_size)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> size() const& {
+    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_size};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> size() const&& {
+    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_size)};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> size() & {
+    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_size};
+  }
+
+  template <typename..., typename T = ::std::int64_t>
+  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> size() && {
+    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_size)};
+  }
+
+  ::std::int64_t get_compressedHead() const {
+    return __fbthrift_field_compressedHead;
+  }
+
+  [[deprecated("Use `FOO.compressedHead_ref() = BAR;` instead of `FOO.set_compressedHead(BAR);`")]]
+  ::std::int64_t& set_compressedHead(::std::int64_t compressedHead_) {
+    compressedHead_ref() = compressedHead_;
+    return __fbthrift_field_compressedHead;
+  }
+
+  ::std::int64_t get_compressedTail() const {
+    return __fbthrift_field_compressedTail;
+  }
+
+  [[deprecated("Use `FOO.compressedTail_ref() = BAR;` instead of `FOO.set_compressedTail(BAR);`")]]
+  ::std::int64_t& set_compressedTail(::std::int64_t compressedTail_) {
+    compressedTail_ref() = compressedTail_;
+    return __fbthrift_field_compressedTail;
+  }
+
+  ::std::int64_t get_compressedHand() const {
+    return __fbthrift_field_compressedHand;
+  }
+
+  [[deprecated("Use `FOO.compressedHand_ref() = BAR;` instead of `FOO.set_compressedHand(BAR);`")]]
+  ::std::int64_t& set_compressedHand(::std::int64_t compressedHand_) {
+    compressedHand_ref() = compressedHand_;
+    return __fbthrift_field_compressedHand;
+  }
+
+  ::std::int64_t get_size() const {
+    return __fbthrift_field_size;
+  }
+
+  [[deprecated("Use `FOO.size_ref() = BAR;` instead of `FOO.set_size(BAR);`")]]
+  ::std::int64_t& set_size(::std::int64_t size_) {
+    size_ref() = size_;
+    return __fbthrift_field_size;
+  }
+
+  template <class Protocol_>
+  unsigned long read(Protocol_* iprot);
+  template <class Protocol_>
+  uint32_t serializedSize(Protocol_ const* prot_) const;
+  template <class Protocol_>
+  uint32_t serializedSizeZC(Protocol_ const* prot_) const;
+  template <class Protocol_>
+  uint32_t write(Protocol_* prot_) const;
+
+ private:
+  template <class Protocol_>
+  void readNoXfer(Protocol_* iprot);
+
+  friend class ::apache::thrift::Cpp2Ops<SieveListObject>;
+  friend void swap(SieveListObject& a, SieveListObject& b);
+};
+
+template <class Protocol_>
+unsigned long SieveListObject::read(Protocol_* iprot) {
   auto _xferStart = iprot->getCursorPosition();
   readNoXfer(iprot);
   return iprot->getCursorPosition() - _xferStart;

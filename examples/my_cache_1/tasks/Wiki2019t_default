@@ -1,0 +1,12 @@
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru LruTailAge default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru2Q LruTailAge default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t TinyLFU LruTailAge default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru HitsPerSlab default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru2Q HitsPerSlab default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t TinyLFU HitsPerSlab default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru FreeMem default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru2Q FreeMem default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t TinyLFU FreeMem default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru default default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t Lru2Q default default output/Wiki2019t_reb
+./run.sh data/wiki_2019t.oracleGeneral.zst wiki2019t TinyLFU default default output/Wiki2019t_reb

@@ -40,6 +40,17 @@ struct ForEachField<::facebook::cachelib::serialization::MultiDListObject> {
     f(0, static_cast<T&&>(t).lists_ref()...);
   }
 };
+
+template <>
+struct ForEachField<::facebook::cachelib::serialization::SieveListObject> {
+  template <typename F, typename... T>
+  void operator()([[maybe_unused]] F&& f, [[maybe_unused]] T&&... t) const {
+    f(0, static_cast<T&&>(t).compressedHead_ref()...);
+    f(1, static_cast<T&&>(t).compressedTail_ref()...);
+    f(2, static_cast<T&&>(t).compressedHand_ref()...);
+    f(3, static_cast<T&&>(t).size_ref()...);
+  }
+};
 } // namespace detail
 } // namespace thrift
 } // namespace apache

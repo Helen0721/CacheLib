@@ -48,3 +48,5 @@ for reb in HitsPerSlab MarginalHits LruTailAge FreeMem;do
 python3 analyze_reb.py --output_folder=output/Cloud_Physics_Ws_reb/w06 --name=w06 --rebalance_strategies=$reb --summarize_cnt=yes --stdout_file=output/Cloud_Physics_Ws_reb/w06/"$reb"_best.txt; 
 done
 
+for cs in 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB 64GB;do for algo in Lru Lru2Q TinyLFU; do f=wiki2019t_TinyLFU_64GB_MarginalHits*; mv wiki2019t_TinyLFU_64GB_MarginalHits* MarginalHits; done; done
+for cs in 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB 64GB;do for algo in Lru Lru2Q TinyLFU; do f=wiki2019t_TinyLFU_64GB_default*; mv wiki2019t_TinyLFU_64GB_MarginalHits* default; done; done

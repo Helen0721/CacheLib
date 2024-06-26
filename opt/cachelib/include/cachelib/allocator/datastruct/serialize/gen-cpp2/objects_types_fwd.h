@@ -11,5 +11,6 @@ namespace facebook::cachelib::serialization {
 class SListObject;
 class DListObject;
 class MultiDListObject;
+class SieveListObject;
 } // namespace facebook::cachelib::serialization
 // END forward_declare

@@ -36,6 +36,13 @@ struct TccStructTraits<::facebook::cachelib::serialization::MultiDListObject> {
       int16_t& fid,
       apache::thrift::protocol::TType& _ftype) noexcept;
 };
+template <>
+struct TccStructTraits<::facebook::cachelib::serialization::SieveListObject> {
+  static void translateFieldName(
+      std::string_view _fname,
+      int16_t& fid,
+      apache::thrift::protocol::TType& _ftype) noexcept;
+};
 
 } // namespace detail
 } // namespace thrift
@@ -546,6 +553,233 @@ extern template void MultiDListObject::readNoXfer<>(apache::thrift::CompactProto
 extern template uint32_t MultiDListObject::write<>(apache::thrift::CompactProtocolWriter*) const;
 extern template uint32_t MultiDListObject::serializedSize<>(apache::thrift::CompactProtocolWriter const*) const;
 extern template uint32_t MultiDListObject::serializedSizeZC<>(apache::thrift::CompactProtocolWriter const*) const;
+
+
+template <class Protocol_>
+void SieveListObject::readNoXfer(Protocol_* iprot) {
+  __fbthrift_clear_terse_fields();
+
+  apache::thrift::detail::ProtocolReaderStructReadState<Protocol_> _readState;
+
+  _readState.readStructBegin(iprot);
+
+  using apache::thrift::TProtocolException;
+
+
+  if (UNLIKELY(!_readState.advanceToNextField(
+          iprot,
+          0,
+          1,
+          apache::thrift::protocol::T_I64))) {
+    goto _advance_failure;
+  }
+_readField_compressedHead:
+  {
+    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::readWithContext(*iprot, this->__fbthrift_field_compressedHead, _readState);
+    
+  }
+
+  if (UNLIKELY(!_readState.advanceToNextField(
+          iprot,
+          1,
+          2,
+          apache::thrift::protocol::T_I64))) {
+    goto _advance_failure;
+  }
+_readField_compressedTail:
+  {
+    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::readWithContext(*iprot, this->__fbthrift_field_compressedTail, _readState);
+    
+  }
+
+  if (UNLIKELY(!_readState.advanceToNextField(
+          iprot,
+          2,
+          3,
+          apache::thrift::protocol::T_I64))) {
+    goto _advance_failure;
+  }
+_readField_compressedHand:
+  {
+    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::readWithContext(*iprot, this->__fbthrift_field_compressedHand, _readState);
+    
+  }
+
+  if (UNLIKELY(!_readState.advanceToNextField(
+          iprot,
+          3,
+          4,
+          apache::thrift::protocol::T_I64))) {
+    goto _advance_failure;
+  }
+_readField_size:
+  {
+    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::readWithContext(*iprot, this->__fbthrift_field_size, _readState);
+    
+  }
+
+  if (UNLIKELY(!_readState.advanceToNextField(
+          iprot,
+          4,
+          0,
+          apache::thrift::protocol::T_STOP))) {
+    goto _advance_failure;
+  }
+
+_end:
+  _readState.readStructEnd(iprot);
+
+  return;
+
+  goto _advance_failure; // Avoid compiler warnings about unused labels.
+  _advance_failure:
+  _readState.afterAdvanceFailure(iprot);
+_loop:
+  if (_readState.atStop()) {
+    goto _end;
+  }
+  if (iprot->kUsesFieldNames()) {
+    _readState.template fillFieldTraitsFromName<apache::thrift::detail::TccStructTraits<SieveListObject>>();
+  }
+
+  switch (_readState.fieldId) {
+    case 1:
+    {
+      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_I64))) {
+        goto _readField_compressedHead;
+      } else {
+        goto _skip;
+      }
+    }
+    case 2:
+    {
+      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_I64))) {
+        goto _readField_compressedTail;
+      } else {
+        goto _skip;
+      }
+    }
+    case 3:
+    {
+      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_I64))) {
+        goto _readField_compressedHand;
+      } else {
+        goto _skip;
+      }
+    }
+    case 4:
+    {
+      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_I64))) {
+        goto _readField_size;
+      } else {
+        goto _skip;
+      }
+    }
+    default:
+    {
+_skip:
+      _readState.skip(iprot);
+      _readState.readFieldEnd(iprot);
+      _readState.readFieldBeginNoInline(iprot);
+      goto _loop;
+    }
+  }
+}
+
+template <class Protocol_>
+uint32_t SieveListObject::serializedSize(Protocol_ const* prot_) const {
+  uint32_t xfer = 0;
+  xfer += prot_->serializedStructSize("SieveListObject");
+  {
+    xfer += prot_->serializedFieldSize("compressedHead", apache::thrift::protocol::T_I64, 1);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_compressedHead);
+  }
+  {
+    xfer += prot_->serializedFieldSize("compressedTail", apache::thrift::protocol::T_I64, 2);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_compressedTail);
+  }
+  {
+    xfer += prot_->serializedFieldSize("compressedHand", apache::thrift::protocol::T_I64, 3);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_compressedHand);
+  }
+  {
+    xfer += prot_->serializedFieldSize("size", apache::thrift::protocol::T_I64, 4);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_size);
+  }
+  xfer += prot_->serializedSizeStop();
+  return xfer;
+}
+
+template <class Protocol_>
+uint32_t SieveListObject::serializedSizeZC(Protocol_ const* prot_) const {
+  uint32_t xfer = 0;
+  xfer += prot_->serializedStructSize("SieveListObject");
+  {
+    xfer += prot_->serializedFieldSize("compressedHead", apache::thrift::protocol::T_I64, 1);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_compressedHead);
+  }
+  {
+    xfer += prot_->serializedFieldSize("compressedTail", apache::thrift::protocol::T_I64, 2);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_compressedTail);
+  }
+  {
+    xfer += prot_->serializedFieldSize("compressedHand", apache::thrift::protocol::T_I64, 3);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_compressedHand);
+  }
+  {
+    xfer += prot_->serializedFieldSize("size", apache::thrift::protocol::T_I64, 4);
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::serializedSize<false>(*prot_, this->__fbthrift_field_size);
+  }
+  xfer += prot_->serializedSizeStop();
+  return xfer;
+}
+
+template <class Protocol_>
+uint32_t SieveListObject::write(Protocol_* prot_) const {
+  uint32_t xfer = 0;
+  xfer += prot_->writeStructBegin("SieveListObject");
+  bool previousFieldHasValue = true;
+  {
+    constexpr int16_t kPrevFieldId = 0;
+    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_I64, 1, kPrevFieldId>(*prot_, "compressedHead", previousFieldHasValue);
+    previousFieldHasValue = true;
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::write(*prot_, this->__fbthrift_field_compressedHead);
+    xfer += prot_->writeFieldEnd();
+  }
+  {
+    constexpr int16_t kPrevFieldId = 1;
+    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_I64, 2, kPrevFieldId>(*prot_, "compressedTail", previousFieldHasValue);
+    previousFieldHasValue = true;
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::write(*prot_, this->__fbthrift_field_compressedTail);
+    xfer += prot_->writeFieldEnd();
+  }
+  {
+    constexpr int16_t kPrevFieldId = 2;
+    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_I64, 3, kPrevFieldId>(*prot_, "compressedHand", previousFieldHasValue);
+    previousFieldHasValue = true;
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::write(*prot_, this->__fbthrift_field_compressedHand);
+    xfer += prot_->writeFieldEnd();
+  }
+  {
+    constexpr int16_t kPrevFieldId = 3;
+    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_I64, 4, kPrevFieldId>(*prot_, "size", previousFieldHasValue);
+    previousFieldHasValue = true;
+    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int64_t>::write(*prot_, this->__fbthrift_field_size);
+    xfer += prot_->writeFieldEnd();
+  }
+  xfer += prot_->writeFieldStop();
+  xfer += prot_->writeStructEnd();
+  return xfer;
+}
+
+extern template void SieveListObject::readNoXfer<>(apache::thrift::BinaryProtocolReader*);
+extern template uint32_t SieveListObject::write<>(apache::thrift::BinaryProtocolWriter*) const;
+extern template uint32_t SieveListObject::serializedSize<>(apache::thrift::BinaryProtocolWriter const*) const;
+extern template uint32_t SieveListObject::serializedSizeZC<>(apache::thrift::BinaryProtocolWriter const*) const;
+extern template void SieveListObject::readNoXfer<>(apache::thrift::CompactProtocolReader*);
+extern template uint32_t SieveListObject::write<>(apache::thrift::CompactProtocolWriter*) const;
+extern template uint32_t SieveListObject::serializedSize<>(apache::thrift::CompactProtocolWriter const*) const;
+extern template uint32_t SieveListObject::serializedSizeZC<>(apache::thrift::CompactProtocolWriter const*) const;
 
 
 } // namespace facebook::cachelib::serialization

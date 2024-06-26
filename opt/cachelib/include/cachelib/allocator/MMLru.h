@@ -701,6 +701,7 @@ bool MMLru::Container<T, HookPtr>::add(T& node) noexcept {
 template <typename T, MMLru::Hook<T> T::*HookPtr>
 typename MMLru::Container<T, HookPtr>::LockedIterator
 MMLru::Container<T, HookPtr>::getEvictionIterator() const noexcept {
+  std::cout << "MMLru-getEvictionIterator..." << std::endl;
   LockHolder l(*lruMutex_);
   return LockedIterator{std::move(l), lru_.rbegin()};
 }
@@ -708,6 +709,7 @@ MMLru::Container<T, HookPtr>::getEvictionIterator() const noexcept {
 template <typename T, MMLru::Hook<T> T::*HookPtr>
 template <typename F>
 void MMLru::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
+  // std::cout << "MMLru-withEvictionIterator..." << std::endl;
   if (config_.useCombinedLockForIterators) {
     lruMutex_->lock_combine([this, &fun]() { fun(Iterator{lru_.rbegin()}); });
   } else {
