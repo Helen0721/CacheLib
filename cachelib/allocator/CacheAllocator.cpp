@@ -17,9 +17,9 @@
 #include "cachelib/allocator/CacheAllocator.h"
 
 namespace facebook::cachelib {
-template class CacheAllocator<LruCacheTrait>;
+/* template class CacheAllocator<LruCacheTrait>;
 template class CacheAllocator<LruCacheWithSpinBucketsTrait>;
 template class CacheAllocator<Lru2QCacheTrait>;
-template class CacheAllocator<TinyLFUCacheTrait>;
+template class CacheAllocator<TinyLFUCacheTrait>;*/
 template class CacheAllocator<SieveCacheTrait>;
 } // namespace facebook::cachelib

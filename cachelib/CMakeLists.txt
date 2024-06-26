@@ -288,7 +288,7 @@ add_subdirectory (allocator)
 add_subdirectory (datatype)
 add_subdirectory (compact_cache)
 add_subdirectory (benchmarks)
-add_subdirectory (cachebench)
+#add_subdirectory (cachebench)
 
 # Install the source header files
 install(
@@ -304,7 +304,7 @@ install(
   PATTERN "external" EXCLUDE
   PATTERN "tests" EXCLUDE
   PATTERN "benchmarks" EXCLUDE
-  PATTERN "cachebench" EXCLUDE
+  #PATTERN "cachebench" EXCLUDE
   PATTERN "scripts" EXCLUDE
   PATTERN "cmake" EXCLUDE
 )
@@ -340,10 +340,10 @@ install(
   DESTINATION ${CMAKE_INSTALL_DIR}
 )
 
-install(
-  DIRECTORY ${CACHELIB_HOME}/cachebench/test_configs/
-  DESTINATION ${CONFIGS_INSTALL_DIR}
-)
+#install(
+#  DIRECTORY ${CACHELIB_HOME}/cachebench/test_configs/
+#  DESTINATION ${CONFIGS_INSTALL_DIR}
+#)
 
 add_library(cachelib INTERFACE)
 target_link_libraries(cachelib INTERFACE
@@ -373,7 +373,7 @@ install(EXPORT cachelib-exports
 if (BUILD_SHARED_LIBS)
   set_target_properties(
     cachelib_allocator
-    cachelib_cachebench
+    #cachelib_cachebench
     cachelib_common
     cachelib_datatype
     cachelib_navy

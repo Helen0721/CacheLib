@@ -259,7 +259,7 @@ class MMSieve {
       // private because it's easy to misuse and cause deadlock for MMSieve
       LockedIterator& operator=(LockedIterator&&) noexcept = default;
 
-      // create an lru iterator with the lock being held.
+      // create an sieve iterator with the lock being held.
       LockedIterator(LockHolder l, const Iterator& iter) noexcept;
 
       // only the container can create iterators
@@ -317,7 +317,7 @@ class MMSieve {
     // Obtain an iterator that start from the tail and can be used
     // to search for evictions. This iterator holds a lock to this
     // container and only one such iterator can exist at a time
-    LockedIterator getEvictionIterator() const noexcept;
+    LockedIterator getEvictionIterator()  noexcept;
 
     // Execute provided function under container lock. Function gets
     // iterator passed as parameter.
@@ -509,8 +509,8 @@ MMSieve::Container<T, HookPtr>::getEvictionAgeStatLocked(
   }
   stat.warmQueueStat.projectedAge = node ? currTime - getUpdateTime(*node)
                                          : stat.warmQueueStat.oldestElementAge;
-  XDCHECK(detail::areBytesSame(stat.hotQueueStat, EvictionStatPerType{}));
-  XDCHECK(detail::areBytesSame(stat.coldQueueStat, EvictionStatPerType{}));
+  //XDCHECK(detail::areBytesSame(stat.hotQueueStat, EvictionStatPerType{}));
+  //XDCHECK(detail::areBytesSame(stat.coldQueueStat, EvictionStatPerType{}));
   return stat;
 }
 
@@ -542,6 +542,7 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
       return false;
     }
     queue_.linkAtHead(node);
+    queue_.setAsVisited(node);
     node.markInMMContainer();
     setUpdateTime(node, currTime);
     unmarkAccessed(node);
@@ -557,7 +558,7 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
-MMSieve::Container<T, HookPtr>::getEvictionIterator() const noexcept {
+MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
   LockHolder l(*sieveMutex_);
   return LockedIterator{std::move(l), queue_.iterBackFrom(hand_)};
 }

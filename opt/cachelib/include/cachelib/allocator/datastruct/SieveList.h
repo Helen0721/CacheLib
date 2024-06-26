@@ -140,9 +140,20 @@ class SieveList {
   void setPrevFrom(T& node, const T& other) noexcept {
     (node.*HookPtr).setPrev((other.*HookPtr).getPrev());
   }
-
+  
+  // set the visitMap for node
   void setAsVisited(T& node) noexcept;
+  
+  // unset the visitMap for node 
   void setAsUnvisited (T& node) noexcept;
+
+  // return the bit of the node in visitMap
+  bool isVisited (T& node) noexcept;
+
+
+  // Update and set hand_ points to the next item to be evicted
+  void setHand() noexcept;
+
 
   // Links the passed node to the head of the double linked list
   // @param node node to be linked at the head
@@ -185,7 +196,7 @@ class SieveList {
    public:
     enum class Direction { FROM_HEAD, FROM_TAIL };
 
-    Iterator(T* p, Direction d, const SieveList<T, HookPtr>& sievelist) noexcept
+    Iterator(T* p, Direction d, SieveList<T, HookPtr>& sievelist) noexcept
         : curr_(p), dir_(d), sievelist_(&sievelist) {}
     virtual ~Iterator() = default;
 
@@ -229,26 +240,27 @@ class SieveList {
    protected:
     void goForward() noexcept;
     void goBackward() noexcept;
+    
 
     // the current position of the iterator in the list
     T* curr_{nullptr};
     // the direction we are iterating.
     Direction dir_{Direction::FROM_HEAD};
-    const SieveList<T, HookPtr>* sievelist_{nullptr};
+    SieveList<T, HookPtr>* sievelist_{nullptr};
   };
 
   // provides an iterator starting from the head of the linked list.
-  Iterator begin() const noexcept;
+  Iterator begin()  noexcept;
 
   // provides an iterator starting from the tail of the linked list.
-  Iterator rbegin() const noexcept;
+  Iterator rbegin()  noexcept;
 
   // Iterator to compare against for the end.
-  Iterator end() const noexcept;
-  Iterator rend() const noexcept;
+  Iterator end()  noexcept;
+  Iterator rend()  noexcept;
 
   // provides an iterator starting from a certain node to the head
-  Iterator iterBackFrom(T* node) const noexcept;
+  Iterator iterBackFrom(T* node)  noexcept;
 
  private:
   // unlinks the node from the linked list. Does not correct the next and
@@ -273,6 +285,9 @@ class SieveList {
   std::map<T*,bool> visitMap;
 };
 
+
+
+/* Linked list implemenation */
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::setAsVisited(T& node) noexcept{
     visitMap[&node] = true;
@@ -283,8 +298,23 @@ void SieveList<T, HookPtr>::setAsUnvisited(T& node) noexcept{
     visitMap[&node] = false;
 }
 
+template <typename T, SieveListHook<T> T::*HookPtr>
+bool SieveList<T, HookPtr>::isVisited(T& node) noexcept{
+    return visitMap[&node];
+}
 
-/* Linked list implemenation */
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::setHand() noexcept{
+  if (hand_ == nullptr) hand_ = tail_;
+  while (isVisited(*hand_)){
+    setAsUnvisited(*hand_);
+    hand_ = getPrev(*hand_);
+    if (hand_ == nullptr) hand_ = tail_;
+  }
+}
+
+
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
   XDCHECK_NE(reinterpret_cast<uintptr_t>(&node),
@@ -438,13 +468,27 @@ void SieveList<T, HookPtr>::Iterator::goBackward() noexcept {
   }
 }
 
+/*
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::Iterator::moveHandBackward() noexcept {
+  hand_ = sievelist_->getPrev(*hand_);
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::Iterator::moveHandForward() noexcept {
+  hand_ = sievelist_->getNext(*hand_);
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::Iterator::setHandToTail() noexcept {
+  hand_ = tail_;
+}
+*/
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator&
-SieveList<T, HookPtr>::Iterator::operator++() noexcept {
-  XDCHECK(curr_ != nullptr);
-  if (curr_ != nullptr) {
-    goForward();
-  }
+SieveList<T, HookPtr>::Iterator::operator++() noexcept { 
+  sievelist_->setHand();
+  curr_ = sievelist_->getHand();
   return *this;
 }
 
@@ -459,32 +503,32 @@ SieveList<T, HookPtr>::Iterator::operator--() noexcept {
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::begin() const noexcept {
+typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::begin()  noexcept {
   return SieveList<T, HookPtr>::Iterator(head_, Iterator::Direction::FROM_HEAD,
                                      *this);
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::rbegin()
-    const noexcept {
+     noexcept {
   return SieveList<T, HookPtr>::Iterator(tail_, Iterator::Direction::FROM_TAIL,
                                      *this);
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::end() const noexcept {
+typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::end()  noexcept {
   return SieveList<T, HookPtr>::Iterator(nullptr, Iterator::Direction::FROM_HEAD,
                                      *this);
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::rend() const noexcept {
+typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::rend()  noexcept {
   return SieveList<T, HookPtr>::Iterator(nullptr, Iterator::Direction::FROM_TAIL,
                                      *this);
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFrom(T* node) const noexcept{
+typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFrom(T* node) noexcept{
   return SieveList<T, HookPtr>::Iterator(node, Iterator::Direction::FROM_TAIL, *this);
 }
 } // namespace facebook::cachelib
