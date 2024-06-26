@@ -261,7 +261,7 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder
     bar_width = 0.07
     bar_spacing = 0.1
     category_spacing = 0.37 
-    text_x_pos = 0.052
+    text_x_pos = 0.052 if ap.name!="wiki2019t" else 0.21
    
     indices = []
     for i in range(n_categories):
@@ -280,10 +280,11 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder
         plt.clf()
         
         params_fontsize = 19
-        fig, ax = plt.subplots(figsize=(25,19))
-        #else:
-        #    params_fontsize = 13
-        #    fig, ax = plt.subplots(figsize=(18,15))
+        if ap.name=="wiki2019t":
+            fig, ax = plt.subplots(figsize=(30,19))
+        else:
+            fig, ax = plt.subplots(figsize=(25,19))
+        
 
         default_mrs = [mrs[0] for mrs in dnb_mrs[i]]
         default_params = [params[0] for params in dnb_params[i]]
@@ -325,7 +326,7 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder
                         "best:"+ best_params[k],fontsize=params_fontsize,color='dimgrey') 
 
         if ap.name=="wiki2019t":
-            x_left_lim = 0.4
+            x_left_lim = 0.2
         else:
             x_left_lim = min(min(default_mrs),min(best_mrs))-0.01
 
@@ -350,7 +351,10 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder
             fontsize="35", frameon=False,borderaxespad=0.,
             bbox_to_anchor=(1, 1), loc='upper right')
 
-        plt.tight_layout(pad=2.0)
+        if ap.name=="wiki2019t":
+            plt.tight_layout(pad=2.0) 
+        else:
+            plt.tight_layout(pad=2.0)
 
         ax.set_title(plot_title + "-" + cache_size,fontsize=18)
 
