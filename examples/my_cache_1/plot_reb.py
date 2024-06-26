@@ -324,7 +324,12 @@ def plot_for_defaultVsbest(cache_sizes, dnb_mrs, dnb_params, labels, plot_folder
                 ax.text(text_x_pos,rec.get_y() + rec.get_height()+0.01,
                         "best:"+ best_params[k],fontsize=params_fontsize,color='dimgrey') 
 
-        ax.set_xlim(left=min(min(min(default_mrs),min(best_mrs))-0.01,0.05))
+        if ap.name=="wiki2019t":
+            x_left_lim = 0.4
+        else:
+            x_left_lim = min(min(default_mrs),min(best_mrs))-0.01
+
+        ax.set_xlim(left=x_left_lim)
         ax.set_xlabel("Miss Ratios",fontsize=25)  
         ax.set_ylabel("Eviction Algorithm - Slab Rebalancing Algorithm",
                         fontsize=25)
