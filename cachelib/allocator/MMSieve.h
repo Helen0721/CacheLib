@@ -542,6 +542,7 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
       return false;
     }
     queue_.linkAtHead(node);
+    queue_.setAsVisited(node);
     node.markInMMContainer();
     setUpdateTime(node, currTime);
     unmarkAccessed(node);

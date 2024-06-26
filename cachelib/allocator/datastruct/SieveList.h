@@ -17,7 +17,7 @@
 #pragma once
 
 #include <folly/logging/xlog.h>
-
+#include <map>
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 #include "cachelib/allocator/serialize/gen-cpp2/objects_types.h"
@@ -26,9 +26,9 @@
 #include "cachelib/common/CompilerUtils.h"
 
 namespace facebook::cachelib {
-// node information for the double linked list modelling the lru. It has the
-// previous, next information with the last time the item was updated in the
-// LRU.
+// node information for the double linked list modelling the queue. 
+// It has the previous, next, a visited bit information and 
+// the last time the item was updated in Sieve.
 template <typename T>
 struct CACHELIB_PACKED_ATTR SieveListHook {
   using Time = uint32_t;
@@ -70,13 +70,10 @@ struct CACHELIB_PACKED_ATTR SieveListHook {
     return updateTime_;
   }
 
-  void setVisitBit() const noexcept { visited_ = true;}
-  void unSetvisitBit() const noexcept { visited_ = false;}
-
+ 
  private:
   CompressedPtr next_{}; // next node in the linked list
   CompressedPtr prev_{}; // previous node in the linked list
-  bool visited_{false};  // visited bit
   // timestamp when this was last updated to the head of the list
   Time updateTime_{0};
 };
@@ -105,7 +102,7 @@ class SieveList {
       : compressor_(std::move(compressor)),
         head_(compressor_.unCompress(CompressedPtr{*object.compressedHead()})),
         tail_(compressor_.unCompress(CompressedPtr{*object.compressedTail()})),
-	//hand_(compressor_.unCompress(CompressedPtr{*object.compressedHand()})),
+	hand_(compressor_.unCompress(CompressedPtr{*object.compressedHand()})),
         size_(*object.size()) {}
 
   /**
@@ -115,7 +112,7 @@ class SieveList {
     SieveListObject state;
     *state.compressedHead() = compressor_.compress(head_).saveState();
     *state.compressedTail() = compressor_.compress(tail_).saveState();
-    //*state.compressedHand() = compressor_.compress(hand_).saveState();
+    *state.compressedHand() = compressor_.compress(hand_).saveState();
     *state.size() = size_;
     return state;
   }
@@ -143,6 +140,20 @@ class SieveList {
   void setPrevFrom(T& node, const T& other) noexcept {
     (node.*HookPtr).setPrev((other.*HookPtr).getPrev());
   }
+  
+  // set the visitMap for node
+  void setAsVisited(T& node) noexcept;
+  
+  // unset the visitMap for node 
+  void setAsUnvisited (T& node) noexcept;
+
+  // return the bit of the node in visitMap
+  bool isVisited (T& node) noexcept;
+
+
+  // Update and set hand_ points to the next item to be evicted
+  void setHand() noexcept;
+
 
   // Links the passed node to the head of the double linked list
   // @param node node to be linked at the head
@@ -229,6 +240,7 @@ class SieveList {
    protected:
     void goForward() noexcept;
     void goBackward() noexcept;
+    
 
     // the current position of the iterator in the list
     T* curr_{nullptr};
@@ -268,9 +280,37 @@ class SieveList {
 
   // size of the list
   size_t size_{0};
+
+  // visitMap: node->visitedOrNot
+  std::map<T*,bool> visitMap;
 };
 
+
+
 /* Linked list implemenation */
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::setAsVisited(T& node) noexcept{
+    visitMap[&node] = true;
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::setAsUnvisited(T& node) noexcept{
+    visitMap[&node] = false;
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+bool SieveList<T, HookPtr>::isVisited(T& node) noexcept{
+    return visitMap[&node];
+}
+
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::setHand() noexcept{
+  if (hand_ == nullptr) hand_ = tail_;
+}
+
+
+
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
   XDCHECK_NE(reinterpret_cast<uintptr_t>(&node),
@@ -344,7 +384,10 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
   if (&node == tail_) {
     tail_ = prev;
   }
-
+  //TODO: set it to the previous node?
+  if (&node == hand_){
+    hand_ = tail_;
+  }
   // fix the next and prev ptrs of the node before and after us.
   if (prev != nullptr) {
     setNextFrom(*prev, node);
@@ -360,6 +403,7 @@ void SieveList<T, HookPtr>::remove(T& node) noexcept {
   unlink(node);
   setNext(node, nullptr);
   setPrev(node, nullptr);
+  //TODO: set hand_ to the previous node?
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
@@ -371,6 +415,7 @@ void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
   if (&oldNode == tail_) {
     tail_ = &newNode;
   }
+  //TODO: set hand_ 
 
   // Make the previous and next nodes point to the new node
   auto* const prev = getPrev(oldNode);
@@ -419,13 +464,27 @@ void SieveList<T, HookPtr>::Iterator::goBackward() noexcept {
   }
 }
 
+/*
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::Iterator::moveHandBackward() noexcept {
+  hand_ = sievelist_->getPrev(*hand_);
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::Iterator::moveHandForward() noexcept {
+  hand_ = sievelist_->getNext(*hand_);
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::Iterator::setHandToTail() noexcept {
+  hand_ = tail_;
+}
+*/
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator&
-SieveList<T, HookPtr>::Iterator::operator++() noexcept {
-  XDCHECK(curr_ != nullptr);
-  if (curr_ != nullptr) {
-    goForward();
-  }
+SieveList<T, HookPtr>::Iterator::operator++() noexcept { 
+  sievelist_->setHand();
+  curr_ = sievelist_->getHand();
   return *this;
 }
 
