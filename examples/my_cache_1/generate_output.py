@@ -113,7 +113,7 @@ if __name__=="__main__":
             
             rebParams = chooseRebParams(ap.reb,ap.rebParams)
 
-            output_file = os.path.join(ap.outputdir,
+            output_file = os.path.join(ap.outputdir,ap.reb,
                     ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + "_" + rebParams)
                         
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}, rebParams: {}.".format(

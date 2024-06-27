@@ -253,21 +253,23 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 	using namespace facebook::cachelib_examples;
 	
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
+	int num_reqs = 0;
 	int num_hits = 0;
 	
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
 	uint32_t start_time = -1;
-        		
-	//char* value_all = (char *) malloc(1024 * 1024 * 8);
+        	
 
 	while(reader->offset < reader->total_num_requests){
 		read_one_binary_request(reader, req);
 		std::string key = std::to_string(req->obj_id);
 		
+		print_one_binary_request(req);
+		
 		auto handle = get(key);
 		if (handle) num_hits += 1;
 		else {
-			//std::string prefix(value_all,req->obj_size);
+			
 			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;

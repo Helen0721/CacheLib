@@ -3637,7 +3637,7 @@ std::pair<typename CacheAllocator<CacheTrait>::Item*,
 CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                              ClassId cid,
                                              unsigned int& searchTries) {
-  //std::cout<< "CacheAllocator-getNextCandidate..";
+  ///std::cout<< "CacheAllocator-getNextCandidate..";
 
   typename NvmCacheT::PutToken token;
   Item* toRecycle = nullptr;
@@ -3648,6 +3648,7 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                     &searchTries, &mmContainer,
                                     &token](auto&& itr) {
     if (!itr) {
+      //std::cout << "CacheAllocator-EvictionIterator is NULL" << std::endl;
       ++searchTries;
       (*stats_.evictionAttempts)[pid][cid].inc();
       return;
@@ -3671,6 +3672,7 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                           : typename NvmCacheT::PutToken{};
 
       if (evictToNvmCache && !putToken.isValid()) {
+	std::cout << "CacheAllocator-evictToNvmCache && !putToken.isValid()" << std::endl;
         stats_.evictFailConcurrentFill.inc();
         ++itr;
         continue;
@@ -3678,6 +3680,7 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
 
       auto markedForEviction = candidate_->markForEviction();
       if (!markedForEviction) {
+	std::cout << "CacheAllocator-markedForEviction failed." << std::endl;
         if (candidate_->hasChainedItem()) {
           stats_.evictFailParentAC.inc();
         } else {
@@ -3701,6 +3704,7 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
           &toRecycle->asChainedItem().getParentItem(compressor_) == candidate) {
         mmContainer.remove(itr);
       }
+      //std::cout << "CacheAllocator-eviction succeeds." << std::endl;
       return;
     }
   });

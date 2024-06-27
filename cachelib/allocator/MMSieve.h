@@ -560,17 +560,19 @@ template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
   LockHolder l(*sieveMutex_);
-  return LockedIterator{std::move(l), queue_.iterBackFrom(hand_)};
+  return LockedIterator{std::move(l), queue_.iterBackFromHand()};
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
   if (config_.useCombinedLockForIterators) {
-    sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFrom(hand_)}); });
+    sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFromHand()}); });
   } else {
     LockHolder lck{*sieveMutex_};
-    fun(Iterator{queue_.iterBackFrom(hand_)});
+    auto iter = Iterator{queue_.iterBackFromHand()};
+    if (!iter) std::cout << "MMSieve-iter is NULL" << std::endl;
+    fun(iter);
   }
 }
 
