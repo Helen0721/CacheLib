@@ -65,5 +65,27 @@ void read_one_binary_request(bin_reader_t *reader, bin_request* obj){
 
 
 void print_one_binary_request(bin_request *obj){
-  std::cout<< "time:"<<obj->timestamp <<"obj_id:" << obj->obj_id <<",size:"<<obj->obj_size <<",nt:"<<obj->next_access_vtime<<std::endl;
+  /*
+  int saved_stdout = dup(STDOUT_FILENO);
+  int fd = open("/disk/test2",O_WRONLY | O_CREAT | O_APPEND, 0644); 
+  if (dup2(fd, STDOUT_FILENO) == -1) {
+        perror("dup2 to f");
+        close(fd);
+        return;
+    }*/
+  if (obj->next_access_vtime == -1) {
+  	std::cout<<obj->timestamp<<","<<obj->obj_id<<"," <<obj->obj_size << ",9223372036854775807" <<std::endl;
+  }
+  else{
+	std::cout<<obj->timestamp<<","<<obj->obj_id<<"," <<obj->obj_size << ","<<obj->next_access_vtime <<std::endl;
+  }
+  /*
+  // Close the file descriptor
+  close(fd);
+  if (dup2(saved_stdout, STDOUT_FILENO) == -1) {
+        perror("dup2 back to stdout");
+        close(saved_stdout);
+        return;
+  }
+  close(saved_stdout);*/
 }

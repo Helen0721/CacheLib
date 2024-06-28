@@ -17,7 +17,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::SieveAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::LruAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -264,8 +264,11 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		read_one_binary_request(reader, req);
 		std::string key = std::to_string(req->obj_id);
 		
+		if (req->obj_size == 0) continue;
+
 		print_one_binary_request(req);
-		
+		num_reqs += 1;
+		/*
 		auto handle = get(key);
 		if (handle) num_hits += 1;
 		else {
@@ -274,7 +277,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
-		if (reader->offset % 1000 == 0 && (req->timestamp - start_time !=0)){
+		if (reader->offset % 10000000 == 0 && (req->timestamp - start_time !=0)){
 			if (sleep_sec > 0) {
 				std::cout << "sleeping...";
 				sleep(sleep_sec);
@@ -282,15 +285,19 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
 		}
+		*/
 
 		if (max_reqs!=0 && reader->offset > max_reqs) break;
+		
 	}
 
-	double throughput = (req->timestamp-start_time==0)? 0 : (double) reader->total_num_requests / (req->timestamp - start_time);
-	float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
+	//double throughput = (req->timestamp-start_time==0)? 0 : (double) reader->total_num_requests / (req->timestamp - start_time);
+	//float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 	
-	std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
-	std::cout <<"num_requests:"<<reader->total_num_requests<<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
+	//std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
+	std::cout <<"num_requests:"<< num_reqs; 
+		//reader->total_num_requests;
+		//<<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
 	free(req);
 	// free(value_all);
@@ -352,7 +359,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 		num_reqs += 1;
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 		
-		if (num_reqs % 100000 == 0 && (req->clock_time - start_time !=0) ){
+		if (num_reqs % 1000000 == 0 && (req->clock_time - start_time !=0) ){
 			if (sleep_sec > 0) {
 				std::cout << "sleeping..." << std::endl;
 				sleep(sleep_sec);

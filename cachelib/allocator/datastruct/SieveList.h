@@ -162,7 +162,7 @@ class SieveList {
   // @param node node to be linked at the head
   void linkAtHead(T& node) noexcept;
 
-  /*
+  
   // Links the passed node to the tail of the double linked list
   // @param node node to be linked at the tail
   void linkAtTail(T& node) noexcept;
@@ -173,7 +173,7 @@ class SieveList {
   // @param node        node to insert
   // @note nextNode must be in the list and node must not be in the list
   void insertBefore(T& nextNode, T& node) noexcept;
-  */
+ 
   // removes the node completely from the linked list and cleans up the node
   // appropriately by setting its next and prev as nullptr.
   void remove(T& node) noexcept;
@@ -378,8 +378,6 @@ void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
     tail_ = &node;
   }
   size_++;
-  if (tail_ == nullptr) std::cout<<"Sieve_list-linkAtHead(end)-tail is null" << std::endl;
-  if (size_ <= 0) std::cout << "SieveList-linkAtHead(end)-queue size: " << size_ << std::endl;
 }
 /*
 template <typename T, SieveListHook<T> T::*HookPtr>
@@ -442,7 +440,7 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
     tail_ = prev;
   }
   if (&node == hand_){
-    hand_ = tail_;
+    hand_ = getPrev(hand_);
   }
   // fix the next and prev ptrs of the node before and after us.
   if (prev != nullptr) {
