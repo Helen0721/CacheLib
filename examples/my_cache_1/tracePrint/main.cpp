@@ -1,3 +1,4 @@
+
 #include <cstdlib>
 #include <iostream>
 #include <cstring>
@@ -29,21 +30,28 @@ int main(int argc, char** argv) {
      ){
     	bin_reader_t *reader = binary_reader_setup(data_path);
 	int num_reqs = 0;
-	int num_hits = 0;
+	int num_zero_len_reqs = 0;
+	
+	std::cout << "parsed file size: " << reader->file_size << ",";
+	std::cout << "parsed num reqs:" << reader->total_num_requests << std::endl;
 	
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));        	
 
 	while(reader->offset < reader->total_num_requests){
 		read_one_binary_request(reader, req);
+		num_reqs += 1;
 				
-		if (req->obj_size == 0) continue;
+		if (req->obj_size == 0) {
+			num_zero_len_reqs += 1;
+			continue;
+		}
 
 		print_one_binary_request(req);
-		num_reqs += 1;
-		
+				
 		if (max_reqs!=0 && reader->offset > max_reqs) break;
 		
 	}
-	std::cout <<"num_requests:"<< num_reqs << std::endl; 
+	std::cout <<"num_requests: "<< num_reqs << ", reader offset: " << reader->offset << ", num zero reqs: "<<num_zero_len_reqs << std::endl; 
     }
 } 
+
