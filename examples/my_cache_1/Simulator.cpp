@@ -17,7 +17,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::LruAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::SieveAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -259,7 +259,6 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
 	uint32_t start_time = -1;
         	
-
 	while(reader->offset < reader->total_num_requests){
 		read_one_binary_request(reader, req);
 		std::string key = std::to_string(req->obj_id);
@@ -268,7 +267,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 
 		print_one_binary_request(req);
 		num_reqs += 1;
-		/*
+		
 		auto handle = get(key);
 		if (handle) num_hits += 1;
 		else {
@@ -285,24 +284,19 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
 		}
-		*/
 
 		if (max_reqs!=0 && reader->offset > max_reqs) break;
 		
 	}
 
-	//double throughput = (req->timestamp-start_time==0)? 0 : (double) reader->total_num_requests / (req->timestamp - start_time);
-	//float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
+	double throughput = (req->timestamp-start_time==0)? 0 : (double) reader->total_num_requests / (req->timestamp - start_time);
+	float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 	
-	//std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
-	std::cout <<"num_requests:"<< num_reqs; 
-		//reader->total_num_requests;
-		//<<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
+	std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
+	std::cout <<"requests parsed:"<< num_reqs << ",reader->total_num_reqs: "<<reader->total_num_requests <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
 	free(req);
-	// free(value_all);
 	free(reader);
- 	// destroyCache();
 }
 
 void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs, int sleep_sec){

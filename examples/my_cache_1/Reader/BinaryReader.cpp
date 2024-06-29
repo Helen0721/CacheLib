@@ -1,6 +1,5 @@
 #include "/disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.h"
 
-#include "folly/init/Init.h"
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/stat.h>

@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
        printf("arg[%d] is %s\n",i,argv[i]);
        i+=1;
     }
-    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams\n");
+    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams; arg6: sleep_sec\n");
     exit(1);
   }
 
@@ -66,7 +66,9 @@ int main(int argc, char** argv) {
   }
 
   int path_len = std::strlen(data_path);
-  if (path_len>=3 && std::strcmp(data_path + path_len - 3, "bin") == 0){
+  if ( (path_len>=3 && std::strcmp(data_path + path_len - 3, "bin") == 0) ||
+   	(path_len>=13 && std::strcmp(data_path + path_len - 13, "oracleGeneral") == 0)
+     ){
     bin_reader_t *reader = binary_reader_setup(data_path);
     simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
   }

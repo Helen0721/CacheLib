@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <iostream>
-
-
+#include <cstring>
 #include "../Reader/BinaryReader.h"
 #include "../Reader/ZstdReader.h"
 
@@ -24,6 +23,7 @@ int main(int argc, char** argv) {
   int max_reqs = std::atoi(argv[2]);
   
   int path_len = std::strlen(data_path);
+
   if ( (path_len>=3 && std::strcmp(data_path + path_len - 3, "bin") == 0) ||
    	(path_len>=13 && std::strcmp(data_path + path_len - 13, "oracleGeneral") == 0)
      ){
@@ -46,3 +46,4 @@ int main(int argc, char** argv) {
 	}
 	std::cout <<"num_requests:"<< num_reqs << std::endl; 
     }
+} 
