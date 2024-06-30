@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/my_cache_Lru.dir/Simulator.cpp.o.d"
   "CMakeFiles/my_cache_Lru.dir/main.cpp.o"
   "CMakeFiles/my_cache_Lru.dir/main.cpp.o.d"
+  "CMakeFiles/my_cache_Lru.dir/parseRebParams.cpp.o"
+  "CMakeFiles/my_cache_Lru.dir/parseRebParams.cpp.o.d"
   "my_cache_Lru"
   "my_cache_Lru.pdb"
 )

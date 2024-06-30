@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/my_cache_TinyLFU.dir/Simulator.cpp.o.d"
   "CMakeFiles/my_cache_TinyLFU.dir/main.cpp.o"
   "CMakeFiles/my_cache_TinyLFU.dir/main.cpp.o.d"
+  "CMakeFiles/my_cache_TinyLFU.dir/parseRebParams.cpp.o"
+  "CMakeFiles/my_cache_TinyLFU.dir/parseRebParams.cpp.o.d"
   "my_cache_TinyLFU"
   "my_cache_TinyLFU.pdb"
 )

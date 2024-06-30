@@ -4,9 +4,9 @@ import logging
 import os
 import random
 
-Lru_path = "build/my_cache_Lru_rebParams"
-Lru2Q_path = "build/my_cache_Lru2Q_rebParams"
-TinyLFU_path = "build/my_cache_TinyLFU_rebParams"
+Lru_path = "build/my_cache_Lru"
+Lru2Q_path = "build/my_cache_Lru2Q"
+TinyLFU_path = "build/my_cache_TinyLFU"
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 

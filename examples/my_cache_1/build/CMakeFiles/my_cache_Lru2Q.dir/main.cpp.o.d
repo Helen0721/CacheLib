@@ -1,6 +1,5 @@
 CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
- /disk/CacheLib-M24/examples/my_cache_1/main.cpp \
- /usr/include/stdc-predef.h \
+ /disk/CacheLib/examples/my_cache_1/main.cpp /usr/include/stdc-predef.h \
  /disk/CacheLib/opt/cachelib/include/folly/init/Init.h \
  /usr/include/c++/11/bitset /usr/include/c++/11/string \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -156,10 +155,71 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
- /disk/CacheLib-M24/examples/my_cache_1/Reader/BinaryReader.h \
+ /usr/include/c++/11/bits/istream.tcc /usr/include/c++/11/regex \
+ /usr/include/c++/11/algorithm /usr/include/c++/11/utility \
+ /usr/include/c++/11/bits/stl_relops.h \
+ /usr/include/c++/11/bits/stl_algo.h \
+ /usr/include/c++/11/bits/algorithmfwd.h \
+ /usr/include/c++/11/bits/stl_heap.h \
+ /usr/include/c++/11/bits/stl_tempbuf.h \
+ /usr/include/c++/11/bits/uniform_int_dist.h \
+ /usr/include/c++/11/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/11/functional /usr/include/c++/11/tuple \
+ /usr/include/c++/11/array /usr/include/c++/11/bits/uses_allocator.h \
+ /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
+ /usr/include/c++/11/bits/std_function.h \
+ /usr/include/c++/11/unordered_map \
+ /usr/include/c++/11/ext/aligned_buffer.h \
+ /usr/include/c++/11/bits/hashtable.h \
+ /usr/include/c++/11/bits/hashtable_policy.h \
+ /usr/include/c++/11/bits/enable_special_members.h \
+ /usr/include/c++/11/bits/node_handle.h \
+ /usr/include/c++/11/bits/unordered_map.h \
+ /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/vector \
+ /usr/include/c++/11/bits/stl_uninitialized.h \
+ /usr/include/c++/11/bits/stl_vector.h \
+ /usr/include/c++/11/bits/stl_bvector.h \
+ /usr/include/c++/11/bits/vector.tcc \
+ /usr/include/c++/11/pstl/execution_defs.h /usr/include/c++/11/iterator \
+ /usr/include/c++/11/bits/stream_iterator.h /usr/include/c++/11/locale \
+ /usr/include/c++/11/bits/locale_facets_nonio.h /usr/include/c++/11/ctime \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/11/bits/codecvt.h \
+ /usr/include/c++/11/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/11/bits/locale_conv.h \
+ /usr/include/c++/11/bits/unique_ptr.h /usr/include/c++/11/memory \
+ /usr/include/c++/11/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/11/bits/align.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/shared_ptr.h \
+ /usr/include/c++/11/bits/shared_ptr_base.h \
+ /usr/include/c++/11/bits/allocated_ptr.h \
+ /usr/include/c++/11/ext/concurrence.h \
+ /usr/include/c++/11/bits/shared_ptr_atomic.h \
+ /usr/include/c++/11/bits/atomic_base.h \
+ /usr/include/c++/11/bits/atomic_lockfree_defines.h \
+ /usr/include/c++/11/backward/auto_ptr.h \
+ /usr/include/c++/11/pstl/glue_memory_defs.h /usr/include/c++/11/sstream \
+ /usr/include/c++/11/bits/sstream.tcc /usr/include/c++/11/stack \
+ /usr/include/c++/11/deque /usr/include/c++/11/bits/stl_deque.h \
+ /usr/include/c++/11/bits/deque.tcc /usr/include/c++/11/bits/stl_stack.h \
+ /usr/include/c++/11/map /usr/include/c++/11/bits/stl_tree.h \
+ /usr/include/c++/11/bits/stl_map.h \
+ /usr/include/c++/11/bits/stl_multimap.h /usr/include/c++/11/cstring \
  /usr/include/string.h /usr/include/strings.h \
- /disk/CacheLib-M24/examples/my_cache_1/Reader/ZstdReader.h \
+ /usr/include/c++/11/bits/regex_constants.h \
+ /usr/include/c++/11/bits/regex_error.h \
+ /usr/include/c++/11/bits/regex_automaton.h \
+ /usr/include/c++/11/bits/regex_automaton.tcc \
+ /usr/include/c++/11/bits/regex_scanner.h \
+ /usr/include/c++/11/bits/regex_scanner.tcc \
+ /usr/include/c++/11/bits/regex_compiler.h \
+ /usr/include/c++/11/bits/regex_compiler.tcc \
+ /usr/include/c++/11/bits/regex.h /usr/include/c++/11/bits/regex.tcc \
+ /usr/include/c++/11/bits/regex_executor.h \
+ /usr/include/c++/11/bits/regex_executor.tcc \
+ /disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.h \
+ /disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.h \
  /disk/CacheLib/opt/cachelib/include/zstd.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
@@ -169,14 +229,12 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /disk/CacheLib-M24/examples/my_cache_1/Simulator.h \
+ /disk/CacheLib/examples/my_cache_1/Simulator.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/CacheAllocator.h \
  /disk/CacheLib/opt/cachelib/include/folly/Likely.h \
  /disk/CacheLib/opt/cachelib/include/folly/lang/Builtin.h \
  /disk/CacheLib/opt/cachelib/include/folly/Random.h \
- /usr/include/c++/11/array /usr/include/c++/11/utility \
- /usr/include/c++/11/bits/stl_relops.h /usr/include/c++/11/random \
- /usr/include/c++/11/cmath /usr/include/math.h \
+ /usr/include/c++/11/random /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -199,44 +257,12 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /usr/include/c++/11/tr1/poly_hermite.tcc \
  /usr/include/c++/11/tr1/poly_laguerre.tcc \
  /usr/include/c++/11/tr1/riemann_zeta.tcc \
- /usr/include/c++/11/bits/random.h /usr/include/c++/11/vector \
- /usr/include/c++/11/bits/stl_uninitialized.h \
- /usr/include/c++/11/bits/stl_vector.h \
- /usr/include/c++/11/bits/stl_bvector.h \
- /usr/include/c++/11/bits/vector.tcc \
- /usr/include/c++/11/bits/uniform_int_dist.h \
+ /usr/include/c++/11/bits/random.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/opt_random.h \
  /usr/include/c++/11/bits/random.tcc /usr/include/c++/11/numeric \
- /usr/include/c++/11/bits/stl_numeric.h /usr/include/c++/11/bit \
+ /usr/include/c++/11/bits/stl_numeric.h \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
- /usr/include/c++/11/pstl/execution_defs.h \
  /disk/CacheLib/opt/cachelib/include/folly/Traits.h \
- /usr/include/c++/11/functional /usr/include/c++/11/tuple \
- /usr/include/c++/11/bits/uses_allocator.h \
- /usr/include/c++/11/bits/invoke.h /usr/include/c++/11/bits/refwrap.h \
- /usr/include/c++/11/bits/std_function.h \
- /usr/include/c++/11/unordered_map \
- /usr/include/c++/11/ext/aligned_buffer.h \
- /usr/include/c++/11/bits/hashtable.h \
- /usr/include/c++/11/bits/hashtable_policy.h \
- /usr/include/c++/11/bits/enable_special_members.h \
- /usr/include/c++/11/bits/node_handle.h \
- /usr/include/c++/11/bits/unordered_map.h \
- /usr/include/c++/11/bits/erase_if.h /usr/include/c++/11/bits/stl_algo.h \
- /usr/include/c++/11/bits/algorithmfwd.h \
- /usr/include/c++/11/bits/stl_heap.h \
- /usr/include/c++/11/bits/stl_tempbuf.h /usr/include/c++/11/memory \
- /usr/include/c++/11/bits/stl_raw_storage_iter.h \
- /usr/include/c++/11/bits/align.h /usr/include/c++/11/bits/unique_ptr.h \
- /usr/include/c++/11/bits/shared_ptr.h \
- /usr/include/c++/11/bits/shared_ptr_base.h \
- /usr/include/c++/11/bits/allocated_ptr.h \
- /usr/include/c++/11/ext/concurrence.h \
- /usr/include/c++/11/bits/shared_ptr_atomic.h \
- /usr/include/c++/11/bits/atomic_base.h \
- /usr/include/c++/11/bits/atomic_lockfree_defines.h \
- /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h \
  /disk/CacheLib/opt/cachelib/include/folly/functional/Invoke.h \
  /usr/include/boost/preprocessor/control/expr_iif.hpp \
  /usr/include/boost/preprocessor/config/config.hpp \
@@ -278,7 +304,6 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/folly/lang/Bits.h \
  /usr/include/c++/11/cassert /usr/include/assert.h \
  /usr/include/c++/11/cinttypes /usr/include/inttypes.h \
- /usr/include/c++/11/cstring \
  /disk/CacheLib/opt/cachelib/include/folly/ConstexprMath.h \
  /disk/CacheLib/opt/cachelib/include/folly/lang/CheckedMath.h \
  /disk/CacheLib/opt/cachelib/include/folly/portability/Constexpr.h \
@@ -288,9 +313,7 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/folly/lang/CArray.h \
  /disk/CacheLib/opt/cachelib/include/folly/lang/Hint-inl.h \
  /disk/CacheLib/opt/cachelib/include/folly/portability/Builtins.h \
- /usr/include/c++/11/ext/random /usr/include/c++/11/algorithm \
- /usr/include/c++/11/pstl/glue_algorithm_defs.h \
- /usr/include/c++/11/ext/cmath \
+ /usr/include/c++/11/ext/random /usr/include/c++/11/ext/cmath \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
@@ -389,7 +412,7 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /usr/include/c++/11/optional \
  /disk/CacheLib/opt/cachelib/include/folly/detail/Futex.h \
  /usr/include/c++/11/chrono /usr/include/c++/11/ratio \
- /usr/include/c++/11/ctime /usr/include/c++/11/bits/parse_numbers.h \
+ /usr/include/c++/11/bits/parse_numbers.h \
  /disk/CacheLib/opt/cachelib/include/folly/portability/Unistd.h \
  /disk/CacheLib/opt/cachelib/include/folly/detail/Futex-inl.h \
  /disk/CacheLib/opt/cachelib/include/folly/synchronization/ParkingLot.h \
@@ -428,7 +451,6 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /usr/include/c++/11/variant \
  /disk/CacheLib/opt/cachelib/include/folly/io/async/HHWheelTimer.h \
  /disk/CacheLib/opt/cachelib/include/glog/logging.h \
- /usr/include/c++/11/sstream /usr/include/c++/11/bits/sstream.tcc \
  /disk/CacheLib/opt/cachelib/include/glog/export.h \
  /disk/CacheLib/opt/cachelib/include/gflags/gflags.h \
  /disk/CacheLib/opt/cachelib/include/gflags/gflags_declare.h \
@@ -439,7 +461,6 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/folly/FBString.h \
  /disk/CacheLib/opt/cachelib/include/fmt/format.h \
  /disk/CacheLib/opt/cachelib/include/fmt/core.h \
- /usr/include/c++/11/iterator /usr/include/c++/11/bits/stream_iterator.h \
  /disk/CacheLib/opt/cachelib/include/folly/memory/Malloc.h \
  /disk/CacheLib/opt/cachelib/include/folly/portability/Malloc.h \
  /usr/include/jemalloc/jemalloc.h \
@@ -543,9 +564,7 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/folly/portability/PThread.h \
  /disk/CacheLib/opt/cachelib/include/folly/system/AtFork.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
- /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/map \
- /usr/include/c++/11/bits/stl_tree.h /usr/include/c++/11/bits/stl_map.h \
- /usr/include/c++/11/bits/stl_multimap.h \
+ /usr/include/c++/11/bits/list.tcc \
  /disk/CacheLib/opt/cachelib/include/folly/Synchronized.h \
  /disk/CacheLib/opt/cachelib/include/folly/concurrency/ProcessLocalUniqueId.h \
  /disk/CacheLib/opt/cachelib/include/folly/container/F14Map.h \
@@ -661,9 +680,6 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/folly/synchronization/HazptrThrLocal.h \
  /disk/CacheLib/opt/cachelib/include/folly/synchronization/HazptrHolder.h \
  /disk/CacheLib/opt/cachelib/include/folly/synchronization/HazptrObjLinked.h \
- /usr/include/c++/11/stack /usr/include/c++/11/deque \
- /usr/include/c++/11/bits/stl_deque.h /usr/include/c++/11/bits/deque.tcc \
- /usr/include/c++/11/bits/stl_stack.h \
  /disk/CacheLib/opt/cachelib/include/folly/io/async/TimeoutManager.h \
  /disk/CacheLib/opt/cachelib/include/folly/io/async/DelayedDestruction.h \
  /disk/CacheLib/opt/cachelib/include/folly/io/async/DelayedDestructionBase.h \
@@ -714,14 +730,7 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/gtest/gtest-assertion-result.h \
  /disk/CacheLib/opt/cachelib/include/gtest/gtest-message.h \
  /disk/CacheLib/opt/cachelib/include/gtest/internal/gtest-port.h \
- /usr/include/c++/11/ciso646 /usr/include/c++/11/locale \
- /usr/include/c++/11/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/11/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/11/bits/codecvt.h \
- /usr/include/c++/11/bits/locale_facets_nonio.tcc \
- /usr/include/c++/11/bits/locale_conv.h \
- /usr/include/x86_64-linux-gnu/sys/stat.h \
+ /usr/include/c++/11/ciso646 /usr/include/x86_64-linux-gnu/sys/stat.h \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h \
  /usr/include/x86_64-linux-gnu/bits/statx.h /usr/include/linux/stat.h \
@@ -956,6 +965,8 @@ CMakeFiles/my_cache_Lru2Q.dir/main.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MMTinyLFU.h \
  /disk/CacheLib/opt/cachelib/include/folly/Math.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/common/CountMinSketch.h \
+ /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MMSieve.h \
+ /disk/CacheLib/opt/cachelib/include/cachelib/allocator/datastruct/SieveList.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/CacheVersion.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/ChainedAllocs.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/NvmCacheState.h \
