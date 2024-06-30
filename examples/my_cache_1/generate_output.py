@@ -7,6 +7,7 @@ import random
 Lru_path = "build/my_cache_Lru"
 Lru2Q_path = "build/my_cache_Lru2Q"
 TinyLFU_path = "build/my_cache_TinyLFU"
+Sieve_path = "build/my_cache_Sieve"
 
 ALGOS = ["Lru","Lru2Q","TinyLFU"]
 
@@ -55,11 +56,12 @@ def chooseRebParams(strategy,option):
 
 
 def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams):
-    if algo=="Lru": run_path = Lru_path;
-    elif algo=="Lru2Q": run_path = Lru2Q_path;
-    elif algo=="TinyLFU": run_path = TinyLFU_path;
+    if algo=="Lru": run_path = Lru_path
+    elif algo=="Lru2Q": run_path = Lru2Q_path
+    elif algo=="TinyLFU": run_path = TinyLFU_path
+    elif algo=="Sieve": run_path = Sieve_path
     else: 
-        print("unsupported algorithm ", algo);
+        print("unsupported algorithm ", algo)
     
     print("run path:", run_path,"output file:",out_file)
 

@@ -15,7 +15,7 @@ import subprocess
 import logging
 import copy
 
-ALGOS = ["Lru","Lru2Q","TinyLFU"]
+ALGOS = ["Lru","Lru2Q","TinyLFU","Sieve"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
                             "FreeMem", 
                             "MarginalHits", 
