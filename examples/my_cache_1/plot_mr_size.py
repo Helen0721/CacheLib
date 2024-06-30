@@ -113,8 +113,9 @@ if __name__ == "__main__":
     p.add_argument("--output_folder",type=str,required=True)
     p.add_argument("--plot_folder",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
-    p.add_argument("--organized",type=str,required=True)
     
+    p.add_argument("--organized",type=str,default=None)
+    p.add_argument("--json_file",type=str,default=None)    
     p.add_argument("--cache_sizes",type=str,default="")
     p.add_argument("--rebalance_strategies",type=str,default="all")
     p.add_argument("--algo",type=str,default="all")
@@ -141,6 +142,12 @@ if __name__ == "__main__":
     else:
         algos = [ap.algo]
 
+    json_RES = None
+    if ap.json_file!=None:
+        import json
+        with open(ap.json_file,"r") as json_f:
+            json_RES = json.load(json_f)
+
 
     hr_lists,labels = [],[]
     for (i,algo) in enumerate(algos):
@@ -152,22 +159,31 @@ if __name__ == "__main__":
             labels.append(rebalance_strategy + "-" + algo)
 
             for cache_size in cache_sizes:
-                if ap.organized=="yes":
-                    if rebalance_strategy=="MarginalHits":
-                        rebParams = "1,0.3,1,1"
-                    else:
-                        rebParams = "default"
-                    output_file =os.path.join(ap.output_folder,rebalance_strategy,
-                        "{}_{}_{}_{}_{}".format(ap.name,algo,cache_size,rebalance_strategy,rebParams)
-                        )
+                if json_RES:
+                    res_ = json_RES[cache_size][rebalance_strategy][algo]["best_result"]
+                    for fname,res in res_.items():
+                        final_hr = res["Final Miss Ratio"]
                 else:
-                    output_file =os.path.join(ap.output_folder,
-                        "{}_{}_{}_{}.txt".format(ap.name,algo,cache_size,rebalance_strategy)
-                        )
 
-                print("parsing for",output_file) 
+                    if ap.organized=="yes":
+                        output_file =os.path.join(ap.output_folder,rebalance_strategy,
+                            "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
+                            )
+                        if not os.path.isfile(output_file):
+                            if rebalance_strategy=="MarginalHits":
+                                output_file =os.path.join(ap.output_folder,rebalance_strategy,
+                                    "{}_{}_{}_{}_1,0.3,1,1".format(ap.name,algo,cache_size,rebalance_strategy)
+                                    )
 
-                final_hr = parse_for_size(output_file)
+                    else: 
+                        output_file =os.path.join(ap.output_folder,
+                            "{}_{}_{}_{}.txt".format(ap.name,algo,cache_size,rebalance_strategy)
+                            )
+
+                    print("parsing for",output_file) 
+
+                    final_hr = parse_for_size(output_file)
+                
                 hr_lists[-1].append(final_hr)
                 
 
