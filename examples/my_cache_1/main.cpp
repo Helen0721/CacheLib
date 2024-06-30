@@ -72,8 +72,9 @@ int main(int argc, char** argv) {
     bin_reader_t *reader = binary_reader_setup(data_path);
     simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
   }
-  else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0) {
+  else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0)
+   {
     zstd_reader *reader =create_zstd_reader(data_path);
     simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
   }
-}
+ }

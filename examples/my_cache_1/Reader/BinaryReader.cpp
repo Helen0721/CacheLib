@@ -40,7 +40,7 @@ bin_reader_t *binary_reader_setup(const char *trace_path) {
   }
 
   reader->obj_size = 24;
-  reader->offset = 0;
+  reader->file_offset = reader->mapped_file;
   reader->total_num_requests = (reader->file_size) / (reader->obj_size);  
 
   close(fd);
@@ -48,7 +48,7 @@ bin_reader_t *binary_reader_setup(const char *trace_path) {
 }
 
 void read_one_binary_request(bin_reader_t *reader, bin_request* obj){
-  char *start = (char *)reader->mapped_file + reader->offset * reader->obj_size;
+  char *start = (char *)reader->file_offset;
 
   memcpy(&(obj->timestamp), start, sizeof(uint32_t));
   start += sizeof(uint32_t);
@@ -56,35 +56,20 @@ void read_one_binary_request(bin_reader_t *reader, bin_request* obj){
   start += sizeof(uint64_t);
   memcpy(&(obj->obj_size),start, sizeof(uint32_t));
   start += sizeof(uint32_t);
-  memcpy(&(obj->next_access_vtime), start, sizeof(uint64_t));
-
-  ++reader->offset;
+  memcpy(&(obj->next_access_vtime), start, sizeof(int64_t));
+  if (obj->next_access_vtime == -1) obj->next_access_vtime = INT64_MAX;
+  
+  reader->file_offset = (void *) ((char *)reader->file_offset + reader->obj_size);
   return;
 }
 
 
 void print_one_binary_request(bin_request *obj){
-  /*
-  int saved_stdout = dup(STDOUT_FILENO);
-  int fd = open("/disk/test2",O_WRONLY | O_CREAT | O_APPEND, 0644); 
-  if (dup2(fd, STDOUT_FILENO) == -1) {
-        perror("dup2 to f");
-        close(fd);
-        return;
-    }*/
   if (obj->next_access_vtime == -1) {
   	std::cout<<obj->timestamp<<","<<obj->obj_id<<"," <<obj->obj_size << ",9223372036854775807" <<std::endl;
   }
   else{
-	std::cout<<obj->timestamp<<","<<obj->obj_id<<"," <<obj->obj_size << ","<<obj->next_access_vtime <<std::endl;
+	printf("%u,%lu,%u,%ld\n",obj->timestamp,obj->obj_id,obj->obj_size,obj->next_access_vtime);
+	//std::cout<<obj->timestamp<<","<<obj->obj_id<<"," <<obj->obj_size << ","<<obj->next_access_vtime <<std::endl;
   }
-  /*
-  // Close the file descriptor
-  close(fd);
-  if (dup2(saved_stdout, STDOUT_FILENO) == -1) {
-        perror("dup2 back to stdout");
-        close(saved_stdout);
-        return;
   }
-  close(saved_stdout);*/
-}

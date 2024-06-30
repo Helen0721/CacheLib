@@ -126,7 +126,6 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 	  cache_config.enablePoolRebalancing(std::make_shared<cachelib::MarginalHitsStrategy>(mhConfig),
           				std::chrono::seconds{interval}
 	  				);
-	  std::cout << "reb. strategy config set. " << std::flush; 
           
   }else if (rebalanceStrategy_str == "HitsPerSlab"){
 	  printf("Hits Per Slab Rebalancing init. ");
@@ -150,10 +149,6 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 	  hpsConfig.minDiff = minDiff;
 	  hpsConfig.numSlabsFreeMem = numSlabsFreeMem;
 	  hpsConfig.maxLruTailAge = maxLruTailAge;
-
-	  //printf("parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
-	 //	  interval, hpsConfig.minDiff, hpsConfig.minSlabs, hpsConfig.diffRatio, hpsConfig.numSlabsFreeMem, hpsConfig.minLruTailAge, hpsConfig.maxLruTailAge);
-	  
 	  cache_config.enablePoolRebalancing(
 			  std::make_shared<cachelib::HitsPerSlabStrategy>(hpsConfig),
 			  std::chrono::seconds{interval}
@@ -255,17 +250,21 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
 	int num_reqs = 0;
 	int num_hits = 0;
-	
+	int num_zero_len_reqs = 0;
+
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
 	uint32_t start_time = -1;
-        	
-	while(reader->offset < reader->total_num_requests){
+        std::cout << "parsed file size: " << reader->file_size << ", parsed num reqs:" << reader->total_num_requests << std::endl;
+
+	while((char *)reader->file_offset < (char *)reader->mapped_file + reader->file_size){
 		read_one_binary_request(reader, req);
 		std::string key = std::to_string(req->obj_id);
 		
-		if (req->obj_size == 0) continue;
+		if (req->obj_size == 0) {
+			num_zero_len_reqs += 1;
+			continue;
+		}
 
-		print_one_binary_request(req);
 		num_reqs += 1;
 		
 		auto handle = get(key);
@@ -276,7 +275,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
-		if (reader->offset % 10000000 == 0 && (req->timestamp - start_time !=0)){
+		if (num_reqs % 1000000 == 0 && (req->timestamp - start_time !=0)){
 			if (sleep_sec > 0) {
 				std::cout << "sleeping...";
 				sleep(sleep_sec);
@@ -284,16 +283,16 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
 		}
-
-		if (max_reqs!=0 && reader->offset > max_reqs) break;
+		
+		if (max_reqs!=0 && num_reqs > max_reqs) break;
 		
 	}
-
+	
 	double throughput = (req->timestamp-start_time==0)? 0 : (double) reader->total_num_requests / (req->timestamp - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 	
-	std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
-	std::cout <<"requests parsed:"<< num_reqs << ",reader->total_num_reqs: "<<reader->total_num_requests <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
+	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs << std::endl;
+	std::cout <<"hit ratio:"<< hit_ratio <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
 	free(req);
 	free(reader);
@@ -310,8 +309,6 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	char *record = (char *)malloc(1024 * 1024 * 16);
 	
 	uint32_t start_time = -1;	
-
-	//std::cout<<"time,id,size"<<std::endl;
 
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
@@ -330,7 +327,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 
 		if (start_time == -1) start_time = req->clock_time;
 		
-
+		
 		char id_buf[50];
 		memset(id_buf, 0, 50);
 		sprintf(id_buf,"%lu",req->obj_id);
@@ -349,7 +346,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			//std::string prefix(value_all,req->obj_size);
 			if (!put(key,prefix, req->obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}
-
+		
 		num_reqs += 1;
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 		
@@ -361,20 +358,18 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
 		}
+		
 	}
 	
 	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 	
 	std::cout<<"hit ratio:"<< hit_ratio <<",time:"<< (req->clock_time-start_time) <<std::endl;
-
-	std::cout <<"num_requests:"<<num_reqs<<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
+	std::cout <<"num_requests:"<<num_reqs <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
 	free(req);
-	// free(value_all);
-	free(reader);
- 	//destroyCache();		somehow doesn't work with ChainedItem reset.
-
+	free(reader); 
+	free(record);
 }
 
 
