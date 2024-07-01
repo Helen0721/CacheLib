@@ -7,11 +7,12 @@ if __name__ ==  "__main__":
     p = argparse.ArgumentParser()
     p.add_argument("--input",type=str,required=True)
     p.add_argument("--output",type=str,required=True)
+    p.add_argument("--input_line_num",type=int,required=True)
 
     ap = p.parse_args()
 
     RES = [["time","object","size","next_access_vtime"] ]
-    input_line_num = 154604154
+    input_line_num = ap.input_line_num
 
     with open(ap.input,"r") as csvFile:
         csvReader = csv.reader(csvFile)

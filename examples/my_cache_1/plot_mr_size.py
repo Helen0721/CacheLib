@@ -162,7 +162,7 @@ if __name__ == "__main__":
                 if json_RES:
                     res_ = json_RES[cache_size][rebalance_strategy][algo]["best_result"]
                     for fname,res in res_.items():
-                        final_hr = res["Final Miss Ratio"]
+                        final_hr = 1-res["Final Miss Ratio"]
                 else:
 
                     if ap.organized=="yes":
