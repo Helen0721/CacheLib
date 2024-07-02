@@ -162,7 +162,7 @@ class SieveList {
   // @param node node to be linked at the head
   void linkAtHead(T& node) noexcept;
 
-  /*
+  
   // Links the passed node to the tail of the double linked list
   // @param node node to be linked at the tail
   void linkAtTail(T& node) noexcept;
@@ -173,7 +173,7 @@ class SieveList {
   // @param node        node to insert
   // @note nextNode must be in the list and node must not be in the list
   void insertBefore(T& nextNode, T& node) noexcept;
-  */
+ 
   // removes the node completely from the linked list and cleans up the node
   // appropriately by setting its next and prev as nullptr.
   void remove(T& node) noexcept;
@@ -202,10 +202,12 @@ class SieveList {
   // from the tail and head.
   class Iterator {
    public:
-    enum class Direction { FROM_HEAD, FROM_TAIL };
+    //enum class Direction { FROM_HEAD, FROM_TAIL };
+    Iterator(T* p, SieveList<T, HookPtr>& sievelist) noexcept 
+	    : curr_(p), sievelist_(&sievelist) {};
 
-    Iterator(T* p, Direction d, SieveList<T, HookPtr>& sievelist) noexcept
-        : curr_(p), dir_(d), sievelist_(&sievelist) {}
+    //Iterator(T* p, Direction d, SieveList<T, HookPtr>& sievelist) noexcept
+    //    : curr_(p), dir_(d), sievelist_(&sievelist) {}
     virtual ~Iterator() = default;
 
     // copyable and movable
@@ -223,8 +225,8 @@ class SieveList {
     T& operator*() const noexcept { return *curr_; }
 
     bool operator==(const Iterator& other) const noexcept {
-      return sievelist_ == other.sievelist_ && curr_ == other.curr_ &&
-             dir_ == other.dir_;
+      return sievelist_ == other.sievelist_ && curr_ == other.curr_ ;
+	//&&dir_ == other.dir_;
     }
 
     bool operator!=(const Iterator& other) const noexcept {
@@ -241,32 +243,15 @@ class SieveList {
     void reset() noexcept { curr_ = nullptr; }
    
     // Reset the iterator back to the beginning
-    void resetToBegin() noexcept {
-      curr_ = dir_ == Direction::FROM_HEAD ? sievelist_->head_ : sievelist_->tail_;
-    }
+    void resetToBegin() noexcept { sievelist_->tail_;}
 
    protected:
-    /*
-    void goForward() noexcept;
-    void goBackward() noexcept;
-    */
-
+    
     // the current position of the iterator in the list
     T* curr_{nullptr};
-    // the direction we are iterating.
-    Direction dir_{Direction::FROM_HEAD};
+    // sievelist 
     SieveList<T, HookPtr>* sievelist_{nullptr};
-  };
-
-  // provides an iterator starting from the head of the linked list.
-  Iterator begin()  noexcept;
-
-  // provides an iterator starting from the tail of the linked list.
-  Iterator rbegin()  noexcept;
-
-  // Iterator to compare against for the end.
-  Iterator end()  noexcept;
-  Iterator rend()  noexcept;
+  }; 
 
   // provides an iterator starting from a certain node to the head
   Iterator iterBackFromHand()  noexcept;
@@ -337,7 +322,7 @@ bool SieveList<T, HookPtr>::isVisited(T& node)  noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
-  if (tail_ == nullptr) std::cout<<"SieveList-operateHand(start)-tail is null" << std::endl;
+  
   T* curr = hand_;
   if (curr == nullptr) curr = tail_;
   while (isVisited(*curr)){
@@ -346,7 +331,7 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
     if (curr == nullptr) curr = tail_;
   }
   hand_ = getPrev(*curr);
-  if (tail_ == nullptr) std::cout<<"SieveList-operateHand(end)-tail is null" << std::endl;
+  
   return curr;
 }
 
@@ -378,33 +363,12 @@ void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
     tail_ = &node;
   }
   size_++;
-  if (tail_ == nullptr) std::cout<<"Sieve_list-linkAtHead(end)-tail is null" << std::endl;
-  if (size_ <= 0) std::cout << "SieveList-linkAtHead(end)-queue size: " << size_ << std::endl;
 }
-/*
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::linkAtTail(T& node) noexcept {
-  XDCHECK(false);
-  XDCHECK_NE(reinterpret_cast<uintptr_t>(&node),
-             reinterpret_cast<uintptr_t>(tail_));
 
-  setNext(node, nullptr);
-  setPrev(node, tail_);
-  // Fix the next ptr for tail
-  if (tail_ != nullptr) {
-    setNext(*tail_, &node);
-  }
-  tail_ = &node;
-  if (head_ == nullptr) {
-    head_ = &node;
-  }
-  size_++;
-  if (tail_ == nullptr) std::cout<<"Sieve_list-linkAtTail-tail is null" << std::endl;
-}
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::insertBefore(T& nextNode, T& node) noexcept {
-  XDCHECK(false);
+  
   XDCHECK_NE(reinterpret_cast<uintptr_t>(&nextNode),
              reinterpret_cast<uintptr_t>(&node));
   XDCHECK(getNext(node) == nullptr);
@@ -424,10 +388,11 @@ void SieveList<T, HookPtr>::insertBefore(T& nextNode, T& node) noexcept {
 
   setPrev(nextNode, &node);
   setNext(node, &nextNode);
-  size_++;
-  if (tail_ == nullptr) std::cout<<"Sieve_list-insertBefore-tail is null" << std::endl;
+  size_++; 
 }
-*/
+
+
+
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
   XDCHECK_GT(size_, 0u);
@@ -442,7 +407,7 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
     tail_ = prev;
   }
   if (&node == hand_){
-    hand_ = tail_;
+    hand_ = getPrev(*hand_);
   }
   // fix the next and prev ptrs of the node before and after us.
   if (prev != nullptr) {
@@ -453,7 +418,7 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
   }
   removeFromVisitMap(node);
   size_--;
-  if (tail_ == nullptr) std::cout<<"SieveList-unlink-tail is null" << std::endl;
+  
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
@@ -462,27 +427,24 @@ void SieveList<T, HookPtr>::remove(T& node) noexcept {
   unlink(node);
   setNext(node, nullptr);
   setPrev(node, nullptr); 
-  if (tail_ == nullptr) std::cout<<"SieveList-remove-tail is null" << std::endl;
+  
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
-  std::cout << "\n\n\nSieveList-replace\n\n\n\n" << std::endl;
-  /*
-  XDCHECK(false);
+  
   // Update head and tail links if needed
   if (&oldNode == head_) {
     head_ = &newNode;
   }
   if (&oldNode == tail_) {
     tail_ = &newNode;
-  }
-  //TODO: hand_  
+  } 
   if (&oldNode == hand_){
-    hand_ = &newNode;
+    hand_ = getPrev(*hand_);
   }
+  
   setAsUnvisited(newNode);
-
   // Make the previous and next nodes point to the new node
   auto* const prev = getPrev(oldNode);
   auto* const next = getNext(oldNode);
@@ -500,94 +462,25 @@ void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
   // Cleanup the old node
   setPrev(oldNode, nullptr);
   setNext(oldNode, nullptr);
-  if (tail_ == nullptr) std::cout<<"Sieve_list-remove-tail is null" << std::endl;
-  */
-}
-/*
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::moveToHead(T& node) noexcept {
-  XDCHECK(false);
-  if (&node == head_) {
-    return;
-  }
-  unlink(node);
-  linkAtHead(node);
-  if (tail_ == nullptr) std::cout<<"Sieve_list-remove-tail is null" << std::endl;
-}
-*/
-/* Iterator Implementation */
-/*
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::Iterator::goForward() noexcept {
-  XDCHECK(false);
-  if (dir_ == Direction::FROM_TAIL) {
-    curr_ = sievelist_->getPrev(*curr_);
-  } else {
-    curr_ = sievelist_->getNext(*curr_);
-  }
-  if (sievelist_->getTail() == nullptr) std::cout<<"Sieve_list-goForward-tail is null" << std::endl;
 }
 
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::Iterator::goBackward() noexcept {
-  XDCHECK(false);
-  if (dir_ == Direction::FROM_TAIL) {
-    curr_ = sievelist_->getNext(*curr_);
-  } else {
-    curr_ = sievelist_->getPrev(*curr_);
-  }
-  if (sievelist_->getTail() == nullptr) std::cout<<"Sieve_list-goBackward-tail is null" << std::endl;
-}
-*/
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator&
 SieveList<T, HookPtr>::Iterator::operator++() noexcept { 
   curr_ = sievelist_->operateHand();
-  if (curr_==nullptr) std::cout << "SieveList++-incorrect operateHand()" << std::endl;
-  if (sievelist_->getTail() == nullptr) std::cout<<"SieveList-operator++-tail is null" << std::endl;
+  //if (curr_==nullptr) std::cout << "SieveList++-incorrect operateHand()" << std::endl;
+  //if (sievelist_->getTail() == nullptr) std::cout<<"SieveList-operator++-tail is null" << std::endl;
   return *this;
-}
-
-
-template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::begin()  noexcept {
-  XDCHECK(false);
-  return SieveList<T, HookPtr>::Iterator(head_, Iterator::Direction::FROM_HEAD,
-                                     *this);
-}
-
-template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::rbegin()
-     noexcept {
-  XDCHECK(false);
-  return SieveList<T, HookPtr>::Iterator(tail_, Iterator::Direction::FROM_TAIL,
-                                     *this);
-}
-
-template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::end()  noexcept {
-  XDCHECK(false);
-  return SieveList<T, HookPtr>::Iterator(nullptr, Iterator::Direction::FROM_HEAD,
-                                     *this);
-}
-
-template <typename T, SieveListHook<T> T::*HookPtr>
-typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::rend()  noexcept {
-  XDCHECK(false);
-  return SieveList<T, HookPtr>::Iterator(nullptr, Iterator::Direction::FROM_TAIL,
-                                     *this);
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFromHand() noexcept{
-  auto iterObj = SieveList<T, HookPtr>::Iterator(tail_, 
-		  Iterator::Direction::FROM_TAIL, 
-		  *this);
-  if (!iterObj) {
-	  std::cout << "SieveList-iterObj is null.";
-	  std::cout << "SieveList-iterObj queue size: " << size_  << ". "; 
-  }
+  auto iterObj = SieveList<T, HookPtr>::Iterator(tail_, *this);
+  //if (!iterObj) {
+  //	  std::cout << "SieveList-iterObj is null.";
+  //	  std::cout << "SieveList-iterObj queue size: " << size_  << ". "; 
+  //}
   return iterObj;
 }
 } // namespace facebook::cachelib
