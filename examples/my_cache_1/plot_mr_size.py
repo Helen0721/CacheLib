@@ -13,7 +13,7 @@ from typing import List, Dict, Tuple, Union, Literal
 import subprocess 
 import logging
 
-ALGOS = ["Lru","Lru2Q","TinyLFU"]
+ALGOS = ["Lru","Lru2Q","TinyLFU","Sieve"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
                             "FreeMem", 
                             "MarginalHits", 
