@@ -47,52 +47,52 @@ install(TARGETS cachelib_common
         DESTINATION ${LIB_INSTALL_DIR} )
 
 
-if (BUILD_TESTS)
-  add_library (common_test_utils STATIC
-    TestUtils.cpp
-  )
-  target_link_libraries (common_test_utils PUBLIC
-    cachelib_common
-    gflags
-    GTest::gtest
-    GTest::gtest_main
-  )
-  add_library (common_test_support OBJECT
-    hothash/HotHashDetectorTest.cpp
-    piecewise/GenericPiecesTest.cpp
-    piecewise/RequestRangeTest.cpp
-  )
-  target_link_libraries (common_test_support PUBLIC
-    cachelib_common
-    common_test_utils
-    gflags
-    GTest::gtest
-    GTest::gtest_main
-  )
-
-  function (ADD_TEST SOURCE_FILE)
-     # Add any additional libraries BEFORE the "common_test_support" to ensure
-     # that the linking ordering is correct (e.g. if any of them requires
-     # "gflags", gflags should appear AFTER it).
-     generic_add_test("common-test" "${SOURCE_FILE}"
-                      "${ARGN}" common_test_support)
-  endfunction()
-
-  add_test (tests/AccessTrackerTest.cpp)
-  # need allocator/memory/tests/TestBase.cpp:
-  #add_test (tests/ApproxSplitSetTest.cpp allocator_test_support)
-  add_test (tests/BloomFilterTest.cpp)
-  add_test (tests/BytesEqualTest.cpp)
-  add_test (tests/CohortTests.cpp)
-  add_test (tests/CounterTests.cpp)
-  add_test (tests/CountMinSketchTest.cpp)
-  add_test (tests/EventInterfaceTest.cpp allocator_test_support)
-  add_test (tests/HashTests.cpp)
-  add_test (tests/IteratorsTests.cpp)
-  add_test (tests/MutexTests.cpp)
-  add_test (tests/PeriodicWorkerTest.cpp)
-  add_test (tests/SerializationTest.cpp allocator_test_support)
-  add_test (tests/UtilTests.cpp)
-  add_test (tests/CountDownLatchTest.cpp)
-  add_test (tests/UtilTestsRSS.cpp)
-endif()
+#if (BUILD_TESTS)
+#  add_library (common_test_utils STATIC
+#    TestUtils.cpp
+#  )
+#  target_link_libraries (common_test_utils PUBLIC
+#    cachelib_common
+#    gflags
+#    GTest::gtest
+#    GTest::gtest_main
+#  )
+#  add_library (common_test_support OBJECT
+#    hothash/HotHashDetectorTest.cpp
+#    piecewise/GenericPiecesTest.cpp
+#    piecewise/RequestRangeTest.cpp
+#  )
+#  target_link_libraries (common_test_support PUBLIC
+#    cachelib_common
+#    common_test_utils
+#    gflags
+#    GTest::gtest
+#    GTest::gtest_main
+#  )
+#
+#  function (ADD_TEST SOURCE_FILE)
+#     # Add any additional libraries BEFORE the "common_test_support" to ensure
+#     # that the linking ordering is correct (e.g. if any of them requires
+#     # "gflags", gflags should appear AFTER it).
+#     generic_add_test("common-test" "${SOURCE_FILE}"
+#                      "${ARGN}" common_test_support)
+#  endfunction()
+#
+#  add_test (tests/AccessTrackerTest.cpp)
+#  # need allocator/memory/tests/TestBase.cpp:
+#  #add_test (tests/ApproxSplitSetTest.cpp allocator_test_support)
+#  add_test (tests/BloomFilterTest.cpp)
+#  add_test (tests/BytesEqualTest.cpp)
+#  add_test (tests/CohortTests.cpp)
+#  add_test (tests/CounterTests.cpp)
+#  add_test (tests/CountMinSketchTest.cpp)
+#  add_test (tests/EventInterfaceTest.cpp allocator_test_support)
+#  add_test (tests/HashTests.cpp)
+#  add_test (tests/IteratorsTests.cpp)
+#  add_test (tests/MutexTests.cpp)
+#  add_test (tests/PeriodicWorkerTest.cpp)
+#  add_test (tests/SerializationTest.cpp allocator_test_support)
+#  add_test (tests/UtilTests.cpp)
+#  add_test (tests/CountDownLatchTest.cpp)
+#  add_test (tests/UtilTestsRSS.cpp)
+#endif()

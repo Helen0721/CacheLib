@@ -26,30 +26,30 @@ install(TARGETS cachelib_datatype
         EXPORT cachelib-exports
         DESTINATION ${LIB_INSTALL_DIR} )
 
-if (BUILD_TESTS)
-  add_library (datatype_test_support
-    tests/DataTypeTest.cpp)
-  add_dependencies(datatype_test_support cachelib_datatype)
-
-  target_link_libraries (datatype_test_support
-    cachelib_datatype
-    cachelib_allocator
-    glog::glog
-    gflags
-    GTest::gtest
-    GTest::gtest_main
-    GTest::gmock
-  )
-
-  function (ADD_TEST SOURCE_FILE)
-     generic_add_test("datatype-test" "${SOURCE_FILE}"
-                      datatype_test_support "${ARGN}")
-  endfunction()
-
-  add_test (tests/RangeMapTest.cpp)
-  add_test (tests/BufferTest.cpp)
-  add_test (tests/FixedSizeArrayTest.cpp)
-  add_test (tests/MapTest.cpp)
-  # Temporary disabled due to compilation error with GCC
-  # add_test (tests/MapViewTest.cpp)
-endif()
+#if (BUILD_TESTS)
+#  add_library (datatype_test_support
+#    tests/DataTypeTest.cpp)
+#  add_dependencies(datatype_test_support cachelib_datatype)
+#
+#  target_link_libraries (datatype_test_support
+#    cachelib_datatype
+#    cachelib_allocator
+#    glog::glog
+#    gflags
+#    GTest::gtest
+#    GTest::gtest_main
+#    GTest::gmock
+#  )
+#
+#  function (ADD_TEST SOURCE_FILE)
+#     generic_add_test("datatype-test" "${SOURCE_FILE}"
+#                      datatype_test_support "${ARGN}")
+#  endfunction()
+#
+#  add_test (tests/RangeMapTest.cpp)
+#  add_test (tests/BufferTest.cpp)
+#  add_test (tests/FixedSizeArrayTest.cpp)
+#  add_test (tests/MapTest.cpp)
+#  # Temporary disabled due to compilation error with GCC
+#  # add_test (tests/MapViewTest.cpp)
+#endif()

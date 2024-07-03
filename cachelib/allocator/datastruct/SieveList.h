@@ -198,13 +198,16 @@ class SieveList {
 
   void inspectVisitMap() noexcept;
 
+  void inspectSieveList() noexcept;
+
+
   // Iterator interface for the double linked list. Supports both iterating
   // from the tail and head.
   class Iterator {
    public:
     //enum class Direction { FROM_HEAD, FROM_TAIL };
-    Iterator(T* p, SieveList<T, HookPtr>& sievelist) noexcept 
-	    : curr_(p), sievelist_(&sievelist) {};
+    Iterator(SieveList<T, HookPtr>& sievelist) noexcept 
+	    : sievelist_(&sievelist) {};
 
     //Iterator(T* p, Direction d, SieveList<T, HookPtr>& sievelist) noexcept
     //    : curr_(p), dir_(d), sievelist_(&sievelist) {}
@@ -321,6 +324,32 @@ bool SieveList<T, HookPtr>::isVisited(T& node)  noexcept {
 */
 
 template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::inspectSieveList() noexcept{
+  std::cout << "Inspecting Free List: "<<std::endl;
+  T* curr = head_;
+  while (curr){
+    std::cout<< curr;
+    std::cout<<". prev: " << getPrev(*curr);
+    std::cout<<", next: " << getNext(*curr); 
+    std::cout<<", visited: "<< isVisited(*curr);
+    if (curr == hand_) std::cout << " . Hand" << std::endl;
+    else std::cout<< std::endl;
+  }
+}
+
+
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::inspectVisitMap() noexcept{
+  std::cout << "Inspecting Visit Map: ";
+  for (const auto& pair : visitMap) {
+        const T* nodePtr = pair.first;
+        bool value = pair.second;
+        std::cout << "Node: " << nodePtr << ", Visited: " << std::boolalpha << value << "...";
+    }
+  std::cout << "...done." << std::endl;
+}
+
+template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
   
   T* curr = hand_;
@@ -334,18 +363,6 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
   
   return curr;
 }
-
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::inspectVisitMap() noexcept{
-  std::cout << "Inspecting Visit Map: ";
-  for (const auto& pair : visitMap) {
-        const T* nodePtr = pair.first;
-        bool value = pair.second;
-        std::cout << "Node: " << nodePtr << ", Visited: " << std::boolalpha << value << "...";
-    }
-  std::cout << "...done." << std::endl;
-}
-
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
@@ -476,7 +493,7 @@ SieveList<T, HookPtr>::Iterator::operator++() noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFromHand() noexcept{
-  auto iterObj = SieveList<T, HookPtr>::Iterator(tail_, *this);
+  auto iterObj = SieveList<T, HookPtr>::Iterator(*this);
   //if (!iterObj) {
   //	  std::cout << "SieveList-iterObj is null.";
   //	  std::cout << "SieveList-iterObj queue size: " << size_  << ". "; 
