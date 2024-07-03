@@ -120,5 +120,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/my_cache_TinyLFU_uniform.dir/DependInfo.cmake"
+  "CMakeFiles/my_cache_Sieve_uniform_t2.dir/DependInfo.cmake"
   )
