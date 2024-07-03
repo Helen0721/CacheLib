@@ -363,6 +363,8 @@ class MMSieve {
       return LruType{};
     }
 
+    void inspectSieveList() noexcept;
+
    private:
     EvictionAgeStat getEvictionAgeStatLocked(
         uint64_t projectedLength) const noexcept;
@@ -564,10 +566,18 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
+void MMSieve::Container<T, HookPtr>::inspectSieveList() noexcept{
+  queue_.inspectSieveList();
+}
+
+
+template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
+  std::cout << "MMSieve-getEvItr..";
   LockHolder l(*sieveMutex_);
   if (queue_.getTail()==nullptr)  std::cout << "MMSieve-getEvItr-tail is null"<<std::endl;
+  
   return LockedIterator{std::move(l), queue_.iterBackFromHand()};
 }
 

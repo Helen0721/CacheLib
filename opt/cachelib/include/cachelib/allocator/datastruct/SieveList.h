@@ -206,8 +206,8 @@ class SieveList {
   class Iterator {
    public:
     //enum class Direction { FROM_HEAD, FROM_TAIL };
-    Iterator(SieveList<T, HookPtr>& sievelist) noexcept 
-	    : sievelist_(&sievelist) {};
+    Iterator(T* p, SieveList<T, HookPtr>& sievelist) noexcept 
+	    : curr_(p),sievelist_(&sievelist) {};
 
     //Iterator(T* p, Direction d, SieveList<T, HookPtr>& sievelist) noexcept
     //    : curr_(p), dir_(d), sievelist_(&sievelist) {}
@@ -240,7 +240,7 @@ class SieveList {
       return curr_ != nullptr && sievelist_ != nullptr;
     }
 
-    T* get() const noexcept { return curr_; }
+    T* get() const noexcept { std::cout << "Iterator-get"<<std::endl;return curr_; }
 	
     // Invalidates this iterator
     void reset() noexcept { curr_ = nullptr; }
@@ -328,13 +328,15 @@ void SieveList<T, HookPtr>::inspectSieveList() noexcept{
   std::cout << "Inspecting Free List: "<<std::endl;
   T* curr = head_;
   while (curr){
-    std::cout<< curr;
+    std::cout << curr;
     std::cout<<". prev: " << getPrev(*curr);
     std::cout<<", next: " << getNext(*curr); 
     std::cout<<", visited: "<< isVisited(*curr);
     if (curr == hand_) std::cout << " . Hand" << std::endl;
     else std::cout<< std::endl;
+    curr = getNext(*curr);
   }
+  if (hand_ == nullptr) std::cout << "Hand is null" << std::endl;
 }
 
 
@@ -351,16 +353,20 @@ void SieveList<T, HookPtr>::inspectVisitMap() noexcept{
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
-  
+  std::cout << "operateHand...Before operation, ";
+  inspectSieveList(); 
   T* curr = hand_;
   if (curr == nullptr) curr = tail_;
   while (isVisited(*curr)){
+    std::cout << "curr: "<< curr << "...";
     setAsUnvisited(*curr);
     curr = getPrev(*curr);
     if (curr == nullptr) curr = tail_;
   }
-  hand_ = getPrev(*curr);
-  
+  hand_ = getPrev(*curr); 
+  std::cout << "After operation, ";
+  inspectSieveList();
+  std::cout << ", returning curr " << curr << std::endl;
   return curr;
 }
 
@@ -485,6 +491,7 @@ void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator&
 SieveList<T, HookPtr>::Iterator::operator++() noexcept { 
+  std::cout << "Iterator::operator++..";
   curr_ = sievelist_->operateHand();
   //if (curr_==nullptr) std::cout << "SieveList++-incorrect operateHand()" << std::endl;
   //if (sievelist_->getTail() == nullptr) std::cout<<"SieveList-operator++-tail is null" << std::endl;
@@ -493,7 +500,9 @@ SieveList<T, HookPtr>::Iterator::operator++() noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFromHand() noexcept{
-  auto iterObj = SieveList<T, HookPtr>::Iterator(*this);
+  std::cout << "iterBackFromHand...";
+  auto firstNodeToBeEvicted = operateHand();
+  auto iterObj = SieveList<T, HookPtr>::Iterator(firstNodeToBeEvicted,*this);
   //if (!iterObj) {
   //	  std::cout << "SieveList-iterObj is null.";
   //	  std::cout << "SieveList-iterObj queue size: " << size_  << ". "; 

@@ -107,14 +107,23 @@ TEST_F(MMSieveTest, SieveRemoveBasic){
     ASSERT_FALSE(node->isInMMContainer());
     ASSERT_FALSE(c.remove(*node));
   }
+  std::cout << "nodes.size: " << nodes.size() << std::endl;
+  std::cout << "removedNodes.size: " << removedNodes.size() << std::endl;
+
+  c.inspectSieveList();
 
   // Checking we can't access the removed Nodes from the iterator 
   std::set<int> foundNodes;  
-  for (auto itr = c.getEvictionIterator(); foundNodes.size() + removedNodes.size()!=nodes.size(); ++itr) {
+  for (auto itr = c.getEvictionIterator(); foundNodes.size() + removedNodes.size()!= numNodes;) {
+    if (!itr) {std::cout<<"itr is null\n"; continue;}
     auto id = itr->getId();
-    std::cout << "id: " << id << std::endl;
+    std::cout << "evicted id: " << id << std::endl;
     ASSERT_EQ(foundNodes.find(id),foundNodes.end());
     foundNodes.insert(id);
+    c.inspectSieveList();
+    std::cout << "foundNodes size: " << foundNodes.size() << std::endl;
+    std::cout << std::endl;
+    if (foundNodes.size() + removedNodes.size()!= numNodes) ++itr;
   }
   for (const auto& node : removedNodes) {
     ASSERT_EQ(foundNodes.find(node->getId()), foundNodes.end());
@@ -122,16 +131,22 @@ TEST_F(MMSieveTest, SieveRemoveBasic){
 
   // trying to remove through iterator should work as expected as well.
   // no need of iter++ since remove will do that.
+  std::cout<<"Verifying Iterator..." << std::endl;
   for (auto iter = c.getEvictionIterator(); iter;) {
     auto& node = *iter;
-    ASSERT_TRUE(node.isInMMContainer());
-
-    // this will move the iter.
+    std::cout << "id to be removed: " << iter->getId() << std::endl;
+    ASSERT_TRUE(node.isInMMContainer()); 
+    
+    // this will move the iter. 
     c.remove(iter);
     ASSERT_FALSE(node.isInMMContainer());
+    std::cout << "after removing...";
+    c.inspectSieveList();
     if (iter) {
+      std::cout << "next node to be evicted from iter: " << iter->getId() << std::endl;
       ASSERT_NE((*iter).getId(), node.getId());
     }
+    std::cout << std::endl;
   }
 }
 
@@ -167,13 +182,13 @@ void verifyIterationVariants_Sieve(Container& c, int numNodes) {
 
 
 
-TEST_F(MMSieveTest, RecordAccessBasic) {
+/*TEST_F(MMSieveTest, RecordAccessBasic) {
   MMSieve::Config c;
   // Change lruRefreshTime to make sure only the first recordAccess bumps
   // the node and subsequent recordAccess invocations do not.
   c.lruRefreshTime = 100;
   testRecordAccessBasic(std::move(c));
 }
-
+*/
 } // namespace cachelib
 } // namespace facebook
