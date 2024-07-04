@@ -17,7 +17,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -273,7 +273,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		if (handle) num_hits += 1;
 		else {
 			
-			if (!put(key,prefix,obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
+			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
