@@ -267,13 +267,13 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		}
 
 		num_reqs += 1;
-		print_one_binary_request(req);
+		//print_one_binary_request(req);
 		
 		auto handle = get(key);
 		if (handle) num_hits += 1;
 		else {
 			
-			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
+			if (!put(key,prefix,obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;
 

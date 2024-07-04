@@ -442,9 +442,7 @@ class MMSieve {
 
     // Max lruFreshTime.
     static constexpr uint32_t kLruRefreshTimeCap{900};
-
-    //TODO: make a test for Sieve
-    //FRIEND_TEST(MMLruTest, Reconfigure);
+ 
   };
 };
 
@@ -470,6 +468,7 @@ MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
                                                 AccessMode mode) noexcept {
+  //std::cout << "MMSieve-recordAccess..."<<std::endl;
   if ((mode == AccessMode::kWrite && !config_.updateOnWrite) ||
       (mode == AccessMode::kRead && !config_.updateOnRead)) {
     return false;
@@ -483,16 +482,15 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
        !isAccessed(node))) {
     if (!isAccessed(node)) {
       markAccessed(node);
+      queue_.setAsVisited(node);
     }
    }
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-recordAccess(end)-tail is null"<<std::endl;
   return true;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 cachelib::EvictionAgeStat MMSieve::Container<T, HookPtr>::getEvictionAgeStat(
     uint64_t projectedLength) const noexcept {
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-getEvictionAgeStat(start)-tail is null"<<std::endl;
   return sieveMutex_->lock_combine([this, projectedLength]() {
     return getEvictionAgeStatLocked(projectedLength);
   });
@@ -513,9 +511,6 @@ MMSieve::Container<T, HookPtr>::getEvictionAgeStatLocked(
   }
   stat.warmQueueStat.projectedAge = node ? currTime - getUpdateTime(*node)
                                          : stat.warmQueueStat.oldestElementAge;
-  //XDCHECK(detail::areBytesSame(stat.hotQueueStat, EvictionStatPerType{}));
-  //XDCHECK(detail::areBytesSame(stat.coldQueueStat, EvictionStatPerType{}));
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-getEvictionAgeStatLocked(end)-tail is null"<<std::endl;
   return stat;
 }
 
@@ -539,6 +534,7 @@ typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
+  //std::cout << "MMSieve-add..."<<std::endl;
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
   // Lock and insert at head
   // Set hand_ to queue's tail is hand_ is null.
@@ -546,20 +542,14 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
     if (node.isInMMContainer()) {
       return false;
     }
-    //if (queue_.getTail()==nullptr)  std::cout << "MMSieve-add(start)-tail is null"<<std::endl;
-    queue_.linkAtHead(node);
-    queue_.setAsVisited(node);
+    queue_.linkAtHead(node); 
     node.markInMMContainer();
     setUpdateTime(node, currTime);
     unmarkAccessed(node);
 
-
     if (hand_ == nullptr){
     	hand_ = queue_.getTail();
     }
-
-    if (hand_ == nullptr) std::cout << "MMSieve-add-hand is null"<<std::endl;
-    if (queue_.getTail()==nullptr)  std::cout << "MMSieve-add(end)-tail is null"<<std::endl;
 
     return true;
   });
@@ -574,23 +564,20 @@ void MMSieve::Container<T, HookPtr>::inspectSieveList() noexcept{
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
-  std::cout << "MMSieve-getEvItr..";
+  //std::cout << "MMSieve-getEvItr..";
   LockHolder l(*sieveMutex_);
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-getEvItr-tail is null"<<std::endl;
-  
   return LockedIterator{std::move(l), queue_.iterBackFromHand()};
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-withEvItr-tail(start) is null";
+  //std::cout << "MMSieve-withEvItr...";
   if (config_.useCombinedLockForIterators) {
     sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFromHand()}); });
   } else {
     LockHolder lck{*sieveMutex_};
     auto iter = Iterator{queue_.iterBackFromHand()};
-    if (!iter) std::cout << "MMSieve-withEvIter(end) is NULL" << std::endl;
     fun(iter);
   }
 }
@@ -603,26 +590,19 @@ void MMSieve::Container<T, HookPtr>::withContainerLock(F&& fun) {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
-
-  //TODO: figure out what this function is supposed to do in Lru and 
-  //		update to Sieve version.
-  //ensureNotInsertionPoint(node);
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-removeLocked(start)-tail is null"<<std::endl;
   queue_.remove(node);
   unmarkAccessed(node);
   if (isTail(node)) {
     unmarkTail(node);
-    //tailSize_--;
   }
   node.unmarkInMMContainer();
-  //updateLruInsertionPoint();
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-removeLocked(end)-tail is null"<<std::endl;
   return;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
   return sieveMutex_->lock_combine([this, &node]() {
+    //std::cout << "MMSieve-remove(node)...";
     if (!node.isInMMContainer()) {
       return false;
     }
@@ -633,16 +613,16 @@ bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
+  //std::cout << "MMSieve-remove(iter)..";
   T& node = *it;
   XDCHECK(node.isInMMContainer());
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-remove(start)-tail is null"<<std::endl;
-  ++it;
+  //++it;
   removeLocked(node);
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
-  if (queue_.getTail()==nullptr)  std::cout << "MMSieve-replace(start)-tail is null"<<std::endl;
+  //std::cout << "MMSieve-replace...";
   return sieveMutex_->lock_combine([this, &oldNode, &newNode]() {
     if (!oldNode.isInMMContainer() || newNode.isInMMContainer()) {
       return false;
@@ -664,7 +644,6 @@ bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
     } else {
       unmarkTail(newNode);
     }
-    if (queue_.getTail()==nullptr)  std::cout << "MMSieve-remove(end)-tail is null"<<std::endl;
     return true;
   });
 }

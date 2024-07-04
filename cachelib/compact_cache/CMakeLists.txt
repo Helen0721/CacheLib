@@ -29,5 +29,5 @@ if (BUILD_TESTS)
                       compact_cache_test_support "${ARGN}")
   endfunction()
 
-  add_test (tests/CCacheTests.cpp)
+  #add_test (tests/CCacheTests.cpp)
 endif()

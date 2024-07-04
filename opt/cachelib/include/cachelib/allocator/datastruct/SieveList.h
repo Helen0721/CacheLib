@@ -155,7 +155,7 @@ class SieveList {
   // remove a node from the visitMap
   void removeFromVisitMap(const T& node) noexcept;
 
-  // Return the next item to be evicted and update position of hand_ 
+  // return and update hand_ to point to the next item to be evicted  
   T* operateHand() noexcept;
 
   // Links the passed node to the head of the double linked list
@@ -240,7 +240,10 @@ class SieveList {
       return curr_ != nullptr && sievelist_ != nullptr;
     }
 
-    T* get() const noexcept { std::cout << "Iterator-get"<<std::endl;return curr_; }
+    T* get() const noexcept { 
+	//std::cout << "Iterator-getting " << curr_ <<std::endl;
+	return curr_; 
+    }
 	
     // Invalidates this iterator
     void reset() noexcept { curr_ = nullptr; }
@@ -327,10 +330,17 @@ template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::inspectSieveList() noexcept{
   std::cout << "Inspecting Free List: "<<std::endl;
   T* curr = head_;
+  T* prev = nullptr;
+  T* next = nullptr;
   while (curr){
-    std::cout << curr;
-    std::cout<<". prev: " << getPrev(*curr);
-    std::cout<<", next: " << getNext(*curr); 
+    prev = getPrev(*curr);
+    next = getNext(*curr);
+    std::cout << curr->getKey().toString() <<"," << curr;
+    if (prev) std::cout<<". prev: "<< prev->getKey().toString() << ", " << prev;
+    else std::cout << ". prev: null";
+    if (next) std::cout<<", next: " << next->getKey().toString() << ", " << next;
+    else std::cout << ". next:null"; 
+
     std::cout<<", visited: "<< isVisited(*curr);
     if (curr == hand_) std::cout << " . Hand" << std::endl;
     else std::cout<< std::endl;
@@ -353,20 +363,21 @@ void SieveList<T, HookPtr>::inspectVisitMap() noexcept{
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
-  std::cout << "operateHand...Before operation, ";
-  inspectSieveList(); 
+  //std::cout << "operateHand...Before operation, ";
+  //inspectSieveList(); 
   T* curr = hand_;
   if (curr == nullptr) curr = tail_;
+  if (curr == nullptr) return nullptr;
   while (isVisited(*curr)){
-    std::cout << "curr: "<< curr << "...";
+    //std::cout << "curr: "<< curr << "...";
     setAsUnvisited(*curr);
     curr = getPrev(*curr);
     if (curr == nullptr) curr = tail_;
   }
   hand_ = getPrev(*curr); 
-  std::cout << "After operation, ";
-  inspectSieveList();
-  std::cout << ", returning curr " << curr << std::endl;
+  //std::cout << "After operation, ";
+  //inspectSieveList();
+  //std::cout << "returning " << curr->getKey().toString() << ", " << curr   << std::endl;
   return curr;
 }
 
@@ -385,6 +396,7 @@ void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
   if (tail_ == nullptr) {
     tail_ = &node;
   }
+  setAsUnvisited(node);
   size_++;
 }
 
@@ -446,6 +458,7 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::remove(T& node) noexcept {
+  //std::cout << "SieveList-remove...";
   // Should have set hand_ by unlink
   unlink(node);
   setNext(node, nullptr);
@@ -491,7 +504,7 @@ void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator&
 SieveList<T, HookPtr>::Iterator::operator++() noexcept { 
-  std::cout << "Iterator::operator++..";
+  //std::cout << "Iterator::operator++..";
   curr_ = sievelist_->operateHand();
   //if (curr_==nullptr) std::cout << "SieveList++-incorrect operateHand()" << std::endl;
   //if (sievelist_->getTail() == nullptr) std::cout<<"SieveList-operator++-tail is null" << std::endl;
@@ -500,7 +513,7 @@ SieveList<T, HookPtr>::Iterator::operator++() noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFromHand() noexcept{
-  std::cout << "iterBackFromHand...";
+  //std::cout << "iterBackFromHand...";
   auto firstNodeToBeEvicted = operateHand();
   auto iterObj = SieveList<T, HookPtr>::Iterator(firstNodeToBeEvicted,*this);
   //if (!iterObj) {
