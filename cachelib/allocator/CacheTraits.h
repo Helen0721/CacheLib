@@ -17,9 +17,9 @@
 #pragma once
 #include "cachelib/allocator/ChainedHashTable.h"
 
-//#include "cachelib/allocator/MM2Q.h"
+#include "cachelib/allocator/MM2Q.h"
 #include "cachelib/allocator/MMLru.h"
-//#include "cachelib/allocator/MMTinyLFU.h"
+#include "cachelib/allocator/MMTinyLFU.h"
 #include "cachelib/allocator/MMSieve.h"
 #include "cachelib/common/Mutex.h"
 
@@ -39,7 +39,7 @@ struct LruCacheTrait {
   using AccessType = ChainedHashTable;
   using AccessTypeLocks = SharedMutexBuckets;
 };
-/*
+
 struct LruCacheWithSpinBucketsTrait {
   using MMType = MMLru;
   using AccessType = ChainedHashTable;
@@ -57,7 +57,7 @@ struct TinyLFUCacheTrait {
   using AccessType = ChainedHashTable;
   using AccessTypeLocks = SharedMutexBuckets;
 };
-*/
+
 struct SieveCacheTrait {
   using MMType = MMSieve;
   using AccessType = ChainedHashTable;

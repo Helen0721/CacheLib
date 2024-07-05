@@ -5924,7 +5924,7 @@ extern template class CacheAllocator<SieveCacheTrait>;
 // CacheAllocator with an LRU eviction policy
 // LRU policy can be configured to act as a segmented LRU as well
 using LruAllocator = CacheAllocator<LruCacheTrait>;
-/*
+
 using LruAllocatorSpinBuckets = CacheAllocator<LruCacheWithSpinBucketsTrait>;
 
 // CacheAllocator with 2Q eviction policy
@@ -5943,7 +5943,7 @@ using Lru2QAllocator = CacheAllocator<Lru2QCacheTrait>;
 // inserted items. And eventually it will onl admit items that are accessed
 // beyond a threshold into the warm cache.
 using TinyLFUAllocator = CacheAllocator<TinyLFUCacheTrait>;
-*/
+
 
 // CacheAllocator with Sieve eviction policy
 // It has a hand that points to the next item to be evicted

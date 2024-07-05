@@ -90,7 +90,7 @@ class RebalanceStrategy {
   virtual RebalanceContext pickVictimAndReceiverImpl(const CacheBase&,
                                                      PoolId,
                                                      const PoolStats&) {
-    //std::cout<<"RebStrtgy.h-pickVAndRImpl-none"<<std::endl; 
+    std::cout<<"RebStrtgy.h-pickVAndRImpl-none"<<std::endl; 
     return {};
   }
 
