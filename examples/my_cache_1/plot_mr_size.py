@@ -115,6 +115,7 @@ if __name__ == "__main__":
     p.add_argument("--name",type=str,required=True)
     
     p.add_argument("--organized",type=str,default=None)
+    p.add_argument("--plot_uniform",type=str,default="no")
     p.add_argument("--json_file",type=str,default=None)    
     p.add_argument("--cache_sizes",type=str,default="")
     p.add_argument("--rebalance_strategies",type=str,default="all")
@@ -148,8 +149,31 @@ if __name__ == "__main__":
         with open(ap.json_file,"r") as json_f:
             json_RES = json.load(json_f)
 
-
     hr_lists,labels = [],[]
+
+    if ap.plot_uniform == "yes":
+        for (i,algo) in enumerate(algos):
+            hr_lists.append([])
+            labels.append(algo + "-uniform")
+
+            for cache_size in cache_sizes:
+                output_file = os.path.join(ap.output_folder,"{}_{}_uniform".format(algo,cache_size))
+                if not os.path.isfile(output_file):
+                    print("{} is not a file".format(output_file))
+                    exit(1)
+
+
+                final_hr = parse_for_size(output_file)
+                hr_lists[-1].append(final_hr)
+        print(hr_lists)
+
+        name = ap.name + "-" + ap.algo + "-uniform"
+        title = ap.algo + "-" + "-uniform" 
+
+        plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
+        exit(0)
+    
+
     for (i,algo) in enumerate(algos):
         for (j,rebalance_strategy) in enumerate(rebalance_strategies):
             
