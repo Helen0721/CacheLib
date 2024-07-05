@@ -9,7 +9,7 @@ Lru2Q_path = "build/my_cache_Lru2Q"
 TinyLFU_path = "build/my_cache_TinyLFU"
 Sieve_path = "build/my_cache_Sieve"
 
-ALGOS = ["Lru","Lru2Q","TinyLFU"]
+ALGOS = ["Lru","Lru2Q","TinyLFU","Sieve"]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB",
         "8GB","16GB","32GB","64GB"]

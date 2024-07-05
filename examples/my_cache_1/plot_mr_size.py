@@ -168,7 +168,7 @@ if __name__ == "__main__":
         print(hr_lists)
 
         name = ap.name + "-" + ap.algo + "-uniform"
-        title = ap.algo + "-" + "-uniform" 
+        title = ap.algo + "-" + "uniform" 
 
         plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
         exit(0)

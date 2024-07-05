@@ -273,7 +273,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		if (handle) num_hits += 1;
 		else {
 			
-			if (!put(key,prefix,obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
+			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
@@ -306,7 +306,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
 	int num_hits = 0;
 	int num_reqs = 0;
-
+	int num_zero_len_reqs = 0;
 	zstd_request *req = (zstd_request *)malloc(sizeof(zstd_request));
 	char *record = (char *)malloc(1024 * 1024 * 16);
 	
@@ -325,7 +325,10 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 		req->next_access_vtime = *(int64_t *)(record + sizeof(uint32_t) + sizeof(uint64_t) + sizeof(uint32_t));
 
 
-		if (req->obj_size == 0) continue;
+		if (req->obj_size == 0) {
+			num_zero_len_reqs += 1;
+			continue;
+		}
 
 		if (start_time == -1) start_time = req->clock_time;
 		
@@ -366,7 +369,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 	
-	std::cout<<"hit ratio:"<< hit_ratio <<",time:"<< (req->clock_time-start_time) <<std::endl;
+	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
 	std::cout <<"num_requests:"<<num_reqs <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
 	free(req);
