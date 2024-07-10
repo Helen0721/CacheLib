@@ -26,12 +26,21 @@ using PoolStats = cachelib::PoolStats;
 size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
 //char* value_all = (char *) malloc(value_all_size);
 std::string prefix = "EmptyFiller";
-char *cacheStats_path = "cacheStats";
+const char *cacheStats_path = "cacheStats";
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
 
-void saveCacheStats(){
+void saveCacheStats(uint32_t timestamp){
+	FILE* original_stdout = stdout;
+	FILE* file = freopen(cacheStats_path,"a", stdout);
+    	
+	if (!file) {
+        	std::cerr << "Failed to open file for redirection." << std::endl;
+        	return;
+    	}
+	
+	std::cout << "time: " << timestamp << std::endl;
 
 	PoolStats pool_stats = gCache_->getPoolStats(defaultPool_);
 	auto cacheStats = pool_stats.cacheStats;
@@ -50,6 +59,14 @@ void saveCacheStats(){
 		std::cout << "total_numHits: " << total_numHits << ", ";
 		std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
 	}
+
+	std::cout << "\n" << std::endl;
+
+	fflush(stdout);
+	stdout = original_stdout;
+	fclose(file);
+
+	freopen("/dev/tty", "w", stdout);
 }
 
 
@@ -386,6 +403,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			}
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
+			saveCacheStats(req->clock_time - start_time);
 		}
 		
 	}
