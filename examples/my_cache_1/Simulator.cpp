@@ -315,7 +315,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
 
-		if (reader->status == MY_EOF) {std::cout<<"EOF"<<std::endl; break;}
+		if (reader->status == MY_EOF) {std::cout<<"EOF"<<std::endl;break;}
 	        if (reader->status == ERR) {std::cout<<"ERR."<<num_reqs<<std::endl;;break;}
 		if (n==0) continue;
 		
@@ -374,7 +374,6 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 
 	free(req);
 	free(reader); 
-	free(record);
 }
 
 
