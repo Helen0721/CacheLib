@@ -7,6 +7,7 @@
 #include "cachelib/common/TestUtils.h"
 #include "folly/init/Init.h"
 #include <cstdlib>
+#include <cstdio>
 #include <string.h>
 #include <iostream>
 #include "Reader/BinaryReader.h"
@@ -21,12 +22,36 @@ using Cache = cachelib::SieveAllocator; // LruAllocator, Lru2QAllocator, TinyLFU
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
+using PoolStats = cachelib::PoolStats;
 size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
 //char* value_all = (char *) malloc(value_all_size);
 std::string prefix = "EmptyFiller";
+char *cacheStats_path = "cacheStats";
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
+
+void saveCacheStats(){
+
+	PoolStats pool_stats = gCache_->getPoolStats(defaultPool_);
+	auto cacheStats = pool_stats.cacheStats;
+	auto classIds = pool_stats.getClassIds();
+
+	for (auto cid : classIds){
+		auto class_stats = cacheStats.at(cid);
+		uint32_t class_size = class_stats.allocSize;
+		uint64_t total_alloc_attemtps = class_stats.allocAttempts;
+		uint64_t total_evict_attempts = class_stats.evictionAttempts;
+		uint64_t total_numHits = class_stats.numHits;
+  		uint64_t total_allocFailures =class_stats.allocFailures;
+		std::cout << "class alloc size: " << class_size << ", ";
+		std::cout << "total_alloc_attemtps: " << total_alloc_attemtps << ", ";
+		std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
+		std::cout << "total_numHits: " << total_numHits << ", ";
+		std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
+	}
+}
+
 
 		
 unsigned long convertCacheSize(char *cache_size){
@@ -56,7 +81,6 @@ unsigned long convertCacheSize(char *cache_size){
   std::cout << "invalid size: " << cache_size << std::endl;
   return 0;
 }
-
 
 void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams) {
   unsigned long size = convertCacheSize(cache_size); 
@@ -372,9 +396,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
 	std::cout <<"num_requests:"<<num_reqs <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
+	
 	free(req);
 	free(reader); 
 }
-
-
-
