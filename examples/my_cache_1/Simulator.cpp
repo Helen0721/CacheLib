@@ -26,29 +26,39 @@ using PoolStats = cachelib::PoolStats;
 size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
 //char* value_all = (char *) malloc(value_all_size);
 std::string prefix = "EmptyFiller";
-const char *cacheStats_path = "cacheStats";
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
 
-void saveCacheStats(bool clear_file, uint32_t timestamp){
-	
+void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp){
+	if (!cacheStats_path_) return;
+
+	const char* cacheStats_path = cacheStats_path_;
 	int old_stdout;
         if((old_stdout = dup(STDOUT_FILENO)) < 0){
 	       	perror("dup error");
 		exit(errno);
 	}
 	int f1;
-	int mode_flag = 066;		/*rw for all*/
+	int mode_flag = 0660;		/*rw-rw----*/
 	
 	int open_flag;
-	if (clear_file) open_flag = O_CREAT|O_RDWR|O_TRUNC;
-	else open_flag = O_CREAT|O_RDWR|O_APPEND;
+	if (clear_file) {
+		std::cout << "Openning " << cacheStats_path << " with O_TRUNC flag" <<std::endl;
+		open_flag = O_CREAT|O_RDWR|O_TRUNC;
+	}
+	else {
+		std::cout << "Openning " << cacheStats_path << " with O_APPEND flag" <<std::endl;
+		open_flag = O_CREAT|O_RDWR|O_APPEND;
+	}
+
 
         if( (f1 = open(cacheStats_path,open_flag,mode_flag)) < 0){
 		perror("open error");
 		exit(errno);
 	}
+	
+	system("ls -l output/Cloud_Physics_Ws_reb/w80/CacheStats_256MB_LruTailAge_default");
 
 	int d1;
 	//int dup2(int oldfd, int newfd);
@@ -65,29 +75,6 @@ void saveCacheStats(bool clear_file, uint32_t timestamp){
 	auto classIds = pool_stats.getClassIds();
 	auto numClasses = classIds.size();
 
-	const char *class_alloc_size_s = "class alloc size: ";
-	auto class_alloc_size_s_len = strlen(class_alloc_size_s);
-
-	const char *alloc_attemtps_s = "alloc_attemtps: ";
-	auto alloc_attemtps_s_len = strlen(alloc_attemtps_s); 
-
-	const char *evict_attempts_s = "evict_attempts: ";
-	auto evict_attempts_s_len = strlen(evict_attempts_s); 
-
-	const char *numHits_s = "numHits: ";
-	auto numHits_s_len = strlen(numHits_s); 
-
-	const char *allocFailures_s = "allocFailures: ";
-	auto allocFailures_s_len = strlen(allocFailures_s); 
-
-	/*auto templates_total_len = (class_alloc_size_s_len + alloc_attemtps_s_len + evict_attempts_s_len	
-				+ numHits_s_len + allocFailures_s_len
-			);
-
-	void* buf = malloc(numClasses * (sizeof(uint64_t) * 5 + templates_total_len + 10));	
-	void* ptr = buf;
-	*/
-
 	for (auto cid : classIds){
 		auto class_stats = cacheStats.at(cid);
 		uint32_t class_size = class_stats.allocSize;
@@ -100,28 +87,6 @@ void saveCacheStats(bool clear_file, uint32_t timestamp){
 		std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
 		std::cout << "total_numHits: " << total_numHits << ", ";
 		std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
-
-		/*
-		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
-		ptr += class_alloc_size_s_len;
-		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
-		ptr += sizeof(uint32_t);
-		
-		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
-		ptr += class_alloc_size_s_len;
-		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
-		ptr += sizeof(uint32_t);
-
-		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
-		ptr += class_alloc_size_s_len;
-		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
-		ptr += sizeof(uint32_t);
-
-		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
-		ptr += class_alloc_size_s_len;
-		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
-		ptr += sizeof(uint32_t);
-		*/
 	}
 	
 	std::cout << "\n" << std::endl << std::flush;
@@ -134,6 +99,8 @@ void saveCacheStats(bool clear_file, uint32_t timestamp){
 
 	close(f1);
 	close(old_stdout);
+
+	system("ls -l output/Cloud_Physics_Ws_reb/w80/CacheStats_256MB_LruTailAge_default");
 }
 
 
@@ -351,7 +318,7 @@ bool put(CacheKey key, const std::string& value, size_t value_size) {
 } // namespace facebook
 
 
-void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,int max_reqs, int sleep_sec){
+void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,int max_reqs, int sleep_sec, char *cacheStats_path_){
 
 	using namespace facebook::cachelib_examples;
 	
@@ -364,6 +331,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
 	uint32_t start_time = -1;
         std::cout << "parsed file size: " << reader->file_size << ", parsed num reqs:" << reader->total_num_requests << std::endl;
+	bool should_trunc_file = true;
 
 	while((char *)reader->file_offset < (char *)reader->mapped_file + reader->file_size){
 		read_one_binary_request(reader, req);
@@ -392,6 +360,8 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			}
 			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
+			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time);
+			if (should_trunc_file) should_trunc_file = false;
 		}
 		
 		if (max_reqs!=0 && num_reqs > max_reqs) break;
@@ -408,7 +378,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 	free(reader);
 }
 
-void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs, int sleep_sec){
+void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs, int sleep_sec, char* cacheStats_path_){
 	using namespace facebook::cachelib_examples;
 	
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
@@ -471,7 +441,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			}
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
-			saveCacheStats(should_trunc_file,req->clock_time - start_time);
+			saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time);
 			if (should_trunc_file) should_trunc_file = false;
 		}
 		
@@ -480,6 +450,8 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 	
+	saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time);
+
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
 	std::cout <<"num_requests:"<<num_reqs <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 

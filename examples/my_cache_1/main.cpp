@@ -59,7 +59,13 @@ int main(int argc, char** argv) {
   char *cache_size = argv[3];
   char *rebalanceStrategy = argv[4];
   char *rebParams = argv[5];
+  char *cacheStats_path = NULL;
   int sleep_sec = 0;
+ if (argc >= 7) {
+    cacheStats_path = argv[6]; 
+    std::cout << "Saving cache stats to " << cacheStats_path << std::endl;
+  }
+
   if (argc >= 7) {
     sleep_sec = std::atoi(argv[6]);
     std::cout << "Will sleep " << sleep_sec <<  " sec every 100000 requests" << std::endl;
@@ -70,11 +76,11 @@ int main(int argc, char** argv) {
    	(path_len>=13 && std::strcmp(data_path + path_len - 13, "oracleGeneral") == 0)
      ){
     bin_reader_t *reader = binary_reader_setup(data_path);
-    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
+    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec,cacheStats_path);
   }
   else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0)
    {
     zstd_reader *reader =create_zstd_reader(data_path);
-    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec);
+    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec,cacheStats_path);
   }
  }
