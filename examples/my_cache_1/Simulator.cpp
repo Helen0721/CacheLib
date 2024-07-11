@@ -31,20 +31,62 @@ const char *cacheStats_path = "cacheStats";
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
 
-void saveCacheStats(uint32_t timestamp){
-	FILE* original_stdout = stdout;
-	FILE* file = freopen(cacheStats_path,"a", stdout);
-    	
-	if (!file) {
-        	std::cerr << "Failed to open file for redirection." << std::endl;
-        	return;
-    	}
+void saveCacheStats(bool clear_file, uint32_t timestamp){
 	
+	int old_stdout;
+        if((old_stdout = dup(STDOUT_FILENO)) < 0){
+	       	perror("dup error");
+		exit(errno);
+	}
+	int f1;
+	int mode_flag = 066;		/*rw for all*/
+	
+	int open_flag;
+	if (clear_file) open_flag = O_CREAT|O_RDWR|O_TRUNC;
+	else open_flag = O_CREAT|O_RDWR|O_APPEND;
+
+        if( (f1 = open(cacheStats_path,open_flag,mode_flag)) < 0){
+		perror("open error");
+		exit(errno);
+	}
+
+	int d1;
+	//int dup2(int oldfd, int newfd);
+	//The file descriptor newfd refers to the same open file description as oldfd.	
+	if ( (d1 = dup2(f1,STDOUT_FILENO)) < 0){
+		perror("dup2 error in changing stdout");
+		exit(errno);
+	}
+
 	std::cout << "time: " << timestamp << std::endl;
 
 	PoolStats pool_stats = gCache_->getPoolStats(defaultPool_);
 	auto cacheStats = pool_stats.cacheStats;
 	auto classIds = pool_stats.getClassIds();
+	auto numClasses = classIds.size();
+
+	const char *class_alloc_size_s = "class alloc size: ";
+	auto class_alloc_size_s_len = strlen(class_alloc_size_s);
+
+	const char *alloc_attemtps_s = "alloc_attemtps: ";
+	auto alloc_attemtps_s_len = strlen(alloc_attemtps_s); 
+
+	const char *evict_attempts_s = "evict_attempts: ";
+	auto evict_attempts_s_len = strlen(evict_attempts_s); 
+
+	const char *numHits_s = "numHits: ";
+	auto numHits_s_len = strlen(numHits_s); 
+
+	const char *allocFailures_s = "allocFailures: ";
+	auto allocFailures_s_len = strlen(allocFailures_s); 
+
+	/*auto templates_total_len = (class_alloc_size_s_len + alloc_attemtps_s_len + evict_attempts_s_len	
+				+ numHits_s_len + allocFailures_s_len
+			);
+
+	void* buf = malloc(numClasses * (sizeof(uint64_t) * 5 + templates_total_len + 10));	
+	void* ptr = buf;
+	*/
 
 	for (auto cid : classIds){
 		auto class_stats = cacheStats.at(cid);
@@ -58,15 +100,40 @@ void saveCacheStats(uint32_t timestamp){
 		std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
 		std::cout << "total_numHits: " << total_numHits << ", ";
 		std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
+
+		/*
+		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
+		ptr += class_alloc_size_s_len;
+		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
+		ptr += sizeof(uint32_t);
+		
+		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
+		ptr += class_alloc_size_s_len;
+		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
+		ptr += sizeof(uint32_t);
+
+		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
+		ptr += class_alloc_size_s_len;
+		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
+		ptr += sizeof(uint32_t);
+
+		std::memcpy(ptr,(const void*)class_alloc_size_s,class_alloc_size_s_len);
+		ptr += class_alloc_size_s_len;
+		std::memcpy(ptr,(const void*)&class_size,sizeof(uint32_t));
+		ptr += sizeof(uint32_t);
+		*/
+	}
+	
+	std::cout << "\n" << std::endl << std::flush;
+
+	int d2;
+	if ( (d2 = dup2(old_stdout,STDOUT_FILENO)) < 0){
+		perror("dup2 error in changing back stdout");
+		exit(errno);
 	}
 
-	std::cout << "\n" << std::endl;
-
-	fflush(stdout);
-	stdout = original_stdout;
-	fclose(file);
-
-	freopen("/dev/tty", "w", stdout);
+	close(f1);
+	close(old_stdout);
 }
 
 
@@ -351,7 +418,8 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	zstd_request *req = (zstd_request *)malloc(sizeof(zstd_request));
 	char *record = (char *)malloc(1024 * 1024 * 16);
 	
-	uint32_t start_time = -1;	
+	uint32_t start_time = -1;
+	bool should_trunc_file = true;	
 
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
@@ -403,7 +471,8 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			}
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
-			saveCacheStats(req->clock_time - start_time);
+			saveCacheStats(should_trunc_file,req->clock_time - start_time);
+			if (should_trunc_file) should_trunc_file = false;
 		}
 		
 	}
