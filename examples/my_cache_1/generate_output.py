@@ -55,7 +55,7 @@ def chooseRebParams(strategy,option):
         return option
 
 
-def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams):
+def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_path):
     if algo=="Lru": run_path = Lru_path
     elif algo=="Lru2Q": run_path = Lru2Q_path
     elif algo=="TinyLFU": run_path = TinyLFU_path
@@ -65,7 +65,7 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams):
     
     print("run path:", run_path,"output file:",out_file)
 
-    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
+    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams,cacheStats_path]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -93,7 +93,7 @@ if __name__=="__main__":
 
     p.add_argument("--algos",type=str,default="all")
     p.add_argument("--max_reqs",type=int,default=0)
-    p.add_argument("--cache_sizes",type=str,default="")
+    p.add_argument("--cache_sizes",type=str,default="") 
 
     ap = p.parse_args()
 
@@ -105,8 +105,7 @@ if __name__=="__main__":
     if (ap.algos=="all"):
         algos = ALGOS
     else:
-        algos = ap.algos.split(",")
-
+        algos = ap.algos.split(",") 
 
     for algo in algos: 
         for cache_size in cache_sizes:
@@ -117,9 +116,20 @@ if __name__=="__main__":
 
             output_file = os.path.join(ap.outputdir,ap.reb,
                     ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + "_" + rebParams)
-                        
+            
+            cacheStats_path = os.path.join(ap.outputdir,ap.reb,"CacheStats_{}_{}_{}_{}".format(algo,cache_size,ap.reb,rebParams))
+
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}, rebParams: {}.".format(
                 ap.tracepath,algo,cache_size,ap.reb,rebParams))
 
-            run(output_file,ap.tracepath,ap.max_reqs,
-                    algo=algo,cache_size=cache_size,reb=ap.reb,rebParams=ap.rebParams)
+            print("saving CacheStats to", cacheStats_path)
+
+            run(output_file,
+                    ap.tracepath,
+                    ap.max_reqs,
+                    algo=algo,
+                    cache_size=cache_size,
+                    reb=ap.reb,
+                    rebParams=ap.rebParams,
+                    cacheStats_path = cacheStats_path
+                    )

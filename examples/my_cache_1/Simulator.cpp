@@ -18,7 +18,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::SieveAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -40,7 +40,7 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp)
 		exit(errno);
 	}
 	int f1;
-	int mode_flag = 0660;		/*rw-rw----*/
+	int mode_flag = 0660;		/*-rw-r-----*/
 	
 	int open_flag;
 	if (clear_file) {
@@ -58,7 +58,7 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp)
 		exit(errno);
 	}
 	
-	system("ls -l output/Cloud_Physics_Ws_reb/w80/CacheStats_256MB_LruTailAge_default");
+	
 
 	int d1;
 	//int dup2(int oldfd, int newfd);
@@ -100,7 +100,6 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp)
 	close(f1);
 	close(old_stdout);
 
-	system("ls -l output/Cloud_Physics_Ws_reb/w80/CacheStats_256MB_LruTailAge_default");
 }
 
 

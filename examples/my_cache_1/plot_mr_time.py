@@ -25,6 +25,8 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
 
+REGEX_CacheStats = "class alloc size: (?P<class_alloc_size>\d+), total_alloc_attemtps: (?P<total_alloc_attemtps>\d+), total_evict_attempts: (?P<total_evict_attempts>\d+), total_numHits: (?P<total_numHits>\d+), total_allocFailures: (?P<total_allocFailures>\d+)."
+
 colors =['tab:green', 'tab:red', 'tab:blue','tab:brown',
         'tab:pink','tab:olive','tab:cyan','tab:orange',
         'tab:purple','tab:grey'
@@ -117,6 +119,44 @@ def parse_for_time(file):
     return ts_list, hr_list
 
 
+def parse_for_time_CacheStats(file):
+    stdout_str = []
+    
+    with open(file,"r") as f:
+        stdout_str = f.read().split("\n\n\n")
+    
+    ts_list = []
+    alloc_attempts_list = [] 
+
+    i = 0
+    for section in stdout_str:
+        lines = section.split("\n")
+        
+        if "time" not in lines[0]: continue 
+        time = int(lines[0].split(": ")[1])
+
+        alloc_attempts_list_for_time = []
+        alloc_sizes = []
+        
+        for line in lines:
+            m = re.search(REGEX_CacheStats,line)
+            
+            if not m: continue
+
+            class_alloc_size = m.group("class_alloc_size")
+            total_alloc_attemtps = m.group("total_alloc_attemtps")
+
+            alloc_attempts_list_for_time.append(total_alloc_attemtps)
+            alloc_sizes.append(class_alloc_size)
+
+        ts_list.append(time)
+        alloc_attempts_list.append(alloc_attempts_list_for_time)
+        
+        i += 1
+
+    return ts_list, alloc_sizes, alloc_attempts_list
+
+
 if __name__ == "__main__": 
     import argparse
     p = argparse.ArgumentParser()
@@ -156,11 +196,24 @@ if __name__ == "__main__":
                     output_file = os.path.join(ap.output_folder,rebalance_strategy,
                             "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
                             )
+                    
+                    CacheStats_file = os.path.join(ap.output_folder,rebalance_strategy,
+                            "CacheStats_{}_{}_{}_default".format(algo,cache_size,rebalance_strategy)
+                            )
+
+
                             
-                print("parsing for",output_file) 
+                #print("parsing for",output_file) 
 
-                ts_list,hr_list = parse_for_time(output_file)
+                #ts_list,hr_list = parse_for_time(output_file)
 
+                print("parsing for",CacheStats_file)
+                ts_list, alloc_sizes, alloc_attempts_list = parse_for_time_CacheStats(CacheStats_file)
+               
+                print(ts_list)
+                print(alloc_attempts_list)
+                print(alloc_sizes)
+                exit(0)
 
                 ts_lists_for_cs.append(ts_list) 
                 hr_lists_for_cs.append(hr_list) 
