@@ -198,6 +198,7 @@ if __name__ == "__main__":
                                 output_file =os.path.join(ap.output_folder,rebalance_strategy,
                                     "{}_{}_{}_{}_1,0.3,1,1".format(ap.name,algo,cache_size,rebalance_strategy)
                                     )
+                            if not os.path.isfile(output_file): continue
 
                     else: 
                         output_file =os.path.join(ap.output_folder,

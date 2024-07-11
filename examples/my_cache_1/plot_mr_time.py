@@ -35,6 +35,116 @@ colors =['tab:green', 'tab:red', 'tab:blue','tab:brown',
 markers=["o","x","d","s"]
 
 linestyles = ["-","-.", "-.", ":"]
+# Use a secondary y-axis to adjust the spacing
+def custom_scale(y):
+    return 0 
+
+def inverse_custom_scale(y):
+    if y < 20:
+        return y
+    elif y < 40:
+        return 20 + (y - 20) * 24
+    elif y < 80:
+        return 500 + (y - 40) * 12.5
+    elif y < 130:
+        return 1000 + (y - 80) * 10
+    elif y < 180:
+        return 1500 + (y - 130) * 10
+    else:
+        return 2000 + (y - 180) * 10
+
+def plot_allocAttempts_time(ts_lists,
+                    alloc_attempts,
+                    alloc_sizes_for_plot,
+                    mod,
+                    cache_size,
+                    plot_folder,
+                    plot_name,
+                    plot_title):
+
+    # Took every 10000000 requests
+    times_idx = [i for i in range(len(ts_lists)) if i % mod == 0 and i > 0]
+    ts_lists_for_plot = [ts_lists[i] for i in times_idx]
+    x = np.arange(len(ts_lists_for_plot))
+    alloc_attempts_for_plot = [alloc_attempts[i] for i in times_idx]
+    
+    
+    # group alloc attempts by allocation classes
+    alloc_attempts_by_category = [[] for _ in range(len(alloc_sizes_for_plot))]
+    for i in range(len(alloc_sizes_for_plot)):
+        for alloc_attempts_for_time in alloc_attempts_for_plot:
+            alloc_attempts_by_category[i].append(alloc_attempts_for_time[i])
+    
+    #print(ts_lists_for_plot)
+    #print(alloc_attempts_for_plot)
+    # checking we are just transposing the list
+    for (i,alloc_attempts_for_category) in enumerate(alloc_attempts_by_category):
+        assert(len(alloc_attempts_for_category) == len(ts_lists_for_plot))
+        for (j,alloc_attempt) in enumerate(alloc_attempts_for_category):
+            assert(alloc_attempt == alloc_attempts_for_plot[j][i])
+
+    
+    # filter out allocation classes that have zero allocations
+    alloc_class_idx = [i for i in range(len(alloc_sizes_for_plot)) if sum(alloc_attempts_by_category[i]) > 0]
+    alloc_attempts_by_category = [alloc_attempts_by_category[i] for i in alloc_class_idx]
+    alloc_sizes_for_plot = [alloc_sizes_for_plot[i] for i in alloc_class_idx]
+    num_categories = len(alloc_sizes_for_plot)
+
+    plot_fname = os.path.join(plot_folder,"allocAttempts-{}-{}.pdf".format(plot_name,cache_size)) 
+    pp = PdfPages(plot_fname)
+
+    #linear scale 
+    fig, ax = plt.subplots(figsize=(50,40))
+
+    COLORS = plt.cm.tab20(np.linspace(0, 1, num_categories+1))
+    
+    for i in range(num_categories):  
+        alloc_attempts_for_category = alloc_attempts_by_category[i] 
+          
+        print("alloc_attempts_for_cateogry:",alloc_attempts_for_category)
+
+        if i == 0:
+            ax.bar(x, 
+                    alloc_attempts_for_category, 
+                    label = str(alloc_sizes_for_plot[i]),
+                    color=COLORS[i])
+            bottom_for_category = np.array(alloc_attempts_for_category)
+        else:
+            ax.bar(x, 
+                    alloc_attempts_for_category, 
+                    bottom=bottom_for_category,
+                    label = str(alloc_sizes_for_plot[i]),
+                    color=COLORS[i])
+            bottom_for_category += np.array(alloc_attempts_for_category)             
+        print("bottom_for_category:", bottom_for_category)
+
+      
+        
+    ax.set_xlabel("Time",fontsize=35)
+    ax.set_xticks(x)
+    ax.set_xticklabels(ts_lists_for_plot)
+    ax.tick_params(axis='x', which='major', labelsize=35)
+
+    #ax.set_yscale('linear')
+    ax.set_ylabel("AllocAttempts",fontsize=35)
+    ax.tick_params(axis='y', which='major', labelsize=35)   
+    #secax = ax.secondary_yaxis('right', functions=(custom_scale, inverse_custom_scale))
+    #secax.set_yticks(ticks)
+    #secax.set_yticklabels(labels)
+
+    ax.set_title(plot_title + "-" + cache_size,fontsize=18)
+
+    legend = ax.legend(fontsize="35", bbox_to_anchor=(0, 1), 
+            ncol=5,loc='upper left')
+    
+    plt.tight_layout(pad=2.0)
+
+    pp.savefig(fig)
+    plt.close(fig)
+    pp.close()
+
+    print("alloc_attempts plot saved to {}".format(plot_fname))
+
 
 def plot_hr_time(ts_lists,
                  hr_lists,
@@ -146,10 +256,10 @@ def parse_for_time_CacheStats(file):
             class_alloc_size = m.group("class_alloc_size")
             total_alloc_attemtps = m.group("total_alloc_attemtps")
 
-            alloc_attempts_list_for_time.append(total_alloc_attemtps)
-            alloc_sizes.append(class_alloc_size)
+            alloc_attempts_list_for_time.append(int(total_alloc_attemtps))
+            alloc_sizes.append(int(class_alloc_size))
 
-        ts_list.append(time)
+        ts_list.append(int(time))
         alloc_attempts_list.append(alloc_attempts_list_for_time)
         
         i += 1
@@ -179,7 +289,7 @@ if __name__ == "__main__":
         (ap.rebalance_strategies!="all") else REBALANCEING_STRATEGIES 
 
     for cache_size in cache_sizes:
-        ts_lists_for_cs,hr_lists_for_cs,labels = [],[],[] 
+        ts_lists_for_cs,hr_lists_for_cs,alloc_sizes_for_cs,alloc_attempts_list_for_cs,labels = [],[],[],[],[] 
 
         for (i,algo) in enumerate(algos):
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
@@ -209,20 +319,39 @@ if __name__ == "__main__":
 
                 print("parsing for",CacheStats_file)
                 ts_list, alloc_sizes, alloc_attempts_list = parse_for_time_CacheStats(CacheStats_file)
+
+                plot_name_for_allocAttempts = "{}-CacheStats-{}-{}-{}".format(ap.name,cache_size,algo,rebalance_strategy)
+                plot_title_for_allocAttempts = "{}-{}-{}".format(cache_size,algo,rebalance_strategy)
+                
+                plot_allocAttempts_time(ts_list,
+                        alloc_attempts_list,
+                        alloc_sizes,
+                        10,
+                        cache_size,
+                        plot_folder=ap.plot_folder,
+                        plot_name=plot_name_for_allocAttempts,
+                        plot_title=plot_title_for_allocAttempts
+                     )
+                #exit(0)
+
                
-                print(ts_list)
-                print(alloc_attempts_list)
-                print(alloc_sizes)
-                exit(0)
+                #print(ts_list)
+                #print(alloc_attempts_list)
+                #print(alloc_sizes) 
 
-                ts_lists_for_cs.append(ts_list) 
-                hr_lists_for_cs.append(hr_list) 
-                labels.append(rebalance_strategy + "-" + algo)
-
+                #ts_lists_for_cs.append(ts_list) 
+                #hr_lists_for_cs.append(hr_list) 
+                #alloc_sizes_for_cs.append(alloc_sizes)
+                #alloc_attempts_list_for_cs.append(alloc_attempts_list)
+                #labels.append(rebalance_strategy + "-" + algo)
+ 
         
         plot_name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
         plot_title = ap.algo + "-" + ap.rebalance_strategies + "-" + cache_size
-
+        
+                
+        
+        """
         plot_hr_time(ts_lists_for_cs,
                      hr_lists_for_cs,
                      labels,
@@ -231,3 +360,4 @@ if __name__ == "__main__":
                      plot_name=plot_name,
                      plot_title=plot_title
                      )
+        """
