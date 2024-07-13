@@ -22,6 +22,12 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             "HitsPerSlab",
                             "default"
                             ]
+ALLOC_CLASSES = [72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 
+        1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 
+        13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 
+        129376, 161720, 202152, 252696, 315872, 394840, 493552, 
+        616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304]
+
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
 
@@ -336,6 +342,87 @@ def handle_CacheStats():
                      )
                 
 
+def validate_CacheStats():
+    cache_size = cache_sizes[0]
+    algo = algos[0]
+    rebalance_strategy = rebalance_strategies[0]
+
+
+    CacheStats_file = os.path.join(ap.output_folder,rebalance_strategy,
+                            "CacheStats_{}_{}_{}_default".format(algo,cache_size,rebalance_strategy)
+                            )
+
+    print("parsing for",CacheStats_file)
+    ts_list, alloc_sizes, alloc_attempts_list = parse_for_time_CacheStats(CacheStats_file)
+    
+    print(alloc_sizes)
+    print(alloc_attempts_list[0])
+
+    sizeToAllocAttempts = {size: alloc_attempts_list[0][i] for (i,size) in enumerate(alloc_sizes)}
+
+    with open(ap.ref_tracePrint,"r") as f:
+        ref_tracePrint = f.read().split("\n")
+
+    ref_all_sizes = []
+    for (i,line) in enumerate(ref_tracePrint):
+        if i < 2: continue
+        try: 
+            size = line.split(",")[2]
+            ref_all_sizes.append(int(size)+32)  # memory overhead
+        except:
+            print(line)
+            continue
+
+    ref_sizeToAllocAttempts = {size:0 for size in alloc_sizes}
+    for obj_size in ref_all_sizes:
+        for curr in alloc_sizes+[999999999999999999]:
+            if curr > obj_size:
+                ref_sizeToAllocAttempts[curr] += 1
+                break
+    
+    ref_totalObjs = len(ref_all_sizes)
+    totalAllocAttempts = sum(alloc_attempts_list[0])
+    
+    for size in alloc_sizes:
+        print("size: {}. ref cnt: {}, my cnt: {}".format(size,
+            ref_sizeToAllocAttempts[size],sizeToAllocAttempts[size]))
+        
+    print("ref_totalObjs: {}, totalAllocAttempts: {}".format(
+        ref_totalObjs,totalAllocAttempts))
+
+
+    print("max obj size:",max(ref_all_sizes),"min obj size:",min(ref_all_sizes))
+
+
+def handle_objSizeDist():
+    with open(ap.ref_tracePrint,"r") as f:
+        ref_tracePrint = f.read().split("\n")
+
+    ref_all_sizes = []
+    for (i,line) in enumerate(ref_tracePrint):
+        if i < 2: continue
+        try: 
+            size = line.split(",")[2]
+            ref_all_sizes.append(int(size))
+        except:
+            print(line)
+            continue
+   
+    
+    #classToId = {c:i for (i,c) in enumerate(ALLOC_CLASSES)}
+    
+    #objSizeCnts = []
+
+    #for obj_size in ref_all_sizes:
+    #    prev = alloc_sizes[0]
+    #    for curr in alloc_sizes+[999999999999999999]:
+    #        if curr > obj_size:
+    #            ref_sizeToAllocAttempts[prev] += 1
+    #            break
+    #        prev = curr
+
+
+
 
 
 
@@ -351,6 +438,7 @@ if __name__ == "__main__":
     p.add_argument("--algos",type=str,default="all")
     p.add_argument("--organized",type=str,default="no")
     p.add_argument("--rebalance_strategies",type=str,default="all")
+    p.add_argument("--ref_tracePrint",type=str,default=None)
 
     ap = p.parse_args()
 
@@ -365,6 +453,10 @@ if __name__ == "__main__":
         handle_CacheStats()
     elif ap.type=="mr":
         hanld_mr()
+    elif ap.type=="validate_CacheStats":
+        validate_CacheStats()
+    elif ap.type=="objSizeDist":
+        handle_objSizeDist()
     else:
         print("operation",ap.type,"not supported")
     

@@ -36,7 +36,7 @@ std::string prefix = "EmptyFiller";
 uint32_t uniform_obj_size = 1000;
 float stop_reb_threshold = 0.1;
 
-void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp){
+void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp, int num_reqs_so_far){
 	if (!cacheStats_path_) return;
 
 	const char* cacheStats_path = cacheStats_path_;
@@ -74,7 +74,7 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp)
 		exit(errno);
 	}
 
-	std::cout << "time: " << timestamp << std::endl;
+	std::cout << "time: " << timestamp << "num_reqs: " << num_reqs_so_far  << std::endl;
 
 	PoolStats pool_stats = gCache_->getPoolStats(defaultPool_);
 	auto cacheStats = pool_stats.cacheStats;
@@ -417,23 +417,24 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			}
 			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
-			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time);
+			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time,num_reqs);
 			if (should_trunc_file) should_trunc_file = false;
 		}
-		
+	        /*	
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
-		
+		*/
 		if (max_reqs!=0 && num_reqs > max_reqs) break;
 		
 	}
 	
 	double throughput = (req->timestamp-start_time==0)? 0 : (double) reader->total_num_requests / (req->timestamp - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
-	
+
+	saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time,num_reqs);
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs << std::endl;
 	std::cout <<"hit ratio:"<< hit_ratio <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
@@ -515,21 +516,23 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			}
 			float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
-			saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time);
+			saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time,num_reqs);
 			if (should_trunc_file) should_trunc_file = false;
 		}
+		/*
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
+		*/
 		
 	}
 	
 	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 	
-	saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time);
+	saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time,num_reqs);
 
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
 	std::cout <<"hit ratio:"<< hit_ratio <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
