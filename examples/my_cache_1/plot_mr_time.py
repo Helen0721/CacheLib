@@ -194,7 +194,7 @@ def plot_hr_time(ts_lists,
     print("log plot saved to {}".format(plot_fname))
 
 
-def parse_for_time(file):
+def parse_for_time(file,threshold=100):
     stdout_str = []
 
     with open(file,"r") as f:
@@ -208,6 +208,7 @@ def parse_for_time(file):
         m = re.search(REGEX,line) 
 
         if not m: continue
+        if i < threshold: continue        
 
         ts_list.append(m.group("time")) 
         hr_list.append(m.group("hit_ratio"))
