@@ -14,7 +14,7 @@ import subprocess
 import logging
 import json
 
-ALGOS = ["Lru","Lru2Q","TinyLFU"]
+ALGOS = ["Lru","Lru2Q","TinyLFU","Sieve"]
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
                             "FreeMem", 
@@ -280,15 +280,15 @@ def handle_mr():
 
                 ts_list,hr_list = parse_for_time(output_file) 
                
-                print(ts_list)
+                #print(ts_list)
 
                 ts_lists_for_cs.append(ts_list) 
                 hr_lists_for_cs.append(hr_list) 
                 labels.append(rebalance_strategy + "-" + algo)
  
         
-        plot_name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
-        plot_title = ap.algo + "-" + ap.rebalance_strategies + "-" + cache_size
+        plot_name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies
+        plot_title = ap.algos + "-" + ap.rebalance_strategies + "-" + cache_size
         
                 
         plot_hr_time(ts_lists_for_cs,
@@ -452,7 +452,7 @@ if __name__ == "__main__":
     if ap.type=="CacheStats":
         handle_CacheStats()
     elif ap.type=="mr":
-        hanld_mr()
+        handle_mr()
     elif ap.type=="validate_CacheStats":
         validate_CacheStats()
     elif ap.type=="objSizeDist":
