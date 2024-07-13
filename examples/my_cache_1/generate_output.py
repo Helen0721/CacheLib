@@ -71,8 +71,8 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     print("run path:", run_path,", output file:",out_file, ", CacheStats file", cacheStats_path)
     
     if ap.uniform=="yes":
-        if os.path.isfile(output_file):
-            print(output_file,"already exists")
+        if os.path.isfile(out_file):
+            print(out_file,"already exists")
             return
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams,cacheStats_path]

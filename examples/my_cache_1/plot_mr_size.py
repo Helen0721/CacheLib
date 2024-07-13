@@ -107,73 +107,7 @@ def parse_for_size(file):
     return final_hr
 
 
-if __name__ == "__main__": 
-    import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument("--output_folder",type=str,required=True)
-    p.add_argument("--plot_folder",type=str,required=True)
-    p.add_argument("--name",type=str,required=True)
-    
-    p.add_argument("--organized",type=str,default=None)
-    p.add_argument("--plot_uniform",type=str,default="no")
-    p.add_argument("--json_file",type=str,default=None)    
-    p.add_argument("--cache_sizes",type=str,default="")
-    p.add_argument("--rebalance_strategies",type=str,default="all")
-    p.add_argument("--algo",type=str,default="all")
-
-    ap = p.parse_args()  
-   
-    # given a trace, x axis is the cache size. y axis is the miss ratio.  
-    # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy]
-
-    if (ap.cache_sizes==""):
-        cache_sizes = CACHE_SIZES
-    else:
-        cache_sizes = ap.cache_sizes.split(",")
-
-
-    if (ap.rebalance_strategies=="all"):
-        rebalance_strategies = REBALANCEING_STRATEGIES
-    else:
-        rebalance_strategies = ap.rebalance_strategies.split(",")
-
-
-    if ap.algo=="all":
-        algos = ALGOS
-    else:
-        algos = [ap.algo]
-
-    json_RES = None
-    if ap.json_file!=None:
-        import json
-        with open(ap.json_file,"r") as json_f:
-            json_RES = json.load(json_f)
-
-    hr_lists,labels = [],[]
-
-    if ap.plot_uniform == "yes":
-        for (i,algo) in enumerate(algos):
-            hr_lists.append([])
-            labels.append(algo + "-uniform")
-
-            for cache_size in cache_sizes:
-                output_file = os.path.join(ap.output_folder,"{}_{}_uniform".format(algo,cache_size))
-                if not os.path.isfile(output_file):
-                    print("{} is not a file".format(output_file))
-                    exit(1)
-
-
-                final_hr = parse_for_size(output_file)
-                hr_lists[-1].append(final_hr)
-        print(hr_lists)
-
-        name = ap.name + "-" + ap.algo + "-uniform"
-        title = ap.algo + "-" + "uniform" 
-
-        plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
-        exit(0)
-    
-
+def handle_mr():
     for (i,algo) in enumerate(algos):
         for (j,rebalance_strategy) in enumerate(rebalance_strategies):
             
@@ -218,3 +152,79 @@ if __name__ == "__main__":
     title = ap.algo + "-" + ap.rebalance_strategies
 
     plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
+
+
+
+
+def handle_uniform():
+    for (i,algo) in enumerate(algos):
+        for (j,reb) in enumerate(rebalance_strategies):
+            if reb == "MarginalHits" and algo!="Lru2Q": continue
+
+            hr_lists.append([])
+            labels.append(algo + "-" + reb)
+
+            for cache_size in cache_sizes:
+                # ex: metakvt1_TinyLFU_4GB_default_default_uniform
+                output_file = os.path.join(ap.output_folder,reb,
+                        "{}_{}_{}_{}_default_uniform".format(ap.name,algo,cache_size,reb))
+                if not os.path.isfile(output_file):
+                    print("{} is not a file".format(output_file))
+                    exit(1)
+
+                final_hr = parse_for_size(output_file)
+                
+                hr_lists[-1].append(final_hr)
+        
+    print(hr_lists)
+    name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-uniform"     
+    title = ap.algos + "-" + ap.rebalance_strategies + "-uniform" 
+    plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
+
+
+if __name__ == "__main__": 
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--output_folder",type=str,required=True)
+    p.add_argument("--plot_folder",type=str,required=True)
+    p.add_argument("--name",type=str,required=True)
+    p.add_argument("--type",type=str,required=True)
+    
+    p.add_argument("--organized",type=str,default=None)
+    p.add_argument("--json_file",type=str,default=None)    
+    p.add_argument("--cache_sizes",type=str,default="")
+    p.add_argument("--rebalance_strategies",type=str,default="all")
+    p.add_argument("--algos",type=str,default="all")
+
+    ap = p.parse_args()  
+   
+    # given a trace, x axis is the cache size. y axis is the miss ratio.  
+    # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy]
+
+    if (ap.cache_sizes==""):
+        cache_sizes = CACHE_SIZES
+    else:
+        cache_sizes = ap.cache_sizes.split(",")
+
+
+    if (ap.rebalance_strategies=="all"):
+        rebalance_strategies = REBALANCEING_STRATEGIES
+    else:
+        rebalance_strategies = ap.rebalance_strategies.split(",")
+
+
+    if ap.algos=="all":
+        algos = ALGOS
+    else:
+        algos = ap.algos.split("\n")
+
+    json_RES = None
+    if ap.json_file!=None:
+        import json
+        with open(ap.json_file,"r") as json_f:
+            json_RES = json.load(json_f)
+
+    hr_lists,labels = [],[]
+
+    if ap.type == "uniform":
+        handle_uniform()     
