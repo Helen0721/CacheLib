@@ -1,15 +1,3 @@
-generate Cloud Physics tasks file for parallel:
-for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; echo "./run.sh $data_path w$i Lru2Q MarginalHits default output/Cloud_Physics_Ws_reb_sleep" >> tasks_Cloud_Physics ; done
-
-generate tasks for other traces for parallel (all strategy): 
-
-for reb in LruTailAge HitsPerSlab FreeMem;do 
-data_path=data/w06.oracleGeneral.bin.zst;output_dir=output/Cloud_Physics_Ws_reb/w06;name=w06;rebParam_file=rebParams/"$reb"; 
-for algo in Lru Lru2Q TinyLFU; 
-do while read -r line;do echo "./run.sh $data_path $name $algo $reb $line $output_dir";done < $rebParam_file; 
-done; 
-done > tasks/CPW0
-
 plot_mr_size.py command for Cloud Physics Traces
 
 for i in {80..106};do name="w$i"; for algo in Lru Lru2Q TinyLFU all;do python3 plot_mr_size.py --output_folder=output/Cloud_Physics_Ws_reb_sleep --plot_folder=plots/Cloud_Physics --name="$name" --algo="$algo"; done; done
@@ -50,3 +38,31 @@ done
 
 for cs in 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB 64GB;do for algo in Lru Lru2Q TinyLFU; do f=wiki2019t_TinyLFU_64GB_MarginalHits*; mv wiki2019t_TinyLFU_64GB_MarginalHits* MarginalHits; done; done
 for cs in 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB 64GB;do for algo in Lru Lru2Q TinyLFU; do f=wiki2019t_TinyLFU_64GB_default*; mv wiki2019t_TinyLFU_64GB_MarginalHits* default; done; done
+
+
+
+generate tasks for traces for parallel:
+
+generate all Cloud Physics tasks file for parallel:
+for i in {80..106};do data_path="data/w$i.oracleGeneral.bin.zst"; 
+
+specifying rebParams:
+while read -r line;do echo "./run.sh $data_path $name $algo $reb $line $output_dir";done < $rebParam_file; 
+
+uniform object size:
+for cs in 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB 64GB;do 
+data=data/meta_kvcache_traces_1.oracleGeneral.bin.zst;outptu_dir=output/MetaKVT1_reb_2;name=metakvt1; 
+for algo in Sieve Lru Lru2Q TinyLFU; do 
+for algo in Lru Lru2Q Sieve TinyLFU;do 
+for reb in LruTailAge MarginalHits HitsPerSlab default FreeMem;do 
+echo "./run.sh $data $name $algo $reb default $output_dir $cs yes"; 
+done; done; done; done > tasks/MetaKVT1_2_uniform
+
+not uniform object size:
+for cs in 256MB 512MB 1GB 2GB 4GB 8GB 16GB 32GB 64GB;do 
+data=data/meta_kvcache_traces_1.oracleGeneral.bin.zst;outptu_dir=output/MetaKVT1_reb_2;name=metakvt1; 
+for algo in Sieve Lru Lru2Q TinyLFU; do 
+for algo in Lru Lru2Q Sieve TinyLFU;do 
+for reb in LruTailAge MarginalHits HitsPerSlab default FreeMem;do 
+echo "./run.sh $data $name $algo $reb default $output_dir $cs"; 
+done; done; done; done > tasks/MetaKVT1_2

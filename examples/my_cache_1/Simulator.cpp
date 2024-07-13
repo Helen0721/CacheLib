@@ -1,3 +1,9 @@
+#include <cstdlib>
+#include <cstdio>
+#include <string.h>
+#include <iostream>
+#include <regex>
+
 #include "cachelib/allocator/CacheAllocator.h"
 #include "cachelib/allocator/LruTailAgeStrategy.h"
 #include "cachelib/allocator/MarginalHitsStrategy.h"
@@ -6,10 +12,7 @@
 #include "cachelib/allocator/PoolRebalancer.h"
 #include "cachelib/common/TestUtils.h"
 #include "folly/init/Init.h"
-#include <cstdlib>
-#include <cstdio>
-#include <string.h>
-#include <iostream>
+
 #include "Reader/BinaryReader.h"
 #include "Reader/ZstdReader.h"
 #include "Simulator.h"
@@ -23,12 +26,15 @@ using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
 using PoolStats = cachelib::PoolStats;
-size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
-//char* value_all = (char *) malloc(value_all_size);
-std::string prefix = "EmptyFiller";
+
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
 cachelib::PoolId defaultPool_;
+
+size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
+std::string prefix = "EmptyFiller";
+uint32_t uniform_obj_size = 1000;
+float stop_reb_threshold = 0.1;
 
 void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp){
 	if (!cacheStats_path_) return;
@@ -100,6 +106,55 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp)
 	close(f1);
 	close(old_stdout);
 
+}
+
+bool matches_CloudPhysics_format(const char *input_) {
+    std::string str(input_);
+    const std::string input = str;
+
+    // Define the regex pattern
+   std::regex pattern(R"(w(8[0-9]|9[0-9]|10[0-6])\.oracleGeneral\.bin\.zst)");
+
+    // Check if the input matches the pattern
+    return std::regex_search(input, pattern);
+}
+
+/*Since we can't know the total number of requests for zstd traces, 
+ * these are pre-caculated total number of reqs * 0.1*/
+int32_t get_stop_reb_reqs_threshold(const char* tracePath){
+	if (strstr(tracePath, "meta_kvcache_traces_1")!=nullptr) return (uint32_t) 335173084 * 0.1;
+	else if (strstr(tracePath, "wiki_2019t.oracleGeneral.zst")!=nullptr) return (uint32_t) 207646002 * 0.1;
+	else if (strstr(tracePath, "w06.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 69392150 * 0.1;
+	else if (strstr(tracePath, "w80.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 5256246 * 0.1;
+	else if (strstr(tracePath, "w81.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 5026619 * 0.1;
+	else if (strstr(tracePath, "w82.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4926610 * 0.1;
+	else if (strstr(tracePath, "w83.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3880481 * 0.1;
+	else if (strstr(tracePath, "w84.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4814234 * 0.1;
+	else if (strstr(tracePath, "w85.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4790048 * 0.1;
+	else if (strstr(tracePath, "w86.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4749563 * 0.1;
+	else if (strstr(tracePath, "w87.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3788806 * 0.1;
+	else if (strstr(tracePath, "w88.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4711053 * 0.1;
+	else if (strstr(tracePath, "w89.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3625918 * 0.1;
+	else if (strstr(tracePath, "w90.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4493515 * 0.1;
+	else if (strstr(tracePath, "w91.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4316605 * 0.1;
+	else if (strstr(tracePath, "w92.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4284658 * 0.1;
+	else if (strstr(tracePath, "w93.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3351357 * 0.1;
+	else if (strstr(tracePath, "w94.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 4118188 * 0.1;
+	else if (strstr(tracePath, "w95.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3937240 * 0.1;
+	else if (strstr(tracePath, "w96.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3787344 * 0.1;
+	else if (strstr(tracePath, "w97.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3768450 * 0.1;
+	else if (strstr(tracePath, "w98.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3664418 * 0.1;
+	else if (strstr(tracePath, "w99.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3660840 * 0.1;
+	else if (strstr(tracePath, "w100.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3645877 * 0.1;
+	else if (strstr(tracePath, "w101.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3587707 * 0.1;
+	else if (strstr(tracePath, "w102.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3558215 * 0.1;
+	else if (strstr(tracePath, "w103.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3442094 * 0.1;
+	else if (strstr(tracePath, "w104.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3395553 * 0.1;
+	else if (strstr(tracePath, "w105.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3375344 * 0.1;
+	else if (strstr(tracePath, "w106.oracleGeneral.bin.zst")!=nullptr) return (uint32_t) 3275919 * 0.1;
+	else std::cout<<"cachesim doesn't know the threshold to disable slab rebalancing for trace " << tracePath << std::endl;
+	exit(1);
+	return -1;
 }
 
 
@@ -331,6 +386,9 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 	uint32_t start_time = -1;
         std::cout << "parsed file size: " << reader->file_size << ", parsed num reqs:" << reader->total_num_requests << std::endl;
 	bool should_trunc_file = true;
+	
+	int stop_reb_reqs_threshold = (int32_t) reader->total_num_requests * 0.1;
+	bool reb_stopped = false;
 
 	while((char *)reader->file_offset < (char *)reader->mapped_file + reader->file_size){
 		read_one_binary_request(reader, req);
@@ -348,7 +406,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		if (handle) num_hits += 1;
 		else {
 			
-			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
+			if (!put(key,prefix,uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
@@ -361,6 +419,12 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
 			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time);
 			if (should_trunc_file) should_trunc_file = false;
+		}
+		
+		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
+			std::cout << "Stoping slab rebalancing..." << std::endl;
+			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
+			reb_stopped = true;
 		}
 		
 		if (max_reqs!=0 && num_reqs > max_reqs) break;
@@ -389,6 +453,18 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	
 	uint32_t start_time = -1;
 	bool should_trunc_file = true;	
+	
+	int stop_reb_reqs_threshold = get_stop_reb_reqs_threshold(reader->trace_path);
+	std::cout << "Reqs threshold to stop slab rebalancing: " << stop_reb_reqs_threshold << std::endl;
+	if (stop_reb_reqs_threshold < 0) return;
+	bool reb_stopped = false;
+
+	int print_mod = 1000000;
+	if ((strstr(reader->trace_path, "w06.oracleGeneral.bin.zst")==nullptr) && 
+		matches_CloudPhysics_format(reader->trace_path)) {
+		print_mod = 10000;
+		std::cout << "print_mod is re-adjusted to " << print_mod << std::endl;
+	}
 
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
@@ -426,14 +502,13 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
 				continue;
 			}
-			//std::string prefix(value_all,req->obj_size);
-			if (!put(key,prefix, req->obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
+			if (!put(key,prefix, uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}
 		
 		num_reqs += 1;
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 		
-		if (num_reqs % 1000000 == 0 && (req->clock_time - start_time !=0) ){
+		if (num_reqs % print_mod == 0 && (req->clock_time - start_time !=0) ){
 			if (sleep_sec > 0) {
 				std::cout << "sleeping..." << std::endl;
 				sleep(sleep_sec);
@@ -442,6 +517,11 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->clock_time - start_time) <<std::endl;
 			saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time);
 			if (should_trunc_file) should_trunc_file = false;
+		}
+		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
+			std::cout << "Stoping slab rebalancing..." << std::endl;
+			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
+			reb_stopped = true;
 		}
 		
 	}
@@ -452,7 +532,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time);
 
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
-	std::cout <<"num_requests:"<<num_reqs <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
+	std::cout <<"hit ratio:"<< hit_ratio <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
 
 	
 	free(req);

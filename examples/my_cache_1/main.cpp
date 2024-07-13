@@ -17,23 +17,11 @@
 #include "folly/init/Init.h"
 #include <cstdlib>
 #include <iostream>
-#include <regex>
+
 
 #include "Reader/BinaryReader.h"
 #include "Reader/ZstdReader.h"
 #include "Simulator.h"
-
-
-bool matchesFormat(const char *input_) {
-    std::string str(input_);
-    const std::string input = str;
-
-    // Define the regex pattern
-   std::regex pattern(R"(data/w(8[0-9]|9[0-9]|10[0-6])\.oracleGeneral\.bin\.zst)");
-
-    // Check if the input matches the pattern
-    return std::regex_match(input, pattern);
-}
 
 
 int main(int argc, char** argv) {

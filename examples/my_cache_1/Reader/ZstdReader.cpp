@@ -34,7 +34,7 @@ zstd_reader *create_zstd_reader(const char *trace_path) {
     printf("cannot open %s\n", trace_path);
     exit(1);
   }
-
+  reader->trace_path = trace_path;
   reader->buff_in_sz = ZSTD_DStreamInSize();
   reader->buff_in = malloc(reader->buff_in_sz);
   reader->input.src = reader->buff_in;

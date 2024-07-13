@@ -35,23 +35,7 @@ colors =['tab:green', 'tab:red', 'tab:blue','tab:brown',
 markers=["o","x","d","s"]
 
 linestyles = ["-","-.", "-.", ":"]
-# Use a secondary y-axis to adjust the spacing
-def custom_scale(y):
-    return 0 
 
-def inverse_custom_scale(y):
-    if y < 20:
-        return y
-    elif y < 40:
-        return 20 + (y - 20) * 24
-    elif y < 80:
-        return 500 + (y - 40) * 12.5
-    elif y < 130:
-        return 1000 + (y - 80) * 10
-    elif y < 180:
-        return 1500 + (y - 130) * 10
-    else:
-        return 2000 + (y - 180) * 10
 
 def plot_allocAttempts_time(ts_lists,
                     alloc_attempts,
@@ -67,7 +51,6 @@ def plot_allocAttempts_time(ts_lists,
     ts_lists_for_plot = [ts_lists[i] for i in times_idx]
     x = np.arange(len(ts_lists_for_plot))
     alloc_attempts_for_plot = [alloc_attempts[i] for i in times_idx]
-    
     
     # group alloc attempts by allocation classes
     alloc_attempts_by_category = [[] for _ in range(len(alloc_sizes_for_plot))]
@@ -90,7 +73,7 @@ def plot_allocAttempts_time(ts_lists,
     alloc_sizes_for_plot = [alloc_sizes_for_plot[i] for i in alloc_class_idx]
     num_categories = len(alloc_sizes_for_plot)
 
-    plot_fname = os.path.join(plot_folder,"allocAttempts-{}-{}.pdf".format(plot_name,cache_size)) 
+    plot_fname = os.path.join(plot_folder,"{}-AllocAttempts.pdf".format(plot_name)) 
     pp = PdfPages(plot_fname)
 
     #linear scale 
@@ -266,30 +249,9 @@ def parse_for_time_CacheStats(file):
 
     return ts_list, alloc_sizes, alloc_attempts_list
 
-
-if __name__ == "__main__": 
-    import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument("--output_folder",type=str,required=True)
-    p.add_argument("--plot_folder",type=str,required=True)
-    p.add_argument("--name",type=str,required=True)
-    p.add_argument("--cache_sizes",type=str,required=True)
-
-    p.add_argument("--algo",type=str,default="all")
-    p.add_argument("--organized",type=str,default="no")
-    p.add_argument("--rebalance_strategies",type=str,default="all")
-
-    ap = p.parse_args()
-
-    algos = ALGOS if (ap.algo=="all") else [ap.algo]
-                 
-    cache_sizes = ap.cache_sizes.split(",") if ap.cache_sizes!="all" else CACHE_SIZES
-
-    rebalance_strategies = ap.rebalance_strategies.split(",") if \
-        (ap.rebalance_strategies!="all") else REBALANCEING_STRATEGIES 
-
+def handle_mr():
     for cache_size in cache_sizes:
-        ts_lists_for_cs,hr_lists_for_cs,alloc_sizes_for_cs,alloc_attempts_list_for_cs,labels = [],[],[],[],[] 
+        ts_lists_for_cs,hr_lists_for_cs,labels = [],[],[]
 
         for (i,algo) in enumerate(algos):
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
@@ -305,53 +267,24 @@ if __name__ == "__main__":
                 else:
                     output_file = os.path.join(ap.output_folder,rebalance_strategy,
                             "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
-                            )
-                    
-                    CacheStats_file = os.path.join(ap.output_folder,rebalance_strategy,
-                            "CacheStats_{}_{}_{}_default".format(algo,cache_size,rebalance_strategy)
-                            )
-
+                            ) 
 
                             
-                #print("parsing for",output_file) 
+                print("parsing for",output_file) 
 
-                #ts_list,hr_list = parse_for_time(output_file)
-
-                print("parsing for",CacheStats_file)
-                ts_list, alloc_sizes, alloc_attempts_list = parse_for_time_CacheStats(CacheStats_file)
-
-                plot_name_for_allocAttempts = "{}-CacheStats-{}-{}-{}".format(ap.name,cache_size,algo,rebalance_strategy)
-                plot_title_for_allocAttempts = "{}-{}-{}".format(cache_size,algo,rebalance_strategy)
-                
-                plot_allocAttempts_time(ts_list,
-                        alloc_attempts_list,
-                        alloc_sizes,
-                        10,
-                        cache_size,
-                        plot_folder=ap.plot_folder,
-                        plot_name=plot_name_for_allocAttempts,
-                        plot_title=plot_title_for_allocAttempts
-                     )
-                #exit(0)
-
+                ts_list,hr_list = parse_for_time(output_file) 
                
-                #print(ts_list)
-                #print(alloc_attempts_list)
-                #print(alloc_sizes) 
+                print(ts_list)
 
-                #ts_lists_for_cs.append(ts_list) 
-                #hr_lists_for_cs.append(hr_list) 
-                #alloc_sizes_for_cs.append(alloc_sizes)
-                #alloc_attempts_list_for_cs.append(alloc_attempts_list)
-                #labels.append(rebalance_strategy + "-" + algo)
+                ts_lists_for_cs.append(ts_list) 
+                hr_lists_for_cs.append(hr_list) 
+                labels.append(rebalance_strategy + "-" + algo)
  
         
         plot_name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
         plot_title = ap.algo + "-" + ap.rebalance_strategies + "-" + cache_size
         
                 
-        
-        """
         plot_hr_time(ts_lists_for_cs,
                      hr_lists_for_cs,
                      labels,
@@ -360,4 +293,78 @@ if __name__ == "__main__":
                      plot_name=plot_name,
                      plot_title=plot_title
                      )
-        """
+        
+
+
+
+def handle_CacheStats():
+    
+    if ap.name=="w06":
+        mod = 5
+    #(?P<hit_ratio>\d+.\d+)
+    elif (re.search(r"w(?P<CloudPhysics_trace>\d+)",ap.name)): 
+        mod = 1
+    else:
+        mod = 10
+
+    for cache_size in cache_sizes:
+        ts_lists_for_cs,hr_lists_for_cs,alloc_sizes_for_cs,alloc_attempts_list_for_cs,labels = [],[],[],[],[] 
+
+        for (i,algo) in enumerate(algos):
+            for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+
+                if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+                
+                CacheStats_file = os.path.join(ap.output_folder,rebalance_strategy,
+                            "CacheStats_{}_{}_{}_default".format(algo,cache_size,rebalance_strategy)
+                            )
+
+                print("parsing for",CacheStats_file)
+                ts_list, alloc_sizes, alloc_attempts_list = parse_for_time_CacheStats(CacheStats_file)
+
+                plot_name_for_allocAttempts = "{}-{}-{}-{}".format(ap.name,cache_size,algo,rebalance_strategy)
+                plot_title_for_allocAttempts = "{}-{}-{}".format(cache_size,algo,rebalance_strategy)
+                
+                plot_allocAttempts_time(ts_list,
+                        alloc_attempts_list,
+                        alloc_sizes,
+                        mod,
+                        cache_size,
+                        plot_folder=ap.plot_folder,
+                        plot_name=plot_name_for_allocAttempts,
+                        plot_title=plot_title_for_allocAttempts
+                     )
+                
+
+
+
+
+if __name__ == "__main__": 
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--output_folder",type=str,required=True)
+    p.add_argument("--plot_folder",type=str,required=True)
+    p.add_argument("--name",type=str,required=True) 
+    p.add_argument("--type",type=str,required=True)
+
+    p.add_argument("--cache_sizes",type=str,default="all")
+    p.add_argument("--algos",type=str,default="all")
+    p.add_argument("--organized",type=str,default="no")
+    p.add_argument("--rebalance_strategies",type=str,default="all")
+
+    ap = p.parse_args()
+
+    algos = ALGOS if (ap.algos=="all") else ap.algos.split(",")
+                 
+    cache_sizes = ap.cache_sizes.split(",") if ap.cache_sizes!="all" else CACHE_SIZES
+
+    rebalance_strategies = ap.rebalance_strategies.split(",") if \
+        (ap.rebalance_strategies!="all") else REBALANCEING_STRATEGIES 
+    
+    if ap.type=="CacheStats":
+        handle_CacheStats()
+    elif ap.type=="mr":
+        hanld_mr()
+    else:
+        print("operation",ap.type,"not supported")
+    

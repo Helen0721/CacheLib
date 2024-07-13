@@ -65,7 +65,7 @@ for (( i=0; i<num_rebs; i++)); do
     		TRACE_FILE=${trace_paths[j]}
     		NAME=${names[j]}
 
-		python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --algos="$3" --reb="$REB" --rebParams="$5" --outputdir="$6" --cache_size="$7"		
+		python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --algos="$3" --reb="$REB" --rebParams="$5" --outputdir="$6" --cache_sizes="$7" --uniform="$8"		
 
 	done
 done

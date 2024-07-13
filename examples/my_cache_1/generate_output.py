@@ -63,7 +63,12 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     else: 
         print("unsupported algorithm ", algo)
     
-    print("run path:", run_path,"output file:",out_file)
+    if ap.uniform=="yes":
+        run_path += "_uniform"
+        out_file += "_uniform"
+        cacheStats_path += "_uniform"
+
+    print("run path:", run_path,", output file:",out_file, ", CacheStats file", cacheStats_path)
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams,cacheStats_path]
 
@@ -91,10 +96,12 @@ if __name__=="__main__":
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--outputdir",type=str,required=True)
 
+    p.add_argument("--uniform",type=str,default="no")
     p.add_argument("--algos",type=str,default="all")
     p.add_argument("--max_reqs",type=int,default=0)
     p.add_argument("--cache_sizes",type=str,default="") 
-
+    
+    
     ap = p.parse_args()
 
     if (ap.cache_sizes==""):
@@ -110,7 +117,9 @@ if __name__=="__main__":
     for algo in algos: 
         for cache_size in cache_sizes:
 
-            if ap.reb == "MarginalHits" and algo != "Lru2Q": continue
+            if ap.reb == "MarginalHits" and algo != "Lru2Q": 
+                print("MarginalHits only works with Lru2Q")
+                continue
             
             rebParams = chooseRebParams(ap.reb,ap.rebParams)
 
@@ -120,9 +129,7 @@ if __name__=="__main__":
             cacheStats_path = os.path.join(ap.outputdir,ap.reb,"CacheStats_{}_{}_{}_{}".format(algo,cache_size,ap.reb,rebParams))
 
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}, rebParams: {}.".format(
-                ap.tracepath,algo,cache_size,ap.reb,rebParams))
-
-            print("saving CacheStats to", cacheStats_path)
+                ap.tracepath,algo,cache_size,ap.reb,rebParams)) 
 
             run(output_file,
                     ap.tracepath,

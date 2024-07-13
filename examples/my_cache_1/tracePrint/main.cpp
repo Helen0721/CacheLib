@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include "../Reader/BinaryReader.h"
-
+#include "../Reader/ZstdReader.h"
 
 int main(int argc, char** argv) {
   
@@ -34,8 +34,8 @@ int main(int argc, char** argv) {
 	std::cout << "parsed file size: " << reader->file_size << ", file start address: " << reader->mapped_file; 
 	std::cout << ", parsed num reqs:" << reader->total_num_requests << std::endl;
 	
-	bin_request *req = (bin_request*) malloc(sizeof(bin_request));        	
-
+	bin_request *req = (bin_request*) malloc(sizeof(bin_request));
+	
 	while((char *)reader->file_offset < (char *)reader->mapped_file + reader->file_size){
 		read_one_binary_request(reader, req);
 		num_reqs += 1;
@@ -53,10 +53,8 @@ int main(int argc, char** argv) {
 	}
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs << std::endl;	
 }
-  /*
-  else if ( (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0)  ||
-	    (path_len>=13 && std::strcmp(data_path + path_len - 13, "oracleGeneral") == 0)
-	  ) {
+  
+  else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0) {
 	zstd_reader *reader =create_zstd_reader(data_path);
 	int num_reqs = 0;
 	int num_zero_len_reqs = 0;
@@ -81,13 +79,12 @@ int main(int argc, char** argv) {
 			num_zero_len_reqs += 1;
 			continue;
 		}
+		
+		print_one_zstd_request(req)
 		num_reqs += 1;
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 	}
 		std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs << std::endl;
 
    }
-   */
-
 } 
-

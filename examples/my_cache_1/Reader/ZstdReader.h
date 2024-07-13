@@ -20,6 +20,7 @@ typedef enum { ERR, OK, MY_EOF } rstatus;
 //static char *rstatus_str[3] = {"ERR", "OK", "MY_EOF"};
 
 struct zstd_reader {
+  const char* trace_path;
   FILE *ifile;
   ZSTD_DStream *zds;
 
