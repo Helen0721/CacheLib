@@ -209,7 +209,7 @@ def handle_stopReb():
 
                 hr_lists[-1].append(final_hr_stopReb)
  
-    name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-stopReb"     
+    name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-" + ap.cache_sizes + "-stopReb"     
     title = ap.algos + "-" + ap.rebalance_strategies + "-stopReb" 
     
     plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
