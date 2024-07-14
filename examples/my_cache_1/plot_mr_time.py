@@ -302,6 +302,60 @@ def handle_mr():
                      )
         
 
+def handle_stopReb():
+
+    if ap.organized!="yes":
+        print("stopReb must have the output directory organized according to rebalance strategies")
+        return
+
+    for cache_size in cache_sizes:
+        ts_lists_for_cs,hr_lists_for_cs,labels = [],[],[]
+
+        for (i,algo) in enumerate(algos):
+            for (j,rebalance_strategy) in enumerate(rebalance_strategies):
+
+                if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+
+                output_file = os.path.join(ap.output_folder,rebalance_strategy,
+                            "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
+                            )            
+                
+                print("parsing for",output_file) 
+                ts_list,hr_list = parse_for_time(output_file) 
+                
+
+                output_file_stopReb = os.path.join(ap.output_folder,rebalance_strategy,
+                            "{}_{}_{}_{}_default_stopReb".format(ap.name,algo,cache_size,rebalance_strategy)
+                            )             
+                
+                print("parsing for",output_file_stopReb) 
+                ts_list_stopReb,hr_list_stopReb = parse_for_time(output_file_stopReb) 
+                #print(ts_list)
+
+                ts_lists_for_cs.append(ts_list) 
+                hr_lists_for_cs.append(hr_list) 
+                labels.append(rebalance_strategy + "-" + algo)
+
+                ts_lists_for_cs.append(ts_list_stopReb) 
+                hr_lists_for_cs.append(hr_list_stopReb) 
+                labels.append(rebalance_strategy + "-" + algo + "-stopReb")
+        
+        plot_name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-stopReb"
+        plot_title = ap.algos + "-" + ap.rebalance_strategies + "-" + cache_size
+        
+                
+        plot_hr_time(ts_lists_for_cs,
+                     hr_lists_for_cs,
+                     labels,
+                     cache_size,
+                     plot_folder=ap.plot_folder,
+                     plot_name=plot_name,
+                     plot_title=plot_title
+                     )
+
+
+
+
 
 
 def handle_CacheStats():
@@ -454,6 +508,8 @@ if __name__ == "__main__":
         handle_CacheStats()
     elif ap.type=="mr":
         handle_mr()
+    elif ap.type=="stopReb":
+        handle_stopReb()
     elif ap.type=="validate_CacheStats":
         validate_CacheStats()
     elif ap.type=="objSizeDist":

@@ -21,7 +21,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::TinyLFUAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::SieveAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -406,7 +406,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		if (handle) num_hits += 1;
 		else {
 			
-			if (!put(key,prefix,uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
+			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
@@ -420,13 +420,13 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time,num_reqs);
 			if (should_trunc_file) should_trunc_file = false;
 		}
-	        /*	
+	        
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
-		*/
+		
 		if (max_reqs!=0 && num_reqs > max_reqs) break;
 		
 	}
@@ -503,7 +503,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
 				continue;
 			}
-			if (!put(key,prefix, uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
+			if (!put(key,prefix, req->obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}
 		
 		num_reqs += 1;
@@ -519,13 +519,12 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time,num_reqs);
 			if (should_trunc_file) should_trunc_file = false;
 		}
-		/*
+		
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
-		*/
 		
 	}
 	

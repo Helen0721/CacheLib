@@ -63,17 +63,17 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     else: 
         print("unsupported algorithm ", algo)
     
-    if ap.uniform=="yes":
-        run_path += "_uniform"
-        out_file += "_uniform"
-        cacheStats_path += "_uniform"
+    if ap.suffix:
+        run_path += "_" + ap.suffix
+        out_file += "_" + ap.suffix
+        cacheStats_path += "_" + ap.suffix
 
     print("run path:", run_path,", output file:",out_file, ", CacheStats file", cacheStats_path)
     
-    if ap.uniform=="yes":
-        if os.path.isfile(out_file):
-            print(out_file,"already exists")
-            return
+    #if ap.uniform=="yes":
+    #    if os.path.isfile(out_file):
+    #        print(out_file,"already exists")
+    #        return
 
     run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams,cacheStats_path]
 
@@ -101,7 +101,7 @@ if __name__=="__main__":
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--outputdir",type=str,required=True)
 
-    p.add_argument("--uniform",type=str,default="no")
+    p.add_argument("--suffix",type=str,default=None)
     p.add_argument("--algos",type=str,default="all")
     p.add_argument("--max_reqs",type=int,default=0)
     p.add_argument("--cache_sizes",type=str,default="") 

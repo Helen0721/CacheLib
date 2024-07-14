@@ -18,7 +18,7 @@ REBALANCEING_STRATEGIES = ["LruTailAge",
                             "FreeMem", 
                             "MarginalHits", 
                             "HitsPerSlab",
-                            "default"
+                            "default",
                             ]
 
 CACHE_SIZES = ["256MB","512MB","1GB","2GB","4GB","8GB","16GB","32GB","64GB"]
@@ -157,6 +157,7 @@ def handle_mr():
 
 
 def handle_uniform():
+
     for (i,algo) in enumerate(algos):
         for (j,reb) in enumerate(rebalance_strategies):
             if reb == "MarginalHits" and algo!="Lru2Q": continue
@@ -180,6 +181,39 @@ def handle_uniform():
     name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-uniform"     
     title = ap.algos + "-" + ap.rebalance_strategies + "-uniform" 
     plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
+
+
+def handle_stopReb():
+    hr_lists = []
+
+    for (i,algo) in enumerate(algos):
+        for (j,reb) in enumerate(rebalance_strategies):
+            if reb == "MarginalHits" and algo!="Lru2Q": continue
+
+            hr_lists.append([])    # hr_lists[-2] is for hr 
+            hr_lists.append([])     # hr_lists[-1] is for hr_stopReb
+            labels.append(algo + "-" + reb)
+            labels.append(algo + "-" + reb + "-stopReb" )
+
+            for cache_size in cache_sizes:
+                output_file = os.path.join(ap.output_folder,reb,
+                        "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,reb))
+             
+                final_hr = parse_for_size(output_file)
+                hr_lists[-2].append(final_hr)
+                
+                output_file_stopReb = os.path.join(ap.output_folder,reb,
+                        "{}_{}_{}_{}_default_stopReb".format(ap.name,algo,cache_size,reb))
+
+                final_hr_stopReb = parse_for_size(output_file_stopReb)
+
+                hr_lists[-1].append(final_hr_stopReb)
+ 
+    name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-stopReb"     
+    title = ap.algos + "-" + ap.rebalance_strategies + "-stopReb" 
+    
+    plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
+
 
 
 if __name__ == "__main__": 
@@ -227,4 +261,6 @@ if __name__ == "__main__":
     hr_lists,labels = [],[]
 
     if ap.type == "uniform":
-        handle_uniform()     
+        handle_uniform()
+    elif ap.type == "stopReb":
+        handle_stopReb()
