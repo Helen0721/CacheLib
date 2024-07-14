@@ -148,8 +148,8 @@ def handle_mr():
 
     print(hr_lists)
 
-    name = ap.name + "-" + ap.algo + "-" + ap.rebalance_strategies
-    title = ap.algo + "-" + ap.rebalance_strategies
+    name = ap.name + "-" + ap.algos + "-" + ap.rebalance_strategies + "-" + ap.cache_sizes
+    title = ap.algos + "-" + ap.rebalance_strategies
 
     plot_mr_size(cache_sizes,hr_lists,labels,plot_folder=ap.plot_folder,plot_name=name,plot_title=title)
 
@@ -198,13 +198,14 @@ def handle_stopReb():
             for cache_size in cache_sizes:
                 output_file = os.path.join(ap.output_folder,reb,
                         "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,reb))
-             
+
+                print("parsing for",output_file) 
                 final_hr = parse_for_size(output_file)
                 hr_lists[-2].append(final_hr)
                 
                 output_file_stopReb = os.path.join(ap.output_folder,reb,
                         "{}_{}_{}_{}_default_stopReb".format(ap.name,algo,cache_size,reb))
-
+                print("parsing for",output_file_stopReb)
                 final_hr_stopReb = parse_for_size(output_file_stopReb)
 
                 hr_lists[-1].append(final_hr_stopReb)
@@ -226,7 +227,7 @@ if __name__ == "__main__":
     
     p.add_argument("--organized",type=str,default=None)
     p.add_argument("--json_file",type=str,default=None)    
-    p.add_argument("--cache_sizes",type=str,default="")
+    p.add_argument("--cache_sizes",type=str,default="all")
     p.add_argument("--rebalance_strategies",type=str,default="all")
     p.add_argument("--algos",type=str,default="all")
 
@@ -235,7 +236,7 @@ if __name__ == "__main__":
     # given a trace, x axis is the cache size. y axis is the miss ratio.  
     # we want [Lru, Lru2Q, TinyLFU] * [4 rebalancing strategy]
 
-    if (ap.cache_sizes==""):
+    if (ap.cache_sizes=="all"):
         cache_sizes = CACHE_SIZES
     else:
         cache_sizes = ap.cache_sizes.split(",")
@@ -250,7 +251,7 @@ if __name__ == "__main__":
     if ap.algos=="all":
         algos = ALGOS
     else:
-        algos = ap.algos.split("\n")
+        algos = ap.algos.split(",")
 
     json_RES = None
     if ap.json_file!=None:
@@ -264,3 +265,7 @@ if __name__ == "__main__":
         handle_uniform()
     elif ap.type == "stopReb":
         handle_stopReb()
+    elif ap.type == "mr":
+        handle_mr()
+    else:
+        print("unsupported operation",ap.type)
