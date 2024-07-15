@@ -6,19 +6,24 @@ run_path = "build/testSieve"
 uniform_obj_size = 1000000
 
 section_start = "CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List:"
-section_end = "CacheAlloator.h-insertInMMContainer...done inspecting."
-
+insert_end = "CacheAlloator.h-insertInMMContainer...done inspecting."
+record_end = "CacheAlloator.h-recordAccessInMMContainer, done inspecting."
+section_end = "done inspecting." 
 
 TRACES = ["qweqwert",
         "aabbc",
         "aabbcb",
         "abcefg",
+        "aaaa",
+        "rxuaug"
         ]
 
 ANSWERS = ["t:0;e;t:0,r:0,e:0",
         "c:1;None;c:0,b:1,a:1",
         "b:1;None;c:0,b:1,a:1",
         "g:0;e;g:0,f:0,e:0",
+        "a:1;None;a:1",
+        "g:0;u;g:0,a:0,u:1"
         ]
 
 OUT = "output"
@@ -75,24 +80,25 @@ def run_one_trace(trace,obj_size,open_mode="w"):
             j = i + 2
             line = stdout_str[j]
 
-            while line!=section_end: 
-                # q,0x7f9327000000. prev: null. next:null, visited: 0
+            while section_end not in line:  
                 if "Hand is null" in line:
-                    res[nth_add]["Hand"] = None
-                    break
+                    res[nth_add]["Hand"] = None        
                 else:  
-                    k = line.split(",")[0]  
-                    if "Hand" in line:
-                        res[nth_add]["Hand"] = k
-                    visited = str(line.split("visited: ")[-1][0])
+                    # ex. q,0x7f9327000000. prev: null. next:null, visited: 0
+                    # ex. e,0x7f49be24c5f0. prev: r, 0x7f49be000000. next:null, visited: 0 . Hand
+                    k = line.split(",")[0] 
 
+                    visited = str(line.split("visited: ")[-1][0])
                     if visited not in ("0","1"):
-                        print("incorrect parsing for visited bit on request", nth_add)
+                        print("incorrect parsing for visited bit on request", nth_add+1)
                         while i <= j: 
                             print(stdout_str[i])
                             i += 1
                         print("line for visited bit:",line)
                         return
+                    
+                    if "Hand" in line:
+                        res[nth_add]["Hand"] = k
 
                     CacheState.append((k,visited))
 
