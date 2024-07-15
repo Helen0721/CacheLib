@@ -90,7 +90,12 @@ def check_one_trace(res,ans):
     ans = ans.split(";")
 
     ref = dict()
-    assert(len(ans) == 3)
+    try:
+        assert(len(ans) == 3)
+    except:
+        print(res)
+        print(ans)
+        exit(1)
 
     for (i,parts) in enumerate(ans):  
         if i==0: 
@@ -104,16 +109,26 @@ def check_one_trace(res,ans):
                 ref["State"].append(part.split(":"))
         else:
             ref["Hand"] = parts if parts!=None else None
-        
-    assert(ref["Key"] == res["Key"])
-    assert(ref["Hit"] == ref["Hit"])
-    assert(ref["Hand"] == ref["Hand"])
-    assert(len(ref["State"]) == len(res["State"]))
-    
+    try: 
+        assert(ref["Key"] == res["Key"])
+        assert(ref["Hit"] == ref["Hit"])
+        assert(ref["Hand"] == ref["Hand"])
+        assert(len(ref["State"]) == len(res["State"]))
+    except:
+        print("ref: ",ref)
+        print("res: ",res)
+        exit(1)
+
     for i in range(len(ref["State"])):
         ref_k,ref_v = ref["State"][i]
         sol_k,sol_v = res["State"][i]
-        assert(ref_k == sol_k and ref_v == sol_v)
+        try:
+            assert(ref_k == sol_k and ref_v == sol_v)
+        except:
+            print("ref: ",ref)
+            print("res: ",res)
+            exit(1)
+
 
 
 if __name__=="__main__":
@@ -129,9 +144,9 @@ if __name__=="__main__":
     ap = p.parse_args()
 
     traces = ap.traces.split("-")
-    ans = ap.ans.split("-") 
+    answers = ap.ans.split("-") 
      
-    assert len(traces) == len(ans)
+    assert len(traces) == len(answers)
     num_tests = len(traces)
 
     if ap.obj_sizes: 
@@ -141,9 +156,9 @@ if __name__=="__main__":
 
 
     for i in range(num_tests):
-        trace,ans = traces[i],ans[i]
+        trace,ans = traces[i],answers[i]
         
-        print("Checking trace",i,end="...")
+        print("Checking trace",i+1,end="...")
         all_res,last_res = run_one_trace(trace,obj_sizes[i])
         check_one_trace(last_res,ans)
         print("passed")
