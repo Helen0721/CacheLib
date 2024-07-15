@@ -952,12 +952,8 @@ CMakeFiles/testSieve.dir/testSieve.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/cachelib/shm/Shm.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/shm/PosixShmSegment.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/shm/SysVShmSegment.h \
- /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MMLru.h \
- /disk/CacheLib/opt/cachelib/include/folly/container/Array.h \
- /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MMTinyLFU.h \
- /disk/CacheLib/opt/cachelib/include/folly/Math.h \
- /disk/CacheLib/opt/cachelib/include/cachelib/common/CountMinSketch.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/MMSieve.h \
+ /disk/CacheLib/opt/cachelib/include/folly/container/Array.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/datastruct/SieveList.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/CacheVersion.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/ChainedAllocs.h \

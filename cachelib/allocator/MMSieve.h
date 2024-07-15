@@ -56,12 +56,13 @@ class MMSieve {
   struct Config {
     // create from serialized config
     explicit Config(SerializationConfigType configState)
-        : Config(*configState.lruRefreshTime(),
+        : Config(
+		 *configState.lruRefreshTime(),
                  *configState.lruRefreshRatio(),
                  *configState.updateOnWrite(),
                  *configState.updateOnRead(),
                  *configState.tryLockUpdate()) {}
-
+    
     // @param time        the LRU refresh time in seconds.
     //                    An item will be promoted only once in each lru refresh
     //                    time depite the number of accesses it gets.
@@ -147,6 +148,7 @@ class MMSieve {
               std::chrono::seconds(mmReconfigureInterval)),
           useCombinedLockForIterators(useCombinedLockForIterators) {}
 
+    
     Config() = default;
     Config(const Config& rhs) = default;
     Config(Config&& rhs) = default;
@@ -157,17 +159,18 @@ class MMSieve {
     template <typename... Args>
     void addExtraConfig(Args...) {}
 
+    
     // threshold value in seconds to compare with a node's update time to
     // determine if we need to update the position of the node in the linked
     // list. By default this is 60s to reduce the contention on the lru lock.
-    uint32_t defaultLruRefreshTime{60};
+    uint32_t defaultLruRefreshTime{0};
     uint32_t lruRefreshTime{defaultLruRefreshTime};
 
     // ratio of LRU refresh time to the tail age. If a refresh time computed
     // according to this ratio is larger than lruRefreshtime, we will adopt
     // this one instead of the lruRefreshTime set.
     double lruRefreshRatio{0.};
-
+    
     // whether the lru needs to be updated on writes for recordAccess. If
     // false, accessing the cache for writes does not promote the cached item
     // to the head of the lru.
@@ -452,11 +455,8 @@ MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
                                         PtrCompressor compressor)
     : compressor_(std::move(compressor)),
       queue_(*object.queue(), compressor_),
-      //insertionPoint_(compressor_.unCompress(
-      //    CompressedPtr{*object.compressedInsertionPoint()})),
       hand_(compressor_.unCompress(
 	    CompressedPtr{*object.compressedHand()})),
-      //tailSize_(*object.tailSize()),
       config_(*object.config()) {
   lruRefreshTime_ = config_.lruRefreshTime;
   nextReconfigureTime_ = config_.mmReconfigureIntervalSecs.count() == 0
@@ -468,7 +468,7 @@ MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
                                                 AccessMode mode) noexcept {
-  //std::cout << "MMSieve-recordAccess..."<<std::endl;
+  std::cout << "MMSieve-recordAccess..."<<std::endl;
   if ((mode == AccessMode::kWrite && !config_.updateOnWrite) ||
       (mode == AccessMode::kRead && !config_.updateOnRead)) {
     return false;
@@ -476,15 +476,10 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
   if (queue_.getTail()==nullptr)  std::cout << "MMSieve-recordAccess(start)-tail is null"<<std::endl;
   const auto curr = static_cast<Time>(util::getCurrentTimeSec());
   // check if the node is still being memory managed
-  if (node.isInMMContainer() &&
-      ((curr >= getUpdateTime(node) +
-                    lruRefreshTime_.load(std::memory_order_relaxed)) ||
-       !isAccessed(node))) {
-    if (!isAccessed(node)) {
-      markAccessed(node);
-      queue_.setAsVisited(node);
-    }
-   }
+  if (node.isInMMContainer() && !isAccessed(node)){
+	markAccessed(node);
+      	queue_.setAsVisited(node);
+  }    
   return true;
 }
 
@@ -534,7 +529,7 @@ typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
-  //std::cout << "MMSieve-add..."<<std::endl;
+  std::cout << "MMSieve-add..."<<std::endl;
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
   // Lock and insert at head
   // Set hand_ to queue's tail is hand_ is null.
@@ -564,7 +559,7 @@ void MMSieve::Container<T, HookPtr>::inspectSieveList() noexcept{
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
-  //std::cout << "MMSieve-getEvItr..";
+  std::cout << "MMSieve-getEvItr..";
   LockHolder l(*sieveMutex_);
   return LockedIterator{std::move(l), queue_.iterBackFromHand()};
 }
@@ -572,7 +567,7 @@ MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
-  //std::cout << "MMSieve-withEvItr...";
+  std::cout << "MMSieve-withEvItr...";
   if (config_.useCombinedLockForIterators) {
     sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFromHand()}); });
   } else {
@@ -602,7 +597,7 @@ void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
   return sieveMutex_->lock_combine([this, &node]() {
-    //std::cout << "MMSieve-remove(node)...";
+    std::cout << "MMSieve-remove(node)...";
     if (!node.isInMMContainer()) {
       return false;
     }
@@ -613,16 +608,15 @@ bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
-  //std::cout << "MMSieve-remove(iter)..";
+  std::cout << "MMSieve-remove(iter)..";
   T& node = *it;
   XDCHECK(node.isInMMContainer());
-  //++it;
   removeLocked(node);
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
-  //std::cout << "MMSieve-replace...";
+  std::cout << "MMSieve-replace...";
   return sieveMutex_->lock_combine([this, &oldNode, &newNode]() {
     if (!oldNode.isInMMContainer() || newNode.isInMMContainer()) {
       return false;

@@ -21,7 +21,7 @@ cachelib::PoolId defaultPool_;
 // uniform object sizes
 
 std::string prefix = "EmptyFiller";
-uint32_t uniform_obj_size = 1000;
+uint32_t uniform_obj_size = 100000;
 
 
 CacheReadHandle get(CacheKey key) { return gCache_->find(key); }
@@ -59,21 +59,7 @@ void initializeCache() {
 
 }
 
-} // namespace cachelib_examples
-} // namespace facebook
-
-int main(int argc, char** argv){
-	using namespace facebook::cachelib_examples;
-	
-	char *trace_ = "aaaabbbb";
-
-	if (argc > 1) uniform_obj_size = (uint32_t) std::stoi(argv[1]);
-	if (argc > 2) trace_ = argv[2];
-	
-	const char* trace = trace_;
-
-	initializeCache();
-	
+bool processTrace(const char* trace,const char* ans){
 	int num_reqs = (int) std::strlen(trace);
 
 	char * key_ = (char *)malloc(2);
@@ -93,10 +79,33 @@ int main(int argc, char** argv){
 			if (!put(key,prefix,uniform_obj_size)) {std::cout<<"alloc failed. "<<std::endl;}
 		}
 
-	}
-	
+	}	
 	auto hit_ratio = (float)num_hits / (float)num_reqs;	
 	std::cout <<"num_requests: "<< num_reqs <<", hit ratio:"<< hit_ratio <<std::endl;
+	free(key_);
+	return 0;
+}
+
+} // namespace cachelib_examples
+} // namespace facebook
+
+
+
+
+int main(int argc, char** argv){
+	using namespace facebook::cachelib_examples;
+	
+	char *trace_ = "aaaabbbb";
+
+	if (argc > 1) uniform_obj_size = (uint32_t) std::stoi(argv[1]);
+	if (argc > 2) trace_ = argv[2];
+	
+	const char* trace = trace_;
+
+	initializeCache();
+	
+	processTrace(trace,nullptr);
+
 	return 0;
 }
 

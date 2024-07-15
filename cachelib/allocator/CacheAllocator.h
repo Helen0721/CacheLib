@@ -3341,6 +3341,9 @@ void CacheAllocator<CacheTrait>::insertInMMContainer(Item& item) {
     throw std::runtime_error(folly::sformat(
         "Invalid state. Node {} was already in the container.", &item));
   }
+  
+  std::cout << "CacheAllocator.h-insertInMMContainer...after inserting...";
+  mmContainer.inspectSieveList();
 }
 
 /**
@@ -3399,6 +3402,7 @@ bool CacheAllocator<CacheTrait>::insertImpl(const WriteHandle& handle,
 template <typename CacheTrait>
 typename CacheAllocator<CacheTrait>::WriteHandle
 CacheAllocator<CacheTrait>::insertOrReplace(const WriteHandle& handle) {
+  std::cout << "CacheAllocator.h-insertOrReplace...";
   XDCHECK(handle);
   if (handle->isAccessible()) {
     throw std::invalid_argument("Handle is already accessible");
@@ -3407,6 +3411,8 @@ CacheAllocator<CacheTrait>::insertOrReplace(const WriteHandle& handle) {
   HashedKey hk{handle->getKey()};
 
   insertInMMContainer(*(handle.getInternal()));
+  
+
   WriteHandle replaced;
   try {
     auto lock = nvmCache_ ? nvmCache_->getItemDestructorLock(hk)
@@ -5911,16 +5917,16 @@ util::StatsMap CacheAllocator<CacheTrait>::getNvmCacheStatsMap() const {
 
 namespace facebook::cachelib {
 // Declare templates ahead of use to reduce compilation time
-
-extern template class CacheAllocator<LruCacheTrait>;
+//
 /*
+extern template class CacheAllocator<LruCacheTrait>;
 extern template class CacheAllocator<LruCacheWithSpinBucketsTrait>;
 extern template class CacheAllocator<Lru2QCacheTrait>;
 extern template class CacheAllocator<TinyLFUCacheTrait>;
 */
 
 extern template class CacheAllocator<SieveCacheTrait>;
-
+/*
 // CacheAllocator with an LRU eviction policy
 // LRU policy can be configured to act as a segmented LRU as well
 using LruAllocator = CacheAllocator<LruCacheTrait>;
@@ -5944,7 +5950,7 @@ using Lru2QAllocator = CacheAllocator<Lru2QCacheTrait>;
 // beyond a threshold into the warm cache.
 using TinyLFUAllocator = CacheAllocator<TinyLFUCacheTrait>;
 
-
+*/
 // CacheAllocator with Sieve eviction policy
 // It has a hand that points to the next item to be evicted
 // and traverses from the tail to the head, resetting the visited bit.

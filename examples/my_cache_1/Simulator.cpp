@@ -197,7 +197,8 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
   cache_config
       .setCacheSize(size)
       .setCacheName("My Use Case")
-      .setAccessConfig({}) 
+      .setAccessConfig({25 /* bucket power */, 10 /* lock power */}) // assuming caching 20
+                                                        // million items
       .configureChainedItems()
       .validate(); // will throw if bad config 
    
@@ -305,8 +306,8 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl << std::flush;
   
-  std::cout << "Stoping slab rebalancing..." << std::endl;
-  gCache_->stopPoolRebalancer(std::chrono::seconds(0));
+  //std::cout << "Stoping slab rebalancing..." << std::endl;
+  //gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 
 }
 
@@ -461,7 +462,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	if (stop_reb_reqs_threshold < 0) return;
 	bool reb_stopped = false;
 
-	int print_mod = 100000;
+	int print_mod = 1000000;
 	if ((strstr(reader->trace_path, "w06.oracleGeneral.bin.zst")==nullptr) && 
 		matches_CloudPhysics_format(reader->trace_path)) {
 		print_mod = 10000;
