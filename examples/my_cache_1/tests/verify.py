@@ -5,11 +5,26 @@ import subprocess
 run_path = "build/testSieve"
 uniform_obj_size = 1000000
 
-
 section_start = "CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List:"
 section_end = "CacheAlloator.h-insertInMMContainer...done inspecting."
 
-def run_one_trace(trace,obj_size):
+
+TRACES = ["qweqwert",
+        "aabbc",
+        "aabbcb",
+        "abcefg",
+        ]
+
+ANSWERS = ["t:0;e;t:0,r:0,e:0",
+        "c:1;None;c:0,b:1,a:1",
+        "b:1;None;c:0,b:1,a:1",
+        "g:0;e;g:0,f:0,e:0",
+        ]
+
+OUT = "output"
+
+
+def run_one_trace(trace,obj_size,open_mode="w"):
     run_args = [run_path, str(obj_size), trace]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -23,8 +38,16 @@ def run_one_trace(trace,obj_size):
     if stderr_str != "":
         logger.warning(stderr_str)
      
-    stdout_str = p.stdout.decode("utf-8").split("\n")
+    stdout_str = p.stdout.decode("utf-8")
+
+    with open(output_file,open_mode) as f:
+        f.write("trace: " + trace + "\n")
+        f.write(stdout_str)
+        f.write("\n")
+
+    stdout_str = stdout_str.split("\n")
  
+
     res = dict()    
 
     nth_add = -1
@@ -135,16 +158,20 @@ if __name__=="__main__":
     
     p = argparse.ArgumentParser()
     
-    p.add_argument("--traces",type=str,required=True)
-    p.add_argument("--ans",type=str,required=True)
+    p.add_argument("--traces",type=str,default=None)
+    p.add_argument("--ans",type=str,default=None)
     
     p.add_argument("--out",type=str,default=None)
     p.add_argument("--obj_sizes",type=int,default=None)
 
     ap = p.parse_args()
 
-    traces = ap.traces.split("-")
-    answers = ap.ans.split("-") 
+    if ap.traces and ap.ans:
+        traces = ap.traces.split("-")
+        answers = ap.ans.split("-")
+    else:
+        traces = TRACES
+        answers = ANSWERS
      
     assert len(traces) == len(answers)
     num_tests = len(traces)
@@ -153,13 +180,18 @@ if __name__=="__main__":
         obj_sizes = ap.obj_sizes.split(",")
     else:
         obj_sizes = [uniform_obj_size for _ in range(num_tests)]
+    
+    if ap.out:
+        output_file = ap.out
+    else:
+        output_file = OUT
 
 
     for i in range(num_tests):
         trace,ans = traces[i],answers[i]
         
         print("Checking trace",i+1,end="...")
-        all_res,last_res = run_one_trace(trace,obj_sizes[i])
+        all_res,last_res = run_one_trace(trace,obj_sizes[i],open_mode="w" if i==0 else "a")
         check_one_trace(last_res,ans)
         print("passed")
 
