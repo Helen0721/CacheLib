@@ -9,8 +9,8 @@ uniform_obj_size = 1000000
 section_start = "CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List:"
 section_end = "CacheAlloator.h-insertInMMContainer...done inspecting."
 
-def run_one_trace(trace):
-    run_args = [run_path, str(uniform_obj_size), trace]
+def run_one_trace(trace,obj_size):
+    run_args = [run_path, str(obj_size), trace]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -124,23 +124,27 @@ if __name__=="__main__":
     p.add_argument("--ans",type=str,required=True)
     
     p.add_argument("--out",type=str,default=None)
-    p.add_argument("--obj_size",type=int,default=None)
+    p.add_argument("--obj_sizes",type=int,default=None)
 
     ap = p.parse_args()
 
     traces = ap.traces.split("-")
-    ans = ap.ans.split("-")
-
-    if ap.obj_size: uniform_obj_size = ap.obj_size
+    ans = ap.ans.split("-") 
      
     assert len(traces) == len(ans)
-    
     num_tests = len(traces)
+
+    if ap.obj_sizes: 
+        obj_sizes = ap.obj_sizes.split(",")
+    else:
+        obj_sizes = [uniform_obj_size for _ in range(num_tests)]
+
 
     for i in range(num_tests):
         trace,ans = traces[i],ans[i]
         
-        all_res,last_res = run_one_trace(trace)
-        
+        print("Checking trace",i,end="...")
+        all_res,last_res = run_one_trace(trace,obj_sizes[i])
         check_one_trace(last_res,ans)
+        print("passed")
 
