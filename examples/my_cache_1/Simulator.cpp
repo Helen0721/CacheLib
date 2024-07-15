@@ -197,9 +197,7 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
   cache_config
       .setCacheSize(size)
       .setCacheName("My Use Case")
-      .setAccessConfig(
-          {25 /* bucket power */, 10 /* lock power */}) // assuming caching 20
-                                                        // million items
+      .setAccessConfig({}) 
       .configureChainedItems()
       .validate(); // will throw if bad config 
    
@@ -307,6 +305,9 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 
   std::cout<< "Cache Initialized. size: "<< cache_size << std::endl << std::flush;
   
+  std::cout << "Stoping slab rebalancing..." << std::endl;
+  gCache_->stopPoolRebalancer(std::chrono::seconds(0));
+
 }
 
 void destroyCache() { gCache_.reset(); }
@@ -406,7 +407,7 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 		if (handle) num_hits += 1;
 		else {
 			
-			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
+			if (!put(key,prefix,uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
 		}
 		if (start_time == -1) start_time = req->timestamp;
 
@@ -420,13 +421,13 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time,num_reqs);
 			if (should_trunc_file) should_trunc_file = false;
 		}
-	        
+	        /* 
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
-		
+		*/
 		if (max_reqs!=0 && num_reqs > max_reqs) break;
 		
 	}
@@ -460,7 +461,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	if (stop_reb_reqs_threshold < 0) return;
 	bool reb_stopped = false;
 
-	int print_mod = 1000000;
+	int print_mod = 100000;
 	if ((strstr(reader->trace_path, "w06.oracleGeneral.bin.zst")==nullptr) && 
 		matches_CloudPhysics_format(reader->trace_path)) {
 		print_mod = 10000;
@@ -503,9 +504,8 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
 				continue;
 			}
-			if (!put(key,prefix, req->obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
+			if (!put(key,prefix, uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}
-		
 		num_reqs += 1;
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 		
@@ -519,13 +519,13 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time,num_reqs);
 			if (should_trunc_file) should_trunc_file = false;
 		}
-		
+		/*
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
-		
+		*/
 	}
 	
 	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
