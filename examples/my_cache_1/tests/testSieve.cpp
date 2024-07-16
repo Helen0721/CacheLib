@@ -41,6 +41,7 @@ void saveCacheStats(){
 		uint64_t total_evict_attempts = class_stats.evictionAttempts;
 		uint64_t total_numHits = class_stats.numHits;
   		uint64_t total_allocFailures =class_stats.allocFailures;
+		if (total_alloc_attemtps == 0) continue;
 		std::cout << "class alloc size: " << class_size << ", ";
 		std::cout << "total_alloc_attemtps: " << total_alloc_attemtps << ", ";
 		std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
@@ -163,7 +164,10 @@ void simulate_zstd(zstd_reader *reader,int max_reqs,unsigned long cache_size){
 		sprintf(id_buf,"%lu",req->obj_id);
 		std::string str(id_buf);
 		std::string key = str; 				
-
+		
+		std::cout << num_reqs << ": ";
+		print_one_zstd_request(req);
+		
 		auto handle = get(key);
 		if (handle){
 			num_hits += 1;
@@ -172,8 +176,9 @@ void simulate_zstd(zstd_reader *reader,int max_reqs,unsigned long cache_size){
 			int obj_size = uniform_obj_size;
 			if (obj_size == 0) obj_size = req->obj_size;
 			if (!put(key,prefix, obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
-		}
+		}	
 		num_reqs += 1;
+	
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;	
 	}
 	

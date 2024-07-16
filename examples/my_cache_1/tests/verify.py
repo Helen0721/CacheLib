@@ -36,7 +36,8 @@ ANSWERS = ["t:0;e;t:0,r:0,e:0",
         "f:0;v;f:0,h:0,v:0"
         ]
 
-OUT = "output"
+libCacheSim_s = "Sieve.c-evicted req: "
+CacheLib_s = "SieveList-remove...removed "
 
 
 def run_one_trace(trace,obj_size,open_mode="w"):
@@ -169,40 +170,7 @@ def check_one_trace(res,ans):
             exit(1)
 
 
-
-if __name__=="__main__":
-    
-    p = argparse.ArgumentParser()
-    
-    p.add_argument("--traces",type=str,default=None)
-    p.add_argument("--ans",type=str,default=None)
-    
-    p.add_argument("--out",type=str,default=None)
-    p.add_argument("--obj_sizes",type=int,default=None)
-
-    ap = p.parse_args()
-
-    if ap.traces and ap.ans:
-        traces = ap.traces.split("-")
-        answers = ap.ans.split("-")
-    else:
-        traces = TRACES
-        answers = ANSWERS
-     
-    assert len(traces) == len(answers)
-    num_tests = len(traces)
-
-    if ap.obj_sizes: 
-        obj_sizes = ap.obj_sizes.split(",")
-    else:
-        obj_sizes = [uniform_obj_size for _ in range(num_tests)]
-    
-    if ap.out:
-        output_file = ap.out
-    else:
-        output_file = OUT
-
-
+def validate_self_def_traces():
     for i in range(num_tests):
         trace,ans = traces[i],answers[i]
         
@@ -211,3 +179,78 @@ if __name__=="__main__":
         check_one_trace(last_res,ans)
         print("passed")
 
+
+
+
+def check_evicted_objs():
+    print("Checking evicted objects",end="...")
+    with open(ap.out,"r") as f:
+        my_stdout = f.read().split("\n")
+
+    with open(ap.ref,"r") as f:
+        ref_stdout = f.read().split("\n")
+    
+    
+    refs = []
+    for line in ref_stdout:
+        if libCacheSim_s not in line: continue
+        parts = line.split(libCacheSim_s)
+        obj = parts[-1].split("...")[0]
+        refs.append(int(obj))
+
+    mine = []
+    
+    
+    for line in my_stdout:
+        if CacheLib_s not in line: continue
+        parts = line.split(CacheLib_s)
+        obj = parts[-1].split("...")[0]
+        mine.append(int(obj))
+        
+    for i in range(min(len(refs),len(mine))):
+        if refs[i] != mine[i]:
+            print("{}th eviction obj doesn't match.".format(i))
+            print("refs...num evicted objs:",len(refs))
+            print("mine...num evicted objs:",len(mine))
+            print("ref:{},mine:{}".format(refs[i],mine[i]))
+            exit(0)
+
+    print("passed")
+
+
+if __name__=="__main__":
+    
+    p = argparse.ArgumentParser()
+    
+    p.add_argument("--type",type=str,required=True)
+
+    p.add_argument("--traces",type=str,default=None)
+    p.add_argument("--ans",type=str,default=None) 
+    p.add_argument("--out",type=str,default=None)
+    p.add_argument("--ref",type=str,default=None)
+    p.add_argument("--obj_sizes",type=int,default=None)
+
+    ap = p.parse_args()
+
+    if ap.type == "checkEvicted":
+        check_evicted_objs()
+
+
+
+    elif ap.type == "traces":
+        if ap.traces and ap.ans:
+            traces = ap.traces.split("-")
+            answers = ap.ans.split("-")
+        else:
+            traces = TRACES
+            answers = ANSWERS
+     
+        assert len(traces) == len(answers)
+        num_tests = len(traces)
+        if ap.obj_sizes: 
+            obj_sizes = ap.obj_sizes.split(",")
+        else:
+            obj_sizes = [uniform_obj_size for _ in range(num_tests)]
+
+
+    

@@ -1,525 +1,116 @@
-trace: qweqwert
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
+argv[3]:500Initializing Cache with size 10485760...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
 Cache Initialized
 Slab rebalancing stopped.
-key: q
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-q,0x7f7014400000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: w
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-w,0x7f70145262f8. prev: null, next: q, 0x7f7014400000, visited: 0
-q,0x7f7014400000. prev: w, 0x7f70145262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: e
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-e,0x7f701464c5f0. prev: null, next: w, 0x7f70145262f8, visited: 0
-w,0x7f70145262f8. prev: e, 0x7f701464c5f0, next: q, 0x7f7014400000, visited: 0
-q,0x7f7014400000. prev: w, 0x7f70145262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: q
-MMSieve-recordAccess...Inspecting Free List: 
-e,0x7f701464c5f0. prev: null, next: w, 0x7f70145262f8, visited: 0
-w,0x7f70145262f8. prev: e, 0x7f701464c5f0, next: q, 0x7f7014400000, visited: 0
-q,0x7f7014400000. prev: w, 0x7f70145262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: w
-MMSieve-recordAccess...Inspecting Free List: 
-e,0x7f701464c5f0. prev: null, next: w, 0x7f70145262f8, visited: 0
-w,0x7f70145262f8. prev: e, 0x7f701464c5f0, next: q, 0x7f7014400000, visited: 1
-q,0x7f7014400000. prev: w, 0x7f70145262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: e
-MMSieve-recordAccess...Inspecting Free List: 
-e,0x7f701464c5f0. prev: null, next: w, 0x7f70145262f8, visited: 1
-w,0x7f70145262f8. prev: e, 0x7f701464c5f0, next: q, 0x7f7014400000, visited: 1
-q,0x7f7014400000. prev: w, 0x7f70145262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: r
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-r,0x7f7014400000. prev: null, next: e, 0x7f701464c5f0, visited: 0
-e,0x7f701464c5f0. prev: r, 0x7f7014400000, next: w, 0x7f70145262f8, visited: 0
-w,0x7f70145262f8. prev: e, 0x7f701464c5f0. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: t
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-t,0x7f70145262f8. prev: null, next: r, 0x7f7014400000, visited: 0
-r,0x7f7014400000. prev: t, 0x7f70145262f8, next: e, 0x7f701464c5f0, visited: 0
-e,0x7f701464c5f0. prev: r, 0x7f7014400000. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 8, hit ratio:0.375
+MMSieve-remove(iter)..SieveList-remove...removed 1668757755
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668757805
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665702915
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665497919
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1666074978
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668757744
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1667784709
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1666365241
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668757754
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665958712
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665750928
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665502693
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668758073
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665497907
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665497913
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1666074952
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668758054
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665447751
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668757781
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665447767
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668758035
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665447811
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665447714
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1667417121
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665497924
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668757763
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1665498071
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1666079398
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1666654178
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1667222584
+CacheAllocator-eviction succeeds.
+MMSieve-remove(iter)..SieveList-remove...removed 1668761849
+CacheAllocator-eviction succeeds.
+num_requests: 500, num zero reqs: 2,time:0
+hit ratio:0.858,throughput:0reqs/sec,
+class alloc size: 72, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 96, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 120, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 152, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 192, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 240, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 304, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 384, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 480, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 600, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 752, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 944, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 1184, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 1480, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 1856, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 2320, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 2904, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 3632, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 4544, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 5680, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 7104, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 8880, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 11104, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 13880, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 17352, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 21696, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 27120, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 33904, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 42384, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 52984, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 66232, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 82792, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 103496, total_alloc_attemtps: 71, total_evict_attempts: 31, total_numHits: 429, total_allocFailures: 0.
+class alloc size: 129376, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 161720, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 202152, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 252696, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 315872, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 394840, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 493552, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 616944, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 771184, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 963984, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 1204984, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 1506232, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 1882792, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
+class alloc size: 4194304, total_alloc_attemtps: 0, total_evict_attempts: 0, total_numHits: 0, total_allocFailures: 0.
 
-trace: aabbc
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: a
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-a,0x7f42b8800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: a
-MMSieve-recordAccess...Inspecting Free List: 
-a,0x7f42b8800000. prev: null. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7f42b89262f8. prev: null, next: a, 0x7f42b8800000, visited: 0
-a,0x7f42b8800000. prev: b, 0x7f42b89262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-MMSieve-recordAccess...Inspecting Free List: 
-b,0x7f42b89262f8. prev: null, next: a, 0x7f42b8800000, visited: 1
-a,0x7f42b8800000. prev: b, 0x7f42b89262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: c
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-c,0x7f42b8a4c5f0. prev: null, next: b, 0x7f42b89262f8, visited: 0
-b,0x7f42b89262f8. prev: c, 0x7f42b8a4c5f0, next: a, 0x7f42b8800000, visited: 1
-a,0x7f42b8800000. prev: b, 0x7f42b89262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 5, hit ratio:0.4
-
-trace: aabbcb
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: a
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-a,0x7f430e800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: a
-MMSieve-recordAccess...Inspecting Free List: 
-a,0x7f430e800000. prev: null. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7f430e9262f8. prev: null, next: a, 0x7f430e800000, visited: 0
-a,0x7f430e800000. prev: b, 0x7f430e9262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-MMSieve-recordAccess...Inspecting Free List: 
-b,0x7f430e9262f8. prev: null, next: a, 0x7f430e800000, visited: 1
-a,0x7f430e800000. prev: b, 0x7f430e9262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: c
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-c,0x7f430ea4c5f0. prev: null, next: b, 0x7f430e9262f8, visited: 0
-b,0x7f430e9262f8. prev: c, 0x7f430ea4c5f0, next: a, 0x7f430e800000, visited: 1
-a,0x7f430e800000. prev: b, 0x7f430e9262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-MMSieve-recordAccess...Inspecting Free List: 
-c,0x7f430ea4c5f0. prev: null, next: b, 0x7f430e9262f8, visited: 0
-b,0x7f430e9262f8. prev: c, 0x7f430ea4c5f0, next: a, 0x7f430e800000, visited: 1
-a,0x7f430e800000. prev: b, 0x7f430e9262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-num_requests: 6, hit ratio:0.5
-
-trace: abcefg
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: a
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-a,0x7f94b9800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7f94b99262f8. prev: null, next: a, 0x7f94b9800000, visited: 0
-a,0x7f94b9800000. prev: b, 0x7f94b99262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: c
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-c,0x7f94b9a4c5f0. prev: null, next: b, 0x7f94b99262f8, visited: 0
-b,0x7f94b99262f8. prev: c, 0x7f94b9a4c5f0, next: a, 0x7f94b9800000, visited: 0
-a,0x7f94b9800000. prev: b, 0x7f94b99262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: e
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-e,0x7f94b9800000. prev: null, next: c, 0x7f94b9a4c5f0, visited: 0
-c,0x7f94b9a4c5f0. prev: e, 0x7f94b9800000, next: b, 0x7f94b99262f8, visited: 0
-b,0x7f94b99262f8. prev: c, 0x7f94b9a4c5f0. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: f
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-f,0x7f94b99262f8. prev: null, next: e, 0x7f94b9800000, visited: 0
-e,0x7f94b9800000. prev: f, 0x7f94b99262f8, next: c, 0x7f94b9a4c5f0, visited: 0
-c,0x7f94b9a4c5f0. prev: e, 0x7f94b9800000. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: g
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-g,0x7f94b9a4c5f0. prev: null, next: f, 0x7f94b99262f8, visited: 0
-f,0x7f94b99262f8. prev: g, 0x7f94b9a4c5f0, next: e, 0x7f94b9800000, visited: 0
-e,0x7f94b9800000. prev: f, 0x7f94b99262f8. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 6, hit ratio:0
-
-trace: aaaa
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: a
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-a,0x7f4ac3400000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: a
-MMSieve-recordAccess...Inspecting Free List: 
-a,0x7f4ac3400000. prev: null. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: a
-MMSieve-recordAccess...Inspecting Free List: 
-a,0x7f4ac3400000. prev: null. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: a
-MMSieve-recordAccess...Inspecting Free List: 
-a,0x7f4ac3400000. prev: null. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-num_requests: 4, hit ratio:0.75
-
-trace: rxuaug
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: r
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-r,0x7f0da5800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: x
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-x,0x7f0da59262f8. prev: null, next: r, 0x7f0da5800000, visited: 0
-r,0x7f0da5800000. prev: x, 0x7f0da59262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: u
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-u,0x7f0da5a4c5f0. prev: null, next: x, 0x7f0da59262f8, visited: 0
-x,0x7f0da59262f8. prev: u, 0x7f0da5a4c5f0, next: r, 0x7f0da5800000, visited: 0
-r,0x7f0da5800000. prev: x, 0x7f0da59262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: a
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-a,0x7f0da5800000. prev: null, next: u, 0x7f0da5a4c5f0, visited: 0
-u,0x7f0da5a4c5f0. prev: a, 0x7f0da5800000, next: x, 0x7f0da59262f8, visited: 0
-x,0x7f0da59262f8. prev: u, 0x7f0da5a4c5f0. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: u
-MMSieve-recordAccess...Inspecting Free List: 
-a,0x7f0da5800000. prev: null, next: u, 0x7f0da5a4c5f0, visited: 0
-u,0x7f0da5a4c5f0. prev: a, 0x7f0da5800000, next: x, 0x7f0da59262f8, visited: 1
-x,0x7f0da59262f8. prev: u, 0x7f0da5a4c5f0. next:null, visited: 0 . Hand
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: g
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-g,0x7f0da59262f8. prev: null, next: a, 0x7f0da5800000, visited: 0
-a,0x7f0da5800000. prev: g, 0x7f0da59262f8, next: u, 0x7f0da5a4c5f0, visited: 0
-u,0x7f0da5a4c5f0. prev: a, 0x7f0da5800000. next:null, visited: 1 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 6, hit ratio:0.166667
-
-trace: ebnex
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: e
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-e,0x7f0528800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7f05289262f8. prev: null, next: e, 0x7f0528800000, visited: 0
-e,0x7f0528800000. prev: b, 0x7f05289262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: n
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-n,0x7f0528a4c5f0. prev: null, next: b, 0x7f05289262f8, visited: 0
-b,0x7f05289262f8. prev: n, 0x7f0528a4c5f0, next: e, 0x7f0528800000, visited: 0
-e,0x7f0528800000. prev: b, 0x7f05289262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: e
-MMSieve-recordAccess...Inspecting Free List: 
-n,0x7f0528a4c5f0. prev: null, next: b, 0x7f05289262f8, visited: 0
-b,0x7f05289262f8. prev: n, 0x7f0528a4c5f0, next: e, 0x7f0528800000, visited: 0
-e,0x7f0528800000. prev: b, 0x7f05289262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: x
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-x,0x7f05289262f8. prev: null, next: n, 0x7f0528a4c5f0, visited: 0
-n,0x7f0528a4c5f0. prev: x, 0x7f05289262f8, next: e, 0x7f0528800000, visited: 0 . Hand
-e,0x7f0528800000. prev: n, 0x7f0528a4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 5, hit ratio:0.2
-
-trace: ebnexl
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: e
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-e,0x7fdf7a800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7fdf7a9262f8. prev: null, next: e, 0x7fdf7a800000, visited: 0
-e,0x7fdf7a800000. prev: b, 0x7fdf7a9262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: n
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-n,0x7fdf7aa4c5f0. prev: null, next: b, 0x7fdf7a9262f8, visited: 0
-b,0x7fdf7a9262f8. prev: n, 0x7fdf7aa4c5f0, next: e, 0x7fdf7a800000, visited: 0
-e,0x7fdf7a800000. prev: b, 0x7fdf7a9262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: e
-MMSieve-recordAccess...Inspecting Free List: 
-n,0x7fdf7aa4c5f0. prev: null, next: b, 0x7fdf7a9262f8, visited: 0
-b,0x7fdf7a9262f8. prev: n, 0x7fdf7aa4c5f0, next: e, 0x7fdf7a800000, visited: 0
-e,0x7fdf7a800000. prev: b, 0x7fdf7a9262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: x
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-x,0x7fdf7a9262f8. prev: null, next: n, 0x7fdf7aa4c5f0, visited: 0
-n,0x7fdf7aa4c5f0. prev: x, 0x7fdf7a9262f8, next: e, 0x7fdf7a800000, visited: 0 . Hand
-e,0x7fdf7a800000. prev: n, 0x7fdf7aa4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: l
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-l,0x7fdf7aa4c5f0. prev: null, next: x, 0x7fdf7a9262f8, visited: 0
-x,0x7fdf7a9262f8. prev: l, 0x7fdf7aa4c5f0, next: e, 0x7fdf7a800000, visited: 0 . Hand
-e,0x7fdf7a800000. prev: x, 0x7fdf7a9262f8. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 6, hit ratio:0.166667
-
-trace: ebnexlkmom
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: e
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-e,0x7f5dfb800000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7f5dfb9262f8. prev: null, next: e, 0x7f5dfb800000, visited: 0
-e,0x7f5dfb800000. prev: b, 0x7f5dfb9262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: n
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-n,0x7f5dfba4c5f0. prev: null, next: b, 0x7f5dfb9262f8, visited: 0
-b,0x7f5dfb9262f8. prev: n, 0x7f5dfba4c5f0, next: e, 0x7f5dfb800000, visited: 0
-e,0x7f5dfb800000. prev: b, 0x7f5dfb9262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: e
-MMSieve-recordAccess...Inspecting Free List: 
-n,0x7f5dfba4c5f0. prev: null, next: b, 0x7f5dfb9262f8, visited: 0
-b,0x7f5dfb9262f8. prev: n, 0x7f5dfba4c5f0, next: e, 0x7f5dfb800000, visited: 0
-e,0x7f5dfb800000. prev: b, 0x7f5dfb9262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: x
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-x,0x7f5dfb9262f8. prev: null, next: n, 0x7f5dfba4c5f0, visited: 0
-n,0x7f5dfba4c5f0. prev: x, 0x7f5dfb9262f8, next: e, 0x7f5dfb800000, visited: 0 . Hand
-e,0x7f5dfb800000. prev: n, 0x7f5dfba4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: l
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-l,0x7f5dfba4c5f0. prev: null, next: x, 0x7f5dfb9262f8, visited: 0
-x,0x7f5dfb9262f8. prev: l, 0x7f5dfba4c5f0, next: e, 0x7f5dfb800000, visited: 0 . Hand
-e,0x7f5dfb800000. prev: x, 0x7f5dfb9262f8. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: k
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-k,0x7f5dfb9262f8. prev: null, next: l, 0x7f5dfba4c5f0, visited: 0
-l,0x7f5dfba4c5f0. prev: k, 0x7f5dfb9262f8, next: e, 0x7f5dfb800000, visited: 0 . Hand
-e,0x7f5dfb800000. prev: l, 0x7f5dfba4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: m
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-m,0x7f5dfba4c5f0. prev: null, next: k, 0x7f5dfb9262f8, visited: 0
-k,0x7f5dfb9262f8. prev: m, 0x7f5dfba4c5f0, next: e, 0x7f5dfb800000, visited: 0 . Hand
-e,0x7f5dfb800000. prev: k, 0x7f5dfb9262f8. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: o
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-o,0x7f5dfb9262f8. prev: null, next: m, 0x7f5dfba4c5f0, visited: 0
-m,0x7f5dfba4c5f0. prev: o, 0x7f5dfb9262f8, next: e, 0x7f5dfb800000, visited: 0 . Hand
-e,0x7f5dfb800000. prev: m, 0x7f5dfba4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: m
-MMSieve-recordAccess...Inspecting Free List: 
-o,0x7f5dfb9262f8. prev: null, next: m, 0x7f5dfba4c5f0, visited: 0
-m,0x7f5dfba4c5f0. prev: o, 0x7f5dfb9262f8, next: e, 0x7f5dfb800000, visited: 1 . Hand
-e,0x7f5dfb800000. prev: m, 0x7f5dfba4c5f0. next:null, visited: 0
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-num_requests: 10, hit ratio:0.2
-
-trace: ebnexlkmomx
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: e
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-e,0x7fe73ec00000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: b
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-b,0x7fe73ed262f8. prev: null, next: e, 0x7fe73ec00000, visited: 0
-e,0x7fe73ec00000. prev: b, 0x7fe73ed262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: n
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-n,0x7fe73ee4c5f0. prev: null, next: b, 0x7fe73ed262f8, visited: 0
-b,0x7fe73ed262f8. prev: n, 0x7fe73ee4c5f0, next: e, 0x7fe73ec00000, visited: 0
-e,0x7fe73ec00000. prev: b, 0x7fe73ed262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: e
-MMSieve-recordAccess...Inspecting Free List: 
-n,0x7fe73ee4c5f0. prev: null, next: b, 0x7fe73ed262f8, visited: 0
-b,0x7fe73ed262f8. prev: n, 0x7fe73ee4c5f0, next: e, 0x7fe73ec00000, visited: 0
-e,0x7fe73ec00000. prev: b, 0x7fe73ed262f8. next:null, visited: 1
-Hand is null
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: x
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-x,0x7fe73ed262f8. prev: null, next: n, 0x7fe73ee4c5f0, visited: 0
-n,0x7fe73ee4c5f0. prev: x, 0x7fe73ed262f8, next: e, 0x7fe73ec00000, visited: 0 . Hand
-e,0x7fe73ec00000. prev: n, 0x7fe73ee4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: l
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-l,0x7fe73ee4c5f0. prev: null, next: x, 0x7fe73ed262f8, visited: 0
-x,0x7fe73ed262f8. prev: l, 0x7fe73ee4c5f0, next: e, 0x7fe73ec00000, visited: 0 . Hand
-e,0x7fe73ec00000. prev: x, 0x7fe73ed262f8. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: k
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-k,0x7fe73ed262f8. prev: null, next: l, 0x7fe73ee4c5f0, visited: 0
-l,0x7fe73ee4c5f0. prev: k, 0x7fe73ed262f8, next: e, 0x7fe73ec00000, visited: 0 . Hand
-e,0x7fe73ec00000. prev: l, 0x7fe73ee4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: m
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-m,0x7fe73ee4c5f0. prev: null, next: k, 0x7fe73ed262f8, visited: 0
-k,0x7fe73ed262f8. prev: m, 0x7fe73ee4c5f0, next: e, 0x7fe73ec00000, visited: 0 . Hand
-e,0x7fe73ec00000. prev: k, 0x7fe73ed262f8. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: o
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-o,0x7fe73ed262f8. prev: null, next: m, 0x7fe73ee4c5f0, visited: 0
-m,0x7fe73ee4c5f0. prev: o, 0x7fe73ed262f8, next: e, 0x7fe73ec00000, visited: 0 . Hand
-e,0x7fe73ec00000. prev: m, 0x7fe73ee4c5f0. next:null, visited: 0
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: m
-MMSieve-recordAccess...Inspecting Free List: 
-o,0x7fe73ed262f8. prev: null, next: m, 0x7fe73ee4c5f0, visited: 0
-m,0x7fe73ee4c5f0. prev: o, 0x7fe73ed262f8, next: e, 0x7fe73ec00000, visited: 1 . Hand
-e,0x7fe73ec00000. prev: m, 0x7fe73ee4c5f0. next:null, visited: 0
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: x
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-x,0x7fe73ed262f8. prev: null, next: m, 0x7fe73ee4c5f0, visited: 0
-m,0x7fe73ee4c5f0. prev: x, 0x7fe73ed262f8, next: e, 0x7fe73ec00000, visited: 0
-e,0x7fe73ec00000. prev: m, 0x7fe73ee4c5f0. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 11, hit ratio:0.181818
-
-trace: incvchvhf
-Initializing Cache...MemAlloc.cpp-generated allocSizes: 72, 96, 120, 152, 192, 240, 304, 384, 480, 600, 752, 944, 1184, 1480, 1856, 2320, 2904, 3632, 4544, 5680, 7104, 8880, 11104, 13880, 17352, 21696, 27120, 33904, 42384, 52984, 66232, 82792, 103496, 129376, 161720, 202152, 252696, 315872, 394840, 493552, 616944, 771184, 963984, 1204984, 1506232, 1882792, 4194304, 
-Cache Initialized
-Slab rebalancing stopped.
-key: i
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-i,0x7fd0c1400000. prev: null. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: n
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-n,0x7fd0c15262f8. prev: null, next: i, 0x7fd0c1400000, visited: 0
-i,0x7fd0c1400000. prev: n, 0x7fd0c15262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: c
-CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-c,0x7fd0c164c5f0. prev: null, next: n, 0x7fd0c15262f8, visited: 0
-n,0x7fd0c15262f8. prev: c, 0x7fd0c164c5f0, next: i, 0x7fd0c1400000, visited: 0
-i,0x7fd0c1400000. prev: n, 0x7fd0c15262f8. next:null, visited: 0
-Hand is null
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: v
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-v,0x7fd0c1400000. prev: null, next: c, 0x7fd0c164c5f0, visited: 0
-c,0x7fd0c164c5f0. prev: v, 0x7fd0c1400000, next: n, 0x7fd0c15262f8, visited: 0
-n,0x7fd0c15262f8. prev: c, 0x7fd0c164c5f0. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: c
-MMSieve-recordAccess...Inspecting Free List: 
-v,0x7fd0c1400000. prev: null, next: c, 0x7fd0c164c5f0, visited: 0
-c,0x7fd0c164c5f0. prev: v, 0x7fd0c1400000, next: n, 0x7fd0c15262f8, visited: 1
-n,0x7fd0c15262f8. prev: c, 0x7fd0c164c5f0. next:null, visited: 0 . Hand
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: h
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-h,0x7fd0c15262f8. prev: null, next: v, 0x7fd0c1400000, visited: 0
-v,0x7fd0c1400000. prev: h, 0x7fd0c15262f8, next: c, 0x7fd0c164c5f0, visited: 0
-c,0x7fd0c164c5f0. prev: v, 0x7fd0c1400000. next:null, visited: 1 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-key: v
-MMSieve-recordAccess...Inspecting Free List: 
-h,0x7fd0c15262f8. prev: null, next: v, 0x7fd0c1400000, visited: 0
-v,0x7fd0c1400000. prev: h, 0x7fd0c15262f8, next: c, 0x7fd0c164c5f0, visited: 1
-c,0x7fd0c164c5f0. prev: v, 0x7fd0c1400000. next:null, visited: 1 . Hand
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: h
-MMSieve-recordAccess...Inspecting Free List: 
-h,0x7fd0c15262f8. prev: null, next: v, 0x7fd0c1400000, visited: 1
-v,0x7fd0c1400000. prev: h, 0x7fd0c15262f8, next: c, 0x7fd0c164c5f0, visited: 1
-c,0x7fd0c164c5f0. prev: v, 0x7fd0c1400000. next:null, visited: 1 . Hand
-CacheAlloator.h-recordAccessInMMContainer, done inspecting.
-key: f
-SieveList-remove...CacheAllocator.h-insertOrReplace...MMSieve-add...CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List: 
-f,0x7fd0c164c5f0. prev: null, next: h, 0x7fd0c15262f8, visited: 0
-h,0x7fd0c15262f8. prev: f, 0x7fd0c164c5f0, next: v, 0x7fd0c1400000, visited: 0
-v,0x7fd0c1400000. prev: h, 0x7fd0c15262f8. next:null, visited: 0 . Hand
-CacheAlloator.h-insertInMMContainer, done inspecting.
-num_requests: 9, hit ratio:0.333333
 
