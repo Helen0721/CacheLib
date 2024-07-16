@@ -27,6 +27,35 @@ bool use_uniform_obj_size = true;
 uint32_t uniform_obj_size = 100000;
 unsigned long base_size = (unsigned long)1024 * (unsigned long)1024;
 
+
+void saveCacheStats(){
+	PoolStats pool_stats = gCache_->getPoolStats(defaultPool_);
+	auto cacheStats = pool_stats.cacheStats;
+	auto classIds = pool_stats.getClassIds();
+	auto numClasses = classIds.size();
+
+	for (auto cid : classIds){
+		auto class_stats = cacheStats.at(cid);
+		uint32_t class_size = class_stats.allocSize;
+		uint64_t total_alloc_attemtps = class_stats.allocAttempts;
+		uint64_t total_evict_attempts = class_stats.evictionAttempts;
+		uint64_t total_numHits = class_stats.numHits;
+  		uint64_t total_allocFailures =class_stats.allocFailures;
+		std::cout << "class alloc size: " << class_size << ", ";
+		std::cout << "total_alloc_attemtps: " << total_alloc_attemtps << ", ";
+		std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
+		std::cout << "total_numHits: " << total_numHits << ", ";
+		std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
+	}
+	
+	std::cout << "\n" << std::endl << std::flush;
+}
+
+
+
+
+
+
 CacheReadHandle get(CacheKey key) { return gCache_->find(key); }
 
 /*CacheKey should be of the type folly::StringPiece */
@@ -42,7 +71,9 @@ bool put(CacheKey key, const std::string& value, size_t value_size) {
 
 void initializeCache(unsigned long cache_size) {		
 	std::cout << "Initializing Cache with size " << cache_size << "..." << std::flush; 
-	
+	std::set<uint32_t> allocSizes;
+	allocSizes.insert(2*uniform_obj_size);
+
 	CacheConfig cache_config;
 	cache_config
 		.setCacheSize(cache_size)
@@ -151,7 +182,7 @@ void simulate_zstd(zstd_reader *reader,int max_reqs,unsigned long cache_size){
 
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
 	std::cout <<"hit ratio:"<< hit_ratio <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
-
+	saveCacheStats();
 	
 	free(req);
 	free(reader); 
