@@ -15,7 +15,12 @@ TRACES = ["qweqwert",
         "aabbcb",
         "abcefg",
         "aaaa",
-        "rxuaug"
+        "rxuaug",
+        "ebnex",
+        "ebnexl",
+        "ebnexlkmom",
+        "ebnexlkmomx", 
+        "incvchvhf",
         ]
 
 ANSWERS = ["t:0;e;t:0,r:0,e:0",
@@ -23,7 +28,12 @@ ANSWERS = ["t:0;e;t:0,r:0,e:0",
         "b:1;None;c:0,b:1,a:1",
         "g:0;e;g:0,f:0,e:0",
         "a:1;None;a:1",
-        "g:0;u;g:0,a:0,u:1"
+        "g:0;u;g:0,a:0,u:1",
+        "x:0;n;x:0,n:0,e:0",
+        "l:0;x;l:0,x:0,e:0",
+        "m:1;m;o:0,m:1,e:0",
+        "x:0;None;x:0,m:0,e:0",
+        "f:0;v;f:0,h:0,v:0"
         ]
 
 OUT = "output"

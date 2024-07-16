@@ -3342,8 +3342,9 @@ void CacheAllocator<CacheTrait>::insertInMMContainer(Item& item) {
         "Invalid state. Node {} was already in the container.", &item));
   }
   
-  mmContainer.inspectSieveList();
-
+  //std::cout << "CacheAllocator.h-insertInMMContainer...after inserting...";
+  //mmContainer.inspectSieveList();
+  //std::cout << "CacheAlloator.h-insertInMMContainer, done inspecting." << std::endl;
 }
 
 /**
@@ -3402,7 +3403,7 @@ bool CacheAllocator<CacheTrait>::insertImpl(const WriteHandle& handle,
 template <typename CacheTrait>
 typename CacheAllocator<CacheTrait>::WriteHandle
 CacheAllocator<CacheTrait>::insertOrReplace(const WriteHandle& handle) {
-  std::cout << "CacheAllocator.h-insertOrReplace...";
+  //std::cout << "CacheAllocator.h-insertOrReplace...";
   XDCHECK(handle);
   if (handle->isAccessible()) {
     throw std::invalid_argument("Handle is already accessible");
@@ -3643,7 +3644,7 @@ std::pair<typename CacheAllocator<CacheTrait>::Item*,
 CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                              ClassId cid,
                                              unsigned int& searchTries) {
-  ///std::cout<< "CacheAllocator-getNextCandidate..";
+  std::cout<< "CacheAllocator-getNextCandidate..";
 
   typename NvmCacheT::PutToken token;
   Item* toRecycle = nullptr;
@@ -3654,7 +3655,7 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                     &searchTries, &mmContainer,
                                     &token](auto&& itr) {
     if (!itr) {
-      //std::cout << "CacheAllocator-EvictionIterator is NULL" << std::endl;
+      std::cout << "CacheAllocator-EvictionIterator is NULL" << std::endl;
       ++searchTries;
       (*stats_.evictionAttempts)[pid][cid].inc();
       return;
@@ -3710,7 +3711,8 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
           &toRecycle->asChainedItem().getParentItem(compressor_) == candidate) {
         mmContainer.remove(itr);
       }
-      //std::cout << "CacheAllocator-eviction succeeds." << std::endl;
+   
+      std::cout << "CacheAllocator-eviction succeeds." << std::endl;
       return;
     }
   });
@@ -4233,7 +4235,11 @@ bool CacheAllocator<CacheTrait>::recordAccessInMMContainer(Item& item,
   }
 
   auto& mmContainer = getMMContainer(allocInfo.poolId, allocInfo.classId);
-  return mmContainer.recordAccess(item, mode);
+  bool recorded = mmContainer.recordAccess(item, mode);
+
+  //if (recorded) {std::cout<<"CacheAlloator.h-recordAccessInMMContainer, done inspecting." << std::endl;}
+
+  return recorded; 
 }
 
 template <typename CacheTrait>

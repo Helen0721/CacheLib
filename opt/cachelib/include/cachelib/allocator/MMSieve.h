@@ -468,7 +468,7 @@ MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
                                                 AccessMode mode) noexcept {
-  std::cout << "MMSieve-recordAccess..."<<std::endl;
+  //std::cout << "MMSieve-recordAccess...";
   if ((mode == AccessMode::kWrite && !config_.updateOnWrite) ||
       (mode == AccessMode::kRead && !config_.updateOnRead)) {
     return false;
@@ -479,7 +479,8 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
   if (node.isInMMContainer() && !isAccessed(node)){
 	markAccessed(node);
       	queue_.setAsVisited(node);
-  }    
+  }   
+  //inspectSieveList(); 
   return true;
 }
 
@@ -529,7 +530,7 @@ typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
-  std::cout << "MMSieve-add..."<<std::endl;
+  //std::cout << "MMSieve-add...";
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
   // Lock and insert at head
   // Set hand_ to queue's tail is hand_ is null.
@@ -559,7 +560,7 @@ void MMSieve::Container<T, HookPtr>::inspectSieveList() noexcept{
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 typename MMSieve::Container<T, HookPtr>::LockedIterator
 MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
-  std::cout << "MMSieve-getEvItr..";
+  //std::cout << "MMSieve-getEvItr..";
   LockHolder l(*sieveMutex_);
   return LockedIterator{std::move(l), queue_.iterBackFromHand()};
 }
@@ -567,7 +568,7 @@ MMSieve::Container<T, HookPtr>::getEvictionIterator() noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 template <typename F>
 void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
-  std::cout << "MMSieve-withEvItr...";
+  //std::cout << "MMSieve-withEvItr...";
   if (config_.useCombinedLockForIterators) {
     sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFromHand()}); });
   } else {
@@ -612,11 +613,12 @@ void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
   T& node = *it;
   XDCHECK(node.isInMMContainer());
   removeLocked(node);
+  std::cout << "removed " << (&node)->getKey().toString() << std::endl;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
-  std::cout << "MMSieve-replace...";
+  //std::cout << "MMSieve-replace...";
   return sieveMutex_->lock_combine([this, &oldNode, &newNode]() {
     if (!oldNode.isInMMContainer() || newNode.isInMMContainer()) {
       return false;

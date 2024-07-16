@@ -1014,4 +1014,6 @@ CMakeFiles/testSieve.dir/testSieve.cpp.o: \
  /disk/CacheLib/opt/cachelib/include/cachelib/navy/common/Device.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/nvmcache/NvmItem.h \
  /disk/CacheLib/opt/cachelib/include/cachelib/allocator/nvmcache/ReqContexts.h \
- /disk/CacheLib/opt/cachelib/include/cachelib/allocator/nvmcache/TombStones.h
+ /disk/CacheLib/opt/cachelib/include/cachelib/allocator/nvmcache/TombStones.h \
+ /disk/CacheLib/examples/my_cache_1/tests/../Reader/ZstdReader.h \
+ /disk/CacheLib/opt/cachelib/include/zstd.h

@@ -129,6 +129,30 @@ testSieve/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSieve.dir/build.make CMakeFiles/testSieve.dir/build
 .PHONY : testSieve/fast
 
+disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.o: disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.o
+.PHONY : disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.o
+
+# target to build an object file
+disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSieve.dir/build.make CMakeFiles/testSieve.dir/disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.o
+.PHONY : disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.o
+
+disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.i: disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.i
+.PHONY : disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.i
+
+# target to preprocess a source file
+disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSieve.dir/build.make CMakeFiles/testSieve.dir/disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.i
+.PHONY : disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.i
+
+disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.s: disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.s
+.PHONY : disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.s
+
+# target to generate assembly for a file
+disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSieve.dir/build.make CMakeFiles/testSieve.dir/disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.s
+.PHONY : disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp.s
+
 testSieve.o: testSieve.cpp.o
 .PHONY : testSieve.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... testSieve"
+	@echo "... disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.o"
+	@echo "... disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.i"
+	@echo "... disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.s"
 	@echo "... testSieve.o"
 	@echo "... testSieve.i"
 	@echo "... testSieve.s"

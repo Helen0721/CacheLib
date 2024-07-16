@@ -81,12 +81,12 @@ clean: CMakeFiles/testSieve.dir/clean
 CMakeFiles/testSieve.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSieve.dir/build.make CMakeFiles/testSieve.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/testSieve.dir/build.make CMakeFiles/testSieve.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib/examples/my_cache_1/tests/build/CMakeFiles --progress-num=1,2 "Built target testSieve"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib/examples/my_cache_1/tests/build/CMakeFiles --progress-num=1,2,3 "Built target testSieve"
 .PHONY : CMakeFiles/testSieve.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/testSieve.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/tests/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/tests/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/testSieve.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/tests/build/CMakeFiles 0
 .PHONY : CMakeFiles/testSieve.dir/rule

@@ -241,7 +241,7 @@ class SieveList {
     }
 
     T* get() const noexcept { 
-	std::cout << "Iterator-getting " << curr_ <<std::endl;
+	//std::cout << "Iterator-getting " << curr_ <<std::endl;
 	return curr_; 
     }
 	
@@ -363,21 +363,21 @@ void SieveList<T, HookPtr>::inspectVisitMap() noexcept{
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
-  std::cout << "operateHand...Before operation, ";
-  inspectSieveList(); 
+  //std::cout << "operateHand...Before operation, ";
+  //inspectSieveList(); 
   T* curr = hand_;
   if (curr == nullptr) curr = tail_;
   if (curr == nullptr) return nullptr;
   while (isVisited(*curr)){
-    std::cout << "curr: "<< curr << "...";
+    //std::cout << "curr: "<< curr << "...";
     setAsUnvisited(*curr);
     curr = getPrev(*curr);
     if (curr == nullptr) curr = tail_;
   }
   hand_ = getPrev(*curr); 
-  std::cout << "After operation, ";
-  inspectSieveList();
-  std::cout << "returning " << curr->getKey().toString() << ", " << curr   << std::endl;
+  //std::cout << "After operation, ";
+  //inspectSieveList();
+  //std::cout << "returning " << curr->getKey().toString() << ", " << curr   << std::endl;
   return curr;
 }
 
@@ -504,7 +504,7 @@ void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator&
 SieveList<T, HookPtr>::Iterator::operator++() noexcept { 
-  std::cout << "Iterator::operator++..";
+  //std::cout << "Iterator::operator++..";
   curr_ = sievelist_->operateHand();
   //if (curr_==nullptr) std::cout << "SieveList++-incorrect operateHand()" << std::endl;
   //if (sievelist_->getTail() == nullptr) std::cout<<"SieveList-operator++-tail is null" << std::endl;
@@ -513,7 +513,7 @@ SieveList<T, HookPtr>::Iterator::operator++() noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 typename SieveList<T, HookPtr>::Iterator SieveList<T, HookPtr>::iterBackFromHand() noexcept{
-  std::cout << "iterBackFromHand...";
+  //std::cout << "iterBackFromHand...";
   auto firstNodeToBeEvicted = operateHand();
   auto iterObj = SieveList<T, HookPtr>::Iterator(firstNodeToBeEvicted,*this);
   //if (!iterObj) {
