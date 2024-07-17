@@ -631,7 +631,7 @@ void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
   T& node = *it;
   XDCHECK(node.isInMMContainer());
   removeLocked(node);
-  std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
+  //std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>

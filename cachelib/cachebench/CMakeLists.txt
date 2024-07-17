@@ -92,5 +92,4 @@ if (BUILD_TESTS)
   add_test (consistency/tests/ValueTrackerTest.cpp)
   add_test (util/tests/NandWritesTest.cpp)
   add_test (cache/tests/TimeStampTickerTest.cpp)
-END
 endif()
