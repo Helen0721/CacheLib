@@ -16,11 +16,11 @@
 
 #pragma once
 #include "cachelib/allocator/ChainedHashTable.h"
-/*
+
 #include "cachelib/allocator/MM2Q.h"
 #include "cachelib/allocator/MMLru.h"
 #include "cachelib/allocator/MMTinyLFU.h"
-*/
+
 #include "cachelib/allocator/MMSieve.h"
 
 #include "cachelib/common/Mutex.h"
@@ -35,7 +35,7 @@ namespace cachelib {
 // accessed.
 // AccessTypeLock is the lock type for the access container that supports
 // multiple locking primitives
-/*
+
 struct LruCacheTrait {
   using MMType = MMLru;
   using AccessType = ChainedHashTable;
@@ -59,7 +59,7 @@ struct TinyLFUCacheTrait {
   using AccessType = ChainedHashTable;
   using AccessTypeLocks = SharedMutexBuckets;
 };
-*/
+
 struct SieveCacheTrait {
   using MMType = MMSieve;
   using AccessType = ChainedHashTable;
