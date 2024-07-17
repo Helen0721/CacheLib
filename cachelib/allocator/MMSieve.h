@@ -404,15 +404,18 @@ class MMSieve {
     // being written in cache. Unaccessed items are ignored when determining
     // projected update time.
     void markAccessed(T& node) noexcept {
-      node.template setFlag<RefFlags::kMMFlag1>();
+      //node.template setFlag<RefFlags::kMMFlag1>();
+      queue_.setAsVisited(node);
     }
 
     void unmarkAccessed(T& node) noexcept {
-      node.template unSetFlag<RefFlags::kMMFlag1>();
+      //node.template unSetFlag<RefFlags::kMMFlag1>();
+      queue_.setAsUnvisited(node);
     }
 
     bool isAccessed(const T& node) const noexcept {
-      return node.template isFlagSet<RefFlags::kMMFlag1>();
+      //return node.template isFlagSet<RefFlags::kMMFlag1>();
+      return queue_.isVisited(node);
     }
 
     // protects all operations on the lru. We never really just read the state
@@ -479,9 +482,10 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
   if (queue_.getTail()==nullptr)  std::cout << "MMSieve-recordAccess(start)-tail is null"<<std::endl;
   const auto curr = static_cast<Time>(util::getCurrentTimeSec());
   // check if the node is still being memory managed
-  if (node.isInMMContainer() && !queue_.isVisited(node)){
-	if (!isAccessed(node)) markAccessed(node);
-      	queue_.setAsVisited(node);
+  if (node.isInMMContainer() && !isAccessed(node)){
+	//if (!isAccessed(node)) markAccessed(node);
+      	//queue_.setAsVisited(node);
+	markAccessed(node);
   }   
   //inspectSieveList(); 
   return true;
@@ -566,7 +570,7 @@ void MMSieve::Container<T, HookPtr>::inspectHand() noexcept{
   if (hand==nullptr)std::cout<<"null" << std::endl;
   else {
 	  std::cout << hand->getKey().toString(); 
- 	  std::cout<<", visited: "<< queue_.isVisited(*hand)<< std::endl;
+ 	  std::cout<<", visited: "<< isAccessed(*hand)<< std::endl;
   }
 }
 
@@ -627,7 +631,7 @@ void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
   T& node = *it;
   XDCHECK(node.isInMMContainer());
   removeLocked(node);
-  //std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
+  std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>

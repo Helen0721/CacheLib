@@ -86,7 +86,7 @@ class SieveList {
   using CompressedPtr = typename T::CompressedPtr;
   using PtrCompressor = typename T::PtrCompressor;
   using SieveListObject = serialization::SieveListObject;
-  //using RefFlags = typename T::Flags;
+  using RefFlags = typename T::Flags;
   
   SieveList() = default;
   SieveList(const SieveList&) = delete;
@@ -143,17 +143,14 @@ class SieveList {
     (node.*HookPtr).setPrev((other.*HookPtr).getPrev());
   }
   
-  // set the visitMap for node
+  // set the access bit of node
   void setAsVisited(T& node) noexcept;
   
-  // unset the visitMap for node 
+  // unset the access bit of node
   void setAsUnvisited (T& node) noexcept;
 
-  // return the bit of the node in visitMap
-  bool isVisited (T& node) noexcept;
-
-  // remove a node from the visitMap
-  void removeFromVisitMap(const T& node) noexcept;
+  // return the access bit of node
+  bool isVisited (const T& node) const noexcept;
 
   // return and update hand_ to point to the next item to be evicted  
   T* operateHand() noexcept;
@@ -280,9 +277,6 @@ class SieveList {
 
   // size of the list
   size_t size_{0};
-
-  // visitMap: node->visitedOrNot
-  std::map<const T*,bool> visitMap;
 };
 
 
@@ -291,22 +285,18 @@ class SieveList {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::setAsVisited(T& node) noexcept{
-    visitMap[&node] = true;
+    node.template setFlag<RefFlags::kMMFlag1>();
 }
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::setAsUnvisited(T& node) noexcept{
-    visitMap[&node] = false;
+    node.template unSetFlag<RefFlags::kMMFlag1>();
 }
 
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::removeFromVisitMap(const T& node) noexcept{
-   visitMap.erase(&node); 
-}
 
 template <typename T, SieveListHook<T> T::*HookPtr>
-bool SieveList<T, HookPtr>::isVisited(T& node) noexcept{
-   return visitMap[&node];
+bool SieveList<T, HookPtr>::isVisited(const T& node) const noexcept{
+   return node.template isFlagSet<RefFlags::kMMFlag1>();
 }
 
 /*
@@ -355,17 +345,6 @@ void SieveList<T, HookPtr>::inspectSieveList() noexcept{
   std::cout << "done inspecting." << std::endl;
 }
 
-
-template <typename T, SieveListHook<T> T::*HookPtr>
-void SieveList<T, HookPtr>::inspectVisitMap() noexcept{
-  std::cout << "Inspecting Visit Map: ";
-  for (const auto& pair : visitMap) {
-        const T* nodePtr = pair.first;
-        bool value = pair.second;
-        std::cout << "Node: " << nodePtr << ", Visited: " << std::boolalpha << value << "...";
-    }
-  std::cout << "...done." << std::endl;
-}
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
@@ -457,7 +436,6 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
   if (next != nullptr) {
     setPrevFrom(*next, node);
   }
-  removeFromVisitMap(node);
   size_--;
   
 }

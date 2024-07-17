@@ -162,11 +162,11 @@ void simulate_zstd(zstd_reader *reader,int max_reqs,unsigned long cache_size){
 		sprintf(id_buf,"%lu",req->obj_id);
 		std::string str(id_buf);
 		std::string key = str; 				
-		/*	
+		
 		std::cout << num_reqs << ": ";
 	        std::cout << "req clcok_time " << req->clock_time << ", id " << req->obj_id << ", ";
 		std::cout << "size 1, op invalid, valid 1\n"; 	
-		*/
+		
 		auto handle = get(key);
 		if (handle){
 			num_hits += 1;
@@ -210,7 +210,7 @@ int main(int argc, char** argv){
 		unsigned long cache_size = (unsigned long)10 * base_size;
 		
 		int max_reqs = 10;
-		std::cout << "argv[3]:" << argv[3] << ". ";
+		
 		if (argc > 3) max_reqs = std::atoi(argv[3]);
 		if (argc > 4) cache_size  = base_size * (unsigned long)(std::atoi(argv[4]));
 		if (argc > 5) uniform_obj_size = (uint32_t) std::stoi(argv[5]);
