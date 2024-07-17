@@ -112,7 +112,7 @@ def handle_mr():
         for (j,rebalance_strategy) in enumerate(rebalance_strategies):
             
             if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
-
+            if rebalance_strategy == "LruTailAge" and algo=="Sieve": continue
             hr_lists.append([])
             labels.append(rebalance_strategy + "-" + algo)
 
@@ -161,6 +161,7 @@ def handle_uniform():
     for (i,algo) in enumerate(algos):
         for (j,reb) in enumerate(rebalance_strategies):
             if reb == "MarginalHits" and algo!="Lru2Q": continue
+            if reb == "LruTailAge" and algo=="Sieve": continue
 
             hr_lists.append([])
             labels.append(algo + "-" + reb)
@@ -189,7 +190,7 @@ def handle_stopReb():
     for (i,algo) in enumerate(algos):
         for (j,reb) in enumerate(rebalance_strategies):
             if reb == "MarginalHits" and algo!="Lru2Q": continue
-
+            if reb == "LruTailAge" and algo=="Sieve": continue
             hr_lists.append([])    # hr_lists[-2] is for hr 
             hr_lists.append([])     # hr_lists[-1] is for hr_stopReb
             labels.append(algo + "-" + reb)
