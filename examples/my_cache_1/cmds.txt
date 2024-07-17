@@ -64,3 +64,5 @@ for algo in Sieve Lru Lru2Q TinyLFU; do
 for reb in LruTailAge MarginalHits HitsPerSlab default FreeMem;do 
 echo "./run.sh $data $name $algo $reb default $output_dir $cs"; 
 done; done; done > tasks/MetaKVT1_2
+
+build/testSieve 1 ../data/meta_kvcache_traces_1.oracleGeneral.bin.zst 242

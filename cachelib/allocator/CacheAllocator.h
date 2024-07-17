@@ -3342,9 +3342,10 @@ void CacheAllocator<CacheTrait>::insertInMMContainer(Item& item) {
         "Invalid state. Node {} was already in the container.", &item));
   }
   
-  //std::cout << "CacheAllocator.h-insertInMMContainer...after inserting...";
-  //mmContainer.inspectSieveList();
-  //std::cout << "CacheAlloator.h-insertInMMContainer, done inspecting." << std::endl;
+  std::cout << "CacheAllocator.h-insertInMMContainer...after inserting...";
+  mmContainer.inspectSieveList();
+  mmContainer.inspectHand();
+  std::cout << "CacheAlloator.h-insertInMMContainer, done inspecting." << std::endl;
 }
 
 /**
@@ -3644,7 +3645,7 @@ std::pair<typename CacheAllocator<CacheTrait>::Item*,
 CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                              ClassId cid,
                                              unsigned int& searchTries) {
-  std::cout<< "CacheAllocator-getNextCandidate..";
+  //std::cout<< "CacheAllocator-getNextCandidate..";
 
   typename NvmCacheT::PutToken token;
   Item* toRecycle = nullptr;
@@ -3711,8 +3712,10 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
           &toRecycle->asChainedItem().getParentItem(compressor_) == candidate) {
         mmContainer.remove(itr);
       }
-   
-      std::cout << "CacheAllocator-eviction succeeds." << std::endl;
+      std::cout << "CacheAllocator.h-getNextCandidate..."; 
+      mmContainer.inspectSieveList();
+      mmContainer.inspectHand();
+      std::cout << "CacheAllocator.h-getNextCandidate-eviction succeeds." << std::endl;
       return;
     }
   });
@@ -4237,7 +4240,12 @@ bool CacheAllocator<CacheTrait>::recordAccessInMMContainer(Item& item,
   auto& mmContainer = getMMContainer(allocInfo.poolId, allocInfo.classId);
   bool recorded = mmContainer.recordAccess(item, mode);
 
-  //if (recorded) {std::cout<<"CacheAlloator.h-recordAccessInMMContainer, done inspecting." << std::endl;}
+  if (recorded) {
+	  std::cout << "CacheAllocator.h-recordAccessInMMContainer...";
+	  mmContainer.inspectSieveList();
+	  mmContainer.inspectHand();
+	  std::cout<<"CacheAlloator.h-recordAccessInMMContainer, done inspecting." << std::endl;
+  }
 
   return recorded; 
 }

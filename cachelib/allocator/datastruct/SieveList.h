@@ -336,12 +336,14 @@ void SieveList<T, HookPtr>::inspectSieveList() noexcept{
     prev = getPrev(*curr);
     next = getNext(*curr);
     std::cout << curr->getKey().toString() <<"," << curr;
+    std::cout<<", visited: "<< isVisited(*curr);
+    
     if (prev) std::cout<<". prev: "<< prev->getKey().toString() << ", " << prev;
     else std::cout << ". prev: null";
     if (next) std::cout<<", next: " << next->getKey().toString() << ", " << next;
     else std::cout << ". next:null"; 
 
-    std::cout<<", visited: "<< isVisited(*curr);
+    
     if (curr == hand_) std::cout << " . Hand" << std::endl;
     else std::cout<< std::endl;
     curr = getNext(*curr);

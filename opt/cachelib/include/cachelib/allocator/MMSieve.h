@@ -367,6 +367,8 @@ class MMSieve {
     }
 
     void inspectSieveList() noexcept;
+    
+    void inspectHand() noexcept;
 
    private:
     EvictionAgeStat getEvictionAgeStatLocked(
@@ -554,6 +556,14 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::inspectSieveList() noexcept{
   queue_.inspectSieveList();
+}
+
+template <typename T, MMSieve::Hook<T> T::*HookPtr>
+void MMSieve::Container<T, HookPtr>::inspectHand() noexcept{
+  T* hand = queue_.getHand();
+  std::cout << "hand: ";
+  if (hand==nullptr)std::cout<<"null" << std::endl;
+  else std::cout << hand->getKey().toString() << std::endl;
 }
 
 
