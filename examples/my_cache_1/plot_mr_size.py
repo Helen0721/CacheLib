@@ -69,14 +69,21 @@ def plot_mr_size(cache_sizes,hr_lists,labels,plot_folder,plot_name,plot_title,su
 
     plt.title(plot_title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="6", frameon=False) 
+                        loc="upper right", fontsize="10", frameon=False) 
     frame = legend.get_frame() 
     frame.set_facecolor("0.9") 
-    frame.set_edgecolor("0.9")
-    plt.grid(axis="y", linestyle="--") 
-    plt.xlabel("Size")
+    frame.set_edgecolor("0.9")  
+    
+    plt.xlabel("Size",fontsize=12)
     if len(cache_sizes) > len(CACHE_SIZES): plt.xticks(fontsize=6)
-    plt.ylabel("Miss Ratio") 
+    else: plt.xticks(fontsize=12)
+
+    plt.ylabel("Miss Ratio",fontsize=12) 
+    plt.grid(axis="y", linestyle="--")
+    plt.yticks(fontsize=10)
+    
+    plt.tight_layout(pad=1.0)
+    
     pp.savefig()
     plt.close()
 
