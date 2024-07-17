@@ -563,7 +563,10 @@ void MMSieve::Container<T, HookPtr>::inspectHand() noexcept{
   T* hand = queue_.getHand();
   std::cout << "hand: ";
   if (hand==nullptr)std::cout<<"null" << std::endl;
-  else std::cout << hand->getKey().toString() << std::endl;
+  else {
+	  std::cout << hand->getKey().toString(); 
+ 	  std::cout<<", visited: "<< queue_->isVisited(*curr)<< std::endl;
+  }
 }
 
 

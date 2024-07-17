@@ -42,6 +42,10 @@ CacheLib_s = "SieveList-remove...removed "
 libCacheSim_Hand_s = "hand: " 
 CacheLib_Hand_s = "hand: "
 
+#1665453729,0x7f45a83a6e68, visited: 1. prev: 1666654178, 0x7f45a83c02b0, next: 1668757991, 0x7f45a838da20
+REGEX_CacheLib = r'(?P<id>\d+),.*visited:\s*(?P<visited>\d)'
+
+
 def run_one_trace(trace,obj_size,open_mode="w"):
     run_args = [run_path, str(obj_size), trace]
 
