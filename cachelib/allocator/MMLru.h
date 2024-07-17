@@ -200,7 +200,7 @@ class MMLru {
     // threshold value in seconds to compare with a node's update time to
     // determine if we need to update the position of the node in the linked
     // list. By default this is 60s to reduce the contention on the lru lock.
-    uint32_t defaultLruRefreshTime{60};
+    uint32_t defaultLruRefreshTime{0};
     uint32_t lruRefreshTime{defaultLruRefreshTime};
 
     // ratio of LRU refresh time to the tail age. If a refresh time computed
