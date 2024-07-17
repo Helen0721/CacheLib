@@ -71,9 +71,9 @@ bool put(CacheKey key, const std::string& value, size_t value_size) {
 }
 
 void initializeCache(unsigned long cache_size) {		
-	std::cout << "Initializing Cache with size " << cache_size << "..." << std::flush; 
-	std::set<uint32_t> allocSizes;
-	allocSizes.insert(2*uniform_obj_size);
+	//std::cout << "Initializing Cache with size " << cache_size << "..." << std::flush; 
+	//std::set<uint32_t> allocSizes;
+	//allocSizes.insert(2*uniform_obj_size);
 
 	CacheConfig cache_config;
 	cache_config
@@ -84,11 +84,9 @@ void initializeCache(unsigned long cache_size) {
 
 	gCache_ = std::make_unique<Cache>(cache_config);
   	defaultPool_= gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize); 
-
-  	std::cout<< "Cache Initialized" << std::endl << std::flush;
 		
 	gCache_->stopPoolRebalancer(std::chrono::seconds(0));
-	std::cout << "Slab rebalancing stopped." << std::endl;
+	std::cout << "Cache Initialized with size " << cache_size << ", slab rebalancing stopped." << std::endl;
 
 }
 
@@ -211,7 +209,7 @@ int main(int argc, char** argv){
 		unsigned long cache_size = (unsigned long)10 * base_size;
 		
 		int max_reqs = 10;
-		std::cout << "argv[3]:" << argv[3];
+		std::cout << "argv[3]:" << argv[3] << ". ";
 		if (argc > 3) max_reqs = std::atoi(argv[3]);
 		if (argc > 4) cache_size  = base_size * (unsigned long)(std::atoi(argv[4]));
 		if (argc > 5) uniform_obj_size = (uint32_t) std::stoi(argv[5]);

@@ -39,6 +39,8 @@ ANSWERS = ["t:0;e;t:0,r:0,e:0",
 libCacheSim_s = "Sieve.c-evicted req: "
 CacheLib_s = "SieveList-remove...removed "
 
+libCacheSim_Hand_s = "hand: " 
+CacheLib_Hand_s = "hand: "
 
 def run_one_trace(trace,obj_size,open_mode="w"):
     run_args = [run_path, str(obj_size), trace]
@@ -179,9 +181,6 @@ def validate_self_def_traces():
         check_one_trace(last_res,ans)
         print("passed")
 
-
-
-
 def check_evicted_objs():
     print("Checking evicted objects",end="...")
     with open(ap.out,"r") as f:
@@ -217,6 +216,42 @@ def check_evicted_objs():
 
     print("passed")
 
+def check_hand():
+    print("Checking Hand",end="...")
+    with open(ap.out,"r") as f:
+        my_stdout = f.read().split("\n")
+
+    with open(ap.ref,"r") as f:
+        ref_stdout = f.read().split("\n")
+
+    refs = []
+    for line in ref_stdout:
+        if libCacheSim_Hand_s not in line: continue
+        parts = line.split(libCacheSim_Hand_s)
+        obj = parts[-1].split("...")[0] 
+        if "null" in obj: refs.append(None)
+        else: refs.append(int(obj))
+
+    mine = []
+    
+    
+    for line in my_stdout:
+        if CacheLib_Hand_s not in line: continue
+        parts = line.split(CacheLib_Hand_s)
+        obj = parts[-1].split("...")[0]
+        if "null" in obj: mine.append(None)
+        else: mine.append(int(obj))
+        
+    for i in range(min(len(refs),len(mine))):
+        if refs[i] != mine[i]:
+            print("{}th hand doesn't match.".format(i+1))
+            print("len(refs):",len(refs))
+            print("len(mine)",len(mine))
+            print("ref:{},mine:{}".format(refs[i],mine[i]))
+            exit(0)
+
+    print("passed")
+
 
 if __name__=="__main__":
     
@@ -234,9 +269,8 @@ if __name__=="__main__":
 
     if ap.type == "checkEvicted":
         check_evicted_objs()
-
-
-
+    elif ap.type == "checkHand":
+        check_hand()
     elif ap.type == "traces":
         if ap.traces and ap.ans:
             traces = ap.traces.split("-")
