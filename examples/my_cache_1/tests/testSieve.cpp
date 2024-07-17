@@ -86,7 +86,7 @@ void initializeCache(unsigned long cache_size) {
   	defaultPool_= gCache_->addPool("default", gCache_->getCacheMemoryStats().ramCacheSize); 
 		
 	gCache_->stopPoolRebalancer(std::chrono::seconds(0));
-	std::cout << "Cache Initialized with size " << cache_size << ", slab rebalancing stopped." << std::endl;
+	//std::cout << "Cache Initialized with size " << cache_size << ", slab rebalancing stopped." << std::endl;
 
 }
 
@@ -162,10 +162,11 @@ void simulate_zstd(zstd_reader *reader,int max_reqs,unsigned long cache_size){
 		sprintf(id_buf,"%lu",req->obj_id);
 		std::string str(id_buf);
 		std::string key = str; 				
-		
+		/*	
 		std::cout << num_reqs << ": ";
-		print_one_zstd_request(req);
-		
+	        std::cout << "req clcok_time " << req->clock_time << ", id " << req->obj_id << ", ";
+		std::cout << "size 1, op invalid, valid 1\n"; 	
+		*/
 		auto handle = get(key);
 		if (handle){
 			num_hits += 1;
@@ -176,7 +177,7 @@ void simulate_zstd(zstd_reader *reader,int max_reqs,unsigned long cache_size){
 			if (!put(key,prefix, obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}	
 		num_reqs += 1;
-	
+		//printf("\n");
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;	
 	}
 	

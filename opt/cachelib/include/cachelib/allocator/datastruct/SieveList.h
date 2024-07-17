@@ -328,13 +328,14 @@ bool SieveList<T, HookPtr>::isVisited(T& node)  noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::inspectSieveList() noexcept{
-  std::cout << "Inspecting Free List: "<<std::endl;
+  std::cout << "Inspecting sieve_cache..."<<std::endl;
   T* curr = head_;
   T* prev = nullptr;
   T* next = nullptr;
   while (curr){
     prev = getPrev(*curr);
     next = getNext(*curr);
+    /*
     std::cout << curr->getKey().toString() <<"," << curr;
     std::cout<<", visited: "<< isVisited(*curr);
     
@@ -342,13 +343,16 @@ void SieveList<T, HookPtr>::inspectSieveList() noexcept{
     else std::cout << ". prev: null";
     if (next) std::cout<<", next: " << next->getKey().toString() << ", " << next;
     else std::cout << ". next:null"; 
-
+    */
     
-    if (curr == hand_) std::cout << " . Hand" << std::endl;
+    std::cout << curr->getKey().toString() << ", visited: "<< isVisited(*curr);
+    
+    if (curr == hand_) std::cout << ". Hand" << std::endl;
     else std::cout<< std::endl;
     curr = getNext(*curr);
   }
   if (hand_ == nullptr) std::cout << "Hand is null" << std::endl;
+  std::cout << "done inspecting." << std::endl;
 }
 
 
@@ -460,7 +464,7 @@ void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::remove(T& node) noexcept {
-  std::cout << "SieveList-remove...";
+  //std::cout << "SieveList-remove...";
   // Should have set hand_ by unlink
   unlink(node);
   setNext(node, nullptr);

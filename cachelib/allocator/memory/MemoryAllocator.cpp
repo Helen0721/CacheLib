@@ -264,9 +264,9 @@ std::set<uint32_t> MemoryAllocator::generateAllocSizes(
 
   allocSizes.insert(util::getAlignedSize(maxSize, kAlignment));
   
-  std::cout << "MemAlloc.cpp-generated allocSizes: ";
-  for (const auto& size: allocSizes) std::cout<<size<<", ";
-  std::cout <<std::endl;
+  //std::cout << "MemAlloc.cpp-generated allocSizes: ";
+  //for (const auto& size: allocSizes) std::cout<<size<<", ";
+  //std::cout <<std::endl;
 
   return allocSizes;
 }

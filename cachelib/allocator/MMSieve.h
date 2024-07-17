@@ -473,13 +473,14 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
   //std::cout << "MMSieve-recordAccess...";
   if ((mode == AccessMode::kWrite && !config_.updateOnWrite) ||
       (mode == AccessMode::kRead && !config_.updateOnRead)) {
+    std::cout << "MMSieve-recordAccess mark got invalid access mode" << std::endl; 
     return false;
   }
   if (queue_.getTail()==nullptr)  std::cout << "MMSieve-recordAccess(start)-tail is null"<<std::endl;
   const auto curr = static_cast<Time>(util::getCurrentTimeSec());
   // check if the node is still being memory managed
-  if (node.isInMMContainer() && !isAccessed(node)){
-	markAccessed(node);
+  if (node.isInMMContainer() && !queue_.isVisited(node)){
+	if (!isAccessed(node)) markAccessed(node);
       	queue_.setAsVisited(node);
   }   
   //inspectSieveList(); 
@@ -611,7 +612,7 @@ void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
   return sieveMutex_->lock_combine([this, &node]() {
-    std::cout << "MMSieve-remove(node)...";
+    //std::cout << "MMSieve-remove(node)...";
     if (!node.isInMMContainer()) {
       return false;
     }
@@ -622,11 +623,11 @@ bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
-  std::cout << "MMSieve-remove(iter)..";
+  //std::cout << "MMSieve-remove(iter)..";
   T& node = *it;
   XDCHECK(node.isInMMContainer());
   removeLocked(node);
-  std::cout << "removed " << (&node)->getKey().toString() << std::endl;
+  //std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>

@@ -3342,10 +3342,10 @@ void CacheAllocator<CacheTrait>::insertInMMContainer(Item& item) {
         "Invalid state. Node {} was already in the container.", &item));
   }
   
-  std::cout << "CacheAllocator.h-insertInMMContainer...after inserting...";
-  mmContainer.inspectSieveList();
-  mmContainer.inspectHand();
-  std::cout << "CacheAlloator.h-insertInMMContainer, done inspecting." << std::endl;
+  //std::cout << "CacheAllocator.h-insertInMMContainer...after inserting..." << std::endl;
+  //mmContainer.inspectSieveList();
+  //mmContainer.inspectHand();
+  //std::cout << "CacheAlloator.h-insertInMMContainer, done inspecting." << std::endl;
 }
 
 /**
@@ -3656,7 +3656,7 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
                                     &searchTries, &mmContainer,
                                     &token](auto&& itr) {
     if (!itr) {
-      std::cout << "CacheAllocator-EvictionIterator is NULL" << std::endl;
+      //std::cout << "CacheAllocator-EvictionIterator is NULL" << std::endl;
       ++searchTries;
       (*stats_.evictionAttempts)[pid][cid].inc();
       return;
@@ -3712,10 +3712,10 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
           &toRecycle->asChainedItem().getParentItem(compressor_) == candidate) {
         mmContainer.remove(itr);
       }
-      std::cout << "CacheAllocator.h-getNextCandidate..."; 
-      mmContainer.inspectSieveList();
-      mmContainer.inspectHand();
-      std::cout << "CacheAllocator.h-getNextCandidate-eviction succeeds." << std::endl;
+      //std::cout << "CacheAllocator.h-getNextCandidate..." << std::endl; 
+      //mmContainer.inspectSieveList();
+      //mmContainer.inspectHand();
+      //std::cout << "CacheAllocator.h-getNextCandidate-eviction succeeds." << std::endl;
       return;
     }
   });
@@ -4241,10 +4241,10 @@ bool CacheAllocator<CacheTrait>::recordAccessInMMContainer(Item& item,
   bool recorded = mmContainer.recordAccess(item, mode);
 
   if (recorded) {
-	  std::cout << "CacheAllocator.h-recordAccessInMMContainer...";
-	  mmContainer.inspectSieveList();
-	  mmContainer.inspectHand();
-	  std::cout<<"CacheAlloator.h-recordAccessInMMContainer, done inspecting." << std::endl;
+	  //std::cout << "CacheAllocator.h-recordAccessInMMContainer..." << std::endl;
+	  //mmContainer.inspectSieveList();
+	  //mmContainer.inspectHand();
+	  //std::cout<<"CacheAlloator.h-recordAccessInMMContainer, done inspecting." << std::endl;
   }
 
   return recorded; 

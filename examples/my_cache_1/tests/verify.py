@@ -5,10 +5,6 @@ import re
 run_path = "build/testSieve"
 uniform_obj_size = 1000000
 
-section_start = "CacheAllocator.h-insertInMMContainer...after inserting...Inspecting Free List:"
-insert_end = "CacheAlloator.h-insertInMMContainer...done inspecting."
-record_end = "CacheAlloator.h-recordAccessInMMContainer, done inspecting."
-section_end = "done inspecting." 
 
 TRACES = ["qweqwert",
         "aabbc",
@@ -287,6 +283,136 @@ def check_hand():
     print("passed")
 
 
+def check_CacheState():
+    print("Checking Cache State",end="...")
+
+
+    Hand_null_s = "Hand is null"
+    REGEX_CacheState = r'(?P<id>\d+), visited:\s*(?P<visited>\d)'
+
+    CacheLib_section_start = "SieveList.h-Inspecting Sieve List: "
+    CacheLib_section_end = "SieveList.h-done inspecting."   
+
+    with open(ap.out,"r") as f:
+        my_stdout = f.read().split("\n") 
+
+    mine = []
+    i = 0
+    while i < (len(my_stdout)):
+        line = my_stdout[i]
+
+        if CacheLib_section_start in line:
+            j = i + 1
+            res = []
+            line = my_stdout[j]
+            while CacheLib_section_end not in line:
+                m = re.search(REGEX_CacheState,line)
+                if not m:
+                    if Hand_null_s in line:
+                        res.append(Hand_null_s)
+                        break
+                    else:
+                        print("my_stdout[{}]:{}".format(i,line))
+                        exit(0)
+                else:
+                    obj = m.group("id")
+                    visited = m.group("visited")
+                    res.append((int(obj),int(visited)))
+                
+                j += 1
+                line = my_stdout[j]
+
+            i = j
+            mine.append(res)
+        else:
+            i += 1
+   
+    with open(ap.ref,"r") as f:
+        ref_stdout = f.read().split("\n")
+
+    libCacheSim_section_start = "Inspecting sieve_cache."
+    libCacheSim_section_end = "done inspecting."
+
+    idx2req = dict()
+    refs = []
+    i = 0
+    while i < (len(ref_stdout)):
+        line = ref_stdout[i]
+
+        if libCacheSim_section_start in line:
+            j = i + 1
+            res = []
+            line = ref_stdout[j]
+            while libCacheSim_section_end not in line:
+                m = re.search(REGEX_CacheState,line)
+                if not m:
+                    if Hand_null_s in line:
+                        res.append(Hand_null_s)
+                        break
+                    else:
+                        print("Can't find pattern. ref_stdout[{}]:{}".format(j,line))
+                        exit(0)
+                else:
+                    obj = m.group("id")
+                    visited = m.group("visited")
+                    res.append((int(obj),int(visited)))
+                
+                j += 1
+                line = ref_stdout[j]
+
+            i = j
+            refs.append(res) 
+        else:
+            i += 1
+
+
+    idx = 0
+    for line in ref_stdout:
+        if "req clcok_time" in line:
+            idx2req[idx] = line 
+            idx += 1
+     
+    print(len(mine)) 
+    print(len(refs))
+    
+    for i in range(min(len(refs),len(mine))):
+        ref_sec,my_sec = refs[i],mine[i] 
+        
+        if len(ref_sec) != len(my_sec):
+            print("lengths differ")
+            print("ref",ref_sec)
+            print("my",my_sec)
+            exit(0)
+
+        for j in range(len(ref_sec)):
+            ref,my = ref_sec[j],my_sec[j]
+            if ref[0]!=my[0] or ref[1]!=my[1]:
+                print("At operation {}: {}".format(i,idx2req[i]))
+                print("Before:",idx2req[i-1])
+                print("ref",ref)
+                print("my",my)
+                print("ref",ref_sec)
+                print("my",my_sec)
+                exit(0)
+            
+def check_evicted_objs_all():
+    
+    print("Checking evicted objects from files",end="...")
+
+    i = 0
+
+    with open(ap.out, 'r') as out_f, open(ap.ref, 'r') as ref_f:
+
+        for out, ref in zip(out_f, ref_f):
+            if out != ref:
+                print("Difference found at line {}, out: {}, ref: {}".format(i,out,ref))
+            
+            i += 1
+    
+    print("passed")
+
+
+
 if __name__=="__main__":
     
     p = argparse.ArgumentParser()
@@ -303,8 +429,12 @@ if __name__=="__main__":
 
     if ap.type == "checkEvicted":
         check_evicted_objs()
+    elif ap.type == "checkEvictedAll":
+        check_evicted_objs_all()
     elif ap.type == "checkHand":
         check_hand()
+    elif ap.type == "checkState":
+        check_CacheState()
     elif ap.type == "traces":
         if ap.traces and ap.ans:
             traces = ap.traces.split("-")

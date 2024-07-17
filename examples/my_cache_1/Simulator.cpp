@@ -456,11 +456,13 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	
 	uint32_t start_time = -1;
 	bool should_trunc_file = true;	
-	
+        
+	/*	
 	int stop_reb_reqs_threshold = get_stop_reb_reqs_threshold(reader->trace_path);
 	std::cout << "Reqs threshold to stop slab rebalancing: " << stop_reb_reqs_threshold << std::endl;
 	if (stop_reb_reqs_threshold < 0) return;
 	bool reb_stopped = false;
+	*/
 
 	int print_mod = 1000000;
 	if ((strstr(reader->trace_path, "w06.oracleGeneral.bin.zst")==nullptr) && 
@@ -505,7 +507,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
 				continue;
 			}
-			if (!put(key,prefix, uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
+			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
 		}
 		num_reqs += 1;
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
