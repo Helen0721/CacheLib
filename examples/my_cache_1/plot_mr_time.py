@@ -264,6 +264,7 @@ def handle_mr():
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
 
                 if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+                if rebalance_strategy == "LruTailAge" and algo=="Sieve": continue
 
                 if ap.organized=="no": 
                     output_file =os.path.join(ap.output_folder,ap.name + "_" + algo + "_" +cache_size)
@@ -315,7 +316,8 @@ def handle_stopReb():
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
 
                 if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
-
+                if rebalance_strategy == "LruTailAge" and algo=="Sieve": continue
+                
                 output_file = os.path.join(ap.output_folder,rebalance_strategy,
                             "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
                             )            
@@ -375,6 +377,7 @@ def handle_CacheStats():
             for (j,rebalance_strategy) in enumerate(rebalance_strategies):
 
                 if rebalance_strategy=="MarginalHits" and algo!="Lru2Q": continue
+                if rebalance_strategy == "LruTailAge" and algo=="Sieve": continue
                 
                 CacheStats_file = os.path.join(ap.output_folder,rebalance_strategy,
                             "CacheStats_{}_{}_{}_default".format(algo,cache_size,rebalance_strategy)
