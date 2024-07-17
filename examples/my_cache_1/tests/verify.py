@@ -1,6 +1,6 @@
 import argparse
 import subprocess
-
+import re
 
 run_path = "build/testSieve"
 uniform_obj_size = 1000000
@@ -43,7 +43,7 @@ libCacheSim_Hand_s = "hand: "
 CacheLib_Hand_s = "hand: "
 
 #1665453729,0x7f45a83a6e68, visited: 1. prev: 1666654178, 0x7f45a83c02b0, next: 1668757991, 0x7f45a838da20
-REGEX_CacheLib = r'(?P<id>\d+),.*visited:\s*(?P<visited>\d)'
+REGEX_Hand = r'hand: (?P<id>\d+),.*visited:\s*(?P<visited>\d)'
 
 
 def run_one_trace(trace,obj_size,open_mode="w"):
@@ -220,6 +220,8 @@ def check_evicted_objs():
 
     print("passed")
 
+
+
 def check_hand():
     print("Checking Hand",end="...")
     with open(ap.out,"r") as f:
@@ -230,30 +232,58 @@ def check_hand():
 
     refs = []
     for line in ref_stdout:
-        if libCacheSim_Hand_s not in line: continue
-        parts = line.split(libCacheSim_Hand_s)
-        obj = parts[-1].split("...")[0] 
-        if "null" in obj: refs.append(None)
-        else: refs.append(int(obj))
+        if libCacheSim_Hand_s not in line: continue 
+        
+        if "null" in line: 
+            refs.append((None,None))
+        else:
+            m = re.search(REGEX_Hand,line)
+            if not m: 
+                print(line)
+                exit(0)
+            obj = m.group("id")
+            visited = m.group("visited")
+            refs.append((int(obj),int(visited)))
 
     mine = []
     
     
     for line in my_stdout:
         if CacheLib_Hand_s not in line: continue
-        parts = line.split(CacheLib_Hand_s)
-        obj = parts[-1].split("...")[0]
-        if "null" in obj: mine.append(None)
-        else: mine.append(int(obj))
         
+        if "null" in line: 
+            mine.append((None,None))
+        else:
+            m = re.search(REGEX_Hand,line)
+            if not m: 
+                print(line)
+                exit(0)
+            obj = m.group("id")
+            visited = m.group("visited")
+            mine.append((int(obj),int(visited)))
+    
+    with open("ref-c","w") as f:
+        for L in refs:
+            f.write(str(L))
+            f.write("\n")
+
+    with open("out-c","w") as f:
+        for L in mine:
+            f.write(str(L))
+            f.write("\n")
+
     for i in range(min(len(refs),len(mine))):
-        if refs[i] != mine[i]:
+
+        if refs[i][0]!=mine[i][0] or refs[i][1]!=mine[i][1]:            
             print("{}th hand doesn't match.".format(i+1))
             print("len(refs):",len(refs))
             print("len(mine)",len(mine))
             print("ref:{},mine:{}".format(refs[i],mine[i]))
-            exit(0)
+            
 
+            exit(0)
+    
+    
     print("passed")
 
 
