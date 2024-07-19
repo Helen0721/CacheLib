@@ -191,7 +191,9 @@ def collect_cnts(file,reb,algo):
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
  
-    res = {"total_attempts": stdout_str.count(START_REB_s),
+    res = {
+            "Eviction Algo": algo,
+            "total_attempts": stdout_str.count(START_REB_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
           }
@@ -281,7 +283,7 @@ def collect_into_csv():
     # {'total_attempts': 431, 'StrtgyTriggered': 165, 'TriggeredByFailAlloc': 1, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 8, 'invalid class id': 0, 'rDHpS < vPDHpS': 0, 'improv.< minDiff': 0, 'improv.< diffRatio * vPDHpS': 256, 'Final Miss Ratio': 0.06691199999999997, 'rebParams': {'minDiff': '90', 'diffRatio': '0.250000', 'minSlabs': '1', 'numSlabsFreeMem': '1', 'minLTA': '0', 'maxLTA': '0'}} 
 
     header = cnt_res.keys()  
-    print("header:",header)
+    #print("header:",header)
     
     import csv
     with open(csv_out_file_name,mode='w',newline='') as csv_out_f:
