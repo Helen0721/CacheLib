@@ -64,7 +64,7 @@ for (( i=0; i<num_rebs; i++)); do
     		# Define the trace file name
     		TRACE_FILE=${trace_paths[j]}
     		NAME=${names[j]}
-
+		#./run.sh  metakvt1 TinyLFU HitsPerSlab 1,40,1,0.05,2,0,0 output/MetaKVT2_reb_2 1GB
 		python3 generate_output.py --tracepath="$TRACE_FILE" --name="$NAME" --algos="$3" --reb="$REB" --rebParams="$5" --outputdir="$6" --cache_sizes="$7" --suffix="$8"		
 
 	done

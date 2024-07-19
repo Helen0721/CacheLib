@@ -66,16 +66,17 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     if ap.suffix:
         run_path += "_" + ap.suffix
         out_file += "_" + ap.suffix
-        cacheStats_path += "_" + ap.suffix
+        #cacheStats_path += "_" + ap.suffix
+        cacheStats_path = None
 
-    print("run path:", run_path,", output file:",out_file, ", CacheStats file", cacheStats_path)
+    print("run path:", run_path,", output file:",out_file)
     
     #if ap.uniform=="yes":
     #    if os.path.isfile(out_file):
     #        print(out_file,"already exists")
     #        return
 
-    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams,cacheStats_path]
+    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
