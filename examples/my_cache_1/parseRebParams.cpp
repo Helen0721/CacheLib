@@ -75,9 +75,8 @@ void parseParams_HitsPerSlab(char *HPSParams,int *interval,int *minDiff,unsigned
 	else if (i==6) *maxLruTailAge = std::stoi(token);
 	i += 1;	
   }
-  //printf("HPS-parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
-  //		  *interval, *minDiff, *minSlabs, *diffRatio, *numSlabsFreeMem, *minLruTailAge, *maxLruTailAge);
-
+  printf("HPS-parsed params...interval: %d,minDiff:%d, minSlabs:%d,diffRatio:%f,numSlabsFreeMem:%d,minLruTailAge:%d,maxLruTailAge:%d...",
+  		  *interval, *minDiff, *minSlabs, *diffRatio, *numSlabsFreeMem, *minLruTailAge, *maxLruTailAge);
 }
 
 
