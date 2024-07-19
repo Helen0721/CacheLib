@@ -277,7 +277,7 @@ def collect_into_csv():
 
             ALL_RES[output_file] = cnt_res 
 
-    csv_out_file_name = os.path.join(ap.output_folder,"{}.csv".format(reb))
+    csv_out_file_name = os.path.join(ap.output_folder,"{}_{}_{}.csv".format(reb,ap.algos,cache_size))
     # {'total_attempts': 431, 'StrtgyTriggered': 165, 'TriggeredByFailAlloc': 1, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 8, 'invalid class id': 0, 'rDHpS < vPDHpS': 0, 'improv.< minDiff': 0, 'improv.< diffRatio * vPDHpS': 256, 'Final Miss Ratio': 0.06691199999999997, 'rebParams': {'minDiff': '90', 'diffRatio': '0.250000', 'minSlabs': '1', 'numSlabsFreeMem': '1', 'minLTA': '0', 'maxLTA': '0'}} 
 
     header = cnt_res.keys()  
@@ -292,7 +292,8 @@ def collect_into_csv():
         for out_fname,res_for_file in ALL_RES.items():
             vals = [str(x) for x in res_for_file.values()]
             csv_writer.writerow(vals)
-            
+    
+    print("output saved to",csv_out_file_name)
     
 
     
@@ -305,7 +306,7 @@ if __name__=="__main__":
 
     p.add_argument("--rebalance_strategies",type=str,default="all")
     p.add_argument("--cache_sizes",type=str,default="all")
-    p.add_argument("--algo",type=str,default="all")
+    p.add_argument("--algos",type=str,default="all")
     
 
     ap = p.parse_args()  
@@ -322,10 +323,10 @@ if __name__=="__main__":
         rebalance_strategies = ap.rebalance_strategies.split(",")
         json_file_path = os.path.join(ap.output_folder,"{}.json".format("_".join(rebalance_strategies)))
 
-    if ap.algo=="all":
+    if ap.algos=="all":
         algos = ALGOS
     else:
-        algos = [ap.algo]
+        algos = ap.algos.split(",")
 
     if ap.type=="json":
 
