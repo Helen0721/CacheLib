@@ -18,7 +18,6 @@ project (cachelib-cmake-test-project VERSION 0.1)
 
 find_package(cachelib CONFIG REQUIRED)
 
-
 add_executable(my_cache_Sieve main.cpp parseRebParams.cpp Simulator.cpp Reader/BinaryReader.cpp Reader/ZstdReader.cpp)
 
 target_link_libraries(my_cache_Sieve cachelib)

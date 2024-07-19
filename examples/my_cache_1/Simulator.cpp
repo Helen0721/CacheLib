@@ -21,7 +21,6 @@
 namespace facebook {
 namespace cachelib_examples {
 
-
 using Cache = cachelib::SieveAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
