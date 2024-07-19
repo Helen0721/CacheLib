@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /disk/CacheLib/examples/my_cache_1/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/my_cache_Lru.dir/all
+all: CMakeFiles/my_cache_Sieve.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +71,34 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/my_cache_Lru.dir/clean
+clean: CMakeFiles/my_cache_Sieve.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/my_cache_Lru.dir
+# Target rules for target CMakeFiles/my_cache_Sieve.dir
 
 # All Build rule for target.
-CMakeFiles/my_cache_Lru.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru.dir/build.make CMakeFiles/my_cache_Lru.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru.dir/build.make CMakeFiles/my_cache_Lru.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib/examples/my_cache_1/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target my_cache_Lru"
-.PHONY : CMakeFiles/my_cache_Lru.dir/all
+CMakeFiles/my_cache_Sieve.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Sieve.dir/build.make CMakeFiles/my_cache_Sieve.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Sieve.dir/build.make CMakeFiles/my_cache_Sieve.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/disk/CacheLib/examples/my_cache_1/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target my_cache_Sieve"
+.PHONY : CMakeFiles/my_cache_Sieve.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/my_cache_Lru.dir/rule: cmake_check_build_system
+CMakeFiles/my_cache_Sieve.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_cache_Lru.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/my_cache_Sieve.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/examples/my_cache_1/build/CMakeFiles 0
-.PHONY : CMakeFiles/my_cache_Lru.dir/rule
+.PHONY : CMakeFiles/my_cache_Sieve.dir/rule
 
 # Convenience name for target.
-my_cache_Lru: CMakeFiles/my_cache_Lru.dir/rule
-.PHONY : my_cache_Lru
+my_cache_Sieve: CMakeFiles/my_cache_Sieve.dir/rule
+.PHONY : my_cache_Sieve
 
 # clean rule for target.
-CMakeFiles/my_cache_Lru.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Lru.dir/build.make CMakeFiles/my_cache_Lru.dir/clean
-.PHONY : CMakeFiles/my_cache_Lru.dir/clean
+CMakeFiles/my_cache_Sieve.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_cache_Sieve.dir/build.make CMakeFiles/my_cache_Sieve.dir/clean
+.PHONY : CMakeFiles/my_cache_Sieve.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
