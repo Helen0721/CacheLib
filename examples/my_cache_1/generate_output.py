@@ -66,7 +66,8 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     if ap.suffix:
         run_path += "_" + ap.suffix
         out_file += "_" + ap.suffix
-        cacheStats_path += "_" + ap.suffix
+        #cacheStats_path += "_" + ap.suffix
+        cacheStats_path = None
 
     print("run path:", run_path,", output file:",out_file)
     
