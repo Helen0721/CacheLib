@@ -293,7 +293,8 @@ def collect_into_csv():
         
         for out_fname,res_for_file in ALL_RES.items():
             vals = [str(x) for x in res_for_file.values()]
-            csv_writer.writerow(vals)
+            print(out_fname,vals)
+           # csv_writer.writerow(vals)
     
     print("output saved to",csv_out_file_name)
     
