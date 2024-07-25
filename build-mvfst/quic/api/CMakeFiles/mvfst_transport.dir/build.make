@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/api/CMakeFiles/mvfst_transport.dir/depend.make
@@ -70,74 +70,74 @@ include quic/api/CMakeFiles/mvfst_transport.dir/progress.make
 include quic/api/CMakeFiles/mvfst_transport.dir/flags.make
 
 quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/flags.make
-quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp
+quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp
 quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o -MF CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o.d -o CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o -MF CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o.d -o CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp
 
 quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp > CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp > CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.i
 
 quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp -o CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.cpp -o CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.s
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/flags.make
-quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp
+quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp
 quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp > CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp > CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.i
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp -o CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.cpp -o CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.s
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/flags.make
-quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp
+quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp
 quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp > CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp > CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.i
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp -o CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.cpp -o CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.s
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/flags.make
-quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp
+quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp > CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp > CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.i
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp -o CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.cpp -o CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.s
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/flags.make
-quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp
+quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o: quic/api/CMakeFiles/mvfst_transport.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o -MF CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o.d -o CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp > CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp > CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.i
 
 quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp -o CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.cpp -o CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.s
 
 # Object files for target mvfst_transport
 mvfst_transport_OBJECTS = \
@@ -185,8 +185,8 @@ quic/api/libmvfst_transport.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/api/libmvfst_transport.so.0: quic/common/libmvfst_bufutil.so.0
 quic/api/libmvfst_transport.so.0: quic/libmvfst_constants.so.0
 quic/api/libmvfst_transport.so.0: quic/libmvfst_exception.so.0
-quic/api/libmvfst_transport.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
-quic/api/libmvfst_transport.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/api/libmvfst_transport.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/api/libmvfst_transport.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -194,9 +194,9 @@ quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.74.0
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
-quic/api/libmvfst_transport.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/api/libmvfst_transport.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/api/libmvfst_transport.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/api/libmvfst_transport.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
@@ -208,16 +208,16 @@ quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
-quic/api/libmvfst_transport.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/api/libmvfst_transport.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
-quic/api/libmvfst_transport.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/api/libmvfst_transport.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/api/libmvfst_transport.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/api/libmvfst_transport.so.0: quic/api/CMakeFiles/mvfst_transport.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libmvfst_transport.so"
-	cd /disk/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_transport.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_transport.so.0 libmvfst_transport.so.0 libmvfst_transport.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libmvfst_transport.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_transport.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_transport.so.0 libmvfst_transport.so.0 libmvfst_transport.so
 
 quic/api/libmvfst_transport.so: quic/api/libmvfst_transport.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/api/libmvfst_transport.so
@@ -227,10 +227,10 @@ quic/api/CMakeFiles/mvfst_transport.dir/build: quic/api/libmvfst_transport.so
 .PHONY : quic/api/CMakeFiles/mvfst_transport.dir/build
 
 quic/api/CMakeFiles/mvfst_transport.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_transport.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_transport.dir/cmake_clean.cmake
 .PHONY : quic/api/CMakeFiles/mvfst_transport.dir/clean
 
 quic/api/CMakeFiles/mvfst_transport.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/api /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/api /disk/CacheLib/build-mvfst/quic/api/CMakeFiles/mvfst_transport.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/api /mnt/cfs/CacheLib/build-mvfst/quic/api/CMakeFiles/mvfst_transport.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/api/CMakeFiles/mvfst_transport.dir/depend
 

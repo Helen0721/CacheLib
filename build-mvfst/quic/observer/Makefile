@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/observer//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/observer//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/observer/CMakeFiles/mvfst_observer.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/CMakeFiles/mvfst_observer.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/observer/CMakeFiles/mvfst_observer.dir/rule
 .PHONY : quic/observer/CMakeFiles/mvfst_observer.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_observer: quic/observer/CMakeFiles/mvfst_observer.dir/rule
 
 # fast build rule for target.
 mvfst_observer/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/build
 .PHONY : mvfst_observer/fast
 
 SocketObserverInterface.o: SocketObserverInterface.cpp.o
@@ -180,7 +180,7 @@ SocketObserverInterface.o: SocketObserverInterface.cpp.o
 
 # target to build an object file
 SocketObserverInterface.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o
 .PHONY : SocketObserverInterface.cpp.o
 
 SocketObserverInterface.i: SocketObserverInterface.cpp.i
@@ -188,7 +188,7 @@ SocketObserverInterface.i: SocketObserverInterface.cpp.i
 
 # target to preprocess a source file
 SocketObserverInterface.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.i
 .PHONY : SocketObserverInterface.cpp.i
 
 SocketObserverInterface.s: SocketObserverInterface.cpp.s
@@ -196,7 +196,7 @@ SocketObserverInterface.s: SocketObserverInterface.cpp.s
 
 # target to generate assembly for a file
 SocketObserverInterface.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/observer/CMakeFiles/mvfst_observer.dir/build.make quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.s
 .PHONY : SocketObserverInterface.cpp.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

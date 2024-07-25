@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/loss//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/loss//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/loss/CMakeFiles/mvfst_loss.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/CMakeFiles/mvfst_loss.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/loss/CMakeFiles/mvfst_loss.dir/rule
 .PHONY : quic/loss/CMakeFiles/mvfst_loss.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_loss: quic/loss/CMakeFiles/mvfst_loss.dir/rule
 
 # fast build rule for target.
 mvfst_loss/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/build
 .PHONY : mvfst_loss/fast
 
 QuicLossFunctions.o: QuicLossFunctions.cpp.o
@@ -180,7 +180,7 @@ QuicLossFunctions.o: QuicLossFunctions.cpp.o
 
 # target to build an object file
 QuicLossFunctions.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/QuicLossFunctions.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/QuicLossFunctions.cpp.o
 .PHONY : QuicLossFunctions.cpp.o
 
 QuicLossFunctions.i: QuicLossFunctions.cpp.i
@@ -188,7 +188,7 @@ QuicLossFunctions.i: QuicLossFunctions.cpp.i
 
 # target to preprocess a source file
 QuicLossFunctions.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/QuicLossFunctions.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/QuicLossFunctions.cpp.i
 .PHONY : QuicLossFunctions.cpp.i
 
 QuicLossFunctions.s: QuicLossFunctions.cpp.s
@@ -196,7 +196,7 @@ QuicLossFunctions.s: QuicLossFunctions.cpp.s
 
 # target to generate assembly for a file
 QuicLossFunctions.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/QuicLossFunctions.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/loss/CMakeFiles/mvfst_loss.dir/build.make quic/loss/CMakeFiles/mvfst_loss.dir/QuicLossFunctions.cpp.s
 .PHONY : QuicLossFunctions.cpp.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

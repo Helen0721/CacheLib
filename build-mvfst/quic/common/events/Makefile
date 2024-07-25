@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/common/events//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/common/events//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/common/events/CMakeFiles/mvfst_events.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/CMakeFiles/mvfst_events.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/common/events/CMakeFiles/mvfst_events.dir/rule
 .PHONY : quic/common/events/CMakeFiles/mvfst_events.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_events: quic/common/events/CMakeFiles/mvfst_events.dir/rule
 
 # fast build rule for target.
 mvfst_events/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/build
 .PHONY : mvfst_events/fast
 
 FollyQuicEventBase.o: FollyQuicEventBase.cpp.o
@@ -180,7 +180,7 @@ FollyQuicEventBase.o: FollyQuicEventBase.cpp.o
 
 # target to build an object file
 FollyQuicEventBase.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/FollyQuicEventBase.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/FollyQuicEventBase.cpp.o
 .PHONY : FollyQuicEventBase.cpp.o
 
 FollyQuicEventBase.i: FollyQuicEventBase.cpp.i
@@ -188,7 +188,7 @@ FollyQuicEventBase.i: FollyQuicEventBase.cpp.i
 
 # target to preprocess a source file
 FollyQuicEventBase.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/FollyQuicEventBase.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/FollyQuicEventBase.cpp.i
 .PHONY : FollyQuicEventBase.cpp.i
 
 FollyQuicEventBase.s: FollyQuicEventBase.cpp.s
@@ -196,7 +196,7 @@ FollyQuicEventBase.s: FollyQuicEventBase.cpp.s
 
 # target to generate assembly for a file
 FollyQuicEventBase.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/FollyQuicEventBase.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/common/events/CMakeFiles/mvfst_events.dir/build.make quic/common/events/CMakeFiles/mvfst_events.dir/FollyQuicEventBase.cpp.s
 .PHONY : FollyQuicEventBase.cpp.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

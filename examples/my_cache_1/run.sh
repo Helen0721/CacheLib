@@ -54,7 +54,11 @@ fi
 num_traces=${#trace_paths[@]}
 num_rebs=${#rebs[@]}
 
+BASE="/disk/CacheLib/examples/my_cache_1"
+cd $BASE;
 
+PWD=$(pwd)
+echo $PWD
 
 # Loop through the range of $ from 80 to 106
 for (( i=0; i<num_rebs; i++)); do

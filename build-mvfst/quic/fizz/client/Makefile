@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/fizz/client//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/fizz/client//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/rule
 .PHONY : quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_fizz_client: quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/rule
 
 # fast build rule for target.
 mvfst_fizz_client/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build
 .PHONY : mvfst_fizz_client/fast
 
 handshake/FizzClientHandshake.o: handshake/FizzClientHandshake.cpp.o
@@ -180,7 +180,7 @@ handshake/FizzClientHandshake.o: handshake/FizzClientHandshake.cpp.o
 
 # target to build an object file
 handshake/FizzClientHandshake.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientHandshake.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientHandshake.cpp.o
 .PHONY : handshake/FizzClientHandshake.cpp.o
 
 handshake/FizzClientHandshake.i: handshake/FizzClientHandshake.cpp.i
@@ -188,7 +188,7 @@ handshake/FizzClientHandshake.i: handshake/FizzClientHandshake.cpp.i
 
 # target to preprocess a source file
 handshake/FizzClientHandshake.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientHandshake.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientHandshake.cpp.i
 .PHONY : handshake/FizzClientHandshake.cpp.i
 
 handshake/FizzClientHandshake.s: handshake/FizzClientHandshake.cpp.s
@@ -196,7 +196,7 @@ handshake/FizzClientHandshake.s: handshake/FizzClientHandshake.cpp.s
 
 # target to generate assembly for a file
 handshake/FizzClientHandshake.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientHandshake.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientHandshake.cpp.s
 .PHONY : handshake/FizzClientHandshake.cpp.s
 
 handshake/FizzClientQuicHandshakeContext.o: handshake/FizzClientQuicHandshakeContext.cpp.o
@@ -204,7 +204,7 @@ handshake/FizzClientQuicHandshakeContext.o: handshake/FizzClientQuicHandshakeCon
 
 # target to build an object file
 handshake/FizzClientQuicHandshakeContext.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientQuicHandshakeContext.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientQuicHandshakeContext.cpp.o
 .PHONY : handshake/FizzClientQuicHandshakeContext.cpp.o
 
 handshake/FizzClientQuicHandshakeContext.i: handshake/FizzClientQuicHandshakeContext.cpp.i
@@ -212,7 +212,7 @@ handshake/FizzClientQuicHandshakeContext.i: handshake/FizzClientQuicHandshakeCon
 
 # target to preprocess a source file
 handshake/FizzClientQuicHandshakeContext.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientQuicHandshakeContext.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientQuicHandshakeContext.cpp.i
 .PHONY : handshake/FizzClientQuicHandshakeContext.cpp.i
 
 handshake/FizzClientQuicHandshakeContext.s: handshake/FizzClientQuicHandshakeContext.cpp.s
@@ -220,7 +220,7 @@ handshake/FizzClientQuicHandshakeContext.s: handshake/FizzClientQuicHandshakeCon
 
 # target to generate assembly for a file
 handshake/FizzClientQuicHandshakeContext.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientQuicHandshakeContext.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/build.make quic/fizz/client/CMakeFiles/mvfst_fizz_client.dir/handshake/FizzClientQuicHandshakeContext.cpp.s
 .PHONY : handshake/FizzClientQuicHandshakeContext.cpp.s
 
 # Help Target
@@ -253,6 +253,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

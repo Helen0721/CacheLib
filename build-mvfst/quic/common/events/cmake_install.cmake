@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/mvfst/quic/common/events
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/events
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,23 +43,23 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/common/events/FollyQuicEventBase.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/events/FollyQuicEventBase.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/common/events/HighResQuicTimer.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/events/HighResQuicTimer.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/common/events/LibevQuicEventBase.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/events/LibevQuicEventBase.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/common/events/QuicEventBase.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/events/QuicEventBase.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/common/events/QuicTimer.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/events/QuicTimer.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -69,12 +69,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/common/events/libmvfst_events.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/common/events/libmvfst_events.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so.0"
-         OLD_RPATH "/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so.0")
@@ -89,12 +89,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/common/events/libmvfst_events.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/common/events/libmvfst_events.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so"
-         OLD_RPATH "/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_events.so")

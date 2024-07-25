@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/logging//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/logging//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/logging/CMakeFiles/mvfst_qlogger.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/CMakeFiles/mvfst_qlogger.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/logging/CMakeFiles/mvfst_qlogger.dir/rule
 .PHONY : quic/logging/CMakeFiles/mvfst_qlogger.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_qlogger: quic/logging/CMakeFiles/mvfst_qlogger.dir/rule
 
 # fast build rule for target.
 mvfst_qlogger/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/build
 .PHONY : mvfst_qlogger/fast
 
 BaseQLogger.o: BaseQLogger.cpp.o
@@ -180,7 +180,7 @@ BaseQLogger.o: BaseQLogger.cpp.o
 
 # target to build an object file
 BaseQLogger.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o
 .PHONY : BaseQLogger.cpp.o
 
 BaseQLogger.i: BaseQLogger.cpp.i
@@ -188,7 +188,7 @@ BaseQLogger.i: BaseQLogger.cpp.i
 
 # target to preprocess a source file
 BaseQLogger.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.i
 .PHONY : BaseQLogger.cpp.i
 
 BaseQLogger.s: BaseQLogger.cpp.s
@@ -196,7 +196,7 @@ BaseQLogger.s: BaseQLogger.cpp.s
 
 # target to generate assembly for a file
 BaseQLogger.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.s
 .PHONY : BaseQLogger.cpp.s
 
 FileQLogger.o: FileQLogger.cpp.o
@@ -204,7 +204,7 @@ FileQLogger.o: FileQLogger.cpp.o
 
 # target to build an object file
 FileQLogger.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o
 .PHONY : FileQLogger.cpp.o
 
 FileQLogger.i: FileQLogger.cpp.i
@@ -212,7 +212,7 @@ FileQLogger.i: FileQLogger.cpp.i
 
 # target to preprocess a source file
 FileQLogger.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.i
 .PHONY : FileQLogger.cpp.i
 
 FileQLogger.s: FileQLogger.cpp.s
@@ -220,7 +220,7 @@ FileQLogger.s: FileQLogger.cpp.s
 
 # target to generate assembly for a file
 FileQLogger.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.s
 .PHONY : FileQLogger.cpp.s
 
 QLogger.o: QLogger.cpp.o
@@ -228,7 +228,7 @@ QLogger.o: QLogger.cpp.o
 
 # target to build an object file
 QLogger.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o
 .PHONY : QLogger.cpp.o
 
 QLogger.i: QLogger.cpp.i
@@ -236,7 +236,7 @@ QLogger.i: QLogger.cpp.i
 
 # target to preprocess a source file
 QLogger.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.i
 .PHONY : QLogger.cpp.i
 
 QLogger.s: QLogger.cpp.s
@@ -244,7 +244,7 @@ QLogger.s: QLogger.cpp.s
 
 # target to generate assembly for a file
 QLogger.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.s
 .PHONY : QLogger.cpp.s
 
 QLoggerConstants.o: QLoggerConstants.cpp.o
@@ -252,7 +252,7 @@ QLoggerConstants.o: QLoggerConstants.cpp.o
 
 # target to build an object file
 QLoggerConstants.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o
 .PHONY : QLoggerConstants.cpp.o
 
 QLoggerConstants.i: QLoggerConstants.cpp.i
@@ -260,7 +260,7 @@ QLoggerConstants.i: QLoggerConstants.cpp.i
 
 # target to preprocess a source file
 QLoggerConstants.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.i
 .PHONY : QLoggerConstants.cpp.i
 
 QLoggerConstants.s: QLoggerConstants.cpp.s
@@ -268,7 +268,7 @@ QLoggerConstants.s: QLoggerConstants.cpp.s
 
 # target to generate assembly for a file
 QLoggerConstants.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.s
 .PHONY : QLoggerConstants.cpp.s
 
 QLoggerTypes.o: QLoggerTypes.cpp.o
@@ -276,7 +276,7 @@ QLoggerTypes.o: QLoggerTypes.cpp.o
 
 # target to build an object file
 QLoggerTypes.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o
 .PHONY : QLoggerTypes.cpp.o
 
 QLoggerTypes.i: QLoggerTypes.cpp.i
@@ -284,7 +284,7 @@ QLoggerTypes.i: QLoggerTypes.cpp.i
 
 # target to preprocess a source file
 QLoggerTypes.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.i
 .PHONY : QLoggerTypes.cpp.i
 
 QLoggerTypes.s: QLoggerTypes.cpp.s
@@ -292,7 +292,7 @@ QLoggerTypes.s: QLoggerTypes.cpp.s
 
 # target to generate assembly for a file
 QLoggerTypes.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/logging/CMakeFiles/mvfst_qlogger.dir/build.make quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.s
 .PHONY : QLoggerTypes.cpp.s
 
 # Help Target
@@ -334,6 +334,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

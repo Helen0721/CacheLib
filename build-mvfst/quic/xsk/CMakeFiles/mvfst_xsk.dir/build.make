@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/xsk/CMakeFiles/mvfst_xsk.dir/depend.make
@@ -70,88 +70,88 @@ include quic/xsk/CMakeFiles/mvfst_xsk.dir/progress.make
 include quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
-quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp
+quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp
 quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o -MF CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o -MF CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp > CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp > CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.i
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp -o CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/packet_utils.cpp -o CMakeFiles/mvfst_xsk.dir/packet_utils.cpp.s
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
-quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp
+quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp
 quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o -MF CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o -MF CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp > CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp > CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.i
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp -o CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/xsk_lib.cpp -o CMakeFiles/mvfst_xsk.dir/xsk_lib.cpp.s
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
-quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp
+quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp
 quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o -MF CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o -MF CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp > CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp > CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.i
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp -o CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/BaseXskContainer.cpp -o CMakeFiles/mvfst_xsk.dir/BaseXskContainer.cpp.s
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
-quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp
+quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp
 quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o -MF CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o -MF CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp > CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp > CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.i
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp -o CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/HashingXskContainer.cpp -o CMakeFiles/mvfst_xsk.dir/HashingXskContainer.cpp.s
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
-quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp
+quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp
 quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o -MF CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o -MF CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp > CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp > CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.i
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp -o CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/ThreadLocalXskContainer.cpp -o CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.s
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/flags.make
-quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp
+quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp
 quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o: quic/xsk/CMakeFiles/mvfst_xsk.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o -MF CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o -MF CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o.d -o CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_xsk.dir/XskSender.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp > CMakeFiles/mvfst_xsk.dir/XskSender.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp > CMakeFiles/mvfst_xsk.dir/XskSender.cpp.i
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_xsk.dir/XskSender.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp -o CMakeFiles/mvfst_xsk.dir/XskSender.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk/XskSender.cpp -o CMakeFiles/mvfst_xsk.dir/XskSender.cpp.s
 
 # Object files for target mvfst_xsk
 mvfst_xsk_OBJECTS = \
@@ -172,8 +172,8 @@ quic/xsk/libmvfst_xsk.so.0: quic/xsk/CMakeFiles/mvfst_xsk.dir/HashingXskContaine
 quic/xsk/libmvfst_xsk.so.0: quic/xsk/CMakeFiles/mvfst_xsk.dir/ThreadLocalXskContainer.cpp.o
 quic/xsk/libmvfst_xsk.so.0: quic/xsk/CMakeFiles/mvfst_xsk.dir/XskSender.cpp.o
 quic/xsk/libmvfst_xsk.so.0: quic/xsk/CMakeFiles/mvfst_xsk.dir/build.make
-quic/xsk/libmvfst_xsk.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
-quic/xsk/libmvfst_xsk.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/xsk/libmvfst_xsk.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/xsk/libmvfst_xsk.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -182,8 +182,8 @@ quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.74.0
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/xsk/libmvfst_xsk.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
-quic/xsk/libmvfst_xsk.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/xsk/libmvfst_xsk.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/xsk/libmvfst_xsk.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
@@ -191,7 +191,7 @@ quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/liblzma.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/liblz4.so
-quic/xsk/libmvfst_xsk.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/xsk/libmvfst_xsk.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libsnappy.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libdwarf.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
@@ -199,9 +199,9 @@ quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/xsk/libmvfst_xsk.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
 quic/xsk/libmvfst_xsk.so.0: quic/xsk/CMakeFiles/mvfst_xsk.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libmvfst_xsk.so"
-	cd /disk/CacheLib/build-mvfst/quic/xsk && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_xsk.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/xsk && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_xsk.so.0 libmvfst_xsk.so.0 libmvfst_xsk.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libmvfst_xsk.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_xsk.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_xsk.so.0 libmvfst_xsk.so.0 libmvfst_xsk.so
 
 quic/xsk/libmvfst_xsk.so: quic/xsk/libmvfst_xsk.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/xsk/libmvfst_xsk.so
@@ -211,10 +211,10 @@ quic/xsk/CMakeFiles/mvfst_xsk.dir/build: quic/xsk/libmvfst_xsk.so
 .PHONY : quic/xsk/CMakeFiles/mvfst_xsk.dir/build
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/xsk && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_xsk.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/xsk && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_xsk.dir/cmake_clean.cmake
 .PHONY : quic/xsk/CMakeFiles/mvfst_xsk.dir/clean
 
 quic/xsk/CMakeFiles/mvfst_xsk.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/xsk /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/xsk /disk/CacheLib/build-mvfst/quic/xsk/CMakeFiles/mvfst_xsk.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/xsk /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/xsk /mnt/cfs/CacheLib/build-mvfst/quic/xsk/CMakeFiles/mvfst_xsk.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/xsk/CMakeFiles/mvfst_xsk.dir/depend
 

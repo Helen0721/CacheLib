@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/depend.make
@@ -70,46 +70,46 @@ include quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/progress.mak
 include quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/flags.make
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/flags.make
-quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp
+quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o -MF CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o.d -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o -MF CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o.d -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp > CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp > CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.i
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocket.cpp -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocket.cpp.s
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/flags.make
-quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp
+quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o -MF CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o.d -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o -MF CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o.d -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp > CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp > CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.i
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/QuicAsyncUDPSocketImpl.cpp -o CMakeFiles/mvfst_async_udp_socket.dir/QuicAsyncUDPSocketImpl.cpp.s
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/flags.make
-quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp
+quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o -MF CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o.d -o CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o -MF CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o.d -o CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp > CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp > CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.i
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp -o CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket/FollyQuicAsyncUDPSocket.cpp -o CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.s
 
 # Object files for target mvfst_async_udp_socket
 mvfst_async_udp_socket_OBJECTS = \
@@ -125,8 +125,8 @@ quic/common/udpsocket/libmvfst_async_udp_socket.so.0: quic/common/udpsocket/CMak
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/FollyQuicAsyncUDPSocket.cpp.o
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/build.make
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: quic/common/events/libmvfst_events.so.0
-quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
-quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -135,8 +135,8 @@ quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
-quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
@@ -144,7 +144,7 @@ quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/liblzma.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/liblz4.so
-quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libsnappy.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libdwarf.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
@@ -152,9 +152,9 @@ quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
 quic/common/udpsocket/libmvfst_async_udp_socket.so.0: quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_async_udp_socket.so"
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_async_udp_socket.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_async_udp_socket.so.0 libmvfst_async_udp_socket.so.0 libmvfst_async_udp_socket.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_async_udp_socket.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_async_udp_socket.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_async_udp_socket.so.0 libmvfst_async_udp_socket.so.0 libmvfst_async_udp_socket.so
 
 quic/common/udpsocket/libmvfst_async_udp_socket.so: quic/common/udpsocket/libmvfst_async_udp_socket.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/common/udpsocket/libmvfst_async_udp_socket.so
@@ -164,10 +164,10 @@ quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/build: quic/common/u
 .PHONY : quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/build
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/common/udpsocket && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_async_udp_socket.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_async_udp_socket.dir/cmake_clean.cmake
 .PHONY : quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/clean
 
 quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/common/udpsocket /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/common/udpsocket /disk/CacheLib/build-mvfst/quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/udpsocket /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket /mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/common/udpsocket/CMakeFiles/mvfst_async_udp_socket.dir/depend
 

@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/mvfst/quic/happyeyeballs
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/happyeyeballs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/happyeyeballs" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/happyeyeballs/QuicHappyEyeballsFunctions.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/happyeyeballs" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/happyeyeballs/QuicHappyEyeballsFunctions.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -53,12 +53,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/happyeyeballs/libmvfst_happyeyeballs.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/happyeyeballs/libmvfst_happyeyeballs.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so.0"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/common/udpsocket:/disk/CacheLib/build-mvfst/quic/state:/disk/CacheLib/build-mvfst/quic/common/events:/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic/handshake:/disk/CacheLib/build-mvfst/quic/common:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket:/mnt/cfs/CacheLib/build-mvfst/quic/state:/mnt/cfs/CacheLib/build-mvfst/quic/common/events:/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic/handshake:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so.0")
@@ -73,12 +73,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/happyeyeballs/libmvfst_happyeyeballs.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/happyeyeballs/libmvfst_happyeyeballs.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/common/udpsocket:/disk/CacheLib/build-mvfst/quic/state:/disk/CacheLib/build-mvfst/quic/common/events:/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic/handshake:/disk/CacheLib/build-mvfst/quic/common:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket:/mnt/cfs/CacheLib/build-mvfst/quic/state:/mnt/cfs/CacheLib/build-mvfst/quic/common/events:/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic/handshake:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_happyeyeballs.so")

@@ -2,7 +2,7 @@
  * Code taken from https://github.com/1a1a11a/libCacheSim
  */
 
-#include "/disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.h"
+#include "ZstdReader.h"
 
 #include <assert.h>
 #include <errno.h>  // errno

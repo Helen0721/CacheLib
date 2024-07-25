@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/common/CMakeFiles/mvfst_transport_knobs.dir/depend.make
@@ -70,18 +70,18 @@ include quic/common/CMakeFiles/mvfst_transport_knobs.dir/progress.make
 include quic/common/CMakeFiles/mvfst_transport_knobs.dir/flags.make
 
 quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o: quic/common/CMakeFiles/mvfst_transport_knobs.dir/flags.make
-quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp
+quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp
 quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o: quic/common/CMakeFiles/mvfst_transport_knobs.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/common && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o -MF CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o.d -o CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o -MF CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o.d -o CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp
 
 quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/common && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp > CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp > CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.i
 
 quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/common && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp -o CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common/TransportKnobs.cpp -o CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.s
 
 # Object files for target mvfst_transport_knobs
 mvfst_transport_knobs_OBJECTS = \
@@ -93,11 +93,11 @@ mvfst_transport_knobs_EXTERNAL_OBJECTS =
 quic/common/libmvfst_transport_knobs.so.0: quic/common/CMakeFiles/mvfst_transport_knobs.dir/TransportKnobs.cpp.o
 quic/common/libmvfst_transport_knobs.so.0: quic/common/CMakeFiles/mvfst_transport_knobs.dir/build.make
 quic/common/libmvfst_transport_knobs.so.0: quic/libmvfst_constants.so.0
-quic/common/libmvfst_transport_knobs.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
-quic/common/libmvfst_transport_knobs.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/common/libmvfst_transport_knobs.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/common/libmvfst_transport_knobs.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/common/libmvfst_transport_knobs.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
-quic/common/libmvfst_transport_knobs.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/common/libmvfst_transport_knobs.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/common/libmvfst_transport_knobs.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
@@ -105,7 +105,7 @@ quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.s
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/liblzma.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/liblz4.so
-quic/common/libmvfst_transport_knobs.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/common/libmvfst_transport_knobs.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libsnappy.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libdwarf.so
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
@@ -120,9 +120,9 @@ quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libboost_sy
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/common/libmvfst_transport_knobs.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
 quic/common/libmvfst_transport_knobs.so.0: quic/common/CMakeFiles/mvfst_transport_knobs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmvfst_transport_knobs.so"
-	cd /disk/CacheLib/build-mvfst/quic/common && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_transport_knobs.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/common && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_transport_knobs.so.0 libmvfst_transport_knobs.so.0 libmvfst_transport_knobs.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmvfst_transport_knobs.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_transport_knobs.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_transport_knobs.so.0 libmvfst_transport_knobs.so.0 libmvfst_transport_knobs.so
 
 quic/common/libmvfst_transport_knobs.so: quic/common/libmvfst_transport_knobs.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/common/libmvfst_transport_knobs.so
@@ -132,10 +132,10 @@ quic/common/CMakeFiles/mvfst_transport_knobs.dir/build: quic/common/libmvfst_tra
 .PHONY : quic/common/CMakeFiles/mvfst_transport_knobs.dir/build
 
 quic/common/CMakeFiles/mvfst_transport_knobs.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/common && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_transport_knobs.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/common && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_transport_knobs.dir/cmake_clean.cmake
 .PHONY : quic/common/CMakeFiles/mvfst_transport_knobs.dir/clean
 
 quic/common/CMakeFiles/mvfst_transport_knobs.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/common /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/common /disk/CacheLib/build-mvfst/quic/common/CMakeFiles/mvfst_transport_knobs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/common /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/common /mnt/cfs/CacheLib/build-mvfst/quic/common/CMakeFiles/mvfst_transport_knobs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/common/CMakeFiles/mvfst_transport_knobs.dir/depend
 

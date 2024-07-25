@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/fizz/handshake//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/fizz/handshake//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/rule
 .PHONY : quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_fizz_handshake: quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/ru
 
 # fast build rule for target.
 mvfst_fizz_handshake/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build
 .PHONY : mvfst_fizz_handshake/fast
 
 FizzBridge.o: FizzBridge.cpp.o
@@ -180,7 +180,7 @@ FizzBridge.o: FizzBridge.cpp.o
 
 # target to build an object file
 FizzBridge.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzBridge.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzBridge.cpp.o
 .PHONY : FizzBridge.cpp.o
 
 FizzBridge.i: FizzBridge.cpp.i
@@ -188,7 +188,7 @@ FizzBridge.i: FizzBridge.cpp.i
 
 # target to preprocess a source file
 FizzBridge.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzBridge.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzBridge.cpp.i
 .PHONY : FizzBridge.cpp.i
 
 FizzBridge.s: FizzBridge.cpp.s
@@ -196,7 +196,7 @@ FizzBridge.s: FizzBridge.cpp.s
 
 # target to generate assembly for a file
 FizzBridge.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzBridge.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzBridge.cpp.s
 .PHONY : FizzBridge.cpp.s
 
 FizzCryptoFactory.o: FizzCryptoFactory.cpp.o
@@ -204,7 +204,7 @@ FizzCryptoFactory.o: FizzCryptoFactory.cpp.o
 
 # target to build an object file
 FizzCryptoFactory.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzCryptoFactory.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzCryptoFactory.cpp.o
 .PHONY : FizzCryptoFactory.cpp.o
 
 FizzCryptoFactory.i: FizzCryptoFactory.cpp.i
@@ -212,7 +212,7 @@ FizzCryptoFactory.i: FizzCryptoFactory.cpp.i
 
 # target to preprocess a source file
 FizzCryptoFactory.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzCryptoFactory.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzCryptoFactory.cpp.i
 .PHONY : FizzCryptoFactory.cpp.i
 
 FizzCryptoFactory.s: FizzCryptoFactory.cpp.s
@@ -220,7 +220,7 @@ FizzCryptoFactory.s: FizzCryptoFactory.cpp.s
 
 # target to generate assembly for a file
 FizzCryptoFactory.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzCryptoFactory.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzCryptoFactory.cpp.s
 .PHONY : FizzCryptoFactory.cpp.s
 
 FizzPacketNumberCipher.o: FizzPacketNumberCipher.cpp.o
@@ -228,7 +228,7 @@ FizzPacketNumberCipher.o: FizzPacketNumberCipher.cpp.o
 
 # target to build an object file
 FizzPacketNumberCipher.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzPacketNumberCipher.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzPacketNumberCipher.cpp.o
 .PHONY : FizzPacketNumberCipher.cpp.o
 
 FizzPacketNumberCipher.i: FizzPacketNumberCipher.cpp.i
@@ -236,7 +236,7 @@ FizzPacketNumberCipher.i: FizzPacketNumberCipher.cpp.i
 
 # target to preprocess a source file
 FizzPacketNumberCipher.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzPacketNumberCipher.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzPacketNumberCipher.cpp.i
 .PHONY : FizzPacketNumberCipher.cpp.i
 
 FizzPacketNumberCipher.s: FizzPacketNumberCipher.cpp.s
@@ -244,7 +244,7 @@ FizzPacketNumberCipher.s: FizzPacketNumberCipher.cpp.s
 
 # target to generate assembly for a file
 FizzPacketNumberCipher.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzPacketNumberCipher.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzPacketNumberCipher.cpp.s
 .PHONY : FizzPacketNumberCipher.cpp.s
 
 FizzRetryIntegrityTagGenerator.o: FizzRetryIntegrityTagGenerator.cpp.o
@@ -252,7 +252,7 @@ FizzRetryIntegrityTagGenerator.o: FizzRetryIntegrityTagGenerator.cpp.o
 
 # target to build an object file
 FizzRetryIntegrityTagGenerator.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzRetryIntegrityTagGenerator.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzRetryIntegrityTagGenerator.cpp.o
 .PHONY : FizzRetryIntegrityTagGenerator.cpp.o
 
 FizzRetryIntegrityTagGenerator.i: FizzRetryIntegrityTagGenerator.cpp.i
@@ -260,7 +260,7 @@ FizzRetryIntegrityTagGenerator.i: FizzRetryIntegrityTagGenerator.cpp.i
 
 # target to preprocess a source file
 FizzRetryIntegrityTagGenerator.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzRetryIntegrityTagGenerator.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzRetryIntegrityTagGenerator.cpp.i
 .PHONY : FizzRetryIntegrityTagGenerator.cpp.i
 
 FizzRetryIntegrityTagGenerator.s: FizzRetryIntegrityTagGenerator.cpp.s
@@ -268,7 +268,7 @@ FizzRetryIntegrityTagGenerator.s: FizzRetryIntegrityTagGenerator.cpp.s
 
 # target to generate assembly for a file
 FizzRetryIntegrityTagGenerator.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzRetryIntegrityTagGenerator.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/FizzRetryIntegrityTagGenerator.cpp.s
 .PHONY : FizzRetryIntegrityTagGenerator.cpp.s
 
 QuicFizzFactory.o: QuicFizzFactory.cpp.o
@@ -276,7 +276,7 @@ QuicFizzFactory.o: QuicFizzFactory.cpp.o
 
 # target to build an object file
 QuicFizzFactory.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/QuicFizzFactory.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/QuicFizzFactory.cpp.o
 .PHONY : QuicFizzFactory.cpp.o
 
 QuicFizzFactory.i: QuicFizzFactory.cpp.i
@@ -284,7 +284,7 @@ QuicFizzFactory.i: QuicFizzFactory.cpp.i
 
 # target to preprocess a source file
 QuicFizzFactory.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/QuicFizzFactory.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/QuicFizzFactory.cpp.i
 .PHONY : QuicFizzFactory.cpp.i
 
 QuicFizzFactory.s: QuicFizzFactory.cpp.s
@@ -292,7 +292,7 @@ QuicFizzFactory.s: QuicFizzFactory.cpp.s
 
 # target to generate assembly for a file
 QuicFizzFactory.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/QuicFizzFactory.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/build.make quic/fizz/handshake/CMakeFiles/mvfst_fizz_handshake.dir/QuicFizzFactory.cpp.s
 .PHONY : QuicFizzFactory.cpp.s
 
 # Help Target
@@ -334,6 +334,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

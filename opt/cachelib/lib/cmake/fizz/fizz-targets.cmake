@@ -54,15 +54,15 @@ endif()
 add_library(fizz::fizz SHARED IMPORTED)
 
 set_target_properties(fizz::fizz PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/disk/CacheLib/opt/cachelib/include;/usr/include;/usr/include;/disk/CacheLib/opt/cachelib/include"
-  INTERFACE_LINK_LIBRARIES "Folly::folly;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;sodium;Threads::Threads;ZLIB::ZLIB;/disk/CacheLib/opt/cachelib/lib/libzstd.so"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/mnt/cfs/CacheLib/opt/cachelib/include;/usr/include;/usr/include;/mnt/cfs/CacheLib/opt/cachelib/include"
+  INTERFACE_LINK_LIBRARIES "Folly::folly;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;sodium;Threads::Threads;ZLIB::ZLIB;/mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so"
 )
 
 # Create imported target fizz::fizz_test_support
 add_library(fizz::fizz_test_support SHARED IMPORTED)
 
 set_target_properties(fizz::fizz_test_support PROPERTIES
-  INTERFACE_LINK_LIBRARIES "fizz::fizz;/disk/CacheLib/opt/cachelib/lib/libglog.so"
+  INTERFACE_LINK_LIBRARIES "fizz::fizz;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

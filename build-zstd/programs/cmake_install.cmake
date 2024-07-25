@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/zstd/build/cmake/programs
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/programs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/disk/CacheLib/build-zstd/programs/zstd")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/mnt/cfs/CacheLib/build-zstd/programs/zstd")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/zstd" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/zstd")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -53,32 +53,32 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/disk/CacheLib/build-zstd/programs/zstdcat")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/mnt/cfs/CacheLib/build-zstd/programs/zstdcat")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/disk/CacheLib/build-zstd/programs/unzstd")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/mnt/cfs/CacheLib/build-zstd/programs/unzstd")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE PROGRAM FILES "/disk/CacheLib/cachelib/external/zstd/build/cmake/../../programs/zstdgrep")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE PROGRAM FILES "/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../programs/zstdgrep")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE PROGRAM FILES "/disk/CacheLib/cachelib/external/zstd/build/cmake/../../programs/zstdless")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE PROGRAM FILES "/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../programs/zstdless")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/man/man1" TYPE FILE FILES
-    "/disk/CacheLib/build-zstd/programs/zstd.1"
-    "/disk/CacheLib/build-zstd/programs/zstdcat.1"
-    "/disk/CacheLib/build-zstd/programs/unzstd.1"
-    "/disk/CacheLib/build-zstd/programs/zstdgrep.1"
-    "/disk/CacheLib/build-zstd/programs/zstdless.1"
+    "/mnt/cfs/CacheLib/build-zstd/programs/zstd.1"
+    "/mnt/cfs/CacheLib/build-zstd/programs/zstdcat.1"
+    "/mnt/cfs/CacheLib/build-zstd/programs/unzstd.1"
+    "/mnt/cfs/CacheLib/build-zstd/programs/zstdgrep.1"
+    "/mnt/cfs/CacheLib/build-zstd/programs/zstdless.1"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/disk/CacheLib/build-zstd/programs/zstdmt")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE FILE FILES "/mnt/cfs/CacheLib/build-zstd/programs/zstdmt")
 endif()
 

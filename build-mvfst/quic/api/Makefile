@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/api//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/api//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/api/CMakeFiles/mvfst_batch_writer.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/CMakeFiles/mvfst_batch_writer.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/CMakeFiles/mvfst_batch_writer.dir/rule
 .PHONY : quic/api/CMakeFiles/mvfst_batch_writer.dir/rule
 
 # Convenience name for target.
@@ -172,12 +172,12 @@ mvfst_batch_writer: quic/api/CMakeFiles/mvfst_batch_writer.dir/rule
 
 # fast build rule for target.
 mvfst_batch_writer/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/build
 .PHONY : mvfst_batch_writer/fast
 
 # Convenience name for target.
 quic/api/CMakeFiles/mvfst_transport.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/CMakeFiles/mvfst_transport.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/api/CMakeFiles/mvfst_transport.dir/rule
 .PHONY : quic/api/CMakeFiles/mvfst_transport.dir/rule
 
 # Convenience name for target.
@@ -186,7 +186,7 @@ mvfst_transport: quic/api/CMakeFiles/mvfst_transport.dir/rule
 
 # fast build rule for target.
 mvfst_transport/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/build
 .PHONY : mvfst_transport/fast
 
 IoBufQuicBatch.o: IoBufQuicBatch.cpp.o
@@ -194,7 +194,7 @@ IoBufQuicBatch.o: IoBufQuicBatch.cpp.o
 
 # target to build an object file
 IoBufQuicBatch.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.o
 .PHONY : IoBufQuicBatch.cpp.o
 
 IoBufQuicBatch.i: IoBufQuicBatch.cpp.i
@@ -202,7 +202,7 @@ IoBufQuicBatch.i: IoBufQuicBatch.cpp.i
 
 # target to preprocess a source file
 IoBufQuicBatch.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.i
 .PHONY : IoBufQuicBatch.cpp.i
 
 IoBufQuicBatch.s: IoBufQuicBatch.cpp.s
@@ -210,7 +210,7 @@ IoBufQuicBatch.s: IoBufQuicBatch.cpp.s
 
 # target to generate assembly for a file
 IoBufQuicBatch.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/IoBufQuicBatch.cpp.s
 .PHONY : IoBufQuicBatch.cpp.s
 
 QuicBatchWriter.o: QuicBatchWriter.cpp.o
@@ -218,7 +218,7 @@ QuicBatchWriter.o: QuicBatchWriter.cpp.o
 
 # target to build an object file
 QuicBatchWriter.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o
 .PHONY : QuicBatchWriter.cpp.o
 
 QuicBatchWriter.i: QuicBatchWriter.cpp.i
@@ -226,7 +226,7 @@ QuicBatchWriter.i: QuicBatchWriter.cpp.i
 
 # target to preprocess a source file
 QuicBatchWriter.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.i
 .PHONY : QuicBatchWriter.cpp.i
 
 QuicBatchWriter.s: QuicBatchWriter.cpp.s
@@ -234,7 +234,7 @@ QuicBatchWriter.s: QuicBatchWriter.cpp.s
 
 # target to generate assembly for a file
 QuicBatchWriter.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.s
 .PHONY : QuicBatchWriter.cpp.s
 
 QuicBatchWriterFactory.o: QuicBatchWriterFactory.cpp.o
@@ -242,7 +242,7 @@ QuicBatchWriterFactory.o: QuicBatchWriterFactory.cpp.o
 
 # target to build an object file
 QuicBatchWriterFactory.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o
 .PHONY : QuicBatchWriterFactory.cpp.o
 
 QuicBatchWriterFactory.i: QuicBatchWriterFactory.cpp.i
@@ -250,7 +250,7 @@ QuicBatchWriterFactory.i: QuicBatchWriterFactory.cpp.i
 
 # target to preprocess a source file
 QuicBatchWriterFactory.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.i
 .PHONY : QuicBatchWriterFactory.cpp.i
 
 QuicBatchWriterFactory.s: QuicBatchWriterFactory.cpp.s
@@ -258,7 +258,7 @@ QuicBatchWriterFactory.s: QuicBatchWriterFactory.cpp.s
 
 # target to generate assembly for a file
 QuicBatchWriterFactory.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.s
 .PHONY : QuicBatchWriterFactory.cpp.s
 
 QuicGsoBatchWriters.o: QuicGsoBatchWriters.cpp.o
@@ -266,7 +266,7 @@ QuicGsoBatchWriters.o: QuicGsoBatchWriters.cpp.o
 
 # target to build an object file
 QuicGsoBatchWriters.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o
 .PHONY : QuicGsoBatchWriters.cpp.o
 
 QuicGsoBatchWriters.i: QuicGsoBatchWriters.cpp.i
@@ -274,7 +274,7 @@ QuicGsoBatchWriters.i: QuicGsoBatchWriters.cpp.i
 
 # target to preprocess a source file
 QuicGsoBatchWriters.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.i
 .PHONY : QuicGsoBatchWriters.cpp.i
 
 QuicGsoBatchWriters.s: QuicGsoBatchWriters.cpp.s
@@ -282,7 +282,7 @@ QuicGsoBatchWriters.s: QuicGsoBatchWriters.cpp.s
 
 # target to generate assembly for a file
 QuicGsoBatchWriters.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_batch_writer.dir/build.make quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.s
 .PHONY : QuicGsoBatchWriters.cpp.s
 
 QuicPacketScheduler.o: QuicPacketScheduler.cpp.o
@@ -290,7 +290,7 @@ QuicPacketScheduler.o: QuicPacketScheduler.cpp.o
 
 # target to build an object file
 QuicPacketScheduler.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.o
 .PHONY : QuicPacketScheduler.cpp.o
 
 QuicPacketScheduler.i: QuicPacketScheduler.cpp.i
@@ -298,7 +298,7 @@ QuicPacketScheduler.i: QuicPacketScheduler.cpp.i
 
 # target to preprocess a source file
 QuicPacketScheduler.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.i
 .PHONY : QuicPacketScheduler.cpp.i
 
 QuicPacketScheduler.s: QuicPacketScheduler.cpp.s
@@ -306,7 +306,7 @@ QuicPacketScheduler.s: QuicPacketScheduler.cpp.s
 
 # target to generate assembly for a file
 QuicPacketScheduler.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicPacketScheduler.cpp.s
 .PHONY : QuicPacketScheduler.cpp.s
 
 QuicStreamAsyncTransport.o: QuicStreamAsyncTransport.cpp.o
@@ -314,7 +314,7 @@ QuicStreamAsyncTransport.o: QuicStreamAsyncTransport.cpp.o
 
 # target to build an object file
 QuicStreamAsyncTransport.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.o
 .PHONY : QuicStreamAsyncTransport.cpp.o
 
 QuicStreamAsyncTransport.i: QuicStreamAsyncTransport.cpp.i
@@ -322,7 +322,7 @@ QuicStreamAsyncTransport.i: QuicStreamAsyncTransport.cpp.i
 
 # target to preprocess a source file
 QuicStreamAsyncTransport.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.i
 .PHONY : QuicStreamAsyncTransport.cpp.i
 
 QuicStreamAsyncTransport.s: QuicStreamAsyncTransport.cpp.s
@@ -330,7 +330,7 @@ QuicStreamAsyncTransport.s: QuicStreamAsyncTransport.cpp.s
 
 # target to generate assembly for a file
 QuicStreamAsyncTransport.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicStreamAsyncTransport.cpp.s
 .PHONY : QuicStreamAsyncTransport.cpp.s
 
 QuicTransportBase.o: QuicTransportBase.cpp.o
@@ -338,7 +338,7 @@ QuicTransportBase.o: QuicTransportBase.cpp.o
 
 # target to build an object file
 QuicTransportBase.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.o
 .PHONY : QuicTransportBase.cpp.o
 
 QuicTransportBase.i: QuicTransportBase.cpp.i
@@ -346,7 +346,7 @@ QuicTransportBase.i: QuicTransportBase.cpp.i
 
 # target to preprocess a source file
 QuicTransportBase.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.i
 .PHONY : QuicTransportBase.cpp.i
 
 QuicTransportBase.s: QuicTransportBase.cpp.s
@@ -354,7 +354,7 @@ QuicTransportBase.s: QuicTransportBase.cpp.s
 
 # target to generate assembly for a file
 QuicTransportBase.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportBase.cpp.s
 .PHONY : QuicTransportBase.cpp.s
 
 QuicTransportFunctions.o: QuicTransportFunctions.cpp.o
@@ -362,7 +362,7 @@ QuicTransportFunctions.o: QuicTransportFunctions.cpp.o
 
 # target to build an object file
 QuicTransportFunctions.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.o
 .PHONY : QuicTransportFunctions.cpp.o
 
 QuicTransportFunctions.i: QuicTransportFunctions.cpp.i
@@ -370,7 +370,7 @@ QuicTransportFunctions.i: QuicTransportFunctions.cpp.i
 
 # target to preprocess a source file
 QuicTransportFunctions.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.i
 .PHONY : QuicTransportFunctions.cpp.i
 
 QuicTransportFunctions.s: QuicTransportFunctions.cpp.s
@@ -378,7 +378,7 @@ QuicTransportFunctions.s: QuicTransportFunctions.cpp.s
 
 # target to generate assembly for a file
 QuicTransportFunctions.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/api/CMakeFiles/mvfst_transport.dir/build.make quic/api/CMakeFiles/mvfst_transport.dir/QuicTransportFunctions.cpp.s
 .PHONY : QuicTransportFunctions.cpp.s
 
 # Help Target
@@ -430,6 +430,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

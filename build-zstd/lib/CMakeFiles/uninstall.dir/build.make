@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/zstd/build/cmake
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-zstd
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-zstd
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include lib/CMakeFiles/uninstall.dir/compiler_depend.make
 include lib/CMakeFiles/uninstall.dir/progress.make
 
 lib/CMakeFiles/uninstall:
-	cd /disk/CacheLib/build-zstd/lib && /usr/bin/cmake -P /disk/CacheLib/build-zstd/lib/cmake_uninstall.cmake
+	cd /mnt/cfs/CacheLib/build-zstd/lib && /usr/bin/cmake -P /mnt/cfs/CacheLib/build-zstd/lib/cmake_uninstall.cmake
 
 uninstall: lib/CMakeFiles/uninstall
 uninstall: lib/CMakeFiles/uninstall.dir/build.make
@@ -78,10 +78,10 @@ lib/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : lib/CMakeFiles/uninstall.dir/build
 
 lib/CMakeFiles/uninstall.dir/clean:
-	cd /disk/CacheLib/build-zstd/lib && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-zstd/lib && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : lib/CMakeFiles/uninstall.dir/clean
 
 lib/CMakeFiles/uninstall.dir/depend:
-	cd /disk/CacheLib/build-zstd && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/zstd/build/cmake /disk/CacheLib/cachelib/external/zstd/build/cmake/lib /disk/CacheLib/build-zstd /disk/CacheLib/build-zstd/lib /disk/CacheLib/build-zstd/lib/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-zstd && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/lib /mnt/cfs/CacheLib/build-zstd /mnt/cfs/CacheLib/build-zstd/lib /mnt/cfs/CacheLib/build-zstd/lib/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lib/CMakeFiles/uninstall.dir/depend
 

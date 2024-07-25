@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_CONTEXT_DYN_LINK -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_PROGRAM_OPTIONS_DYN_LINK -DBOOST_REGEX_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_SHARED -DGFLAGS_IS_A_DLL=0 -Dmvfst_dsr_backend_EXPORTS
 
-CXX_INCLUDES = -I/disk/CacheLib/cachelib/external/mvfst -isystem /disk/CacheLib/opt/cachelib/include -isystem /usr/include/libdwarf -isystem /usr/include/libiberty
+CXX_INCLUDES = -I/mnt/cfs/CacheLib/cachelib/external/mvfst -isystem /mnt/cfs/CacheLib/opt/cachelib/include -isystem /usr/include/libdwarf -isystem /usr/include/libiberty
 
 CXX_FLAGS = -O2 -g -DNDEBUG -fPIC -std=c++17
 

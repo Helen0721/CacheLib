@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/api/CMakeFiles/mvfst_batch_writer.dir/depend.make
@@ -70,46 +70,46 @@ include quic/api/CMakeFiles/mvfst_batch_writer.dir/progress.make
 include quic/api/CMakeFiles/mvfst_batch_writer.dir/flags.make
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o: quic/api/CMakeFiles/mvfst_batch_writer.dir/flags.make
-quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp
+quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o: quic/api/CMakeFiles/mvfst_batch_writer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o -MF CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o.d -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o -MF CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o.d -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp > CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp > CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.i
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.cpp -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriter.cpp.s
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o: quic/api/CMakeFiles/mvfst_batch_writer.dir/flags.make
-quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp
+quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o: quic/api/CMakeFiles/mvfst_batch_writer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o -MF CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o.d -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o -MF CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o.d -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp > CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp > CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.i
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.cpp -o CMakeFiles/mvfst_batch_writer.dir/QuicBatchWriterFactory.cpp.s
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o: quic/api/CMakeFiles/mvfst_batch_writer.dir/flags.make
-quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp
+quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o: quic/api/CMakeFiles/mvfst_batch_writer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o -MF CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o.d -o CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o -MF CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o.d -o CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp > CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp > CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.i
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp -o CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.cpp -o CMakeFiles/mvfst_batch_writer.dir/QuicGsoBatchWriters.cpp.s
 
 # Object files for target mvfst_batch_writer
 mvfst_batch_writer_OBJECTS = \
@@ -135,8 +135,8 @@ quic/api/libmvfst_batch_writer.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/api/libmvfst_batch_writer.so.0: quic/libmvfst_constants.so.0
 quic/api/libmvfst_batch_writer.so.0: quic/common/libmvfst_bufutil.so.0
 quic/api/libmvfst_batch_writer.so.0: quic/libmvfst_exception.so.0
-quic/api/libmvfst_batch_writer.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
-quic/api/libmvfst_batch_writer.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/api/libmvfst_batch_writer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/api/libmvfst_batch_writer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -144,9 +144,9 @@ quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.74.0
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
-quic/api/libmvfst_batch_writer.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/api/libmvfst_batch_writer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/api/libmvfst_batch_writer.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/api/libmvfst_batch_writer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
@@ -158,16 +158,16 @@ quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
-quic/api/libmvfst_batch_writer.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/api/libmvfst_batch_writer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
-quic/api/libmvfst_batch_writer.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/api/libmvfst_batch_writer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/api/libmvfst_batch_writer.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/api/libmvfst_batch_writer.so.0: quic/api/CMakeFiles/mvfst_batch_writer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_batch_writer.so"
-	cd /disk/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_batch_writer.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_batch_writer.so.0 libmvfst_batch_writer.so.0 libmvfst_batch_writer.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_batch_writer.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_batch_writer.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_batch_writer.so.0 libmvfst_batch_writer.so.0 libmvfst_batch_writer.so
 
 quic/api/libmvfst_batch_writer.so: quic/api/libmvfst_batch_writer.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/api/libmvfst_batch_writer.so
@@ -177,10 +177,10 @@ quic/api/CMakeFiles/mvfst_batch_writer.dir/build: quic/api/libmvfst_batch_writer
 .PHONY : quic/api/CMakeFiles/mvfst_batch_writer.dir/build
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_batch_writer.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/api && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_batch_writer.dir/cmake_clean.cmake
 .PHONY : quic/api/CMakeFiles/mvfst_batch_writer.dir/clean
 
 quic/api/CMakeFiles/mvfst_batch_writer.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/api /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/api /disk/CacheLib/build-mvfst/quic/api/CMakeFiles/mvfst_batch_writer.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/api /mnt/cfs/CacheLib/build-mvfst/quic/api/CMakeFiles/mvfst_batch_writer.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/api/CMakeFiles/mvfst_batch_writer.dir/depend
 

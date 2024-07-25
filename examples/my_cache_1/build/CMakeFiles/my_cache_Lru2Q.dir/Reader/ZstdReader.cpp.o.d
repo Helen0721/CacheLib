@@ -1,7 +1,7 @@
 CMakeFiles/my_cache_Lru2Q.dir/Reader/ZstdReader.cpp.o: \
- /disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp \
+ /mnt/cfs/CacheLib/examples/my_cache_1/Reader/ZstdReader.cpp \
  /usr/include/stdc-predef.h \
- /disk/CacheLib/examples/my_cache_1/Reader/ZstdReader.h \
+ /mnt/cfs/CacheLib/examples/my_cache_1/Reader/ZstdReader.h \
  /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -26,7 +26,7 @@ CMakeFiles/my_cache_Lru2Q.dir/Reader/ZstdReader.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /disk/CacheLib/opt/cachelib/include/zstd.h \
+ /mnt/cfs/CacheLib/opt/cachelib/include/zstd.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \

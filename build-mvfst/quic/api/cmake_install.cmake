@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/mvfst/quic/api
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,43 +43,43 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/IoBufQuicBatch.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/LoopDetectorCallback.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/LoopDetectorCallback.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriter.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicBatchWriterFactory.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicGsoBatchWriters.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicPacketScheduler.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicSocket.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicSocket.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicStreamAsyncTransport.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportBase.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/api" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/api/QuicTransportFunctions.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -89,12 +89,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/api/libmvfst_transport.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/api/libmvfst_transport.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so.0"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/api:/disk/CacheLib/build-mvfst/quic/common:/disk/CacheLib/build-mvfst/quic/congestion_control:/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic/happyeyeballs:/disk/CacheLib/build-mvfst/quic/observer:/disk/CacheLib/build-mvfst/quic/state:/disk/CacheLib/build-mvfst/quic/common/udpsocket:/disk/CacheLib/build-mvfst/quic/common/events:/disk/CacheLib/build-mvfst/quic/loss:/disk/CacheLib/build-mvfst/quic/flowcontrol:/disk/CacheLib/build-mvfst/quic/logging:/disk/CacheLib/build-mvfst/quic/handshake:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/api:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/build-mvfst/quic/congestion_control:/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic/happyeyeballs:/mnt/cfs/CacheLib/build-mvfst/quic/observer:/mnt/cfs/CacheLib/build-mvfst/quic/state:/mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket:/mnt/cfs/CacheLib/build-mvfst/quic/common/events:/mnt/cfs/CacheLib/build-mvfst/quic/loss:/mnt/cfs/CacheLib/build-mvfst/quic/flowcontrol:/mnt/cfs/CacheLib/build-mvfst/quic/logging:/mnt/cfs/CacheLib/build-mvfst/quic/handshake:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so.0")
@@ -109,12 +109,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/api/libmvfst_transport.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/api/libmvfst_transport.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/api:/disk/CacheLib/build-mvfst/quic/common:/disk/CacheLib/build-mvfst/quic/congestion_control:/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic/happyeyeballs:/disk/CacheLib/build-mvfst/quic/observer:/disk/CacheLib/build-mvfst/quic/state:/disk/CacheLib/build-mvfst/quic/common/udpsocket:/disk/CacheLib/build-mvfst/quic/common/events:/disk/CacheLib/build-mvfst/quic/loss:/disk/CacheLib/build-mvfst/quic/flowcontrol:/disk/CacheLib/build-mvfst/quic/logging:/disk/CacheLib/build-mvfst/quic/handshake:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/api:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/build-mvfst/quic/congestion_control:/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic/happyeyeballs:/mnt/cfs/CacheLib/build-mvfst/quic/observer:/mnt/cfs/CacheLib/build-mvfst/quic/state:/mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket:/mnt/cfs/CacheLib/build-mvfst/quic/common/events:/mnt/cfs/CacheLib/build-mvfst/quic/loss:/mnt/cfs/CacheLib/build-mvfst/quic/flowcontrol:/mnt/cfs/CacheLib/build-mvfst/quic/logging:/mnt/cfs/CacheLib/build-mvfst/quic/handshake:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_transport.so")
@@ -129,12 +129,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/api/libmvfst_batch_writer.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/api/libmvfst_batch_writer.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so.0"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/common/udpsocket:/disk/CacheLib/build-mvfst/quic/common/events:/disk/CacheLib/build-mvfst/quic/state:/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic/handshake:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/build-mvfst/quic/common:/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket:/mnt/cfs/CacheLib/build-mvfst/quic/common/events:/mnt/cfs/CacheLib/build-mvfst/quic/state:/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic/handshake:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so.0")
@@ -149,12 +149,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/api/libmvfst_batch_writer.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/api/libmvfst_batch_writer.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/common/udpsocket:/disk/CacheLib/build-mvfst/quic/common/events:/disk/CacheLib/build-mvfst/quic/state:/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic/handshake:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/build-mvfst/quic/common:/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/common/udpsocket:/mnt/cfs/CacheLib/build-mvfst/quic/common/events:/mnt/cfs/CacheLib/build-mvfst/quic/state:/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic/handshake:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_batch_writer.so")
@@ -164,7 +164,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/disk/CacheLib/build-mvfst/quic/api/test/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/api/test/cmake_install.cmake")
 
 endif()
 

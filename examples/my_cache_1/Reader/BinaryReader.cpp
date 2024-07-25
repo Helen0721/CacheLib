@@ -1,4 +1,4 @@
-#include "/disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.h"
+#include "BinaryReader.h"
 
 #include <fcntl.h>
 #include <unistd.h>

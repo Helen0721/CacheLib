@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/mvfst/quic
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,7 +43,7 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/QuicConstants.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/QuicConstants.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -53,12 +53,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/libmvfst_constants.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/libmvfst_constants.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so.0"
-         OLD_RPATH "/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so.0")
@@ -73,12 +73,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/libmvfst_constants.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/libmvfst_constants.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so"
-         OLD_RPATH "/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_constants.so")
@@ -87,7 +87,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/QuicException.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/QuicException.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -97,12 +97,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/libmvfst_exception.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/libmvfst_exception.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so.0"
-         OLD_RPATH "/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so.0")
@@ -117,12 +117,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/libmvfst_exception.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/libmvfst_exception.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so"
-         OLD_RPATH "/disk/CacheLib/opt/cachelib/lib:"
+         OLD_RPATH "/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_exception.so")
@@ -132,24 +132,24 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/disk/CacheLib/build-mvfst/quic/api/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/client/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/codec/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/common/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/congestion_control/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/dsr/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/fizz/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/flowcontrol/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/handshake/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/happyeyeballs/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/logging/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/loss/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/observer/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/samples/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/server/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/state/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/tools/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/xsk/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/api/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/client/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/codec/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/common/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/congestion_control/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/dsr/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/fizz/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/flowcontrol/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/handshake/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/happyeyeballs/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/logging/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/loss/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/observer/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/samples/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/server/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/state/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/tools/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/xsk/cmake_install.cmake")
 
 endif()
 

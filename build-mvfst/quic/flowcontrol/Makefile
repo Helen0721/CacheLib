@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,14 +132,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles /disk/CacheLib/build-mvfst/quic/flowcontrol//CMakeFiles/progress.marks
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /disk/CacheLib/build-mvfst/CMakeFiles 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles /mnt/cfs/CacheLib/build-mvfst/quic/flowcontrol//CMakeFiles/progress.marks
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/cfs/CacheLib/build-mvfst/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/clean
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/clean
 .PHONY : clean
 
 # The main clean target
@@ -148,22 +148,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/preinstall
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/rule:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/rule
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/rule
 .PHONY : quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/rule
 
 # Convenience name for target.
@@ -172,7 +172,7 @@ mvfst_flowcontrol: quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/rule
 
 # fast build rule for target.
 mvfst_flowcontrol/fast:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build
 .PHONY : mvfst_flowcontrol/fast
 
 QuicFlowController.o: QuicFlowController.cpp.o
@@ -180,7 +180,7 @@ QuicFlowController.o: QuicFlowController.cpp.o
 
 # target to build an object file
 QuicFlowController.cpp.o:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/QuicFlowController.cpp.o
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/QuicFlowController.cpp.o
 .PHONY : QuicFlowController.cpp.o
 
 QuicFlowController.i: QuicFlowController.cpp.i
@@ -188,7 +188,7 @@ QuicFlowController.i: QuicFlowController.cpp.i
 
 # target to preprocess a source file
 QuicFlowController.cpp.i:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/QuicFlowController.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/QuicFlowController.cpp.i
 .PHONY : QuicFlowController.cpp.i
 
 QuicFlowController.s: QuicFlowController.cpp.s
@@ -196,7 +196,7 @@ QuicFlowController.s: QuicFlowController.cpp.s
 
 # target to generate assembly for a file
 QuicFlowController.cpp.s:
-	cd /disk/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/QuicFlowController.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst && $(MAKE) $(MAKESILENT) -f quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/build.make quic/flowcontrol/CMakeFiles/mvfst_flowcontrol.dir/QuicFlowController.cpp.s
 .PHONY : QuicFlowController.cpp.s
 
 # Help Target
@@ -226,6 +226,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

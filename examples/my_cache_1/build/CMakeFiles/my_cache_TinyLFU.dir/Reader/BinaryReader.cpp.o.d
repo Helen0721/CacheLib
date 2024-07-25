@@ -1,7 +1,7 @@
 CMakeFiles/my_cache_TinyLFU.dir/Reader/BinaryReader.cpp.o: \
- /disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.cpp \
+ /mnt/cfs/CacheLib/examples/my_cache_1/Reader/BinaryReader.cpp \
  /usr/include/stdc-predef.h \
- /disk/CacheLib/examples/my_cache_1/Reader/BinaryReader.h \
+ /mnt/cfs/CacheLib/examples/my_cache_1/Reader/BinaryReader.h \
  /usr/include/c++/11/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \

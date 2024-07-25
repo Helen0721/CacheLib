@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/depend.make
@@ -70,18 +70,18 @@ include quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/progress.make
 include quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/flags.make
 
 quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o: quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/flags.make
-quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp
+quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp
 quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o: quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/dsr && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o -MF CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o.d -o CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/dsr && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o -MF CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o.d -o CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp
 
 quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/dsr && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp > CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/dsr && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp > CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.i
 
 quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/dsr && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp -o CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/dsr && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/dsr/backend/DSRPacketizer.cpp -o CMakeFiles/mvfst_dsr_backend.dir/backend/DSRPacketizer.cpp.s
 
 # Object files for target mvfst_dsr_backend
 mvfst_dsr_backend_OBJECTS = \
@@ -124,11 +124,11 @@ quic/dsr/libmvfst_dsr_backend.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/dsr/libmvfst_dsr_backend.so.0: quic/common/libmvfst_bufutil.so.0
 quic/dsr/libmvfst_dsr_backend.so.0: quic/libmvfst_constants.so.0
 quic/dsr/libmvfst_dsr_backend.so.0: quic/libmvfst_exception.so.0
-quic/dsr/libmvfst_dsr_backend.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/dsr/libmvfst_dsr_backend.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libz.so
-quic/dsr/libmvfst_dsr_backend.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
-quic/dsr/libmvfst_dsr_backend.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/dsr/libmvfst_dsr_backend.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/dsr/libmvfst_dsr_backend.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -137,8 +137,8 @@ quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/dsr/libmvfst_dsr_backend.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
-quic/dsr/libmvfst_dsr_backend.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/dsr/libmvfst_dsr_backend.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/dsr/libmvfst_dsr_backend.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
@@ -146,7 +146,7 @@ quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/liblzma.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/liblz4.so
-quic/dsr/libmvfst_dsr_backend.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/dsr/libmvfst_dsr_backend.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libsnappy.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libdwarf.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
@@ -154,9 +154,9 @@ quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/dsr/libmvfst_dsr_backend.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
 quic/dsr/libmvfst_dsr_backend.so.0: quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmvfst_dsr_backend.so"
-	cd /disk/CacheLib/build-mvfst/quic/dsr && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_dsr_backend.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/dsr && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_dsr_backend.so.0 libmvfst_dsr_backend.so.0 libmvfst_dsr_backend.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmvfst_dsr_backend.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/dsr && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_dsr_backend.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/dsr && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_dsr_backend.so.0 libmvfst_dsr_backend.so.0 libmvfst_dsr_backend.so
 
 quic/dsr/libmvfst_dsr_backend.so: quic/dsr/libmvfst_dsr_backend.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/dsr/libmvfst_dsr_backend.so
@@ -166,10 +166,10 @@ quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/build: quic/dsr/libmvfst_dsr_backend.s
 .PHONY : quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/build
 
 quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/dsr && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_dsr_backend.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/dsr && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_dsr_backend.dir/cmake_clean.cmake
 .PHONY : quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/clean
 
 quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/dsr /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/dsr /disk/CacheLib/build-mvfst/quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/dsr /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/dsr /mnt/cfs/CacheLib/build-mvfst/quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/dsr/CMakeFiles/mvfst_dsr_backend.dir/depend
 

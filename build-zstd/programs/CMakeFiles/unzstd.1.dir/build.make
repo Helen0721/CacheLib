@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/zstd/build/cmake
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-zstd
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-zstd
 
 # Utility rule file for unzstd.1.
 
@@ -67,8 +67,8 @@ include programs/CMakeFiles/unzstd.1.dir/compiler_depend.make
 include programs/CMakeFiles/unzstd.1.dir/progress.make
 
 programs/CMakeFiles/unzstd.1:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/disk/CacheLib/build-zstd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Creating unzstd.1 symlink"
-	cd /disk/CacheLib/build-zstd/programs && /usr/bin/cmake -E create_symlink zstd.1 unzstd.1
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/mnt/cfs/CacheLib/build-zstd/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Creating unzstd.1 symlink"
+	cd /mnt/cfs/CacheLib/build-zstd/programs && /usr/bin/cmake -E create_symlink zstd.1 unzstd.1
 
 unzstd.1: programs/CMakeFiles/unzstd.1
 unzstd.1: programs/CMakeFiles/unzstd.1.dir/build.make
@@ -79,10 +79,10 @@ programs/CMakeFiles/unzstd.1.dir/build: unzstd.1
 .PHONY : programs/CMakeFiles/unzstd.1.dir/build
 
 programs/CMakeFiles/unzstd.1.dir/clean:
-	cd /disk/CacheLib/build-zstd/programs && $(CMAKE_COMMAND) -P CMakeFiles/unzstd.1.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-zstd/programs && $(CMAKE_COMMAND) -P CMakeFiles/unzstd.1.dir/cmake_clean.cmake
 .PHONY : programs/CMakeFiles/unzstd.1.dir/clean
 
 programs/CMakeFiles/unzstd.1.dir/depend:
-	cd /disk/CacheLib/build-zstd && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/zstd/build/cmake /disk/CacheLib/cachelib/external/zstd/build/cmake/programs /disk/CacheLib/build-zstd /disk/CacheLib/build-zstd/programs /disk/CacheLib/build-zstd/programs/CMakeFiles/unzstd.1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-zstd && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/programs /mnt/cfs/CacheLib/build-zstd /mnt/cfs/CacheLib/build-zstd/programs /mnt/cfs/CacheLib/build-zstd/programs/CMakeFiles/unzstd.1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : programs/CMakeFiles/unzstd.1.dir/depend
 

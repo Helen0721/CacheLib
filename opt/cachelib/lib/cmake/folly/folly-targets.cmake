@@ -62,8 +62,8 @@ set_target_properties(Folly::folly PROPERTIES
 add_library(Folly::folly_deps INTERFACE IMPORTED)
 
 set_target_properties(Folly::folly_deps PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "/usr/include;/disk/CacheLib/opt/cachelib/include;/usr/include/libdwarf;/usr/include/libiberty;/usr/include/x86_64-linux-gnu;${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "fmt::fmt;Threads::Threads;Boost::context;Boost::filesystem;Boost::program_options;Boost::regex;Boost::system;Boost::thread;/usr/lib/x86_64-linux-gnu/libdouble-conversion.so;gflags_shared;/disk/CacheLib/opt/cachelib/lib/libglog.so;/usr/lib/x86_64-linux-gnu/libevent.so;/usr/lib/x86_64-linux-gnu/libz.so;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/usr/lib/x86_64-linux-gnu/libbz2.so;/usr/lib/x86_64-linux-gnu/liblzma.so;/usr/lib/x86_64-linux-gnu/liblz4.so;/disk/CacheLib/opt/cachelib/lib/libzstd.so;/usr/lib/x86_64-linux-gnu/libsnappy.so;/usr/lib/x86_64-linux-gnu/libdwarf.so;/usr/lib/x86_64-linux-gnu/libiberty.a;/usr/lib/x86_64-linux-gnu/libaio.so;/usr/lib/x86_64-linux-gnu/libsodium.so;dl;/usr/lib/x86_64-linux-gnu/libunwind.so"
+  INTERFACE_INCLUDE_DIRECTORIES "/usr/include;/mnt/cfs/CacheLib/opt/cachelib/include;/usr/include/libdwarf;/usr/include/libiberty;/usr/include/x86_64-linux-gnu;${_IMPORT_PREFIX}/include"
+  INTERFACE_LINK_LIBRARIES "fmt::fmt;Threads::Threads;Boost::context;Boost::filesystem;Boost::program_options;Boost::regex;Boost::system;Boost::thread;/usr/lib/x86_64-linux-gnu/libdouble-conversion.so;gflags_shared;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so;/usr/lib/x86_64-linux-gnu/libevent.so;/usr/lib/x86_64-linux-gnu/libz.so;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/usr/lib/x86_64-linux-gnu/libbz2.so;/usr/lib/x86_64-linux-gnu/liblzma.so;/usr/lib/x86_64-linux-gnu/liblz4.so;/mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so;/usr/lib/x86_64-linux-gnu/libsnappy.so;/usr/lib/x86_64-linux-gnu/libdwarf.so;/usr/lib/x86_64-linux-gnu/libiberty.a;/usr/lib/x86_64-linux-gnu/libaio.so;/usr/lib/x86_64-linux-gnu/libsodium.so;dl;/usr/lib/x86_64-linux-gnu/libunwind.so"
 )
 
 # Create imported target Folly::folly_test_util

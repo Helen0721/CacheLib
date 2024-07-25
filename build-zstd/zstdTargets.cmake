@@ -50,7 +50,7 @@ add_library(zstd::libzstd_static STATIC IMPORTED)
 # Import target "zstd::libzstd_shared" for configuration "RelWithDebInfo"
 set_property(TARGET zstd::libzstd_shared APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(zstd::libzstd_shared PROPERTIES
-  IMPORTED_LOCATION_RELWITHDEBINFO "/disk/CacheLib/build-zstd/lib/libzstd.so.1.5.4"
+  IMPORTED_LOCATION_RELWITHDEBINFO "/mnt/cfs/CacheLib/build-zstd/lib/libzstd.so.1.5.4"
   IMPORTED_SONAME_RELWITHDEBINFO "libzstd.so.1"
   )
 
@@ -58,7 +58,7 @@ set_target_properties(zstd::libzstd_shared PROPERTIES
 set_property(TARGET zstd::libzstd_static APPEND PROPERTY IMPORTED_CONFIGURATIONS RELWITHDEBINFO)
 set_target_properties(zstd::libzstd_static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELWITHDEBINFO "C"
-  IMPORTED_LOCATION_RELWITHDEBINFO "/disk/CacheLib/build-zstd/lib/libzstd.a"
+  IMPORTED_LOCATION_RELWITHDEBINFO "/mnt/cfs/CacheLib/build-zstd/lib/libzstd.a"
   )
 
 # This file does not depend on other imported targets which have

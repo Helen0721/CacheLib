@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/mvfst/quic/handshake
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/handshake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,23 +43,23 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/handshake/Aead.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/handshake/Aead.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/handshake/CryptoFactory.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/handshake/CryptoFactory.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/handshake/HandshakeLayer.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/handshake/HandshakeLayer.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/handshake/RetryIntegrityTagGenerator.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/handshake/RetryIntegrityTagGenerator.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/disk/CacheLib/cachelib/external/mvfst/quic/handshake/TransportParameters.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/quic/handshake" TYPE FILE FILES "/mnt/cfs/CacheLib/cachelib/external/mvfst/quic/handshake/TransportParameters.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -69,12 +69,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so.0"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/handshake/libmvfst_handshake.so.0")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/handshake/libmvfst_handshake.so.0")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so.0" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so.0")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so.0"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/opt/cachelib/lib:/disk/CacheLib/build-mvfst/quic/common:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so.0")
@@ -89,12 +89,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/disk/CacheLib/build-mvfst/quic/handshake/libmvfst_handshake.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/mnt/cfs/CacheLib/build-mvfst/quic/handshake/libmvfst_handshake.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so"
-         OLD_RPATH "/disk/CacheLib/build-mvfst/quic/codec:/disk/CacheLib/build-mvfst/quic:/disk/CacheLib/opt/cachelib/lib:/disk/CacheLib/build-mvfst/quic/common:"
+         OLD_RPATH "/mnt/cfs/CacheLib/build-mvfst/quic/codec:/mnt/cfs/CacheLib/build-mvfst/quic:/mnt/cfs/CacheLib/build-mvfst/quic/common:/mnt/cfs/CacheLib/opt/cachelib/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmvfst_handshake.so")

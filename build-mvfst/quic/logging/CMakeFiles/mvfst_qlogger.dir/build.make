@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/logging/CMakeFiles/mvfst_qlogger.dir/depend.make
@@ -70,74 +70,74 @@ include quic/logging/CMakeFiles/mvfst_qlogger.dir/progress.make
 include quic/logging/CMakeFiles/mvfst_qlogger.dir/flags.make
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/flags.make
-quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp
+quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp
 quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp > CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp > CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.i
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp -o CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/BaseQLogger.cpp -o CMakeFiles/mvfst_qlogger.dir/BaseQLogger.cpp.s
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/flags.make
-quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp
+quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp
 quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp > CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp > CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.i
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp -o CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/FileQLogger.cpp -o CMakeFiles/mvfst_qlogger.dir/FileQLogger.cpp.s
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/flags.make
-quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp
+quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp > CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp > CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.i
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp -o CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLogger.cpp -o CMakeFiles/mvfst_qlogger.dir/QLogger.cpp.s
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/flags.make
-quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp
+quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp > CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp > CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.i
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp -o CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerConstants.cpp -o CMakeFiles/mvfst_qlogger.dir/QLoggerConstants.cpp.s
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/flags.make
-quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp
+quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o: quic/logging/CMakeFiles/mvfst_qlogger.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o -MF CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o.d -o CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp > CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp > CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.i
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp -o CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging/QLoggerTypes.cpp -o CMakeFiles/mvfst_qlogger.dir/QLoggerTypes.cpp.s
 
 # Object files for target mvfst_qlogger
 mvfst_qlogger_OBJECTS = \
@@ -160,11 +160,11 @@ quic/logging/libmvfst_qlogger.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/logging/libmvfst_qlogger.so.0: quic/common/libmvfst_bufutil.so.0
 quic/logging/libmvfst_qlogger.so.0: quic/libmvfst_constants.so.0
 quic/logging/libmvfst_qlogger.so.0: quic/libmvfst_exception.so.0
-quic/logging/libmvfst_qlogger.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
-quic/logging/libmvfst_qlogger.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
-quic/logging/libmvfst_qlogger.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/logging/libmvfst_qlogger.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/logging/libmvfst_qlogger.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/logging/libmvfst_qlogger.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/logging/libmvfst_qlogger.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/logging/libmvfst_qlogger.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
@@ -176,10 +176,10 @@ quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
-quic/logging/libmvfst_qlogger.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/logging/libmvfst_qlogger.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
-quic/logging/libmvfst_qlogger.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/logging/libmvfst_qlogger.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
@@ -190,9 +190,9 @@ quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/logging/libmvfst_qlogger.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
 quic/logging/libmvfst_qlogger.so.0: quic/logging/CMakeFiles/mvfst_qlogger.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libmvfst_qlogger.so"
-	cd /disk/CacheLib/build-mvfst/quic/logging && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_qlogger.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/logging && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_qlogger.so.0 libmvfst_qlogger.so.0 libmvfst_qlogger.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libmvfst_qlogger.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_qlogger.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_qlogger.so.0 libmvfst_qlogger.so.0 libmvfst_qlogger.so
 
 quic/logging/libmvfst_qlogger.so: quic/logging/libmvfst_qlogger.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/logging/libmvfst_qlogger.so
@@ -202,10 +202,10 @@ quic/logging/CMakeFiles/mvfst_qlogger.dir/build: quic/logging/libmvfst_qlogger.s
 .PHONY : quic/logging/CMakeFiles/mvfst_qlogger.dir/build
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/logging && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_qlogger.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/logging && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_qlogger.dir/cmake_clean.cmake
 .PHONY : quic/logging/CMakeFiles/mvfst_qlogger.dir/clean
 
 quic/logging/CMakeFiles/mvfst_qlogger.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/logging /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/logging /disk/CacheLib/build-mvfst/quic/logging/CMakeFiles/mvfst_qlogger.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/logging /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/logging /mnt/cfs/CacheLib/build-mvfst/quic/logging/CMakeFiles/mvfst_qlogger.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/logging/CMakeFiles/mvfst_qlogger.dir/depend
 

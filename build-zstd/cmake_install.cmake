@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/zstd/build/cmake
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -46,7 +46,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd/zstdTargets.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd/zstdTargets.cmake"
-         "/disk/CacheLib/build-zstd/CMakeFiles/Export/lib/cmake/zstd/zstdTargets.cmake")
+         "/mnt/cfs/CacheLib/build-zstd/CMakeFiles/Export/lib/cmake/zstd/zstdTargets.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd/zstdTargets-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -55,23 +55,23 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd" TYPE FILE FILES "/disk/CacheLib/build-zstd/CMakeFiles/Export/lib/cmake/zstd/zstdTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd" TYPE FILE FILES "/mnt/cfs/CacheLib/build-zstd/CMakeFiles/Export/lib/cmake/zstd/zstdTargets.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ww][Ii][Tt][Hh][Dd][Ee][Bb][Ii][Nn][Ff][Oo])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd" TYPE FILE FILES "/disk/CacheLib/build-zstd/CMakeFiles/Export/lib/cmake/zstd/zstdTargets-relwithdebinfo.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd" TYPE FILE FILES "/mnt/cfs/CacheLib/build-zstd/CMakeFiles/Export/lib/cmake/zstd/zstdTargets-relwithdebinfo.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/zstd" TYPE FILE FILES
-    "/disk/CacheLib/cachelib/external/zstd/build/cmake/zstdConfig.cmake"
-    "/disk/CacheLib/build-zstd/zstdConfigVersion.cmake"
+    "/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/zstdConfig.cmake"
+    "/mnt/cfs/CacheLib/build-zstd/zstdConfigVersion.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/disk/CacheLib/build-zstd/lib/cmake_install.cmake")
-  include("/disk/CacheLib/build-zstd/programs/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-zstd/lib/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-zstd/programs/cmake_install.cmake")
 
 endif()
 
@@ -83,5 +83,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/disk/CacheLib/build-zstd/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/cfs/CacheLib/build-zstd/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

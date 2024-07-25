@@ -1,8 +1,8 @@
-# Install script for directory: /disk/CacheLib/cachelib/external/mvfst/quic/fizz
+# Install script for directory: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/fizz
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/disk/CacheLib/opt/cachelib")
+  set(CMAKE_INSTALL_PREFIX "/mnt/cfs/CacheLib/opt/cachelib")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,8 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/disk/CacheLib/build-mvfst/quic/fizz/client/cmake_install.cmake")
-  include("/disk/CacheLib/build-mvfst/quic/fizz/handshake/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/fizz/client/cmake_install.cmake")
+  include("/mnt/cfs/CacheLib/build-mvfst/quic/fizz/handshake/cmake_install.cmake")
 
 endif()
 

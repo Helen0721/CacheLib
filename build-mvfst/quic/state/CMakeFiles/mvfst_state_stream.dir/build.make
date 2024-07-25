@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/state/CMakeFiles/mvfst_state_stream.dir/depend.make
@@ -70,46 +70,46 @@ include quic/state/CMakeFiles/mvfst_state_stream.dir/progress.make
 include quic/state/CMakeFiles/mvfst_state_stream.dir/flags.make
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o: quic/state/CMakeFiles/mvfst_state_stream.dir/flags.make
-quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp
+quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o: quic/state/CMakeFiles/mvfst_state_stream.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o -MF CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o.d -o CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o -MF CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o.d -o CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp > CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp > CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.i
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp -o CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamStateFunctions.cpp -o CMakeFiles/mvfst_state_stream.dir/stream/StreamStateFunctions.cpp.s
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o: quic/state/CMakeFiles/mvfst_state_stream.dir/flags.make
-quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp
+quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o: quic/state/CMakeFiles/mvfst_state_stream.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o -MF CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o.d -o CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o -MF CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o.d -o CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp > CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp > CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.i
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp -o CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamSendHandlers.cpp -o CMakeFiles/mvfst_state_stream.dir/stream/StreamSendHandlers.cpp.s
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o: quic/state/CMakeFiles/mvfst_state_stream.dir/flags.make
-quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp
+quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o: quic/state/CMakeFiles/mvfst_state_stream.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o -MF CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o.d -o CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o -MF CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o.d -o CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp > CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp > CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.i
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp -o CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state/stream/StreamReceiveHandlers.cpp -o CMakeFiles/mvfst_state_stream.dir/stream/StreamReceiveHandlers.cpp.s
 
 # Object files for target mvfst_state_stream
 mvfst_state_stream_OBJECTS = \
@@ -136,9 +136,9 @@ quic/state/libmvfst_state_stream.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/state/libmvfst_state_stream.so.0: quic/common/libmvfst_bufutil.so.0
 quic/state/libmvfst_state_stream.so.0: quic/libmvfst_constants.so.0
 quic/state/libmvfst_state_stream.so.0: quic/libmvfst_exception.so.0
-quic/state/libmvfst_state_stream.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
-quic/state/libmvfst_state_stream.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
-quic/state/libmvfst_state_stream.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/state/libmvfst_state_stream.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/state/libmvfst_state_stream.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/state/libmvfst_state_stream.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -147,7 +147,7 @@ quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libboost_system
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/state/libmvfst_state_stream.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/state/libmvfst_state_stream.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
@@ -159,16 +159,16 @@ quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
-quic/state/libmvfst_state_stream.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/state/libmvfst_state_stream.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
-quic/state/libmvfst_state_stream.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/state/libmvfst_state_stream.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/state/libmvfst_state_stream.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/state/libmvfst_state_stream.so.0: quic/state/CMakeFiles/mvfst_state_stream.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_state_stream.so"
-	cd /disk/CacheLib/build-mvfst/quic/state && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_state_stream.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/state && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_state_stream.so.0 libmvfst_state_stream.so.0 libmvfst_state_stream.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_state_stream.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_state_stream.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_state_stream.so.0 libmvfst_state_stream.so.0 libmvfst_state_stream.so
 
 quic/state/libmvfst_state_stream.so: quic/state/libmvfst_state_stream.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/state/libmvfst_state_stream.so
@@ -178,10 +178,10 @@ quic/state/CMakeFiles/mvfst_state_stream.dir/build: quic/state/libmvfst_state_st
 .PHONY : quic/state/CMakeFiles/mvfst_state_stream.dir/build
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/state && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_state_stream.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/state && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_state_stream.dir/cmake_clean.cmake
 .PHONY : quic/state/CMakeFiles/mvfst_state_stream.dir/clean
 
 quic/state/CMakeFiles/mvfst_state_stream.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/state /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/state /disk/CacheLib/build-mvfst/quic/state/CMakeFiles/mvfst_state_stream.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/state /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/state /mnt/cfs/CacheLib/build-mvfst/quic/state/CMakeFiles/mvfst_state_stream.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/state/CMakeFiles/mvfst_state_stream.dir/depend
 

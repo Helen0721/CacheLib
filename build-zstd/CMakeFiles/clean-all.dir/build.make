@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/zstd/build/cmake
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-zstd
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-zstd
 
 # Utility rule file for clean-all.
 
@@ -68,7 +68,7 @@ include CMakeFiles/clean-all.dir/progress.make
 
 CMakeFiles/clean-all:
 	/usr/bin/gmake clean
-	rm -rf /disk/CacheLib/build-zstd/
+	rm -rf /mnt/cfs/CacheLib/build-zstd/
 
 clean-all: CMakeFiles/clean-all
 clean-all: CMakeFiles/clean-all.dir/build.make
@@ -83,6 +83,6 @@ CMakeFiles/clean-all.dir/clean:
 .PHONY : CMakeFiles/clean-all.dir/clean
 
 CMakeFiles/clean-all.dir/depend:
-	cd /disk/CacheLib/build-zstd && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/zstd/build/cmake /disk/CacheLib/cachelib/external/zstd/build/cmake /disk/CacheLib/build-zstd /disk/CacheLib/build-zstd /disk/CacheLib/build-zstd/CMakeFiles/clean-all.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-zstd && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake /mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake /mnt/cfs/CacheLib/build-zstd /mnt/cfs/CacheLib/build-zstd /mnt/cfs/CacheLib/build-zstd/CMakeFiles/clean-all.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean-all.dir/depend
 

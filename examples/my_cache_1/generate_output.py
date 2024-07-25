@@ -4,10 +4,11 @@ import logging
 import os
 import random
 
-Lru_path = "build/my_cache_Lru"
-Lru2Q_path = "build/my_cache_Lru2Q"
-TinyLFU_path = "build/my_cache_TinyLFU"
-Sieve_path = "build/my_cache_Sieve"
+BASE_DIR = "/mnt/cfs/CacheLib/examples/my_cache_1"
+Lru_path = os.path.join(BASE_DIR,"build/my_cache_Lru")
+Lru2Q_path = os.path.join(BASE_DIR,"build/my_cache_Lru2Q")
+TinyLFU_path = os.path.join(BASE_DIR,"build/my_cache_TinyLFU")
+Sieve_path = os.path.join(BASE_DIR,"build/my_cache_Sieve")
 
 ALGOS = ["Lru","Lru2Q","TinyLFU","Sieve"]
 
@@ -76,7 +77,8 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     
     run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
     
-    if not os.path.isfile(out_file):
+    if not os.path.isfile(cacheStats_path):
+        print("Saving cacheStats to",cacheStats_path)
         run_args.append(cacheStats_path)
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -97,11 +99,11 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
 if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
-    p.add_argument("--tracepath",type=str,required=True)
+    p.add_argument("--trace",type=str,required=True)
     p.add_argument("--reb",type=str,required=True)
     p.add_argument("--rebParams",type=str,required=True)
     p.add_argument("--name",type=str,required=True)
-    p.add_argument("--outputdir",type=str,required=True)
+    p.add_argument("--outdir",type=str,required=True)
 
     p.add_argument("--suffix",type=str,default=None)
     p.add_argument("--algos",type=str,default="all")
@@ -119,7 +121,7 @@ if __name__=="__main__":
     if (ap.algos=="all"):
         algos = ALGOS
     else:
-        algos = ap.algos.split(",") 
+        algos = ap.algos.split(",")  
 
     for algo in algos: 
         for cache_size in cache_sizes:
@@ -130,16 +132,16 @@ if __name__=="__main__":
             
             rebParams = chooseRebParams(ap.reb,ap.rebParams)
 
-            output_file = os.path.join(ap.outputdir,ap.reb,
+            output_file = os.path.join(ap.outdir,ap.reb,
                     ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + "_" + rebParams)
             
-            cacheStats_path = os.path.join(ap.outputdir,"{}_CacheStats".format(ap.name))
+            cacheStats_path = os.path.join(ap.outdir,"{}_CacheStats".format(ap.name))
 
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}, rebParams: {}.".format(
-                ap.tracepath,algo,cache_size,ap.reb,rebParams)) 
+                ap.trace,algo,cache_size,ap.reb,rebParams)) 
 
             run(output_file,
-                    ap.tracepath,
+                    ap.trace,
                     ap.max_reqs,
                     algo=algo,
                     cache_size=cache_size,

@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_DEFINES = -DXXH_NAMESPACE=ZSTD_ -DZSTD_LEGACY_SUPPORT=5 -DZSTD_NOBENCH -DZSTD_NODICT -DZSTD_NOTRACE
 
-C_INCLUDES = -I/disk/CacheLib/build-zstd/programs -I/disk/CacheLib/cachelib/external/zstd/build/cmake/programs -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../programs -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../lib -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../lib/common -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../lib/compress -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../lib/dictBuilder -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../programs/legacy -I/disk/CacheLib/cachelib/external/zstd/build/cmake/../../lib/legacy
+C_INCLUDES = -I/mnt/cfs/CacheLib/build-zstd/programs -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/programs -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../programs -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../lib -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../lib/common -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../lib/compress -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../lib/dictBuilder -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../programs/legacy -I/mnt/cfs/CacheLib/cachelib/external/zstd/build/cmake/../../lib/legacy
 
 C_FLAGS =  -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wcast-qual -Wstrict-prototypes -Wa,--noexecstack -O2 -g -DNDEBUG
 

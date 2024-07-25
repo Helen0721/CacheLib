@@ -54,8 +54,8 @@ endif()
 add_library(wangle::wangle SHARED IMPORTED)
 
 set_target_properties(wangle::wangle PROPERTIES
-  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/disk/CacheLib/opt/cachelib/include;/disk/CacheLib/opt/cachelib/include;/usr/include;/usr/include;/disk/CacheLib/opt/cachelib/include;/usr/include;/usr/include"
-  INTERFACE_LINK_LIBRARIES "Folly::folly;fizz::fizz;Boost::context;Boost::filesystem;Boost::program_options;Boost::regex;Boost::system;Boost::thread;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/disk/CacheLib/opt/cachelib/lib/libglog.so;gflags_shared;/usr/lib/x86_64-linux-gnu/libevent.so;/usr/lib/x86_64-linux-gnu/libdouble-conversion.so;dl;/usr/lib/x86_64-linux-gnu/librt.a;Threads::Threads"
+  INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include;/mnt/cfs/CacheLib/opt/cachelib/include;/mnt/cfs/CacheLib/opt/cachelib/include;/usr/include;/usr/include;/mnt/cfs/CacheLib/opt/cachelib/include;/usr/include;/usr/include"
+  INTERFACE_LINK_LIBRARIES "Folly::folly;fizz::fizz;Boost::context;Boost::filesystem;Boost::program_options;Boost::regex;Boost::system;Boost::thread;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so;gflags_shared;/usr/lib/x86_64-linux-gnu/libevent.so;/usr/lib/x86_64-linux-gnu/libdouble-conversion.so;dl;/usr/lib/x86_64-linux-gnu/librt.a;Threads::Threads"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

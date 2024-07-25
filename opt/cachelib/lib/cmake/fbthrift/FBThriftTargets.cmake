@@ -100,14 +100,14 @@ set_target_properties(FBThrift::thrift-core PROPERTIES
 add_library(FBThrift::concurrency SHARED IMPORTED)
 
 set_target_properties(FBThrift::concurrency PROPERTIES
-  INTERFACE_LINK_LIBRARIES "Folly::folly;gflags_shared;/disk/CacheLib/opt/cachelib/lib/libglog.so"
+  INTERFACE_LINK_LIBRARIES "Folly::folly;gflags_shared;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so"
 )
 
 # Create imported target FBThrift::transport
 add_library(FBThrift::transport SHARED IMPORTED)
 
 set_target_properties(FBThrift::transport PROPERTIES
-  INTERFACE_LINK_LIBRARIES "FBThrift::concurrency;FBThrift::thrift-core;FBThrift::rpcmetadata;Folly::folly;ZLIB::ZLIB;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/disk/CacheLib/opt/cachelib/lib/libzstd.so"
+  INTERFACE_LINK_LIBRARIES "FBThrift::concurrency;FBThrift::thrift-core;FBThrift::rpcmetadata;Folly::folly;ZLIB::ZLIB;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so;/mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so"
 )
 
 # Create imported target FBThrift::async
@@ -115,14 +115,14 @@ add_library(FBThrift::async SHARED IMPORTED)
 
 set_target_properties(FBThrift::async PROPERTIES
   INTERFACE_COMPILE_OPTIONS "\$<\$<COMPILE_LANGUAGE:CXX>:-fsized-deallocation>"
-  INTERFACE_LINK_LIBRARIES "FBThrift::concurrency;FBThrift::transport;Boost::boost;Folly::folly;wangle::wangle;/disk/CacheLib/opt/cachelib/lib/libglog.so;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so"
+  INTERFACE_LINK_LIBRARIES "FBThrift::concurrency;FBThrift::transport;Boost::boost;Folly::folly;wangle::wangle;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so;/usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so"
 )
 
 # Create imported target FBThrift::thrift
 add_library(FBThrift::thrift INTERFACE IMPORTED)
 
 set_target_properties(FBThrift::thrift PROPERTIES
-  INTERFACE_LINK_LIBRARIES "FBThrift::async;FBThrift::concurrency;FBThrift::thriftprotocol;FBThrift::transport;Folly::folly;/disk/CacheLib/opt/cachelib/lib/libglog.so"
+  INTERFACE_LINK_LIBRARIES "FBThrift::async;FBThrift::concurrency;FBThrift::thriftprotocol;FBThrift::transport;Folly::folly;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so"
 )
 
 # Create imported target FBThrift::rpcmetadata
@@ -143,7 +143,7 @@ set_target_properties(FBThrift::thriftmetadata PROPERTIES
 add_library(FBThrift::thriftfrozen2 SHARED IMPORTED)
 
 set_target_properties(FBThrift::thriftfrozen2 PROPERTIES
-  INTERFACE_LINK_LIBRARIES "Folly::folly;FBThrift::thriftmetadata;FBThrift::thriftprotocol;/disk/CacheLib/opt/cachelib/lib/libglog.so;gflags_shared"
+  INTERFACE_LINK_LIBRARIES "Folly::folly;FBThrift::thriftmetadata;FBThrift::thriftprotocol;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so;gflags_shared"
 )
 
 # Create imported target FBThrift::thrifttyperep
@@ -171,7 +171,7 @@ set_target_properties(FBThrift::thriftanyrep PROPERTIES
 add_library(FBThrift::thriftprotocol SHARED IMPORTED)
 
 set_target_properties(FBThrift::thriftprotocol PROPERTIES
-  INTERFACE_LINK_LIBRARIES "fmt::fmt;FBThrift::thrift;Folly::folly;wangle::wangle;/disk/CacheLib/opt/cachelib/lib/libglog.so;FBThrift::thrift-core"
+  INTERFACE_LINK_LIBRARIES "fmt::fmt;FBThrift::thrift;Folly::folly;wangle::wangle;/mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so;FBThrift::thrift-core"
 )
 
 # Create imported target FBThrift::thriftcpp2

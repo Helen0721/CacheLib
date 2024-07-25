@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/codec/CMakeFiles/mvfst_codec.dir/depend.make
@@ -70,46 +70,46 @@ include quic/codec/CMakeFiles/mvfst_codec.dir/progress.make
 include quic/codec/CMakeFiles/mvfst_codec.dir/flags.make
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o: quic/codec/CMakeFiles/mvfst_codec.dir/flags.make
-quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp
+quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o: quic/codec/CMakeFiles/mvfst_codec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o -MF CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o.d -o CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o -MF CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o.d -o CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp > CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp > CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.i
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp -o CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicHeaderCodec.cpp -o CMakeFiles/mvfst_codec.dir/QuicHeaderCodec.cpp.s
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o: quic/codec/CMakeFiles/mvfst_codec.dir/flags.make
-quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp
+quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o: quic/codec/CMakeFiles/mvfst_codec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o -MF CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o.d -o CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o -MF CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o.d -o CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp > CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp > CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.i
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp -o CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicReadCodec.cpp -o CMakeFiles/mvfst_codec.dir/QuicReadCodec.cpp.s
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o: quic/codec/CMakeFiles/mvfst_codec.dir/flags.make
-quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp
+quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o: quic/codec/CMakeFiles/mvfst_codec.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o -MF CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o.d -o CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o -MF CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o.d -o CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp > CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp > CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.i
 
 quic/codec/CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp -o CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec/QuicWriteCodec.cpp -o CMakeFiles/mvfst_codec.dir/QuicWriteCodec.cpp.s
 
 # Object files for target mvfst_codec
 mvfst_codec_OBJECTS = \
@@ -130,11 +130,11 @@ quic/codec/libmvfst_codec.so.0: quic/codec/libmvfst_codec_decode.so.0
 quic/codec/libmvfst_codec.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/codec/libmvfst_codec.so.0: quic/libmvfst_constants.so.0
 quic/codec/libmvfst_codec.so.0: quic/libmvfst_exception.so.0
-quic/codec/libmvfst_codec.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/codec/libmvfst_codec.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/codec/libmvfst_codec.so.0: quic/common/libmvfst_bufutil.so.0
-quic/codec/libmvfst_codec.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/codec/libmvfst_codec.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -142,10 +142,10 @@ quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_regex.so.1.74
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.74.0
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
-quic/codec/libmvfst_codec.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/codec/libmvfst_codec.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/codec/libmvfst_codec.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
-quic/codec/libmvfst_codec.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/codec/libmvfst_codec.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/codec/libmvfst_codec.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
@@ -153,7 +153,7 @@ quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/liblzma.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/liblz4.so
-quic/codec/libmvfst_codec.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/codec/libmvfst_codec.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libsnappy.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libdwarf.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
@@ -161,9 +161,9 @@ quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/codec/libmvfst_codec.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
 quic/codec/libmvfst_codec.so.0: quic/codec/CMakeFiles/mvfst_codec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_codec.so"
-	cd /disk/CacheLib/build-mvfst/quic/codec && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_codec.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/codec && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_codec.so.0 libmvfst_codec.so.0 libmvfst_codec.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libmvfst_codec.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_codec.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_codec.so.0 libmvfst_codec.so.0 libmvfst_codec.so
 
 quic/codec/libmvfst_codec.so: quic/codec/libmvfst_codec.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/codec/libmvfst_codec.so
@@ -173,10 +173,10 @@ quic/codec/CMakeFiles/mvfst_codec.dir/build: quic/codec/libmvfst_codec.so
 .PHONY : quic/codec/CMakeFiles/mvfst_codec.dir/build
 
 quic/codec/CMakeFiles/mvfst_codec.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/codec && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_codec.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/codec && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_codec.dir/cmake_clean.cmake
 .PHONY : quic/codec/CMakeFiles/mvfst_codec.dir/clean
 
 quic/codec/CMakeFiles/mvfst_codec.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/codec /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/codec /disk/CacheLib/build-mvfst/quic/codec/CMakeFiles/mvfst_codec.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/codec /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/codec /mnt/cfs/CacheLib/build-mvfst/quic/codec/CMakeFiles/mvfst_codec.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/codec/CMakeFiles/mvfst_codec.dir/depend
 

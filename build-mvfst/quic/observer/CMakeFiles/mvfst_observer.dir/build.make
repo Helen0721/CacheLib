@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /disk/CacheLib/cachelib/external/mvfst
+CMAKE_SOURCE_DIR = /mnt/cfs/CacheLib/cachelib/external/mvfst
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /disk/CacheLib/build-mvfst
+CMAKE_BINARY_DIR = /mnt/cfs/CacheLib/build-mvfst
 
 # Include any dependencies generated for this target.
 include quic/observer/CMakeFiles/mvfst_observer.dir/depend.make
@@ -70,18 +70,18 @@ include quic/observer/CMakeFiles/mvfst_observer.dir/progress.make
 include quic/observer/CMakeFiles/mvfst_observer.dir/flags.make
 
 quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o: quic/observer/CMakeFiles/mvfst_observer.dir/flags.make
-quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o: /disk/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp
+quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o: /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp
 quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o: quic/observer/CMakeFiles/mvfst_observer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o"
-	cd /disk/CacheLib/build-mvfst/quic/observer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o -MF CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o.d -o CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o -c /disk/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/observer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o -MF CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o.d -o CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.o -c /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp
 
 quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.i"
-	cd /disk/CacheLib/build-mvfst/quic/observer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /disk/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp > CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.i
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/observer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp > CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.i
 
 quic/observer/CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.s"
-	cd /disk/CacheLib/build-mvfst/quic/observer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /disk/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp -o CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.s
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/observer && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/observer/SocketObserverInterface.cpp -o CMakeFiles/mvfst_observer.dir/SocketObserverInterface.cpp.s
 
 # Object files for target mvfst_observer
 mvfst_observer_OBJECTS = \
@@ -109,11 +109,11 @@ quic/observer/libmvfst_observer.so.0: quic/codec/libmvfst_codec_decode.so.0
 quic/observer/libmvfst_observer.so.0: quic/codec/libmvfst_codec_types.so.0
 quic/observer/libmvfst_observer.so.0: quic/libmvfst_constants.so.0
 quic/observer/libmvfst_observer.so.0: quic/libmvfst_exception.so.0
-quic/observer/libmvfst_observer.so.0: /disk/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
+quic/observer/libmvfst_observer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfizz.so.1.0.0
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/observer/libmvfst_observer.so.0: quic/common/libmvfst_bufutil.so.0
-quic/observer/libmvfst_observer.so.0: /disk/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
+quic/observer/libmvfst_observer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfolly.so.0.58.0-dev
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_context.so.1.74.0
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.74.0
@@ -121,10 +121,10 @@ quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_regex.s
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.74.0
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.74.0
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.74.0
-quic/observer/libmvfst_observer.so.0: /disk/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
+quic/observer/libmvfst_observer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libfmt.so.10.2.1
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libdouble-conversion.so
-quic/observer/libmvfst_observer.so.0: /disk/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
-quic/observer/libmvfst_observer.so.0: /disk/CacheLib/opt/cachelib/lib/libglog.so
+quic/observer/libmvfst_observer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libgflags.so.2.2.2
+quic/observer/libmvfst_observer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libglog.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libevent.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libz.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libssl.so
@@ -132,7 +132,7 @@ quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libcrypto.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libbz2.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/liblzma.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/liblz4.so
-quic/observer/libmvfst_observer.so.0: /disk/CacheLib/opt/cachelib/lib/libzstd.so
+quic/observer/libmvfst_observer.so.0: /mnt/cfs/CacheLib/opt/cachelib/lib/libzstd.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libsnappy.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libdwarf.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libiberty.a
@@ -140,9 +140,9 @@ quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libaio.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libsodium.so
 quic/observer/libmvfst_observer.so.0: /usr/lib/x86_64-linux-gnu/libunwind.so
 quic/observer/libmvfst_observer.so.0: quic/observer/CMakeFiles/mvfst_observer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/disk/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmvfst_observer.so"
-	cd /disk/CacheLib/build-mvfst/quic/observer && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_observer.dir/link.txt --verbose=$(VERBOSE)
-	cd /disk/CacheLib/build-mvfst/quic/observer && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_observer.so.0 libmvfst_observer.so.0 libmvfst_observer.so
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/cfs/CacheLib/build-mvfst/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmvfst_observer.so"
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/observer && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mvfst_observer.dir/link.txt --verbose=$(VERBOSE)
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/observer && $(CMAKE_COMMAND) -E cmake_symlink_library libmvfst_observer.so.0 libmvfst_observer.so.0 libmvfst_observer.so
 
 quic/observer/libmvfst_observer.so: quic/observer/libmvfst_observer.so.0
 	@$(CMAKE_COMMAND) -E touch_nocreate quic/observer/libmvfst_observer.so
@@ -152,10 +152,10 @@ quic/observer/CMakeFiles/mvfst_observer.dir/build: quic/observer/libmvfst_observ
 .PHONY : quic/observer/CMakeFiles/mvfst_observer.dir/build
 
 quic/observer/CMakeFiles/mvfst_observer.dir/clean:
-	cd /disk/CacheLib/build-mvfst/quic/observer && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_observer.dir/cmake_clean.cmake
+	cd /mnt/cfs/CacheLib/build-mvfst/quic/observer && $(CMAKE_COMMAND) -P CMakeFiles/mvfst_observer.dir/cmake_clean.cmake
 .PHONY : quic/observer/CMakeFiles/mvfst_observer.dir/clean
 
 quic/observer/CMakeFiles/mvfst_observer.dir/depend:
-	cd /disk/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /disk/CacheLib/cachelib/external/mvfst /disk/CacheLib/cachelib/external/mvfst/quic/observer /disk/CacheLib/build-mvfst /disk/CacheLib/build-mvfst/quic/observer /disk/CacheLib/build-mvfst/quic/observer/CMakeFiles/mvfst_observer.dir/DependInfo.cmake --color=$(COLOR)
+	cd /mnt/cfs/CacheLib/build-mvfst && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /mnt/cfs/CacheLib/cachelib/external/mvfst /mnt/cfs/CacheLib/cachelib/external/mvfst/quic/observer /mnt/cfs/CacheLib/build-mvfst /mnt/cfs/CacheLib/build-mvfst/quic/observer /mnt/cfs/CacheLib/build-mvfst/quic/observer/CMakeFiles/mvfst_observer.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : quic/observer/CMakeFiles/mvfst_observer.dir/depend
 
