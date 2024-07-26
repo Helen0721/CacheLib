@@ -133,12 +133,9 @@ struct MMTinyLFUCollection {
   1: required map<i32, map<i32, MMTinyLFUObject>> pools;
 }
 
-struct MMSieveConfig {
-  1: required i32 lruRefreshTime;
-  2: required bool updateOnWrite;
-  3: bool updateOnRead = true;
-  4: bool tryLockUpdate = false;
-  5: double lruRefreshRatio = 0.0;
+struct MMSieveConfig { 
+  1: bool updateOnWrite = true;
+  2: bool updateOnRead = true; 
 }
 
 struct MMSieveObject {

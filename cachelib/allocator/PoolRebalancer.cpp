@@ -103,7 +103,7 @@ RebalanceContext PoolRebalancer::pickVictimByFreeAlloc(PoolId pid) const {
 
 bool PoolRebalancer::tryRebalancing(PoolId pid, RebalanceStrategy& strategy) {
 
-  std::cout<<"Trying Rebalancing.."<<std::endl;
+  //std::cout<<"Trying Rebalancing.."<<std::endl;
 
   const auto begin = util::getCurrentTimeMs();
 
@@ -117,7 +117,7 @@ bool PoolRebalancer::tryRebalancing(PoolId pid, RebalanceStrategy& strategy) {
   }
 
   if (!cache_.getPool(pid).allSlabsAllocated()) {
-    std::cout << "Not all mem. in the pool is alloc. to some slab. Not starting." << std::endl;
+    //std::cout << "Not all mem. in the pool is alloc. to some slab. Not starting." << std::endl;
     return false;
   }
 

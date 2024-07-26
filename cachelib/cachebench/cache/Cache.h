@@ -472,7 +472,7 @@ inline typename LruAllocator::MMConfig makeMMConfig(CacheConfig const& config) {
                                 config.useCombinedLockForIterators);
 }
 
-// LRU
+// LRU2Q
 template <>
 inline typename Lru2QAllocator::MMConfig makeMMConfig(
     CacheConfig const& config) {
@@ -487,6 +487,19 @@ inline typename Lru2QAllocator::MMConfig makeMMConfig(
                                   0,
                                   config.useCombinedLockForIterators);
 }
+
+
+// SIEVE
+template <>
+inline typename SieveAllocator::MMConfig makeMMConfig(
+    CacheConfig const& config) {
+  std::cout<<"cachebench-Cache.h-makeMMConfig-config.useCombLockForIters:" << config.useCombinedLockForIterators << std::endl;	
+  return SieveAllocator::MMConfig(true,
+                                  true,
+                    		  config.useCombinedLockForIterators);
+}
+
+
 
 template <typename Allocator>
 uint64_t Cache<Allocator>::fetchNandWrites() const {

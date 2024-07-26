@@ -72,11 +72,8 @@ struct config;
 struct evictions;
 struct lrus;
 struct pools;
-struct lruRefreshTime;
 struct updateOnWrite;
 struct updateOnRead;
-struct tryLockUpdate;
-struct lruRefreshRatio;
 struct config;
 struct evictions;
 struct queue;
@@ -327,10 +324,6 @@ APACHE_THRIFT_DEFINE_ACCESSOR(lrus);
 #define APACHE_THRIFT_ACCESSOR_pools
 APACHE_THRIFT_DEFINE_ACCESSOR(pools);
 #endif
-#ifndef APACHE_THRIFT_ACCESSOR_lruRefreshTime
-#define APACHE_THRIFT_ACCESSOR_lruRefreshTime
-APACHE_THRIFT_DEFINE_ACCESSOR(lruRefreshTime);
-#endif
 #ifndef APACHE_THRIFT_ACCESSOR_updateOnWrite
 #define APACHE_THRIFT_ACCESSOR_updateOnWrite
 APACHE_THRIFT_DEFINE_ACCESSOR(updateOnWrite);
@@ -338,14 +331,6 @@ APACHE_THRIFT_DEFINE_ACCESSOR(updateOnWrite);
 #ifndef APACHE_THRIFT_ACCESSOR_updateOnRead
 #define APACHE_THRIFT_ACCESSOR_updateOnRead
 APACHE_THRIFT_DEFINE_ACCESSOR(updateOnRead);
-#endif
-#ifndef APACHE_THRIFT_ACCESSOR_tryLockUpdate
-#define APACHE_THRIFT_ACCESSOR_tryLockUpdate
-APACHE_THRIFT_DEFINE_ACCESSOR(tryLockUpdate);
-#endif
-#ifndef APACHE_THRIFT_ACCESSOR_lruRefreshRatio
-#define APACHE_THRIFT_ACCESSOR_lruRefreshRatio
-APACHE_THRIFT_DEFINE_ACCESSOR(lruRefreshRatio);
 #endif
 #ifndef APACHE_THRIFT_ACCESSOR_config
 #define APACHE_THRIFT_ACCESSOR_config
@@ -4935,23 +4920,17 @@ class MMSieveConfig final  {
   static std::string_view __fbthrift_get_field_name(::apache::thrift::FieldOrdinal ord);
   static std::string_view __fbthrift_get_class_name();
   using __fbthrift_reflection_ident_list = folly::tag_t<
-    ::apache::thrift::ident::lruRefreshTime,
     ::apache::thrift::ident::updateOnWrite,
-    ::apache::thrift::ident::updateOnRead,
-    ::apache::thrift::ident::tryLockUpdate,
-    ::apache::thrift::ident::lruRefreshRatio
+    ::apache::thrift::ident::updateOnRead
   >;
 
-  static constexpr std::int16_t __fbthrift_reflection_field_id_list[] = {0,1,2,3,4,5};
+  static constexpr std::int16_t __fbthrift_reflection_field_id_list[] = {0,1,2};
   using __fbthrift_reflection_type_tags = folly::tag_t<
-    ::apache::thrift::type::i32_t,
     ::apache::thrift::type::bool_t,
-    ::apache::thrift::type::bool_t,
-    ::apache::thrift::type::bool_t,
-    ::apache::thrift::type::double_t
+    ::apache::thrift::type::bool_t
   >;
 
-  static constexpr std::size_t __fbthrift_field_size_v = 5;
+  static constexpr std::size_t __fbthrift_field_size_v = 2;
 
   template<class T>
   using __fbthrift_id = ::apache::thrift::type::field_id<__fbthrift_reflection_field_id_list[folly::to_underlying(T::value)]>;
@@ -4982,15 +4961,12 @@ class MMSieveConfig final  {
  public:
 
   MMSieveConfig() :
-      __fbthrift_field_lruRefreshTime(),
-      __fbthrift_field_updateOnWrite(),
-      __fbthrift_field_updateOnRead(true),
-      __fbthrift_field_tryLockUpdate(false),
-      __fbthrift_field_lruRefreshRatio(static_cast<double>(0)) {
+      __fbthrift_field_updateOnWrite(true),
+      __fbthrift_field_updateOnRead(true) {
   }
   // FragileConstructor for use in initialization lists only.
   [[deprecated("This constructor is deprecated")]]
-  MMSieveConfig(apache::thrift::FragileConstructor, ::std::int32_t lruRefreshTime__arg, bool updateOnWrite__arg, bool updateOnRead__arg, bool tryLockUpdate__arg, double lruRefreshRatio__arg);
+  MMSieveConfig(apache::thrift::FragileConstructor, bool updateOnWrite__arg, bool updateOnRead__arg);
 
   MMSieveConfig(MMSieveConfig&&) = default;
 
@@ -5001,231 +4977,95 @@ class MMSieveConfig final  {
 
   MMSieveConfig& operator=(const MMSieveConfig&) = default;
  private:
-  ::std::int32_t __fbthrift_field_lruRefreshTime;
- private:
   bool __fbthrift_field_updateOnWrite;
  private:
   bool __fbthrift_field_updateOnRead;
  private:
-  bool __fbthrift_field_tryLockUpdate;
- private:
-  double __fbthrift_field_lruRefreshRatio;
- private:
-  apache::thrift::detail::isset_bitset<3, apache::thrift::detail::IssetBitsetOption::Unpacked> __isset;
+  apache::thrift::detail::isset_bitset<2, apache::thrift::detail::IssetBitsetOption::Unpacked> __isset;
 
  public:
 
   bool operator==(const MMSieveConfig&) const;
   bool operator<(const MMSieveConfig&) const;
 
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> lruRefreshTime_ref() const& {
-    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_lruRefreshTime};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> lruRefreshTime_ref() const&& {
-    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_lruRefreshTime)};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> lruRefreshTime_ref() & {
-    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_lruRefreshTime};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> lruRefreshTime_ref() && {
-    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_lruRefreshTime)};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> lruRefreshTime() const& {
-    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_lruRefreshTime};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> lruRefreshTime() const&& {
-    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_lruRefreshTime)};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> lruRefreshTime() & {
-    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_lruRefreshTime};
-  }
-
-  template <typename..., typename T = ::std::int32_t>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> lruRefreshTime() && {
-    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_lruRefreshTime)};
+  template <typename..., typename T = bool>
+  FOLLY_ERASE ::apache::thrift::field_ref<const T&> updateOnWrite_ref() const& {
+    return {this->__fbthrift_field_updateOnWrite, __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> updateOnWrite_ref() const& {
-    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_updateOnWrite};
+  FOLLY_ERASE ::apache::thrift::field_ref<const T&&> updateOnWrite_ref() const&& {
+    return {static_cast<const T&&>(this->__fbthrift_field_updateOnWrite), __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> updateOnWrite_ref() const&& {
-    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_updateOnWrite)};
+  FOLLY_ERASE ::apache::thrift::field_ref<T&> updateOnWrite_ref() & {
+    return {this->__fbthrift_field_updateOnWrite, __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> updateOnWrite_ref() & {
-    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_updateOnWrite};
+  FOLLY_ERASE ::apache::thrift::field_ref<T&&> updateOnWrite_ref() && {
+    return {static_cast<T&&>(this->__fbthrift_field_updateOnWrite), __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> updateOnWrite_ref() && {
-    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_updateOnWrite)};
+  FOLLY_ERASE ::apache::thrift::field_ref<const T&> updateOnWrite() const& {
+    return {this->__fbthrift_field_updateOnWrite, __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&> updateOnWrite() const& {
-    return ::apache::thrift::required_field_ref<const T&>{this->__fbthrift_field_updateOnWrite};
+  FOLLY_ERASE ::apache::thrift::field_ref<const T&&> updateOnWrite() const&& {
+    return {static_cast<const T&&>(this->__fbthrift_field_updateOnWrite), __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<const T&&> updateOnWrite() const&& {
-    return ::apache::thrift::required_field_ref<const T&&>{static_cast<const T&&>(this->__fbthrift_field_updateOnWrite)};
+  FOLLY_ERASE ::apache::thrift::field_ref<T&> updateOnWrite() & {
+    return {this->__fbthrift_field_updateOnWrite, __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&> updateOnWrite() & {
-    return ::apache::thrift::required_field_ref<T&>{this->__fbthrift_field_updateOnWrite};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::required_field_ref<T&&> updateOnWrite() && {
-    return ::apache::thrift::required_field_ref<T&&>{static_cast<T&&>(this->__fbthrift_field_updateOnWrite)};
+  FOLLY_ERASE ::apache::thrift::field_ref<T&&> updateOnWrite() && {
+    return {static_cast<T&&>(this->__fbthrift_field_updateOnWrite), __isset.at(0), __isset.bit(0)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<const T&> updateOnRead_ref() const& {
-    return {this->__fbthrift_field_updateOnRead, __isset.at(0), __isset.bit(0)};
+    return {this->__fbthrift_field_updateOnRead, __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<const T&&> updateOnRead_ref() const&& {
-    return {static_cast<const T&&>(this->__fbthrift_field_updateOnRead), __isset.at(0), __isset.bit(0)};
+    return {static_cast<const T&&>(this->__fbthrift_field_updateOnRead), __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<T&> updateOnRead_ref() & {
-    return {this->__fbthrift_field_updateOnRead, __isset.at(0), __isset.bit(0)};
+    return {this->__fbthrift_field_updateOnRead, __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<T&&> updateOnRead_ref() && {
-    return {static_cast<T&&>(this->__fbthrift_field_updateOnRead), __isset.at(0), __isset.bit(0)};
+    return {static_cast<T&&>(this->__fbthrift_field_updateOnRead), __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<const T&> updateOnRead() const& {
-    return {this->__fbthrift_field_updateOnRead, __isset.at(0), __isset.bit(0)};
+    return {this->__fbthrift_field_updateOnRead, __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<const T&&> updateOnRead() const&& {
-    return {static_cast<const T&&>(this->__fbthrift_field_updateOnRead), __isset.at(0), __isset.bit(0)};
+    return {static_cast<const T&&>(this->__fbthrift_field_updateOnRead), __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<T&> updateOnRead() & {
-    return {this->__fbthrift_field_updateOnRead, __isset.at(0), __isset.bit(0)};
+    return {this->__fbthrift_field_updateOnRead, __isset.at(1), __isset.bit(1)};
   }
 
   template <typename..., typename T = bool>
   FOLLY_ERASE ::apache::thrift::field_ref<T&&> updateOnRead() && {
-    return {static_cast<T&&>(this->__fbthrift_field_updateOnRead), __isset.at(0), __isset.bit(0)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&> tryLockUpdate_ref() const& {
-    return {this->__fbthrift_field_tryLockUpdate, __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&&> tryLockUpdate_ref() const&& {
-    return {static_cast<const T&&>(this->__fbthrift_field_tryLockUpdate), __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&> tryLockUpdate_ref() & {
-    return {this->__fbthrift_field_tryLockUpdate, __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&&> tryLockUpdate_ref() && {
-    return {static_cast<T&&>(this->__fbthrift_field_tryLockUpdate), __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&> tryLockUpdate() const& {
-    return {this->__fbthrift_field_tryLockUpdate, __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&&> tryLockUpdate() const&& {
-    return {static_cast<const T&&>(this->__fbthrift_field_tryLockUpdate), __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&> tryLockUpdate() & {
-    return {this->__fbthrift_field_tryLockUpdate, __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = bool>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&&> tryLockUpdate() && {
-    return {static_cast<T&&>(this->__fbthrift_field_tryLockUpdate), __isset.at(1), __isset.bit(1)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&> lruRefreshRatio_ref() const& {
-    return {this->__fbthrift_field_lruRefreshRatio, __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&&> lruRefreshRatio_ref() const&& {
-    return {static_cast<const T&&>(this->__fbthrift_field_lruRefreshRatio), __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&> lruRefreshRatio_ref() & {
-    return {this->__fbthrift_field_lruRefreshRatio, __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&&> lruRefreshRatio_ref() && {
-    return {static_cast<T&&>(this->__fbthrift_field_lruRefreshRatio), __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&> lruRefreshRatio() const& {
-    return {this->__fbthrift_field_lruRefreshRatio, __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<const T&&> lruRefreshRatio() const&& {
-    return {static_cast<const T&&>(this->__fbthrift_field_lruRefreshRatio), __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&> lruRefreshRatio() & {
-    return {this->__fbthrift_field_lruRefreshRatio, __isset.at(2), __isset.bit(2)};
-  }
-
-  template <typename..., typename T = double>
-  FOLLY_ERASE ::apache::thrift::field_ref<T&&> lruRefreshRatio() && {
-    return {static_cast<T&&>(this->__fbthrift_field_lruRefreshRatio), __isset.at(2), __isset.bit(2)};
-  }
-
-  ::std::int32_t get_lruRefreshTime() const {
-    return __fbthrift_field_lruRefreshTime;
-  }
-
-  [[deprecated("Use `FOO.lruRefreshTime_ref() = BAR;` instead of `FOO.set_lruRefreshTime(BAR);`")]]
-  ::std::int32_t& set_lruRefreshTime(::std::int32_t lruRefreshTime_) {
-    lruRefreshTime_ref() = lruRefreshTime_;
-    return __fbthrift_field_lruRefreshTime;
+    return {static_cast<T&&>(this->__fbthrift_field_updateOnRead), __isset.at(1), __isset.bit(1)};
   }
 
   bool get_updateOnWrite() const {
@@ -5246,26 +5086,6 @@ class MMSieveConfig final  {
   bool& set_updateOnRead(bool updateOnRead_) {
     updateOnRead_ref() = updateOnRead_;
     return __fbthrift_field_updateOnRead;
-  }
-
-  bool get_tryLockUpdate() const {
-    return __fbthrift_field_tryLockUpdate;
-  }
-
-  [[deprecated("Use `FOO.tryLockUpdate_ref() = BAR;` instead of `FOO.set_tryLockUpdate(BAR);`")]]
-  bool& set_tryLockUpdate(bool tryLockUpdate_) {
-    tryLockUpdate_ref() = tryLockUpdate_;
-    return __fbthrift_field_tryLockUpdate;
-  }
-
-  double get_lruRefreshRatio() const {
-    return __fbthrift_field_lruRefreshRatio;
-  }
-
-  [[deprecated("Use `FOO.lruRefreshRatio_ref() = BAR;` instead of `FOO.set_lruRefreshRatio(BAR);`")]]
-  double& set_lruRefreshRatio(double lruRefreshRatio_) {
-    lruRefreshRatio_ref() = lruRefreshRatio_;
-    return __fbthrift_field_lruRefreshRatio;
   }
 
   template <class Protocol_>

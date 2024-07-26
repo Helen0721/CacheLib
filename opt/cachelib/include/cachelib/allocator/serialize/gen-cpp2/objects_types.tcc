@@ -3489,19 +3489,6 @@ void MMSieveConfig::readNoXfer(Protocol_* iprot) {
           iprot,
           0,
           1,
-          apache::thrift::protocol::T_I32))) {
-    goto _advance_failure;
-  }
-_readField_lruRefreshTime:
-  {
-    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int32_t>::readWithContext(*iprot, this->__fbthrift_field_lruRefreshTime, _readState);
-    
-  }
-
-  if (UNLIKELY(!_readState.advanceToNextField(
-          iprot,
-          1,
-          2,
           apache::thrift::protocol::T_BOOL))) {
     goto _advance_failure;
   }
@@ -3510,11 +3497,12 @@ _readField_updateOnWrite:
     ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::readWithContext(*iprot, this->__fbthrift_field_updateOnWrite, _readState);
     
   }
+ this->__isset.set(0, true);
 
   if (UNLIKELY(!_readState.advanceToNextField(
           iprot,
+          1,
           2,
-          3,
           apache::thrift::protocol::T_BOOL))) {
     goto _advance_failure;
   }
@@ -3523,39 +3511,11 @@ _readField_updateOnRead:
     ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::readWithContext(*iprot, this->__fbthrift_field_updateOnRead, _readState);
     
   }
- this->__isset.set(0, true);
-
-  if (UNLIKELY(!_readState.advanceToNextField(
-          iprot,
-          3,
-          4,
-          apache::thrift::protocol::T_BOOL))) {
-    goto _advance_failure;
-  }
-_readField_tryLockUpdate:
-  {
-    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::readWithContext(*iprot, this->__fbthrift_field_tryLockUpdate, _readState);
-    
-  }
  this->__isset.set(1, true);
 
   if (UNLIKELY(!_readState.advanceToNextField(
           iprot,
-          4,
-          5,
-          apache::thrift::protocol::T_DOUBLE))) {
-    goto _advance_failure;
-  }
-_readField_lruRefreshRatio:
-  {
-    ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::floating_point, double>::readWithContext(*iprot, this->__fbthrift_field_lruRefreshRatio, _readState);
-    
-  }
- this->__isset.set(2, true);
-
-  if (UNLIKELY(!_readState.advanceToNextField(
-          iprot,
-          5,
+          2,
           0,
           apache::thrift::protocol::T_STOP))) {
     goto _advance_failure;
@@ -3580,8 +3540,8 @@ _loop:
   switch (_readState.fieldId) {
     case 1:
     {
-      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_I32))) {
-        goto _readField_lruRefreshTime;
+      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_BOOL))) {
+        goto _readField_updateOnWrite;
       } else {
         goto _skip;
       }
@@ -3589,31 +3549,7 @@ _loop:
     case 2:
     {
       if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_BOOL))) {
-        goto _readField_updateOnWrite;
-      } else {
-        goto _skip;
-      }
-    }
-    case 3:
-    {
-      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_BOOL))) {
         goto _readField_updateOnRead;
-      } else {
-        goto _skip;
-      }
-    }
-    case 4:
-    {
-      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_BOOL))) {
-        goto _readField_tryLockUpdate;
-      } else {
-        goto _skip;
-      }
-    }
-    case 5:
-    {
-      if (LIKELY(_readState.isCompatibleWithType(iprot, apache::thrift::protocol::T_DOUBLE))) {
-        goto _readField_lruRefreshRatio;
       } else {
         goto _skip;
       }
@@ -3634,24 +3570,12 @@ uint32_t MMSieveConfig::serializedSize(Protocol_ const* prot_) const {
   uint32_t xfer = 0;
   xfer += prot_->serializedStructSize("MMSieveConfig");
   {
-    xfer += prot_->serializedFieldSize("lruRefreshTime", apache::thrift::protocol::T_I32, 1);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int32_t>::serializedSize<false>(*prot_, this->__fbthrift_field_lruRefreshTime);
-  }
-  {
-    xfer += prot_->serializedFieldSize("updateOnWrite", apache::thrift::protocol::T_BOOL, 2);
+    xfer += prot_->serializedFieldSize("updateOnWrite", apache::thrift::protocol::T_BOOL, 1);
     xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::serializedSize<false>(*prot_, this->__fbthrift_field_updateOnWrite);
   }
   {
-    xfer += prot_->serializedFieldSize("updateOnRead", apache::thrift::protocol::T_BOOL, 3);
+    xfer += prot_->serializedFieldSize("updateOnRead", apache::thrift::protocol::T_BOOL, 2);
     xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::serializedSize<false>(*prot_, this->__fbthrift_field_updateOnRead);
-  }
-  {
-    xfer += prot_->serializedFieldSize("tryLockUpdate", apache::thrift::protocol::T_BOOL, 4);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::serializedSize<false>(*prot_, this->__fbthrift_field_tryLockUpdate);
-  }
-  {
-    xfer += prot_->serializedFieldSize("lruRefreshRatio", apache::thrift::protocol::T_DOUBLE, 5);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::floating_point, double>::serializedSize<false>(*prot_, this->__fbthrift_field_lruRefreshRatio);
   }
   xfer += prot_->serializedSizeStop();
   return xfer;
@@ -3662,24 +3586,12 @@ uint32_t MMSieveConfig::serializedSizeZC(Protocol_ const* prot_) const {
   uint32_t xfer = 0;
   xfer += prot_->serializedStructSize("MMSieveConfig");
   {
-    xfer += prot_->serializedFieldSize("lruRefreshTime", apache::thrift::protocol::T_I32, 1);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int32_t>::serializedSize<false>(*prot_, this->__fbthrift_field_lruRefreshTime);
-  }
-  {
-    xfer += prot_->serializedFieldSize("updateOnWrite", apache::thrift::protocol::T_BOOL, 2);
+    xfer += prot_->serializedFieldSize("updateOnWrite", apache::thrift::protocol::T_BOOL, 1);
     xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::serializedSize<false>(*prot_, this->__fbthrift_field_updateOnWrite);
   }
   {
-    xfer += prot_->serializedFieldSize("updateOnRead", apache::thrift::protocol::T_BOOL, 3);
+    xfer += prot_->serializedFieldSize("updateOnRead", apache::thrift::protocol::T_BOOL, 2);
     xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::serializedSize<false>(*prot_, this->__fbthrift_field_updateOnRead);
-  }
-  {
-    xfer += prot_->serializedFieldSize("tryLockUpdate", apache::thrift::protocol::T_BOOL, 4);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::serializedSize<false>(*prot_, this->__fbthrift_field_tryLockUpdate);
-  }
-  {
-    xfer += prot_->serializedFieldSize("lruRefreshRatio", apache::thrift::protocol::T_DOUBLE, 5);
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::floating_point, double>::serializedSize<false>(*prot_, this->__fbthrift_field_lruRefreshRatio);
   }
   xfer += prot_->serializedSizeStop();
   return xfer;
@@ -3692,37 +3604,16 @@ uint32_t MMSieveConfig::write(Protocol_* prot_) const {
   bool previousFieldHasValue = true;
   {
     constexpr int16_t kPrevFieldId = 0;
-    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_I32, 1, kPrevFieldId>(*prot_, "lruRefreshTime", previousFieldHasValue);
-    previousFieldHasValue = true;
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, ::std::int32_t>::write(*prot_, this->__fbthrift_field_lruRefreshTime);
-    xfer += prot_->writeFieldEnd();
-  }
-  {
-    constexpr int16_t kPrevFieldId = 1;
-    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_BOOL, 2, kPrevFieldId>(*prot_, "updateOnWrite", previousFieldHasValue);
+    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_BOOL, 1, kPrevFieldId>(*prot_, "updateOnWrite", previousFieldHasValue);
     previousFieldHasValue = true;
     xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::write(*prot_, this->__fbthrift_field_updateOnWrite);
     xfer += prot_->writeFieldEnd();
   }
   {
-    constexpr int16_t kPrevFieldId = 2;
-    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_BOOL, 3, kPrevFieldId>(*prot_, "updateOnRead", previousFieldHasValue);
+    constexpr int16_t kPrevFieldId = 1;
+    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_BOOL, 2, kPrevFieldId>(*prot_, "updateOnRead", previousFieldHasValue);
     previousFieldHasValue = true;
     xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::write(*prot_, this->__fbthrift_field_updateOnRead);
-    xfer += prot_->writeFieldEnd();
-  }
-  {
-    constexpr int16_t kPrevFieldId = 3;
-    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_BOOL, 4, kPrevFieldId>(*prot_, "tryLockUpdate", previousFieldHasValue);
-    previousFieldHasValue = true;
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::integral, bool>::write(*prot_, this->__fbthrift_field_tryLockUpdate);
-    xfer += prot_->writeFieldEnd();
-  }
-  {
-    constexpr int16_t kPrevFieldId = 4;
-    xfer += ::apache::thrift::detail::writeFieldBegin<apache::thrift::protocol::T_DOUBLE, 5, kPrevFieldId>(*prot_, "lruRefreshRatio", previousFieldHasValue);
-    previousFieldHasValue = true;
-    xfer += ::apache::thrift::detail::pm::protocol_methods<::apache::thrift::type_class::floating_point, double>::write(*prot_, this->__fbthrift_field_lruRefreshRatio);
     xfer += prot_->writeFieldEnd();
   }
   xfer += prot_->writeFieldStop();
