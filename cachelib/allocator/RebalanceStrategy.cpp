@@ -75,7 +75,7 @@ ClassId RebalanceStrategy::pickVictimByFreeMem(const std::set<ClassId>& victims,
       "filtering evicting classes for free-mem");
 
   if (victims.empty()) {
-    std::cout << " all classes are evicting. ";
+    //std::cout << " all classes are evicting. ";
     return Slab::kInvalidClassId;
   }
 
@@ -90,7 +90,7 @@ ClassId RebalanceStrategy::pickVictimByFreeMem(const std::set<ClassId>& victims,
                        });
 
   if (mpStats.acStats.at(*it).getTotalFreeMemory() <= threshold) {
-    std::cout << "Total free mem." << (mpStats.acStats.at(*it).getTotalFreeMemory() ) <<  " smaller than threshold " << threshold << ". " ;
+    //std::cout << "Total free mem." << (mpStats.acStats.at(*it).getTotalFreeMemory() ) <<  " smaller than threshold " << threshold << ". " ;
     return Slab::kInvalidClassId;
   }
 
@@ -221,7 +221,7 @@ std::set<ClassId> RebalanceStrategy::filterVictimsByHoldOff(
 RebalanceContext RebalanceStrategy::pickVictimAndReceiver(
     const CacheBase& cache, PoolId pid) {
  
-  std::cout << "RebStrtgy-pickVAndR...";
+  //std::cout << "RebStrtgy-pickVAndR...";
   return executeAndRecordCurrentState<RebalanceContext>(
       cache,
       pid,
@@ -231,7 +231,7 @@ RebalanceContext RebalanceStrategy::pickVictimAndReceiver(
         RebalanceContext ctx;
         ctx.receiverClassId = pickReceiverWithAllocFailures(cache, pid, stats);
         if (ctx.receiverClassId != Slab::kInvalidClassId) {
-	  std::cout << "RebStrtgy-found class with alloc. failures. ";
+	  //std::cout << "RebStrtgy-found class with alloc. failures. ";
           ctx.victimClassId = pickVictimImpl(cache, pid, stats);
           if (ctx.victimClassId == cachelib::Slab::kInvalidClassId) {
             ctx.victimClassId = pickAnyClassIdForResizing(cache, pid, stats);
@@ -242,12 +242,12 @@ RebalanceContext RebalanceStrategy::pickVictimAndReceiver(
             // start a hold off so that the receiver does not become a victim
             // soon enough.
             getPoolState(pid).at(ctx.receiverClassId).startHoldOff();
-            std::cout << "RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. ";
-	    std::cout << "v:" << static_cast<int>(ctx.victimClassId) << " r:" << static_cast<int>(ctx.receiverClassId) << std::endl;
+            //std::cout << "RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. ";
+	    //std::cout << "v:" << static_cast<int>(ctx.victimClassId) << " r:" << static_cast<int>(ctx.receiverClassId) << std::endl;
 	    return ctx;
           }
         }
-	std::cout << "RebStrtgy-triggering pickVandRImp...";
+	//std::cout << "RebStrtgy-triggering pickVandRImp...";
         return pickVictimAndReceiverImpl(cache, pid, stats);
       },
       kNoOpContext);
