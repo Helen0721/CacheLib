@@ -142,7 +142,74 @@ def collect_cnts(file,reb,algo):
         
         print(stdout_str_L[:3])
         exit(1)
-
+    
+    def get_config_FMS():
+        init_S = config_s_dict["FreeMem"]    
+        REGEX_FMS = r"minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),maxUnAllocatedSlabs:(?P<maxUnAllocatedSlabs>\d) "
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #MFS::MFS(Config config): minSlabs:5,numFreeSlabs:5,maxUnAllocatedSlabs:1500
+                part = parts[-1]
+                m = re.search(REGEX_FMS,part)
+                if not m:
+                    print("regex error",part)
+                    exit(1)
+                
+                res['minSlabs'] = m.group('minSlabs')
+                res['numSlabsFreeMem'] = m.group('numSlabsFreeMem')
+                res['maxUnAllocatedSlabs'] = m.group('maxUnAllocatedSlabs')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
+    
+    def get_config_MHS():
+        init_S = config_s_dict["MarginalHits"]    
+        REGEX_MHS = r"movingAverageParam: (?P<movingAverageParam>\d+.\d+),minSlabs:(?P<minSlabs>\d),maxFreeMemSlabs:(?P<maxFreeMemSlabs>\d)"
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #MHS::MHS(Config config): movingAverageParam: 0.450000,minSlabs:5,maxFreeMemSlabs:5
+                part = parts[-1]
+                m = re.search(REGEX_MHS,part)
+                if not m:
+                    print("regex error",part)
+                    exit(1)
+                
+                res['minSlabs'] = m.group('minSlabs')
+                res['movingAverageParam'] = m.group('numSlabsFreeMem')
+                res['maxFreeMemSlabs'] = m.group('maxFreeMemSlabs')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
+    
+    def get_config_LTA():
+        init_S = config_s_dict["LruTailAge"]    
+        REGEX_LTA = r"tailAgeDifferenceRatio: (?P<movingAverageParam>\d+.\d+),minTailAgeDifference:(?P<minSlabs>\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<maxFreeMemSlabs>\d),slabProjectionLength:(?P<slabprojectionlength>\d)"
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #LTAS::LTAS(Config config): tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabprojectionlength:1        
+                part = parts[-1]
+                m = re.search(REGEX_LTA,part)
+                if not m:
+                    print("regex error",part)
+                    exit(1)
+                
+                res['minSlabs'] = m.group('minSlabs')
+                res['tailAgeDifferenceRatio'] = m.group('movingAverageParam')
+                res['minTailAgeDifference'] = m.group('maxFreeMemSlabs')
+                res['numSlabsFreeMem'] = m.group('numSlabsFreeMem')
+                res['slabprojectionlength'] = m.group('maxFreeMemSlabs')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
 
     def get_final_hr():
         hr_list = []
@@ -294,7 +361,7 @@ def collect_into_csv():
         for out_fname,res_for_file in ALL_RES.items():
             vals = [str(x) for x in res_for_file.values()]
             print(out_fname,vals)
-           # csv_writer.writerow(vals)
+            csv_writer.writerow(vals)
     
     print("output saved to",csv_out_file_name)
     
