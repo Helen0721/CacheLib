@@ -120,7 +120,7 @@ def collect_cnts(file,reb,algo):
     def get_config_HPS():
         init_S = config_s_dict["HitsPerSlab"] 
         # =r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)"  
-        REGEX_HPS = r"minDiff:(?P<minDiff>\d+),diffRatio:(?P<diffRatio>\d+.\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),minLruTailAge:(?P<minLTA>\d),maxLruTailAge:(?P<maxLTA>\d) "
+        REGEX_HPS = r"minDiff:(?P<minDiff>\d+),diffRatio:(?P<diffRatio>\d+.\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),minLruTailAge:(?P<minLTA>\d),maxLruTailAge:(?P<maxLTA>\d)"
         res = dict()
         for line in stdout_str_L:
             if init_S in line:
@@ -145,7 +145,7 @@ def collect_cnts(file,reb,algo):
     
     def get_config_FMS():
         init_S = config_s_dict["FreeMem"]    
-        REGEX_FMS = r"minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),maxUnAllocatedSlabs:(?P<maxUnAllocatedSlabs>\d) "
+        REGEX_FMS = r"minSlabs:(?P<minSlabs>\d),numFreeSlabs:(?P<numFreeSlabs>\d),maxUnAllocatedSlabs:(?P<maxUnAllocatedSlabs>\d)"
         res = dict()
         for line in stdout_str_L:
             if init_S in line:
@@ -154,11 +154,13 @@ def collect_cnts(file,reb,algo):
                 part = parts[-1]
                 m = re.search(REGEX_FMS,part)
                 if not m:
-                    print("regex error",part)
+                    print("regex error")
+                    print("part",part)
+                    print("regx",REGEX_FMS)
                     exit(1)
                 
                 res['minSlabs'] = m.group('minSlabs')
-                res['numSlabsFreeMem'] = m.group('numSlabsFreeMem')
+                res['numFreeSlabs'] = m.group('numFreeSlabs')
                 res['maxUnAllocatedSlabs'] = m.group('maxUnAllocatedSlabs')
                 return res
         
@@ -180,7 +182,7 @@ def collect_cnts(file,reb,algo):
                     exit(1)
                 
                 res['minSlabs'] = m.group('minSlabs')
-                res['movingAverageParam'] = m.group('numSlabsFreeMem')
+                res['movingAverageParam'] = m.group('movingAverageParam')
                 res['maxFreeMemSlabs'] = m.group('maxFreeMemSlabs')
                 return res
         
@@ -210,6 +212,14 @@ def collect_cnts(file,reb,algo):
         
         print(stdout_str_L[:3])
         exit(1)
+
+    def get_rebParams_config():
+        if reb == "FreeMem": return get_config_FMS()
+        elif reb=="HitsPerSlab": return get_config_HPS()
+        elif reb=="MarginalHits": return get_config_MHS()
+        elif reb=="LruTailAge": return get_config_LTA()
+        else:
+            return None
 
     def get_final_hr():
         hr_list = []
@@ -257,10 +267,15 @@ def collect_cnts(file,reb,algo):
         return res
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
- 
+    
+    if ap.type=="csv":
+        start_reb_s = "RebStrtgy-pickVAndR..."
+    else:
+        start_reb_s = START_REB_s
+
     res = {
             "Eviction Algo": algo,
-            "total_attempts": stdout_str.count(START_REB_s),
+            "total_attempts": stdout_str.count(start_reb_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
           }
@@ -276,8 +291,11 @@ def collect_cnts(file,reb,algo):
   
     res[MISS_RATIO_s] = 1-float(get_final_hr())
     
-    if ap.type=="csv" and reb=="HitsPerSlab":
-        rebParams_dict = get_config_HPS()
+    if ap.type=="csv":
+        rebParams_dict = get_rebParams_config()
+        if not rebParams_dict:
+            print("unsupported reb",reb)
+            exit(1)
         res.update(rebParams_dict) 
     else:
         res["rebParams"] = get_config()
@@ -339,6 +357,8 @@ def collect_into_csv():
         for output_file in all_output_files:
             if "stopReb" in output_file: continue
             if "uniform" in output_file: continue
+            if "default" in output_file: continue
+            if "txt" in output_file: continue
             
             output_file_ = os.path.join(ap.output_folder,reb,output_file) 
             print("parsing for",output_file_)
