@@ -2,7 +2,7 @@
   "cache_config":
   {
     "cacheSizeMB": 40000,
-    "cacheDir": "/tmp/cachelib_metadata",
+    "cacheDir": "/root/cachelib_metadata",
     "allocFactor": 1.08,
     "maxAllocSize": 524288,
     "minAllocSize": 64,
@@ -10,7 +10,7 @@
     "navyWriterThreads": 4,
     "navyMaxNumReads": 128,
     "navyMaxNumWrites": 128,
-    "nvmCachePaths": ["/disk/"],
+    "nvmCachePaths": ["/dev/nvme1n1p2"],
     "nvmCacheSizeMB" : 952320,
     "navyBigHashBucketSize": 4096,
     "navyBigHashSizePct": 4,
