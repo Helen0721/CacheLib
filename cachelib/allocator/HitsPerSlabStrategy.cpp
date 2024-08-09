@@ -52,16 +52,16 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
   victims =
       filterByNumEvictableSlabs(stats, std::move(victims), config.minSlabs);
 
-  if (victims.empty()) {
-    std::cout<<"all alloc classes have below minSlabs " << config.minSlabs <<". ";
-  }
+  //if (victims.empty()) {
+    //std::cout<<"all alloc classes have below minSlabs " << config.minSlabs <<". ";
+  //}
 
   // ignore allocation classes that recently gained a slab. These will be
   // growing in their eviction age and we want to let the evicitons stabilize
   // before we consider  them again.
   victims = filterVictimsByHoldOff(pid, stats, std::move(victims));
   
-  if (victims.empty()) std::cout<<"v candidates under hold-off. ";
+  //if (victims.empty()) std::cout<<"v candidates under hold-off. ";
   
   // we are only concerned about the eviction age and not the projected age.
   const auto poolEvictionAgeStats =
@@ -70,7 +70,7 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
   if (config.minLruTailAge != 0) {
     victims =
         filterByMinTailAge(stats, std::move(victims), config.minLruTailAge);
-    if (victims.empty()) std::cout<<"v candidates below minLTA "<<config.minLruTailAge << ". ";
+    //if (victims.empty()) std::cout<<"v candidates below minLTA "<<config.minLruTailAge << ". ";
   }
 
   if (victims.empty()) {
@@ -85,7 +85,7 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
     return victimClassId;
   }
 
-  std::cout << "maxLruTailAge: " << config.maxLruTailAge << " .";
+  //std::cout << "maxLruTailAge: " << config.maxLruTailAge << " .";
   // prioritize victims with max LRU tail age
   if (config.maxLruTailAge != 0) {
     auto maxAgeVictims = filter(
@@ -98,7 +98,7 @@ ClassId HitsPerSlabStrategy::pickVictim(const Config& config,
     if (!maxAgeVictims.empty()) {
       victims = std::move(maxAgeVictims);
     }
-    else std::cout<<"v candidates above maxLTA "<< config.maxLruTailAge << ". ";
+    //else std::cout<<"v candidates above maxLTA "<< config.maxLruTailAge << ". ";
   }
 
   return *std::min_element(
@@ -130,13 +130,13 @@ ClassId HitsPerSlabStrategy::pickReceiver(const Config& config,
   // filter out alloc classes that are not evicting
   receivers = filterByNoEvictions(stats, std::move(receivers), poolState);
   
-  if (receivers.empty()) std::cout<<"r candidates aren't evicting. ";
+  //if (receivers.empty()) std::cout<<"r candidates aren't evicting. ";
 
   // filter out receivers who currently dont have any slabs. Their delta hits
   // do not make much sense.
   receivers = filterByNumEvictableSlabs(stats, std::move(receivers), 0);
   
-  if (receivers.empty()) std::cout<<"r candidates has no slabs. ";
+  //if (receivers.empty()) std::cout<<"r candidates has no slabs. ";
 
   // filter out alloc classes with more than the maximum tail age
   if (config.maxLruTailAge != 0) {
@@ -150,7 +150,7 @@ ClassId HitsPerSlabStrategy::pickReceiver(const Config& config,
   }
 
   if (receivers.empty()) {
-    std::cout<<"r candidates above max LTA " << config.maxLruTailAge << ". ";
+    //std::cout<<"r candidates above max LTA " << config.maxLruTailAge << ". ";
     return Slab::kInvalidClassId;
   }
 
@@ -168,7 +168,7 @@ ClassId HitsPerSlabStrategy::pickReceiver(const Config& config,
 RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
 
-  std::cout << "HPS-pickVAndRImpl...";
+  //std::cout << "HPS-pickVAndRImpl...";
 
   if (!cache.getPool(pid).allSlabsAllocated()) {
     XLOGF(DBG,
@@ -185,12 +185,12 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
   ctx.victimClassId = pickVictim(config, cache, pid, poolStats);
   ctx.receiverClassId = pickReceiver(config, pid, poolStats, ctx.victimClassId);
   
-  std::cout << "HPS-v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
+  //std::cout << "HPS-v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
 
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
-    std::cout << "HPS-invalid class id." << std::endl << std::flush;
+    //std::cout << "HPS-invalid class id." << std::endl << std::flush;
     return kNoOpContext;
   }
 
@@ -222,19 +222,20 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
                                            victimProjectedDeltaHitsPerSlab)) {
     XLOG(DBG, " not enough to trigger slab rebalancing");
 
-    std::cout<<"rDHpS: "<< receiverDeltaHitsPerSlab<<" ,vPDHpS: "<< victimProjectedDeltaHitsPerSlab <<"...";
+    //std::cout<<"rDHpS: "<< receiverDeltaHitsPerSlab<<" ,vPDHpS: "<< victimProjectedDeltaHitsPerSlab <<"...";
     if (receiverDeltaHitsPerSlab < victimProjectedDeltaHitsPerSlab){
-	std::cout<<"rDHpS < vPDHpS. ";
+	//std::cout<<"rDHpS < vPDHpS. ";
     }
     else{
     	if (improvement < config.minDiff) {
-		std::cout<<"improv.< minDiff " << config.minDiff << ". " ;}
+		//std::cout<<"improv.< minDiff " << config.minDiff << ". " ;
+	}
     	if (improvement < config.diffRatio * static_cast<long double>(
         victimProjectedDeltaHitsPerSlab)) {
-		std::cout<<"improv.< diffRatio * vPDHpS " << config.diffRatio <<". ";
+		//std::cout<<"improv.< diffRatio * vPDHpS " << config.diffRatio <<". ";
 	}
    }
-    std::cout << std::endl << std::flush;
+    //std::cout << std::endl << std::flush;
     return kNoOpContext;
   }
 
@@ -247,7 +248,7 @@ RebalanceContext HitsPerSlabStrategy::pickVictimAndReceiverImpl(
   for (const auto i : poolStats.getClassIds()) {
     poolState[i].updateHits(poolStats);
   }
-  std::cout << "HPS-hold off started." << std::endl << std::flush;
+  //std::cout << "HPS-hold off started." << std::endl << std::flush;
 
   return ctx;
 }

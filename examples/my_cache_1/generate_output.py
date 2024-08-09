@@ -65,9 +65,7 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     
     if ap.suffix:
         run_path += "_" + ap.suffix
-        out_file += "_" + ap.suffix
-        #cacheStats_path += "_" + ap.suffix
-        cacheStats_path = None
+        out_file += "_" + ap.suffix 
 
     print("run path:", run_path,", output file:",out_file)
     
@@ -75,8 +73,11 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     #    if os.path.isfile(out_file):
     #        print(out_file,"already exists")
     #        return
-
+    
     run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
+    
+    if not os.path.isfile(out_file):
+        run_args.append(cacheStats_path)
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -132,7 +133,7 @@ if __name__=="__main__":
             output_file = os.path.join(ap.outputdir,ap.reb,
                     ap.name + "_" + algo + "_" + cache_size + "_" + ap.reb + "_" + rebParams)
             
-            cacheStats_path = os.path.join(ap.outputdir,ap.reb,"CacheStats_{}_{}_{}_{}".format(algo,cache_size,ap.reb,rebParams))
+            cacheStats_path = os.path.join(ap.outputdir,"{}_CacheStats".format(ap.name))
 
             print("running {} with eviction algo: {},cache_size: {}, rebalancing strategy: {}, rebParams: {}.".format(
                 ap.tracepath,algo,cache_size,ap.reb,rebParams)) 

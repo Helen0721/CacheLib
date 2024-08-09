@@ -15,7 +15,7 @@ import subprocess
 import logging
 import copy
 
-ALGOS = ["Lru","Lru2Q","TinyLFU","Sieve"]
+ALGOS = ["Sieve","Lru","Lru2Q","TinyLFU"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
                             "FreeMem", 
                             "MarginalHits", 
@@ -112,10 +112,37 @@ def summarize_best_cnt(ALL_CNTS,cache_size,rebalance_strategy,algo):
     ALL_CNTS[cache_size][rebalance_strategy][algo]["best_result"] = {best_file: copy.deepcopy(res_for_files[best_file])}
 
 
-def collect_cnts(file,reb):
+def collect_cnts(file,reb,algo):
     with open(file,"r") as f:
         stdout_str = f.read()
         stdout_str_L = stdout_str.split("\n")
+
+    def get_config_HPS():
+        init_S = config_s_dict["HitsPerSlab"] 
+        # =r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)"  
+        REGEX_HPS = r"minDiff:(?P<minDiff>\d+),diffRatio:(?P<diffRatio>\d+.\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),minLruTailAge:(?P<minLTA>\d),maxLruTailAge:(?P<maxLTA>\d) "
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #HPS::HPS(Config config): minDiff:100,diffRatio:0.100000,minSlabs:1,numSlabsFreeMem:3,minLruTailAge:0,maxLruTailAge:0
+                part = parts[-1]
+                m = re.search(REGEX_HPS,part)
+                if not m:
+                    print("regex error",part)
+                    exit(1)
+                
+                res['minDiff'] = m.group("minDiff")
+                res['diffRatio'] = m.group('diffRatio')
+                res['minSlabs'] = m.group('minSlabs')
+                res['numSlabsFreeMem'] = m.group('numSlabsFreeMem')
+                res['minLTA'] = m.group('minLTA')
+                res['maxLTA'] = m.group('maxLTA')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
+
 
     def get_final_hr():
         hr_list = []
@@ -155,6 +182,7 @@ def collect_cnts(file,reb):
         strategy_triggered_s = FreeMem_triggered_s
     elif reb == "default":
         res = {
+            "Eviction Algo": algo,
             "total_attempts": stdout_str.count(START_REB_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
             MISS_RATIO_s: 1-float(get_final_hr())
@@ -163,11 +191,13 @@ def collect_cnts(file,reb):
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
  
-    res = {"total_attempts": stdout_str.count(START_REB_s),
+    res = {
+            "Eviction Algo": algo,
+            "total_attempts": stdout_str.count(START_REB_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
           }
-    
+   
     for i,r in enumerate(FAIL_REASONS["Universal"]):
         res[ABBRV[r]] = stdout_str.count(r)
     
@@ -178,11 +208,13 @@ def collect_cnts(file,reb):
             res[r] = stdout_str.count(r)
   
     res[MISS_RATIO_s] = 1-float(get_final_hr())
-
     
-    res["rebParams"] = get_config()
-
-    if res["rebParams"] == None: exit()    
+    if ap.type=="csv" and reb=="HitsPerSlab":
+        rebParams_dict = get_config_HPS()
+        res.update(rebParams_dict) 
+    else:
+        res["rebParams"] = get_config()
+        if res["rebParams"] == None: exit()    
 
     return res
 
@@ -206,7 +238,7 @@ def collect_all_cnts():
                 for output_file in all_output_files:
                     output_file_ = os.path.join(ap.output_folder,rebalance_strategy,output_file) 
                     print("parsing for",output_file_)
-                    cnt_res = collect_cnts(output_file_,rebalance_strategy)
+                    cnt_res = collect_cnts(output_file_,rebalance_strategy,algo)
                     ALL_RES[cache_size][rebalance_strategy][algo][output_file_] = cnt_res 
 
     for cache_size in cache_sizes: 
@@ -220,15 +252,64 @@ def collect_all_cnts():
     return ALL_RES
 
 
+def collect_into_csv(): 
+    reb = rebalance_strategies[0]
+    cache_size = cache_sizes[0]
+    
+    ALL_RES = dict() 
+    
+    all_files_for_reb = os.listdir(os.path.join(ap.output_folder,reb))
+ 
+    for (i,algo) in enumerate(algos):
+        if reb=="MarginalHits" and algo!="Lru2Q": continue
+        if reb=="LruTaiLAge" and algo=="Sieve": continue
+
+        prefix = ap.name + "_" + algo + "_" +cache_size+"_"+reb
+
+        all_output_files = [f for f in all_files_for_reb if (
+                            f.startswith(prefix) and not f.endswith(".txt"))]
+        
+        for output_file in all_output_files:
+            if "stopReb" in output_file: continue
+            if "uniform" in output_file: continue
+            
+            output_file_ = os.path.join(ap.output_folder,reb,output_file) 
+            print("parsing for",output_file_)
+            cnt_res = collect_cnts(output_file_,reb,algo) 
+
+            ALL_RES[output_file] = cnt_res 
+
+    csv_out_file_name = os.path.join(ap.output_folder,"{}_{}_{}.csv".format(reb,ap.algos,cache_size))
+    # {'total_attempts': 431, 'StrtgyTriggered': 165, 'TriggeredByFailAlloc': 1, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 8, 'invalid class id': 0, 'rDHpS < vPDHpS': 0, 'improv.< minDiff': 0, 'improv.< diffRatio * vPDHpS': 256, 'Final Miss Ratio': 0.06691199999999997, 'rebParams': {'minDiff': '90', 'diffRatio': '0.250000', 'minSlabs': '1', 'numSlabsFreeMem': '1', 'minLTA': '0', 'maxLTA': '0'}} 
+
+    header = cnt_res.keys()  
+    #print("header:",header)
+    
+    import csv
+    with open(csv_out_file_name,mode='w',newline='') as csv_out_f:
+        csv_writer = csv.writer(csv_out_f)
+        
+        csv_writer.writerow(header)
+        
+        for out_fname,res_for_file in ALL_RES.items():
+            vals = [str(x) for x in res_for_file.values()]
+            print(out_fname,vals)
+           # csv_writer.writerow(vals)
+    
+    print("output saved to",csv_out_file_name)
+    
+
+    
 if __name__=="__main__":
     import argparse
     p = argparse.ArgumentParser()
     p.add_argument("--output_folder",type=str,required=True) 
     p.add_argument("--name",type=str,required=True)
+    p.add_argument("--type",type=str,required=True)
 
     p.add_argument("--rebalance_strategies",type=str,default="all")
     p.add_argument("--cache_sizes",type=str,default="all")
-    p.add_argument("--algo",type=str,default="all")
+    p.add_argument("--algos",type=str,default="all")
     
 
     ap = p.parse_args()  
@@ -245,14 +326,18 @@ if __name__=="__main__":
         rebalance_strategies = ap.rebalance_strategies.split(",")
         json_file_path = os.path.join(ap.output_folder,"{}.json".format("_".join(rebalance_strategies)))
 
-    if ap.algo=="all":
+    if ap.algos=="all":
         algos = ALGOS
     else:
-        algos = [ap.algo]
+        algos = ap.algos.split(",")
 
+    if ap.type=="json":
 
-    ALL_RES = collect_all_cnts()
+        ALL_RES = collect_all_cnts()
 
-    with open(json_file_path,"w") as jf:
+        with open(json_file_path,"w") as jf:
             print("dumping to",json_file_path)
             json.dump(ALL_RES,jf,indent=5)
+
+    elif ap.type=="csv":
+        collect_into_csv()

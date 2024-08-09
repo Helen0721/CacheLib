@@ -67,4 +67,4 @@ done; done; done > tasks/MetaKVT1_2
 
 build/testSieve 1 ../data/meta_kvcache_traces_1.oracleGeneral.bin.zst 242
 
-for algo in Sieve Lru Lru2Q TinyLFU;do data=data/meta_kvcache_traces_1.oracleGeneral.bin.zst;output_dir=output/MetaKVT1_reb_2;name=metakvt1; while read -r line;do echo "./run.sh $data_path $name $algo HitsPerSlab $line $output_dir 1GB"; done < rebParams/HitsPerSlab_2; done > tasks/MetaKVT1_HitsPerSlab2
+for algo in Sieve Lru Lru2Q TinyLFU;do data=data/meta_kvcache_traces_1.oracleGeneral.bin.zst;output_dir=output/MetaKVT1_reb_2;name=metakvt1; while read -r line;do echo "./run.sh $data $name $algo HitsPerSlab $line $output_dir 4GB"; done < rebParams/HitsPerSlab_full; done > tasks/MetaKVT1_HPS_4GB_full

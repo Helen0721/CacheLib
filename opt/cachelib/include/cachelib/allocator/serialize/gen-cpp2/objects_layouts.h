@@ -315,29 +315,17 @@ FROZEN_TYPE(::facebook::cachelib::serialization::MMTinyLFUCollection,
     FROZEN_LOAD_FIELD(pools, 1)));
 
 FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveConfig,
-  FROZEN_FIELD_REQ(lruRefreshTime, 1, ::std::int32_t)
-  FROZEN_FIELD_REQ(updateOnWrite, 2, bool)
-  FROZEN_FIELD(updateOnRead, 3, bool)
-  FROZEN_FIELD(tryLockUpdate, 4, bool)
-  FROZEN_FIELD(lruRefreshRatio, 5, double)
+  FROZEN_FIELD(updateOnWrite, 1, bool)
+  FROZEN_FIELD(updateOnRead, 2, bool)
   FROZEN_VIEW(
-    FROZEN_VIEW_FIELD_REQ(lruRefreshTime, ::std::int32_t)
-    FROZEN_VIEW_FIELD_REQ(updateOnWrite, bool)
-    FROZEN_VIEW_FIELD(updateOnRead, bool)
-    FROZEN_VIEW_FIELD(tryLockUpdate, bool)
-    FROZEN_VIEW_FIELD(lruRefreshRatio, double))
+    FROZEN_VIEW_FIELD(updateOnWrite, bool)
+    FROZEN_VIEW_FIELD(updateOnRead, bool))
   FROZEN_SAVE_INLINE(
-    FROZEN_SAVE_FIELD(lruRefreshTime)
     FROZEN_SAVE_FIELD(updateOnWrite)
-    FROZEN_SAVE_FIELD(updateOnRead)
-    FROZEN_SAVE_FIELD(tryLockUpdate)
-    FROZEN_SAVE_FIELD(lruRefreshRatio))
+    FROZEN_SAVE_FIELD(updateOnRead))
   FROZEN_LOAD_INLINE(
-    FROZEN_LOAD_FIELD(lruRefreshTime, 1)
-    FROZEN_LOAD_FIELD(updateOnWrite, 2)
-    FROZEN_LOAD_FIELD(updateOnRead, 3)
-    FROZEN_LOAD_FIELD(tryLockUpdate, 4)
-    FROZEN_LOAD_FIELD(lruRefreshRatio, 5)));
+    FROZEN_LOAD_FIELD(updateOnWrite, 1)
+    FROZEN_LOAD_FIELD(updateOnRead, 2)));
 
 FROZEN_TYPE(::facebook::cachelib::serialization::MMSieveObject,
   FROZEN_FIELD_REQ(config, 1, ::facebook::cachelib::serialization::MMSieveConfig)

@@ -34,6 +34,8 @@
 #include "cachelib/allocator/memory/serialize/gen-cpp2/objects_types.h"
 #include "cachelib/common/CompilerUtils.h"
 #include "cachelib/common/Mutex.h"
+#include <thread>
+
 
 namespace facebook::cachelib {
 
@@ -57,97 +59,27 @@ class MMSieve {
     // create from serialized config
     explicit Config(SerializationConfigType configState)
         : Config(
-		 *configState.lruRefreshTime(),
-                 *configState.lruRefreshRatio(),
                  *configState.updateOnWrite(),
-                 *configState.updateOnRead(),
-                 *configState.tryLockUpdate()) {}
+                 *configState.updateOnRead()
+		 ) {}
+   
+    // @param udpateOnW   whether to set visit bit for the item on write
+    // @param updateOnR   whether to set visit bit for the item on read
+    Config(bool updateOnW, bool updateOnR)
+        : updateOnWrite(updateOnW),
+          updateOnRead(updateOnR),
+	  useCombinedLockForIterators(false) {}
     
-    // @param time        the LRU refresh time in seconds.
-    //                    An item will be promoted only once in each lru refresh
-    //                    time depite the number of accesses it gets.
-    // @param udpateOnW   whether to promote the item on write
-    // @param updateOnR   whether to promote the item on read
-    // @param tryLockU    whether to use a try lock when doing update.
-    Config(uint32_t time, bool updateOnW, bool updateOnR)
-        : Config(time, updateOnW, updateOnR, false) {}
-
-    Config(uint32_t time,
-           bool updateOnW,
-           bool updateOnR,
-           bool tryLockU)
-        : Config(time, 0., updateOnW, updateOnR, tryLockU) {}
-
-    // @param time        the LRU refresh time in seconds.
-    //                    An item will be promoted only once in each lru refresh
-    //                    time depite the number of accesses it gets.
-    // @param ratio       the lru refresh ratio. The ratio times the
-    //                    oldest element's lifetime in warm queue
-    //                    would be the minimum value of LRU refresh time.
-    // @param udpateOnW   whether to promote the item on write
-    // @param updateOnR   whether to promote the item on read
-    // @param tryLockU    whether to use a try lock when doing update. 
-    Config(uint32_t time,
-           double ratio,
-           bool updateOnW,
-           bool updateOnR,
-           bool tryLockU)
-        : Config(time, ratio, updateOnW, updateOnR, tryLockU, 0) {}
-
-    // @param time        the LRU refresh time in seconds.
-    //                    An item will be promoted only once in each lru refresh
-    //                    time depite the number of accesses it gets.
-    // @param ratio       the lru refresh ratio. The ratio times the
-    //                    oldest element's lifetime in warm queue
-    //                    would be the minimum value of LRU refresh time.
-    // @param udpateOnW   whether to promote the item on write
-    // @param updateOnR   whether to promote the item on read
-    // @param tryLockU    whether to use a try lock when doing update. 
-    // @param mmReconfigureInterval   Time interval for recalculating lru
-    //                                refresh time according to the ratio.
-    Config(uint32_t time,
-           double ratio,
-           bool updateOnW,
-           bool updateOnR,
-           bool tryLockU,
-           uint32_t mmReconfigureInterval)
-        : Config(time,
-                 ratio,
-                 updateOnW,
-                 updateOnR,
-                 tryLockU,
-                 mmReconfigureInterval,
-                 false) {}
-
-    // @param time        the LRU refresh time in seconds.
-    //                    An item will be promoted only once in each lru refresh
-    //                    time depite the number of accesses it gets.
-    // @param ratio       the lru refresh ratio. The ratio times the
-    //                    oldest element's lifetime in warm queue
-    //                    would be the minimum value of LRU refresh time.
-    // @param udpateOnW   whether to promote the item on write
-    // @param updateOnR   whether to promote the item on read
-    // @param tryLockU    whether to use a try lock when doing update.
-    // @param mmReconfigureInterval   Time interval for recalculating lru
-    //                                refresh time according to the ratio.
+    // @param udpateOnW   whether to set visit bit for the item on write
+    // @param updateOnR   whether to set visit bit for the item on read
     // useCombinedLockForIterators    Whether to use combined locking for
     //                                withEvictionIterator
-    Config(uint32_t time,
-           double ratio,
-           bool updateOnW,
-           bool updateOnR,
-           bool tryLockU,
-           uint32_t mmReconfigureInterval,
+    Config(bool updateOnW,
+           bool updateOnR, 
            bool useCombinedLockForIterators)
-        : defaultLruRefreshTime(time),
-          lruRefreshRatio(ratio),
-          updateOnWrite(updateOnW),
+        : updateOnWrite(updateOnW),
           updateOnRead(updateOnR),
-          tryLockUpdate(tryLockU),
-          mmReconfigureIntervalSecs(
-              std::chrono::seconds(mmReconfigureInterval)),
-          useCombinedLockForIterators(useCombinedLockForIterators) {}
-
+          useCombinedLockForIterators(useCombinedLockForIterators) {} 
     
     Config() = default;
     Config(const Config& rhs) = default;
@@ -158,36 +90,19 @@ class MMSieve {
 
     template <typename... Args>
     void addExtraConfig(Args...) {}
-
     
-    // threshold value in seconds to compare with a node's update time to
-    // determine if we need to update the position of the node in the linked
-    // list. By default this is 60s to reduce the contention on the lru lock.
-    uint32_t defaultLruRefreshTime{0};
-    uint32_t lruRefreshTime{defaultLruRefreshTime};
-
-    // ratio of LRU refresh time to the tail age. If a refresh time computed
-    // according to this ratio is larger than lruRefreshtime, we will adopt
-    // this one instead of the lruRefreshTime set.
-    double lruRefreshRatio{0.};
     
-    // whether the lru needs to be updated on writes for recordAccess. If
-    // false, accessing the cache for writes does not promote the cached item
-    // to the head of the lru.
-    bool updateOnWrite{false};
+    // Sieve will always set visit bit on write as we there's no locking involved.  
+    bool updateOnWrite{true};
 
-    // whether the lru needs to be updated on reads for recordAccess. If
+    // whether the sieve needs to be updated on reads for recordAccess. If
     // false, accessing the cache for reads does not promote the cached item
-    // to the head of the lru.
+    // to the head of the sieve.
     bool updateOnRead{true};
-
-    // whether to tryLock or lock the lru lock when attempting promotion on
-    // access. If set, and tryLock fails, access will not result in promotion.
-    bool tryLockUpdate{false};
-  
+   
     // Minimum interval between reconfigurations. If 0, reconfigure is never
     // called.
-    std::chrono::seconds mmReconfigureIntervalSecs{};
+    std::chrono::seconds mmReconfigureIntervalSecs{0};
 
     // Whether to use combined locking for withEvictionIterator.
     bool useCombinedLockForIterators{false};
@@ -196,7 +111,7 @@ class MMSieve {
   // The container object which can be used to keep track of objects of type
   // T. T must have a public member of type Hook. This object is wrapper
   // around SieveList, is thread safe and can be accessed from multiple threads.
-  // The current implementation models an LRU using the above SieveList
+  // The current implementation models an SIEVE using the above SieveList
   // implementation.
   template <typename T, Hook<T> T::*HookPtr>
   struct Container {
@@ -214,13 +129,7 @@ class MMSieve {
     Container(Config c, PtrCompressor compressor)
         : compressor_(std::move(compressor)),
           queue_(compressor_),
-          config_(std::move(c)) {
-      lruRefreshTime_ = config_.lruRefreshTime;
-      nextReconfigureTime_ =
-          config_.mmReconfigureIntervalSecs.count() == 0
-              ? std::numeric_limits<Time>::max()
-              : static_cast<Time>(util::getCurrentTimeSec()) +
-                    config_.mmReconfigureIntervalSecs.count();
+          config_(std::move(c)) { 
     }
     Container(serialization::MMSieveObject object, PtrCompressor compressor);
 
@@ -240,23 +149,6 @@ class MMSieve {
       LockedIterator& operator=(const LockedIterator&) = delete;
 
       LockedIterator(LockedIterator&&) noexcept = default;
-
-      // 1. Invalidate this iterator
-      // 2. Unlock
-      void destroy() {
-        Iterator::reset();
-        if (l_.owns_lock()) {
-          l_.unlock();
-        }
-      }
-
-      // Reset this iterator to the beginning
-      void resetToBegin() {
-        if (!l_.owns_lock()) {
-          l_.lock();
-        }
-        Iterator::resetToBegin();
-      }
 
      private:
       // private because it's easy to misuse and cause deadlock for MMSieve
@@ -278,11 +170,11 @@ class MMSieve {
     // @param mode  the mode for the access operation.
     //
     // @return      True if the information is recorded and bumped the node
-    //              to the head of the lru, returns false otherwise
+    //              to the head of the sieve, returns false otherwise
     bool recordAccess(T& node, AccessMode mode) noexcept;
 
     // adds the given node into the container and marks it as being present in
-    // the container. The node is added to the head of the lru.
+    // the container. The node is added to the head of the sieve.
     //
     // @param node  The node to be added to the container.
     // @return  True if the node was successfully added to the container. False
@@ -290,7 +182,7 @@ class MMSieve {
     //          is unchanged.
     bool add(T& node) noexcept;
 
-    // removes the node from the lru and sets it previous and next to nullptr.
+    // removes the node from the sieve and sets it previous and next to nullptr.
     //
     // @param node  The node to be removed from the container.
     // @return  True if the node was successfully removed from the container.
@@ -351,7 +243,7 @@ class MMSieve {
     // Returns the eviction age stats. See CacheStats.h for details
     EvictionAgeStat getEvictionAgeStat(uint64_t projectedLength) const noexcept;
 
-    // for saving the state of the lru
+    // for saving the state of the sieve
     //
     // precondition:  serialization must happen without any reader or writer
     // present. Any modification of this object afterwards will result in an
@@ -382,7 +274,7 @@ class MMSieve {
       (node.*HookPtr).setUpdateTime(time);
     }
 
-    // remove node from lru and adjust insertion points
+    // remove node from sieve and adjust insertion points
     // @param node          node to remove
     void removeLocked(T& node);
 
@@ -418,39 +310,23 @@ class MMSieve {
       return queue_.isVisited(node);
     }
 
-    // protects all operations on the lru. We never really just read the state
-    // of the LRU. Hence we dont really require a RW mutex at this point of
+    // protects all operations on the sieve. We never really just read the state
+    // of the Sieve. Hence we dont really require a RW mutex at this point of
     // time.
     mutable folly::cacheline_aligned<Mutex> sieveMutex_;
 
     const PtrCompressor compressor_{};
 
     // Sieve FIFO queue
-    SIEVEList queue_{};
-
-    // insertion point
-    //T* insertionPoint_{nullptr};
-
-    // hand
-    T* hand_{nullptr};
-
-    // size of tail after insertion point
-    //size_t tailSize_{0};
-
+    SIEVEList queue_{}; 
+ 
     // The next time to reconfigure the container.
     std::atomic<Time> nextReconfigureTime_{};
-
-    // How often to promote an item in the eviction queue.
-    std::atomic<uint32_t> lruRefreshTime_{};
-
+ 
     // Config for this sieve.
     // Write access to the MMSieve Config is serialized.
     // Reads may be racy.
-    Config config_{};
-
-    // Max lruFreshTime.
-    static constexpr uint32_t kLruRefreshTimeCap{900};
- 
+    Config config_{}; 
   };
 };
 
@@ -460,14 +336,7 @@ MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
                                         PtrCompressor compressor)
     : compressor_(std::move(compressor)),
       queue_(*object.queue(), compressor_),
-      hand_(compressor_.unCompress(
-	    CompressedPtr{*object.compressedHand()})),
-      config_(*object.config()) {
-  lruRefreshTime_ = config_.lruRefreshTime;
-  nextReconfigureTime_ = config_.mmReconfigureIntervalSecs.count() == 0
-                             ? std::numeric_limits<Time>::max()
-                             : static_cast<Time>(util::getCurrentTimeSec()) +
-                                   config_.mmReconfigureIntervalSecs.count();
+      config_(*object.config()) { 
 }
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
@@ -479,12 +348,11 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
     std::cout << "MMSieve-recordAccess mark got invalid access mode" << std::endl; 
     return false;
   }
+  //LockHolder lck{*sieveMutex_};
   if (queue_.getTail()==nullptr)  std::cout << "MMSieve-recordAccess(start)-tail is null"<<std::endl;
   const auto curr = static_cast<Time>(util::getCurrentTimeSec());
   // check if the node is still being memory managed
   if (node.isInMMContainer() && !isAccessed(node)){
-	//if (!isAccessed(node)) markAccessed(node);
-      	//queue_.setAsVisited(node);
 	markAccessed(node);
   }   
   //inspectSieveList(); 
@@ -520,12 +388,7 @@ MMSieve::Container<T, HookPtr>::getEvictionAgeStatLocked(
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::setConfig(const Config& newConfig) {
     sieveMutex_->lock_combine([this, newConfig]() {
-    config_ = newConfig;
-    lruRefreshTime_.store(config_.lruRefreshTime, std::memory_order_relaxed);
-    nextReconfigureTime_ = config_.mmReconfigureIntervalSecs.count() == 0
-                               ? std::numeric_limits<Time>::max()
-                               : static_cast<Time>(util::getCurrentTimeSec()) +
-                                     config_.mmReconfigureIntervalSecs.count();
+    config_ = newConfig; 
   });
 }
 
@@ -537,11 +400,10 @@ typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
-  //std::cout << "MMSieve-add...";
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
-  // Lock and insert at head
-  // Set hand_ to queue's tail is hand_ is null.
+  // Lock and insert at head 
   return sieveMutex_->lock_combine([this, &node, currTime]() {
+    //std::cout << "MMS-add s " << std::this_thread::get_id() << " " << std::flush;
     if (node.isInMMContainer()) {
       return false;
     }
@@ -549,11 +411,8 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
     node.markInMMContainer();
     setUpdateTime(node, currTime);
     unmarkAccessed(node);
-
-    if (hand_ == nullptr){
-    	hand_ = queue_.getTail();
-    }
-
+ 
+    //std::cout << "MMS-add e " << std::this_thread::get_id() << " "<< std::endl << std::flush;
     return true;
   });
 }
@@ -590,9 +449,11 @@ void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
   if (config_.useCombinedLockForIterators) {
     sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFromHand()}); });
   } else {
-    LockHolder lck{*sieveMutex_};
+    LockHolder l{*sieveMutex_};
+    //std::cout << "MMS-withEvItr s "<< std::this_thread::get_id() << " ";
     auto iter = Iterator{queue_.iterBackFromHand()};
     fun(iter);
+    //std::cout << "MMS-withEvIter e " << std::this_thread::get_id() << std::endl << std::flush;
   }
 }
 
@@ -616,11 +477,17 @@ void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
   return sieveMutex_->lock_combine([this, &node]() {
-    //std::cout << "MMSieve-remove(node)...";
+     if (sieveMutex_->try_lock()) {
+      // we should have locked the mutex
+      printf("\n\n\n Lock error in rm(n)\n\n\n");
+      abort();
+    }
+    //std::cout << "MMS-rm(n) s "<< std::this_thread::get_id() << " ";
     if (!node.isInMMContainer()) {
       return false;
     }
     removeLocked(node);
+    //std::cout << "MMS-rm(n) e "<< std::this_thread::get_id() << std::endl << std::flush;
     return true;
   });
 }
@@ -628,9 +495,16 @@ bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
   //std::cout << "MMSieve-remove(iter)..";
+  //std::cout << "MMS-rm(itr) s ";
+  if (sieveMutex_->try_lock()) {
+    // we should have locked the mutex
+    printf("\n\n\n Lock error in rm(itr): withEvictIter should have locked the mutex.\n\n\n");
+    abort();
+  }
   T& node = *it;
   XDCHECK(node.isInMMContainer());
   removeLocked(node);
+  //std::cout << "MMS-rm(itr) e ";
   //std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
 }
 
@@ -665,19 +539,12 @@ bool MMSieve::Container<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 serialization::MMSieveObject MMSieve::Container<T, HookPtr>::saveState()
     const noexcept {
-  serialization::MMSieveConfig configObject;
-  *configObject.lruRefreshTime() =
-      lruRefreshTime_.load(std::memory_order_relaxed);
-  *configObject.lruRefreshRatio() = config_.lruRefreshRatio;
+  serialization::MMSieveConfig configObject; 
   *configObject.updateOnWrite() = config_.updateOnWrite;
   *configObject.updateOnRead() = config_.updateOnRead;
-  *configObject.tryLockUpdate() = config_.tryLockUpdate;
-  
+    
   serialization::MMSieveObject object;
-  *object.config() = configObject;
-  *object.compressedHand() = 
-      compressor_.compress(hand_).saveState();
-  
+  *object.config() = configObject;  
   *object.queue() = queue_.saveState();
   return object;
 }
@@ -694,12 +561,13 @@ MMContainerStat MMSieve::Container<T, HookPtr>::getStats() const noexcept {
     // the rest of the parameters are 0, so we don't need the critical section
     // to return them
     return folly::make_array(queue_.size(),
-                             tail == nullptr ? 0 : getUpdateTime(*tail),
-                             lruRefreshTime_.load(std::memory_order_relaxed));
+                             tail == nullptr ? 0 : getUpdateTime(*tail)
+		    	    );
+                             
   });
-  return {stat[0] /* lru size */,
-          stat[1] /* tail time */,
-          stat[2] /* refresh time */,
+  return {stat[0] /* sieve queue size */,
+          /*stat[1] tail time */
+          /*stat[2] refresh time */
           0,
           0,
           0,
@@ -712,15 +580,8 @@ void MMSieve::Container<T, HookPtr>::reconfigureLocked(const Time& currTime) {
     return;
   }
   nextReconfigureTime_ = currTime + config_.mmReconfigureIntervalSecs.count();
-
-  // update LRU refresh time
-  auto stat = getEvictionAgeStatLocked(0);
-  auto lruRefreshTime = std::min(
-      std::max(config_.defaultLruRefreshTime,
-               static_cast<uint32_t>(stat.warmQueueStat.oldestElementAge *
-                                     config_.lruRefreshRatio)),
-      kLruRefreshTimeCap);
-  lruRefreshTime_.store(lruRefreshTime, std::memory_order_relaxed);
+ 
+  auto stat = getEvictionAgeStatLocked(0); 
 }
 
 // Iterator Context Implementation
