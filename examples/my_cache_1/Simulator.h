@@ -20,4 +20,11 @@ void simulate_zstd(char *cache_size,
 		char* cacheStats_path_
 		);
 
+void simulate_zstd_con(char *cache_size, 
+		char *rebalanceStrategy,
+		char* rebParams,
+		zstd_reader *reader,
+		int max_reqs, 
+		int num_threads
+		);
 #endif

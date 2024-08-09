@@ -283,12 +283,12 @@ class FOLLY_PACK_ATTR RefcountWithFlags {
       const bool alreadyExclusive = curValue & exclusiveBitMask;
 
       if (unlinked || alreadyExclusive) {
-	if (unlinked) std::cout<<" unlinked ";
-	if (alreadyExclusive) std::cout << " alreadyExclusive ";
+	//if (unlinked) std::cout<<" unlinked ";
+	//if (alreadyExclusive) std::cout << " alreadyExclusive ";
         return false;
       }
       if ((curValue & kAccessRefMask) != 0) {
-	std::cout << "currVal & kAccessRefMask: " << (curValue & kAccessRefMask) << " ";
+	//std::cout << "currVal & kAccessRefMask: " << (curValue & kAccessRefMask) << " ";
         return false;
       }
 
