@@ -145,7 +145,7 @@ ClassId LruTailAgeStrategy::pickReceiver(
 RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
     const CacheBase& cache, PoolId pid, const PoolStats& poolStats) {
 
-  std::cout << "LTAS-pickVAndRImpl...";
+  //std::cout << "LTAS-pickVAndRImpl...";
 
   if (!cache.getPool(pid).allSlabsAllocated()) {
     XLOGF(DBG,
@@ -167,12 +167,12 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   ctx.receiverClassId = pickReceiver(config, pid, poolStats, ctx.victimClassId,
                                      poolEvictionAgeStats);
 
-  std::cout << "LTAS-v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
+  //std::cout << "LTAS-v:" << static_cast<int>(ctx.victimClassId) << ". r:" << static_cast<int>(ctx.receiverClassId) << ". " ;
 
   if (ctx.victimClassId == ctx.receiverClassId ||
       ctx.victimClassId == Slab::kInvalidClassId ||
       ctx.receiverClassId == Slab::kInvalidClassId) {
-	std::cout << "invalid class id " << std::endl << std::flush;
+	//std::cout << "invalid class id " << std::endl << std::flush;
         return kNoOpContext;
   } 
 
@@ -191,7 +191,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
         improvement < config.minTailAgeDifference ||
         improvement < config.tailAgeDifferenceRatio *
                           static_cast<long double>(victimProjectedTailAge)) {
-
+      /*
       std::cout << "vPTA: " << victimProjectedTailAge << ", rTA: " << receiverTailAge << " ."; 
       if (victimProjectedTailAge < receiverTailAge) std::cout<< "vPTA < rTA. ";
       else{
@@ -202,6 +202,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
 		      std::cout << "improv. < diffRatio * vPTA " << config.tailAgeDifferenceRatio << ". ";}
       }
       std::cout << std::endl << std::flush;
+      */
       return kNoOpContext;
     }
   }
@@ -210,7 +211,7 @@ RebalanceContext LruTailAgeStrategy::pickVictimAndReceiverImpl(
   // enough.
   getPoolState(pid).at(ctx.receiverClassId).startHoldOff();
  
-  std::cout << "LTAS-valid ctx v and r. hold off started." << std::endl << std::flush;
+  //std::cout << "LTAS-valid ctx v and r. hold off started." << std::endl << std::flush;
 
   return ctx;
 }

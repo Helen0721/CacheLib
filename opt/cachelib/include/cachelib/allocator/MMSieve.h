@@ -34,6 +34,8 @@
 #include "cachelib/allocator/memory/serialize/gen-cpp2/objects_types.h"
 #include "cachelib/common/CompilerUtils.h"
 #include "cachelib/common/Mutex.h"
+#include <thread>
+
 
 namespace facebook::cachelib {
 
@@ -109,7 +111,7 @@ class MMSieve {
   // The container object which can be used to keep track of objects of type
   // T. T must have a public member of type Hook. This object is wrapper
   // around SieveList, is thread safe and can be accessed from multiple threads.
-  // The current implementation models an LRU using the above SieveList
+  // The current implementation models an SIEVE using the above SieveList
   // implementation.
   template <typename T, Hook<T> T::*HookPtr>
   struct Container {
@@ -316,10 +318,7 @@ class MMSieve {
     const PtrCompressor compressor_{};
 
     // Sieve FIFO queue
-    SIEVEList queue_{};
-
-    // hand
-    T* hand_{nullptr};
+    SIEVEList queue_{}; 
  
     // The next time to reconfigure the container.
     std::atomic<Time> nextReconfigureTime_{};
@@ -337,8 +336,6 @@ MMSieve::Container<T, HookPtr>::Container(serialization::MMSieveObject object,
                                         PtrCompressor compressor)
     : compressor_(std::move(compressor)),
       queue_(*object.queue(), compressor_),
-      hand_(compressor_.unCompress(
-	    CompressedPtr{*object.compressedHand()})),
       config_(*object.config()) { 
 }
 
@@ -351,6 +348,7 @@ bool MMSieve::Container<T, HookPtr>::recordAccess(T& node,
     std::cout << "MMSieve-recordAccess mark got invalid access mode" << std::endl; 
     return false;
   }
+  //LockHolder lck{*sieveMutex_};
   if (queue_.getTail()==nullptr)  std::cout << "MMSieve-recordAccess(start)-tail is null"<<std::endl;
   const auto curr = static_cast<Time>(util::getCurrentTimeSec());
   // check if the node is still being memory managed
@@ -402,11 +400,10 @@ typename MMSieve::Config MMSieve::Container<T, HookPtr>::getConfig() const {
 
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
-  //std::cout << "MMSieve-add...";
   const auto currTime = static_cast<Time>(util::getCurrentTimeSec());
-  // Lock and insert at head
-  // Set hand_ to queue's tail is hand_ is null.
+  // Lock and insert at head 
   return sieveMutex_->lock_combine([this, &node, currTime]() {
+    //std::cout << "MMS-add s " << std::this_thread::get_id() << " " << std::flush;
     if (node.isInMMContainer()) {
       return false;
     }
@@ -414,11 +411,8 @@ bool MMSieve::Container<T, HookPtr>::add(T& node) noexcept {
     node.markInMMContainer();
     setUpdateTime(node, currTime);
     unmarkAccessed(node);
-
-    if (hand_ == nullptr){
-    	hand_ = queue_.getTail();
-    }
-
+ 
+    //std::cout << "MMS-add e " << std::this_thread::get_id() << " "<< std::endl << std::flush;
     return true;
   });
 }
@@ -455,9 +449,11 @@ void MMSieve::Container<T, HookPtr>::withEvictionIterator(F&& fun) {
   if (config_.useCombinedLockForIterators) {
     sieveMutex_->lock_combine([this, &fun]() { fun(Iterator{queue_.iterBackFromHand()}); });
   } else {
-    LockHolder lck{*sieveMutex_};
+    LockHolder l{*sieveMutex_};
+    //std::cout << "MMS-withEvItr s "<< std::this_thread::get_id() << " ";
     auto iter = Iterator{queue_.iterBackFromHand()};
     fun(iter);
+    //std::cout << "MMS-withEvIter e " << std::this_thread::get_id() << std::endl << std::flush;
   }
 }
 
@@ -481,11 +477,17 @@ void MMSieve::Container<T, HookPtr>::removeLocked(T& node) {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
   return sieveMutex_->lock_combine([this, &node]() {
-    //std::cout << "MMSieve-remove(node)...";
+     if (sieveMutex_->try_lock()) {
+      // we should have locked the mutex
+      printf("\n\n\n Lock error in rm(n)\n\n\n");
+      abort();
+    }
+    //std::cout << "MMS-rm(n) s "<< std::this_thread::get_id() << " ";
     if (!node.isInMMContainer()) {
       return false;
     }
     removeLocked(node);
+    //std::cout << "MMS-rm(n) e "<< std::this_thread::get_id() << std::endl << std::flush;
     return true;
   });
 }
@@ -493,9 +495,16 @@ bool MMSieve::Container<T, HookPtr>::remove(T& node) noexcept {
 template <typename T, MMSieve::Hook<T> T::*HookPtr>
 void MMSieve::Container<T, HookPtr>::remove(Iterator& it) noexcept {
   //std::cout << "MMSieve-remove(iter)..";
+  //std::cout << "MMS-rm(itr) s ";
+  if (sieveMutex_->try_lock()) {
+    // we should have locked the mutex
+    printf("\n\n\n Lock error in rm(itr): withEvictIter should have locked the mutex.\n\n\n");
+    abort();
+  }
   T& node = *it;
   XDCHECK(node.isInMMContainer());
   removeLocked(node);
+  //std::cout << "MMS-rm(itr) e ";
   //std::cout << "Evicted req: " << (&node)->getKey().toString() << std::endl;
 }
 
@@ -535,10 +544,7 @@ serialization::MMSieveObject MMSieve::Container<T, HookPtr>::saveState()
   *configObject.updateOnRead() = config_.updateOnRead;
     
   serialization::MMSieveObject object;
-  *object.config() = configObject;
-  *object.compressedHand() = 
-      compressor_.compress(hand_).saveState();
-  
+  *object.config() = configObject;  
   *object.queue() = queue_.saveState();
   return object;
 }
