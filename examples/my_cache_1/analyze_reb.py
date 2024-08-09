@@ -1,19 +1,11 @@
 import os
 import sys
-import itertools
-from collections import defaultdict
 import re
 import json
-import numpy as np
 import random
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_pdf import PdfPages
-import matplotlib.colors as mcolors
-from matplotlib.lines import Line2D
-from typing import List, Dict, Tuple, Union, Literal
-import subprocess 
-import logging
 import copy
+import zstandard as zstd
+
 
 ALGOS = ["Sieve","Lru","Lru2Q","TinyLFU"]
 REBALANCEING_STRATEGIES = ["LruTailAge", 
@@ -113,14 +105,24 @@ def summarize_best_cnt(ALL_CNTS,cache_size,rebalance_strategy,algo):
 
 
 def collect_cnts(file,reb,algo):
-    with open(file,"r") as f:
-        stdout_str = f.read()
-        stdout_str_L = stdout_str.split("\n")
+    print("parsing for",file)
+    if file.endswith('zst') :
+        decompressor = zstd.ZstdDecompressor()
+        # Decompress the content and read it
+        with open(file, 'rb') as compressed_file:
+            decompressed_content = decompressor.stream_reader(compressed_file).read()
+            # Decode and print the decompressed content
+            stdout_str = decompressed_content.decode('utf-8')
+    else:
+        with open(file,"r") as f:
+            stdout_str = f.read()
+    
+    stdout_str_L = stdout_str.split("\n")
 
     def get_config_HPS():
         init_S = config_s_dict["HitsPerSlab"] 
         # =r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)"  
-        REGEX_HPS = r"minDiff:(?P<minDiff>\d+),diffRatio:(?P<diffRatio>\d+.\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),minLruTailAge:(?P<minLTA>\d),maxLruTailAge:(?P<maxLTA>\d) "
+        REGEX_HPS = r"minDiff:(?P<minDiff>\d+),diffRatio:(?P<diffRatio>\d+.\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),minLruTailAge:(?P<minLTA>\d),maxLruTailAge:(?P<maxLTA>\d)"
         res = dict()
         for line in stdout_str_L:
             if init_S in line:
@@ -142,7 +144,84 @@ def collect_cnts(file,reb,algo):
         
         print(stdout_str_L[:3])
         exit(1)
+    
+    def get_config_FMS():
+        init_S = config_s_dict["FreeMem"]    
+        REGEX_FMS = r"minSlabs:(?P<minSlabs>\d),numFreeSlabs:(?P<numFreeSlabs>\d),maxUnAllocatedSlabs:(?P<maxUnAllocatedSlabs>\d)"
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #MFS::MFS(Config config): minSlabs:5,numFreeSlabs:5,maxUnAllocatedSlabs:1500
+                part = parts[-1]
+                m = re.search(REGEX_FMS,part)
+                if not m:
+                    print("regex error")
+                    print("part",part)
+                    print("regx",REGEX_FMS)
+                    exit(1)
+                
+                res['minSlabs'] = m.group('minSlabs')
+                res['numFreeSlabs'] = m.group('numFreeSlabs')
+                res['maxUnAllocatedSlabs'] = m.group('maxUnAllocatedSlabs')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
+    
+    def get_config_MHS():
+        init_S = config_s_dict["MarginalHits"]    
+        REGEX_MHS = r"movingAverageParam: (?P<movingAverageParam>\d+.\d+),minSlabs:(?P<minSlabs>\d),maxFreeMemSlabs:(?P<maxFreeMemSlabs>\d)"
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #MHS::MHS(Config config): movingAverageParam: 0.450000,minSlabs:5,maxFreeMemSlabs:5
+                part = parts[-1]
+                m = re.search(REGEX_MHS,part)
+                if not m:
+                    print("regex error",part)
+                    exit(1)
+                
+                res['minSlabs'] = m.group('minSlabs')
+                res['movingAverageParam'] = m.group('movingAverageParam')
+                res['maxFreeMemSlabs'] = m.group('maxFreeMemSlabs')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
+    
+    def get_config_LTA():
+        init_S = config_s_dict["LruTailAge"]    
+        REGEX_LTA = r"tailAgeDifferenceRatio: (?P<tailAgeDifferenceRatio>\d+.\d+),minTailAgeDifference:(?P<minTailAgeDifference>\d+),minSlabs:(?P<minSlabs>\d),numSlabsFreeMem:(?P<numSlabsFreeMem>\d),slabProjectionLength:(?P<slabProjectionLength>\d)"
+        res = dict()
+        for line in stdout_str_L:
+            if init_S in line:
+                parts = line.split(init_S)
+                #LTAS::LTAS(Config config): tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabprojectionlength:1        
+                part = parts[-1]
+                m = re.search(REGEX_LTA,part)
+                if not m:
+                    print("regex error",part)
+                    exit(1)
+                
+                res['minSlabs'] = m.group('minSlabs')
+                res['tailAgeDifferenceRatio'] = m.group('tailAgeDifferenceRatio')
+                res['minTailAgeDifference'] = m.group('minTailAgeDifference')
+                res['numSlabsFreeMem'] = m.group('numSlabsFreeMem')
+                res['slabProjectionLength'] = m.group('slabProjectionLength')
+                return res
+        
+        print(stdout_str_L[:3])
+        exit(1)
 
+    def get_rebParams_config():
+        if reb == "FreeMem": return get_config_FMS()
+        elif reb=="HitsPerSlab": return get_config_HPS()
+        elif reb=="MarginalHits": return get_config_MHS()
+        elif reb=="LruTailAge": return get_config_LTA()
+        else:
+            return None
 
     def get_final_hr():
         hr_list = []
@@ -190,10 +269,15 @@ def collect_cnts(file,reb,algo):
         return res
     else:
         strategy_triggered_s  = STRTGY_TRIGGERED_s
- 
+    
+    if "csv" in ap.type:
+        start_reb_s = "RebStrtgy-pickVAndR..."
+    else:
+        start_reb_s = START_REB_s
+
     res = {
             "Eviction Algo": algo,
-            "total_attempts": stdout_str.count(START_REB_s),
+            "total_attempts": stdout_str.count(start_reb_s),
             ABBRV[strategy_triggered_s]: stdout_str.count(strategy_triggered_s),
             ABBRV[FAILALLOC_TRIGGERED_s]: stdout_str.count(FAILALLOC_TRIGGERED_s),
           }
@@ -209,9 +293,13 @@ def collect_cnts(file,reb,algo):
   
     res[MISS_RATIO_s] = 1-float(get_final_hr())
     
-    if ap.type=="csv" and reb=="HitsPerSlab":
-        rebParams_dict = get_config_HPS()
-        res.update(rebParams_dict) 
+    if "csv" in ap.type:
+        rebParams_dict = get_rebParams_config()
+        if not rebParams_dict:
+            print("unsupported reb",reb)
+            exit(1)
+        #print(rebParams_dict)
+        res.update(rebParams_dict)  
     else:
         res["rebParams"] = get_config()
         if res["rebParams"] == None: exit()    
@@ -272,6 +360,8 @@ def collect_into_csv():
         for output_file in all_output_files:
             if "stopReb" in output_file: continue
             if "uniform" in output_file: continue
+            if "default" in output_file: continue
+            if "txt" in output_file: continue
             
             output_file_ = os.path.join(ap.output_folder,reb,output_file) 
             print("parsing for",output_file_)
@@ -279,7 +369,7 @@ def collect_into_csv():
 
             ALL_RES[output_file] = cnt_res 
 
-    csv_out_file_name = os.path.join(ap.output_folder,"{}_{}_{}.csv".format(reb,ap.algos,cache_size))
+    csv_out_file_name = os.path.join(ap.output_folder,"{}_{}_{}_{}.csv".format(ap.name,reb,ap.algos,cache_size))
     # {'total_attempts': 431, 'StrtgyTriggered': 165, 'TriggeredByFailAlloc': 1, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 8, 'invalid class id': 0, 'rDHpS < vPDHpS': 0, 'improv.< minDiff': 0, 'improv.< diffRatio * vPDHpS': 256, 'Final Miss Ratio': 0.06691199999999997, 'rebParams': {'minDiff': '90', 'diffRatio': '0.250000', 'minSlabs': '1', 'numSlabsFreeMem': '1', 'minLTA': '0', 'maxLTA': '0'}} 
 
     header = cnt_res.keys()  
@@ -294,10 +384,67 @@ def collect_into_csv():
         for out_fname,res_for_file in ALL_RES.items():
             vals = [str(x) for x in res_for_file.values()]
             print(out_fname,vals)
-           # csv_writer.writerow(vals)
+            csv_writer.writerow(vals)
     
     print("output saved to",csv_out_file_name)
-    
+
+def collect_int_csv_concurrent():
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+
+    reb = rebalance_strategies[0]
+    cache_size = cache_sizes[0]
+
+    ALL_RES = dict()
+
+    all_files_for_reb = os.listdir(os.path.join(ap.output_folder,reb))
+
+    for (i,algo) in enumerate(algos):
+        if reb=="MarginalHits" and algo!="Lru2Q": continue
+        if reb=="LruTailAge" and algo=="Sieve": continue
+
+        prefix = ap.name + "_" + algo + "_" +cache_size+"_"+reb
+
+        all_output_files = [os.path.join(ap.output_folder,reb,f) for f in all_files_for_reb if (
+                            f.startswith(prefix)
+                            and not f.endswith(".txt")
+                            #and f.endswith("zst")
+                            and "stopReb" not in f
+                            and "uniform" not in f
+                            and "default" not in f
+                            and "txt" not in f
+                            )
+                            ]
+        with ProcessPoolExecutor() as executor:
+            futures = {
+                    executor.submit(collect_cnts, output_file, reb, algo): output_file
+                    for output_file in all_output_files
+                }
+
+            for future in as_completed(futures):
+                analyzed_fname = futures[future]
+                try:
+                    cnt_res = future.result() 
+                    ALL_RES[analyzed_fname] = cnt_res
+                except Exception as e:
+                    print("Error analyzing file {}: {}".format(analyzed_fname,e))
+
+    csv_out_file_name = os.path.join(ap.output_folder,"{}_{}_{}_{}.csv".format(ap.name,reb,ap.algos,cache_size))
+    # {'total_attempts': 431, 'StrtgyTriggered': 165, 'TriggeredByFailAlloc': 1, 'FreeAllocAbvThrsld': 0, 'FreeMemNotAlloc': 8, 'invalid class id': 0, 'rDHpS < vPDHpS': 0, 'improv.< minDiff': 0, 'improv.< diffRatio * vPDHpS': 256, 'Final Miss Ratio': 0.06691199999999997, 'rebParams': {'minDiff': '90', 'diffRatio': '0.250000', 'minSlabs': '1', 'numSlabsFreeMem': '1', 'minLTA': '0', 'maxLTA': '0'}}
+
+    header = cnt_res.keys()
+
+    import csv
+    with open(csv_out_file_name,mode='w',newline='') as csv_out_f:
+        csv_writer = csv.writer(csv_out_f)
+
+        csv_writer.writerow(header)
+
+        for out_fname,res_for_file in ALL_RES.items():
+            vals = [str(x) for x in res_for_file.values()]
+            print("writing from",out_fname,". vals:",vals)
+            csv_writer.writerow(vals)
+
+    print("output saved to",csv_out_file_name)
 
     
 if __name__=="__main__":
@@ -341,3 +488,5 @@ if __name__=="__main__":
 
     elif ap.type=="csv":
         collect_into_csv()
+    elif ap.type=="csv-con":
+        collect_int_csv_concurrent()
