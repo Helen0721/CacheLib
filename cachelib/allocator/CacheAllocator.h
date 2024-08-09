@@ -1859,6 +1859,7 @@ class CacheAllocator : public CacheBase {
     // ones are further processed by holding the right synchronization
     // primitives. So we consciously exempt ourselves here from TSAN data race
     // detection.
+    //std::cout << "CA.h-trvNExpItms(f)\n" << std::endl << std::flush;
     folly::annotate_ignore_thread_sanitizer_guard g(__FILE__, __LINE__);
     auto slabsSkipped = allocator_->forEachAllocation(std::forward<Fn>(f));
     stats().numReaperSkippedSlabs.add(slabsSkipped);
@@ -2595,6 +2596,7 @@ std::unique_ptr<typename CacheAllocator<CacheTrait>::AccessContainer>
 CacheAllocator<CacheTrait>::initAccessContainer(InitMemType type,
                                                 const std::string name,
                                                 AccessConfig config) {
+  //std::cout << "initAccessContainer calling acquire..." << std::endl << std::flush;
   if (type == InitMemType::kNone) {
     return std::make_unique<AccessContainer>(
         config, compressor_,
@@ -2697,7 +2699,7 @@ CacheAllocator<CacheTrait>::allocateInternal(PoolId pid,
       // free back the memory to the allocator since we failed.
       allocator_->free(memory);
     };
-
+    //std::cout << "allocateInternal calling acquire..." << std::endl << std::flush;
     handle = acquire(new (memory) Item(key, size, creationTime, expiryTime));
     if (handle) {
       handle.markNascent();
@@ -2719,7 +2721,6 @@ CacheAllocator<CacheTrait>::allocateInternal(PoolId pid,
     eventTracker->record(AllocatorApiEvent::ALLOCATE, key, result, size,
                          expiryTime ? expiryTime - creationTime : 0);
   }
-
   return handle;
 }
 
@@ -2768,7 +2769,7 @@ CacheAllocator<CacheTrait>::allocateChainedItemInternal(const Item& parent,
   }
 
   SCOPE_FAIL { allocator_->free(memory); };
-
+  //std::cout << "allocateChainedItemInternal calling acquire..." << std::endl << std::flush;
   auto child = acquire(new (memory) ChainedItem(
       compressor_.compress(&parent), size, util::getCurrentTimeSec()));
 
@@ -2776,7 +2777,7 @@ CacheAllocator<CacheTrait>::allocateChainedItemInternal(const Item& parent,
     child.markNascent();
     (*stats_.fragmentationSize)[pid][cid].add(
         util::getFragmentation(*this, *child));
-  }
+ }
 
   return child;
 }
@@ -2859,6 +2860,7 @@ CacheAllocator<CacheTrait>::popChainedItem(WriteHandle& parent) {
   XDCHECK(res == true);
 
   // decrement the refcount to indicate this item is unlinked from its parent
+  std::cout << "CA.h-popChainedItem calling decRef..." << std::endl << std::flush;
   head->decRef();
   stats_.numChainedChildItems.dec();
 
@@ -3042,9 +3044,11 @@ void CacheAllocator<CacheTrait>::replaceInChainLocked(Item& oldItem,
       head.reset();
       XDCHECK_EQ(1u, oldItem.getRefCount());
     }
+    //std::cout << "CA.h-rplcInCL 1 calling decRev.." << std::endl << std::flush;
     oldItem.decRef();
     XDCHECK_EQ(0u, oldItem.getRefCount()) << oldItem.toString();
   } else {
+    //std::cout << "CA.h-rplcInCL 2 calling decRev.." << std::endl << std::flush;
     oldItem.decRef();
     XDCHECK_LT(0u, oldItem.getRefCount()) << oldItem.toString();
   }
@@ -3068,6 +3072,7 @@ CacheAllocator<CacheTrait>::replaceChainedItemLocked(Item& oldItem,
   // grab the handle to the old item so that we can return this. Also, we need
   // to drop the refcount the parent holds on oldItem by manually calling
   // decRef.  To do that safely we need to have a proper outstanding handle.
+  //std::cout << "replaceChainedItemLocked calling acquire..." << std::endl << std::flush;
   auto oldItemHdl = acquire(&oldItem);
   XDCHECK_GE(2u, oldItem.getRefCount());
 
@@ -3205,6 +3210,7 @@ CacheAllocator<CacheTrait>::releaseBackToAllocator(Item& it,
       // No other thread can access any of the chained items by this point,
       // so the refcount for each chained item must be equal to 1. Since
       // we use 1 to mark an item as being linked to a parent item.
+      //std::cout << "CA.h- rlsBck2Allcr calling decRev.." << std::endl << std::flush;
       const auto childRef = head->decRef();
       XDCHECK_EQ(0u, childRef);
 
@@ -3257,6 +3263,8 @@ CacheAllocator<CacheTrait>::acquire(Item* it) {
   }
 
   SCOPE_FAIL { stats_.numRefcountOverflow.inc(); };
+  
+  //std::cout << "CA.h-acquire: " << it->toString() << std::endl << std::flush;
 
   while (true) {
     auto incRes = incRef(*it);
@@ -3282,8 +3290,10 @@ void CacheAllocator<CacheTrait>::release(Item* it, bool isNascent) {
   if (UNLIKELY(!it)) {
     return;
   }
-
+  //std::cout << "CA.h-rls calling decRef..." << std::endl << std::flush;
+  //std::cout << it->toString();
   const auto ref = decRef(*it);
+  //std::cout << "----after decRef:" << it->toString() <<std::endl; 
 
   if (UNLIKELY(ref == 0)) {
     const auto res =
@@ -3336,6 +3346,9 @@ bool CacheAllocator<CacheTrait>::replaceChainedItemInMMContainer(
 template <typename CacheTrait>
 void CacheAllocator<CacheTrait>::insertInMMContainer(Item& item) {
   XDCHECK(!item.isInMMContainer());
+
+  //std::cout << "CA.h-insrtInMMC: " << item.toString() << std::endl;
+
   auto& mmContainer = getMMContainer(item);
   if (!mmContainer.add(item)) {
     throw std::runtime_error(folly::sformat(
@@ -3409,6 +3422,8 @@ CacheAllocator<CacheTrait>::insertOrReplace(const WriteHandle& handle) {
   if (handle->isAccessible()) {
     throw std::invalid_argument("Handle is already accessible");
   }
+  
+  //std::cout << "CA.h-iOr" << (handle.getInternal())->toString() << std::endl;
 
   HashedKey hk{handle->getKey()};
 
@@ -3526,6 +3541,8 @@ template <typename CacheTrait>
 bool CacheAllocator<CacheTrait>::moveRegularItem(Item& oldItem,
                                                  WriteHandle& newItemHdl) {
   XDCHECK(oldItem.isMoving());
+  //std::cout << "CA.h-mvRegItm calling isExp()...\n"<<std::flush;
+
   // If an item is expired, proceed to eviction.
   if (oldItem.isExpired()) {
     return false;
@@ -3685,18 +3702,28 @@ CacheAllocator<CacheTrait>::getNextCandidate(PoolId pid,
         ++itr;
         continue;
       }
-
+      
+      //std::cout << "CA.h-mr4Evct " << candidate_->toString();
+      //std::cout << "------curr-time:" << static_cast<uint32_t>(util::getCurrentTimeSec());
       auto markedForEviction = candidate_->markForEviction();
       if (!markedForEviction) {
-	std::cout << "CacheAllocator-markedForEviction failed." << std::endl;
+	//std::cout << "CA.h-mrk4Evct failed---"<< candidate_->toString() << "." << std::endl; 	
+	//if (toRecycle_->isChainedItem()) std::cout << "is chained item";
+
         if (candidate_->hasChainedItem()) {
+	  //std::cout << "has chained item"; 
           stats_.evictFailParentAC.inc();
         } else {
           stats_.evictFailAC.inc();
         }
-        ++itr;
+	//std::cout << std::endl;
+	++itr;
         continue;
+      } 
+      else{ 
+      	//std::cout << "------CA.h-mrk4Evct passed\n" << std::endl;
       }
+
 
       // markForEviction to make sure no other thead is evicting the item
       // nor holding a handle to that item
@@ -3796,7 +3823,7 @@ bool CacheAllocator<CacheTrait>::shouldWriteToNvmCache(const Item& item) {
   if (!doWrite) {
     return false;
   }
-
+  //std::cout << "CA.h-shldWr2Nvm calling isExp()\n" << std::flush;
   doWrite = !item.isExpired();
   if (!doWrite) {
     stats_.numNvmRejectsByExpiry.inc();
@@ -4082,6 +4109,7 @@ template <typename CacheTrait>
 typename CacheAllocator<CacheTrait>::WriteHandle
 CacheAllocator<CacheTrait>::findInternalWithExpiration(
     Key key, AllocatorApiEvent event) {
+  //std::cout << "CA.h-findInternalWithExpiration...";
   bool needToBumpStats =
       event == AllocatorApiEvent::FIND || event == AllocatorApiEvent::FIND_FAST;
   if (needToBumpStats) {
@@ -4113,7 +4141,7 @@ CacheAllocator<CacheTrait>::findInternalWithExpiration(
     }
     return handle;
   }
-
+  //std::cout << "CA.h-fndIntW/Exp calling isExp()\n" << std::flush;
   if (UNLIKELY(handle->isExpired())) {
     // update cache miss stats if the item has already been expired.
     if (needToBumpStats) {
@@ -4170,6 +4198,7 @@ CacheAllocator<CacheTrait>::findFastToWrite(typename Item::Key key) {
 template <typename CacheTrait>
 typename CacheAllocator<CacheTrait>::WriteHandle
 CacheAllocator<CacheTrait>::findImpl(typename Item::Key key, AccessMode mode) {
+  //std::cout << "CA.h-findImpl...";
   auto handle = findInternalWithExpiration(key, AllocatorApiEvent::FIND);
   if (handle) {
     markUseful(handle, mode);
@@ -4201,6 +4230,7 @@ CacheAllocator<CacheTrait>::findToWrite(typename Item::Key key) {
 template <typename CacheTrait>
 typename CacheAllocator<CacheTrait>::ReadHandle
 CacheAllocator<CacheTrait>::find(typename Item::Key key) {
+  //std::cout << "CA.h-find...";
   return findImpl(key, AccessMode::kRead);
 }
 
@@ -4273,6 +4303,7 @@ CacheAllocator<CacheTrait>::getSampleItem() {
 
   // Sampling from DRAM cache
   auto item = reinterpret_cast<const Item*>(allocator_->getRandomAlloc());
+  //std::cout << "CA.h-gtSmplItm calling isExp()\n"<<std::flush;
   if (!item || UNLIKELY(item->isExpired())) {
     return SampleItem{false /* fromNvm */};
   }
@@ -4386,6 +4417,7 @@ folly::IOBuf CacheAllocator<CacheTrait>::convertToIOBufT(Handle& handle) {
   } else {
     // following IOBuf will take the item's ownership and trigger freeFunc to
     // release the reference count.
+    //std::cout << "convertToIOBufT calling release...\n" << std::flush;
     handle.release();
     iobuf = folly::IOBuf{folly::IOBuf::TAKE_OWNERSHIP, item,
 
@@ -4414,7 +4446,8 @@ folly::IOBuf CacheAllocator<CacheTrait>::convertToIOBufT(Handle& handle) {
         // we already have an item handle on the parent (which has just been
         // moved into the IOBuf above). Normally, the only place we can
         // bump an item handle safely is through the AccessContainer.
-        acquire(parentItem).release();
+	//std::cout << "converIOBuf calling acquire and release..." << std::endl << std::flush ;
+	acquire(parentItem).release();
 
         return folly::IOBuf::takeOwnership(
             &chainedItem,
@@ -5049,12 +5082,13 @@ bool CacheAllocator<CacheTrait>::removeIfExpired(const ReadHandle& handle) {
   if (!handle) {
     return false;
   }
-
   // We remove the item from both access and mm containers.
   // We want to make sure the caller is the only one holding the handle.
+  //std::cout << "CA.h-rmIfExp calling itmExpPred\n" <<std::endl <<std::flush;
   auto removedHandle =
       accessContainer_->removeIf(*(handle.getInternal()), itemExpiryPredicate);
   if (removedHandle) {
+    //std::cout << "CA.h-rmIfExp rm-ed hndl from aC. rm-ing from MMC...\n"<<std::flush;
     removeFromMMContainer(*(handle.getInternal()));
     return true;
   }
