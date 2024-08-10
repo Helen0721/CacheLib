@@ -1,0 +1,30 @@
+Performing C SOURCE FILE Test C_FLAG_QUNUSED_ARGUMENTS failed with the following output:
+Change Dir: /mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_421d2/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_421d2.dir/build.make CMakeFiles/cmTC_421d2.dir/build
+gmake[1]: Entering directory '/mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_421d2.dir/src.c.o
+/usr/bin/cc -DC_FLAG_QUNUSED_ARGUMENTS  -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wcast-qual -Wstrict-prototypes    -Qunused-arguments -o CMakeFiles/cmTC_421d2.dir/src.c.o -c /mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command-line option '-Qunused-arguments'
+gmake[1]: *** [CMakeFiles/cmTC_421d2.dir/build.make:78: CMakeFiles/cmTC_421d2.dir/src.c.o] Error 1
+gmake[1]: Leaving directory '/mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_421d2/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C++ SOURCE FILE Test CXX_FLAG_QUNUSED_ARGUMENTS failed with the following output:
+Change Dir: /mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f94b4/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f94b4.dir/build.make CMakeFiles/cmTC_f94b4.dir/build
+gmake[1]: Entering directory '/mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f94b4.dir/src.cxx.o
+/usr/bin/c++ -DCXX_FLAG_QUNUSED_ARGUMENTS  -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wcast-qual    -Qunused-arguments -o CMakeFiles/cmTC_f94b4.dir/src.cxx.o -c /mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp/src.cxx
+c++: error: unrecognized command-line option '-Qunused-arguments'
+gmake[1]: *** [CMakeFiles/cmTC_f94b4.dir/build.make:78: CMakeFiles/cmTC_f94b4.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/mnt/cfs/CacheLib/build-zstd/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_f94b4/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
