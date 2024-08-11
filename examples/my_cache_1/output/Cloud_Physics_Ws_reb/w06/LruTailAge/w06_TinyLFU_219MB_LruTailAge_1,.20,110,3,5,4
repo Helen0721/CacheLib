@@ -1,0 +1,570 @@
+Initializing Cache...LruTailAge Rebalancing init. LTAS.h-changed default
+LTAS::LTAS(Config config): tailAgeDifferenceRatio: 0.200000,minTailAgeDifference:110,minSlabs:3,numSlabsFreeMem:5,slabProjectionLength:4 
+Cache Initialized. size: 219MB
+RebStrtgy-pickVAndR...RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:18 r:36
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:43
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:35
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:30 r:35
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:30 r:41
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:18. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.618819,time:17599
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 4, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 4, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 7, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:38 r:39
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:30 r:40
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:38 r:42
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 7, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 7, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.394148,time:21275
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 17, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:18. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.399769,time:25818
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.47238,time:36806
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.509589,time:48705
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.540588,time:66877
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.558096,time:72863
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 7, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.566907,time:87786
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 3, rTA: 1 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:34. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+hit ratio:0.581732,time:107226
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:31. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.587704,time:113686
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:43. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.594052,time:127238
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:43. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.599158,time:135823
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.605781,time:150521
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.607758,time:156062
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.612077,time:171344
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 4, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.614947,time:175521
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.617802,time:186670
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 5, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 6, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.621184,time:198918
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.624602,time:204644
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 3, rTA: 1 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 3, rTA: 1 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+hit ratio:0.629336,time:220666
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 6, rTA: 1 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.634428,time:236970
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.635958,time:242783
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.637364,time:253794
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.64219,time:271911
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.647544,time:280724
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 4, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.647463,time:285764
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 6, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.650754,time:297821
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:25. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:23. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.651536,time:306563
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+hit ratio:0.652816,time:309939
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 4, rTA: 1 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 5, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 4, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.65344,time:323949
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 9, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.65504,time:328392
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.65651,time:335841
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:26. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.658211,time:348658
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.661847,time:360492
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.661597,time:366490
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.66525,time:377608
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.66838,time:382859
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.667728,time:387729
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.66723,time:393753
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.667081,time:400111
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.666233,time:407534
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.665684,time:414801
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...hit ratio:0.665983,time:419567
+LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:34. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.665458,time:424612
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:33. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.664694,time:431594
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:32. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.664062,time:439039
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:25. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.664286,time:443172
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.663749,time:450587
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.663371,time:457437
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 5, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.663203,time:462481
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.662447,time:468131
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.661836,time:475328
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.661242,time:482920
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.660805,time:490399
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.660436,time:496237
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.66046,time:500122
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+hit ratio:0.660077,time:506867
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.659774,time:513707
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:31. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.659565,time:520037
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:24. vPTA: 2, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.659501,time:524979
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 4, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.659107,time:532563
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.658642,time:539241
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.658598,time:543336
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.658314,time:549659
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.658194,time:556186
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.657846,time:563250
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:18. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.657453,time:570093
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:9. vPTA: 1, rTA: 1 .improv. < minTailAgeDifference 110. improv. < diffRatio * vPTA 0.2. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:34. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:34. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:32. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 3, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.657192,time:577209
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:34. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:34. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:21. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:38. r:34. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+hit ratio:0.657296,time:581610
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:27. vPTA: 1, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:34. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...LTAS-v:30. r:21. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 110. 
+EOF
+num_requests: 69392150, num zero reqs: 0,time:584461
+hit ratio:0.657262,throughput:118.728reqs/sec,
