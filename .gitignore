@@ -1,0 +1,37 @@
+# Backup and temporary files
+*~
+.*.swp
+
+# we exclude everything that's not logs related
+# And commit cachelib folder and example/my_cache_1 folder
+build-cachelib/
+build-fbthrift/
+build-fizz/
+build-fmt/
+build-folly/
+build-gflags/
+build-glog/
+build-googletest/
+build-mvfst/
+build-sparsemap/
+build-wangle/
+build-zstd/
+
+opt/
+website/
+
+BUILD.md
+BENCHMARKS.md
+README.md
+CacheLib-Logo.png
+CHANGELOG.md
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+
+examples/my_cache_1/data/
+examples/my_cache_1/build/
+examples/my_cache_1/tests/build/
+examples/simple_cache/
+examples/simple_compact_cache/ 
+examplessingle_tier_cache/
