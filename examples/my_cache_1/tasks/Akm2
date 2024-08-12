@@ -1,0 +1,12 @@
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru LruTailAge default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru2Q LruTailAge default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 TinyLFU LruTailAge default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru HitsPerSlab default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru2Q HitsPerSlab default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 TinyLFU HitsPerSlab default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru FreeMem default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru2Q FreeMem default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 TinyLFU FreeMem default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru default default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 Lru2Q default default output/AkamaiLax_reb 320GB,384GB
+./run.sh data/akamai_lax.oracleGeneral.sample10.zst akms10 TinyLFU default default output/AkamaiLax_reb 320GB,384GB

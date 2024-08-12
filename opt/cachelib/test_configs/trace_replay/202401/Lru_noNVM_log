@@ -1,0 +1,133 @@
+===JSON Config===
+{
+  "cache_config":
+  {
+    "cacheSizeMB": 40000,
+    "cacheDir": "/tmp/cachelib_metadata",
+    "allocFactor": 1.08,
+    "maxAllocSize": 524288,
+    "minAllocSize": 64,
+    "enableChainedItem": true,
+    "htBucketPower": 29,
+    "moveOnSlabRelease": false,
+    "poolRebalanceIntervalSec": 2,
+    "poolResizeIntervalSec": 2,
+    "rebalanceStrategy": "hits"
+  },
+  "test_config":
+  {
+    "opRatePerSec": 550000,
+    "opRateBurstSize": 200,
+    "enableLookaside": false,
+    "generator": "replay",
+    "replayGeneratorConfig":
+    {
+        "ampFactor": 125,
+        "simulTraceTimeStamp" : false
+    },    
+    "repeatTraceReplay": true,
+    "timestampFactor": 1,
+    "repeatOpCount" : true,
+    "onlySetIfMiss" : false,
+    "numOps": 100000000000, 
+    "numThreads": 20, 
+    "prepopulateCache": true, 
+    "checkNvmCacheWarmUp": true,
+    "traceFileNames": [
+	    "kvcache_traces_1.csv",
+	    "kvcache_traces_2.csv",
+	    "kvcache_traces_3.csv",
+	    "kvcache_traces_4.csv",
+	    "kvcache_traces_5.csv"
+    ]
+  }
+}
+
+Welcome to OSS version of cachebench
+cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU
+HPS::HPS(Config config): minDiff:100,diffRatio:0.250000,minSlabs:1,numSlabsFreeMem:3,minLruTailAge:0,maxLruTailAge:0 
+Total 2000000.00M ops to be run
+10:29:34       0.00M ops completed. Hit Ratio  59.18% (RAM  59.18%, NVM   0.00%)
+10:30:34      35.99M ops completed. Hit Ratio  69.45% (RAM  69.45%, NVM   0.00%)
+10:31:34      71.03M ops completed. Hit Ratio  66.10% (RAM  66.10%, NVM   0.00%)
+CacheAllocator-markedForEviction failed.
+CacheAllocator-markedForEviction failed.
+10:32:34     105.98M ops completed. Hit Ratio  70.00% (RAM  70.00%, NVM   0.00%)
+10:33:34     140.74M ops completed. Hit Ratio  68.72% (RAM  68.72%, NVM   0.00%)
+10:34:34     175.58M ops completed. Hit Ratio  70.26% (RAM  70.26%, NVM   0.00%)
+10:35:34     210.44M ops completed. Hit Ratio  71.76% (RAM  71.76%, NVM   0.00%)
+10:36:34     244.78M ops completed. Hit Ratio  74.70% (RAM  74.70%, NVM   0.00%)
+10:37:34     279.83M ops completed. Hit Ratio  73.71% (RAM  73.71%, NVM   0.00%)
+10:38:34     315.16M ops completed. Hit Ratio  73.27% (RAM  73.27%, NVM   0.00%)
+10:39:34     350.39M ops completed. Hit Ratio  75.89% (RAM  75.89%, NVM   0.00%)
+10:40:34     385.71M ops completed. Hit Ratio  76.36% (RAM  76.36%, NVM   0.00%)
+10:41:34     420.77M ops completed. Hit Ratio  76.86% (RAM  76.86%, NVM   0.00%)
+10:42:34     456.07M ops completed. Hit Ratio  76.40% (RAM  76.40%, NVM   0.00%)
+10:43:34     491.20M ops completed. Hit Ratio  76.14% (RAM  76.14%, NVM   0.00%)
+10:44:34     526.31M ops completed. Hit Ratio  75.97% (RAM  75.97%, NVM   0.00%)
+10:45:34     561.61M ops completed. Hit Ratio  77.13% (RAM  77.13%, NVM   0.00%)
+10:46:34     596.66M ops completed. Hit Ratio  76.59% (RAM  76.59%, NVM   0.00%)
+10:47:34     631.64M ops completed. Hit Ratio  77.16% (RAM  77.16%, NVM   0.00%)
+10:48:34     666.74M ops completed. Hit Ratio  76.49% (RAM  76.49%, NVM   0.00%)
+10:49:34     701.83M ops completed. Hit Ratio  77.52% (RAM  77.52%, NVM   0.00%)
+10:50:34     737.19M ops completed. Hit Ratio  78.22% (RAM  78.22%, NVM   0.00%)
+10:51:34     772.47M ops completed. Hit Ratio  77.62% (RAM  77.62%, NVM   0.00%)
+10:52:34     807.91M ops completed. Hit Ratio  78.81% (RAM  78.81%, NVM   0.00%)
+10:53:34     843.18M ops completed. Hit Ratio  78.20% (RAM  78.20%, NVM   0.00%)
+10:54:34     878.44M ops completed. Hit Ratio  78.23% (RAM  78.23%, NVM   0.00%)
+10:55:34     913.84M ops completed. Hit Ratio  79.50% (RAM  79.50%, NVM   0.00%)
+10:56:34     949.11M ops completed. Hit Ratio  77.61% (RAM  77.61%, NVM   0.00%)
+10:57:34     984.14M ops completed. Hit Ratio  79.63% (RAM  79.63%, NVM   0.00%)
+10:58:34    1019.48M ops completed. Hit Ratio  78.57% (RAM  78.57%, NVM   0.00%)
+10:59:34    1054.98M ops completed. Hit Ratio  78.89% (RAM  78.89%, NVM   0.00%)
+11:00:34    1090.88M ops completed. Hit Ratio  78.89% (RAM  78.89%, NVM   0.00%)
+11:01:34    1126.17M ops completed. Hit Ratio  80.17% (RAM  80.17%, NVM   0.00%)
+11:02:34    1161.69M ops completed. Hit Ratio  78.46% (RAM  78.46%, NVM   0.00%)
+11:03:34    1196.90M ops completed. Hit Ratio  78.90% (RAM  78.90%, NVM   0.00%)
+11:04:34    1232.02M ops completed. Hit Ratio  81.54% (RAM  81.54%, NVM   0.00%)
+11:05:35    1267.19M ops completed. Hit Ratio  80.36% (RAM  80.36%, NVM   0.00%)
+11:06:35    1302.27M ops completed. Hit Ratio  81.32% (RAM  81.32%, NVM   0.00%)
+11:07:35    1337.56M ops completed. Hit Ratio  80.68% (RAM  80.68%, NVM   0.00%)
+11:08:35    1373.01M ops completed. Hit Ratio  81.75% (RAM  81.75%, NVM   0.00%)
+11:09:35    1408.49M ops completed. Hit Ratio  81.16% (RAM  81.16%, NVM   0.00%)
+11:10:35    1443.63M ops completed. Hit Ratio  82.81% (RAM  82.81%, NVM   0.00%)
+11:11:35    1478.85M ops completed. Hit Ratio  80.53% (RAM  80.53%, NVM   0.00%)
+11:12:35    1514.04M ops completed. Hit Ratio  82.34% (RAM  82.34%, NVM   0.00%)
+11:13:35    1549.36M ops completed. Hit Ratio  80.60% (RAM  80.60%, NVM   0.00%)
+11:14:35    1584.80M ops completed. Hit Ratio  83.37% (RAM  83.37%, NVM   0.00%)
+11:15:35    1620.13M ops completed. Hit Ratio  81.33% (RAM  81.33%, NVM   0.00%)
+11:16:35    1655.71M ops completed. Hit Ratio  82.89% (RAM  82.89%, NVM   0.00%)
+11:17:35    1690.95M ops completed. Hit Ratio  82.71% (RAM  82.71%, NVM   0.00%)
+11:18:35    1726.26M ops completed. Hit Ratio  82.92% (RAM  82.92%, NVM   0.00%)
+11:19:35    1761.55M ops completed. Hit Ratio  81.29% (RAM  81.29%, NVM   0.00%)
+11:20:35    1797.35M ops completed. Hit Ratio  83.28% (RAM  83.28%, NVM   0.00%)
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 170,678,459
+Items in NVM  : 0
+Alloc Attempts: 263,370,718 Success: 100.00%
+Evict Attempts: 105,461,360 Success: 103.08%
+RAM Evictions : 108,710,798
+Fraction of pool 0 used : 1.00
+Cache Gets    : 1,521,567,070
+Hit Ratio     :  77.92%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+Released 1,433 slabs
+  Moves     : attempts:         15, success:   0.00%
+  Evictions : attempts:  3,249,440, success: 100.00%
+Total eviction executed 108710798
+
+== Throughput for  ==
+Total Ops : 1803.38 million
+Total sets: 263,370,718
+get       :   495,438/s, success   :  77.92%
+couldExist:         0/s, success   :   0.00%
+set       :    85,756/s, success   : 100.00%
+del       :     6,004/s, found     :   4.74%
+
+== KVReplayGenerator Stats ==
+Total Processed Samples: 8.10 million (parse error: 0)
+

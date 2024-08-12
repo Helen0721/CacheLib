@@ -1,0 +1,959 @@
+Initializing Cache...LruTailAge Rebalancing init. LTAS.h-changed default
+LTAS::LTAS(Config config): tailAgeDifferenceRatio: 0.250000,minTailAgeDifference:15,minSlabs:1,numSlabsFreeMem:1,slabProjectionLength:2 
+Cache Initialized. size: 256MB
+hit ratio:0.61658,time:3142
+hit ratio:0.704335,time:6315
+alloc failed. 4376708,20041096,1052672,1190509
+alloc failed. 4376708,20043152,1052672,2643487
+alloc failed. 4376708,20045208,1052672,2643488
+alloc failed. 4376708,20047264,1052672,2643489
+alloc failed. 4376708,20049320,1052672,1190774
+alloc failed. 4376708,20051376,724992,2643491
+Trying Rebalancing..
+RebStrtgy-pickVAndR...alloc failed. 4376708,2713192,1052672,1190959
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. alloc failed. 4376709,38634864,163840,240488
+Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:43
+alloc failed. 4376715,28030208,192512,240499
+alloc failed. 4376715,25238856,192512,484355
+alloc failed. 4376715,38473648,192512,484477
+alloc failed. 4376716,28525456,192512,484751
+alloc failed. 4376716,25293680,192512,484795
+alloc failed. 4376717,2182912,192512,485043
+alloc failed. 4376717,39233256,192512,485192
+alloc failed. 4376717,25222696,192512,485413
+alloc failed. 4376717,5074576,192512,485469
+alloc failed. 4376719,19743512,163840,485955
+alloc failed. 4376720,25287928,192512,486318
+alloc failed. 4376720,25711472,192512,240619
+alloc failed. 4376721,27819456,192512,486923
+alloc failed. 4376721,28529296,188416,240646
+alloc failed. 4376722,31143360,163840,487225
+alloc failed. 4376723,16661512,192512,240660
+alloc failed. 4376723,27931600,192512,487534
+alloc failed. 4376723,22280336,192512,487661
+alloc failed. 4376723,20146064,192512,487687
+alloc failed. 4376725,23339816,192512,488036
+alloc failed. 4376725,2182368,176128,488282
+alloc failed. 4376725,25276504,192512,488295
+alloc failed. 4376725,18503064,192512,488307
+alloc failed. 4376726,28532664,192512,240833
+alloc failed. 4376726,25183616,196608,240851
+alloc failed. 4376727,26638720,172032,235685
+alloc failed. 4376727,26640320,196608,235885
+alloc failed. 4376727,34930600,188416,234413
+alloc failed. 4376727,34931528,196608,234453
+alloc failed. 4376727,34930344,196608,234571
+alloc failed. 4376727,34930968,172032,235223
+alloc failed. 4376727,28943432,163840,235337
+alloc failed. 4376727,28943320,188416,235448
+alloc failed. 4376728,34330800,180224,234666
+alloc failed. 4376728,34895792,180224,234367
+alloc failed. 4376728,34895872,172032,234784
+alloc failed. 4376728,28947320,184320,495040
+alloc failed. 4376734,34895792,180224,489618
+alloc failed. 4376735,34930600,188416,240965
+alloc failed. 4376735,34931528,196608,489220
+alloc failed. 4376736,34930344,196608,241554
+alloc failed. 4376736,34330800,180224,242395
+alloc failed. 4376737,34895872,172032,241655
+alloc failed. 4376740,34930968,172032,241906
+alloc failed. 4376741,28943432,163840,241991
+alloc failed. 4376742,28943320,188416,242149
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. alloc failed. 4376744,26638720,172032,240920
+alloc failed. 4376745,26640320,196608,240924
+Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:35
+alloc failed. 4376767,26654800,172032,247235
+alloc failed. 4376767,38634864,163840,247391
+alloc failed. 4376767,28030208,192512,247397
+alloc failed. 4376768,25711472,192512,247488
+alloc failed. 4376768,28529296,188416,247518
+alloc failed. 4376768,16661512,192512,247528
+alloc failed. 4376769,28532664,192512,247698
+alloc failed. 4376770,25183616,196608,247715
+alloc failed. 4376770,26638720,172032,242419
+alloc failed. 4376770,26640320,196608,242811
+alloc failed. 4376770,34930600,188416,241441
+alloc failed. 4376772,34930600,188416,248225
+alloc failed. 4376772,34930344,196608,248314
+alloc failed. 4376773,34895872,172032,489627
+alloc failed. 4376775,34930968,172032,489321
+alloc failed. 4376775,28943432,163840,248587
+alloc failed. 4376776,28943320,188416,247859
+alloc failed. 4376777,34330800,180224,242529
+alloc failed. 4376777,26638720,172032,247782
+alloc failed. 4376777,34330800,180224,247906
+alloc failed. 4376778,26640320,196608,247785
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:35
+alloc failed. 4376780,27822544,753152,324436
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:41
+hit ratio:0.687973,time:8271
+hit ratio:0.669415,time:10959
+hit ratio:0.64756,time:13417
+hit ratio:0.642772,time:13626
+hit ratio:0.630936,time:14146
+hit ratio:0.619114,time:15444
+hit ratio:0.613197,time:16860
+hit ratio:0.587665,time:17599
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:9. r:14. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.544146,time:17811
+hit ratio:0.511768,time:18104
+hit ratio:0.478971,time:18298
+hit ratio:0.45448,time:18637
+alloc failed. 4388617,32398120,487424,9223372036854775807
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:9 r:39
+hit ratio:0.434356,time:19012
+alloc failed. 4388794,28004480,610304,1624126
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:15 r:40
+alloc failed. 4389261,41891528,954368,7044757
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-found class with alloc. failures. Total free mem.0 smaller than threshold 4194304. RebStrtgy-hold off started w/o triggering strategy specific pickVandRImp. v:16 r:42
+hit ratio:0.418933,time:19668
+hit ratio:0.400448,time:20093
+hit ratio:0.384797,time:20498
+hit ratio:0.376579,time:20900
+hit ratio:0.363684,time:21275
+hit ratio:0.356414,time:21770
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.347059,time:22114
+hit ratio:0.335199,time:22344
+hit ratio:0.324203,time:22628
+hit ratio:0.315812,time:23150
+hit ratio:0.33021,time:24908
+hit ratio:0.338588,time:25188
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.35021,time:25300
+hit ratio:0.358812,time:25488
+hit ratio:0.365292,time:25818
+hit ratio:0.372659,time:26351
+hit ratio:0.379124,time:26764
+hit ratio:0.384945,time:27358
+hit ratio:0.392025,time:27776
+hit ratio:0.398768,time:27946
+hit ratio:0.404864,time:28327
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.408762,time:29096
+hit ratio:0.413168,time:31791
+hit ratio:0.418284,time:34810
+hit ratio:0.42324,time:36806
+hit ratio:0.42599,time:38555
+hit ratio:0.430254,time:41543
+hit ratio:0.433467,time:44101
+hit ratio:0.437501,time:46589
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.439583,time:46755
+hit ratio:0.44295,time:46891
+hit ratio:0.445848,time:47233
+hit ratio:0.448563,time:47559
+hit ratio:0.45252,time:48072
+hit ratio:0.454727,time:48705
+hit ratio:0.458291,time:49375
+hit ratio:0.461591,time:49560
+hit ratio:0.465555,time:49998
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.467477,time:51848
+hit ratio:0.4697,time:54270
+hit ratio:0.472239,time:57254
+hit ratio:0.474126,time:59008
+hit ratio:0.476154,time:61527
+hit ratio:0.476982,time:64243
+hit ratio:0.477969,time:66877
+hit ratio:0.481471,time:67739
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.483288,time:68372
+hit ratio:0.484234,time:68595
+hit ratio:0.485796,time:68809
+hit ratio:0.487238,time:69074
+hit ratio:0.489079,time:69532
+hit ratio:0.49128,time:69927
+hit ratio:0.492974,time:70488
+hit ratio:0.494921,time:71159
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.494735,time:72863
+hit ratio:0.494527,time:74045
+hit ratio:0.495631,time:74138
+hit ratio:0.496648,time:74502
+hit ratio:0.497602,time:74975
+hit ratio:0.498384,time:77639
+hit ratio:0.499631,time:80447
+hit ratio:0.500975,time:82451
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.50191,time:82863
+hit ratio:0.503007,time:84865
+hit ratio:0.504301,time:87786
+hit ratio:0.505658,time:90737
+hit ratio:0.506935,time:93768
+hit ratio:0.508231,time:95938
+hit ratio:0.509492,time:96341
+hit ratio:0.510316,time:96974
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.511343,time:99826
+hit ratio:0.512221,time:102508
+hit ratio:0.513251,time:105477
+hit ratio:0.51459,time:106893
+hit ratio:0.517153,time:107226
+hit ratio:0.518622,time:107507
+hit ratio:0.520089,time:107807
+hit ratio:0.521172,time:108142
+hit ratio:0.521503,time:108446
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.520442,time:108758
+hit ratio:0.520707,time:109154
+hit ratio:0.520862,time:109546
+hit ratio:0.520843,time:110731
+hit ratio:0.521313,time:112354
+hit ratio:0.522418,time:113686
+hit ratio:0.523508,time:114877
+hit ratio:0.524086,time:115188
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.52431,time:115882
+hit ratio:0.524397,time:116892
+hit ratio:0.524724,time:118656
+hit ratio:0.525193,time:121430
+hit ratio:0.525722,time:121786
+hit ratio:0.525968,time:122816
+hit ratio:0.526494,time:124668
+hit ratio:0.527105,time:127238
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.527522,time:129995
+hit ratio:0.527216,time:132071
+hit ratio:0.528888,time:133039
+hit ratio:0.529111,time:133204
+hit ratio:0.529997,time:133322
+hit ratio:0.530151,time:133652
+hit ratio:0.530652,time:134026
+hit ratio:0.531359,time:134555
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.531643,time:135137
+hit ratio:0.53255,time:135823
+hit ratio:0.533436,time:136012
+hit ratio:0.534144,time:136364
+hit ratio:0.534434,time:138593
+hit ratio:0.535045,time:139831
+hit ratio:0.535265,time:141681
+hit ratio:0.535459,time:143544
+hit ratio:0.536093,time:146768
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.536166,time:148735
+hit ratio:0.535853,time:150028
+hit ratio:0.53697,time:150521
+hit ratio:0.537638,time:150891
+hit ratio:0.538409,time:151211
+hit ratio:0.538775,time:151515
+hit ratio:0.538191,time:151870
+hit ratio:0.537721,time:152131
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.538064,time:152565
+hit ratio:0.538076,time:153357
+hit ratio:0.537995,time:154947
+hit ratio:0.53831,time:155832
+hit ratio:0.539115,time:156062
+hit ratio:0.540052,time:156469
+hit ratio:0.539917,time:156949
+hit ratio:0.539821,time:157963
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.53977,time:160903
+hit ratio:0.540178,time:162582
+hit ratio:0.541071,time:163833
+hit ratio:0.541556,time:166666
+hit ratio:0.542007,time:168855
+hit ratio:0.54336,time:169028
+hit ratio:0.543611,time:171344
+hit ratio:0.544654,time:172003
+hit ratio:0.545354,time:172180
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.546144,time:172491
+hit ratio:0.546848,time:172813
+hit ratio:0.547138,time:173161
+hit ratio:0.546675,time:173420
+hit ratio:0.54671,time:173835
+hit ratio:0.547043,time:174110
+hit ratio:0.547185,time:174635
+hit ratio:0.54707,time:175521
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.547184,time:177124
+hit ratio:0.547465,time:179932
+hit ratio:0.54738,time:181985
+hit ratio:0.548881,time:182097
+hit ratio:0.549697,time:182448
+hit ratio:0.549961,time:183033
+hit ratio:0.550222,time:183657
+hit ratio:0.5503,time:184084
+hit ratio:0.550328,time:184604
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.55033,time:186670
+hit ratio:0.550501,time:189193
+hit ratio:0.55079,time:191769
+hit ratio:0.551235,time:194249
+hit ratio:0.551272,time:196182
+hit ratio:0.552486,time:197311
+hit ratio:0.553512,time:197753
+hit ratio:0.553157,time:198068
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.5535,time:198227
+hit ratio:0.553728,time:198412
+hit ratio:0.553776,time:198918
+hit ratio:0.554168,time:199319
+hit ratio:0.55431,time:199751
+hit ratio:0.554419,time:200233
+hit ratio:0.554932,time:200684
+hit ratio:0.555172,time:201133
+hit ratio:0.55537,time:202768
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.555856,time:203014
+hit ratio:0.55677,time:203148
+hit ratio:0.55717,time:203708
+hit ratio:0.557081,time:204644
+hit ratio:0.557115,time:204961
+hit ratio:0.558253,time:205178
+hit ratio:0.558675,time:205437
+hit ratio:0.5588,time:207824
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.55859,time:209729
+hit ratio:0.559273,time:211701
+hit ratio:0.559856,time:213685
+hit ratio:0.560207,time:216266
+hit ratio:0.560756,time:218702
+hit ratio:0.561408,time:220666
+hit ratio:0.561981,time:222745
+hit ratio:0.56327,time:222848
+hit ratio:0.563943,time:223771
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.564062,time:226317
+hit ratio:0.564244,time:229004
+hit ratio:0.564458,time:231762
+hit ratio:0.564622,time:234500
+hit ratio:0.565544,time:235078
+hit ratio:0.566028,time:235692
+hit ratio:0.56595,time:236970
+hit ratio:0.565535,time:238845
+hit ratio:0.566063,time:240123
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.566841,time:240280
+hit ratio:0.567176,time:240684
+hit ratio:0.567656,time:240970
+hit ratio:0.567465,time:241354
+hit ratio:0.56728,time:241656
+hit ratio:0.56752,time:241840
+hit ratio:0.567715,time:242367
+hit ratio:0.56787,time:242783
+hit ratio:0.568032,time:243424
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.568116,time:243885
+hit ratio:0.567684,time:244396
+hit ratio:0.567206,time:247555
+hit ratio:0.567561,time:249483
+hit ratio:0.56827,time:250094
+hit ratio:0.569052,time:250212
+hit ratio:0.569496,time:250598
+hit ratio:0.569407,time:251749
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.56931,time:253794
+hit ratio:0.569789,time:255232
+hit ratio:0.570845,time:255333
+hit ratio:0.571364,time:255546
+hit ratio:0.571437,time:258173
+hit ratio:0.571565,time:260700
+hit ratio:0.571654,time:263021
+hit ratio:0.572005,time:265500
+hit ratio:0.57247,time:267546
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.572921,time:269772
+hit ratio:0.573155,time:271911
+hit ratio:0.573601,time:273855
+hit ratio:0.573942,time:275867
+hit ratio:0.574516,time:277479
+hit ratio:0.574985,time:279403
+hit ratio:0.575936,time:279725
+hit ratio:0.576448,time:280004
+hit ratio:0.577069,time:280219
+hit ratio:0.57784,time:280335
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.578187,time:280499
+hit ratio:0.578339,time:280724
+hit ratio:0.578593,time:280881
+hit ratio:0.578926,time:281127
+hit ratio:0.578503,time:281352
+hit ratio:0.578905,time:281892
+hit ratio:0.578853,time:282050
+hit ratio:0.579342,time:282213
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.579205,time:282525
+hit ratio:0.579085,time:282973
+hit ratio:0.578894,time:284085
+hit ratio:0.578847,time:285764
+hit ratio:0.579172,time:287244
+hit ratio:0.57952,time:289257
+hit ratio:0.580478,time:289459
+hit ratio:0.581287,time:289609
+hit ratio:0.581342,time:291777
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.581694,time:292551
+hit ratio:0.58198,time:293558
+hit ratio:0.582084,time:295992
+hit ratio:0.582317,time:297677
+hit ratio:0.582956,time:297821
+hit ratio:0.582548,time:299320
+hit ratio:0.582565,time:301856
+hit ratio:0.582267,time:303738
+hit ratio:0.582919,time:303852
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.58334,time:304081
+hit ratio:0.583099,time:304847
+hit ratio:0.583091,time:305095
+hit ratio:0.583587,time:305405
+hit ratio:0.583655,time:305869
+hit ratio:0.583928,time:306563
+hit ratio:0.584247,time:306716
+hit ratio:0.584509,time:307229
+hit ratio:0.584787,time:307552
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.584622,time:307890
+hit ratio:0.58478,time:308583
+hit ratio:0.585029,time:308701
+hit ratio:0.585253,time:308837
+hit ratio:0.58528,time:309131
+hit ratio:0.585387,time:309427
+hit ratio:0.585405,time:309939
+hit ratio:0.585214,time:310196
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.584966,time:310671
+hit ratio:0.584869,time:312050
+hit ratio:0.584914,time:312458
+hit ratio:0.584739,time:314650
+hit ratio:0.584941,time:316544
+hit ratio:0.585274,time:318637
+hit ratio:0.585523,time:320797
+hit ratio:0.585584,time:322339
+hit ratio:0.58582,time:323949
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.585689,time:325208
+hit ratio:0.586336,time:325621
+hit ratio:0.587067,time:325749
+hit ratio:0.587298,time:326345
+hit ratio:0.587627,time:326837
+hit ratio:0.587789,time:327194
+hit ratio:0.588114,time:327487
+hit ratio:0.587922,time:327990
+hit ratio:0.588003,time:328243
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.588226,time:328392
+hit ratio:0.588436,time:328608
+hit ratio:0.5886,time:329001
+hit ratio:0.588506,time:329386
+hit ratio:0.588524,time:329898
+hit ratio:0.588447,time:331703
+hit ratio:0.588575,time:333934
+hit ratio:0.588932,time:335181
+hit ratio:0.589503,time:335297
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.58999,time:335456
+hit ratio:0.589916,time:335841
+hit ratio:0.58972,time:336386
+hit ratio:0.589612,time:338519
+hit ratio:0.589735,time:338863
+hit ratio:0.590366,time:338993
+hit ratio:0.590788,time:339250
+hit ratio:0.590799,time:340144
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.590715,time:342525
+hit ratio:0.590792,time:344873
+hit ratio:0.591142,time:346637
+hit ratio:0.591454,time:348658
+hit ratio:0.591751,time:350503
+hit ratio:0.59202,time:352584
+hit ratio:0.592303,time:354407
+hit ratio:0.592643,time:356297
+hit ratio:0.592899,time:358057
+hit ratio:0.592785,time:359342
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.593357,time:359968
+hit ratio:0.593724,time:360260
+hit ratio:0.594192,time:360402
+hit ratio:0.594564,time:360492
+hit ratio:0.594807,time:360661
+hit ratio:0.594931,time:360860
+hit ratio:0.594952,time:361153
+hit ratio:0.594901,time:361456
+hit ratio:0.594453,time:361944
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.594329,time:362325
+hit ratio:0.594256,time:362858
+hit ratio:0.594219,time:363745
+hit ratio:0.594175,time:364787
+hit ratio:0.594235,time:366490
+hit ratio:0.594777,time:367296
+hit ratio:0.595234,time:368098
+hit ratio:0.595699,time:368946
+hit ratio:0.59589,time:370212
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.596225,time:371358
+hit ratio:0.596563,time:372732
+hit ratio:0.596851,time:374200
+hit ratio:0.597237,time:375274
+hit ratio:0.597266,time:376290
+hit ratio:0.597492,time:377608
+hit ratio:0.597851,time:378814
+hit ratio:0.598112,time:380077
+hit ratio:0.598488,time:381509
+hit ratio:0.599046,time:381710
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.599497,time:381793
+hit ratio:0.59999,time:381875
+hit ratio:0.600232,time:382058
+hit ratio:0.60044,time:382357
+hit ratio:0.600577,time:382597
+hit ratio:0.600535,time:382859
+hit ratio:0.600328,time:383097
+hit ratio:0.600486,time:383711
+hit ratio:0.600392,time:383901
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.600381,time:384178
+hit ratio:0.600306,time:384649
+hit ratio:0.600183,time:385036
+hit ratio:0.599966,time:385635
+hit ratio:0.599852,time:386257
+hit ratio:0.599617,time:387129
+hit ratio:0.599406,time:387729
+hit ratio:0.599329,time:388288
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.599371,time:388860
+hit ratio:0.599418,time:389345
+hit ratio:0.599389,time:389912
+hit ratio:0.599354,time:390481
+hit ratio:0.599235,time:391087
+hit ratio:0.599018,time:391796
+hit ratio:0.598764,time:392521
+hit ratio:0.598867,time:393047
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.598674,time:393753
+hit ratio:0.598695,time:394288
+hit ratio:0.598643,time:394938
+hit ratio:0.59853,time:395615
+hit ratio:0.598442,time:396306
+hit ratio:0.598415,time:396911
+hit ratio:0.598432,time:397490
+hit ratio:0.5983,time:398210
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.598244,time:398849
+hit ratio:0.598196,time:399532
+hit ratio:0.598168,time:400111
+hit ratio:0.597931,time:400955
+hit ratio:0.597743,time:401787
+hit ratio:0.597427,time:402471
+hit ratio:0.597282,time:403300
+hit ratio:0.597148,time:403934
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.597045,time:404738
+hit ratio:0.596858,time:405368
+hit ratio:0.5967,time:406120
+hit ratio:0.596574,time:406730
+hit ratio:0.596384,time:407534
+hit ratio:0.596245,time:408243
+hit ratio:0.596107,time:408970
+hit ratio:0.595935,time:409673
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.595685,time:410501
+hit ratio:0.595555,time:411271
+hit ratio:0.595411,time:412062
+hit ratio:0.59531,time:412629
+hit ratio:0.595205,time:413456
+hit ratio:0.595158,time:414077
+hit ratio:0.595057,time:414801
+hit ratio:0.594985,time:415657
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.594999,time:416070
+hit ratio:0.594949,time:416621
+hit ratio:0.59498,time:417183
+hit ratio:0.594967,time:417786
+hit ratio:0.594898,time:418408
+hit ratio:0.594874,time:418665
+hit ratio:0.594968,time:418973
+hit ratio:0.59497,time:419207
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.595117,time:419567
+hit ratio:0.595167,time:419890
+hit ratio:0.595021,time:420310
+hit ratio:0.595249,time:420904
+hit ratio:0.595214,time:421176
+hit ratio:0.595136,time:421584
+hit ratio:0.595129,time:422026
+hit ratio:0.595102,time:422652
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...hit ratio:0.59502,time:423293
+Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.594968,time:423833
+hit ratio:0.594841,time:424612
+hit ratio:0.594658,time:425300
+hit ratio:0.594549,time:426052
+hit ratio:0.594452,time:426641
+hit ratio:0.594447,time:427245
+hit ratio:0.594356,time:427934
+hit ratio:0.594196,time:428688
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.594209,time:429207
+hit ratio:0.594077,time:430109
+hit ratio:0.593889,time:430774
+hit ratio:0.593756,time:431594
+hit ratio:0.593602,time:432272
+hit ratio:0.593531,time:433126
+hit ratio:0.593356,time:434084
+hit ratio:0.593183,time:434808
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.593131,time:435475
+hit ratio:0.592998,time:436145
+hit ratio:0.592896,time:437046
+hit ratio:0.592823,time:437620
+hit ratio:0.592688,time:438426
+hit ratio:0.592555,time:439039
+hit ratio:0.592353,time:439844
+hit ratio:0.592448,time:440148
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.592548,time:440361
+hit ratio:0.592641,time:440684
+hit ratio:0.592678,time:441054
+hit ratio:0.592708,time:441390
+hit ratio:0.592577,time:441743
+hit ratio:0.592508,time:442021
+hit ratio:0.592387,time:442534
+hit ratio:0.592321,time:443172
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.592249,time:443892
+hit ratio:0.59215,time:444594
+hit ratio:0.592095,time:445599
+hit ratio:0.592084,time:446188
+hit ratio:0.59187,time:447066
+hit ratio:0.591793,time:447598
+hit ratio:0.591758,time:448300
+hit ratio:0.59167,time:449019
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.591469,time:449890
+hit ratio:0.591305,time:450587
+hit ratio:0.591141,time:451391
+hit ratio:0.591009,time:451931
+hit ratio:0.590876,time:452701
+hit ratio:0.590824,time:453359
+hit ratio:0.590768,time:454090
+hit ratio:0.590678,time:454836
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.590627,time:455383
+hit ratio:0.590621,time:456019
+hit ratio:0.590508,time:456757
+hit ratio:0.590357,time:457437
+hit ratio:0.590329,time:458158
+hit ratio:0.590085,time:458730
+hit ratio:0.590039,time:459055
+hit ratio:0.589931,time:459546
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.589889,time:460393
+hit ratio:0.589724,time:461147
+hit ratio:0.589806,time:461622
+hit ratio:0.589828,time:461847
+hit ratio:0.589918,time:462154
+hit ratio:0.589916,time:462481
+hit ratio:0.589944,time:462790
+hit ratio:0.589878,time:463134
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.589608,time:463322
+hit ratio:0.589504,time:463802
+hit ratio:0.589482,time:464373
+hit ratio:0.589504,time:464935
+hit ratio:0.589404,time:465607
+hit ratio:0.589259,time:466530
+hit ratio:0.589108,time:467412
+hit ratio:0.589051,time:468131
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.589053,time:468604
+hit ratio:0.589072,time:469257
+hit ratio:0.588916,time:469883
+hit ratio:0.588893,time:470465
+hit ratio:0.588754,time:471162
+hit ratio:0.588593,time:472113
+hit ratio:0.58855,time:472612
+hit ratio:0.588502,time:473378
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.588331,time:474479
+hit ratio:0.58816,time:475328
+hit ratio:0.587979,time:475901
+hit ratio:0.587812,time:476748
+hit ratio:0.587643,time:477593
+hit ratio:0.587545,time:478295
+hit ratio:0.58742,time:478993
+hit ratio:0.587286,time:479786
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.587232,time:480359
+hit ratio:0.587071,time:481482
+hit ratio:0.586823,time:482140
+hit ratio:0.586705,time:482920
+hit ratio:0.586593,time:483456
+hit ratio:0.586439,time:484427
+hit ratio:0.586312,time:484963
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.586179,time:485627
+hit ratio:0.586052,time:486406
+hit ratio:0.586024,time:487041
+hit ratio:0.585893,time:488159
+hit ratio:0.585854,time:488740
+hit ratio:0.585725,time:489674
+hit ratio:0.585673,time:490399
+hit ratio:0.585444,time:490776
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.585268,time:491506
+hit ratio:0.585134,time:492212
+hit ratio:0.585042,time:492895
+hit ratio:0.585198,time:493371
+hit ratio:0.585136,time:494037
+hit ratio:0.585122,time:494632
+hit ratio:0.585099,time:495330
+hit ratio:0.584949,time:495733
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.584892,time:496237
+hit ratio:0.58478,time:496856
+hit ratio:0.584758,time:497491
+hit ratio:0.584724,time:498055
+hit ratio:0.584756,time:498462
+hit ratio:0.584817,time:498720
+hit ratio:0.584882,time:499037
+hit ratio:0.584948,time:499330
+hit ratio:0.584989,time:499572
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.584953,time:499891
+hit ratio:0.584725,time:500122
+hit ratio:0.584681,time:500618
+hit ratio:0.584676,time:501365
+hit ratio:0.584564,time:502251
+hit ratio:0.584414,time:503028
+hit ratio:0.58443,time:503499
+hit ratio:0.58449,time:504005
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.584396,time:504809
+hit ratio:0.584321,time:505462
+hit ratio:0.584224,time:506101
+hit ratio:0.584087,time:506867
+hit ratio:0.584059,time:507315
+hit ratio:0.584016,time:508051
+hit ratio:0.584002,time:508654
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.583949,time:509337
+hit ratio:0.583923,time:509897
+hit ratio:0.583914,time:510542
+hit ratio:0.583789,time:511545
+hit ratio:0.583762,time:512261
+hit ratio:0.583638,time:513014
+hit ratio:0.583571,time:513707
+hit ratio:0.583395,time:514607
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.583305,time:515266
+hit ratio:0.583224,time:516026
+hit ratio:0.583097,time:516655
+hit ratio:0.583,time:517520
+hit ratio:0.583018,time:518052
+hit ratio:0.582933,time:518750
+hit ratio:0.582934,time:519547
+hit ratio:0.582875,time:519782
+Trying Rebalancing..
+RebStrtgy-pickVAndR...hit ratio:0.582919,time:520037
+RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.582994,time:520401
+hit ratio:0.583062,time:520708
+hit ratio:0.58317,time:521055
+hit ratio:0.583157,time:521402
+hit ratio:0.582911,time:521782
+hit ratio:0.582815,time:522120
+hit ratio:0.582826,time:522609
+hit ratio:0.582714,time:523467
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.582615,time:524244
+hit ratio:0.582597,time:524979
+hit ratio:0.582483,time:525978
+hit ratio:0.582392,time:526757
+hit ratio:0.582373,time:527427
+hit ratio:0.58233,time:528127
+hit ratio:0.582234,time:529076
+hit ratio:0.582163,time:529906
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.582047,time:530831
+hit ratio:0.581922,time:531523
+hit ratio:0.581818,time:532010
+hit ratio:0.581773,time:532563
+hit ratio:0.581662,time:533408
+hit ratio:0.581649,time:533926
+hit ratio:0.581612,time:534742
+hit ratio:0.581573,time:535443
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.581541,time:536095
+hit ratio:0.581498,time:536792
+hit ratio:0.581468,time:537525
+hit ratio:0.58145,time:538086
+hit ratio:0.581394,time:538842
+hit ratio:0.581176,time:539241
+hit ratio:0.581097,time:539599
+hit ratio:0.581025,time:540344
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.580966,time:541042
+hit ratio:0.581091,time:541591
+hit ratio:0.58114,time:541884
+hit ratio:0.581239,time:542203
+hit ratio:0.581299,time:542437
+hit ratio:0.581371,time:542783
+hit ratio:0.581215,time:543025
+hit ratio:0.581138,time:543336
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.581112,time:543879
+hit ratio:0.581079,time:544395
+hit ratio:0.581011,time:544938
+hit ratio:0.580946,time:545539
+hit ratio:0.580828,time:546389
+hit ratio:0.580809,time:546886
+hit ratio:0.580757,time:547644
+hit ratio:0.580691,time:548305
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.580725,time:549002
+hit ratio:0.580693,time:549659
+hit ratio:0.580809,time:550018
+hit ratio:0.580775,time:550652
+hit ratio:0.580752,time:551456
+hit ratio:0.580692,time:552169
+hit ratio:0.580678,time:552785
+hit ratio:0.580567,time:553629
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.580486,time:554302
+hit ratio:0.580516,time:554939
+hit ratio:0.580516,time:555562
+hit ratio:0.580441,time:556186
+hit ratio:0.580398,time:557076
+hit ratio:0.580319,time:557693
+hit ratio:0.580311,time:558353
+hit ratio:0.580299,time:559029
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.580317,time:559626
+hit ratio:0.580226,time:560446
+hit ratio:0.580069,time:561166
+hit ratio:0.579917,time:561938
+hit ratio:0.579798,time:562631
+hit ratio:0.579739,time:563250
+hit ratio:0.579689,time:563944
+hit ratio:0.579587,time:564712
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.579546,time:565114
+hit ratio:0.579521,time:565732
+hit ratio:0.579475,time:566688
+hit ratio:0.579374,time:567475
+hit ratio:0.579279,time:568209
+hit ratio:0.579259,time:568863
+hit ratio:0.579178,time:569807
+hit ratio:0.579172,time:570093
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.579113,time:570799
+hit ratio:0.579066,time:571474
+hit ratio:0.579005,time:572374
+hit ratio:0.579021,time:573035
+hit ratio:0.578954,time:573784
+hit ratio:0.578888,time:574583
+hit ratio:0.578778,time:575112
+hit ratio:0.57878,time:575991
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.578715,time:576849
+hit ratio:0.578685,time:577209
+hit ratio:0.5787,time:577551
+hit ratio:0.578754,time:577914
+hit ratio:0.578841,time:578233
+hit ratio:0.578915,time:578555
+hit ratio:0.578967,time:578945
+hit ratio:0.578805,time:579188
+Trying Rebalancing..
+RebStrtgy-pickVAndR...RebStrtgy-triggering pickVandRImp...LTAS-pickVAndRImpl...Total free mem.0 smaller than threshold 4194304. LTAS-v:17. r:9. vPTA: 0, rTA: 0 .improv. < minTailAgeDifference 15. 
+hit ratio:0.578726,time:579581
+hit ratio:0.578726,time:580218
+hit ratio:0.578721,time:580931
+hit ratio:0.578662,time:581610
+hit ratio:0.578591,time:582448
+hit ratio:0.578566,time:583085
+hit ratio:0.578491,time:583964
+EOF
+hit ratio:0.578397,time:584461
+num_requests:69392150,throughput:118.728reqs/sec,

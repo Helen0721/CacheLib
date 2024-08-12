@@ -1,0 +1,68 @@
+LruTailAge:
+
+We see differences from 256MB to 4GB inclusive.
+
+256MB:
+Not triggered for Lru and Lru2Q. The main reason being (vPTA - rTA) is less than the minTailAgeDifference. 
+Triggered  10% - 30% of the time for TinyLFU. 1% difference between best (0.14562799999999998) and worst (0.15706699999999996).
+best: tailAgeDifferenceRatio: 0.250000,minTailAgeDifference:20,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1 
+worst:tailAgeDifferenceRatio: 0.250000,minTailAgeDifference:15,minSlabs:1,numSlabsFreeMem:2,slabProjectionLength:1 
+
+512MB:
+Not triggered for Lru and Lru2Q. The main reason being (vPTA - rTA) is less than the minTailAgeDifference. 
+For TinyLFU, we observed high difference between whether it gets triggered.
+best(0.117692): 2/393, 	  tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1
+worst(0.122826): 307/333  tailAgeDifferenceRatio: 0.150000,minTailAgeDifference:15,minSlabs:1,numSlabsFreeMem:1,slabProjectionLength:1
+The stats indicate that it's not always the best to have low thrshold of triggering LruTailAge.
+
+1GB:
+differences are really insignificant (less than 0.1%) for Lru and Lru2Q. Both not getting triggered. The main reason being (vPTA - rTA) is less than the minTailAgeDifference. 
+For TinyLFU, 
+best(0.097846): 36/387	  tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1
+worst(0.099583): 320/345, tailAgeDifferenceRatio: 0.200000,minTailAgeDifference:15,minSlabs:1,numSlabsFreeMem:1,slabProjectionLength:1
+
+2GB:
+differences are really insignificant (less than 0.1%) for all three. 
+The main reason of failure being (vPTA - rTA) is less than the minTailAgeDifference. 
+Lru:
+Getting triggered sometimes, but not really often. 
+Lru2Q: 
+not getting triggered at all.
+best(0.079531): 178/379	  tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1
+worst(0.080477): 253/298, tailAgeDifferenceRatio: 0.250000,minTailAgeDifference:20,minSlabs:1,numSlabsFreeMem:2,slabProjectionLength:1
+difference: 0.0009460000000000024
+
+
+4GB:
+Lru:
+Not triggering at all is actually better. But the differenece isn't significant. 
+best (0.0700767): 0/317. tailAgeDifferenceRatio: 0.100000,minTailAgeDifference:100,minSlabs:1,numSlabsFreeMem:3,slabProjectionLength:1
+worst(0.070666): 102/298 tailAgeDifferenceRatio: 0.200000,minTailAgeDifference:20,minSlabs:1,numSlabsFreeMem:2,slabProjectionLength:1
+Lru2Q:
+...
+..
+See the logs
+
+At 8GB, the differences become insignificant. 
+
+FreeMem
+
+256MB - 2GB (inclusive):
+
+Seem better to configure minSlabs and numFreeSlabs to be 0, which helps trigger the strategy. 
+Although the differences are really less than 0.1%.
+The strategies are rarely triggered, although the best configuration leads to trigerring 2-3 out of around 300 attemps. 
+The main reason is the free memory "0" available isn't greater than the threshold.
+
+4GB-8GB (inclusive)
+
+minSlabs = 0,numFreeSlabs = 3 works better, but this configuration leads to the strategy not being triggered. 
+The main reason is the free memory available isn't meeting the threshold.
+
+16GB - 64GB(inclusive)
+strategy not triggered due to existing free memory has not been allocated.
+
+
+HitsPerSlab:
+minDiff,minSlabs,diffRatio,numSlabsFreeMem,minLruTailAge,maxLruTailAge
+
