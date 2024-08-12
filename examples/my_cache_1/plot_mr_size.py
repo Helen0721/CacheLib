@@ -26,7 +26,7 @@ CACHE_SIZES_BYTES=[256000000,512000000,1000000000,2000000000,
                 4000000000,8000000000,16000000000,32000000000,64000000000]
 
 REGEX=r"hit ratio:(?P<hit_ratio>\d+.\d+),time:(?P<time>\d+)" 
-
+REGEX_mr_final = r"hit ratio:\s+(?P<hit_ratio>\d+.\d+)"
 
 COLORS=['tab:green', 'tab:red', 'tab:blue','tab:brown',
         'tab:pink','tab:olive','tab:cyan','tab:orange',
@@ -95,18 +95,24 @@ def parse_for_size(file):
     
     stdout_str = []
     with open(file,"r") as f:
-        stdout_str = f.read().split("\n")
+        stdout_str = f.read().split("\n") 
     
     hr_list = []
     
+    final_hr = -1
+
     for (i,line) in enumerate(stdout_str):
-        if i == len(stdout_str) - 2: break 
+        #if i == len(stdout_str) - 2: break 
         
         m = re.search(REGEX,line) 
-
-        if not m: continue
-
-        hr_list.append(m.group("hit_ratio"))
+        
+        if m: 
+            hr_list.append(m.group("hit_ratio"))
+        
+        m_f = re.search(REGEX_mr_final,line)
+        if m_f:
+            hr_list.append(m_f.group("hit_ratio"))
+    
 
     final_hr = hr_list[-1]
 
@@ -124,31 +130,27 @@ def handle_mr():
             labels.append(rebalance_strategy + "-" + algo)
 
             for cache_size in cache_sizes:
+                print(cache_size)
                 if json_RES:
                     res_ = json_RES[cache_size][rebalance_strategy][algo]["best_result"]
                     for fname,res in res_.items():
                         final_hr = 1-res["Final Miss Ratio"]
                 else:
-
-                    if ap.organized=="yes":
-                        output_file =os.path.join(ap.output_folder,rebalance_strategy,
-                            "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
-                            )
-                        if not os.path.isfile(output_file):
-                            if rebalance_strategy=="MarginalHits":
-                                output_file =os.path.join(ap.output_folder,rebalance_strategy,
+                    output_file =os.path.join(ap.output_folder,rebalance_strategy,
+                        "{}_{}_{}_{}_default".format(ap.name,algo,cache_size,rebalance_strategy)
+                           )
+                    if not os.path.isfile(output_file):
+                        if rebalance_strategy=="MarginalHits":
+                            output_file =os.path.join(ap.output_folder,rebalance_strategy,
                                     "{}_{}_{}_{}_1,0.3,1,1".format(ap.name,algo,cache_size,rebalance_strategy)
-                                    )
-                            if not os.path.isfile(output_file): continue
+                                )
+                    if not os.path.isfile(output_file): 
+                        print("file {} not found".format(output_file))
+                        continue 
 
-                    else: 
-                        output_file =os.path.join(ap.output_folder,
-                            "{}_{}_{}_{}.txt".format(ap.name,algo,cache_size,rebalance_strategy)
-                            )
+                print("parsing for",output_file) 
 
-                    print("parsing for",output_file) 
-
-                    final_hr = parse_for_size(output_file)
+                final_hr = parse_for_size(output_file)
                 
                 hr_lists[-1].append(final_hr)
                 
@@ -233,7 +235,6 @@ if __name__ == "__main__":
     p.add_argument("--name",type=str,required=True)
     p.add_argument("--type",type=str,required=True)
     
-    p.add_argument("--organized",type=str,default=None)
     p.add_argument("--json_file",type=str,default=None)    
     p.add_argument("--cache_sizes",type=str,default="all")
     p.add_argument("--rebalance_strategies",type=str,default="all")
@@ -247,8 +248,7 @@ if __name__ == "__main__":
     if (ap.cache_sizes=="all"):
         cache_sizes = CACHE_SIZES
     else:
-        cache_sizes = ap.cache_sizes.split(",")
-
+        cache_sizes = ap.cache_sizes.split(",") 
 
     if (ap.rebalance_strategies=="all"):
         rebalance_strategies = REBALANCEING_STRATEGIES
