@@ -1163,11 +1163,14 @@ Stats Cache<Allocator>::getStats() const {
   const auto rebalanceStats = cache_->getSlabReleaseStats();
   const auto navyStats = cache_->getNvmCacheStatsMap().toMap();
   
-  std::cout << "numEvictionFailureFromAccessContainer: " << cacheStats.numEvictionFailureFromAccessContainer << std::endl;
-  std::cout << "numEvictionFailureFromConcurrentFill: " << cacheStats.numEvictionFailureFromConcurrentFill << std::endl;
-  std::cout << "numEvictionFailureFromParentAccessContainer: " << cacheStats.numEvictionFailureFromParentAccessContainer<< std::endl;
-  std::cout << "numEvictionFailureFromMoving: " << cacheStats.numEvictionFailureFromMoving << std::endl;
-  std::cout << "numEvictionFailureFromParentMoving: " << cacheStats.numEvictionFailureFromParentMoving<< std::endl;
+  std::cout << "Evict Fails---AC: " << cacheStats.numEvictionFailureFromAccessContainer; 
+  std::cout << ", Prnt AC: " << cacheStats.numEvictionFailureFromParentAccessContainer;
+  
+  std::cout << ", Cncrrnt: " << cacheStats.numEvictionFailureFromConcurrentFill;
+  std::cout << ", Prnt Cncrrnt: " << cacheStats.numEvictionFailureFromParentAccessContainer;
+  
+  std::cout << ", Mv: " << cacheStats.numEvictionFailureFromMoving;
+  std::cout << ", Prnt MV: " << cacheStats.numEvictionFailureFromParentMoving<< std::endl; 
   
   ret.allocationClassStats = allocationClassStats;
   ret.numEvictions = aggregate.numEvictions();
