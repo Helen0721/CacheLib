@@ -194,6 +194,9 @@ std::unique_ptr<Stressor> Stressor::makeStressor(
     } else if (cacheConfig.allocator == "SIEVE"){
       return std::make_unique<AsyncCacheStressor<SieveAllocator>>(
           cacheConfig, stressorConfig, std::move(generator));
+    } else if (cacheConfig.allocator == "TINYLFU"){
+      return std::make_unique<AsyncCacheStressor<TinyLFUAllocator>>(
+          cacheConfig, stressorConfig, std::move(generator));
     }
   } else {
     auto generator = makeGenerator(stressorConfig);
@@ -209,6 +212,10 @@ std::unique_ptr<Stressor> Stressor::makeStressor(
     } else if (cacheConfig.allocator == "SIEVE"){
       std::cout << "cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve" << std::endl;
       return std::make_unique<CacheStressor<SieveAllocator>>(
+          cacheConfig, stressorConfig, std::move(generator));
+    } else if (cacheConfig.allocator == "TINYLFU"){
+      std::cout << "cachebench-runner-Stressor.cpp-makeStressor-allocator: TinyLFU" << std::endl;
+      return std::make_unique<CacheStressor<TinyLFUAllocator>>(
           cacheConfig, stressorConfig, std::move(generator));
     }
   }

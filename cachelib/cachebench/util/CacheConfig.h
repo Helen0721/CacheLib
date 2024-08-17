@@ -40,7 +40,7 @@ class CacheMonitorFactory {
   virtual std::unique_ptr<CacheMonitor> create(LruAllocator& cache) = 0;
   virtual std::unique_ptr<CacheMonitor> create(Lru2QAllocator& cache) = 0;
   virtual std::unique_ptr<CacheMonitor> create(SieveAllocator& cache) = 0;
-
+  virtual std::unique_ptr<CacheMonitor> create(TinyLFUAllocator& cache) = 0;
 };
 
 // Parse memory tiers configuration from JSON config
@@ -88,7 +88,7 @@ struct CacheConfig : public JSONConfig {
   // time to sleep between MMContainer reconfigures
   uint64_t mmReconfigureIntervalSecs{0};
 
-  // LRU and 2Q params
+  // LRU,2Q,TinyLFU params
   uint64_t lruRefreshSec{60};
   double lruRefreshRatio{0.1};
   bool lruUpdateOnWrite{false};
@@ -102,6 +102,14 @@ struct CacheConfig : public JSONConfig {
   // 2Q params
   size_t lru2qHotPct{20};
   size_t lru2qColdPct{20};
+
+  //Sieve params
+  bool sieveUpdateOnWrite{true};
+  bool sieveUpdateOnRead{true};
+
+  //TinyLFU params
+  size_t windowToCacheSizeRatio{32};
+  size_t tinySizePercent{1};
 
   double allocFactor{1.5};
   // maximum alloc size generated using the alloc factor above.

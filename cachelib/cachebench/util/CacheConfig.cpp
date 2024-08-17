@@ -48,6 +48,12 @@ CacheConfig::CacheConfig(const folly::dynamic& configJson) {
   JSONSetVal(configJson, lru2qHotPct);
   JSONSetVal(configJson, lru2qColdPct);
 
+  JSONSetVal(configJson, sieveUpdateOnWrite);
+  JSONSetVal(configJson, sieveUpdateOnRead);
+  
+  JSONSetVal(configJson, windowToCacheSizeRatio);
+  JSONSetVal(configJson, tinySizePercent); 
+
   JSONSetVal(configJson, allocFactor);
   JSONSetVal(configJson, maxAllocSize);
   JSONSetVal(configJson, minAllocSize);
@@ -108,11 +114,13 @@ CacheConfig::CacheConfig(const folly::dynamic& configJson) {
   JSONSetVal(configJson, enableItemDestructor);
   JSONSetVal(configJson, nvmAdmissionRetentionTimeThreshold);
 
+
+
   JSONSetVal(configJson, customConfigJson);
   // if you added new fields to the configuration, update the JSONSetVal
   // to make them available for the json configs and increment the size
   // below
-  checkCorrectSize<CacheConfig, 760>();
+  checkCorrectSize<CacheConfig, 784>();
 
   if (numPools != poolSizes.size()) {
     throw std::invalid_argument(folly::sformat(
