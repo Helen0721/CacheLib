@@ -1,0 +1,1893 @@
+===JSON Config===
+{
+  "cache_config":
+  {
+    "cacheSizeMB": 40000,
+    "allocator": "LRU",
+    "cacheDir": "/tmp/cachelib_metadata_lru_t20",
+    "allocFactor": 1.08,
+    "maxAllocSize": 524288,
+    "minAllocSize": 64,
+    "enableChainedItem": true,
+    "htBucketPower": 29,
+    "moveOnSlabRelease": false,
+    "poolRebalanceIntervalSec": 2,
+    "poolResizeIntervalSec": 2,
+    "rebalanceStrategy": "hits"
+  },
+  "test_config":
+  {
+    "opRatePerSec": 0,
+    "opRateBurstSize": 0,
+    "enableLookaside": false,
+    "generator": "replay",
+    "replayGeneratorConfig":
+    {
+        "ampFactor": 10,
+        "simulTraceTimeStamp" : false
+    },    
+    "repeatTraceReplay": true,
+    "timestampFactor": 1,
+    "repeatOpCount" : true,
+    "onlySetIfMiss" : false,
+    "numOps": 14086700000, 
+    "numThreads": 20, 
+    "prepopulateCache": true, 
+    "checkNvmCacheWarmUp": true,
+    "traceFileNames": [
+	    "kvcache_traces_1.csv",
+	    "kvcache_traces_2.csv",
+	    "kvcache_traces_3.csv",
+	    "kvcache_traces_4.csv",
+	    "kvcache_traces_5.csv"
+    ]
+  }
+}
+
+Welcome to OSS version of cachebench
+cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU
+HPS::HPS(Config config): minDiff:100,diffRatio:0.250000,minSlabs:1,numSlabsFreeMem:3,minLruTailAge:0,maxLruTailAge:0 
+Total 281734.00M ops to be run
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:26:07       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:27:07      63.05M ops completed. Hit Ratio  40.17% (RAM  40.17%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:28:07     126.08M ops completed. Hit Ratio  54.38% (RAM  54.38%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:29:07     189.59M ops completed. Hit Ratio  59.89% (RAM  59.89%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:30:08     253.67M ops completed. Hit Ratio  64.47% (RAM  64.47%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:31:08     317.49M ops completed. Hit Ratio  69.85% (RAM  69.85%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:32:08     380.80M ops completed. Hit Ratio  79.11% (RAM  79.11%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:33:08     443.49M ops completed. Hit Ratio  82.53% (RAM  82.53%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:34:08     505.29M ops completed. Hit Ratio  84.45% (RAM  84.45%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:35:08     567.07M ops completed. Hit Ratio  85.08% (RAM  85.08%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:36:08     628.74M ops completed. Hit Ratio  85.39% (RAM  85.39%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:37:08     689.92M ops completed. Hit Ratio  85.53% (RAM  85.53%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:38:08     750.85M ops completed. Hit Ratio  85.89% (RAM  85.89%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:39:08     811.73M ops completed. Hit Ratio  85.93% (RAM  85.93%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:40:08     874.53M ops completed. Hit Ratio  86.44% (RAM  86.44%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:41:08     936.28M ops completed. Hit Ratio  86.50% (RAM  86.50%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:42:08     998.44M ops completed. Hit Ratio  86.59% (RAM  86.59%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:43:08    1060.49M ops completed. Hit Ratio  86.30% (RAM  86.30%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:44:08    1123.04M ops completed. Hit Ratio  86.26% (RAM  86.26%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:45:08    1186.78M ops completed. Hit Ratio  86.53% (RAM  86.53%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:46:08    1252.59M ops completed. Hit Ratio  86.60% (RAM  86.60%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:47:08    1317.71M ops completed. Hit Ratio  88.02% (RAM  88.02%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:48:08    1384.17M ops completed. Hit Ratio  89.43% (RAM  89.43%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:49:08    1451.69M ops completed. Hit Ratio  89.83% (RAM  89.83%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:50:08    1518.25M ops completed. Hit Ratio  90.04% (RAM  90.04%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:51:08    1584.29M ops completed. Hit Ratio  90.21% (RAM  90.21%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:52:08    1649.08M ops completed. Hit Ratio  90.14% (RAM  90.14%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:53:08    1713.34M ops completed. Hit Ratio  90.09% (RAM  90.09%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:54:08    1776.48M ops completed. Hit Ratio  90.05% (RAM  90.05%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:55:08    1839.54M ops completed. Hit Ratio  90.26% (RAM  90.26%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:56:08    1903.39M ops completed. Hit Ratio  90.60% (RAM  90.60%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:57:08    1966.78M ops completed. Hit Ratio  90.29% (RAM  90.29%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:58:08    2030.31M ops completed. Hit Ratio  90.65% (RAM  90.65%, NVM   0.00%)
+Evict Fails---AC: 1, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+01:59:08    2094.02M ops completed. Hit Ratio  90.92% (RAM  90.92%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:00:08    2156.49M ops completed. Hit Ratio  91.16% (RAM  91.16%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:01:08    2218.66M ops completed. Hit Ratio  91.48% (RAM  91.48%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:02:08    2280.91M ops completed. Hit Ratio  91.69% (RAM  91.69%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:03:08    2341.19M ops completed. Hit Ratio  91.44% (RAM  91.44%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:04:08    2401.37M ops completed. Hit Ratio  91.21% (RAM  91.21%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:05:08    2463.58M ops completed. Hit Ratio  91.68% (RAM  91.68%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:06:08    2526.59M ops completed. Hit Ratio  91.86% (RAM  91.86%, NVM   0.00%)
+Evict Fails---AC: 2, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:07:08    2591.16M ops completed. Hit Ratio  91.48% (RAM  91.48%, NVM   0.00%)
+Evict Fails---AC: 3, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:08:08    2652.22M ops completed. Hit Ratio  92.35% (RAM  92.35%, NVM   0.00%)
+Evict Fails---AC: 3, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:09:08    2712.78M ops completed. Hit Ratio  92.30% (RAM  92.30%, NVM   0.00%)
+Evict Fails---AC: 3, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:10:08    2773.14M ops completed. Hit Ratio  92.65% (RAM  92.65%, NVM   0.00%)
+Evict Fails---AC: 3, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:11:08    2837.79M ops completed. Hit Ratio  91.90% (RAM  91.90%, NVM   0.00%)
+Evict Fails---AC: 3, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:12:08    2912.89M ops completed. Hit Ratio  91.61% (RAM  91.61%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:13:08    2989.51M ops completed. Hit Ratio  92.33% (RAM  92.33%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:14:08    3067.48M ops completed. Hit Ratio  92.91% (RAM  92.91%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:15:08    3144.01M ops completed. Hit Ratio  93.11% (RAM  93.11%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:16:08    3221.82M ops completed. Hit Ratio  93.19% (RAM  93.19%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:17:08    3299.41M ops completed. Hit Ratio  92.96% (RAM  92.96%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:18:08    3377.71M ops completed. Hit Ratio  93.10% (RAM  93.10%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:19:08    3454.85M ops completed. Hit Ratio  93.31% (RAM  93.31%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:20:08    3531.05M ops completed. Hit Ratio  93.17% (RAM  93.17%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:21:08    3608.22M ops completed. Hit Ratio  93.34% (RAM  93.34%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:22:08    3684.69M ops completed. Hit Ratio  93.38% (RAM  93.38%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:23:08    3763.64M ops completed. Hit Ratio  93.19% (RAM  93.19%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:24:08    3840.05M ops completed. Hit Ratio  92.83% (RAM  92.83%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:25:08    3917.75M ops completed. Hit Ratio  92.98% (RAM  92.98%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:26:08    3997.81M ops completed. Hit Ratio  93.37% (RAM  93.37%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:27:08    4076.42M ops completed. Hit Ratio  93.21% (RAM  93.21%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:28:08    4155.71M ops completed. Hit Ratio  93.36% (RAM  93.36%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:29:08    4235.20M ops completed. Hit Ratio  93.82% (RAM  93.82%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:30:08    4312.26M ops completed. Hit Ratio  93.52% (RAM  93.52%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:31:08    4388.53M ops completed. Hit Ratio  93.69% (RAM  93.69%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:32:08    4464.79M ops completed. Hit Ratio  93.64% (RAM  93.64%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:33:08    4541.18M ops completed. Hit Ratio  93.39% (RAM  93.39%, NVM   0.00%)
+Evict Fails---AC: 4, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:34:08    4616.41M ops completed. Hit Ratio  93.32% (RAM  93.32%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:35:08    4692.95M ops completed. Hit Ratio  93.32% (RAM  93.32%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:36:08    4768.02M ops completed. Hit Ratio  93.24% (RAM  93.24%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:37:08    4843.41M ops completed. Hit Ratio  93.37% (RAM  93.37%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:38:08    4918.99M ops completed. Hit Ratio  93.40% (RAM  93.40%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:39:08    4993.06M ops completed. Hit Ratio  93.45% (RAM  93.45%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:40:08    5067.95M ops completed. Hit Ratio  93.69% (RAM  93.69%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:41:08    5143.39M ops completed. Hit Ratio  93.74% (RAM  93.74%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:42:08    5217.99M ops completed. Hit Ratio  93.74% (RAM  93.74%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:43:08    5292.56M ops completed. Hit Ratio  93.91% (RAM  93.91%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:44:08    5367.10M ops completed. Hit Ratio  94.12% (RAM  94.12%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:45:08    5441.38M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:46:08    5514.12M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:47:08    5586.29M ops completed. Hit Ratio  94.18% (RAM  94.18%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:48:08    5660.17M ops completed. Hit Ratio  92.70% (RAM  92.70%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:49:08    5735.82M ops completed. Hit Ratio  93.19% (RAM  93.19%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:50:08    5811.71M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:51:08    5889.40M ops completed. Hit Ratio  94.08% (RAM  94.08%, NVM   0.00%)
+Evict Fails---AC: 6, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:52:08    5967.95M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:53:08    6047.20M ops completed. Hit Ratio  94.20% (RAM  94.20%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:54:08    6125.51M ops completed. Hit Ratio  93.90% (RAM  93.90%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:55:08    6204.30M ops completed. Hit Ratio  93.86% (RAM  93.86%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:56:08    6281.55M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:57:08    6357.92M ops completed. Hit Ratio  93.68% (RAM  93.68%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:58:08    6434.74M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+02:59:08    6512.22M ops completed. Hit Ratio  93.66% (RAM  93.66%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:00:08    6591.26M ops completed. Hit Ratio  94.16% (RAM  94.16%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:01:08    6669.93M ops completed. Hit Ratio  94.22% (RAM  94.22%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:02:08    6747.80M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:03:08    6824.63M ops completed. Hit Ratio  94.26% (RAM  94.26%, NVM   0.00%)
+Evict Fails---AC: 7, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:04:08    6901.06M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 8, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:05:08    6977.99M ops completed. Hit Ratio  94.07% (RAM  94.07%, NVM   0.00%)
+Evict Fails---AC: 8, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:06:08    7056.03M ops completed. Hit Ratio  93.52% (RAM  93.52%, NVM   0.00%)
+Evict Fails---AC: 8, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:07:08    7133.45M ops completed. Hit Ratio  93.65% (RAM  93.65%, NVM   0.00%)
+Evict Fails---AC: 10, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:08:08    7211.63M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 11, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:09:09    7289.71M ops completed. Hit Ratio  93.88% (RAM  93.88%, NVM   0.00%)
+Evict Fails---AC: 13, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:10:09    7366.24M ops completed. Hit Ratio  93.70% (RAM  93.70%, NVM   0.00%)
+Evict Fails---AC: 17, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:11:09    7445.06M ops completed. Hit Ratio  93.82% (RAM  93.82%, NVM   0.00%)
+Evict Fails---AC: 19, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:12:09    7522.55M ops completed. Hit Ratio  93.78% (RAM  93.78%, NVM   0.00%)
+Evict Fails---AC: 20, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:13:09    7596.92M ops completed. Hit Ratio  93.66% (RAM  93.66%, NVM   0.00%)
+Evict Fails---AC: 21, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:14:09    7670.77M ops completed. Hit Ratio  93.70% (RAM  93.70%, NVM   0.00%)
+Evict Fails---AC: 21, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:15:09    7743.71M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 21, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:16:09    7815.79M ops completed. Hit Ratio  93.76% (RAM  93.76%, NVM   0.00%)
+Evict Fails---AC: 23, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:17:09    7889.58M ops completed. Hit Ratio  93.65% (RAM  93.65%, NVM   0.00%)
+Evict Fails---AC: 29, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:18:09    7962.30M ops completed. Hit Ratio  93.56% (RAM  93.56%, NVM   0.00%)
+Evict Fails---AC: 34, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:19:09    8033.92M ops completed. Hit Ratio  93.48% (RAM  93.48%, NVM   0.00%)
+Evict Fails---AC: 39, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:20:09    8106.79M ops completed. Hit Ratio  93.73% (RAM  93.73%, NVM   0.00%)
+Evict Fails---AC: 45, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:21:09    8180.45M ops completed. Hit Ratio  93.85% (RAM  93.85%, NVM   0.00%)
+Evict Fails---AC: 51, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:22:09    8252.42M ops completed. Hit Ratio  94.24% (RAM  94.24%, NVM   0.00%)
+Evict Fails---AC: 57, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:23:09    8325.05M ops completed. Hit Ratio  94.33% (RAM  94.33%, NVM   0.00%)
+Evict Fails---AC: 60, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:24:09    8396.04M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 61, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:25:09    8472.86M ops completed. Hit Ratio  92.47% (RAM  92.47%, NVM   0.00%)
+Evict Fails---AC: 64, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:26:09    8551.58M ops completed. Hit Ratio  93.47% (RAM  93.47%, NVM   0.00%)
+Evict Fails---AC: 71, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:27:09    8629.47M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 73, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:28:09    8705.78M ops completed. Hit Ratio  94.07% (RAM  94.07%, NVM   0.00%)
+Evict Fails---AC: 75, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:29:09    8782.09M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 78, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:30:09    8857.91M ops completed. Hit Ratio  94.08% (RAM  94.08%, NVM   0.00%)
+Evict Fails---AC: 86, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:31:09    8933.39M ops completed. Hit Ratio  94.07% (RAM  94.07%, NVM   0.00%)
+Evict Fails---AC: 92, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:32:09    9007.81M ops completed. Hit Ratio  93.99% (RAM  93.99%, NVM   0.00%)
+Evict Fails---AC: 95, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:33:09    9082.56M ops completed. Hit Ratio  93.69% (RAM  93.69%, NVM   0.00%)
+Evict Fails---AC: 96, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:34:09    9159.32M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+Evict Fails---AC: 103, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:35:09    9235.75M ops completed. Hit Ratio  93.54% (RAM  93.54%, NVM   0.00%)
+Evict Fails---AC: 106, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:36:09    9313.33M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+Evict Fails---AC: 112, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:37:09    9389.00M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 112, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:38:09    9463.82M ops completed. Hit Ratio  93.78% (RAM  93.78%, NVM   0.00%)
+Evict Fails---AC: 115, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:39:09    9539.78M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 119, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:40:09    9614.85M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 120, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:41:09    9690.83M ops completed. Hit Ratio  93.83% (RAM  93.83%, NVM   0.00%)
+Evict Fails---AC: 120, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:42:09    9767.25M ops completed. Hit Ratio  93.90% (RAM  93.90%, NVM   0.00%)
+Evict Fails---AC: 120, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:43:09    9844.12M ops completed. Hit Ratio  93.79% (RAM  93.79%, NVM   0.00%)
+Evict Fails---AC: 121, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:44:09    9920.65M ops completed. Hit Ratio  93.96% (RAM  93.96%, NVM   0.00%)
+Evict Fails---AC: 125, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:45:09    9996.09M ops completed. Hit Ratio  93.72% (RAM  93.72%, NVM   0.00%)
+Evict Fails---AC: 131, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:46:09   10072.52M ops completed. Hit Ratio  93.50% (RAM  93.50%, NVM   0.00%)
+Evict Fails---AC: 133, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:47:09   10148.48M ops completed. Hit Ratio  93.33% (RAM  93.33%, NVM   0.00%)
+Evict Fails---AC: 137, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:48:09   10225.19M ops completed. Hit Ratio  93.60% (RAM  93.60%, NVM   0.00%)
+Evict Fails---AC: 142, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:49:09   10302.71M ops completed. Hit Ratio  93.53% (RAM  93.53%, NVM   0.00%)
+Evict Fails---AC: 145, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:50:09   10379.95M ops completed. Hit Ratio  94.00% (RAM  94.00%, NVM   0.00%)
+Evict Fails---AC: 146, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:51:09   10456.74M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 152, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:52:09   10536.24M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 153, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:53:09   10617.58M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 162, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:54:09   10697.94M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 180, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:55:09   10777.69M ops completed. Hit Ratio  94.17% (RAM  94.17%, NVM   0.00%)
+Evict Fails---AC: 187, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:56:09   10858.92M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 192, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:57:09   10940.51M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 193, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:58:09   11020.92M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 195, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+03:59:09   11104.15M ops completed. Hit Ratio  95.00% (RAM  95.00%, NVM   0.00%)
+Evict Fails---AC: 202, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:00:09   11187.03M ops completed. Hit Ratio  94.88% (RAM  94.88%, NVM   0.00%)
+Evict Fails---AC: 206, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:01:09   11268.29M ops completed. Hit Ratio  93.77% (RAM  93.77%, NVM   0.00%)
+Evict Fails---AC: 210, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:02:09   11348.29M ops completed. Hit Ratio  93.66% (RAM  93.66%, NVM   0.00%)
+Evict Fails---AC: 221, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:03:09   11428.80M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 225, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:04:09   11507.71M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 230, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:05:09   11586.76M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 238, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:06:09   11665.13M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 239, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:07:09   11742.18M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 248, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:08:09   11819.64M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 260, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:09:09   11894.49M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 261, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:10:09   11970.99M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 268, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:11:09   12048.54M ops completed. Hit Ratio  94.73% (RAM  94.73%, NVM   0.00%)
+Evict Fails---AC: 275, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:12:09   12123.97M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 276, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:13:09   12199.32M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 285, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:14:09   12274.82M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 303, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:15:09   12351.90M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+Evict Fails---AC: 323, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:16:09   12428.32M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 329, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:17:09   12507.42M ops completed. Hit Ratio  94.18% (RAM  94.18%, NVM   0.00%)
+Evict Fails---AC: 349, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:18:09   12588.85M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 364, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:19:09   12671.21M ops completed. Hit Ratio  94.33% (RAM  94.33%, NVM   0.00%)
+Evict Fails---AC: 371, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:20:09   12751.83M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 380, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:21:09   12831.71M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 381, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:22:09   12911.57M ops completed. Hit Ratio  94.03% (RAM  94.03%, NVM   0.00%)
+Evict Fails---AC: 384, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:23:09   12989.94M ops completed. Hit Ratio  94.67% (RAM  94.67%, NVM   0.00%)
+Evict Fails---AC: 392, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:24:09   13067.75M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 406, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:25:09   13146.45M ops completed. Hit Ratio  94.72% (RAM  94.72%, NVM   0.00%)
+Evict Fails---AC: 415, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:26:09   13225.24M ops completed. Hit Ratio  94.78% (RAM  94.78%, NVM   0.00%)
+Evict Fails---AC: 467, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:27:09   13301.79M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 476, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:28:09   13378.60M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 483, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:29:09   13454.29M ops completed. Hit Ratio  94.54% (RAM  94.54%, NVM   0.00%)
+Evict Fails---AC: 508, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:30:09   13528.81M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 516, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:31:09   13602.68M ops completed. Hit Ratio  93.97% (RAM  93.97%, NVM   0.00%)
+Evict Fails---AC: 525, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:32:09   13677.18M ops completed. Hit Ratio  93.81% (RAM  93.81%, NVM   0.00%)
+Evict Fails---AC: 535, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:33:09   13753.43M ops completed. Hit Ratio  94.01% (RAM  94.01%, NVM   0.00%)
+Evict Fails---AC: 544, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:34:09   13827.17M ops completed. Hit Ratio  94.14% (RAM  94.14%, NVM   0.00%)
+Evict Fails---AC: 565, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:35:09   13900.55M ops completed. Hit Ratio  94.21% (RAM  94.21%, NVM   0.00%)
+Evict Fails---AC: 570, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:36:09   13973.19M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 594, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:37:09   14046.47M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 603, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:38:09   14121.63M ops completed. Hit Ratio  90.60% (RAM  90.60%, NVM   0.00%)
+Evict Fails---AC: 619, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:39:09   14199.58M ops completed. Hit Ratio  92.13% (RAM  92.13%, NVM   0.00%)
+Evict Fails---AC: 620, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:40:09   14279.54M ops completed. Hit Ratio  93.43% (RAM  93.43%, NVM   0.00%)
+Evict Fails---AC: 639, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:41:09   14350.66M ops completed. Hit Ratio  93.94% (RAM  93.94%, NVM   0.00%)
+Evict Fails---AC: 657, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:42:09   14418.98M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 663, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:43:09   14486.50M ops completed. Hit Ratio  94.26% (RAM  94.26%, NVM   0.00%)
+Evict Fails---AC: 669, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:44:09   14553.85M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 683, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:45:09   14620.48M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 687, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:46:09   14686.23M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 693, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:47:09   14752.26M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 704, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:48:09   14818.55M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 711, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:49:09   14885.63M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 726, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:50:10   14953.23M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 730, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:51:10   15020.92M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 744, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:52:10   15089.87M ops completed. Hit Ratio  93.71% (RAM  93.71%, NVM   0.00%)
+Evict Fails---AC: 753, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:53:10   15158.28M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 756, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:54:10   15227.07M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 763, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:55:10   15298.93M ops completed. Hit Ratio  93.99% (RAM  93.99%, NVM   0.00%)
+Evict Fails---AC: 765, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:56:10   15370.87M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 767, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:57:10   15442.46M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 783, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:58:10   15515.38M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 787, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+04:59:10   15588.56M ops completed. Hit Ratio  94.96% (RAM  94.96%, NVM   0.00%)
+Evict Fails---AC: 792, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:00:10   15660.42M ops completed. Hit Ratio  95.02% (RAM  95.02%, NVM   0.00%)
+Evict Fails---AC: 797, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:01:10   15730.60M ops completed. Hit Ratio  94.91% (RAM  94.91%, NVM   0.00%)
+Evict Fails---AC: 806, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:02:10   15799.99M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 810, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:03:10   15869.25M ops completed. Hit Ratio  94.80% (RAM  94.80%, NVM   0.00%)
+Evict Fails---AC: 812, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:04:10   15939.82M ops completed. Hit Ratio  94.91% (RAM  94.91%, NVM   0.00%)
+Evict Fails---AC: 837, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:05:10   16009.61M ops completed. Hit Ratio  94.92% (RAM  94.92%, NVM   0.00%)
+Evict Fails---AC: 842, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:06:10   16078.95M ops completed. Hit Ratio  94.88% (RAM  94.88%, NVM   0.00%)
+Evict Fails---AC: 853, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:07:10   16147.77M ops completed. Hit Ratio  94.95% (RAM  94.95%, NVM   0.00%)
+Evict Fails---AC: 874, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:08:10   16216.98M ops completed. Hit Ratio  94.81% (RAM  94.81%, NVM   0.00%)
+Evict Fails---AC: 895, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:09:10   16286.18M ops completed. Hit Ratio  94.84% (RAM  94.84%, NVM   0.00%)
+Evict Fails---AC: 900, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:10:10   16354.84M ops completed. Hit Ratio  94.79% (RAM  94.79%, NVM   0.00%)
+Evict Fails---AC: 906, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:11:10   16421.52M ops completed. Hit Ratio  94.75% (RAM  94.75%, NVM   0.00%)
+Evict Fails---AC: 914, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:12:10   16488.10M ops completed. Hit Ratio  94.68% (RAM  94.68%, NVM   0.00%)
+Evict Fails---AC: 926, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:13:10   16556.40M ops completed. Hit Ratio  95.04% (RAM  95.04%, NVM   0.00%)
+Evict Fails---AC: 939, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:14:10   16625.16M ops completed. Hit Ratio  95.04% (RAM  95.04%, NVM   0.00%)
+Evict Fails---AC: 953, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:15:10   16692.73M ops completed. Hit Ratio  95.04% (RAM  95.04%, NVM   0.00%)
+Evict Fails---AC: 957, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:16:10   16758.58M ops completed. Hit Ratio  94.98% (RAM  94.98%, NVM   0.00%)
+Evict Fails---AC: 983, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:17:10   16823.63M ops completed. Hit Ratio  95.02% (RAM  95.02%, NVM   0.00%)
+Evict Fails---AC: 992, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:18:10   16891.28M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 1012, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:19:10   16968.22M ops completed. Hit Ratio  93.40% (RAM  93.40%, NVM   0.00%)
+Evict Fails---AC: 1024, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:20:10   17046.51M ops completed. Hit Ratio  94.12% (RAM  94.12%, NVM   0.00%)
+Evict Fails---AC: 1032, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:21:10   17126.13M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 1040, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:22:10   17205.01M ops completed. Hit Ratio  94.79% (RAM  94.79%, NVM   0.00%)
+Evict Fails---AC: 1054, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:23:10   17281.86M ops completed. Hit Ratio  94.77% (RAM  94.77%, NVM   0.00%)
+Evict Fails---AC: 1077, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:24:10   17360.31M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 1088, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:25:10   17437.94M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 1095, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:26:10   17514.03M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 1101, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:27:10   17590.03M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 1145, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:28:10   17665.80M ops completed. Hit Ratio  94.79% (RAM  94.79%, NVM   0.00%)
+Evict Fails---AC: 1148, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:29:10   17743.07M ops completed. Hit Ratio  94.84% (RAM  94.84%, NVM   0.00%)
+Evict Fails---AC: 1148, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:30:10   17821.70M ops completed. Hit Ratio  94.79% (RAM  94.79%, NVM   0.00%)
+Evict Fails---AC: 1155, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:31:10   17897.33M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 1157, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:32:10   17976.01M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 1168, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:33:10   18056.60M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 1175, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:34:10   18136.60M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 1183, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:35:10   18216.23M ops completed. Hit Ratio  94.70% (RAM  94.70%, NVM   0.00%)
+Evict Fails---AC: 1187, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:36:10   18295.90M ops completed. Hit Ratio  95.12% (RAM  95.12%, NVM   0.00%)
+Evict Fails---AC: 1194, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:37:10   18375.17M ops completed. Hit Ratio  94.82% (RAM  94.82%, NVM   0.00%)
+Evict Fails---AC: 1198, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:38:10   18454.07M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 1209, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:39:10   18531.71M ops completed. Hit Ratio  94.83% (RAM  94.83%, NVM   0.00%)
+Evict Fails---AC: 1215, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:40:10   18609.30M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 1223, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:41:10   18685.48M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 1230, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:42:10   18763.51M ops completed. Hit Ratio  94.52% (RAM  94.52%, NVM   0.00%)
+Evict Fails---AC: 1233, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:43:10   18841.39M ops completed. Hit Ratio  94.54% (RAM  94.54%, NVM   0.00%)
+Evict Fails---AC: 1241, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:44:10   18918.70M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 1251, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:45:10   18995.26M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 1262, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:46:10   19070.75M ops completed. Hit Ratio  94.59% (RAM  94.59%, NVM   0.00%)
+Evict Fails---AC: 1288, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:47:10   19146.85M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 1295, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:48:10   19221.86M ops completed. Hit Ratio  94.57% (RAM  94.57%, NVM   0.00%)
+Evict Fails---AC: 1305, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:49:10   19297.17M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 1321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:50:10   19371.51M ops completed. Hit Ratio  94.70% (RAM  94.70%, NVM   0.00%)
+Evict Fails---AC: 1332, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:51:10   19445.83M ops completed. Hit Ratio  94.89% (RAM  94.89%, NVM   0.00%)
+Evict Fails---AC: 1341, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:52:10   19520.80M ops completed. Hit Ratio  95.05% (RAM  95.05%, NVM   0.00%)
+Evict Fails---AC: 1355, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:53:10   19593.45M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 1371, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:54:10   19666.89M ops completed. Hit Ratio  94.64% (RAM  94.64%, NVM   0.00%)
+Evict Fails---AC: 1375, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:55:10   19744.66M ops completed. Hit Ratio  93.04% (RAM  93.04%, NVM   0.00%)
+Evict Fails---AC: 1382, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:56:10   19824.09M ops completed. Hit Ratio  94.01% (RAM  94.01%, NVM   0.00%)
+Evict Fails---AC: 1394, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:57:10   19900.21M ops completed. Hit Ratio  94.68% (RAM  94.68%, NVM   0.00%)
+Evict Fails---AC: 1414, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:58:10   19976.02M ops completed. Hit Ratio  94.82% (RAM  94.82%, NVM   0.00%)
+Evict Fails---AC: 1462, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+05:59:10   20052.47M ops completed. Hit Ratio  94.86% (RAM  94.86%, NVM   0.00%)
+Evict Fails---AC: 1464, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:00:10   20128.14M ops completed. Hit Ratio  94.86% (RAM  94.86%, NVM   0.00%)
+Evict Fails---AC: 1479, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:01:10   20203.59M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 1489, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:02:10   20279.52M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 1500, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:03:10   20354.79M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 1500, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:04:10   20428.80M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 1500, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:05:10   20504.15M ops completed. Hit Ratio  94.22% (RAM  94.22%, NVM   0.00%)
+Evict Fails---AC: 1503, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:06:10   20579.45M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 1504, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:07:10   20655.94M ops completed. Hit Ratio  94.78% (RAM  94.78%, NVM   0.00%)
+Evict Fails---AC: 1506, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:08:10   20731.98M ops completed. Hit Ratio  94.84% (RAM  94.84%, NVM   0.00%)
+Evict Fails---AC: 1508, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:09:10   20807.49M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 1510, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:10:10   20882.27M ops completed. Hit Ratio  94.63% (RAM  94.63%, NVM   0.00%)
+Evict Fails---AC: 1513, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:11:10   20957.59M ops completed. Hit Ratio  94.76% (RAM  94.76%, NVM   0.00%)
+Evict Fails---AC: 1518, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:12:10   21033.34M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 1520, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:13:10   21109.06M ops completed. Hit Ratio  94.12% (RAM  94.12%, NVM   0.00%)
+Evict Fails---AC: 1522, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:14:10   21184.74M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 1523, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:15:10   21260.42M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 1526, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:16:10   21337.35M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 1526, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:17:10   21414.18M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 1528, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:18:10   21490.11M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 1547, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:19:10   21568.32M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 1555, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:20:10   21641.82M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 1562, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:21:10   21714.81M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 1572, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:22:10   21787.53M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 1582, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:23:10   21859.70M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 1587, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:24:11   21931.64M ops completed. Hit Ratio  94.21% (RAM  94.21%, NVM   0.00%)
+Evict Fails---AC: 1595, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:25:11   22002.26M ops completed. Hit Ratio  94.06% (RAM  94.06%, NVM   0.00%)
+Evict Fails---AC: 1615, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:26:11   22072.50M ops completed. Hit Ratio  93.72% (RAM  93.72%, NVM   0.00%)
+Evict Fails---AC: 1625, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:27:11   22144.08M ops completed. Hit Ratio  93.96% (RAM  93.96%, NVM   0.00%)
+Evict Fails---AC: 1637, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:28:11   22216.03M ops completed. Hit Ratio  94.06% (RAM  94.06%, NVM   0.00%)
+Evict Fails---AC: 1641, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:29:11   22287.79M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 1655, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:30:11   22358.53M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 1669, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:31:11   22429.31M ops completed. Hit Ratio  94.64% (RAM  94.64%, NVM   0.00%)
+Evict Fails---AC: 1674, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:32:11   22504.43M ops completed. Hit Ratio  93.08% (RAM  93.08%, NVM   0.00%)
+Evict Fails---AC: 1677, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:33:11   22583.27M ops completed. Hit Ratio  93.34% (RAM  93.34%, NVM   0.00%)
+Evict Fails---AC: 1685, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:34:11   22659.91M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 1704, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:35:11   22737.25M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 1710, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:36:11   22814.66M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 1717, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:37:11   22893.13M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 1726, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:38:11   22970.10M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 1745, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:39:11   23047.52M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 1755, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:40:11   23124.32M ops completed. Hit Ratio  94.26% (RAM  94.26%, NVM   0.00%)
+Evict Fails---AC: 1779, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:41:11   23201.21M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 1787, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:42:11   23277.76M ops completed. Hit Ratio  94.13% (RAM  94.13%, NVM   0.00%)
+Evict Fails---AC: 1803, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:43:11   23354.10M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 1811, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:44:11   23430.18M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 1823, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:45:11   23505.94M ops completed. Hit Ratio  93.94% (RAM  93.94%, NVM   0.00%)
+Evict Fails---AC: 1832, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:46:11   23582.74M ops completed. Hit Ratio  93.90% (RAM  93.90%, NVM   0.00%)
+Evict Fails---AC: 1846, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:47:11   23658.99M ops completed. Hit Ratio  93.94% (RAM  93.94%, NVM   0.00%)
+Evict Fails---AC: 1859, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:48:11   23736.32M ops completed. Hit Ratio  93.87% (RAM  93.87%, NVM   0.00%)
+Evict Fails---AC: 1860, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:49:11   23814.26M ops completed. Hit Ratio  93.94% (RAM  93.94%, NVM   0.00%)
+Evict Fails---AC: 1881, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:50:11   23893.74M ops completed. Hit Ratio  93.67% (RAM  93.67%, NVM   0.00%)
+Evict Fails---AC: 1887, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:51:11   23973.16M ops completed. Hit Ratio  93.91% (RAM  93.91%, NVM   0.00%)
+Evict Fails---AC: 1890, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:52:11   24050.33M ops completed. Hit Ratio  93.90% (RAM  93.90%, NVM   0.00%)
+Evict Fails---AC: 1902, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:53:11   24127.43M ops completed. Hit Ratio  93.59% (RAM  93.59%, NVM   0.00%)
+Evict Fails---AC: 1903, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:54:11   24205.63M ops completed. Hit Ratio  93.47% (RAM  93.47%, NVM   0.00%)
+Evict Fails---AC: 1913, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:55:11   24283.21M ops completed. Hit Ratio  93.68% (RAM  93.68%, NVM   0.00%)
+Evict Fails---AC: 1930, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:56:11   24360.88M ops completed. Hit Ratio  93.57% (RAM  93.57%, NVM   0.00%)
+Evict Fails---AC: 1935, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:57:11   24437.71M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 1943, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:58:11   24513.86M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 1957, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+06:59:11   24592.54M ops completed. Hit Ratio  94.54% (RAM  94.54%, NVM   0.00%)
+Evict Fails---AC: 1975, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:00:11   24672.51M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 1992, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:01:11   24751.53M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 2005, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:02:11   24828.58M ops completed. Hit Ratio  94.17% (RAM  94.17%, NVM   0.00%)
+Evict Fails---AC: 2026, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:03:11   24906.74M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 2036, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:04:11   24986.88M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 2047, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:05:11   25066.56M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 2050, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:06:11   25148.79M ops completed. Hit Ratio  94.96% (RAM  94.96%, NVM   0.00%)
+Evict Fails---AC: 2057, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:07:11   25231.48M ops completed. Hit Ratio  94.80% (RAM  94.80%, NVM   0.00%)
+Evict Fails---AC: 2065, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:08:11   25314.27M ops completed. Hit Ratio  94.07% (RAM  94.07%, NVM   0.00%)
+Evict Fails---AC: 2074, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:09:11   25394.78M ops completed. Hit Ratio  93.39% (RAM  93.39%, NVM   0.00%)
+Evict Fails---AC: 2079, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:10:11   25475.50M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 2081, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:11:11   25556.04M ops completed. Hit Ratio  94.57% (RAM  94.57%, NVM   0.00%)
+Evict Fails---AC: 2097, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:12:11   25634.54M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 2134, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:13:11   25713.42M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 2142, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:14:11   25791.27M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 2153, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:15:11   25870.11M ops completed. Hit Ratio  94.54% (RAM  94.54%, NVM   0.00%)
+Evict Fails---AC: 2166, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:16:11   25945.34M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 2173, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:17:11   26021.25M ops completed. Hit Ratio  94.63% (RAM  94.63%, NVM   0.00%)
+Evict Fails---AC: 2182, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:18:11   26097.12M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 2186, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:19:11   26173.10M ops completed. Hit Ratio  94.12% (RAM  94.12%, NVM   0.00%)
+Evict Fails---AC: 2191, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:20:11   26249.91M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 2204, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:21:11   26326.07M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 2208, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:22:11   26403.25M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 2218, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:23:11   26480.88M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 2220, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:24:11   26561.44M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 2222, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:25:11   26645.37M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+Evict Fails---AC: 2265, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:26:11   26726.92M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 2275, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:27:11   26806.61M ops completed. Hit Ratio  94.18% (RAM  94.18%, NVM   0.00%)
+Evict Fails---AC: 2282, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:28:11   26885.93M ops completed. Hit Ratio  93.76% (RAM  93.76%, NVM   0.00%)
+Evict Fails---AC: 2286, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:29:11   26964.29M ops completed. Hit Ratio  93.72% (RAM  93.72%, NVM   0.00%)
+Evict Fails---AC: 2311, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:30:11   27041.83M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 2324, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:31:11   27118.91M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 2374, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:32:11   27199.21M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 2385, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:33:11   27278.89M ops completed. Hit Ratio  94.70% (RAM  94.70%, NVM   0.00%)
+Evict Fails---AC: 2392, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:34:11   27356.47M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 2406, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:35:11   27433.11M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 2420, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:36:11   27509.68M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 2430, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:37:11   27586.16M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 2445, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:38:11   27660.72M ops completed. Hit Ratio  93.93% (RAM  93.93%, NVM   0.00%)
+Evict Fails---AC: 2451, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:39:11   27735.03M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 2470, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:40:11   27811.04M ops completed. Hit Ratio  93.82% (RAM  93.82%, NVM   0.00%)
+Evict Fails---AC: 2486, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:41:11   27886.44M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 2495, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:42:11   27961.09M ops completed. Hit Ratio  94.02% (RAM  94.02%, NVM   0.00%)
+Evict Fails---AC: 2502, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:43:11   28034.46M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 2536, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:44:11   28109.34M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 2554, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:45:11   28186.67M ops completed. Hit Ratio  90.78% (RAM  90.78%, NVM   0.00%)
+Evict Fails---AC: 2563, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:46:11   28266.52M ops completed. Hit Ratio  92.35% (RAM  92.35%, NVM   0.00%)
+Evict Fails---AC: 2573, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:47:11   28347.80M ops completed. Hit Ratio  93.60% (RAM  93.60%, NVM   0.00%)
+Evict Fails---AC: 2600, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:48:11   28427.26M ops completed. Hit Ratio  94.02% (RAM  94.02%, NVM   0.00%)
+Evict Fails---AC: 2619, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:49:11   28508.25M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 2628, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:50:11   28585.90M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 2646, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:51:11   28662.13M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 2652, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:52:11   28740.35M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 2661, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:53:11   28817.86M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 2682, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:54:11   28896.08M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 2695, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:55:11   28975.26M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 2701, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:56:11   29053.26M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 2712, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:57:11   29131.37M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+Evict Fails---AC: 2734, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:58:11   29210.71M ops completed. Hit Ratio  93.64% (RAM  93.64%, NVM   0.00%)
+Evict Fails---AC: 2751, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+07:59:11   29289.92M ops completed. Hit Ratio  93.60% (RAM  93.60%, NVM   0.00%)
+Evict Fails---AC: 2786, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:00:11   29371.83M ops completed. Hit Ratio  93.85% (RAM  93.85%, NVM   0.00%)
+Evict Fails---AC: 2790, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:01:11   29453.76M ops completed. Hit Ratio  94.17% (RAM  94.17%, NVM   0.00%)
+Evict Fails---AC: 2792, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:02:11   29537.29M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 2803, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:03:11   29620.97M ops completed. Hit Ratio  94.72% (RAM  94.72%, NVM   0.00%)
+Evict Fails---AC: 2806, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:04:11   29703.46M ops completed. Hit Ratio  94.83% (RAM  94.83%, NVM   0.00%)
+Evict Fails---AC: 2812, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:05:11   29784.06M ops completed. Hit Ratio  94.84% (RAM  94.84%, NVM   0.00%)
+Evict Fails---AC: 2830, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:06:11   29862.30M ops completed. Hit Ratio  94.75% (RAM  94.75%, NVM   0.00%)
+Evict Fails---AC: 2840, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:07:11   29939.64M ops completed. Hit Ratio  94.68% (RAM  94.68%, NVM   0.00%)
+Evict Fails---AC: 2845, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:08:12   30018.28M ops completed. Hit Ratio  94.82% (RAM  94.82%, NVM   0.00%)
+Evict Fails---AC: 2856, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:09:12   30098.17M ops completed. Hit Ratio  94.73% (RAM  94.73%, NVM   0.00%)
+Evict Fails---AC: 2872, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:10:12   30177.97M ops completed. Hit Ratio  94.87% (RAM  94.87%, NVM   0.00%)
+Evict Fails---AC: 2892, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:11:12   30256.44M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 2904, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:12:12   30333.27M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 2916, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:13:12   30410.21M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 2927, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:14:12   30484.16M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 2934, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:15:12   30560.80M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 2948, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:16:12   30637.75M ops completed. Hit Ratio  94.88% (RAM  94.88%, NVM   0.00%)
+Evict Fails---AC: 2954, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:17:12   30714.86M ops completed. Hit Ratio  94.80% (RAM  94.80%, NVM   0.00%)
+Evict Fails---AC: 2968, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:18:12   30788.74M ops completed. Hit Ratio  94.90% (RAM  94.90%, NVM   0.00%)
+Evict Fails---AC: 3011, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:19:12   30862.14M ops completed. Hit Ratio  94.86% (RAM  94.86%, NVM   0.00%)
+Evict Fails---AC: 3017, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:20:12   30935.28M ops completed. Hit Ratio  94.82% (RAM  94.82%, NVM   0.00%)
+Evict Fails---AC: 3024, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:21:12   31012.95M ops completed. Hit Ratio  93.18% (RAM  93.18%, NVM   0.00%)
+Evict Fails---AC: 3036, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:22:12   31090.68M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 3050, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:23:12   31170.73M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 3052, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:24:12   31249.94M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 3059, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:25:12   31328.58M ops completed. Hit Ratio  94.76% (RAM  94.76%, NVM   0.00%)
+Evict Fails---AC: 3070, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:26:12   31406.23M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 3074, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:27:12   31484.69M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 3106, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:28:12   31562.39M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 3128, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:29:12   31640.58M ops completed. Hit Ratio  94.52% (RAM  94.52%, NVM   0.00%)
+Evict Fails---AC: 3207, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:30:12   31718.30M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 3216, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:31:12   31794.93M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 3222, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:32:12   31872.10M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 3224, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:33:12   31948.33M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+Evict Fails---AC: 3226, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:34:12   32026.09M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 3231, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:35:12   32104.32M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 3232, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:36:12   32183.28M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 3267, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:37:12   32261.59M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 3267, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:38:12   32339.24M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 3268, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:39:12   32417.21M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 3268, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:40:12   32494.90M ops completed. Hit Ratio  94.77% (RAM  94.77%, NVM   0.00%)
+Evict Fails---AC: 3280, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:41:12   32572.93M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 3286, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:42:12   32651.92M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 3294, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:43:12   32728.68M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 3332, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:44:12   32806.25M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 3340, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:45:12   32883.31M ops completed. Hit Ratio  94.34% (RAM  94.34%, NVM   0.00%)
+Evict Fails---AC: 3347, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:46:12   32960.73M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 3354, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:47:12   33038.03M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 3368, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:48:12   33114.60M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 3383, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:49:12   33190.06M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+Evict Fails---AC: 3399, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:50:12   33265.12M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 3413, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:51:12   33339.63M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 3419, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:52:12   33414.81M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 3441, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:53:12   33490.32M ops completed. Hit Ratio  94.64% (RAM  94.64%, NVM   0.00%)
+Evict Fails---AC: 3455, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:54:12   33564.40M ops completed. Hit Ratio  94.76% (RAM  94.76%, NVM   0.00%)
+Evict Fails---AC: 3466, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:55:12   33637.98M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 3474, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:56:12   33710.29M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 3481, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:57:12   33786.02M ops completed. Hit Ratio  93.04% (RAM  93.04%, NVM   0.00%)
+Evict Fails---AC: 3490, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:58:12   33864.28M ops completed. Hit Ratio  93.43% (RAM  93.43%, NVM   0.00%)
+Evict Fails---AC: 3495, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+08:59:12   33943.34M ops completed. Hit Ratio  93.49% (RAM  93.49%, NVM   0.00%)
+Evict Fails---AC: 3498, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:00:12   34023.73M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 3500, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:01:12   34104.30M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 3565, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:02:12   34184.33M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 3569, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:03:12   34263.84M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 3592, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:04:12   34342.41M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 3593, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:05:12   34420.82M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+Evict Fails---AC: 3596, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:06:12   34498.31M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 3598, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:07:12   34576.04M ops completed. Hit Ratio  94.12% (RAM  94.12%, NVM   0.00%)
+Evict Fails---AC: 3599, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:08:12   34655.91M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 3604, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:09:12   34734.65M ops completed. Hit Ratio  94.64% (RAM  94.64%, NVM   0.00%)
+Evict Fails---AC: 3608, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:10:12   34812.24M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 3615, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:11:12   34890.34M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 3618, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:12:12   34969.72M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 3645, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:13:12   35046.75M ops completed. Hit Ratio  94.68% (RAM  94.68%, NVM   0.00%)
+Evict Fails---AC: 3653, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:14:12   35124.69M ops completed. Hit Ratio  94.22% (RAM  94.22%, NVM   0.00%)
+Evict Fails---AC: 3659, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:15:12   35205.00M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 3670, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:16:12   35284.62M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 3678, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:17:12   35363.52M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 3681, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:18:12   35442.34M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 3726, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:19:12   35521.22M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 3741, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:20:12   35601.92M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 3765, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:21:12   35678.77M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 3782, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:22:12   35755.74M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 3800, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:23:12   35829.80M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 3812, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:24:12   35903.22M ops completed. Hit Ratio  94.33% (RAM  94.33%, NVM   0.00%)
+Evict Fails---AC: 3824, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:25:12   35976.77M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 3838, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:26:12   36051.35M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 3858, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:27:12   36123.75M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+Evict Fails---AC: 3866, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:28:12   36197.00M ops completed. Hit Ratio  93.76% (RAM  93.76%, NVM   0.00%)
+Evict Fails---AC: 3880, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:29:12   36271.89M ops completed. Hit Ratio  93.80% (RAM  93.80%, NVM   0.00%)
+Evict Fails---AC: 3900, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:30:12   36346.68M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 3922, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:31:12   36419.15M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 3941, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:32:12   36492.68M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 3954, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:33:12   36567.95M ops completed. Hit Ratio  92.88% (RAM  92.88%, NVM   0.00%)
+Evict Fails---AC: 3963, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:34:12   36644.66M ops completed. Hit Ratio  93.09% (RAM  93.09%, NVM   0.00%)
+Evict Fails---AC: 3974, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:35:12   36724.47M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 3989, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:36:12   36802.02M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 3999, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:37:12   36881.26M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 4007, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:38:12   36959.86M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 4026, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:39:12   37036.17M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 4029, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:40:12   37113.21M ops completed. Hit Ratio  94.22% (RAM  94.22%, NVM   0.00%)
+Evict Fails---AC: 4031, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:41:12   37189.56M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 4043, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:42:12   37266.29M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 4046, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:43:12   37342.21M ops completed. Hit Ratio  93.91% (RAM  93.91%, NVM   0.00%)
+Evict Fails---AC: 4052, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:44:13   37418.58M ops completed. Hit Ratio  93.83% (RAM  93.83%, NVM   0.00%)
+Evict Fails---AC: 4062, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:45:13   37495.07M ops completed. Hit Ratio  93.76% (RAM  93.76%, NVM   0.00%)
+Evict Fails---AC: 4064, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:46:13   37570.61M ops completed. Hit Ratio  93.73% (RAM  93.73%, NVM   0.00%)
+Evict Fails---AC: 4074, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:47:13   37645.88M ops completed. Hit Ratio  93.71% (RAM  93.71%, NVM   0.00%)
+Evict Fails---AC: 4083, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:48:13   37722.84M ops completed. Hit Ratio  93.82% (RAM  93.82%, NVM   0.00%)
+Evict Fails---AC: 4092, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:49:13   37800.67M ops completed. Hit Ratio  93.77% (RAM  93.77%, NVM   0.00%)
+Evict Fails---AC: 4094, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:50:13   37878.27M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+Evict Fails---AC: 4097, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:51:13   37955.25M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+Evict Fails---AC: 4099, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:52:13   38032.95M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+Evict Fails---AC: 4104, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:53:13   38110.11M ops completed. Hit Ratio  93.78% (RAM  93.78%, NVM   0.00%)
+Evict Fails---AC: 4106, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:54:13   38186.61M ops completed. Hit Ratio  93.50% (RAM  93.50%, NVM   0.00%)
+Evict Fails---AC: 4109, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:55:13   38262.90M ops completed. Hit Ratio  93.39% (RAM  93.39%, NVM   0.00%)
+Evict Fails---AC: 4114, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:56:13   38341.34M ops completed. Hit Ratio  93.65% (RAM  93.65%, NVM   0.00%)
+Evict Fails---AC: 4131, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:57:13   38419.00M ops completed. Hit Ratio  93.61% (RAM  93.61%, NVM   0.00%)
+Evict Fails---AC: 4138, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:58:13   38496.81M ops completed. Hit Ratio  93.96% (RAM  93.96%, NVM   0.00%)
+Evict Fails---AC: 4146, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+09:59:13   38574.74M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 4177, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:00:13   38654.71M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 4182, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:01:13   38736.51M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 4186, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:02:13   38817.84M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 4196, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:03:13   38895.27M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 4200, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:04:13   38974.06M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 4206, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:05:13   39054.01M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 4220, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:06:13   39133.92M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 4229, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:07:13   39217.21M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 4235, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:08:13   39301.24M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 4237, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:09:13   39382.41M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 4243, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:10:13   39463.52M ops completed. Hit Ratio  93.35% (RAM  93.35%, NVM   0.00%)
+Evict Fails---AC: 4245, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:11:13   39546.50M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 4270, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:12:13   39627.35M ops completed. Hit Ratio  94.57% (RAM  94.57%, NVM   0.00%)
+Evict Fails---AC: 4285, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:13:13   39706.12M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 4295, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:14:13   39784.61M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 4304, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:15:13   39860.72M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+Evict Fails---AC: 4321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:16:13   39937.61M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 4321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:17:13   40013.27M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 4321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:18:13   40090.80M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 4321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:19:13   40166.47M ops completed. Hit Ratio  94.52% (RAM  94.52%, NVM   0.00%)
+Evict Fails---AC: 4321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:20:13   40242.64M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 4323, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:21:13   40318.58M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 4328, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:22:13   40394.83M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 4328, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:23:13   40472.72M ops completed. Hit Ratio  94.20% (RAM  94.20%, NVM   0.00%)
+Evict Fails---AC: 4328, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:24:13   40551.29M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 4344, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:25:13   40631.41M ops completed. Hit Ratio  93.95% (RAM  93.95%, NVM   0.00%)
+Evict Fails---AC: 4347, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:26:13   40713.69M ops completed. Hit Ratio  94.18% (RAM  94.18%, NVM   0.00%)
+Evict Fails---AC: 4348, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:27:13   40796.14M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 4349, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:28:13   40878.29M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 4349, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:29:13   40957.83M ops completed. Hit Ratio  93.68% (RAM  93.68%, NVM   0.00%)
+Evict Fails---AC: 4352, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:30:13   41037.18M ops completed. Hit Ratio  93.71% (RAM  93.71%, NVM   0.00%)
+Evict Fails---AC: 4360, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:31:13   41115.84M ops completed. Hit Ratio  94.22% (RAM  94.22%, NVM   0.00%)
+Evict Fails---AC: 4374, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:32:13   41194.64M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 4387, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:33:13   41275.50M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 4407, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:34:13   41354.95M ops completed. Hit Ratio  94.57% (RAM  94.57%, NVM   0.00%)
+Evict Fails---AC: 4444, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:35:13   41432.00M ops completed. Hit Ratio  93.82% (RAM  93.82%, NVM   0.00%)
+Evict Fails---AC: 4447, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:36:13   41510.09M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 4462, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:37:13   41588.24M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 4481, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:38:13   41665.02M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 4507, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:39:13   41739.85M ops completed. Hit Ratio  93.77% (RAM  93.77%, NVM   0.00%)
+Evict Fails---AC: 4529, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:40:13   41815.35M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 4545, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:41:13   41890.66M ops completed. Hit Ratio  93.77% (RAM  93.77%, NVM   0.00%)
+Evict Fails---AC: 4552, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:42:13   41965.82M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 4568, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:43:13   42039.29M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 4584, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:44:13   42111.96M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 4610, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:45:13   42184.79M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+Evict Fails---AC: 4619, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:46:13   42262.72M ops completed. Hit Ratio  90.19% (RAM  90.19%, NVM   0.00%)
+Evict Fails---AC: 4629, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:47:13   42341.08M ops completed. Hit Ratio  92.56% (RAM  92.56%, NVM   0.00%)
+Evict Fails---AC: 4632, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:48:13   42419.39M ops completed. Hit Ratio  93.60% (RAM  93.60%, NVM   0.00%)
+Evict Fails---AC: 4637, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:49:13   42497.89M ops completed. Hit Ratio  94.03% (RAM  94.03%, NVM   0.00%)
+Evict Fails---AC: 4657, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:50:13   42575.52M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 4674, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:51:13   42652.42M ops completed. Hit Ratio  94.34% (RAM  94.34%, NVM   0.00%)
+Evict Fails---AC: 4684, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:52:13   42728.24M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 4691, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:53:13   42803.68M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 4702, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:54:13   42881.65M ops completed. Hit Ratio  94.57% (RAM  94.57%, NVM   0.00%)
+Evict Fails---AC: 4708, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:55:13   42958.62M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 4716, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:56:13   43037.90M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 4718, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:57:13   43117.53M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 4727, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:58:13   43195.25M ops completed. Hit Ratio  93.54% (RAM  93.54%, NVM   0.00%)
+Evict Fails---AC: 4735, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+10:59:13   43274.50M ops completed. Hit Ratio  93.65% (RAM  93.65%, NVM   0.00%)
+Evict Fails---AC: 4757, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:00:13   43355.36M ops completed. Hit Ratio  93.63% (RAM  93.63%, NVM   0.00%)
+Evict Fails---AC: 4775, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:01:13   43438.90M ops completed. Hit Ratio  93.83% (RAM  93.83%, NVM   0.00%)
+Evict Fails---AC: 4785, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:02:13   43521.52M ops completed. Hit Ratio  94.16% (RAM  94.16%, NVM   0.00%)
+Evict Fails---AC: 4797, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:03:13   43605.62M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 4816, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:04:13   43689.37M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 4819, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:05:13   43771.97M ops completed. Hit Ratio  94.86% (RAM  94.86%, NVM   0.00%)
+Evict Fails---AC: 4828, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:06:13   43851.79M ops completed. Hit Ratio  94.85% (RAM  94.85%, NVM   0.00%)
+Evict Fails---AC: 4835, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:07:13   43930.49M ops completed. Hit Ratio  94.80% (RAM  94.80%, NVM   0.00%)
+Evict Fails---AC: 4859, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:08:13   44008.77M ops completed. Hit Ratio  94.77% (RAM  94.77%, NVM   0.00%)
+Evict Fails---AC: 4864, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:09:13   44087.63M ops completed. Hit Ratio  94.82% (RAM  94.82%, NVM   0.00%)
+Evict Fails---AC: 4883, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:10:13   44166.51M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 4899, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:11:13   44245.22M ops completed. Hit Ratio  94.80% (RAM  94.80%, NVM   0.00%)
+Evict Fails---AC: 4911, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:12:13   44324.48M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 4927, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:13:13   44403.76M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 4944, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:14:13   44482.27M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 4953, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:15:13   44558.38M ops completed. Hit Ratio  94.26% (RAM  94.26%, NVM   0.00%)
+Evict Fails---AC: 5018, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:16:13   44634.87M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 5043, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:17:13   44711.87M ops completed. Hit Ratio  94.79% (RAM  94.79%, NVM   0.00%)
+Evict Fails---AC: 5069, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:18:13   44790.27M ops completed. Hit Ratio  94.64% (RAM  94.64%, NVM   0.00%)
+Evict Fails---AC: 5084, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:19:13   44865.36M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 5129, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:20:13   44939.55M ops completed. Hit Ratio  94.72% (RAM  94.72%, NVM   0.00%)
+Evict Fails---AC: 5136, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:21:13   45013.63M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 5157, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:22:13   45091.02M ops completed. Hit Ratio  93.05% (RAM  93.05%, NVM   0.00%)
+Evict Fails---AC: 5181, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:23:13   45170.66M ops completed. Hit Ratio  93.88% (RAM  93.88%, NVM   0.00%)
+Evict Fails---AC: 5187, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:24:13   45250.53M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 5202, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:25:13   45329.00M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 5217, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:26:13   45408.14M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 5224, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:27:13   45488.29M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 5237, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:28:13   45565.91M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 5268, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:29:13   45643.32M ops completed. Hit Ratio  94.55% (RAM  94.55%, NVM   0.00%)
+Evict Fails---AC: 5272, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:30:13   45719.22M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 5277, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:31:13   45796.96M ops completed. Hit Ratio  94.67% (RAM  94.67%, NVM   0.00%)
+Evict Fails---AC: 5281, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:32:13   45873.37M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 5283, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:33:14   45952.81M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 5288, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:34:14   46030.46M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+Evict Fails---AC: 5291, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:35:14   46109.88M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 5295, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:36:14   46191.69M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 5301, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:37:14   46270.97M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 5305, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:38:14   46351.02M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 5310, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:39:14   46429.49M ops completed. Hit Ratio  94.87% (RAM  94.87%, NVM   0.00%)
+Evict Fails---AC: 5314, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:40:14   46507.92M ops completed. Hit Ratio  94.75% (RAM  94.75%, NVM   0.00%)
+Evict Fails---AC: 5314, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:41:14   46585.53M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 5316, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:42:14   46663.42M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 5317, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:43:14   46742.64M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 5321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:44:14   46819.50M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 5324, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:45:14   46897.09M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 5331, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:46:14   46973.93M ops completed. Hit Ratio  94.34% (RAM  94.34%, NVM   0.00%)
+Evict Fails---AC: 5345, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:47:14   47051.19M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 5359, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:48:14   47128.41M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 5373, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:49:14   47204.59M ops completed. Hit Ratio  94.33% (RAM  94.33%, NVM   0.00%)
+Evict Fails---AC: 5393, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:50:14   47281.06M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 5407, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:51:14   47355.10M ops completed. Hit Ratio  94.18% (RAM  94.18%, NVM   0.00%)
+Evict Fails---AC: 5419, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:52:14   47427.30M ops completed. Hit Ratio  94.24% (RAM  94.24%, NVM   0.00%)
+Evict Fails---AC: 5430, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:53:14   47499.37M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 5460, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:54:14   47570.62M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+Evict Fails---AC: 5467, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:55:14   47642.47M ops completed. Hit Ratio  94.64% (RAM  94.64%, NVM   0.00%)
+Evict Fails---AC: 5481, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:56:14   47713.82M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 5496, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:57:14   47783.86M ops completed. Hit Ratio  94.26% (RAM  94.26%, NVM   0.00%)
+Evict Fails---AC: 5503, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:58:14   47859.04M ops completed. Hit Ratio  92.71% (RAM  92.71%, NVM   0.00%)
+Evict Fails---AC: 5514, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+11:59:14   47936.93M ops completed. Hit Ratio  93.38% (RAM  93.38%, NVM   0.00%)
+Evict Fails---AC: 5521, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:00:14   48016.16M ops completed. Hit Ratio  93.43% (RAM  93.43%, NVM   0.00%)
+Evict Fails---AC: 5532, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:01:14   48093.63M ops completed. Hit Ratio  94.57% (RAM  94.57%, NVM   0.00%)
+Evict Fails---AC: 5545, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:02:14   48173.14M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+Evict Fails---AC: 5655, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:03:14   48252.76M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 5672, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:04:14   48331.97M ops completed. Hit Ratio  94.14% (RAM  94.14%, NVM   0.00%)
+Evict Fails---AC: 5691, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:05:14   48411.00M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+Evict Fails---AC: 5699, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:06:14   48489.10M ops completed. Hit Ratio  94.09% (RAM  94.09%, NVM   0.00%)
+Evict Fails---AC: 5702, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:07:14   48566.80M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 5705, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:08:14   48646.14M ops completed. Hit Ratio  93.99% (RAM  93.99%, NVM   0.00%)
+Evict Fails---AC: 5705, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:09:14   48725.18M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 5709, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:10:14   48804.31M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 5712, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:11:14   48883.40M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 5718, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:12:14   48962.79M ops completed. Hit Ratio  94.34% (RAM  94.34%, NVM   0.00%)
+Evict Fails---AC: 5721, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:13:14   49041.30M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 5722, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:14:14   49119.60M ops completed. Hit Ratio  94.70% (RAM  94.70%, NVM   0.00%)
+Evict Fails---AC: 5724, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:15:14   49199.08M ops completed. Hit Ratio  94.21% (RAM  94.21%, NVM   0.00%)
+Evict Fails---AC: 5726, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:16:14   49278.66M ops completed. Hit Ratio  94.08% (RAM  94.08%, NVM   0.00%)
+Evict Fails---AC: 5731, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:17:14   49357.45M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 5736, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:18:14   49436.69M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 5738, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:19:14   49514.95M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 5742, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:20:14   49594.91M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 5746, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:21:14   49675.14M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 5757, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:22:14   49751.26M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 5761, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:23:14   49827.14M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 5779, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:24:14   49902.53M ops completed. Hit Ratio  94.33% (RAM  94.33%, NVM   0.00%)
+Evict Fails---AC: 5783, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:25:14   49977.74M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 5794, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:26:14   50051.29M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 5804, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:27:14   50124.16M ops completed. Hit Ratio  93.77% (RAM  93.77%, NVM   0.00%)
+Evict Fails---AC: 5819, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:28:14   50196.51M ops completed. Hit Ratio  93.38% (RAM  93.38%, NVM   0.00%)
+Evict Fails---AC: 5851, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:29:14   50269.68M ops completed. Hit Ratio  93.60% (RAM  93.60%, NVM   0.00%)
+Evict Fails---AC: 5860, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:30:14   50344.73M ops completed. Hit Ratio  93.70% (RAM  93.70%, NVM   0.00%)
+Evict Fails---AC: 5876, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:31:14   50418.08M ops completed. Hit Ratio  94.01% (RAM  94.01%, NVM   0.00%)
+Evict Fails---AC: 5904, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:32:14   50490.45M ops completed. Hit Ratio  94.21% (RAM  94.21%, NVM   0.00%)
+Evict Fails---AC: 5913, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:33:14   50563.79M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 5917, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:34:14   50638.87M ops completed. Hit Ratio  92.64% (RAM  92.64%, NVM   0.00%)
+Evict Fails---AC: 5922, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:35:14   50717.97M ops completed. Hit Ratio  93.27% (RAM  93.27%, NVM   0.00%)
+Evict Fails---AC: 5940, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:36:14   50796.27M ops completed. Hit Ratio  94.24% (RAM  94.24%, NVM   0.00%)
+Evict Fails---AC: 5941, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:37:14   50874.58M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 5949, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:38:14   50952.35M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 5958, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:39:14   51028.58M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 5959, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:40:14   51104.94M ops completed. Hit Ratio  94.34% (RAM  94.34%, NVM   0.00%)
+Evict Fails---AC: 5969, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:41:14   51181.52M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 5975, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:42:14   51258.79M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 5980, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:43:14   51336.75M ops completed. Hit Ratio  93.95% (RAM  93.95%, NVM   0.00%)
+Evict Fails---AC: 5991, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:44:14   51413.42M ops completed. Hit Ratio  93.96% (RAM  93.96%, NVM   0.00%)
+Evict Fails---AC: 5995, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:45:14   51490.43M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 6006, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:46:14   51566.59M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+Evict Fails---AC: 6009, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:47:14   51643.10M ops completed. Hit Ratio  93.76% (RAM  93.76%, NVM   0.00%)
+Evict Fails---AC: 6021, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:48:14   51721.66M ops completed. Hit Ratio  93.71% (RAM  93.71%, NVM   0.00%)
+Evict Fails---AC: 6022, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:49:14   51799.43M ops completed. Hit Ratio  93.90% (RAM  93.90%, NVM   0.00%)
+Evict Fails---AC: 6024, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:50:14   51875.38M ops completed. Hit Ratio  93.73% (RAM  93.73%, NVM   0.00%)
+Evict Fails---AC: 6027, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:51:14   51952.46M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 6031, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:52:14   52030.56M ops completed. Hit Ratio  93.63% (RAM  93.63%, NVM   0.00%)
+Evict Fails---AC: 6034, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:53:14   52109.28M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 6034, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:54:14   52186.61M ops completed. Hit Ratio  93.78% (RAM  93.78%, NVM   0.00%)
+Evict Fails---AC: 6037, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:55:14   52264.29M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+Evict Fails---AC: 6038, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:56:14   52341.55M ops completed. Hit Ratio  93.44% (RAM  93.44%, NVM   0.00%)
+Evict Fails---AC: 6045, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:57:14   52419.10M ops completed. Hit Ratio  93.68% (RAM  93.68%, NVM   0.00%)
+Evict Fails---AC: 6061, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:58:14   52497.12M ops completed. Hit Ratio  93.61% (RAM  93.61%, NVM   0.00%)
+Evict Fails---AC: 6074, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+12:59:14   52574.39M ops completed. Hit Ratio  94.14% (RAM  94.14%, NVM   0.00%)
+Evict Fails---AC: 6081, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:00:14   52651.48M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 6102, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:01:14   52731.77M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 6125, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:02:14   52812.72M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 6142, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:03:14   52893.58M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 6157, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:04:14   52972.33M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 6166, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:05:14   53053.00M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 6172, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:06:14   53132.93M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 6179, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:07:14   53214.12M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 6236, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:08:14   53298.13M ops completed. Hit Ratio  94.73% (RAM  94.73%, NVM   0.00%)
+Evict Fails---AC: 6250, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:09:14   53382.56M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 6269, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:10:14   53464.93M ops completed. Hit Ratio  93.39% (RAM  93.39%, NVM   0.00%)
+Evict Fails---AC: 6278, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:11:14   53544.82M ops completed. Hit Ratio  93.64% (RAM  93.64%, NVM   0.00%)
+Evict Fails---AC: 6283, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:12:14   53625.20M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 6300, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:13:14   53704.79M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 6300, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:14:14   53783.53M ops completed. Hit Ratio  94.52% (RAM  94.52%, NVM   0.00%)
+Evict Fails---AC: 6317, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:15:14   53861.36M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+Evict Fails---AC: 6321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:16:14   53938.19M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 6335, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:17:15   54015.52M ops completed. Hit Ratio  94.54% (RAM  94.54%, NVM   0.00%)
+Evict Fails---AC: 6345, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:18:15   54091.58M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 6351, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:19:15   54169.48M ops completed. Hit Ratio  94.67% (RAM  94.67%, NVM   0.00%)
+Evict Fails---AC: 6359, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:20:15   54246.13M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 6362, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:21:15   54322.27M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 6364, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:22:15   54399.79M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 6369, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:23:15   54477.95M ops completed. Hit Ratio  94.03% (RAM  94.03%, NVM   0.00%)
+Evict Fails---AC: 6372, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:24:15   54557.84M ops completed. Hit Ratio  94.13% (RAM  94.13%, NVM   0.00%)
+Evict Fails---AC: 6381, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:25:15   54637.41M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 6389, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:26:15   54718.53M ops completed. Hit Ratio  93.93% (RAM  93.93%, NVM   0.00%)
+Evict Fails---AC: 6405, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:27:15   54800.78M ops completed. Hit Ratio  94.08% (RAM  94.08%, NVM   0.00%)
+Evict Fails---AC: 6415, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:28:15   54884.60M ops completed. Hit Ratio  94.01% (RAM  94.01%, NVM   0.00%)
+Evict Fails---AC: 6422, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:29:15   54967.11M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 6431, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:30:15   55049.64M ops completed. Hit Ratio  93.59% (RAM  93.59%, NVM   0.00%)
+Evict Fails---AC: 6436, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:31:15   55129.25M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+Evict Fails---AC: 6445, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:32:15   55207.59M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+Evict Fails---AC: 6461, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:33:15   55287.60M ops completed. Hit Ratio  94.17% (RAM  94.17%, NVM   0.00%)
+Evict Fails---AC: 6471, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:34:15   55367.71M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 6475, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:35:15   55446.50M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 6489, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:36:15   55523.95M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 6496, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:37:15   55601.09M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 6507, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:38:15   55677.81M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 6528, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:39:15   55752.48M ops completed. Hit Ratio  93.95% (RAM  93.95%, NVM   0.00%)
+Evict Fails---AC: 6535, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:40:15   55826.61M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+Evict Fails---AC: 6547, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:41:15   55904.07M ops completed. Hit Ratio  93.70% (RAM  93.70%, NVM   0.00%)
+Evict Fails---AC: 6575, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:42:15   55979.36M ops completed. Hit Ratio  93.68% (RAM  93.68%, NVM   0.00%)
+Evict Fails---AC: 6591, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:43:15   56053.25M ops completed. Hit Ratio  93.91% (RAM  93.91%, NVM   0.00%)
+Evict Fails---AC: 6605, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:44:15   56127.98M ops completed. Hit Ratio  93.96% (RAM  93.96%, NVM   0.00%)
+Evict Fails---AC: 6626, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:45:15   56200.90M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 6638, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:46:15   56276.91M ops completed. Hit Ratio  92.37% (RAM  92.37%, NVM   0.00%)
+Evict Fails---AC: 6647, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:47:15   56356.77M ops completed. Hit Ratio  91.25% (RAM  91.25%, NVM   0.00%)
+Evict Fails---AC: 6658, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:48:15   56437.18M ops completed. Hit Ratio  93.10% (RAM  93.10%, NVM   0.00%)
+Evict Fails---AC: 6670, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:49:15   56518.04M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 6707, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:50:15   56598.94M ops completed. Hit Ratio  93.99% (RAM  93.99%, NVM   0.00%)
+Evict Fails---AC: 6722, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:51:15   56676.94M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 6736, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:52:15   56753.93M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 6739, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:53:15   56831.88M ops completed. Hit Ratio  94.24% (RAM  94.24%, NVM   0.00%)
+Evict Fails---AC: 6739, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:54:15   56909.58M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 6755, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:55:15   56985.95M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 6758, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:56:15   57062.00M ops completed. Hit Ratio  94.14% (RAM  94.14%, NVM   0.00%)
+Evict Fails---AC: 6766, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:57:15   57140.09M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 6771, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:58:15   57217.20M ops completed. Hit Ratio  93.93% (RAM  93.93%, NVM   0.00%)
+Evict Fails---AC: 6850, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:59:15   57296.17M ops completed. Hit Ratio  93.49% (RAM  93.49%, NVM   0.00%)
+Evict Fails---AC: 6866, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:00:15   57375.22M ops completed. Hit Ratio  93.57% (RAM  93.57%, NVM   0.00%)
+Evict Fails---AC: 6889, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:01:15   57455.17M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+Evict Fails---AC: 6894, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:02:15   57538.83M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 6901, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:03:15   57619.73M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+Evict Fails---AC: 6910, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:04:15   57704.11M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 6921, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:05:15   57788.93M ops completed. Hit Ratio  94.78% (RAM  94.78%, NVM   0.00%)
+Evict Fails---AC: 6928, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:06:15   57869.94M ops completed. Hit Ratio  94.87% (RAM  94.87%, NVM   0.00%)
+Evict Fails---AC: 6945, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:07:15   57950.19M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+Evict Fails---AC: 6959, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:08:15   58028.42M ops completed. Hit Ratio  94.66% (RAM  94.66%, NVM   0.00%)
+Evict Fails---AC: 6975, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:09:15   58106.58M ops completed. Hit Ratio  94.80% (RAM  94.80%, NVM   0.00%)
+Evict Fails---AC: 6979, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:10:15   58184.68M ops completed. Hit Ratio  94.81% (RAM  94.81%, NVM   0.00%)
+Evict Fails---AC: 6991, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:11:15   58263.46M ops completed. Hit Ratio  94.67% (RAM  94.67%, NVM   0.00%)
+Evict Fails---AC: 7006, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:12:15   58342.92M ops completed. Hit Ratio  94.75% (RAM  94.75%, NVM   0.00%)
+Evict Fails---AC: 7022, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:13:15   58420.70M ops completed. Hit Ratio  94.59% (RAM  94.59%, NVM   0.00%)
+Evict Fails---AC: 7028, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:14:15   58498.01M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 7038, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:15:15   58573.55M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 7052, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:16:15   58647.42M ops completed. Hit Ratio  94.12% (RAM  94.12%, NVM   0.00%)
+Evict Fails---AC: 7096, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:17:15   58722.61M ops completed. Hit Ratio  94.59% (RAM  94.59%, NVM   0.00%)
+Evict Fails---AC: 7116, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:18:15   58799.18M ops completed. Hit Ratio  94.72% (RAM  94.72%, NVM   0.00%)
+Evict Fails---AC: 7120, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:19:15   58875.28M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 7132, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:20:15   58948.87M ops completed. Hit Ratio  94.61% (RAM  94.61%, NVM   0.00%)
+Evict Fails---AC: 7157, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:21:15   59023.13M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 7169, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:22:15   59097.76M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+Evict Fails---AC: 7198, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:23:15   59175.86M ops completed. Hit Ratio  93.32% (RAM  93.32%, NVM   0.00%)
+Evict Fails---AC: 7208, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:24:15   59256.19M ops completed. Hit Ratio  93.97% (RAM  93.97%, NVM   0.00%)
+Evict Fails---AC: 7209, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:25:15   59336.66M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 7217, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:26:15   59415.11M ops completed. Hit Ratio  94.69% (RAM  94.69%, NVM   0.00%)
+Evict Fails---AC: 7222, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:27:15   59493.10M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 7241, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:28:15   59571.15M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 7253, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:29:15   59648.78M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 7258, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:30:15   59726.94M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 7277, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:31:15   59803.14M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 7321, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:32:15   59879.49M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 7322, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:33:15   59955.00M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+Evict Fails---AC: 7323, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:34:15   60033.04M ops completed. Hit Ratio  94.46% (RAM  94.46%, NVM   0.00%)
+Evict Fails---AC: 7326, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:35:15   60110.93M ops completed. Hit Ratio  94.14% (RAM  94.14%, NVM   0.00%)
+Evict Fails---AC: 7331, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:36:15   60188.88M ops completed. Hit Ratio  94.16% (RAM  94.16%, NVM   0.00%)
+Evict Fails---AC: 7331, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:37:15   60269.45M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 7345, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:38:15   60347.96M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 7345, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:39:15   60425.60M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 7354, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:40:15   60503.00M ops completed. Hit Ratio  94.78% (RAM  94.78%, NVM   0.00%)
+Evict Fails---AC: 7356, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:41:15   60580.26M ops completed. Hit Ratio  94.58% (RAM  94.58%, NVM   0.00%)
+Evict Fails---AC: 7360, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:42:15   60658.49M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 7361, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:43:15   60736.62M ops completed. Hit Ratio  94.59% (RAM  94.59%, NVM   0.00%)
+Evict Fails---AC: 7363, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:44:15   60813.55M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 7367, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:45:15   60891.00M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+Evict Fails---AC: 7381, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:46:15   60968.35M ops completed. Hit Ratio  94.34% (RAM  94.34%, NVM   0.00%)
+Evict Fails---AC: 7382, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:47:15   61044.54M ops completed. Hit Ratio  94.33% (RAM  94.33%, NVM   0.00%)
+Evict Fails---AC: 7395, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:48:15   61119.73M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 7398, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:49:15   61194.77M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 7414, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:50:15   61270.03M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 7422, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:51:15   61346.17M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+Evict Fails---AC: 7429, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:52:15   61421.11M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+Evict Fails---AC: 7455, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:53:15   61496.66M ops completed. Hit Ratio  94.28% (RAM  94.28%, NVM   0.00%)
+Evict Fails---AC: 7470, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:54:15   61570.57M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 7492, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:55:15   61644.24M ops completed. Hit Ratio  94.52% (RAM  94.52%, NVM   0.00%)
+Evict Fails---AC: 7504, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:56:15   61717.96M ops completed. Hit Ratio  94.62% (RAM  94.62%, NVM   0.00%)
+Evict Fails---AC: 7516, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:57:15   61789.89M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 7538, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:58:15   61863.11M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 7546, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:59:15   61940.65M ops completed. Hit Ratio  92.68% (RAM  92.68%, NVM   0.00%)
+Evict Fails---AC: 7565, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:00:16   62019.72M ops completed. Hit Ratio  92.99% (RAM  92.99%, NVM   0.00%)
+Evict Fails---AC: 7589, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:01:16   62099.22M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 7616, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:02:16   62178.33M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 7715, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:03:16   62257.50M ops completed. Hit Ratio  94.59% (RAM  94.59%, NVM   0.00%)
+Evict Fails---AC: 7736, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:04:16   62338.16M ops completed. Hit Ratio  94.44% (RAM  94.44%, NVM   0.00%)
+Evict Fails---AC: 7742, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:05:16   62418.08M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 7770, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:06:16   62498.65M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 7773, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:07:16   62575.39M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+Evict Fails---AC: 7790, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:08:16   62652.75M ops completed. Hit Ratio  93.97% (RAM  93.97%, NVM   0.00%)
+Evict Fails---AC: 7816, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:09:16   62727.90M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+Evict Fails---AC: 7826, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:10:16   62802.96M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 7830, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:11:16   62876.67M ops completed. Hit Ratio  94.56% (RAM  94.56%, NVM   0.00%)
+Evict Fails---AC: 7837, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:12:16   62950.15M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 7866, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:13:16   63023.68M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 7867, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:14:16   63097.18M ops completed. Hit Ratio  94.39% (RAM  94.39%, NVM   0.00%)
+Evict Fails---AC: 7870, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:15:16   63171.12M ops completed. Hit Ratio  94.65% (RAM  94.65%, NVM   0.00%)
+Evict Fails---AC: 7880, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:16:16   63245.62M ops completed. Hit Ratio  94.21% (RAM  94.21%, NVM   0.00%)
+Evict Fails---AC: 7883, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:17:16   63322.01M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 7894, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:18:16   63396.84M ops completed. Hit Ratio  94.08% (RAM  94.08%, NVM   0.00%)
+Evict Fails---AC: 7899, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:19:16   63471.10M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+Evict Fails---AC: 7905, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:20:16   63546.14M ops completed. Hit Ratio  94.30% (RAM  94.30%, NVM   0.00%)
+Evict Fails---AC: 7911, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:21:16   63621.95M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+Evict Fails---AC: 7929, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:22:16   63698.10M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 7945, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:23:16   63772.53M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 7968, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:24:16   63846.50M ops completed. Hit Ratio  94.27% (RAM  94.27%, NVM   0.00%)
+Evict Fails---AC: 7972, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:25:16   63919.41M ops completed. Hit Ratio  94.32% (RAM  94.32%, NVM   0.00%)
+Evict Fails---AC: 7987, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:26:16   63991.24M ops completed. Hit Ratio  94.31% (RAM  94.31%, NVM   0.00%)
+Evict Fails---AC: 7996, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:27:16   64061.42M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 8004, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:28:16   64130.92M ops completed. Hit Ratio  93.83% (RAM  93.83%, NVM   0.00%)
+Evict Fails---AC: 8014, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:29:16   64200.38M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+Evict Fails---AC: 8030, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:30:16   64271.40M ops completed. Hit Ratio  93.43% (RAM  93.43%, NVM   0.00%)
+Evict Fails---AC: 8070, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:31:16   64341.65M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+Evict Fails---AC: 8080, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:32:16   64411.79M ops completed. Hit Ratio  93.69% (RAM  93.69%, NVM   0.00%)
+Evict Fails---AC: 8092, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:33:16   64481.77M ops completed. Hit Ratio  94.02% (RAM  94.02%, NVM   0.00%)
+Evict Fails---AC: 8104, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:34:16   64551.63M ops completed. Hit Ratio  94.17% (RAM  94.17%, NVM   0.00%)
+Evict Fails---AC: 8120, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:35:16   64622.27M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 8121, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:36:16   64697.18M ops completed. Hit Ratio  92.70% (RAM  92.70%, NVM   0.00%)
+Evict Fails---AC: 8136, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:37:16   64775.53M ops completed. Hit Ratio  93.17% (RAM  93.17%, NVM   0.00%)
+Evict Fails---AC: 8145, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:38:16   64854.56M ops completed. Hit Ratio  94.16% (RAM  94.16%, NVM   0.00%)
+Evict Fails---AC: 8157, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:39:16   64934.43M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 8184, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:40:16   65012.46M ops completed. Hit Ratio  94.45% (RAM  94.45%, NVM   0.00%)
+Evict Fails---AC: 8188, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:41:16   65088.53M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+Evict Fails---AC: 8203, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:42:16   65164.39M ops completed. Hit Ratio  94.25% (RAM  94.25%, NVM   0.00%)
+Evict Fails---AC: 8235, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:43:16   65238.80M ops completed. Hit Ratio  94.20% (RAM  94.20%, NVM   0.00%)
+Evict Fails---AC: 8238, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:44:16   65313.89M ops completed. Hit Ratio  93.99% (RAM  93.99%, NVM   0.00%)
+Evict Fails---AC: 8262, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:45:16   65390.91M ops completed. Hit Ratio  93.86% (RAM  93.86%, NVM   0.00%)
+Evict Fails---AC: 8270, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:46:16   65467.46M ops completed. Hit Ratio  93.88% (RAM  93.88%, NVM   0.00%)
+Evict Fails---AC: 8281, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:47:16   65544.51M ops completed. Hit Ratio  93.82% (RAM  93.82%, NVM   0.00%)
+Evict Fails---AC: 8288, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:48:16   65620.70M ops completed. Hit Ratio  93.74% (RAM  93.74%, NVM   0.00%)
+Evict Fails---AC: 8302, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:49:16   65696.73M ops completed. Hit Ratio  93.66% (RAM  93.66%, NVM   0.00%)
+Evict Fails---AC: 8318, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:50:16   65773.38M ops completed. Hit Ratio  93.64% (RAM  93.64%, NVM   0.00%)
+Evict Fails---AC: 8330, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:51:16   65850.11M ops completed. Hit Ratio  93.78% (RAM  93.78%, NVM   0.00%)
+Evict Fails---AC: 8339, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:52:16   65928.09M ops completed. Hit Ratio  93.66% (RAM  93.66%, NVM   0.00%)
+Evict Fails---AC: 8343, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:53:16   66005.40M ops completed. Hit Ratio  93.79% (RAM  93.79%, NVM   0.00%)
+Evict Fails---AC: 8360, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:54:16   66083.74M ops completed. Hit Ratio  93.54% (RAM  93.54%, NVM   0.00%)
+Evict Fails---AC: 8364, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:55:16   66160.83M ops completed. Hit Ratio  93.75% (RAM  93.75%, NVM   0.00%)
+Evict Fails---AC: 8367, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:56:16   66238.57M ops completed. Hit Ratio  93.69% (RAM  93.69%, NVM   0.00%)
+Evict Fails---AC: 8376, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:57:16   66316.15M ops completed. Hit Ratio  93.40% (RAM  93.40%, NVM   0.00%)
+Evict Fails---AC: 8386, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:58:16   66393.95M ops completed. Hit Ratio  93.35% (RAM  93.35%, NVM   0.00%)
+Evict Fails---AC: 8398, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:59:16   66472.42M ops completed. Hit Ratio  93.63% (RAM  93.63%, NVM   0.00%)
+Evict Fails---AC: 8414, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:00:16   66551.08M ops completed. Hit Ratio  93.54% (RAM  93.54%, NVM   0.00%)
+Evict Fails---AC: 8423, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:01:16   66629.04M ops completed. Hit Ratio  94.01% (RAM  94.01%, NVM   0.00%)
+Evict Fails---AC: 8430, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:02:16   66706.47M ops completed. Hit Ratio  94.22% (RAM  94.22%, NVM   0.00%)
+Evict Fails---AC: 8446, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:03:16   66785.70M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 8452, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:04:16   66866.79M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+Evict Fails---AC: 8456, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:05:16   66946.96M ops completed. Hit Ratio  94.35% (RAM  94.35%, NVM   0.00%)
+Evict Fails---AC: 8469, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:06:16   67025.68M ops completed. Hit Ratio  93.92% (RAM  93.92%, NVM   0.00%)
+Evict Fails---AC: 8486, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:07:16   67104.40M ops completed. Hit Ratio  94.36% (RAM  94.36%, NVM   0.00%)
+Evict Fails---AC: 8504, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:08:16   67185.31M ops completed. Hit Ratio  94.40% (RAM  94.40%, NVM   0.00%)
+Evict Fails---AC: 8512, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:09:16   67265.23M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 8519, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:10:16   67349.12M ops completed. Hit Ratio  94.71% (RAM  94.71%, NVM   0.00%)
+Evict Fails---AC: 8534, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:11:16   67432.65M ops completed. Hit Ratio  94.59% (RAM  94.59%, NVM   0.00%)
+Evict Fails---AC: 8555, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:12:16   67513.89M ops completed. Hit Ratio  93.63% (RAM  93.63%, NVM   0.00%)
+Evict Fails---AC: 8565, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:13:16   67595.72M ops completed. Hit Ratio  93.41% (RAM  93.41%, NVM   0.00%)
+Evict Fails---AC: 8581, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:14:16   67677.27M ops completed. Hit Ratio  94.42% (RAM  94.42%, NVM   0.00%)
+Evict Fails---AC: 8601, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:15:16   67757.40M ops completed. Hit Ratio  94.52% (RAM  94.52%, NVM   0.00%)
+Evict Fails---AC: 8607, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:16:16   67836.28M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 8625, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:17:16   67913.20M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+Evict Fails---AC: 8632, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:18:16   67989.94M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+Evict Fails---AC: 8647, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:19:16   68066.74M ops completed. Hit Ratio  94.49% (RAM  94.49%, NVM   0.00%)
+Evict Fails---AC: 8664, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:20:16   68141.64M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+Evict Fails---AC: 8687, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:21:16   68217.50M ops completed. Hit Ratio  94.60% (RAM  94.60%, NVM   0.00%)
+Evict Fails---AC: 8705, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:22:16   68293.22M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+Evict Fails---AC: 8710, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:23:16   68371.31M ops completed. Hit Ratio  93.97% (RAM  93.97%, NVM   0.00%)
+Evict Fails---AC: 8717, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:24:16   68449.32M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+Evict Fails---AC: 8717, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:25:16   68525.45M ops completed. Hit Ratio  93.89% (RAM  93.89%, NVM   0.00%)
+Evict Fails---AC: 8719, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:26:16   68603.90M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+Evict Fails---AC: 8720, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:27:16   68682.50M ops completed. Hit Ratio  94.05% (RAM  94.05%, NVM   0.00%)
+Evict Fails---AC: 8730, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:28:16   68763.02M ops completed. Hit Ratio  93.79% (RAM  93.79%, NVM   0.00%)
+Evict Fails---AC: 8735, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:29:16   68846.03M ops completed. Hit Ratio  94.03% (RAM  94.03%, NVM   0.00%)
+Evict Fails---AC: 8750, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:30:16   68928.56M ops completed. Hit Ratio  94.00% (RAM  94.00%, NVM   0.00%)
+Evict Fails---AC: 8763, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+16:31:16   69010.30M ops completed. Hit Ratio  93.86% (RAM  93.86%, NVM   0.00%)
+Evict Fails---AC: 8764, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 193,112,555
+Items in NVM  : 0
+Alloc Attempts: 9,608,147,516 Success: 100.00%
+Evict Attempts: 2,073,718,387 Success: 100.62%
+RAM Evictions : 2,086,550,252
+Fraction of pool 0 used : 1.00
+Cache Gets    : 58,595,806,615
+Hit Ratio     :  93.82%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+Released 25,105 slabs
+  Moves     : attempts:      1,097, success:   0.00%
+  Evictions : attempts: 13,234,876, success: 100.00%
+Total eviction executed 2086550252
+
+== Throughput for  ==
+Total Ops : 69047.56 million
+Total sets: 9,608,147,516
+get       : 1,078,390/s, success   :  93.82%
+couldExist:         0/s, success   :   0.00%
+set       :   176,827/s, success   : 100.00%
+del       :    15,525/s, found     :   5.83%
+
+== KVReplayGenerator Stats ==
+Total Processed Samples: 3841.91 million (parse error: 0)
+
