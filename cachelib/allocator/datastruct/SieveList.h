@@ -339,6 +339,8 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
   //std::cout << "operateHand...Before operation, ";
   //inspectSieveList(); 
   T* curr = hand_;
+  
+  //T* curr = hand_.load();
   if (curr == nullptr) curr = tail_;
   if (curr == nullptr) return nullptr;
   while (isVisited(*curr)){
@@ -346,7 +348,10 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
     setAsUnvisited(*curr);
     curr = getPrev(*curr);
     if (curr == nullptr) curr = tail_;
+    //if (curr==nullptr) curr = tail_.load();
   }
+  //hand_.store(getPrev(*curr));
+
   hand_ = getPrev(*curr); 
   //std::cout << "After operation, ";
   //inspectSieveList();
@@ -354,17 +359,18 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
   return curr;
 }
 
+
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
   XDCHECK_NE(reinterpret_cast<uintptr_t>(&node),
              reinterpret_cast<uintptr_t>(head_));
- 
+  
   //LockHolder l(*sievelistMutex_);
   
   //std::cout << "linkAH s " << std::flush; 
 
-  setNext(node, head_);
   setPrev(node, nullptr);
+  setNext(node, head_); 
   
   // fix the prev ptr of head
   if (head_ != nullptr) {
@@ -379,8 +385,38 @@ void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
   //std::cout << "linkAH e " << std::flush;
 }
 
+/*
+template <typename T, SieveListHook<T> T::*HookPtr>
+void SieveList<T, HookPtr>::linkAtHead(T& node) noexcept {
+  setPrev(node, nullptr);
+
+  T* oldHead = head_.load();
+  setNext(node, oldHead);
+
+  while (!head_.compare_exchange_weak(oldHead, &node)) {
+    setNext(node, oldHead);
+  }
+
+  if (oldHead == nullptr) {
+    // this is the thread that first makes head_ points to the node
+    // other threads must follow this, o.w. oldHead will be nullptr
+    XDCHECK_EQ(tail_, nullptr);
+    XDCHECK_EQ(hand_, nullptr);
+
+    T *tail = nullptr, *hand = nullptr;
+    tail_.compare_exchange_strong(tail, &node);
+    hand_.compare_exchange_strong(hand, &node);
+  } else {
+    setPrev(*oldHead, &node);
+  }
+
+  size_++;
+}
+*/
+
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::unlink(const T& node) noexcept {
+  
   /*
   if (sievelistMutex_->try_lock()) {
     // we should have locked the mutex
@@ -430,7 +466,7 @@ void SieveList<T, HookPtr>::remove(T& node) noexcept {
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 void SieveList<T, HookPtr>::replace(T& oldNode, T& newNode) noexcept {
-  // LockHolder l(*sievelistMutex_);
+  //LockHolder l(*sievelistMutex_);
   //std::cout << "rp s " << std::flush;
   // Update head and tail links if needed
   if (&oldNode == head_) {

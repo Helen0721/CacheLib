@@ -493,13 +493,24 @@ inline typename Lru2QAllocator::MMConfig makeMMConfig(
 template <>
 inline typename SieveAllocator::MMConfig makeMMConfig(
     CacheConfig const& config) {
-  std::cout<<"cachebench-Cache.h-makeMMConfig-config.useCombLockForIters:" << config.useCombinedLockForIterators << std::endl;	
-  return SieveAllocator::MMConfig(true,
-                                  true,
+  return SieveAllocator::MMConfig(config.sieveUpdateOnWrite,
+                                  config.sieveUpdateOnRead,
                     		  config.useCombinedLockForIterators);
 }
 
-
+//TINYLFU
+template <>
+inline typename TinyLFUAllocator::MMConfig makeMMConfig(
+    CacheConfig const& config) {
+  return TinyLFUAllocator::MMConfig(config.lruRefreshSec,
+                                  config.lruRefreshRatio,
+                                  config.lruUpdateOnWrite,
+                                  config.lruUpdateOnRead,
+                                  config.tryLockUpdate,
+				  config.windowToCacheSizeRatio,
+				  config.tinySizePercent,
+                    		  0 /*mmReconfigureIntervalSecs*/);
+}
 
 template <typename Allocator>
 uint64_t Cache<Allocator>::fetchNandWrites() const {
@@ -914,7 +925,7 @@ typename Cache<Allocator>::WriteHandle Cache<Allocator>::allocate(
     PoolId pid, folly::StringPiece key, size_t size, uint32_t ttlSecs) {
   WriteHandle handle;
   try {
-    handle = cache_->allocate(pid, key, CacheValue::getSize(size), ttlSecs);
+    handle = cache_->allocate(pid, key, CacheValue::getSize(size), ttlSecs);  
     if (handle) {
       CacheValue::initialize(handle->getMemory());
     }
@@ -1151,7 +1162,13 @@ Stats Cache<Allocator>::getStats() const {
   const auto cacheStats = cache_->getGlobalCacheStats();
   const auto rebalanceStats = cache_->getSlabReleaseStats();
   const auto navyStats = cache_->getNvmCacheStatsMap().toMap();
-
+  
+  std::cout << "numEvictionFailureFromAccessContainer: " << cacheStats.numEvictionFailureFromAccessContainer << std::endl;
+  std::cout << "numEvictionFailureFromConcurrentFill: " << cacheStats.numEvictionFailureFromConcurrentFill << std::endl;
+  std::cout << "numEvictionFailureFromParentAccessContainer: " << cacheStats.numEvictionFailureFromParentAccessContainer<< std::endl;
+  std::cout << "numEvictionFailureFromMoving: " << cacheStats.numEvictionFailureFromMoving << std::endl;
+  std::cout << "numEvictionFailureFromParentMoving: " << cacheStats.numEvictionFailureFromParentMoving<< std::endl;
+  
   ret.allocationClassStats = allocationClassStats;
   ret.numEvictions = aggregate.numEvictions();
   ret.numItems = aggregate.numItems();
