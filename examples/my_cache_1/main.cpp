@@ -24,9 +24,7 @@
 #include "Simulator.h"
 
 
-int main(int argc, char** argv) {
-  folly::init(&argc, &argv);
-
+int main(int argc, char** argv) { 
   if (argc < 6){
     printf("Not enough args, %d\n",argc);
     int i = 0;
@@ -34,7 +32,7 @@ int main(int argc, char** argv) {
        printf("arg[%d] is %s\n",i,argv[i]);
        i+=1;
     }
-    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams; arg6: sleep_sec\n");
+    printf("arg1: data_path; arg2: max_reqs; arg3: cache_size; arg4: reb; arg5: rebParams; arg6: num_threads; arg7: ampF\n");
     exit(1);
   }
 
@@ -47,16 +45,29 @@ int main(int argc, char** argv) {
   char *cache_size = argv[3];
   char *rebalanceStrategy = argv[4];
   char *rebParams = argv[5];
-  char *cacheStats_path = NULL;
-  int sleep_sec = 0;
- if (argc >= 7) {
-    cacheStats_path = argv[6]; 
-    std::cout << "Saving cache stats to " << cacheStats_path << std::endl;
-  }
+
+  int ampF = 0;
+  char *cacheStats_path = nullptr;
 
   if (argc >= 7) {
-    sleep_sec = std::atoi(argv[6]);
-    std::cout << "Will sleep " << sleep_sec <<  " sec every 100000 requests" << std::endl;
+    int num_threads = std::stoi(argv[6]);
+    if (num_threads>=0){
+    	zstd_reader *reader =create_zstd_reader(data_path);
+    	std::cout << "Simulating multi-threaded cache with " << num_threads << " threads" << std::endl; 
+    	simulate_zstd_con(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,num_threads);
+    	return 0;
+     }
+  }
+
+  
+  if (argc >= 8) {
+    ampF = std::atoi(argv[7]);
+    std::cout << "Amplication factor: " << ampF << std::endl;
+  } 
+
+  if (argc >= 9){
+    cacheStats_path=argv[8];
+    std::cout << "Saving cache stats to " << cacheStats_path;
   }
 
   int path_len = std::strlen(data_path);
@@ -64,11 +75,11 @@ int main(int argc, char** argv) {
    	(path_len>=13 && std::strcmp(data_path + path_len - 13, "oracleGeneral") == 0)
      ){
     bin_reader_t *reader = binary_reader_setup(data_path);
-    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec,cacheStats_path);
+    simulate_binary(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,ampF,cacheStats_path);
   }
   else if (path_len >= 4 && std::strcmp(data_path + path_len - 3, "zst") == 0)
    {
     zstd_reader *reader =create_zstd_reader(data_path);
-    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,sleep_sec,cacheStats_path);
+    simulate_zstd(cache_size,rebalanceStrategy,rebParams,reader,max_reqs,ampF,cacheStats_path);
   }
  }
