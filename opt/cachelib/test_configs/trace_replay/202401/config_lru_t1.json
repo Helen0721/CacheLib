@@ -3,7 +3,7 @@
   {
     "cacheSizeMB": 40000,
     "allocator": "LRU",
-    "cacheDir": "/tmp/cachelib_metadata",
+    "cacheDir": "/tmp/cachelib_metadata_lru_t1",
     "allocFactor": 1.08,
     "maxAllocSize": 524288,
     "minAllocSize": 64,
@@ -16,8 +16,8 @@
   },
   "test_config":
   {
-    "opRatePerSec": 550000,
-    "opRateBurstSize": 200,
+    "opRatePerSec": 0,
+    "opRateBurstSize": 0,
     "enableLookaside": false,
     "generator": "replay",
     "replayGeneratorConfig":
@@ -29,8 +29,8 @@
     "timestampFactor": 1,
     "repeatOpCount" : true,
     "onlySetIfMiss" : false,
-    "numOps": 100000000000, 
-    "numThreads": 20, 
+    "numOps": 14086700000, 
+    "numThreads": 1, 
     "prepopulateCache": true, 
     "checkNvmCacheWarmUp": true,
     "traceFileNames": [

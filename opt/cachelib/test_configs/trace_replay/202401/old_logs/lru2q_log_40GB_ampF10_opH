@@ -1,0 +1,189 @@
+===JSON Config===
+{
+  "cache_config":
+  {
+    "cacheSizeMB": 40000,
+    "allocator": "LRU2Q",
+    "cacheDir": "/tmp/cachelib_metadata",
+    "allocFactor": 1.08,
+    "maxAllocSize": 524288,
+    "minAllocSize": 64,
+    "enableChainedItem": true,
+    "htBucketPower": 29,
+    "moveOnSlabRelease": false,
+    "poolRebalanceIntervalSec": 2,
+    "poolResizeIntervalSec": 2,
+    "rebalanceStrategy": "hits"
+  },
+  "test_config":
+  {
+    "opRatePerSec": 5500000,
+    "opRateBurstSize": 200,
+    "enableLookaside": false,
+    "generator": "replay",
+    "replayGeneratorConfig":
+    {
+        "ampFactor": 10,
+        "simulTraceTimeStamp" : false
+    },    
+    "repeatTraceReplay": true,
+    "timestampFactor": 1,
+    "repeatOpCount" : true,
+    "onlySetIfMiss" : false,
+    "numOps": 100000000000, 
+    "numThreads": 20, 
+    "prepopulateCache": true, 
+    "checkNvmCacheWarmUp": true,
+    "traceFileNames": [
+	    "kvcache_traces_1.csv",
+	    "kvcache_traces_2.csv",
+	    "kvcache_traces_3.csv",
+	    "kvcache_traces_4.csv",
+	    "kvcache_traces_5.csv"
+    ]
+  }
+}
+
+Welcome to OSS version of cachebench
+cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU2Q
+HPS::HPS(Config config): minDiff:100,diffRatio:0.250000,minSlabs:1,numSlabsFreeMem:3,minLruTailAge:0,maxLruTailAge:0 
+Total 2000000.00M ops to be run
+01:58:11       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+01:59:11     104.44M ops completed. Hit Ratio  45.26% (RAM  45.26%, NVM   0.00%)
+02:00:11     210.24M ops completed. Hit Ratio  59.93% (RAM  59.93%, NVM   0.00%)
+02:01:11     315.73M ops completed. Hit Ratio  67.89% (RAM  67.89%, NVM   0.00%)
+02:02:11     418.86M ops completed. Hit Ratio  80.03% (RAM  80.03%, NVM   0.00%)
+02:03:11     519.31M ops completed. Hit Ratio  84.36% (RAM  84.36%, NVM   0.00%)
+02:04:11     618.64M ops completed. Hit Ratio  85.22% (RAM  85.22%, NVM   0.00%)
+02:05:11     718.60M ops completed. Hit Ratio  85.61% (RAM  85.61%, NVM   0.00%)
+02:06:11     819.46M ops completed. Hit Ratio  86.00% (RAM  86.00%, NVM   0.00%)
+02:07:11     922.31M ops completed. Hit Ratio  86.45% (RAM  86.45%, NVM   0.00%)
+02:08:11    1024.80M ops completed. Hit Ratio  86.48% (RAM  86.48%, NVM   0.00%)
+02:09:11    1128.75M ops completed. Hit Ratio  86.34% (RAM  86.34%, NVM   0.00%)
+02:10:11    1235.74M ops completed. Hit Ratio  86.57% (RAM  86.57%, NVM   0.00%)
+02:11:11    1343.83M ops completed. Hit Ratio  88.07% (RAM  88.07%, NVM   0.00%)
+02:12:11    1453.77M ops completed. Hit Ratio  89.71% (RAM  89.71%, NVM   0.00%)
+02:13:11    1563.93M ops completed. Hit Ratio  90.13% (RAM  90.13%, NVM   0.00%)
+02:14:11    1671.25M ops completed. Hit Ratio  90.24% (RAM  90.24%, NVM   0.00%)
+02:15:11    1774.76M ops completed. Hit Ratio  90.09% (RAM  90.09%, NVM   0.00%)
+02:16:11    1877.97M ops completed. Hit Ratio  90.47% (RAM  90.47%, NVM   0.00%)
+02:17:11    1981.57M ops completed. Hit Ratio  90.41% (RAM  90.41%, NVM   0.00%)
+02:18:11    2085.28M ops completed. Hit Ratio  90.79% (RAM  90.79%, NVM   0.00%)
+02:19:11    2187.25M ops completed. Hit Ratio  91.18% (RAM  91.18%, NVM   0.00%)
+02:20:11    2290.01M ops completed. Hit Ratio  91.66% (RAM  91.66%, NVM   0.00%)
+02:21:11    2390.14M ops completed. Hit Ratio  91.22% (RAM  91.22%, NVM   0.00%)
+02:22:11    2492.07M ops completed. Hit Ratio  91.63% (RAM  91.63%, NVM   0.00%)
+02:23:11    2595.56M ops completed. Hit Ratio  91.57% (RAM  91.57%, NVM   0.00%)
+02:24:11    2694.09M ops completed. Hit Ratio  92.23% (RAM  92.23%, NVM   0.00%)
+02:25:11    2791.52M ops completed. Hit Ratio  92.48% (RAM  92.48%, NVM   0.00%)
+02:26:11    2902.11M ops completed. Hit Ratio  91.60% (RAM  91.60%, NVM   0.00%)
+02:27:11    3022.02M ops completed. Hit Ratio  92.48% (RAM  92.48%, NVM   0.00%)
+02:28:11    3142.68M ops completed. Hit Ratio  93.19% (RAM  93.19%, NVM   0.00%)
+02:29:11    3261.91M ops completed. Hit Ratio  93.09% (RAM  93.09%, NVM   0.00%)
+02:30:11    3379.37M ops completed. Hit Ratio  93.14% (RAM  93.14%, NVM   0.00%)
+02:31:11    3495.21M ops completed. Hit Ratio  93.27% (RAM  93.27%, NVM   0.00%)
+02:32:11    3610.04M ops completed. Hit Ratio  93.27% (RAM  93.27%, NVM   0.00%)
+02:33:11    3724.36M ops completed. Hit Ratio  93.30% (RAM  93.30%, NVM   0.00%)
+02:34:11    3839.12M ops completed. Hit Ratio  92.89% (RAM  92.89%, NVM   0.00%)
+02:35:11    3956.16M ops completed. Hit Ratio  93.01% (RAM  93.01%, NVM   0.00%)
+02:36:11    4075.08M ops completed. Hit Ratio  93.20% (RAM  93.20%, NVM   0.00%)
+02:37:11    4193.45M ops completed. Hit Ratio  93.46% (RAM  93.46%, NVM   0.00%)
+02:38:11    4312.22M ops completed. Hit Ratio  93.55% (RAM  93.55%, NVM   0.00%)
+02:39:11    4430.55M ops completed. Hit Ratio  93.65% (RAM  93.65%, NVM   0.00%)
+02:40:11    4547.89M ops completed. Hit Ratio  93.36% (RAM  93.36%, NVM   0.00%)
+02:41:11    4665.27M ops completed. Hit Ratio  93.29% (RAM  93.29%, NVM   0.00%)
+02:42:11    4781.81M ops completed. Hit Ratio  93.17% (RAM  93.17%, NVM   0.00%)
+02:43:11    4897.10M ops completed. Hit Ratio  93.30% (RAM  93.30%, NVM   0.00%)
+02:44:11    5012.32M ops completed. Hit Ratio  93.39% (RAM  93.39%, NVM   0.00%)
+02:45:11    5129.59M ops completed. Hit Ratio  93.70% (RAM  93.70%, NVM   0.00%)
+02:46:11    5244.99M ops completed. Hit Ratio  93.71% (RAM  93.71%, NVM   0.00%)
+02:47:11    5360.07M ops completed. Hit Ratio  93.91% (RAM  93.91%, NVM   0.00%)
+02:48:11    5474.78M ops completed. Hit Ratio  94.23% (RAM  94.23%, NVM   0.00%)
+02:49:11    5588.06M ops completed. Hit Ratio  94.04% (RAM  94.04%, NVM   0.00%)
+02:50:11    5701.31M ops completed. Hit Ratio  92.71% (RAM  92.71%, NVM   0.00%)
+02:51:11    5818.38M ops completed. Hit Ratio  93.88% (RAM  93.88%, NVM   0.00%)
+02:52:11    5935.83M ops completed. Hit Ratio  94.17% (RAM  94.17%, NVM   0.00%)
+02:53:11    6054.90M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+02:54:11    6172.27M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+02:55:11    6289.35M ops completed. Hit Ratio  93.79% (RAM  93.79%, NVM   0.00%)
+02:56:11    6403.61M ops completed. Hit Ratio  93.58% (RAM  93.58%, NVM   0.00%)
+02:57:11    6519.49M ops completed. Hit Ratio  93.61% (RAM  93.61%, NVM   0.00%)
+02:58:11    6637.79M ops completed. Hit Ratio  94.10% (RAM  94.10%, NVM   0.00%)
+02:59:11    6756.38M ops completed. Hit Ratio  94.06% (RAM  94.06%, NVM   0.00%)
+03:00:11    6873.77M ops completed. Hit Ratio  94.15% (RAM  94.15%, NVM   0.00%)
+03:01:11    6990.04M ops completed. Hit Ratio  93.98% (RAM  93.98%, NVM   0.00%)
+03:02:11    7107.48M ops completed. Hit Ratio  93.45% (RAM  93.45%, NVM   0.00%)
+03:03:11    7224.26M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+03:04:11    7343.11M ops completed. Hit Ratio  93.69% (RAM  93.69%, NVM   0.00%)
+03:05:11    7461.52M ops completed. Hit Ratio  93.60% (RAM  93.60%, NVM   0.00%)
+03:06:11    7578.28M ops completed. Hit Ratio  93.57% (RAM  93.57%, NVM   0.00%)
+03:07:11    7690.95M ops completed. Hit Ratio  93.52% (RAM  93.52%, NVM   0.00%)
+03:08:11    7801.28M ops completed. Hit Ratio  93.62% (RAM  93.62%, NVM   0.00%)
+03:09:11    7913.34M ops completed. Hit Ratio  93.58% (RAM  93.58%, NVM   0.00%)
+03:10:11    8023.77M ops completed. Hit Ratio  93.41% (RAM  93.41%, NVM   0.00%)
+03:11:11    8135.63M ops completed. Hit Ratio  93.61% (RAM  93.61%, NVM   0.00%)
+03:12:11    8248.12M ops completed. Hit Ratio  93.96% (RAM  93.96%, NVM   0.00%)
+03:13:11    8359.85M ops completed. Hit Ratio  94.19% (RAM  94.19%, NVM   0.00%)
+03:14:11    8473.05M ops completed. Hit Ratio  92.81% (RAM  92.81%, NVM   0.00%)
+03:15:11    8590.88M ops completed. Hit Ratio  93.67% (RAM  93.67%, NVM   0.00%)
+03:16:11    8706.31M ops completed. Hit Ratio  94.08% (RAM  94.08%, NVM   0.00%)
+03:17:11    8822.07M ops completed. Hit Ratio  94.06% (RAM  94.06%, NVM   0.00%)
+03:18:11    8938.67M ops completed. Hit Ratio  93.94% (RAM  93.94%, NVM   0.00%)
+03:19:11    9054.88M ops completed. Hit Ratio  93.72% (RAM  93.72%, NVM   0.00%)
+03:20:11    9171.77M ops completed. Hit Ratio  93.50% (RAM  93.50%, NVM   0.00%)
+03:21:11    9288.97M ops completed. Hit Ratio  93.41% (RAM  93.41%, NVM   0.00%)
+03:22:11    9405.64M ops completed. Hit Ratio  93.61% (RAM  93.61%, NVM   0.00%)
+03:23:11    9520.87M ops completed. Hit Ratio  93.66% (RAM  93.66%, NVM   0.00%)
+03:24:11    9636.71M ops completed. Hit Ratio  93.84% (RAM  93.84%, NVM   0.00%)
+03:25:11    9753.24M ops completed. Hit Ratio  93.80% (RAM  93.80%, NVM   0.00%)
+03:26:11    9873.35M ops completed. Hit Ratio  93.67% (RAM  93.67%, NVM   0.00%)
+03:27:11    9992.87M ops completed. Hit Ratio  93.73% (RAM  93.73%, NVM   0.00%)
+03:28:11   10110.48M ops completed. Hit Ratio  93.29% (RAM  93.29%, NVM   0.00%)
+03:29:11   10225.92M ops completed. Hit Ratio  93.38% (RAM  93.38%, NVM   0.00%)
+03:30:11   10344.61M ops completed. Hit Ratio  93.43% (RAM  93.43%, NVM   0.00%)
+03:31:11   10462.34M ops completed. Hit Ratio  94.11% (RAM  94.11%, NVM   0.00%)
+03:32:11   10583.96M ops completed. Hit Ratio  94.43% (RAM  94.43%, NVM   0.00%)
+03:33:11   10707.50M ops completed. Hit Ratio  94.41% (RAM  94.41%, NVM   0.00%)
+03:34:11   10828.75M ops completed. Hit Ratio  94.24% (RAM  94.24%, NVM   0.00%)
+03:35:11   10951.59M ops completed. Hit Ratio  94.48% (RAM  94.48%, NVM   0.00%)
+03:36:11   11076.72M ops completed. Hit Ratio  94.73% (RAM  94.73%, NVM   0.00%)
+03:37:11   11201.76M ops completed. Hit Ratio  94.73% (RAM  94.73%, NVM   0.00%)
+03:38:11   11324.24M ops completed. Hit Ratio  93.46% (RAM  93.46%, NVM   0.00%)
+03:39:11   11446.55M ops completed. Hit Ratio  94.37% (RAM  94.37%, NVM   0.00%)
+03:40:11   11566.20M ops completed. Hit Ratio  94.53% (RAM  94.53%, NVM   0.00%)
+03:41:11   11682.23M ops completed. Hit Ratio  94.29% (RAM  94.29%, NVM   0.00%)
+03:42:11   11797.44M ops completed. Hit Ratio  94.50% (RAM  94.50%, NVM   0.00%)
+03:43:11   11909.73M ops completed. Hit Ratio  94.47% (RAM  94.47%, NVM   0.00%)
+03:44:11   12023.20M ops completed. Hit Ratio  94.74% (RAM  94.74%, NVM   0.00%)
+03:45:11   12137.52M ops completed. Hit Ratio  94.38% (RAM  94.38%, NVM   0.00%)
+03:46:11   12250.30M ops completed. Hit Ratio  94.26% (RAM  94.26%, NVM   0.00%)
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 123,918,923
+Items in NVM  : 0
+Alloc Attempts: 1,723,643,707 Success: 100.00%
+Evict Attempts: 493,606,070 Success: 100.01%
+RAM Evictions : 493,670,676
+Fraction of pool 0 used : 1.00
+Cache Gets    : 10,482,458,874
+Hit Ratio     :  91.80%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+Released 3,098 slabs
+  Moves     : attempts:          0, success:   0.00%
+  Evictions : attempts:     64,888, success: 100.00%
+Total eviction executed 493670676
+
+== Throughput for  ==
+Total Ops : 12356.71 million
+Total sets: 1,723,643,707
+get       : 1,603,836/s, success   :  91.80%
+couldExist:         0/s, success   :   0.00%
+set       :   263,720/s, success   : 100.00%
+del       :    23,043/s, found     :   5.67%
+
+== KVReplayGenerator Stats ==
+Total Processed Samples: 688.55 million (parse error: 0)
+
