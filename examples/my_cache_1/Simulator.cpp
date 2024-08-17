@@ -30,7 +30,7 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::LruAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
@@ -97,11 +97,14 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, double timestamp, i
 	/*Try before and after amplification, the distribution of these numbers. */
 	/*Compare with libCacheSim. Find one that lru has similiar miss ratios. uniform obj size and no slab rebalancing. Also try obj size */
 
-	std::cout << "numEvictionFailureFromAccessContainer: " << global_stats.numEvictionFailureFromAccessContainer << std::endl;
-	std::cout << "numEvictionFailureFromConcurrentFill: " << global_stats.numEvictionFailureFromConcurrentFill << std::endl;
-	std::cout << "numEvictionFailureFromParentAccessContainer: " << global_stats.numEvictionFailureFromParentAccessContainer<< std::endl;
-	std::cout << "numEvictionFailureFromMoving: " << global_stats.numEvictionFailureFromMoving << std::endl;
-	std::cout << "numEvictionFailureFromParentMoving: " << global_stats.numEvictionFailureFromParentMoving<< std::endl;
+	std::cout << "Evict Fails---AC: " << global_stats.numEvictionFailureFromAccessContainer; 
+  	std::cout << ", Prnt AC: " << global_stats.numEvictionFailureFromParentAccessContainer;
+  
+  	std::cout << ", Cncrrnt: " << global_stats.numEvictionFailureFromConcurrentFill;
+  	std::cout << ", Prnt Cncrrnt: " << global_stats.numEvictionFailureFromParentAccessContainer;
+  
+  	std::cout << ", Mv: " << global_stats.numEvictionFailureFromMoving;
+  	std::cout << ", Prnt MV: " << global_stats.numEvictionFailureFromParentMoving<< std::endl; 
 	
 	CacheMemoryStats memory_stats =  gCache_->getCacheMemoryStats();
 	
