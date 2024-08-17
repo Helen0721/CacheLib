@@ -82,11 +82,14 @@ def run(out_file,tracepath,max_reqs,algo,cache_size,reb,rebParams,cacheStats_pat
     #        print(out_file,"already exists")
     #        return
     
-    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams]
+    run_args = [run_path, tracepath,str(max_reqs),cache_size,reb,rebParams,str(ap.num_threads)]
     
-    if not os.path.isfile(cacheStats_path):
-        print("saving CacheStats to",cacheStats_path)
-        run_args.append(cacheStats_path)
+    if ap.ampF:
+        run_args.append(str(ap.ampF))
+
+    #if not os.path.isfile(cacheStats_path):
+    #    print("saving CacheStats to",cacheStats_path)
+    #    run_args.append(cacheStats_path)
 
     p = subprocess.run(run_args,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
@@ -129,7 +132,9 @@ if __name__=="__main__":
     p.add_argument("--suffix",type=str,default=None)
     p.add_argument("--algos",type=str,default="all")
     p.add_argument("--max_reqs",type=int,default=0)
-    p.add_argument("--cache_sizes",type=str,default="") 
+    p.add_argument("--cache_sizes",type=str,default="")
+    p.add_argument("--ampF",type=int,default=None)
+    p.add_argument("--num_threads",type=int,default=-1)
     
     
     ap = p.parse_args()
@@ -163,7 +168,7 @@ if __name__=="__main__":
 
     for algo in algos: 
         for cache_size in cache_sizes:
-            if footprint < 10:
+            if "%" in ap.cache_sizes and footprint < 10:
                 print("Returnning. {} cache footprint of {}GB is too small".format(ap.tracepath,stats["footprint"]))
                 continue
 

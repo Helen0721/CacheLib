@@ -30,11 +30,14 @@
 namespace facebook {
 namespace cachelib_examples {
 
-using Cache = cachelib::Lru2QAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
+using Cache = cachelib::LruAllocator; // LruAllocator, Lru2QAllocator, TinyLFUAllocator, or SieveAllocator
 using CacheConfig = typename Cache::Config;
 using CacheKey = typename Cache::Key;
 using CacheReadHandle = typename Cache::ReadHandle;
 using PoolStats = cachelib::PoolStats;
+using GlobalCacheStats = cachelib::GlobalCacheStats;
+using CacheMemoryStats = cachelib::CacheMemoryStats;
+
 
 // Global cache object and a default cache pool
 std::unique_ptr<Cache> gCache_;
@@ -42,10 +45,9 @@ cachelib::PoolId defaultPool_;
 
 size_t value_all_size = (size_t)10 * (size_t)1024 * (size_t)1024 * (size_t)1024;
 std::string prefix = "EmptyFiller";
-uint32_t uniform_obj_size = 1000;
-float stop_reb_threshold = 0.1;
+uint32_t uniform_obj_size = 100000;
 
-void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp, int num_reqs_so_far){
+void saveCacheStats(char* cacheStats_path_, bool clear_file, double timestamp, int num_reqs_so_far){
 	if (!cacheStats_path_) return;
 
 	const char* cacheStats_path = cacheStats_path_;
@@ -89,6 +91,21 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, uint32_t timestamp,
 	auto cacheStats = pool_stats.cacheStats;
 	auto classIds = pool_stats.getClassIds();
 	auto numClasses = classIds.size();
+	
+	GlobalCacheStats global_stats = gCache_->getGlobalCacheStats();
+	
+	/*Try before and after amplification, the distribution of these numbers. */
+	/*Compare with libCacheSim. Find one that lru has similiar miss ratios. uniform obj size and no slab rebalancing. Also try obj size */
+
+	std::cout << "numEvictionFailureFromAccessContainer: " << global_stats.numEvictionFailureFromAccessContainer << std::endl;
+	std::cout << "numEvictionFailureFromConcurrentFill: " << global_stats.numEvictionFailureFromConcurrentFill << std::endl;
+	std::cout << "numEvictionFailureFromParentAccessContainer: " << global_stats.numEvictionFailureFromParentAccessContainer<< std::endl;
+	std::cout << "numEvictionFailureFromMoving: " << global_stats.numEvictionFailureFromMoving << std::endl;
+	std::cout << "numEvictionFailureFromParentMoving: " << global_stats.numEvictionFailureFromParentMoving<< std::endl;
+	
+	CacheMemoryStats memory_stats =  gCache_->getCacheMemoryStats();
+	
+	std::cout << "configuredRamCacheSize: " << memory_stats.configuredRamCacheSize << std::endl;
 
 	for (auto cid : classIds){
 		auto class_stats = cacheStats.at(cid);
@@ -198,15 +215,17 @@ unsigned long convertCacheSize(char *cache_size){
 
 void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams) {
   unsigned long size = convertCacheSize(cache_size);  
+  
+
 
   if (size == 0) exit(1);	
   CacheConfig cache_config;
   cache_config
       .setCacheSize(size)
       .setCacheName("My Use Case")
-      .setAccessConfig({25 /* bucket power */, 10 /* lock power */}) // assuming caching 20
+      .setAccessConfig({29 /* bucket power */, 20 /* lock power */}) // assuming caching 20
                                                         // million items
-      .configureChainedItems()
+      .configureChainedItems({22,20},20)
       .validate(); // will throw if bad config 
    
   std::string str(rebalanceStrategy);
@@ -313,8 +332,8 @@ void initializeCache(char* cache_size, char* rebalanceStrategy, char* rebParams)
 
   printf("Cache Initialized. size: %ld (%s)\n", size,cache_size);
   
-  //std::cout << "Stoping slab rebalancing..." << std::endl;
-  //gCache_->stopPoolRebalancer(std::chrono::seconds(0));
+  std::cout << "Stoping slab rebalancing..." << std::endl;
+  gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 
 }
 
@@ -380,90 +399,106 @@ bool put(CacheKey key, const std::string& value, size_t value_size) {
 } // namespace cachelib_examples
 } // namespace facebook
 
-
-void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,int max_reqs, int sleep_sec, char *cacheStats_path_){
+void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, bin_reader_t *reader,size_t max_reqs, int ampF, char *cacheStats_path_){
 
 	using namespace facebook::cachelib_examples;
 	
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
-	int num_reqs = 0;
-	int num_hits = 0;
-	int num_zero_len_reqs = 0;	
+	size_t num_reqs = 0;
+	size_t num_hits = 0;
+	size_t num_zero_len_reqs = 0;	
 
 	bin_request *req = (bin_request*) malloc(sizeof(bin_request));	
 
         std::cout << "parsed file size: " << reader->file_size << ", parsed num reqs:" << reader->total_num_requests << std::endl;
 	bool should_trunc_file = true;
-	
-	int stop_reb_reqs_threshold = (int32_t) reader->total_num_requests * 0.1;
+		
 	bool reb_stopped = false;
 
 	auto start_time = std::chrono::high_resolution_clock::now();
 
 	while((char *)reader->file_offset < (char *)reader->mapped_file + reader->file_size){
-		read_one_binary_request(reader, req);
-		std::string key = std::to_string(req->obj_id);
+			read_one_binary_request(reader, req);		
+			uint64_t curr_id = req->obj_id;
 		
-		if (req->obj_size == 0) {
-			num_zero_len_reqs += 1;
-			continue;
-		}
+		/*	
+		for (size_t i = 0; i <= ampF; ++i) {
+			if (max_reqs!=0 && num_reqs > max_reqs) break;
 
-		num_reqs += 1;
-		//print_one_binary_request(req);
-		
-		auto handle = get(key);
-		if (handle) num_hits += 1;
-		else {
+			size_t curr_id = 0;
+
+			if (i == 0) curr_id = base_id;
+
+			//for all i, make sure that base_id is maller than curr_id = (base_id % 1000000000) + 1000000000*i
+
+			else curr_id = base_id + 1000000000 * i;	
 			
-			if (!put(key,prefix,uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_binary_request(req);}
-		}
-		/*
-		if (num_reqs % 1000000 == 0 && (req->timestamp - start_time !=0)){
-			if (sleep_sec > 0) {
-				std::cout << "sleeping...";
-				sleep(sleep_sec);
+		*/
+			
+			std::string key = std::to_string(curr_id);	
+			
+			if (req->obj_size == 0) {
+				num_zero_len_reqs += 1;
+				continue;	
+			}	
+			
+			//print_one_binary_request(req);
+		
+			auto handle = get(key);
+			if (handle) num_hits += 1;
+			else {
+			
+				//if (!put(key,prefix,req->obj_size)) {}
+				if (!put(key,prefix,uniform_obj_size)) {}
+				//std::cout<<"alloc failed. "; print_one_binary_request(req);}
 			}
-			float hit_ratio = ((float)num_hits) / ((float)reader->total_num_requests);
-			std::cout<<"hit ratio:"<< hit_ratio <<",time:"<<(req->timestamp - start_time) <<std::endl;
-			saveCacheStats(cacheStats_path_,should_trunc_file,req->timestamp - start_time,num_reqs);
-			if (should_trunc_file) should_trunc_file = false;
-		}
-	         
+			if (num_reqs % 100000000 == 0 && num_reqs > 1){
+				auto curr_time = std::chrono::high_resolution_clock::now();
+   				std::chrono::duration<double> duration = curr_time - start_time;		
+
+				double throughput = (double) num_reqs /(double)(duration.count());
+				std::cout << "num_hits: " << num_hits << ", num_reqs: " << num_reqs << std::endl;		
+				double hit_ratio = ((double)num_hits) / ((double)num_reqs);
+				printf("hit ratio: %f, time: %f, throughput: %f reqs/sec\n",hit_ratio,duration.count(),throughput);
+					
+			}
+			num_reqs += 1;
+		//}
+		
+		if (max_reqs!=0 && num_reqs > max_reqs) break;
+	        
+		/* 
 		if (num_reqs >= stop_reb_reqs_threshold && !reb_stopped) {
 			std::cout << "Stoping slab rebalancing..." << std::endl;
 			gCache_->stopPoolRebalancer(std::chrono::seconds(0));
 			reb_stopped = true;
 		}
-		*/
-		if (max_reqs!=0 && num_reqs > max_reqs) break;
-		
-	}
+		*/	
+	}		
 	
-	auto end_time = std::chrono::high_resolution_clock::now();
+	auto curr_time = std::chrono::high_resolution_clock::now();
+   	
 
-    	// Calculate the duration
-    	std::chrono::duration<double> duration = end_time - start_time;	
-	
-	double throughput = (double) num_reqs / (double)(duration.count());
+	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< std::endl;
+	std::chrono::duration<double> duration = curr_time - start_time;			
+
+	double throughput = (double) num_reqs /(double)(duration.count());		
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
+	printf("hit ratio: %f, time: %f, throughput: %f reqs/sec\n",hit_ratio,duration.count(),throughput);
 	
-	//saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time,num_reqs);
-
-	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ", time: "<< (duration.count())<< std::endl;	
-	std::cout <<"hit ratio: "<< hit_ratio <<", throughput: "<<throughput <<" reqs/sec"<<std::endl;
+	saveCacheStats(cacheStats_path_,true/*should_trunc_file*/,duration.count(),num_reqs);
 
 	free(req);
 	free(reader);
 }
 
-void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs, int sleep_sec, char* cacheStats_path_){
+void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,size_t max_reqs, int sleep_sec, char* cacheStats_path_){
 	using namespace facebook::cachelib_examples;
 	
 	initializeCache(cache_size, rebalanceStrategy, rebParams);
-	int num_hits = 0;
-	int num_reqs = 0;
-	int num_zero_len_reqs = 0;
+	size_t num_hits = 0;
+	size_t num_reqs = 0;
+	size_t num_zero_len_reqs = 0;
 	zstd_request *req = (zstd_request *)malloc(sizeof(zstd_request));
 	char *record = (char *)malloc(1024 * 1024 * 16);
 	
@@ -502,12 +537,8 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 			num_zero_len_reqs += 1;
 			continue;
 		}
-			
-		char id_buf[50];
-		memset(id_buf, 0, 50);
-		sprintf(id_buf,"%lu",req->obj_id);
-		std::string str(id_buf);
-		std::string key = str; 				
+		
+		std::string key = std::to_string(req->obj_id);
 
 		auto handle = get(key);
 		if (handle){
@@ -518,9 +549,11 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
 				continue;
 			}
-			if (!put(key,prefix,req->obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
+			//if (!put(key,prefix,req->obj_size)) {}	
+			if (!put(key,prefix,uniform_obj_size)) {}
 		}
 		num_reqs += 1;
+		//print_one_zstd_request(req);
 		if (max_reqs!=0 && num_reqs >= max_reqs) break;
 		
 		/*
@@ -550,7 +583,7 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 	double throughput = (double) num_reqs / (double)(duration.count());
 	float hit_ratio = ((float)num_hits) / ((float)num_reqs);
 	
-	//saveCacheStats(cacheStats_path_,should_trunc_file,req->clock_time - start_time,num_reqs);
+	saveCacheStats(cacheStats_path_,true/*should_trunc_file*/,duration.count(),num_reqs);
 
 	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ", time: "<< (duration.count())<< std::endl;	
 	std::cout <<"hit ratio: "<< hit_ratio <<", throughput: "<<throughput <<" reqs/sec"<<std::endl;
@@ -564,6 +597,11 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 /*
  * Main thread that reads a request, puts it into a queue, and let other threads fetch from the queue
  * */
+
+struct thread_stats{
+	int served_reqs;
+	int num_hits;
+};
 
 struct Node {
     zstd_request *request;
@@ -647,10 +685,11 @@ public:
 
 };
 
-int worker(ConcurrentQueue& req_queue){
+thread_stats *worker(ConcurrentQueue& req_queue){
 	using namespace facebook::cachelib_examples;
 	
 	int num_reqs = 0;
+	int num_hits = 0;
 	char id_buf[50];
 	
 	while (true){
@@ -675,25 +714,31 @@ int worker(ConcurrentQueue& req_queue){
 				continue;
 			}
 			if (!put(key,prefix,uniform_obj_size)) {std::cout<<"alloc failed. "; print_one_zstd_request(req);}
+		} else{
+			num_hits += 1;
 		}
+
 		num_reqs += 1;	
 		free(req);	
 	}
 	//std::cout << "thread " << std::this_thread::get_id() << " served " << num_reqs << std::endl << std::flush;
-	return num_reqs;	 
+	thread_stats *stats = (thread_stats*) malloc(sizeof(thread_stats));
+	
+	stats->served_reqs = num_reqs;
+	stats->num_hits = num_hits;
+
+	return stats;	 
 }
 
 
-void simulate_zstd_con(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,int max_reqs, int num_threads){
+void simulate_zstd_con(char* cache_size,char* rebalanceStrategy,char* rebParams, zstd_reader *reader,size_t max_reqs, int num_threads){
 	using namespace facebook::cachelib_examples;
 	
-	initializeCache(cache_size, rebalanceStrategy, rebParams);
-	int num_hits = 0;
-	int num_reqs = 0;
-	int num_zero_len_reqs = 0;	
+	initializeCache(cache_size, rebalanceStrategy, rebParams);	
+	size_t num_reqs_added = 0;
+	size_t num_zero_len_reqs = 0;	
 	char *record = (char *)malloc(1024 * 1024 * 16);
 	
-	uint32_t start_time = -1;
 	bool should_trunc_file = true;	
         
 	/*	
@@ -703,22 +748,24 @@ void simulate_zstd_con(char* cache_size,char* rebalanceStrategy,char* rebParams,
 	bool reb_stopped = false;
 	*/
 
-	int print_mod = 1000000;
+	size_t print_mod = 1000000;
 	if ((strstr(reader->trace_path, "w06.oracleGeneral.bin.zst")==nullptr) && 
 		matches_CloudPhysics_format(reader->trace_path)) {
 		print_mod = 10000;
 		std::cout << "print_mod is re-adjusted to " << print_mod << std::endl;
 	}
 	
-	std::vector<std::future<int>> futures;
+	std::vector<std::future<thread_stats*>> futures;
 	std::vector<std::thread> threads;
 	ConcurrentQueue req_queue;
-
+        
+	auto start_time = std::chrono::high_resolution_clock::now();
+	
 	while(true){
 		size_t n = zstd_reader_read_bytes(reader, 24, &record);
 
 		if (reader->status == MY_EOF) {std::cout<<"EOF"<<std::endl;break;}
-	        if (reader->status == ERR) {std::cout<<"ERR."<<num_reqs<<std::endl;;break;}
+	        if (reader->status == ERR) {std::cout<<"ERR."<<num_reqs_added<<std::endl;;break;}
 		if (n==0) continue;
 		
 		zstd_request *req = (zstd_request *)malloc(sizeof(zstd_request));
@@ -732,18 +779,16 @@ void simulate_zstd_con(char* cache_size,char* rebalanceStrategy,char* rebParams,
 		if (req->obj_size == 0) {
 			num_zero_len_reqs += 1;
 			continue;
-		}
-
-		if (start_time == -1) start_time = req->clock_time;
+		}	
 
 		req_queue.push(req);
-		num_reqs += 1;
-		if (max_reqs!=0 && num_reqs >= max_reqs) break;
+		num_reqs_added += 1;
+		if (max_reqs!=0 && num_reqs_added >= max_reqs) break;
 
-		if (threads.empty() && num_reqs > 1000){	
+		if (threads.empty() && num_reqs_added > 1000){	
     			for (int i = 0; i < num_threads; ++i) {
         			//threads.emplace_back(worker, std::ref(req_queue));
-				std::packaged_task<int(ConcurrentQueue&)> task(worker);
+				std::packaged_task<thread_stats*(ConcurrentQueue&)> task(worker);
         			futures.push_back(task.get_future());
         			threads.emplace_back(std::move(task), std::ref(req_queue));
     			}
@@ -753,27 +798,46 @@ void simulate_zstd_con(char* cache_size,char* rebalanceStrategy,char* rebParams,
 	
 	req_queue.set_all_reqs_added();
 
-	int num_reqs_served = worker(std::ref(req_queue));
+	thread_stats *stats_master_thread = worker(std::ref(req_queue));	
 
 	for (auto& t : threads) {
         	t.join();
     	}
+	
+	auto end_time = std::chrono::high_resolution_clock::now();
+    	// Calculate the duration
+    	std::chrono::duration<double> duration = end_time - start_time;	
+	
+	int num_reqs_served = stats_master_thread->served_reqs;
+	int num_hits = stats_master_thread->num_hits;
+	
+	free(stats_master_thread);
+
 	std::cout << "Master thread served " << num_reqs_served << " requests." << std::endl;
 
 	// Retrieve and print results
     	for (int i = 0; i < num_threads; ++i) {
-        	int requests_served_by_thread = futures[i].get();
-        	std::cout << "Thread " << (i+1) << " served " << requests_served_by_thread << " requests." << std::endl;
-		num_reqs_served += requests_served_by_thread;
-    	}
-	std::cout << "Served " << num_reqs_served << " requests in total." << std::endl;
-	/*
-	double throughput = (req->clock_time - start_time==0)? 0 : (double) num_reqs / (double)(req->clock_time - start_time);
-	float hit_ratio = ((float)num_hits) / ((float)num_reqs);	
+		//int requests_served_by_thread = futures[i].get();
+		thread_stats* stats_by_thread = futures[i].get();
+		if (stats_by_thread==nullptr) {
+			std::cout << "Thread " << (i+1) << " returned null stats" << std::endl;
+			return;
+		}
+        	std::cout << "Thread " << (i+1) << " served " << stats_by_thread->served_reqs << " requests." << std::endl;
+		//num_reqs_served += requests_served_by_thread;
+		num_reqs_served += stats_by_thread->served_reqs;
+		num_hits += stats_by_thread->num_hits;
 
-	std::cout <<"num_requests: "<< num_reqs << ", num zero reqs: "<<num_zero_len_reqs<< ",time:"<< (req->clock_time-start_time)<< std::endl;	
-	std::cout <<"hit ratio:"<< hit_ratio <<",throughput:"<<throughput <<"reqs/sec,"<<std::endl;
-	*/
+		free(stats_by_thread);
+
+    	}
+
+	double throughput = (double) num_reqs_served / (double)(duration.count());
+	float hit_ratio = ((float)num_hits) / ((float)num_reqs_served);	
+
+	std::cout << "Served " << num_reqs_served << " requests in total. num zero reqs: "<<num_zero_len_reqs<< ",time:"<<(duration.count())<< std::endl;	
+	std::cout <<"hit ratio: "<< hit_ratio <<", throughput: "<<throughput <<" reqs/sec,"<<std::endl;
+	
 	free(reader);			
 }
 
