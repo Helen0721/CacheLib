@@ -29,6 +29,7 @@ threshold = 60
 
 def plot(hr_lists,
         AC_lists,
+        ops_lists,
         ts_lists,
         labels,
         plot_name,
@@ -48,18 +49,19 @@ def plot(hr_lists,
     # plotting miss ratio over time:
     plt.figure()
     
-    ts_list,min_len = ts_lists[0],len(ts_lists[0])
-    for L in ts_lists: 
-        if len(L) < min_len:
-            ts_list,min_len = L,len(L)
+    
+    #ts_list,min_len = ts_lists[0],len(ts_lists[0])
+    #for L in ts_lists: 
+    #    if len(L) < min_len:
+    #        ts_list,min_len = L,len(L)
 
     for i in range(num_lines): 
-        hr_list = hr_lists[i][:min_len]
+        hr_list = hr_lists[i]
         mr_list = [1-hr for hr in hr_list] 
-        
+        ts_list = ts_lists[i]    
         plt.plot(ts_list, mr_list,label=labels[i])
 
-    plt.title("hit ratio-" + plot_title)
+    plt.title("miss ratio-" + plot_title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
                         loc="upper right", fontsize="10", frameon=False) 
     frame = legend.get_frame() 
@@ -77,14 +79,13 @@ def plot(hr_lists,
 
     # plotting miss ratio over time (with threshold 60 minutes):
     plt.figure()
-    ts_list_ = ts_list[threshold:]
     for i in range(num_lines): 
-        hr_list = hr_lists[i][threshold:min_len]    
+        hr_list = hr_lists[i][threshold:]    
         mr_list = [1-hr for hr in hr_list]
+        ts_list = ts_lists[i][threshold:]
+        plt.plot(ts_list, mr_list,label=labels[i])
 
-        plt.plot(ts_list_, mr_list,label=labels[i])
-
-    plt.title("hit ratio after 60 mins-" + plot_title)
+    plt.title("miss ratio after 60 mins-" + plot_title)
     legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
                         loc="upper right", fontsize="10", frameon=False) 
     frame = legend.get_frame() 
@@ -104,7 +105,8 @@ def plot(hr_lists,
     # plotting AC over time
     plt.figure()
     for i in range(num_lines): 
-        AC_list = AC_lists[i][:min_len] 
+        AC_list = AC_lists[i][:-1] 
+        ts_list = ts_lists[i]
         plt.plot(ts_list,AC_list,label=labels[i])
 
     plt.title("Evict Fail from Access Container-" + plot_title)
@@ -122,6 +124,27 @@ def plot(hr_lists,
     pp.savefig()
     plt.close()
 
+    # plotting throughput (ops) over time:
+    plt.figure() 
+    for i in range(num_lines): 
+        ops_list = ops_lists[i]
+        ts_list = ts_lists[i]
+        plt.plot(ts_list,ops_list,label=labels[i])
+
+    plt.title("operations completed-" + plot_title)
+    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
+                        loc="upper right", fontsize="10", frameon=False) 
+    frame = legend.get_frame() 
+    frame.set_facecolor("0.9") 
+    frame.set_edgecolor("0.9")
+    plt.grid(axis="y", linestyle="--") 
+    plt.xlabel("Time",fontsize=8) 
+    plt.xticks(fontsize=10)
+    plt.ylabel("Ops completed",fontsize=8)
+    plt.yticks(fontsize=10)
+    plt.tight_layout(pad=1.0)
+    pp.savefig()
+    plt.close()
 
 
     pp.close()
@@ -134,16 +157,17 @@ def parse(f_path):
         stdout = f.read().splitlines()
 
     time = 1
-    hr_list,AC_list,ts_list = [],[],[]
+    hr_list,AC_list,ops_list,ts_list = [],[],[],[]
     start_time = None
 
     for line in stdout:
         
         hr_time_m = re.search(REGEX_Time_HR,line)
         if hr_time_m: 
-            ops = hr_time_m.group('ops')
+            ops = float(hr_time_m.group('ops')[:-1]) * (10**6)
             hit_ratio = float(hr_time_m.group('hit_ratio')) * 0.01
-                         
+            
+            ops_list.append(ops)
             hr_list.append(hit_ratio)
             ts_list.append(time)
             time += 1
@@ -164,7 +188,7 @@ def parse(f_path):
              
             AC_list.append(AC) 
 
-    return hr_list,AC_list,ts_list
+    return hr_list,AC_list,ops_list,ts_list
 
 
 if __name__=="__main__":
@@ -178,19 +202,18 @@ if __name__=="__main__":
     
     algos = ap.algos.split(",")
     
-    hr_lists,AC_lists,ts_lists,labels = [],[],[],[]
+    hr_lists,AC_lists,ops_lists,ts_lists,labels = [],[],[],[],[]
 
     for algo in algos:
         log_file_path = "{}_t{}_{}_log".format(ap.cache_size,ap.thread,algo)
 
-        hr_list,AC_list,ts_list = parse(log_file_path)
-
+        hr_list,AC_list,ops_list,ts_list = parse(log_file_path)
+        
         hr_lists.append(hr_list)
         AC_lists.append(AC_list)
+        ops_lists.append(ops_list)
         ts_lists.append(ts_list)
-        labels.append(algo)
-
-        print(hr_list[-10:]) 
+        labels.append(algo) 
 
 
     plot_name = "{}_t{}_{}".format(ap.cache_size,ap.thread,ap.algos)
@@ -198,6 +221,7 @@ if __name__=="__main__":
 
     plot(hr_lists,
         AC_lists,
+        ops_lists,
         ts_lists,
         labels,
         plot_name,

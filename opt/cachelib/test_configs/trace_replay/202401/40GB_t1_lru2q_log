@@ -4,7 +4,7 @@
   {
     "cacheSizeMB": 40000,
     "allocator": "LRU2Q",
-    "cacheDir": "/tmp/cachelib_metadata_lru2q_t1",
+    "cacheDir": "/tmp/cachelib_metadata_lru2q_t1_40GB",
     "allocFactor": 1.08,
     "maxAllocSize": 524288,
     "minAllocSize": 64,
@@ -30,7 +30,7 @@
     "timestampFactor": 1,
     "repeatOpCount" : true,
     "onlySetIfMiss" : false,
-    "numOps": 1408670000, 
+    "numOps": 140356000000, 
     "numThreads": 1, 
     "prepopulateCache": true, 
     "checkNvmCacheWarmUp": true,
@@ -47,77 +47,12 @@
 Welcome to OSS version of cachebench
 cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU2Q
 HPS::HPS(Config config): minDiff:100,diffRatio:0.250000,minSlabs:1,numSlabsFreeMem:3,minLruTailAge:0,maxLruTailAge:0 
-Total 1408.67M ops to be run
+Total 140356.00M ops to be run
 Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:38:05       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+02:37:23       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
 Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:39:05      73.85M ops completed. Hit Ratio  41.77% (RAM  41.77%, NVM   0.00%)
+02:38:23      65.67M ops completed. Hit Ratio  40.65% (RAM  40.65%, NVM   0.00%)
 Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:40:05     147.88M ops completed. Hit Ratio  56.07% (RAM  56.07%, NVM   0.00%)
+02:39:23     130.62M ops completed. Hit Ratio  54.59% (RAM  54.59%, NVM   0.00%)
 Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:41:05     221.77M ops completed. Hit Ratio  61.87% (RAM  61.87%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:42:05     293.88M ops completed. Hit Ratio  66.94% (RAM  66.94%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:43:05     365.97M ops completed. Hit Ratio  76.80% (RAM  76.80%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:44:05     436.16M ops completed. Hit Ratio  81.96% (RAM  81.96%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:45:05     503.86M ops completed. Hit Ratio  84.38% (RAM  84.38%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:46:05     572.31M ops completed. Hit Ratio  85.06% (RAM  85.06%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:47:05     639.84M ops completed. Hit Ratio  85.43% (RAM  85.43%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:48:05     705.94M ops completed. Hit Ratio  85.57% (RAM  85.57%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:49:05     772.73M ops completed. Hit Ratio  85.86% (RAM  85.86%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:50:05     839.07M ops completed. Hit Ratio  86.14% (RAM  86.14%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:51:05     906.53M ops completed. Hit Ratio  86.51% (RAM  86.51%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:52:05     973.92M ops completed. Hit Ratio  86.69% (RAM  86.69%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:53:05    1041.47M ops completed. Hit Ratio  86.31% (RAM  86.31%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:54:05    1109.54M ops completed. Hit Ratio  86.37% (RAM  86.37%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:55:05    1178.22M ops completed. Hit Ratio  86.45% (RAM  86.45%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:56:05    1248.15M ops completed. Hit Ratio  86.63% (RAM  86.63%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:57:05    1318.21M ops completed. Hit Ratio  88.00% (RAM  88.00%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-16:58:05    1390.44M ops completed. Hit Ratio  89.43% (RAM  89.43%, NVM   0.00%)
-Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
-== Test Results ==
-== Allocator Stats ==
-Items in RAM  : 55,671,131
-Items in NVM  : 0
-Alloc Attempts: 195,720,330 Success: 100.00%
-Evict Attempts: 27,028,248 Success: 100.08%
-RAM Evictions : 27,048,605
-Fraction of pool 0 used : 1.00
-Cache Gets    : 1,196,964,320
-Hit Ratio     :  79.52%
-NVM Gets      :               0, Coalesced :   0.00%
-NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
-NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
-NVM Deletes   :               0 Skipped Deletes:   0.00%
-Released 358 slabs
-  Moves     : attempts:          0, success:   0.00%
-  Evictions : attempts:     20,357, success: 100.00%
-Total eviction executed 27048605
-
-== Throughput for  ==
-Total Ops : 1408.67 million
-Total sets: 195,720,330
-get       :   985,282/s, success   :  79.52%
-couldExist:         0/s, success   :   0.00%
-set       :   161,107/s, success   : 100.00%
-del       :    13,158/s, found     :   5.51%
-
-== KVReplayGenerator Stats ==
-Total Processed Samples: 77.69 million (parse error: 0)
-
+02:40:23     195.19M ops completed. Hit Ratio  60.44% (RAM  60.44%, NVM   0.00%)
