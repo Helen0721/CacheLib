@@ -1,0 +1,69 @@
+===JSON Config===
+{
+  "cache_config": {
+    "allocator": "LRU",
+    "cacheSizeMB": 8192, 
+    "poolRebalanceIntervalSec": 0
+  }, 
+  "test_config": 
+    {
+      "addChainedRatio": 0.0, 
+      "delRatio": 0.0, 
+      "enableLookaside": true, 
+      "getRatio": 0.9568797693103636, 
+      "keySizeRange": [
+        1, 
+        8, 
+        64
+      ], 
+      "keySizeRangeProbability": [
+        0.3, 
+        0.7
+      ], 
+      "loneGetRatio": 0.043120230689636455, 
+      "numKeys": 37244430, 
+      "numOps": 5000000, 
+      "numThreads": 48, 
+      "popDistFile": "pop.json", 
+       
+      "setRatio": 0.0, 
+      "valSizeDistFile": "sizes.json"
+    }
+ 
+}
+
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_fbobj/sizes.json
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_fbobj/pop.json
+Welcome to OSS version of cachebench
+Created 31,213,058 keys in 0.45 mins
+Generating 240.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU
+Total 240.00M ops to be run
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+14:22:50       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 5, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 16,166,764
+Items in NVM  : 0
+Alloc Attempts: 28,400,504 Success: 100.00%
+Evict Attempts: 12,233,494 Success: 100.00%
+RAM Evictions : 12,233,489
+Fraction of pool 0 used : 1.00
+Cache Gets    : 240,000,000
+Hit Ratio     :  88.17%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+Total eviction executed 12233489
+
+== Throughput for  ==
+Total Ops : 240.00 million
+Total sets: 28,400,504
+get       : 19,882,952/s, success   :  88.17%
+couldExist:         0/s, success   :   0.00%
+set       : 2,352,857/s, success   : 100.00%
+del       :         0/s, found     :   0.00%
+

@@ -1,0 +1,68 @@
+===JSON Config===
+{
+  "cache_config": {
+    "allocator": "SIEVE",
+    "cacheSizeMB": 8192, 
+    "poolRebalanceIntervalSec": 0
+  }, 
+  "test_config": 
+    {
+      "addChainedRatio": 0.0, 
+      "delRatio": 0.0, 
+      "enableLookaside": true, 
+      "getRatio": 0.8841112719979642, 
+      "keySizeRange": [
+        1, 
+        8, 
+        64
+      ], 
+      "keySizeRangeProbability": [
+        0.3, 
+        0.7
+      ], 
+      "loneGetRatio": 0.1158887280020357, 
+      "numKeys": 65345659, 
+      "numOps": 5000000, 
+      "numThreads": 1, 
+      "popDistFile": "pop.json", 
+       
+      "setRatio": 0.0, 
+      "valSizeDistFile": "sizes.json"
+    }
+ 
+}
+
+reading distribution params from test_configs/hit_ratio/graph_cache_leader_assocs/sizes.json
+reading distribution params from test_configs/hit_ratio/graph_cache_leader_assocs/pop.json
+Welcome to OSS version of cachebench
+Created 54,292,108 keys in 1.23 mins
+Generating 5.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 5.00M ops to be run
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:19:42       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 2,716,440
+Items in NVM  : 0
+Alloc Attempts: 2,716,440 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Fraction of pool 0 used : 0.59
+Cache Gets    : 5,000,000
+Hit Ratio     :  45.67%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 5.00 million
+Total sets: 2,716,485
+get       :   585,390/s, success   :  45.67%
+couldExist:         0/s, success   :   0.00%
+set       :   318,040/s, success   : 100.00%
+del       :         0/s, found     :   0.00%
+

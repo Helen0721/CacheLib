@@ -1,0 +1,72 @@
+===JSON Config===
+{
+  "cache_config": {
+    "cacheSizeMB": 8192, 
+    "allocator": "SIEVE", 
+    "poolRebalanceIntervalSec": 0
+  }, 
+  "test_config": 
+    {
+      "addChainedRatio": 0.0, 
+      "delRatio": 0.0, 
+      "enableLookaside": true, 
+      "getRatio": 0.9746082749830369, 
+      "keySizeRange": [
+        1, 
+        8, 
+        64
+      ], 
+      "keySizeRangeProbability": [
+        0.3, 
+        0.7
+      ], 
+      "loneGetRatio": 0.025391725016963105, 
+      "numKeys": 23458726, 
+      "numOps": 50000000, 
+      "numThreads": 48, 
+      "popDistFile": "pop.json", 
+       
+      "setRatio": 0.0, 
+      "valSizeDistFile": "sizes.json"
+    }
+ 
+}
+
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_assocs/sizes.json
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_assocs/pop.json
+Welcome to OSS version of cachebench
+Created 19,820,651 keys in 0.27 mins
+Generating 2400.00M sampled accesses
+Generated access patterns in 0.03 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 2400.00M ops to be run
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:02:14       0.00M ops completed. Hit Ratio 100.00% (RAM 100.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:03:14    1112.48M ops completed. Hit Ratio  93.42% (RAM  93.42%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:04:14    2254.86M ops completed. Hit Ratio  94.51% (RAM  94.51%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 11,084,706
+Items in NVM  : 0
+Alloc Attempts: 143,796,897 Success: 100.00%
+Evict Attempts: 132,712,039 Success: 100.00%
+RAM Evictions : 132,712,039
+Fraction of pool 0 used : 1.00
+Cache Gets    : 2,400,000,000
+Hit Ratio     :  94.01%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+Total eviction executed 132712039
+
+== Throughput for  ==
+Total Ops : 2400.00 million
+Total sets: 143,803,517
+get       : 18,332,165/s, success   :  94.01%
+couldExist:         0/s, success   :   0.00%
+set       : 1,098,429/s, success   : 100.00%
+del       :         0/s, found     :   0.00%

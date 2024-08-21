@@ -1,0 +1,69 @@
+===JSON Config===
+{
+  "cache_config": {
+    "cacheSizeMB": 8192, 
+    "allocator": "LRU", 
+    "poolRebalanceIntervalSec": 0
+  }, 
+  "test_config": 
+    {
+      "addChainedRatio": 0.0, 
+      "delRatio": 0.0, 
+      "enableLookaside": true, 
+      "getRatio": 0.9746082749830369, 
+      "keySizeRange": [
+        1, 
+        8, 
+        64
+      ], 
+      "keySizeRangeProbability": [
+        0.3, 
+        0.7
+      ], 
+      "loneGetRatio": 0.025391725016963105, 
+      "numKeys": 23458726, 
+      "numOps": 100000000, 
+      "numThreads": 1, 
+      "popDistFile": "pop.json", 
+       
+      "setRatio": 0.0, 
+      "valSizeDistFile": "sizes.json"
+    }
+ 
+}
+
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_assocs/sizes.json
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_assocs/pop.json
+Welcome to OSS version of cachebench
+Created 19,818,571 keys in 0.40 mins
+Generating 100.00M sampled accesses
+Generated access patterns in 0.05 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU
+Total 100.00M ops to be run
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:15:03       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:16:03      54.89M ops completed. Hit Ratio  86.01% (RAM  86.01%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 10,346,761
+Items in NVM  : 0
+Alloc Attempts: 10,346,761 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Fraction of pool 0 used : 0.95
+Cache Gets    : 100,000,000
+Hit Ratio     :  89.65%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 100.00 million
+Total sets: 10,346,908
+get       :   890,455/s, success   :  89.65%
+couldExist:         0/s, success   :   0.00%
+set       :    92,134/s, success   : 100.00%
+del       :         0/s, found     :   0.00%

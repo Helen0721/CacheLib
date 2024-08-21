@@ -1,0 +1,82 @@
+===JSON Config===
+{
+  "cache_config": {
+    "cacheSizeMB": 8192, 
+    "allocator": "LRU", 
+    "poolRebalanceIntervalSec": 0
+  }, 
+  "test_config": 
+    {
+      "addChainedRatio": 0.0, 
+      "delRatio": 0.0, 
+      "enableLookaside": true, 
+      "getRatio": 0.9746082749830369, 
+      "keySizeRange": [
+        1, 
+        8, 
+        64
+      ], 
+      "keySizeRangeProbability": [
+        0.3, 
+        0.7
+      ], 
+      "loneGetRatio": 0.025391725016963105, 
+      "numKeys": 23458726, 
+      "numOps": 100000000, 
+      "numThreads": 48, 
+      "popDistFile": "pop.json", 
+       
+      "setRatio": 0.0, 
+      "valSizeDistFile": "sizes.json"
+    }
+ 
+}
+
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_assocs/sizes.json
+reading distribution params from test_configs/hit_ratio/graph_cache_follower_assocs/pop.json
+Welcome to OSS version of cachebench
+Created 19,820,734 keys in 0.27 mins
+Generating 4294.97M sampled accesses
+Generated access patterns in 0.07 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: LRU
+Total 4800.00M ops to be run
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:19:26       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 25, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:20:26     707.48M ops completed. Hit Ratio  89.61% (RAM  89.61%, NVM   0.00%)
+Evict Fails---AC: 43, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:21:26    1370.34M ops completed. Hit Ratio  90.01% (RAM  90.01%, NVM   0.00%)
+Evict Fails---AC: 65, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:22:26    2048.41M ops completed. Hit Ratio  90.02% (RAM  90.02%, NVM   0.00%)
+Evict Fails---AC: 76, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:23:26    2731.36M ops completed. Hit Ratio  90.02% (RAM  90.02%, NVM   0.00%)
+Evict Fails---AC: 91, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:24:26    3408.43M ops completed. Hit Ratio  90.01% (RAM  90.01%, NVM   0.00%)
+Evict Fails---AC: 119, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:25:26    4085.36M ops completed. Hit Ratio  90.02% (RAM  90.02%, NVM   0.00%)
+Evict Fails---AC: 141, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+13:26:26    4762.96M ops completed. Hit Ratio  90.02% (RAM  90.02%, NVM   0.00%)
+Evict Fails---AC: 142, Prnt AC: 0, Cncrrnt: 0, Prnt Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 11,288,253
+Items in NVM  : 0
+Alloc Attempts: 482,137,620 Success: 100.00%
+Evict Attempts: 470,838,297 Success: 100.00%
+RAM Evictions : 470,838,155
+Fraction of pool 0 used : 1.00
+Cache Gets    : 4,800,000,000
+Hit Ratio     :  89.96%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+Total eviction executed 470838155
+
+== Throughput for  ==
+Total Ops : 4800.00 million
+Total sets: 482,149,578
+get       : 11,252,204/s, success   :  89.96%
+couldExist:         0/s, success   :   0.00%
+set       : 1,130,259/s, success   : 100.00%
+del       :         0/s, found     :   0.00%
