@@ -143,10 +143,9 @@ class CacheStressor : public Stressor {
     std::cout << folly::sformat("Total {:.2f}M ops to be run",
                                 config_.numThreads * config_.numOps / 1e6)
               << std::endl;
-
+    std::cout << "config_.numThreads: " << config_.numThreads << std::endl;
     stressWorker_ = std::thread([this] {
-      std::vector<std::thread> workers;
-
+      std::vector<std::thread> workers; 
       for (uint64_t i = 0; i < config_.numThreads; ++i) {
         workers.push_back(
             std::thread([this, throughputStats = &throughputStats_.at(i),
@@ -276,11 +275,12 @@ class CacheStressor : public Stressor {
   void stressByDiscreteDistribution(ThroughputStats& stats) {
     std::mt19937_64 gen(folly::Random::rand64());
     std::discrete_distribution<> opPoolDist(config_.opPoolDistribution.begin(),
-                                            config_.opPoolDistribution.end());
+                                            config_.opPoolDistribution.end()); 
+    
     const uint64_t opDelayBatch = config_.opDelayBatch;
     const uint64_t opDelayNs = config_.opDelayNs;
     const std::chrono::nanoseconds opDelay(opDelayNs);
-
+    
     const bool needDelay = opDelayBatch != 0 && opDelayNs != 0;
     uint64_t opCounter = 0;
     auto throttleFn = [&] {
@@ -291,7 +291,7 @@ class CacheStressor : public Stressor {
       // Limit the rate if specified.
       limitRate();
     };
-
+    
     std::optional<uint64_t> lastRequestId = std::nullopt;
     for (uint64_t i = 0;
          i < config_.numOps &&
@@ -301,7 +301,8 @@ class CacheStressor : public Stressor {
          !cache_->isNvmCacheDisabled() && !shouldTestStop();
          ++i) {
       try {
-        // at the end of every operation, throttle per the config.
+        
+	 // at the end of every operation, throttle per the config.
         SCOPE_EXIT { throttleFn(); };
         // detect refcount leaks when run in  debug mode.
 #ifndef NDEBUG
@@ -313,52 +314,79 @@ class CacheStressor : public Stressor {
             throw std::runtime_error(folly::sformat("Refcount leak {}", cnt));
           }
         };
+	//std::cout << "GET HERE\n";
         checkCnt(cache_->getHandleCountForThread());
         SCOPE_EXIT { checkCnt(cache_->getHandleCountForThread()); };
 #endif
+	
         ++stats.ops;
 
         const auto pid = static_cast<PoolId>(opPoolDist(gen));
+	
+	
         const Request& req(getReq(pid, gen, lastRequestId));
-        OpType op = req.getOp();
-        const std::string* key = &(req.key);
+	
+	OpType op = req.getOp();	
+	const std::string* key = &(req.key);
         std::string oneHitKey;
         if (op == OpType::kLoneGet || op == OpType::kLoneSet) {
           oneHitKey = Request::getUniqueKey();
           key = &oneHitKey;
-        }
-
-        OpResultType result(OpResultType::kNop);
-        switch (op) {
+        } 
+        
+	/*
+	size_t obj_size = 10;	
+	OpType op = OpType::kGet;
+	//if (i % 6 == 0) op = OpType::kSet;	
+	//const std::string key_str = std::to_string(dist(rng) % 1000);
+	const std::string key_str = std::to_string(i % 10000);
+	const std::string* key = &key_str;
+	uint32_t ttlSecs = 0;
+	const std::string str = "hello";
+	const std::string& itemValue = str;
+	std::unordered_map<std::string, std::string> admFeatureMap;	
+	*/
+	OpResultType result(OpResultType::kNop);
+	
+	switch (op) {
         case OpType::kLoneSet:
         case OpType::kSet: {
-          if (config_.onlySetIfMiss) {
+          
+	  if (config_.onlySetIfMiss) {
             auto it = cache_->find(*key);
             if (it != nullptr) {
               continue;
             }
           }
-          auto lock = chainedItemAcquireUniqueLock(*key);
-          result = setKey(pid, stats, key, *(req.sizeBegin), req.ttlSecs,
+          
+	  auto lock = chainedItemAcquireUniqueLock(*key);	  
+          
+	  result = setKey(pid, stats, key, *(req.sizeBegin), req.ttlSecs,
                           req.admFeatureMap, req.itemValue);
+	  
 
+	  /*result = setKey(pid, stats, key, obj_size, ttlSecs,
+                          admFeatureMap, itemValue);*/
+	  
           break;
         }
         case OpType::kLoneGet:
         case OpType::kGet: {
           ++stats.get;
-
+	  
           auto slock = chainedItemAcquireSharedLock(*key);
           auto xlock = decltype(chainedItemAcquireUniqueLock(*key)){};
-
-          if (ticker_) {
+          
+	  if (ticker_) {
             ticker_->updateTimeStamp(req.timestamp);
           }
+	  
           // TODO currently pure lookaside, we should
           // add a distribution over sequences of requests/access patterns
           // e.g. get-no-set and set-no-get
           cache_->recordAccess(*key);
           auto it = cache_->find(*key);
+	  
           if (it == nullptr) {
             ++stats.getMiss;
             result = OpResultType::kGetMiss;
@@ -368,9 +396,14 @@ class CacheStressor : public Stressor {
               // upgrade access privledges, (lock_upgrade is not
               // appropriate here)
               slock = {};
-              xlock = chainedItemAcquireUniqueLock(*key);
+              
+
+	      xlock = chainedItemAcquireUniqueLock(*key);
               setKey(pid, stats, key, *(req.sizeBegin), req.ttlSecs,
                      req.admFeatureMap, req.itemValue);
+	      
+	      /*setKey(pid, stats, key, obj_size,ttlSecs,
+                       admFeatureMap,itemValue);*/
             }
           } else {
             result = OpResultType::kGetHit;
@@ -380,15 +413,17 @@ class CacheStressor : public Stressor {
         }
         case OpType::kDel: {
           ++stats.del;
+	  
           auto lock = chainedItemAcquireUniqueLock(*key);
-          auto res = cache_->remove(*key);
+          auto res = cache_->remove(*key); 
+
           if (res == CacheT::RemoveRes::kNotFoundInRam) {
             ++stats.delNotFound;
           }
           break;
         }
         case OpType::kAddChained: {
-          ++stats.get;
+	  ++stats.get;
           auto lock = chainedItemAcquireUniqueLock(*key);
           auto it = cache_->findToWrite(*key);
           if (!it) {
@@ -396,6 +431,7 @@ class CacheStressor : public Stressor {
 
             ++stats.set;
             it = cache_->allocate(pid, *key, *(req.sizeBegin), req.ttlSecs);
+	    //it = cache_->allocate(pid,*key,obj_size,ttlSecs);
             if (!it) {
               ++stats.setFailure;
               break;
@@ -403,9 +439,10 @@ class CacheStressor : public Stressor {
             populateItem(it);
             cache_->insertOrReplace(it);
           }
-          XDCHECK(req.sizeBegin + 1 != req.sizeEnd);
+          //XDCHECK(req.sizeBegin + 1 != req.sizeEnd);
           bool chainSuccessful = false;
-          for (auto j = req.sizeBegin + 1; j != req.sizeEnd; j++) {
+          
+	  for (auto j = req.sizeBegin + 1; j != req.sizeEnd; j++) {
             ++stats.addChained;
 
             const auto size = *j;
@@ -417,13 +454,14 @@ class CacheStressor : public Stressor {
             chainSuccessful = true;
             populateItem(child);
             cache_->addChainedItem(it, std::move(child));
-          }
+          } 
           if (chainSuccessful && cache_->consistencyCheckEnabled()) {
             cache_->trackChainChecksum(it);
           }
           break;
         }
         case OpType::kUpdate: {
+	  
           ++stats.get;
           ++stats.update;
           auto lock = chainedItemAcquireUniqueLock(*key);
@@ -437,13 +475,16 @@ class CacheStressor : public Stressor {
             break;
           }
           cache_->updateItemRecordVersion(it);
+	  
           break;
         }
         case OpType::kCouldExist: {
+	  
           ++stats.couldExistOp;
           if (!cache_->couldExist(*key)) {
             ++stats.couldExistOpFalse;
           }
+	  
           break;
         }
         default:
@@ -451,12 +492,14 @@ class CacheStressor : public Stressor {
               folly::sformat("invalid operation generated: {}", (int)op));
           break;
         }
-
+ 	
+        	
         lastRequestId = req.requestId;
         if (req.requestId) {
           // req might be deleted after calling notifyResult()
           wg_->notifyResult(*req.requestId, result);
         }
+	
       } catch (const cachebench::EndOfTrace&) {
         break;
       }
@@ -481,11 +524,13 @@ class CacheStressor : public Stressor {
       uint32_t ttlSecs,
       const std::unordered_map<std::string, std::string>& featureMap,
       const std::string& itemValue) {
+    /*
     // check the admission policy first, and skip the set operation
     // if the policy returns false
     if (config_.admPolicy && !config_.admPolicy->accept(featureMap)) {
       return OpResultType::kSetSkip;
     }
+    */
 
     ++stats.set;
     auto it = cache_->allocate(pid, *key, size, ttlSecs);
