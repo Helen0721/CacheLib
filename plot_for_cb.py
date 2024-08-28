@@ -23,6 +23,16 @@ REGEX_Time_HR = r'(?P<time>\d{2}:\d{2}:\d{2})\s+(?P<ops>[\d.]+[MK]?)\s+ops compl
 
 REGEX_Final_HR = r'Hit Ratio\s*:\s*(?P<hit_ratio>[\d.]+)%'
 
+
+PTYPE_FINAL_MR = "final_mr"
+PTYPE_MR_OVER_TIME = "mr_over_time"
+PTYPE_MR_OVER_TIME_THRESHOLD = "mr_over_time_threshold"
+PTYPE_EVCIT_FAIL_AC = "evict_fail_ac"
+PTYPE_NUM_OPS_OVER_TIME = "num_ops_over_time"
+
+
+
+
 '''
 get       :   772,230/s, success   :  93.17%
 couldExist:         0/s, success   :   0.00%
@@ -69,183 +79,195 @@ def plot(all_res,
     pp = PdfPages(plot_fname)
     
     # -----------------------plotting the final average miss ratio-----------------------
-    plt.figure(figsize=(6,4))
-
-    if ap.limit: 
-        print("calculating average miss ratios from snapshot of",ap.limit,"minutes")
-        final_hrs = [sum(hr_list[:ap.limit])/len(hr_list[:ap.limit]) for hr_list in hr_lists]
-
-    final_mrs = [1-hr for hr in final_hrs]
-     
-    plt.barh(labels, final_mrs,color=colors[:len(labels)])
-    plt.title("Final Miss Ratio-" + plot_title) 
     
-    plt.xlabel("Final Miss Ratio",fontsize=8) 
-    plt.xticks(fontsize=10)
-    plt.xlim(min(final_mrs)-0.01, max(final_mrs)+0.01)
+    if PTYPE_FINAL_MR in PLOT_TYPES:
+        plt.figure(figsize=(6,4))
 
-    plt.ylabel("Eviction Algorithms",fontsize=8)
-
-    plt.tight_layout(pad=1.0)
-    pp.savefig()
-    plt.close()
+	    if ap.limit: 
+	        print("calculating average miss ratios from snapshot of",ap.limit,"minutes")
+	        final_hrs = [sum(hr_list[:ap.limit])/len(hr_list[:ap.limit]) for hr_list in hr_lists]
+	
+	    final_mrs = [1-hr for hr in final_hrs]
+	     
+	    plt.barh(labels, final_mrs,color=colors[:len(labels)])
+	    plt.title("Final Miss Ratio-" + plot_title) 
+	    
+	    plt.xlabel("Final Miss Ratio",fontsize=8) 
+	    plt.xticks(fontsize=10)
+	    plt.xlim(min(final_mrs)-0.01, max(final_mrs)+0.01)
+	
+	    plt.ylabel("Eviction Algorithms",fontsize=8)
+	
+	    plt.tight_layout(pad=1.0)
+	    pp.savefig()
+	    plt.close()
 
 
     # -----------------------plotting miss ratio over time-----------------------
-    plt.figure()
-
-    for i in range(num_lines): 
-        hr_list = hr_lists[i]
-        mr_list = [1-hr for hr in hr_list] 
-        ts_list = ts_lists[i]   
-        if ap.limit:
-            mr_list = mr_list[:ap.limit]
-            ts_list = ts_list[:ap.limit]
-        plt.plot(ts_list, mr_list,label=labels[i],color=colors[i])
-
-    plt.title("miss ratio-" + plot_title)
-    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="10", frameon=False) 
-    frame = legend.get_frame() 
-    frame.set_facecolor("0.9") 
-    frame.set_edgecolor("0.9")
-    plt.grid(axis="y", linestyle="--") 
-    plt.xlabel("Time",fontsize=8) 
-    plt.xticks(fontsize=10)
-    plt.ylabel("Miss Ratio",fontsize=8)
-    plt.yticks(fontsize=10)
-    plt.tight_layout(pad=1.0)
-    pp.savefig()
-    plt.close()
+    if PTYPE_MR_OVER_TIME in PLOT_TYPES:
+	
+	    plt.figure()
+	
+	    for i in range(num_lines): 
+	        hr_list = hr_lists[i]
+	        mr_list = [1-hr for hr in hr_list] 
+	        ts_list = ts_lists[i]   
+	        if ap.limit:
+	            mr_list = mr_list[:ap.limit]
+	            ts_list = ts_list[:ap.limit]
+	        plt.plot(ts_list, mr_list,label=labels[i],color=colors[i])
+	
+	    plt.title("miss ratio-" + plot_title)
+	    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
+	                        loc="upper right", fontsize="10", frameon=False) 
+	    frame = legend.get_frame() 
+	    frame.set_facecolor("0.9") 
+	    frame.set_edgecolor("0.9")
+	    plt.grid(axis="y", linestyle="--") 
+	    plt.xlabel("Time",fontsize=8) 
+	    plt.xticks(fontsize=10)
+	    plt.ylabel("Miss Ratio",fontsize=8)
+	    plt.yticks(fontsize=10)
+	    plt.tight_layout(pad=1.0)
+	    pp.savefig()
+	    plt.close()
     
 
-    # plotting miss ratio over time (with threshold 60 minutes):
-    plt.figure()
-    for i in range(num_lines): 
-        hr_list = hr_lists[i][threshold:]    
-        mr_list = [1-hr for hr in hr_list]
-        ts_list = ts_lists[i][threshold:]
-        if ap.limit:
-            mr_list = mr_list[:ap.limit-threshold]
-            ts_list = ts_list[:ap.limit-threshold] 
-        plt.plot(ts_list, mr_list,label=labels[i],color=colors[i])
+    # -----------------------plotting miss ratio over time (with threshold)-----------------------
+    if PTYPE_MR_OVER_TIME_THRESHOLD in PLOT_TYPES:
+	    plt.figure()
+	    for i in range(num_lines): 
+	        hr_list = hr_lists[i][threshold:]    
+	        mr_list = [1-hr for hr in hr_list]
+	        ts_list = ts_lists[i][threshold:]
+	        if ap.limit:
+	            mr_list = mr_list[:ap.limit-threshold]
+	            ts_list = ts_list[:ap.limit-threshold] 
+	        plt.plot(ts_list, mr_list,label=labels[i],color=colors[i])
+	
+	    plt.title("miss ratio after 60 mins-" + plot_title)
+	    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
+	                        loc="upper right", fontsize="10", frameon=False) 
+	    frame = legend.get_frame() 
+	    frame.set_facecolor("0.9") 
+	    frame.set_edgecolor("0.9")
+	    plt.grid(axis="y", linestyle="--") 
+	    plt.xlabel("Time",fontsize=8) 
+	    plt.xticks(fontsize=10)
+	    plt.ylabel("Miss Ratio",fontsize=8)
+	    plt.yticks(fontsize=10)
+	    plt.tight_layout(pad=1.0)
+	    pp.savefig()
+	    plt.close()
 
-    plt.title("miss ratio after 60 mins-" + plot_title)
-    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="10", frameon=False) 
-    frame = legend.get_frame() 
-    frame.set_facecolor("0.9") 
-    frame.set_edgecolor("0.9")
-    plt.grid(axis="y", linestyle="--") 
-    plt.xlabel("Time",fontsize=8) 
-    plt.xticks(fontsize=10)
-    plt.ylabel("Miss Ratio",fontsize=8)
-    plt.yticks(fontsize=10)
-    plt.tight_layout(pad=1.0)
-    pp.savefig()
-    plt.close()
 
+    # -----------------------plotting Eviction Failure from AC over time-----------------------
+    if PTYPE_EVCIT_FAIL_AC in PLOT_TYPES:
 
+	    plt.figure()
+	    for i in range(num_lines): 
+	        AC_list = AC_lists[i][:-1] 
+	        ts_list = ts_lists[i]
+	        if ap.limit:
+	            AC_list = AC_list[:ap.limit]
+	            ts_list = ts_list[:ap.limit]
+	        plt.plot(ts_list,AC_list,label=labels[i],color=colors[i])
+	
+	    plt.title("Evict Fail from Access Container-" + plot_title)
+	    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
+	                        loc="upper right", fontsize="10", frameon=False) 
+	    frame = legend.get_frame() 
+	    frame.set_facecolor("0.9") 
+	    frame.set_edgecolor("0.9")
+	    plt.grid(axis="y", linestyle="--") 
+	    plt.xlabel("Time",fontsize=8) 
+	    plt.xticks(fontsize=10)
+	    plt.ylabel("Evict Fail from AC",fontsize=8)
+	    plt.yticks(fontsize=10)
+	    plt.tight_layout(pad=1.0)
+	    pp.savefig()
+	    plt.close()
 
-    # plotting AC over time
-    plt.figure()
-    for i in range(num_lines): 
-        AC_list = AC_lists[i][:-1] 
-        ts_list = ts_lists[i]
-        if ap.limit:
-            AC_list = AC_list[:ap.limit]
-            ts_list = ts_list[:ap.limit]
-        plt.plot(ts_list,AC_list,label=labels[i],color=colors[i])
-
-    plt.title("Evict Fail from Access Container-" + plot_title)
-    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="10", frameon=False) 
-    frame = legend.get_frame() 
-    frame.set_facecolor("0.9") 
-    frame.set_edgecolor("0.9")
-    plt.grid(axis="y", linestyle="--") 
-    plt.xlabel("Time",fontsize=8) 
-    plt.xticks(fontsize=10)
-    plt.ylabel("Evict Fail from AC",fontsize=8)
-    plt.yticks(fontsize=10)
-    plt.tight_layout(pad=1.0)
-    pp.savefig()
-    plt.close()
-
-    # plotting throughput (ops) over time:
-    plt.figure() 
-    for i in range(num_lines): 
-        ops_list = ops_lists[i]
-        ts_list = ts_lists[i]
-        if ap.limit:
-            ops_list = ops_list[:ap.limit]
-            ts_list = ts_list[:ap.limit]
-        plt.plot(ts_list,ops_list,label=labels[i],color=colors[i])
-
-    plt.title("operations completed-" + plot_title)
-    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-                        loc="upper right", fontsize="10", frameon=False) 
-    frame = legend.get_frame() 
-    frame.set_facecolor("0.9") 
-    frame.set_edgecolor("0.9")
-    plt.grid(axis="y", linestyle="--") 
-    plt.xlabel("Time",fontsize=8) 
-    plt.xticks(fontsize=10)
-    plt.ylabel("Ops completed",fontsize=8)
-    plt.yticks(fontsize=10)
-    plt.tight_layout(pad=1.0)
-    pp.savefig()
-    plt.close()
+    # -----------------------plotting throughput (total # ops) over time-----------------------
+    if PTYPE_NUM_OPS_OVER_TIME in PLOT_TYPES:
+	    plt.figure() 
+	    for i in range(num_lines): 
+	        ops_list = ops_lists[i]
+	        ts_list = ts_lists[i]
+	        if ap.limit:
+	            ops_list = ops_list[:ap.limit]
+	            ts_list = ts_list[:ap.limit]
+	        plt.plot(ts_list,ops_list,label=labels[i],color=colors[i])
+	
+	    plt.title("operations completed-" + plot_title)
+	    legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
+	                        loc="upper right", fontsize="10", frameon=False) 
+	    frame = legend.get_frame() 
+	    frame.set_facecolor("0.9") 
+	    frame.set_edgecolor("0.9")
+	    plt.grid(axis="y", linestyle="--") 
+	    plt.xlabel("Time",fontsize=8) 
+	    plt.xticks(fontsize=10)
+	    plt.ylabel("Ops completed",fontsize=8)
+	    plt.yticks(fontsize=10)
+	    plt.tight_layout(pad=1.0)
+	    pp.savefig()
+	    plt.close()
 
     # -----------------------plotting Throughput Data-----------------------
-    GRs = [res["get_rate"] for res in all_res]
-    SRs = [res["set_rate"] for res in all_res]
-    DRs = [res["del_rate"] for res in all_res]
-    
-    GSs = [res["get_success"] for res in all_res]
-    SSs = [res["set_success"] for res in all_res]
-    DFs = [res["del_found"] for res in all_res]
+    if PTYPE_NUM_OPS_OVER_TIME in PLOT_TYPES:
 
-    thpt_labels =[["Get Rate","Set Rate","Delete Rate"],
-                  ["Get success","Set Success", "Delete Found"]
-                 ]
-    thpt_data = [[GRs,SRs,DRs],
-                 [GSs,SSs,DFs]
-                ]
-    thpt_x_labels = ["Op/sec","Success/Total"]  
-    
-    x_offsets = [[10**5,10**4,10**3],
-                [0.02,0.02,0.02]
-                ]
-    figsize = (15,5)
-    if "hit_ratio" and "graph_cache_" in ap.dir:
-        thpt_labels[0].pop()
-        thpt_labels[1].pop()
-        thpt_data[0].pop()
-        thpt_data[1].pop()
-        x_offsets[0].pop()
-        x_offsets[1].pop()
+	    GRs = [res["get_rate"] for res in all_res]
+	    SRs = [res["set_rate"] for res in all_res]
+	    DRs = [res["del_rate"] for res in all_res]
+	    
+	    GSs = [res["get_success"] for res in all_res]
+	    SSs = [res["set_success"] for res in all_res]
+	    DFs = [res["del_found"] for res in all_res]
+	
+	    thpt_labels =[["Get Rate","Set Rate","Delete Rate"],
+	                  ["Get success","Set Success", "Delete Found"]
+	                 ]
+	    thpt_data = [[GRs,SRs,DRs],
+	                 [GSs,SSs,DFs]
+	                ]
+	    thpt_x_labels = ["Op/sec","Success/Total"]  
+	    
+	    x_offsets = [[10**5,10**4,10**3],
+	                [0.02,0.02,0.02]
+	                ]
+	    figsize = (15,5)
+	    if "hit_ratio" and "graph_cache_" in ap.dir:
+	        thpt_labels[0].pop()
+	        thpt_labels[1].pop()
+	        thpt_data[0].pop()
+	        thpt_data[1].pop()
+	        x_offsets[0].pop()
+	        x_offsets[1].pop()
+	
+	    formatter = ticker.ScalarFormatter(useOffset=False, useMathText=True) 
+	    formatter.set_scientific(True)
+	    formatter.set_powerlimits((-2, 2))  # Adjust these limits to control when scientific notation is used
+	    fig, axs = plt.subplots(nrows=len(thpt_labels), ncols=len(thpt_labels[0]), figsize=(15,5))
+	    for r in range(len(thpt_labels)):
+	        for i in range(len(thpt_labels[0])):
+	            data = thpt_data[r][i]
+	            x_offset = x_offsets[r][i]
+	            #print(data)
+	            axs[r,i].barh(labels, data, color=colors[:len(labels)])
+	            axs[r,i].set_xlabel(thpt_x_labels[r])
+	            axs[r,i].set_title(thpt_labels[r][i])
+	            axs[r,i].set_xlim(min(data)-x_offset,max(data)+x_offset) 
+	            axs[r,i].xaxis.set_major_formatter(formatter)
+	
+	    fig.suptitle("Throughput data-" + plot_title,fontsize=12)   
+	    plt.tight_layout(rect=[0, 0, 1, 0.9999])
+	
+	    pp.savefig(fig)
+	    plt.close()
 
-    formatter = ticker.ScalarFormatter(useOffset=False, useMathText=True) 
-    formatter.set_scientific(True)
-    formatter.set_powerlimits((-2, 2))  # Adjust these limits to control when scientific notation is used
-    fig, axs = plt.subplots(nrows=len(thpt_labels), ncols=len(thpt_labels[0]), figsize=(15,5))
-    for r in range(len(thpt_labels)):
-        for i in range(len(thpt_labels[0])):
-            data = thpt_data[r][i]
-            x_offset = x_offsets[r][i]
-            #print(data)
-            axs[r,i].barh(labels, data, color=colors[:len(labels)])
-            axs[r,i].set_xlabel(thpt_x_labels[r])
-            axs[r,i].set_title(thpt_labels[r][i])
-            axs[r,i].set_xlim(min(data)-x_offset,max(data)+x_offset) 
-            axs[r,i].xaxis.set_major_formatter(formatter)
 
-    fig.suptitle("Throughput data-" + plot_title,fontsize=12)   
-    plt.tight_layout(rect=[0, 0, 1, 0.9999])
 
-    pp.savefig(fig)
-    plt.close()
 
     pp.close()
 
@@ -338,6 +360,9 @@ if __name__=="__main__":
     p.add_argument("--thread",type=int,required=True)
     
     p.add_argument("--limit",type=int,default=None)
+    
+    p.add_argument("--types",type=str,default=)
+
 
     ap = p.parse_args()
     
