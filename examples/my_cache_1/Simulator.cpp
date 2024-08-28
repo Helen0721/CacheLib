@@ -117,11 +117,13 @@ void saveCacheStats(char* cacheStats_path_, bool clear_file, double timestamp, i
 		uint64_t total_evict_attempts = class_stats.evictionAttempts;
 		uint64_t total_numHits = class_stats.numHits;
   		uint64_t total_allocFailures =class_stats.allocFailures;
-		std::cout << "class alloc size: " << class_size << ", ";
-		std::cout << "total_alloc_attemtps: " << total_alloc_attemtps << ", ";
-		std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
-		std::cout << "total_numHits: " << total_numHits << ", ";
-		std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
+		if (total_alloc_attemtps > 0){
+			std::cout << "class alloc size: " << class_size << ", ";
+			std::cout << "total_alloc_attemtps: " << total_alloc_attemtps << ", ";
+			std::cout << "total_evict_attempts: " << total_evict_attempts << ", ";
+			std::cout << "total_numHits: " << total_numHits << ", ";
+			std::cout << "total_allocFailures: " << total_allocFailures << "." << std::endl;
+		}
 	}
 	
 	std::cout << "\n" << std::endl << std::flush;
@@ -451,8 +453,8 @@ void simulate_binary(char *cache_size,char *rebalanceStrategy, char* rebParams, 
 			if (handle) num_hits += 1;
 			else {
 			
-				//if (!put(key,prefix,req->obj_size)) {}
-				if (!put(key,prefix,uniform_obj_size)) {}
+				if (!put(key,prefix,req->obj_size)) {}
+				//if (!put(key,prefix,uniform_obj_size)) {}
 				//std::cout<<"alloc failed. "; print_one_binary_request(req);}
 			}
 			if (num_reqs % 100000000 == 0 && num_reqs > 1){
@@ -552,8 +554,8 @@ void simulate_zstd(char* cache_size,char* rebalanceStrategy,char* rebParams, zst
 				std::cout << "value_all size too small. "<< req->obj_size << std::flush;
 				continue;
 			}
-			//if (!put(key,prefix,req->obj_size)) {}	
-			if (!put(key,prefix,uniform_obj_size)) {}
+			if (!put(key,prefix,req->obj_size)) {}	
+			//if (!put(key,prefix,uniform_obj_size)) {}
 		}
 		num_reqs += 1;
 		//print_one_zstd_request(req);

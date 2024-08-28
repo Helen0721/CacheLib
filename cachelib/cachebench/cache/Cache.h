@@ -344,6 +344,7 @@ class Cache {
   // TODO(sathya) clean up this api by making this part of the find api
   // implementation.
   void recordAccess(folly::StringPiece key) {
+    //std::cout << "CB-Cache-Cache.h-recoardAccess";
     if (nvmAdmissionPolicy_) {
       nvmAdmissionPolicy_->trackAccess(key);
     }
@@ -1164,13 +1165,16 @@ Stats Cache<Allocator>::getStats() const {
   const auto navyStats = cache_->getNvmCacheStatsMap().toMap();
   
   std::cout << "Evict Fails---AC: " << cacheStats.numEvictionFailureFromAccessContainer; 
-  std::cout << ", Prnt AC: " << cacheStats.numEvictionFailureFromParentAccessContainer;
-  
-  std::cout << ", Cncrrnt: " << cacheStats.numEvictionFailureFromConcurrentFill;
-  std::cout << ", Prnt Cncrrnt: " << cacheStats.numEvictionFailureFromParentAccessContainer;
-  
+  std::cout << ", Prnt AC: " << cacheStats.numEvictionFailureFromParentAccessContainer; 
+  std::cout << ", Cncrrnt: " << cacheStats.numEvictionFailureFromConcurrentFill;  
   std::cout << ", Mv: " << cacheStats.numEvictionFailureFromMoving;
-  std::cout << ", Prnt MV: " << cacheStats.numEvictionFailureFromParentMoving<< std::endl; 
+  std::cout << ", Prnt MV: " << cacheStats.numEvictionFailureFromParentMoving<< std::endl;
+
+  ret.numEvictionFailureFromAccessContainer =  cacheStats.numEvictionFailureFromAccessContainer;
+  ret.numEvictionFailureFromParentAccessContainer = cacheStats.numEvictionFailureFromParentAccessContainer;
+  ret.numEvictionFailureFromConcurrentFill = cacheStats.numEvictionFailureFromConcurrentFill;
+  ret.numEvictionFailureFromMoving = cacheStats.numEvictionFailureFromMoving;
+  ret.numEvictionFailureFromParentMoving = cacheStats.numEvictionFailureFromParentMoving;
   
   ret.allocationClassStats = allocationClassStats;
   ret.numEvictions = aggregate.numEvictions();

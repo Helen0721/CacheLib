@@ -15,8 +15,7 @@ plot_folder = "plots"
 REGEX_EvictFail = (
     r'AC:\s*(?P<AC>\d+),\s*'
     r'Prnt AC:\s*(?P<Pr_AC>\d+),\s*'
-    r'Cncrrnt:\s*(?P<Cn>\d+),\s*'
-    r'Prnt Cncrrnt:\s*(?P<Pr_Cn>\d+),\s*'
+    r'Cncrrnt:\s*(?P<Cn>\d+),\s*' 
     r'Mv:\s*(?P<Mv>\d+),\s*'
     r'Prnt MV:\s*(?P<Pr_Mv>\d+)'
 )

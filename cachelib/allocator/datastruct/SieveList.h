@@ -23,6 +23,7 @@
 #include "cachelib/allocator/serialize/gen-cpp2/objects_types.h"
 #pragma GCC diagnostic pop
 
+#include "cachelib/allocator/Util.h"
 #include "cachelib/common/CompilerUtils.h"
 #include <atomic>
 
@@ -90,7 +91,7 @@ class SieveList {
   using RefFlags = typename T::Flags;
   using Mutex = folly::DistributedMutex;
   using LockHolder = std::unique_lock<Mutex>;
-
+  using Time = uint32_t;
 
   SieveList() = default;
   SieveList(const SieveList&) = delete;
@@ -178,9 +179,7 @@ class SieveList {
   // @param newNode   source node
   void replace(T& oldNode, T& newNode) noexcept;
   
-  // moves a node that belongs to the linked list to the head of the linked
-  // list.
-  //void moveToHead(T& node) noexcept;
+  Time getUpdateTime(T& node) noexcept { return (node.*HookPtr).getUpdateTime();}
   
   T* getHead() const noexcept { return head_; }
   T* getTail() const noexcept { return tail_; }
@@ -333,12 +332,13 @@ void SieveList<T, HookPtr>::inspectSieveList() noexcept{
 
 template <typename T, SieveListHook<T> T::*HookPtr>
 T* SieveList<T, HookPtr>::operateHand() noexcept{ 
-  
-  //LockHolder l(*sievelistMutex_);
-  
+  auto start = std::chrono::high_resolution_clock::now();
+
+  //LockHolder l(*sievelistMutex_) 
   //std::cout << "operateHand...Before operation, ";
   //inspectSieveList(); 
   T* curr = hand_;
+  int n_iters = 0;
   
   //T* curr = hand_.load();
   if (curr == nullptr) curr = tail_;
@@ -347,7 +347,10 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
     //std::cout << "curr: "<< curr << "...";
     setAsUnvisited(*curr);
     curr = getPrev(*curr);
-    if (curr == nullptr) curr = tail_;
+    if (curr == nullptr) {
+      curr = tail_;
+      n_iters += 1;
+    }
     //if (curr==nullptr) curr = tail_.load();
   }
   //hand_.store(getPrev(*curr));
@@ -356,6 +359,13 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
   //std::cout << "After operation, ";
   //inspectSieveList();
   //std::cout << "returning " << curr->getKey().toString() << ", " << curr   << std::endl;
+  if (n_iters>0) printf("n_iters: %d\n",n_iters);
+  const auto endTime = static_cast<Time>(util::getCurrentTimeSec());
+  auto end = std::chrono::high_resolution_clock::now();
+  auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);  
+  std::cout << "Evicted Item Age: " << (endTime - getUpdateTime(*curr)) << std::endl;
+  std::cout << "operateHand duration: " << duration.count() << std::endl;
+
   return curr;
 }
 

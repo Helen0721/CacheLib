@@ -127,6 +127,13 @@ struct Stats {
   uint64_t invalidDestructorCount{0};
   int64_t unDestructedItemCount{0};
 
+  uint64_t numEvictionFailureFromAccessContainer{0};
+  uint64_t numEvictionFailureFromConcurrentFill{0};
+  uint64_t numEvictionFailureFromParentAccessContainer{0};
+  uint64_t numEvictionFailureFromMoving{0};
+  uint64_t numEvictionFailureFromParentMoving{0};
+
+
   std::map<PoolId, std::map<ClassId, ACStats>> allocationClassStats;
 
   // populate the counters related to nvm usage. Cache implementation can decide
@@ -155,6 +162,14 @@ struct Stats {
                           pctFn(numEvictions, evictAttempts))
         << std::endl;
     out << folly::sformat("RAM Evictions : {:,}", numEvictions) << std::endl;
+    
+    out << "Alloc Attempts: " << allocAttempts << ", Alloc Failures: " << allocFailures << std::endl;
+
+    out << "Evict Fails---AC: " << numEvictionFailureFromAccessContainer; 
+    out << ", Prnt AC: " << numEvictionFailureFromParentAccessContainer; 
+    out << ", Cncrrnt: " << numEvictionFailureFromConcurrentFill;
+    out << ", Mv: " << numEvictionFailureFromMoving;
+    out << ", Prnt MV: " << numEvictionFailureFromParentMoving<< std::endl; 
 
     auto foreachAC = [](const auto& map, auto cb) {
       for (auto& pidStat : map) {
