@@ -112,7 +112,7 @@ def plot(all_res,
 	
         plt.xlabel("Final Miss Ratio",fontsize=8) 
         plt.xticks(fontsize=10)
-        plt.xlim(min(final_mrs)-0.01, max(final_mrs)+0.01)
+        #plt.xlim(min(final_mrs)-0.01, max(final_mrs)+0.01)
 	
         plt.ylabel("Eviction Algorithms",fontsize=8)
 	
@@ -278,7 +278,7 @@ def plot(all_res,
 	            axs[r,i].barh(labels, data, color=colors[:len(labels)])
 	            axs[r,i].set_xlabel(thpt_x_labels[r])
 	            axs[r,i].set_title(thpt_labels[r][i])
-	            axs[r,i].set_xlim(min(data)-x_offset,max(data)+x_offset) 
+	            #axs[r,i].set_xlim(min(data)-x_offset,max(data)+x_offset) 
 	            axs[r,i].xaxis.set_major_formatter(formatter)
 	
 	    fig.suptitle("Throughput data-" + plot_title,fontsize=12)   
@@ -298,7 +298,7 @@ def plot(all_res,
             num_eviction_list = [i for i in range(1,len(eia_list)+1)] 
             plt.plot(num_eviction_list,eia_list,label=labels[i],color=colors[i])
 	
-        plt.title("Evicted Item Ages (retention time)-" + plot_title)
+        plt.title("Evicted Item Ages (in sec)-" + plot_title)
         legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
 	                        loc="upper right", fontsize="10", frameon=False) 
         frame = legend.get_frame() 
@@ -455,8 +455,8 @@ def parse(f_path,line_limit):
             eia_m = re.match(REGEX_EVICTED_ITEM_AGE,line)
             if eia_m:
                 eia = int(eia_m.group("evicted_item_age"))
-                if eia > 10**8:
-                    print(line)
+                if eia > 50:
+                    #print("not aligned printing around line",line_i,line)
                     continue
                 eias.append(eia) 
                 continue
@@ -465,8 +465,9 @@ def parse(f_path,line_limit):
             ed_m = re.match(REGEX_EVICT_DURATION,line)
             if ed_m:  
                 ed = int(ed_m.group("evict_duration")) 
-                if ed > (5 * 10**9):
-                    print(line)
+                if ed > 10000:
+                    # printing not in order 
+                    #print("not aligned printing aroudn line",line_i,line)
                     continue
                 eds.append(ed)
                 continue 
@@ -506,7 +507,12 @@ if __name__=="__main__":
     
     algos = sorted(ap.algos.split(",")) 
     PLOT_TYPES = set(ap.types.split(","))
-
+    
+    if PTYPE_EVICTED_ITEM_AGE in PLOT_TYPES or PTYPE_EVICT_DURATION in PLOT_TYPES: 
+        if PTYPE_NUM_OPS_OVER_TIME in PLOT_TYPES or PTYPE_FINAL_THPT_DATA in PLOT_TYPES:
+            print("Throughput will be inaccurate if the output log also contains eviction duration or evicted item ages")
+            print("exit...")
+            exit(1) 
 
     ALL_RES = []
 
