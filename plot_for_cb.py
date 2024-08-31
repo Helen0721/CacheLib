@@ -290,25 +290,21 @@ def plot(all_res,
     
     # -----------------------plotting the evicted item age over time-----------------------
     if PTYPE_EVICTED_ITEM_AGE in PLOT_TYPES:
-        evicted_item_ages = [res["evicted_item_ages"] for res in ALL_RES]
-        plt.figure()
-        num_lines = len(evicted_item_ages)
-        for i in range(num_lines): 
-            eia_list = evicted_item_ages[i] 
+        evicted_item_ages = [res["evicted_item_ages"] for res in ALL_RES] 
+        num_subplots = len(evicted_item_ages)
+        fig, axs = plt.subplots(num_subplots,figsize=(5, 5)) 
+        
+        for i in range(num_subplots):
+            eia_list = evicted_item_ages[i]
             num_eviction_list = [i for i in range(1,len(eia_list)+1)] 
-            plt.plot(num_eviction_list,eia_list,label=labels[i],color=colors[i])
-	
-        plt.title("Evicted Item Ages (in sec)-" + plot_title)
-        legend = plt.legend(ncol= (num_lines // 4 if num_lines > 3 else num_lines ), 
-	                        loc="upper right", fontsize="10", frameon=False) 
-        frame = legend.get_frame() 
-        frame.set_facecolor("0.9") 
-        frame.set_edgecolor("0.9")
-        plt.grid(axis="y", linestyle="--") 
-        plt.xlabel("Number of Evictions",fontsize=8) 
-        plt.xticks(fontsize=10)
-        plt.ylabel("Evicted Item Ages (in sec)",fontsize=8)
-        plt.yticks(fontsize=10)
+            axs[i].plot(num_eviction_list,eia_list,color=colors[i])
+            axs[i].set_xlabel("Number of Evictions",fontsize=8) 
+            axs[i].set_title("Evicted Item Ages (in sec)-" + labels[i],fontsize=8)
+            axs[i].grid(axis="y", linestyle="--")
+         
+            axs[i].tick_params(axis="x", labelsize=10)
+            axs[i].tick_params(axis="y", labelsize=10)
+
         plt.tight_layout(pad=1.0)
         pp.savefig()
         plt.close()
@@ -340,8 +336,8 @@ def plot(all_res,
         
 
         plt.figure()
-        ed_cnt_buckets = [1000,5000,10000,40000]
-        label_for_ed_cnts = ["0~1 ms","1~5 ms", "5~10 ms", "10~40 ms","beyond 40 ms"]
+        ed_cnt_buckets = [100,200,300]
+        label_for_ed_cnts = ["[0~100) ns","[100,200) ms", "[200,300) ns", "beyond 300 ns"]
         
         all_cnts = []
         
@@ -353,18 +349,16 @@ def plot(all_res,
             for ed in ed_list:
                 if ed < ed_cnt_buckets[0]: cnts[0] += 1
                 elif ed < ed_cnt_buckets[1]: cnts[1] += 1
-                elif ed < ed_cnt_buckets[2]: cnts[2] += 1
-                elif ed < ed_cnt_buckets[3]: cnts[3] += 1
-                else: cnts[4] += 1
+                elif ed < ed_cnt_buckets[2]: cnts[2] += 1 
+                else: cnts[3] += 1
 
             all_cnts.append(cnts)
 
         num_subplots = len(label_for_ed_cnts)
-        fig, axs = plt.subplots(num_subplots,figsize=(10, 10))        
+        fig, axs = plt.subplots(num_subplots,figsize=(8, 8))        
         
         for i in range(num_subplots):
-            cnts_for_bucket = [cnt_for_algo[i] for cnt_for_algo in all_cnts]
-            print(cnts_for_bucket,labels)
+            cnts_for_bucket = [cnt_for_algo[i] for cnt_for_algo in all_cnts] 
             axs[i].barh(labels,cnts_for_bucket,color=colors)
             axs[i].set_xlabel("Counts",fontsize=8) 
             axs[i].set_title("Evict Duration {}".format(label_for_ed_cnts[i]),fontsize=8) 
@@ -383,18 +377,19 @@ def parse(f_path,line_limit):
     
     print("parsing for",f_path)
 
-    with open(f_path,"r") as f:
-        stdout = f.read().splitlines()
+    f = open(f_path,"r")
 
     time = 1
+    line_i = -1
     hr_list,AC_list,ops_list,ts_list,eias,eds = [],[],[],[],[],[]
-    final_hr,get_rate,get_success,set_rate,set_success,del_rate,del_found =-1,-1,-1,-1,-1,-1,-1
+    final_hr,get_rate,get_success,set_rate,set_success,del_rate,del_found,sieve_n_iters =-1,-1,-1,-1,-1,-1,-1,0
 
-    for (line_i,line) in enumerate(stdout):
+    for line in f:
+        line_i += 1
         if line_limit and line_i > line_limit: break
-        
+ 
         if "n_iters" in line:
-            print("sieve operateHand n_iters greater than 1:",line)
+            sieve_n_iters += 1
         
         if PTYPE_MR_OVER_TIME in PLOT_TYPES:
             hr_time_m = re.search(REGEX_Time_HR,line)
@@ -455,8 +450,7 @@ def parse(f_path,line_limit):
             eia_m = re.match(REGEX_EVICTED_ITEM_AGE,line)
             if eia_m:
                 eia = int(eia_m.group("evicted_item_age"))
-                if eia > 50:
-                    #print("not aligned printing around line",line_i,line)
+                if eia > 5000:
                     continue
                 eias.append(eia) 
                 continue
@@ -465,12 +459,12 @@ def parse(f_path,line_limit):
             ed_m = re.match(REGEX_EVICT_DURATION,line)
             if ed_m:  
                 ed = int(ed_m.group("evict_duration")) 
-                if ed > 10000:
-                    # printing not in order 
-                    #print("not aligned printing aroudn line",line_i,line)
+                if ed > 1000:
                     continue
                 eds.append(ed)
                 continue 
+    if "sieve" in f_path:
+        print("Sieve-number of times Sieve moves hand_ back to tail",sieve_n_iters)
 
     res = {
             "final_hr": final_hr,
@@ -487,6 +481,8 @@ def parse(f_path,line_limit):
             "evicted_item_ages": eias,
             "evict_durations": eds
             }
+    
+    f.close()
 
     return res 
 
@@ -517,21 +513,24 @@ if __name__=="__main__":
     ALL_RES = []
 
     for algo in algos:
+        print()
         log_file_path = os.path.join(ap.dir,"{}_t{}_{}_log".format(ap.cache_size,ap.thread,algo))
         
         res_for_algo = parse(log_file_path,ap.line_limit)
         res_for_algo["label"] = algo
 
-        ALL_RES.append(res_for_algo)
-        
+        ALL_RES.append(res_for_algo) 
+
         if PTYPE_MR_OVER_TIME in PLOT_TYPES or PTYPE_MR_OVER_TIME_THRESHOLD in PLOT_TYPES or PTYPE_NUM_OPS_OVER_TIME in PLOT_TYPES:  
             print("Time executed for {}: {}".format(algo,res_for_algo["ts_list"][-1]))
          
         if PTYPE_EVICTED_ITEM_AGE in PLOT_TYPES:
             print("Last 10 evicted item ages (retention time) for {}: {}".format(algo,res_for_algo["evicted_item_ages"][-10:]))
+            print("max evicted item ages:",sorted(res_for_algo["evicted_item_ages"][-10:]))
         
         if PTYPE_EVICT_DURATION in PLOT_TYPES:
-            print("Last 10 evict duration for {}: {}".format(algo,res_for_algo["evict_durations"][-10:])) 
+            print("Last 10 evict duration for {}: {}".format(algo,res_for_algo["evict_durations"][-10:]))
+            print("max evict duration:",sorted(res_for_algo["evict_durations"][-10:]))
     
     # plot_name is for the plot file name, which will consist of what plots is ploted 
     plot_name = "{}_t{}_{}_{}".format(ap.cache_size,ap.thread,",".join(algos), "-".join(sorted(PLOT_TYPES)))
