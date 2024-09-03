@@ -42,6 +42,8 @@ PTYPE_EVICT_DURATION = "ed"
 PTYPE_EVICT_ITEM_AGE_LOG = "eia_log"
 PTYPE_EVICT_DURATION_LOG = "ed_log"
 
+PTYPE_AVG_THPT_OVER_RUNS = "avg_thpt"
+
 
 PTYPE_ALL_NORMAL = ",".join([PTYPE_FINAL_MR,PTYPE_MR_OVER_TIME,PTYPE_MR_OVER_TIME_THRESHOLD,
                     PTYPE_EVCIT_FAIL_AC,PTYPE_NUM_OPS_OVER_TIME,PTYPE_FINAL_THPT_DATA])
@@ -244,15 +246,15 @@ def plot(all_res,
         plt.close()
 
     # -----------------------plotting Final Throughput Data-----------------------
-    if PTYPE_FINAL_THPT_DATA in PLOT_TYPES:
+    if PTYPE_FINAL_THPT_DATA in PLOT_TYPES or PTYPE_AVG_THPT_OVER_RUNS in PLOT_TYPES:        
 
-	    GRs = [res["get_rate"] for res in all_res]
-	    SRs = [res["set_rate"] for res in all_res]
-	    DRs = [res["del_rate"] for res in all_res]
+	    GRs = [sum(res["get_rate"]) / len(res["get_rate"]) for res in all_res]
+	    SRs = [sum(res["set_rate"]) / len(res["set_rate"]) for res in all_res]
+	    DRs = [sum(res["del_rate"]) / len(res["del_rate"]) for res in all_res]
 	    
-	    GSs = [res["get_success"] for res in all_res]
-	    SSs = [res["set_success"] for res in all_res]
-	    DFs = [res["del_found"] for res in all_res]
+	    GSs = [sum(res["get_success"]) / len(res["get_success"]) for res in all_res]
+	    SSs = [sum(res["set_success"]) / len(res["get_success"]) for res in all_res]
+	    DFs = [sum(res["del_found"]) / len(res["del_found"]) for res in all_res]
 	
 	    thpt_labels =[["Get Rate","Set Rate","Delete Rate"],
 	                  ["Get success","Set Success", "Delete Found"]
@@ -262,9 +264,6 @@ def plot(all_res,
 	                ]
 	    thpt_x_labels = ["Op/sec","Success/Total"]  
 	    
-	    x_offsets = [[10**5,10**4,10**3],
-	                [0.02,0.02,0.02]
-	                ]
 	    figsize = (15,5)
 	    if "hit_ratio" and "graph_cache_" in ap.dir:
 	        thpt_labels[0].pop()
@@ -280,9 +279,8 @@ def plot(all_res,
 	    fig, axs = plt.subplots(nrows=len(thpt_labels), ncols=len(thpt_labels[0]), figsize=(15,5))
 	    for r in range(len(thpt_labels)):
 	        for i in range(len(thpt_labels[0])):
-	            data = thpt_data[r][i]
-	            x_offset = x_offsets[r][i]
-	            #print(data)
+	            data = thpt_data[r][i] 
+	            print(thpt_labels[r][i],data)
 	            axs[r,i].barh(labels, data, color=colors[:len(labels)])
 	            axs[r,i].set_xlabel(thpt_x_labels[r])
 	            axs[r,i].set_title(thpt_labels[r][i])
@@ -436,7 +434,7 @@ def plot(all_res,
     print("plots saved to {}".format(plot_fname))
 
 
-def parse_line(line,res):
+def parse_line(res,line):
     if "n_iters" in line:
         res["sieve_n_iters"] += 1
         return
@@ -477,26 +475,26 @@ def parse_line(line,res):
             return
 
 
-    if PTYPE_FINAL_THPT_DATA in PLOT_TYPES:
+    if PTYPE_FINAL_THPT_DATA in PLOT_TYPES or PTYPE_AVG_THPT_OVER_RUNS in PLOT_TYPES:
 
         get_m = re.search(REGEX_GET,line)
         if get_m:
-            res["get_rate"] = int(get_m.group("get_rate").replace(",",""))
-            res["get_success"] = float(get_m.group("get_success")) * 0.01
+            res["get_rate"].append(int(get_m.group("get_rate").replace(",","")))
+            res["get_success"].append(float(get_m.group("get_success")) * 0.01)
             return
         
         set_m = re.search(REGEX_SET,line)
         if set_m:
-            res["set_rate"] = int(set_m.group("set_rate").replace(",",""))
-            res["set_success"] = float(set_m.group("set_success")) * 0.01
+            res["set_rate"].append(int(set_m.group("set_rate").replace(",","")))
+            res["set_success"].append(float(set_m.group("set_success")) * 0.01)
             return
 
         del_m = re.search(REGEX_DEL,line)
         if del_m:
-            res["del_rate"] = int(del_m.group("del_rate").replace(",",""))
-            res["del_found"] = float(del_m.group("del_found")) * 0.01
+            res["del_rate"].append(int(del_m.group("del_rate").replace(",","")))
+            res["del_found"].append(float(del_m.group("del_found")) * 0.01)
             return
-        
+
     if PTYPE_EVICTED_ITEM_AGE in PLOT_TYPES:
         eia_m = re.match(REGEX_EVICTED_ITEM_AGE,line)
         if eia_m:
@@ -525,7 +523,8 @@ def parse(f_path,line_limit):
     time = 1
     line_i = -1
     hr_list,AC_list,ops_list,ts_list,eias,eds = [],[],[],[],[],[]
-    final_hr,get_rate,get_success,set_rate,set_success,del_rate,del_found,sieve_n_iters =-1,-1,-1,-1,-1,-1,-1,0
+    get_rate,get_success,set_rate,set_success,del_rate,del_found = [],[],[],[],[],[]
+    final_hr,sieve_n_iters =-1,0
     
     res = {
             "final_hr": final_hr,
@@ -574,23 +573,7 @@ def parse(f_path,line_limit):
         gc.collect()
         
         eias = eia_log_path
-        print("Evicted Item Age log saved to",eias,"eia list deleted")
-
-    res = {
-            "final_hr": final_hr,
-            "hr_list":hr_list,
-            "AC_list":AC_list,
-            "ops_list": ops_list,
-            "ts_list": ts_list,
-            "get_rate": get_rate,
-            "get_success": get_success,
-            "set_rate": set_rate,
-            "set_success": set_success,
-            "del_rate": del_rate,
-            "del_found": del_found,
-            "evicted_item_ages": eias,
-            "evict_durations": eds
-            }
+        print("Evicted Item Age log saved to",eias,"eia list deleted") 
     
     f.close()  
 

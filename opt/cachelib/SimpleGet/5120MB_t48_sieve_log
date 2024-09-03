@@ -1,0 +1,640 @@
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,750 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:25:26       0.00M ops completed. Hit Ratio 100.00% (RAM 100.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 48,101,266/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,627 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:25:38       0.00M ops completed. Hit Ratio   0.33% (RAM   0.33%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 54,812,966/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,457 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:25:48       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 51,915,920/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,420 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:25:59       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 54,588,261/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,708 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:26:09       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 53,849,440/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,718 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:26:19       0.00M ops completed. Hit Ratio 100.00% (RAM 100.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 48,691,926/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,499 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:26:31       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 55,783,088/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,663 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:26:41       0.00M ops completed. Hit Ratio   2.94% (RAM   2.94%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 41,788,661/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,522 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:26:54       0.00M ops completed. Hit Ratio   0.92% (RAM   0.92%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 54,088,073/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
+===JSON Config===
+{
+  "cache_config" : {
+    "allocator": "SIEVE",
+    "cacheSizeMB" : 5120,
+    "poolRebalanceIntervalSec" : 0
+  },
+  "test_config" :
+    {
+
+      "numOps" : 10000000,
+      "numThreads" : 48,
+      "numKeys" : 100000,
+      
+
+      "keySizeRange" : [1, 8, 64],
+      "keySizeRangeProbability" : [0.3, 0.7],
+
+      "valSizeRange" : [1, 102400],
+      "valSizeRangeProbability" : [1.0],
+
+      "getRatio" : 1.0,
+      "setRatio" : 0.0,
+      "delRatio" : 0.0,
+      "addChainedRatio" : 0.0
+    }
+
+}
+
+Welcome to OSS version of cachebench
+Created 91,619 keys in 0.00 mins
+Generating 480.00M sampled accesses
+Generated access patterns in 0.00 mins
+cachebench-runner-Stressor.cpp-makeStressor-allocator: Sieve
+Total 480.00M ops to be run
+config_.numThreads: 48
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+15:27:05       0.00M ops completed. Hit Ratio   0.00% (RAM   0.00%, NVM   0.00%)
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+== Test Results ==
+== Allocator Stats ==
+Items in RAM  : 0
+Items in NVM  : 0
+Alloc Attempts: 0 Success: 100.00%
+Evict Attempts: 0 Success: 0.00%
+RAM Evictions : 0
+Alloc Attempts: 0, Alloc Failures: 0
+Evict Fails---AC: 0, Prnt AC: 0, Cncrrnt: 0, Mv: 0, Prnt MV: 0
+Fraction of pool 0 used : 0.00
+Cache Gets    : 480,000,000
+Hit Ratio     :   0.00%
+NVM Gets      :               0, Coalesced :   0.00%
+NVM Puts      :               0, Success   : 100.00%, Clean   :   0.00%, AbortsFromDel   :        0, AbortsFromGet   :        0
+NVM Evicts    :               0, Clean     :   0.00%, Unclean :       0, Double          :        0
+NVM Deletes   :               0 Skipped Deletes:   0.00%
+
+== Throughput for  ==
+Total Ops : 480.00 million
+Total sets: 0
+get       : 49,462,585/s, success   :   0.00%
+couldExist:         0/s, success   :   0.00%
+set       :         0/s, success   :   0.00%
+del       :         0/s, found     :   0.00%
+
