@@ -248,52 +248,73 @@ def plot(all_res,
     # -----------------------plotting Final Throughput Data-----------------------
     if PTYPE_FINAL_THPT_DATA in PLOT_TYPES or PTYPE_AVG_THPT_OVER_RUNS in PLOT_TYPES:        
 
-	    GRs = [sum(res["get_rate"]) / len(res["get_rate"]) for res in all_res]
-	    SRs = [sum(res["set_rate"]) / len(res["set_rate"]) for res in all_res]
-	    DRs = [sum(res["del_rate"]) / len(res["del_rate"]) for res in all_res]
+        GRs = [sum(res["get_rate"]) / len(res["get_rate"]) for res in all_res]
+        SRs = [sum(res["set_rate"]) / len(res["set_rate"]) for res in all_res]
+        DRs = [sum(res["del_rate"]) / len(res["del_rate"]) for res in all_res]
 	    
-	    GSs = [sum(res["get_success"]) / len(res["get_success"]) for res in all_res]
-	    SSs = [sum(res["set_success"]) / len(res["get_success"]) for res in all_res]
-	    DFs = [sum(res["del_found"]) / len(res["del_found"]) for res in all_res]
+        GSs = [sum(res["get_success"]) / len(res["get_success"]) for res in all_res]
+        SSs = [sum(res["set_success"]) / len(res["get_success"]) for res in all_res]
+        DFs = [sum(res["del_found"]) / len(res["del_found"]) for res in all_res]
 	
-	    thpt_labels =[["Get Rate","Set Rate","Delete Rate"],
-	                  ["Get success","Set Success", "Delete Found"]
-	                 ]
-	    thpt_data = [[GRs,SRs,DRs],
-	                 [GSs,SSs,DFs]
-	                ]
-	    thpt_x_labels = ["Op/sec","Success/Total"]  
+        thpt_labels =[["Get Rate","Set Rate","Delete Rate"],
+                      ["Get success","Set Success", "Delete Found"]
+                     ]
+        thpt_data = [[GRs,SRs,DRs],
+                     [GSs,SSs,DFs]
+                    ]
+        thpt_x_labels = ["Op/sec","Success/Total"]  
+        
+        figsize = (15,5)
+        if "hit_ratio" and "graph_cache_" in ap.dir or "SimpleGet" in ap.dir or "HighContention" in ap.dir:
+            thpt_labels[0].pop()
+            thpt_labels[1].pop()
+            thpt_data[0].pop()
+            thpt_data[1].pop() 
+	
+        formatter = ticker.ScalarFormatter(useOffset=False, useMathText=True) 
+        formatter.set_scientific(True)
+        formatter.set_powerlimits((-2, 2))  # Adjust these limits to control when scientific notation is used
+        fig, axs = plt.subplots(nrows=len(thpt_labels), ncols=len(thpt_labels[0]), figsize=(15,5))
+        for r in range(len(thpt_labels)):
+            for i in range(len(thpt_labels[0])):
+                data = thpt_data[r][i] 
+                print(thpt_labels[r][i],data)
+                axs[r,i].barh(labels, data, color=colors[:len(labels)])
+                axs[r,i].set_xlabel(thpt_x_labels[r])
+                axs[r,i].set_title(thpt_labels[r][i])
+                #axs[r,i].set_xlim(min(data)-x_offset,max(data)+x_offset) 
+                axs[r,i].xaxis.set_major_formatter(formatter)
 	    
-	    figsize = (15,5)
-	    if "hit_ratio" and "graph_cache_" in ap.dir:
-	        thpt_labels[0].pop()
-	        thpt_labels[1].pop()
-	        thpt_data[0].pop()
-	        thpt_data[1].pop()
-	        x_offsets[0].pop()
-	        x_offsets[1].pop()
+        fig.suptitle("Throughput data-" + plot_title,fontsize=12)   
+        plt.tight_layout(rect=[0, 0, 1, 0.9999])
 	
-	    formatter = ticker.ScalarFormatter(useOffset=False, useMathText=True) 
-	    formatter.set_scientific(True)
-	    formatter.set_powerlimits((-2, 2))  # Adjust these limits to control when scientific notation is used
-	    fig, axs = plt.subplots(nrows=len(thpt_labels), ncols=len(thpt_labels[0]), figsize=(15,5))
-	    for r in range(len(thpt_labels)):
-	        for i in range(len(thpt_labels[0])):
-	            data = thpt_data[r][i] 
-	            print(thpt_labels[r][i],data)
-	            axs[r,i].barh(labels, data, color=colors[:len(labels)])
-	            axs[r,i].set_xlabel(thpt_x_labels[r])
-	            axs[r,i].set_title(thpt_labels[r][i])
-	            #axs[r,i].set_xlim(min(data)-x_offset,max(data)+x_offset) 
-	            axs[r,i].xaxis.set_major_formatter(formatter)
-	
-	    fig.suptitle("Throughput data-" + plot_title,fontsize=12)   
-	    plt.tight_layout(rect=[0, 0, 1, 0.9999])
-	
-	    pp.savefig(fig)
-	    plt.close()
+        pp.savefig(fig)
+        plt.close() 
+        
+        fig, ax = plt.subplots(figsize=(8, 3))
+        bar_width = 0.1
+        positions = np.arange(len(labels)) * 0.3
 
+        for (i,algo) in enumerate(labels):
+            adjusted_positions = positions + i * bar_width
+            data = [R[i] for R in thpt_data[0]]     # get the get_rate, set_rate, and del_rate for label[i]
+            ax.barh(adjusted_positions, data, bar_width, label=algo,color=colors[i])
+
+        ax.set_yticks(positions + bar_width * (len(labels) - 1) / 2)
+        ax.set_yticklabels(thpt_labels[0])
+        ax.set_xlabel('Op/sec')
+        ax.set_title("Throughput data-" + plot_title,fontsize=12)
     
+        legend = plt.legend(ncol= (len(labels) // 4 if len(labels) > 3 else len(labels) ), 
+	                        loc="upper right", fontsize="10", frameon=False) 
+        frame = legend.get_frame() 
+        frame.set_facecolor("0.9") 
+        frame.set_edgecolor("0.9")
+        plt.tight_layout(pad=1.0)  
+
+        pp.savefig(fig)
+        plt.close()
+
     # -----------------------plotting the evicted item age over time and average eia-----------------------
     if PTYPE_EVICTED_ITEM_AGE in PLOT_TYPES:
         print("PTYPE:",PTYPE_EVICTED_ITEM_AGE)
