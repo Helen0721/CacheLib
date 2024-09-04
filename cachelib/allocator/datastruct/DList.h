@@ -393,17 +393,20 @@ void DList<T, HookPtr>::moveToHead(T& node) noexcept {
 /* Iterator Implementation */
 template <typename T, DListHook<T> T::*HookPtr>
 void DList<T, HookPtr>::Iterator::goForward() noexcept {
-  auto start = std::chrono::high_resolution_clock::now();
-  const auto endTime = static_cast<Time>(util::getCurrentTimeSec());
+  auto start = std::chrono::high_resolution_clock::now();  
   if (dir_ == Direction::FROM_TAIL) {
     curr_ = dlist_->getPrev(*curr_);
   } else {
     curr_ = dlist_->getNext(*curr_);
   }
   auto end = std::chrono::high_resolution_clock::now();
-  std::cout << "Evicted Item Age: " << (endTime - dlist_->getUpdateTime(*curr_)) << std::endl;
+  const auto itemEndTimeInSec = static_cast<Time>(util::getCurrentTimeSec());
+  
+  auto eia = itemEndTimeInSec - dlist_->getUpdateTime(*curr_);
   auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-  std::cout << "goForward duration: " << duration.count() << std::endl;
+  auto ed = duration.count();
+  std::cout << "Evicted Item Age: " << eia << std::endl; 
+  std::cout << "Evict Duration: " << ed << std::endl;
 }
 
 template <typename T, DListHook<T> T::*HookPtr>

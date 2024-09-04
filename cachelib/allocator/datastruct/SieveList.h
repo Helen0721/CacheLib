@@ -359,12 +359,18 @@ T* SieveList<T, HookPtr>::operateHand() noexcept{
   //std::cout << "After operation, ";
   //inspectSieveList();
   //std::cout << "returning " << curr->getKey().toString() << ", " << curr   << std::endl;
-  if (n_iters>0) printf("n_iters: %d\n",n_iters);
-  const auto endTime = static_cast<Time>(util::getCurrentTimeSec());
+  
+  const auto itemEndTimeInSec = static_cast<Time>(util::getCurrentTimeSec());
   auto end = std::chrono::high_resolution_clock::now();
-  auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);  
-  std::cout << "Evicted Item Age: " << (endTime - getUpdateTime(*curr)) << std::endl;
-  std::cout << "operateHand duration: " << duration.count() << std::endl;
+  auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start); 
+  
+  auto eia =  itemEndTimeInSec - getUpdateTime(*curr);
+  auto ed = duration.count();
+
+  std::cout << "Evicted Item Age: " << eia << std::endl;
+  std::cout << "Evict Duration: " << ed << std::endl;
+  
+  if (n_iters>0) printf("Sieve n_iters: %d\n",n_iters);
 
   return curr;
 }
